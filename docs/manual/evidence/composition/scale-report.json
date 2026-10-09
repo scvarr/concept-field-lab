@@ -1,0 +1,23 @@
+{
+  "result": "passed",
+  "python": "3.13.2 (tags/v3.13.2:4f8bb39, Feb  4 2025, 15:23:48) [MSC v.1942 64 bit (AMD64)]",
+  "os": "Windows-10-10.0.19045-SP0",
+  "nodes": 5000,
+  "edges": 10000,
+  "timings_seconds": {
+    "stage_15001_candidates": 0.5499,
+    "accept_15001_candidates": 0.54,
+    "reopen_and_read": 0.1182,
+    "depth_3_export_with_history": 0.5461,
+    "complete_study_export": 1.1246,
+    "repeat_import_no_duplicates": 0.5824,
+    "single_node_edit": 0.447,
+    "twenty_sequential_edits": 12.2426,
+    "full_workspace_export_after_20_edits": 5.4969,
+    "validate_full_backup_and_all_versions": 11.4166
+  },
+  "database_bytes": 65736704,
+  "backup_after_20_edits_bytes": 47794675,
+  "fixture_json_bytes": 8326871,
+  "criterion": "Each operation <30 seconds; exact IDs, counts, persistent state, no duplicates; compact backup <64 MiB after 20 edits, all versions validated; no semantic claim"
+}

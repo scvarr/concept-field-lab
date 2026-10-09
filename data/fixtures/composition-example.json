@@ -1,0 +1,412 @@
+{
+  "format": "concept-field-graph",
+  "version": 2,
+  "kind": "workspace",
+  "exportedAt": "2026-10-09T00:00:00+00:00",
+  "state": {
+    "studies": [
+      {
+        "id": "6572a495-e6ca-57c2-a405-bd7eca346e22",
+        "title": "Составные концепты — синтетический пример",
+        "description": "Синтетический пример для проверки интерфейса и хранения. Содержание не подтверждено.",
+        "rootId": "77e7d19e-4178-51f5-b78b-9fa3793d857a",
+        "nodes": [
+          {
+            "id": "77e7d19e-4178-51f5-b78b-9fa3793d857a",
+            "label": "X — синтетический пример",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "Синтетические тестовые данные; не научный результат",
+            "origins": [],
+            "createdAt": "2026-10-09T00:00:00+00:00"
+          },
+          {
+            "id": "d0acea89-b391-5bbd-9b53-e0ddcd6d94e3",
+            "label": "твёрдый",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "Синтетические тестовые данные; не научный результат",
+            "origins": [],
+            "createdAt": "2026-10-09T00:00:00+00:00"
+          },
+          {
+            "id": "bb0f6e5d-020f-5d04-97c6-e81d516aa391",
+            "label": "твёрдость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "Синтетические тестовые данные; не научный результат",
+            "origins": [],
+            "createdAt": "2026-10-09T00:00:00+00:00"
+          },
+          {
+            "id": "c229d081-c768-5d95-ba6b-e05f1a159e80",
+            "label": "модификатор",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "Синтетические тестовые данные; не научный результат",
+            "origins": [],
+            "createdAt": "2026-10-09T00:00:00+00:00"
+          },
+          {
+            "id": "00fbd4cb-75dd-5870-9b83-c4818be6eea5",
+            "label": "свойство",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "Синтетические тестовые данные; не научный результат",
+            "origins": [],
+            "createdAt": "2026-10-09T00:00:00+00:00"
+          },
+          {
+            "id": "ad948360-19c7-552e-849c-604d01118eea",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "Синтетические тестовые данные; не научный результат",
+            "origins": [],
+            "createdAt": "2026-10-09T00:00:00+00:00",
+            "structure": "combination"
+          },
+          {
+            "id": "9af3f503-6a88-55bc-9c8f-499e8ae823cc",
+            "label": "β",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "Синтетические тестовые данные; не научный результат",
+            "origins": [],
+            "createdAt": "2026-10-09T00:00:00+00:00",
+            "structure": "combination"
+          },
+          {
+            "id": "7366dd13-8a3c-56b5-a489-1d0a8e634cff",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "Синтетические тестовые данные; не научный результат",
+            "origins": [],
+            "createdAt": "2026-10-09T00:00:00+00:00",
+            "structure": "combination"
+          }
+        ],
+        "edges": [
+          {
+            "id": "08d1ce94-0649-5bca-9545-a4476e1fc97e",
+            "from": "ad948360-19c7-552e-849c-604d01118eea",
+            "to": "bb0f6e5d-020f-5d04-97c6-e81d516aa391",
+            "type": "",
+            "notes": "Тестовая связь",
+            "origins": [],
+            "role": "component",
+            "componentRole": ""
+          },
+          {
+            "id": "04ffb2d3-f87d-5d03-a428-29e5e1b22cc5",
+            "from": "ad948360-19c7-552e-849c-604d01118eea",
+            "to": "c229d081-c768-5d95-ba6b-e05f1a159e80",
+            "type": "",
+            "notes": "Тестовая связь",
+            "origins": [],
+            "role": "component",
+            "componentRole": ""
+          },
+          {
+            "id": "f2cf5400-50e5-5fe4-8129-80c9136e9883",
+            "from": "ad948360-19c7-552e-849c-604d01118eea",
+            "to": "00fbd4cb-75dd-5870-9b83-c4818be6eea5",
+            "type": "",
+            "notes": "Тестовая связь",
+            "origins": [],
+            "role": "component",
+            "componentRole": ""
+          },
+          {
+            "id": "0f363c7c-fae8-5ae2-9877-60cddac16b7f",
+            "from": "9af3f503-6a88-55bc-9c8f-499e8ae823cc",
+            "to": "ad948360-19c7-552e-849c-604d01118eea",
+            "type": "",
+            "notes": "Тестовая связь",
+            "origins": [],
+            "role": "component",
+            "componentRole": ""
+          },
+          {
+            "id": "1c7ccb1b-ad6e-5130-b7c2-62698b640d3f",
+            "from": "7366dd13-8a3c-56b5-a489-1d0a8e634cff",
+            "to": "00fbd4cb-75dd-5870-9b83-c4818be6eea5",
+            "type": "",
+            "notes": "Тестовая связь",
+            "origins": [],
+            "role": "component",
+            "componentRole": ""
+          },
+          {
+            "id": "162ecfec-6f24-5632-b6fa-ff595f5ae9f5",
+            "from": "77e7d19e-4178-51f5-b78b-9fa3793d857a",
+            "to": "ad948360-19c7-552e-849c-604d01118eea",
+            "type": "характеристика целого",
+            "notes": "Тестовая связь",
+            "origins": [],
+            "role": "relation"
+          },
+          {
+            "id": "6ef345b6-691b-52dd-9977-8910a8e5c403",
+            "from": "77e7d19e-4178-51f5-b78b-9fa3793d857a",
+            "to": "9af3f503-6a88-55bc-9c8f-499e8ae823cc",
+            "type": "",
+            "notes": "Тестовая связь",
+            "origins": [],
+            "role": "relation"
+          },
+          {
+            "id": "5d3eaf6a-d6d0-5379-b957-fdb4f7480a7c",
+            "from": "77e7d19e-4178-51f5-b78b-9fa3793d857a",
+            "to": "7366dd13-8a3c-56b5-a489-1d0a8e634cff",
+            "type": "другое утверждение",
+            "notes": "Тестовая связь",
+            "origins": [],
+            "role": "relation"
+          },
+          {
+            "id": "99858699-1804-5011-9d26-c764502e59a0",
+            "from": "77e7d19e-4178-51f5-b78b-9fa3793d857a",
+            "to": "d0acea89-b391-5bbd-9b53-e0ddcd6d94e3",
+            "type": "свойство",
+            "notes": "Тестовая связь",
+            "origins": [],
+            "role": "relation"
+          }
+        ],
+        "archived": false,
+        "createdAt": "2026-10-09T00:00:00+00:00",
+        "designations": [
+          {
+            "id": "2b0e6133-fb6a-5dc3-8d94-5e31605336d0",
+            "text": "обозначение α",
+            "target": "ad948360-19c7-552e-849c-604d01118eea",
+            "notes": "Только тестовое обозначение",
+            "source": "Синтетические данные",
+            "origins": [],
+            "createdAt": "2026-10-09T00:00:00+00:00"
+          }
+        ]
+      }
+    ],
+    "matches": [],
+    "imports": [],
+    "proposals": []
+  },
+  "history": [
+    {
+      "id": 0,
+      "time": "2026-10-09T00:00:00+00:00",
+      "action": "synthetic-fixture",
+      "detail": "Воспроизводимый тестовый материал; не научный результат",
+      "state": {
+        "studies": [
+          {
+            "id": "6572a495-e6ca-57c2-a405-bd7eca346e22",
+            "title": "Составные концепты — синтетический пример",
+            "description": "Синтетический пример для проверки интерфейса и хранения. Содержание не подтверждено.",
+            "rootId": "77e7d19e-4178-51f5-b78b-9fa3793d857a",
+            "nodes": [
+              {
+                "id": "77e7d19e-4178-51f5-b78b-9fa3793d857a",
+                "label": "X — синтетический пример",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "Синтетические тестовые данные; не научный результат",
+                "origins": [],
+                "createdAt": "2026-10-09T00:00:00+00:00"
+              },
+              {
+                "id": "d0acea89-b391-5bbd-9b53-e0ddcd6d94e3",
+                "label": "твёрдый",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "Синтетические тестовые данные; не научный результат",
+                "origins": [],
+                "createdAt": "2026-10-09T00:00:00+00:00"
+              },
+              {
+                "id": "bb0f6e5d-020f-5d04-97c6-e81d516aa391",
+                "label": "твёрдость",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "Синтетические тестовые данные; не научный результат",
+                "origins": [],
+                "createdAt": "2026-10-09T00:00:00+00:00"
+              },
+              {
+                "id": "c229d081-c768-5d95-ba6b-e05f1a159e80",
+                "label": "модификатор",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "Синтетические тестовые данные; не научный результат",
+                "origins": [],
+                "createdAt": "2026-10-09T00:00:00+00:00"
+              },
+              {
+                "id": "00fbd4cb-75dd-5870-9b83-c4818be6eea5",
+                "label": "свойство",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "Синтетические тестовые данные; не научный результат",
+                "origins": [],
+                "createdAt": "2026-10-09T00:00:00+00:00"
+              },
+              {
+                "id": "ad948360-19c7-552e-849c-604d01118eea",
+                "label": "",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "Синтетические тестовые данные; не научный результат",
+                "origins": [],
+                "createdAt": "2026-10-09T00:00:00+00:00",
+                "structure": "combination"
+              },
+              {
+                "id": "9af3f503-6a88-55bc-9c8f-499e8ae823cc",
+                "label": "β",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "Синтетические тестовые данные; не научный результат",
+                "origins": [],
+                "createdAt": "2026-10-09T00:00:00+00:00",
+                "structure": "combination"
+              },
+              {
+                "id": "7366dd13-8a3c-56b5-a489-1d0a8e634cff",
+                "label": "",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "Синтетические тестовые данные; не научный результат",
+                "origins": [],
+                "createdAt": "2026-10-09T00:00:00+00:00",
+                "structure": "combination"
+              }
+            ],
+            "edges": [
+              {
+                "id": "08d1ce94-0649-5bca-9545-a4476e1fc97e",
+                "from": "ad948360-19c7-552e-849c-604d01118eea",
+                "to": "bb0f6e5d-020f-5d04-97c6-e81d516aa391",
+                "type": "",
+                "notes": "Тестовая связь",
+                "origins": [],
+                "role": "component",
+                "componentRole": ""
+              },
+              {
+                "id": "04ffb2d3-f87d-5d03-a428-29e5e1b22cc5",
+                "from": "ad948360-19c7-552e-849c-604d01118eea",
+                "to": "c229d081-c768-5d95-ba6b-e05f1a159e80",
+                "type": "",
+                "notes": "Тестовая связь",
+                "origins": [],
+                "role": "component",
+                "componentRole": ""
+              },
+              {
+                "id": "f2cf5400-50e5-5fe4-8129-80c9136e9883",
+                "from": "ad948360-19c7-552e-849c-604d01118eea",
+                "to": "00fbd4cb-75dd-5870-9b83-c4818be6eea5",
+                "type": "",
+                "notes": "Тестовая связь",
+                "origins": [],
+                "role": "component",
+                "componentRole": ""
+              },
+              {
+                "id": "0f363c7c-fae8-5ae2-9877-60cddac16b7f",
+                "from": "9af3f503-6a88-55bc-9c8f-499e8ae823cc",
+                "to": "ad948360-19c7-552e-849c-604d01118eea",
+                "type": "",
+                "notes": "Тестовая связь",
+                "origins": [],
+                "role": "component",
+                "componentRole": ""
+              },
+              {
+                "id": "1c7ccb1b-ad6e-5130-b7c2-62698b640d3f",
+                "from": "7366dd13-8a3c-56b5-a489-1d0a8e634cff",
+                "to": "00fbd4cb-75dd-5870-9b83-c4818be6eea5",
+                "type": "",
+                "notes": "Тестовая связь",
+                "origins": [],
+                "role": "component",
+                "componentRole": ""
+              },
+              {
+                "id": "162ecfec-6f24-5632-b6fa-ff595f5ae9f5",
+                "from": "77e7d19e-4178-51f5-b78b-9fa3793d857a",
+                "to": "ad948360-19c7-552e-849c-604d01118eea",
+                "type": "характеристика целого",
+                "notes": "Тестовая связь",
+                "origins": [],
+                "role": "relation"
+              },
+              {
+                "id": "6ef345b6-691b-52dd-9977-8910a8e5c403",
+                "from": "77e7d19e-4178-51f5-b78b-9fa3793d857a",
+                "to": "9af3f503-6a88-55bc-9c8f-499e8ae823cc",
+                "type": "",
+                "notes": "Тестовая связь",
+                "origins": [],
+                "role": "relation"
+              },
+              {
+                "id": "5d3eaf6a-d6d0-5379-b957-fdb4f7480a7c",
+                "from": "77e7d19e-4178-51f5-b78b-9fa3793d857a",
+                "to": "7366dd13-8a3c-56b5-a489-1d0a8e634cff",
+                "type": "другое утверждение",
+                "notes": "Тестовая связь",
+                "origins": [],
+                "role": "relation"
+              },
+              {
+                "id": "99858699-1804-5011-9d26-c764502e59a0",
+                "from": "77e7d19e-4178-51f5-b78b-9fa3793d857a",
+                "to": "d0acea89-b391-5bbd-9b53-e0ddcd6d94e3",
+                "type": "свойство",
+                "notes": "Тестовая связь",
+                "origins": [],
+                "role": "relation"
+              }
+            ],
+            "archived": false,
+            "createdAt": "2026-10-09T00:00:00+00:00",
+            "designations": [
+              {
+                "id": "2b0e6133-fb6a-5dc3-8d94-5e31605336d0",
+                "text": "обозначение α",
+                "target": "ad948360-19c7-552e-849c-604d01118eea",
+                "notes": "Только тестовое обозначение",
+                "source": "Синтетические данные",
+                "origins": [],
+                "createdAt": "2026-10-09T00:00:00+00:00"
+              }
+            ]
+          }
+        ],
+        "matches": [],
+        "imports": [],
+        "proposals": []
+      }
+    }
+  ]
+}

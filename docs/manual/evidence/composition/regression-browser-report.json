@@ -1,0 +1,9 @@
+{
+  "result": "passed",
+  "browser": "154.0.8037.98",
+  "node": "v24.19.0",
+  "scenario": "GUI: recursive creation, cycle, independent study, compare, decisions, merge, study export, duplicate import, clipboard fragment, reviewed patches, conflict, reject, history restore and return, process restart, continued editing, 5000-node file import and bulk acceptance, search and bounded graph, unsaved draft, 1000px layout",
+  "large_ui_seconds": 4.448,
+  "studies": 4,
+  "pageErrors": []
+}

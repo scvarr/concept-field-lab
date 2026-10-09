@@ -6,7 +6,7 @@ import copy
 from app.store import Invalid, clean, lookup, now, uid
 
 COLLECTIONS = ("nodes", "edges", "designations", "substitutions")
-OPERATIONS = ("study", "node", "edge", "designation", "substitution", "match", "delete_node", "delete_edge", "delete_designation")
+OPERATIONS = ("study", "node", "edge", "designation", "substitution", "match", "delete_node", "delete_edge", "delete_designation", "delete_substitution")
 
 
 def structure(node):

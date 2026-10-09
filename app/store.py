@@ -140,6 +140,22 @@ def validate(state):
             for key in ("before", "after"):
                 if not isinstance(replacement.get(key), dict):
                     raise Invalid("Замещение должно сохранять исходный и полученный контекст.")
+            for key in ("sourceId", "targetId"):
+                clean(replacement.get(key), key, True, 200)
+            before, after = replacement["before"], replacement["after"]
+            for context in (before, after):
+                if not isinstance(context.get("target"), dict) or not all(isinstance(context.get(key), list) for key in ("edges", "designations", "matches")) or not isinstance(context.get("rootId"), str):
+                    raise Invalid("Неполный контекст замещения; восстановление не будет безопасным.")
+                if context["target"].get("id") != (replacement.get("sourceTargetId", replacement["targetId"]) if replacement["status"] == "archived" else replacement["targetId"]):
+                    raise Invalid("ID цели в контексте замещения не совпадает.")
+                for key in ("edges", "designations", "matches"):
+                    if not all(isinstance(item, dict) and isinstance(item.get("id"), str) for item in context[key]):
+                        raise Invalid("Неверные объекты в контексте замещения.")
+            if not isinstance(before.get("source"), dict) or before["source"].get("id") != replacement["sourceId"] or structure(before["source"]) != "concept":
+                raise Invalid("Замещение должно сохранять исходный концепт и его ID.")
+            fields(before["source"])
+            if not isinstance(before.get("sourceIndex"), int) or before["sourceIndex"] < 0:
+                raise Invalid("Неверная исходная позиция замещённого концепта.")
             if replacement["status"] == "active" and (replacement.get("sourceId") in ids or replacement.get("targetId") not in ids or structure(nodes[replacement["targetId"]]) != "combination"):
                 raise Invalid("Активное замещение требует комбинацию назначения и отсутствие замещённого концепта; отмените замещение перед удалением цели.")
     pairs = set()
@@ -425,6 +441,7 @@ class Store:
                     clone = {**copy.deepcopy(item), "id": uid(), "sourceStudyId": s["id"], "sourceRecordId": item["id"]}
                     clone[target_key] = node_map.get(item[target_key], item[target_key])
                     if key == "substitutions":
+                        clone.setdefault("sourceTargetId", item["targetId"])
                         clone["status"] = "archived"
                     else:
                         clone.setdefault("origins", []).append({"studyId": s["id"], "snapshot": copy.deepcopy(item)})

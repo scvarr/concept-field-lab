@@ -177,6 +177,65 @@ class CompositionTest(unittest.TestCase):
         self.assertEqual(len(fragment["state"]["studies"][0]["designations"]), 1)
         self.assertEqual(len(fragment["state"]["studies"][0]["substitutions"]), 1)
 
+    def test_composition_merge_keeps_dictionary_and_substitution_evidence(self):
+        alpha, _, _ = self.alpha()
+        self.act("replace_concept", studyId=self.sid, sourceId=self.x, targetId=alpha, confirmed=True, reason="Тест")
+        original = self.study()
+        second = self.act("create_study", title="Независимая структура")
+        match = self.act("match", leftStudy=self.sid, leftNode=alpha, rightStudy=second["studyId"], rightNode=second["nodeId"], status="confirmed", reason="Только проверка механики")
+        merged = self.act("merge", leftStudy=self.sid, rightStudy=second["studyId"], matchIds=[match["matchId"]], title="Объединение")
+        result = next(s for s in self.store.read()["state"]["studies"] if s["id"] == merged["studyId"])
+        validate(self.store.read()["state"])
+        self.assertEqual(result["designations"][0]["text"], "X")
+        self.assertEqual(result["substitutions"][0]["status"], "archived")
+        self.assertEqual(result["substitutions"][0]["before"], original["substitutions"][0]["before"])
+        self.assertEqual(result["substitutions"][0]["sourceTargetId"], alpha)
+        self.assertEqual(result["substitutions"][0]["targetId"], merged["nodeId"])
+        self.assertTrue(any(e["role"] == "component" and e["from"] == merged["nodeId"] for e in result["edges"]))
+
+    def test_diff_preserves_removed_substitution_as_explicit_candidate(self):
+        alpha, _, _ = self.alpha()
+        before = self.study()
+        self.act("replace_concept", studyId=self.sid, sourceId=self.x, targetId=alpha, confirmed=True, reason="Тест")
+        after = self.study()
+        changes = structural_diff(after, before)["versionChanges"]["changes"]
+        self.assertTrue(any(c["operation"] == "delete_substitution" and c["base"] == after["substitutions"][0] for c in changes))
+        result = self.act("import", document=structural_diff(after, before)["versionChanges"])
+        self.assertGreater(result["added"], 0)
+        candidates = [p["id"] for p in self.store.read()["state"]["proposals"] if p["status"] == "pending"]
+        self.act("review_proposals", proposalIds=candidates, decision="accept")
+        restored = self.study()
+        self.assertEqual(restored["substitutions"], [])
+        self.assertEqual(restored["rootId"], before["rootId"])
+        self.assertEqual(restored["edges"], before["edges"])
+        self.assertEqual({n["id"] for n in restored["nodes"]}, {n["id"] for n in before["nodes"]})
+        # Imported reverse patches preserve provenance already acquired by alpha.
+        self.assertTrue(next(n for n in restored["nodes"] if n["id"] == alpha)["origins"])
+
+    def test_malformed_substitution_context_is_rejected_without_write(self):
+        alpha, _, _ = self.alpha()
+        self.act("replace_concept", studyId=self.sid, sourceId=self.x, targetId=alpha, confirmed=True, reason="Тест")
+        saved = self.store.read()
+        malformed = copy.deepcopy(saved["state"])
+        malformed["studies"][0]["substitutions"][0]["before"].pop("source")
+        with self.assertRaises(Invalid):
+            validate(malformed)
+        self.assertEqual(self.store.read(), saved)
+
+    def test_reproducible_composition_fixtures_and_large_membership(self):
+        import json
+        from scripts.fixtures import compositions, large_composition
+        fixture = Path(__file__).resolve().parents[1] / "data/fixtures/composition-example.json"
+        self.assertEqual(json.loads(fixture.read_text(encoding="utf-8")), compositions())
+        self.import_accept(self.store, compositions())
+        self.import_accept(self.store, large_composition())
+        state = self.store.read()["state"]
+        validate(state)
+        large = next(s for s in state["studies"] if len(s["nodes"]) == 2001)
+        self.assertEqual(len(large["edges"]), 2000)
+        self.assertTrue(all(e["role"] == "component" and e["from"] == large["rootId"] for e in large["edges"]))
+        self.assertEqual(len(graph_export(self.store, large["id"], large["rootId"], 1)["state"]["studies"][0]["nodes"]), 2001)
+
     def test_component_role_is_not_relation_in_structural_diff(self):
         alpha, _, _ = self.alpha()
         left = self.study()

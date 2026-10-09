@@ -170,7 +170,7 @@ def review(state, data):
         owners[key[2]] = key
     if any(conflict(state, p, indexed) for p in selected) and data.get("allowConflicts") is not True:
         raise Invalid("Есть конфликты с текущими данными. Сравните версии и явно разрешите замену конфликтующих объектов.")
-    order = {"study": 0, "node": 1, "edge": 2, "designation": 3, "substitution": 4, "match": 5, "delete_designation": 6, "delete_edge": 7, "delete_node": 8}
+    order = {"study": 0, "node": 1, "edge": 2, "designation": 3, "substitution": 4, "match": 5, "delete_designation": 6, "delete_substitution": 7, "delete_edge": 8, "delete_node": 9}
     studies = {s["id"]: s for s in state["studies"]}
     changed_studies = set()
     for p in sorted(selected, key=lambda p: order[p["operation"]]):
@@ -397,8 +397,7 @@ def structural_diff(left, right, matches=None):
         for op, la, ra in sets:
             for i in sorted(la.keys() | ra.keys()):
                 if i not in ra:
-                    if op != "substitution":
-                        changes.append({"operation": "delete_" + op, "studyId": left["id"], "base": la[i], "value": {"id": i}})
+                    changes.append({"operation": "delete_" + op, "studyId": left["id"], "base": la[i], "value": {"id": i}})
                 elif la.get(i) != ra[i]:
                     changes.append({"operation": op, "studyId": left["id"], "base": la.get(i), "value": ra[i]})
     return envelope("diff", generatedAt=now(), basis="IDs for versions; confirmed manual correspondences for independent studies. Labels are not identity evidence.", left=copy.deepcopy(left), right=copy.deepcopy(right), correspondences=copy.deepcopy(decisions), aligned=aligned, onlyLeft=[i for i in left_nodes if i not in mapping], onlyRight=[i for i in right_nodes if i not in matched_right], relationAlignments=relation_alignments, edges={"onlyLeftIds": sorted(left_edges.keys() - right_edges.keys()), "onlyRightIds": sorted(right_edges.keys() - left_edges.keys()), "changedSameIds": [i for i in left_edges.keys() & right_edges.keys() if left_edges[i] != right_edges[i]]}, versionChanges=envelope("changes", changes=changes) if left["id"] == right["id"] else None)

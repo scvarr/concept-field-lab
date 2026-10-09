@@ -50,8 +50,44 @@ def large(size=5000):
     return document([make_study("large", f"Масштабный тест: {size} элементов", nodes, edges)])
 
 
+def large_composition(size=2000):
+    alpha = make_node("large-composition/alpha", "")
+    alpha["structure"] = "combination"
+    nodes = [alpha] + [make_node(f"large-composition/c{i}", f"Компонент {i}") for i in range(size)]
+    edges = [{**make_edge(f"large-composition/e{i}", alpha["id"], n["id"], ""), "role": "component"} for i, n in enumerate(nodes[1:])]
+    result = document([make_study("large-composition/study", f"Комбинация: {size} компонентов", nodes, edges)])
+    result["version"] = 2
+    return result
+
+
+def compositions():
+    nodes = [make_node("composition/" + key, label) for key, label in (
+        ("x", "X — синтетический пример"), ("word", "твёрдый"), ("hardness", "твёрдость"),
+        ("modifier", "модификатор"), ("property", "свойство"), ("alpha", ""), ("beta", "β"), ("gamma", ""))]
+    x, word, hardness, modifier, prop, alpha, beta, gamma = nodes
+    for n in (alpha, beta, gamma):
+        n["structure"] = "combination"
+    edges = []
+    for i, (a, b) in enumerate(((alpha, hardness), (alpha, modifier), (alpha, prop), (beta, alpha), (gamma, prop))):
+        edge = make_edge(f"composition/c{i}", a["id"], b["id"], "")
+        edge.update(role="component", componentRole="")
+        edges.append(edge)
+    for i, (a, b, relation) in enumerate(((x, alpha, "характеристика целого"), (x, beta, ""), (x, gamma, "другое утверждение"), (x, word, "свойство"))):
+        edge = make_edge(f"composition/e{i}", a["id"], b["id"], relation)
+        edge["role"] = "relation"
+        edges.append(edge)
+    study = make_study("composition/study", "Составные концепты — синтетический пример", nodes, edges)
+    study["designations"] = [{"id": identity("composition/designation"), "text": "обозначение α", "target": alpha["id"], "notes": "Только тестовое обозначение", "source": "Синтетические данные", "origins": [], "createdAt": TIME}]
+    result = document([study])
+    result["version"] = 2
+    return result
+
+
 if __name__ == "__main__":
     target = Path(__file__).resolve().parents[1] / "data" / "fixtures" / "manual-example.json"
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(small(), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(target)
+    target = target.with_name("composition-example.json")
+    target.write_text(json.dumps(compositions(), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(target)
