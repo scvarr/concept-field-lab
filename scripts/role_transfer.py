@@ -30,7 +30,7 @@ def sentences(path):
                     tokens.append({"id": int(columns[0]), "form": columns[1],
                                    "lemma": columns[2].lower().replace("ё", "е"),
                                    "pos": columns[3], "feats": columns[5],
-                                   "head": int(columns[6]), "rel": columns[7]})
+                                   "head": int(columns[6]), "rel": columns[7], "deps": columns[8]})
     if tokens:
         yield metadata, tokens
 
