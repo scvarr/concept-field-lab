@@ -3,3 +3,5 @@
 - [AGENTS.md](../AGENTS.md) — правила автономной работы Codex и ограничения проекта.
 - [chatgpt.md](chatgpt.md) — внутренний рабочий контракт ChatGPT; не включается в задания Codex, кроме его непосредственного изменения.
 - [current-state.md](current-state.md) — состояние работы и ближайший шаг, необходимые для восстановления контекста.
+- [research-goal.md](research-goal.md) — согласованная исследовательская цель и границы.
+- [steps/001-role-transfer-plan.md](steps/001-role-transfer-plan.md) — первый конечный исследовательский протокол.
