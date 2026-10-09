@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Поле знаний — ручные исследования</title><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/">◈ <span>Поле знаний<small>Ручная исследовательская мастерская</small></span></a>
+    <button id="new-study" class="primary wide">＋ Новое исследование</button>
+    <div class="section-label">ИССЛЕДОВАНИЯ <button id="toggle-archive" class="text-button">Архив</button></div>
+    <input id="study-search" type="search" placeholder="Найти исследование" aria-label="Найти исследование">
+    <nav id="studies" aria-label="Исследования"></nav>
+    <div class="sidebar-bottom"><span class="local-dot"></span> Локальное хранение · SQLite<p>Каждое новое исследование независимо.<br>Смысловые решения принимаете вы.</p></div>
+  </aside>
+  <main>
+    <header><div><span class="eyebrow">РАБОЧЕЕ ПРОСТРАНСТВО</span><h1 id="workspace-title">Ваши исследования</h1></div><div class="header-actions"><span id="save-status" role="status">Подключение…</span><button id="help">Справка</button><button id="backup">Резервная копия ↓</button></div></header>
+    <nav class="tabs" aria-label="Режимы"><button data-view="editor" class="active">Исследование</button><button data-view="compare">Сопоставление</button><button data-view="exchange">Обмен и кандидаты <span id="candidate-count"></span></button><button data-view="history">История</button></nav>
+    <section id="editor" class="view">
+      <div id="empty" class="empty"><div class="empty-symbol">◈</div><h2>Начните с одного слова</h2><p>Создайте исследование, раскройте его элементы и сохраните собственную структуру знаний.</p><button id="empty-create" class="primary">Создать исследование</button></div>
+      <div id="editor-content" hidden>
+        <div class="toolbar"><div id="study-meta"></div><div class="actions"><button id="edit-study">Название и описание</button><button id="archive-study">В архив</button><button id="export-study">Экспорт исследования ↓</button></div></div>
+        <div class="editor-grid">
+          <section class="node-browser"><div class="panel-heading">Элементы <span id="node-count" class="muted"></span></div><input id="node-search" type="search" placeholder="Название, тип или содержание…" aria-label="Поиск элементов"><button id="add-independent" class="wide">＋ Отдельный элемент</button><div id="node-list"></div><div id="node-pagination" class="pagination"></div></section>
+          <section class="graph-panel"><div class="graph-controls"><span>Окружение узла</span><label>Глубина <input id="graph-depth" type="number" min="0" max="100" value="2"></label><button id="fit-graph">Вписать</button><button id="save-svg">SVG ↓</button></div><div id="graph" class="graph" aria-label="Граф исследования"></div><div id="graph-caption" class="graph-caption"></div></section>
+          <section id="inspector" class="inspector"></section>
+        </div>
+      </div>
+    </section>
+    <section id="compare" class="view" hidden>
+      <div class="intro"><h2>Сопоставление независимых структур</h2><p>Одинаковое название — только кандидат. Подтверждение тождества требует вашего решения.</p></div>
+      <div class="compare-selectors"><label>Первое исследование<select id="compare-left"></select></label><span>↔</span><label>Второе исследование<select id="compare-right"></select></label><button id="export-diff">Экспорт различий ↓</button><button id="merge" class="primary">Создать объединение</button></div>
+      <div class="comparison-graphs"><section><div id="compare-left-list" class="pair-search"></div><div id="compare-left-graph" class="graph small"></div></section><section><div id="compare-right-list" class="pair-search"></div><div id="compare-right-graph" class="graph small"></div></section></div>
+      <p class="hint">Зелёный контур узла — есть подтверждённое соответствие; красный пунктир — есть отклонённое. Остальные элементы пока не сопоставлены. Цвет обозначает ваши решения для этой пары исследований.</p><div id="pair-details"></div><div id="comparison-summary" class="summary"></div><div class="toolbar"><h3>Соответствия и кандидаты по названию</h3><input id="match-search" type="search" placeholder="Фильтр соответствий" aria-label="Фильтр соответствий"></div><div id="matches"></div>
+    </section>
+    <section id="exchange" class="view" hidden>
+      <div class="intro"><h2>Обмен графами и предложения изменений</h2><p>Версионный JSON сохраняет идентификаторы и происхождение. Импорт сначала создаёт кандидатов; изменения применяются после вашего просмотра.</p></div>
+      <div class="exchange-grid"><section class="card"><h3>Импорт JSON</h3><p>Исследование, фрагмент, резервная копия или предложения ChatGPT.</p><input id="import-file" type="file" accept=".json,application/json" aria-label="Файл JSON"><textarea id="import-text" rows="7" placeholder="Вставьте JSON concept-field-graph v1" aria-label="JSON для импорта"></textarea><button id="stage-import" class="primary">Проверить и добавить кандидатов</button></section><section class="card"><h3>Передать фрагмент ChatGPT</h3><p>Выберите узел в исследовании. Глубина 0 — сам узел; all — вся связная часть. Обход учитывает входящие и исходящие отношения и циклы.</p><label>Глубина окружения<input id="export-depth" value="2" aria-label="Глубина экспорта"></label><div class="actions"><button id="copy-fragment">Копировать JSON фрагмента</button><button id="download-fragment">Фрагмент ↓</button><button id="chatgpt-prompt">Копировать запрос ChatGPT</button></div><p class="hint">Предложения ChatGPT не являются проверенными знаниями. Укажите собственные ID для новых объектов, а для изменения существующих — их ID и исходный объект в base.</p></section></div>
+      <div class="toolbar"><h3>Очередь кандидатов</h3><div class="actions"><button id="select-proposals">Выбрать всю очередь</button><button id="reject-proposals">Отклонить выбранные</button><button id="accept-proposals" class="primary">Принять выбранные</button></div></div><p id="proposal-summary"></p><div id="proposals"></div>
+    </section>
+    <section id="history" class="view" hidden><div class="intro"><h2>История рабочего пространства</h2><p>Каждая запись — сохранённая версия. Восстановление создаёт новую запись; последующие версии остаются в истории. Исходная история импорта находится в JSON экспорте.</p></div><div id="history-list"></div></section>
+    <footer>Ручные структуры знаний · без автоматического раскрытия и отождествления <span id="revision"></span></footer>
+  </main>
+  <dialog id="dialog"><div id="dialog-body"></div></dialog><div id="toast" role="alert" hidden></div>
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+test_compact_history_exactly_restores_snapshots (test_journal.JournalTest.test_compact_history_exactly_restores_snapshots) ... ok
+test_corrupt_paths_operations_and_missing_values_rejected (test_journal.JournalTest.test_corrupt_paths_operations_and_missing_values_rejected) ... ok
+test_history_order_and_encoding_are_validated (test_journal.JournalTest.test_history_order_and_encoding_are_validated) ... ok
+test_json_pointer_escaping_and_scalar_changes (test_journal.JournalTest.test_json_pointer_escaping_and_scalar_changes) ... ok
+test_lists_with_stable_ids_insert_remove_update (test_journal.JournalTest.test_lists_with_stable_ids_insert_remove_update) ... ok
+test_accepted_patch_cannot_erase_merge_origins (test_workbench.WorkbenchTest.test_accepted_patch_cannot_erase_merge_origins) ... ok
+test_chatgpt_candidates_base_conflicts_rejection_and_atomicity (test_workbench.WorkbenchTest.test_chatgpt_candidates_base_conflicts_rejection_and_atomicity) ... ok
+test_diff_independent_and_versions_never_infer_identity (test_workbench.WorkbenchTest.test_diff_independent_and_versions_never_infer_identity) ... ok
+test_fragment_depth_cycle_and_import_into_source (test_workbench.WorkbenchTest.test_fragment_depth_cycle_and_import_into_source) ... ok
+test_fragment_does_not_leak_unrelated_imported_graph (test_workbench.WorkbenchTest.test_fragment_does_not_leak_unrelated_imported_graph) ... ok
+test_http_security_persistence_and_errors (test_workbench.WorkbenchTest.test_http_security_persistence_and_errors) ... ok
+test_id_collision_is_detected_before_acceptance (test_workbench.WorkbenchTest.test_id_collision_is_detected_before_acceptance) ... ok
+test_invalid_dependent_patch_rolls_back_everything (test_workbench.WorkbenchTest.test_invalid_dependent_patch_rolls_back_everything) ... ok
+test_manual_scenario_cycles_merge_provenance_and_restart (test_workbench.WorkbenchTest.test_manual_scenario_cycles_merge_provenance_and_restart) ... ok
+test_many_to_many_diff_and_transitive_merge (test_workbench.WorkbenchTest.test_many_to_many_diff_and_transitive_merge) ... ok
+test_new_candidate_nodes_edges_and_repeated_pending_import (test_workbench.WorkbenchTest.test_new_candidate_nodes_edges_and_repeated_pending_import) ... ok
+test_root_deletion_is_blocked_archive_reversible (test_workbench.WorkbenchTest.test_root_deletion_is_blocked_archive_reversible) ... ok
+test_round_trip_study_ids_history_and_idempotence (test_workbench.WorkbenchTest.test_round_trip_study_ids_history_and_idempotence) ... ok
+test_same_names_never_share_ids (test_workbench.WorkbenchTest.test_same_names_never_share_ids) ... ok
+test_simultaneous_conflicting_proposals_cannot_silently_overwrite (test_workbench.WorkbenchTest.test_simultaneous_conflicting_proposals_cannot_silently_overwrite) ... ok
+test_snapshot_history_restore_and_stale_revision (test_workbench.WorkbenchTest.test_snapshot_history_restore_and_stale_revision) ... ok
+test_structure_edit_invalidates_old_semantic_decisions (test_workbench.WorkbenchTest.test_structure_edit_invalidates_old_semantic_decisions) ... ok
+test_unrelated_ids_and_broken_import_rejected (test_workbench.WorkbenchTest.test_unrelated_ids_and_broken_import_rejected) ... ok
+test_version_diff_contains_attributes_and_reviewable_changes (test_workbench.WorkbenchTest.test_version_diff_contains_attributes_and_reviewable_changes) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 1.163s
+
+OK

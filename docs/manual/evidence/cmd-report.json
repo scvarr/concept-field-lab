@@ -1,0 +1,6 @@
+{
+  "result": "passed",
+  "command": "start.cmd --no-browser --port 8877 --db <isolated project test directory>",
+  "shell": "cmd.exe",
+  "revision": 0
+}
