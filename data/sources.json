@@ -1,0 +1,98 @@
+[
+  {
+    "corpus": "syntagrus",
+    "revision": "6377522610550b696fcc70d39074d2ce03da0e7b",
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-SynTagRus/6377522610550b696fcc70d39074d2ce03da0e7b/LICENSE.txt",
+    "path": "data/raw/syntagrus/LICENSE.txt",
+    "bytes": 188,
+    "sha256": "3258892bc0af40c43a686e7f7267782778ffacf334acf25301f8f0fdab6c9cbe"
+  },
+  {
+    "corpus": "syntagrus",
+    "revision": "6377522610550b696fcc70d39074d2ce03da0e7b",
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-SynTagRus/6377522610550b696fcc70d39074d2ce03da0e7b/README.md",
+    "path": "data/raw/syntagrus/README.md",
+    "bytes": 4935,
+    "sha256": "15cdbba19238d971c842b0a73944939172e33d802e20c8b4958785aa16027d28"
+  },
+  {
+    "corpus": "syntagrus",
+    "revision": "6377522610550b696fcc70d39074d2ce03da0e7b",
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-SynTagRus/6377522610550b696fcc70d39074d2ce03da0e7b/ru_syntagrus-ud-dev.conllu",
+    "path": "data/raw/syntagrus/ru_syntagrus-ud-dev.conllu",
+    "bytes": 14960308,
+    "sha256": "0bde121e58b7daebe7510d52b61154decadb6a42579cbd9abe66fb549fe6cc87"
+  },
+  {
+    "corpus": "syntagrus",
+    "revision": "6377522610550b696fcc70d39074d2ce03da0e7b",
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-SynTagRus/6377522610550b696fcc70d39074d2ce03da0e7b/ru_syntagrus-ud-test.conllu",
+    "path": "data/raw/syntagrus/ru_syntagrus-ud-test.conllu",
+    "bytes": 15300945,
+    "sha256": "97f473474d1aa8c007572cd122f90030bc7dc1707579d56b0b354c19b64af258"
+  },
+  {
+    "corpus": "syntagrus",
+    "revision": "6377522610550b696fcc70d39074d2ce03da0e7b",
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-SynTagRus/6377522610550b696fcc70d39074d2ce03da0e7b/ru_syntagrus-ud-train-a.conllu",
+    "path": "data/raw/syntagrus/ru_syntagrus-ud-train-a.conllu",
+    "bytes": 41436783,
+    "sha256": "72be9449d83462917410e8d156ea46daeebad06a856c13a7e8bfea636c59d97c"
+  },
+  {
+    "corpus": "syntagrus",
+    "revision": "6377522610550b696fcc70d39074d2ce03da0e7b",
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-SynTagRus/6377522610550b696fcc70d39074d2ce03da0e7b/ru_syntagrus-ud-train-b.conllu",
+    "path": "data/raw/syntagrus/ru_syntagrus-ud-train-b.conllu",
+    "bytes": 43551792,
+    "sha256": "f8c526cccebd8a3bd726612d1b7201b3c9ee5ce4fd07d09a669ccf20eebff406"
+  },
+  {
+    "corpus": "syntagrus",
+    "revision": "6377522610550b696fcc70d39074d2ce03da0e7b",
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-SynTagRus/6377522610550b696fcc70d39074d2ce03da0e7b/ru_syntagrus-ud-train-c.conllu",
+    "path": "data/raw/syntagrus/ru_syntagrus-ud-train-c.conllu",
+    "bytes": 33305685,
+    "sha256": "0c8678d83cc69ff5cc4e9ea01fb695822a119ec6a29d2423edb24824330e35df"
+  },
+  {
+    "corpus": "gsd",
+    "revision": "9acc9d677327043bd416fcc89e4b3407c620d885",
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-GSD/9acc9d677327043bd416fcc89e4b3407c620d885/LICENSE.txt",
+    "path": "data/raw/gsd/LICENSE.txt",
+    "bytes": 202,
+    "sha256": "899b1804a12ebc090b96339614eede1b64b686721b650a71430b55b5235f7f79"
+  },
+  {
+    "corpus": "gsd",
+    "revision": "9acc9d677327043bd416fcc89e4b3407c620d885",
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-GSD/9acc9d677327043bd416fcc89e4b3407c620d885/README.md",
+    "path": "data/raw/gsd/README.md",
+    "bytes": 1110,
+    "sha256": "9de2b999444f417d186a41339d56651f10f3720d957316f35de7d251b7823d6b"
+  },
+  {
+    "corpus": "gsd",
+    "revision": "9acc9d677327043bd416fcc89e4b3407c620d885",
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-GSD/9acc9d677327043bd416fcc89e4b3407c620d885/ru_gsd-ud-dev.conllu",
+    "path": "data/raw/gsd/ru_gsd-ud-dev.conllu",
+    "bytes": 1052011,
+    "sha256": "e3e3d4e8d1d7544e531b2b81ae64257efacc97f93276ce6d2ce52fd1de052fa2"
+  },
+  {
+    "corpus": "gsd",
+    "revision": "9acc9d677327043bd416fcc89e4b3407c620d885",
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-GSD/9acc9d677327043bd416fcc89e4b3407c620d885/ru_gsd-ud-test.conllu",
+    "path": "data/raw/gsd/ru_gsd-ud-test.conllu",
+    "bytes": 1027273,
+    "sha256": "f26e022329162a1c6306f76644d06f770f1572501755421165387137fe63138d"
+  },
+  {
+    "corpus": "gsd",
+    "revision": "9acc9d677327043bd416fcc89e4b3407c620d885",
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-GSD/9acc9d677327043bd416fcc89e4b3407c620d885/ru_gsd-ud-train.conllu",
+    "path": "data/raw/gsd/ru_gsd-ud-train.conllu",
+    "bytes": 6751583,
+    "sha256": "0ae33a4bbda12697e2eb0a32af4971bda73af5852c8521744a974a316c02bab5"
+  }
+]
