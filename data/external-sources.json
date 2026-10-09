@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-Taiga/d1e48cd29c1f19b6aad1aec361d9f724db764f66/ru_taiga-ud-test.conllu",
+    "path": "data/raw/taiga/ru_taiga-ud-test.conllu",
+    "bytes": 1349305,
+    "sha256": "14183d7f002557e9e26b85e212dc54fe3f7929a7d72491615c50b9b3145e6278"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-Taiga/d1e48cd29c1f19b6aad1aec361d9f724db764f66/README.md",
+    "path": "data/raw/taiga/README.md",
+    "bytes": 5261,
+    "sha256": "bc582c4897bde0f83bb98694be5691ec98cdb9fb93a1588f267c66c822e5a2bd"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-Taiga/d1e48cd29c1f19b6aad1aec361d9f724db764f66/LICENSE.txt",
+    "path": "data/raw/taiga/LICENSE.txt",
+    "bytes": 202,
+    "sha256": "899b1804a12ebc090b96339614eede1b64b686721b650a71430b55b5235f7f79"
+  }
+]
