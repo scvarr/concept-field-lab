@@ -11,3 +11,6 @@
 - [steps/003-conditional-operators-plan.md](steps/003-conditional-operators-plan.md), [результат](steps/003-conditional-operators-results.md) — приобретение структурных условий оператора.
 - [steps/004-automatic-input-plan.md](steps/004-automatic-input-plan.md), [результат](steps/004-automatic-input-results.md) — влияние автоматического разбора.
 - [steps/005-external-semantic-audit-plan.md](steps/005-external-semantic-audit-plan.md) — внешний вспомогательный аудит смысла.
+- [steps/005-external-semantic-audit-results.md](steps/005-external-semantic-audit-results.md) — frozen LLM-оценки, результат и ограничения.
+- [research-findings.md](research-findings.md) — научный вывод пяти шагов и нерешённые вопросы.
+- [adr/001-separate-operators-and-episode-bindings.md](adr/001-separate-operators-and-episode-bindings.md) — принятое ограниченное решение о прототипе.
