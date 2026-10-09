@@ -27,7 +27,9 @@ def make_edge(key, a, b, relation="раскрывается через"):
 
 def document(studies):
     state = {"studies": studies, "matches": [], "imports": [], "proposals": []}
-    return envelope("workspace", exportedAt=TIME, state=state, history=[{"id": 0, "time": TIME, "action": "synthetic-fixture", "detail": "Воспроизводимый тестовый материал; не научный результат", "state": copy.deepcopy(state)}])
+    result = envelope("workspace", exportedAt=TIME, state=state, history=[{"id": 0, "time": TIME, "action": "synthetic-fixture", "detail": "Воспроизводимый тестовый материал; не научный результат", "state": copy.deepcopy(state)}])
+    result["version"] = 1  # The legacy fixture stays byte-identical for compatibility checks.
+    return result
 
 
 def small():

@@ -12,7 +12,7 @@ from pathlib import Path
 from uuid import uuid4
 
 FORMAT = "concept-field-graph"
-VERSION = 1
+VERSION = 2
 
 
 class Invalid(ValueError):
@@ -49,7 +49,7 @@ def clean(value, name, required=False, limit=50000):
 
 
 def fields(data):
-    return {key: clean(data.get(key, ""), key, key == "label", 1000 if key in ("label", "kind") else 50000)
+    return {key: clean(data.get(key, ""), key, key == "label" and data.get("structure", "concept") != "combination", 1000 if key in ("label", "kind") else 50000)
             for key in ("label", "kind", "notes", "alternatives", "source")}
 
 
@@ -67,6 +67,7 @@ def study_node(state, sid, nid):
 
 def validate(state):
     """Validate every incoming snapshot, including referential integrity."""
+    from app.composition import OPERATIONS, edge_role, structure
     if not isinstance(state, dict) or set(state) != {"studies", "matches", "imports", "proposals"}:
         raise Invalid("Неверная структура рабочего пространства.")
     if not all(isinstance(state[k], list) for k in state):
@@ -92,8 +93,12 @@ def validate(state):
         if not isinstance(study.get("nodes"), list) or not isinstance(study.get("edges"), list):
             raise Invalid("Ожидались элементы и отношения.")
         ids = set()
+        nodes = {}
         for node in study["nodes"]:
             ids.add(identity(node))
+            nodes[node["id"]] = node
+            if structure(node) not in ("concept", "combination"):
+                raise Invalid("Структурная функция — concept или combination; содержательный тип задаётся отдельно.")
             fields(node)
             if not isinstance(node.get("origins"), list):
                 raise Invalid("Неверное происхождение элемента.")
@@ -107,10 +112,36 @@ def validate(state):
             identity(edge)
             if edge.get("from") not in ids or edge.get("to") not in ids:
                 raise Invalid("Отношение ссылается на отсутствующий элемент.")
-            clean(edge.get("type"), "тип отношения", True, 1000)
+            if edge_role(edge) not in ("relation", "component"):
+                raise Invalid("Структурная функция соединения — relation или component.")
+            if edge_role(edge) == "component" and structure(nodes[edge["from"]]) != "combination":
+                raise Invalid("Направленное включение начинается только от комбинации.")
+            clean(edge.get("type", ""), "тип отношения", False, 1000)
+            clean(edge.get("componentRole", ""), "роль компонента", False, 1000)
             clean(edge.get("notes", ""), "пояснение")
             if not isinstance(edge.get("origins"), list):
                 raise Invalid("Неверное происхождение отношения.")
+        for key in ("designations", "substitutions"):
+            if not isinstance(study.get(key, []), list):
+                raise Invalid("Словарь и замещения должны быть списками.")
+        for designation in study.get("designations", []):
+            identity(designation)
+            clean(designation.get("text"), "словесное обозначение", True, 1000)
+            if designation.get("target") not in ids:
+                raise Invalid("Словарное обозначение ссылается на отсутствующий элемент.")
+            for key in ("notes", "source"):
+                clean(designation.get(key, ""), key)
+            if not isinstance(designation.get("origins"), list):
+                raise Invalid("Некорректное происхождение обозначения.")
+        for replacement in study.get("substitutions", []):
+            identity(replacement)
+            if replacement.get("status") not in ("active", "restored", "archived"):
+                raise Invalid("Неверный статус замещения.")
+            for key in ("before", "after"):
+                if not isinstance(replacement.get(key), dict):
+                    raise Invalid("Замещение должно сохранять исходный и полученный контекст.")
+            if replacement["status"] == "active" and (replacement.get("sourceId") in ids or replacement.get("targetId") not in ids or structure(nodes[replacement["targetId"]]) != "combination"):
+                raise Invalid("Активное замещение требует комбинацию назначения и отсутствие замещённого концепта; отмените замещение перед удалением цели.")
     pairs = set()
     for match in state["matches"]:
         identity(match)
@@ -128,7 +159,7 @@ def validate(state):
         identity(proposal)
         if proposal.get("status") not in ("pending", "accepted", "rejected"):
             raise Invalid("Неверный статус кандидата.")
-        if proposal.get("operation") not in ("study", "node", "edge", "match", "delete_node", "delete_edge"):
+        if proposal.get("operation") not in OPERATIONS:
             raise Invalid("Неверная операция кандидата.")
         if not isinstance(proposal.get("value"), dict):
             raise Invalid("Неверные данные кандидата.")
@@ -138,7 +169,7 @@ def validate(state):
     for imported in state["imports"]:
         identity(imported)
         document = imported.get("document")
-        if not isinstance(document, dict) or document.get("format") != FORMAT or document.get("version") != VERSION or document.get("kind") not in ("workspace", "study", "fragment", "changes"):
+        if not isinstance(document, dict) or document.get("format") != FORMAT or document.get("version") not in (1, VERSION) or document.get("kind") not in ("workspace", "study", "fragment", "changes"):
             raise Invalid("Некорректный архив происхождения импорта.")
 
 
@@ -223,10 +254,12 @@ class Store:
                 if action == "add_node":
                     changed_study = study["id"]
                     node = {"id": uid(), **fields(data), "origins": [], "createdAt": now()}
+                    if "structure" in data:
+                        node["structure"] = data["structure"]
                     study["nodes"].append(node)
                     if data.get("parentId"):
                         lookup(study["nodes"], data["parentId"], "родитель")
-                        study["edges"].append({"id": uid(), "from": data["parentId"], "to": node["id"], "type": clean(data.get("relation", "раскрывается через"), "тип отношения", True, 1000), "notes": "", "origins": []})
+                        study["edges"].append({"id": uid(), "from": data["parentId"], "to": node["id"], "type": clean(data.get("relation", ""), "тип отношения", False, 1000), "role": data.get("role", "relation"), "componentRole": clean(data.get("componentRole", ""), "роль компонента", False, 1000), "notes": "", "origins": []})
                     detail = f"Добавлен элемент «{node['label']}» в «{study['title']}»"
                 else:
                     node = lookup(study["nodes"], data.get("nodeId"), "элемент")
@@ -237,12 +270,17 @@ class Store:
                             raise Invalid("Корень нельзя удалить. Можно переименовать или архивировать исследование.")
                         study["nodes"].remove(node)
                         study["edges"] = [e for e in study["edges"] if node["id"] not in (e["from"], e["to"])]
+                        if "designations" in study:
+                            study["designations"] = [d for d in study["designations"] if d["target"] != node["id"]]
                         state["matches"] = [m for m in state["matches"] if node["id"] not in (m["leftNode"], m["rightNode"])]
                     elif action == "edit_node":
-                        changed = fields(data)
-                        if any(node[k] != changed[k] for k in changed):
+                        new_structure = data.get("structure", node.get("structure", "concept"))
+                        changed = fields({**data, "structure": new_structure})
+                        if any(node[k] != changed[k] for k in changed) or new_structure != node.get("structure", "concept"):
                             changed_study = study["id"]
                         node.update(changed)
+                        if "structure" in node or new_structure != "concept":
+                            node["structure"] = new_structure
                     else:
                         x, y = data.get("x"), data.get("y")
                         if not all(isinstance(v, (int, float)) and -100000 <= v <= 100000 for v in (x, y)):
@@ -262,8 +300,33 @@ class Store:
                 else:
                     lookup(study["nodes"], data.get("from"), "начало отношения")
                     lookup(study["nodes"], data.get("to"), "конец отношения")
-                    edge.update({"from": data["from"], "to": data["to"], "type": clean(data.get("type"), "тип отношения", True, 1000), "notes": clean(data.get("notes", ""), "пояснение")})
+                    edge.update({"from": data["from"], "to": data["to"], "type": clean(data.get("type", ""), "тип отношения", False, 1000), "notes": clean(data.get("notes", ""), "пояснение")})
+                    if "role" in data:
+                        edge["role"] = data["role"]
+                    if "componentRole" in data:
+                        edge["componentRole"] = clean(data["componentRole"], "роль компонента", False, 1000)
                 detail = f"{action}: отношение в «{study['title']}»"
+            elif action in ("add_designation", "edit_designation", "delete_designation"):
+                study = lookup(state["studies"], data.get("studyId"), "исследование")
+                entries = study.setdefault("designations", [])
+                if action == "add_designation":
+                    entry = {"id": uid(), "createdAt": now(), "origins": []}
+                    entries.append(entry)
+                else:
+                    entry = lookup(entries, data.get("designationId"), "обозначение")
+                if action == "delete_designation":
+                    entries.remove(entry)
+                else:
+                    lookup(study["nodes"], data.get("target"), "цель обозначения")
+                    entry.update(text=clean(data.get("text"), "обозначение", True, 1000), target=data["target"], notes=clean(data.get("notes", ""), "пояснение"), source=clean(data.get("source", ""), "источник"))
+                result = {"designationId": entry["id"]}
+                detail = f"{action}: словарь «{study['title']}»"
+            elif action == "replace_concept":
+                from app.composition import replace
+                result, detail = replace(state, data)
+            elif action == "restore_substitution":
+                from app.composition import restore_replacement
+                result, detail = restore_replacement(state, data)
             elif action == "match":
                 left, ln = study_node(state, data.get("leftStudy"), data.get("leftNode"))
                 right, rn = study_node(state, data.get("rightStudy"), data.get("rightNode"))
@@ -309,6 +372,7 @@ class Store:
             return {"revision": new_rev, "state": state, "result": result}
 
     def merge(self, state, data):
+        from app.composition import structure
         left = lookup(state["studies"], data.get("leftStudy"), "левое исследование")
         right = lookup(state["studies"], data.get("rightStudy"), "правое исследование")
         if left["id"] == right["id"]:
@@ -338,7 +402,9 @@ class Store:
         nodes = []
         for group in groups.values():
             members = group["members"]
-            node = {"id": group["id"], **fields(members[0][1]), "origins": [], "createdAt": now()}
+            node = {**copy.deepcopy(members[0][1]), "id": group["id"], "origins": [], "createdAt": now()}
+            if any(structure(n) == "combination" for _, n in members):
+                node["structure"] = "combination"
             if len(members) > 1:
                 for key in ("notes", "alternatives", "source"):
                     node[key] = "\n\n".join(f"[{s['title']}: {n['label']}]\n{n[key]}" for s, n in members if n[key])
@@ -352,5 +418,18 @@ class Store:
             for e in s["edges"]:
                 edges.append({**copy.deepcopy(e), "id": uid(), "from": node_map[e["from"]], "to": node_map[e["to"]], "origins": [{"studyId": s["id"], "studyTitle": s["title"], "edgeId": e["id"], "snapshot": copy.deepcopy(e)}]})
         merged = {"id": uid(), "title": clean(data.get("title"), "название объединения", True, 1000), "description": "Объединено вручную. Корень — корень первого исследования. Все отношения и исходные интерпретации сохранены.", "rootId": node_map[left["rootId"]], "nodes": nodes, "edges": edges, "archived": False, "createdAt": now(), "merge": {"sourceStudyIds": [left["id"], right["id"]], "matchIds": selected, "nodeMap": node_map, "decisions": [copy.deepcopy(m) for m in state["matches"] if m["id"] in selected]}}
+        for key, target_key in (("designations", "target"), ("substitutions", "targetId")):
+            copies = []
+            for s in (left, right):
+                for item in s.get(key, []):
+                    clone = {**copy.deepcopy(item), "id": uid(), "sourceStudyId": s["id"], "sourceRecordId": item["id"]}
+                    clone[target_key] = node_map.get(item[target_key], item[target_key])
+                    if key == "substitutions":
+                        clone["status"] = "archived"
+                    else:
+                        clone.setdefault("origins", []).append({"studyId": s["id"], "snapshot": copy.deepcopy(item)})
+                    copies.append(clone)
+            if copies:
+                merged[key] = copies
         state["studies"].append(merged)
         return {"studyId": merged["id"], "nodeId": merged["rootId"]}, f"Создано объединение «{merged['title']}»; исходные исследования сохранены"

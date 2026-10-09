@@ -55,9 +55,12 @@ def make_server(path, port=8765):
                 return self.send(200, store.history())
             if path == "/api/export":
                 return self.send(200, store.export(), download="concept-field-workspace.json")
-            if path in ("/api/graph-export", "/api/diff", "/api/proposals"):
+            if path in ("/api/graph-export", "/api/diff", "/api/proposals", "/api/substitution-preview"):
                 try:
                     query = parse_qs(urlparse(self.path).query)
+                    if path == "/api/substitution-preview":
+                        from app.composition import replacement_preview
+                        return self.send(200, replacement_preview(store.read()["state"], query.get("study", [None])[0], query.get("source", [None])[0], query.get("target", [None])[0]))
                     if path == "/api/graph-export":
                         depth = query.get("depth", ["all"])[0]
                         doc = graph_export(store, query.get("study", [None])[0], query.get("node", [None])[0], None if depth == "all" else int(depth))

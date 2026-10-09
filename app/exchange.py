@@ -7,6 +7,7 @@ import json
 from collections import deque
 
 from app.store import FORMAT, VERSION, Invalid, fields, lookup, now, uid, validate
+from app.composition import COLLECTIONS, OPERATIONS, collection, edge_role, metadata
 
 
 def envelope(kind, **values):
@@ -18,15 +19,15 @@ def canonical(value):
 
 
 def parse_document(document):
-    if not isinstance(document, dict) or document.get("format") != FORMAT or document.get("version") != VERSION:
-        raise Invalid("Ожидается JSON concept-field-graph версии 1.")
+    if not isinstance(document, dict) or document.get("format") != FORMAT or document.get("version") not in (1, VERSION):
+        raise Invalid("Ожидается JSON concept-field-graph версии 1 или 2.")
     kind = document.get("kind")
     if kind == "changes":
         changes = document.get("changes")
         if not isinstance(changes, list) or len(changes) > 100000:
             raise Invalid("Нужен список changes (до 100000 кандидатов).")
         for c in changes:
-            if not isinstance(c, dict) or c.get("operation") not in ("study", "node", "edge", "match", "delete_node", "delete_edge") or not isinstance(c.get("value"), dict):
+            if not isinstance(c, dict) or c.get("operation") not in OPERATIONS or not isinstance(c.get("value"), dict):
                 raise Invalid("Некорректный кандидат изменения.")
             if c.get("operation") != "match" and not isinstance(c.get("studyId"), str):
                 raise Invalid("Укажите studyId кандидата.")
@@ -48,10 +49,10 @@ def parse_document(document):
         raise Invalid("Последняя версия истории не совпадает с экспортированным состоянием.")
     changes = []
     for s in state["studies"]:
-        meta = {k: copy.deepcopy(v) for k, v in s.items() if k not in ("nodes", "edges")}
+        meta = metadata(s)
         changes.append({"operation": "study", "studyId": s["id"], "value": meta})
-        for operation, key in (("node", "nodes"), ("edge", "edges")):
-            changes.extend({"operation": operation, "studyId": s["id"], "value": copy.deepcopy(obj)} for obj in s[key])
+        for operation, key in (("node", "nodes"), ("edge", "edges"), ("designation", "designations"), ("substitution", "substitutions")):
+            changes.extend({"operation": operation, "studyId": s["id"], "value": copy.deepcopy(obj)} for obj in s.get(key, []))
     changes.extend({"operation": "match", "value": copy.deepcopy(m)} for m in state["matches"])
     return changes
 
@@ -59,9 +60,9 @@ def parse_document(document):
 def object_index(state):
     objects = {}
     for s in state["studies"]:
-        objects[("study", s["id"], s["id"])] = {k: v for k, v in s.items() if k not in ("nodes", "edges")}
-        for op, key in (("node", "nodes"), ("edge", "edges")):
-            for obj in s[key]:
+        objects[("study", s["id"], s["id"])] = metadata(s)
+        for op, key in (("node", "nodes"), ("edge", "edges"), ("designation", "designations"), ("substitution", "substitutions")):
+            for obj in s.get(key, []):
                 objects[(op, s["id"], obj["id"])] = obj
     for m in state["matches"]:
         objects[("match", None, m["id"])] = m
@@ -80,9 +81,9 @@ def current_value(state, candidate, index=None):
     if s is None:
         return None
     if op == "study":
-        return {k: v for k, v in s.items() if k not in ("nodes", "edges")}
-    key = "nodes" if op in ("node", "delete_node") else "edges"
-    return next((obj for obj in s[key] if obj["id"] == candidate["value"]["id"]), None)
+        return metadata(s)
+    key = collection(op)
+    return next((obj for obj in s.get(key, []) if obj["id"] == candidate["value"]["id"]), None)
 
 
 def conflict(state, candidate, index=None):
@@ -169,7 +170,7 @@ def review(state, data):
         owners[key[2]] = key
     if any(conflict(state, p, indexed) for p in selected) and data.get("allowConflicts") is not True:
         raise Invalid("Есть конфликты с текущими данными. Сравните версии и явно разрешите замену конфликтующих объектов.")
-    order = {"study": 0, "node": 1, "edge": 2, "match": 3, "delete_edge": 4, "delete_node": 5}
+    order = {"study": 0, "node": 1, "edge": 2, "designation": 3, "substitution": 4, "match": 5, "delete_designation": 6, "delete_edge": 7, "delete_node": 8}
     studies = {s["id"]: s for s in state["studies"]}
     changed_studies = set()
     for p in sorted(selected, key=lambda p: order[p["operation"]]):
@@ -189,7 +190,7 @@ def review(state, data):
                 raise Invalid("ID исследования и studyId не совпадают.")
             existing = studies.get(value["id"])
             if existing:
-                existing.update({k: v for k, v in value.items() if k not in ("nodes", "edges")})
+                existing.update(metadata(value))
             else:
                 created = {**value, "nodes": [], "edges": []}
                 state["studies"].append(created)
@@ -198,7 +199,8 @@ def review(state, data):
             s = studies.get(p.get("studyId"))
             if s is None:
                 raise Invalid("Сначала примите исследование и зависимости кандидата.")
-            key = "nodes" if op in ("node", "delete_node") else "edges"
+            key = collection(op)
+            s.setdefault(key, [])
             existing = indexed.get((op.removeprefix("delete_"), s["id"], value["id"]))
             if op.startswith("delete_") or existing != value:
                 changed_studies.add(s["id"])
@@ -208,6 +210,8 @@ def review(state, data):
                         if s["rootId"] == value["id"]:
                             raise Invalid("Нельзя удалять корень.")
                         s["edges"] = [e for e in s["edges"] if value["id"] not in (e["from"], e["to"])]
+                        if "designations" in s:
+                            s["designations"] = [d for d in s["designations"] if d["target"] != value["id"]]
                         state["matches"] = [m for m in state["matches"] if value["id"] not in (m["leftNode"], m["rightNode"])]
                     s[key].remove(existing)
             else:
@@ -220,9 +224,13 @@ def review(state, data):
                     value.setdefault("createdAt", now())
                     for field_key in fields(value):
                         value.setdefault(field_key, "")
-                else:
+                elif op in ("edge", "designation"):
                     value.setdefault("origins", [])
                     value.setdefault("notes", "")
+                    if op == "edge":
+                        value.setdefault("type", "")
+                    else:
+                        value.setdefault("source", "")
                 if existing:
                     existing.clear()
                     existing.update(value)
@@ -252,10 +260,22 @@ def project_state(state, study_ids, node_ids=None, include_imports=True, import_
                 continue
             if clone["rootId"] not in node_ids:
                 clone["rootId"] = next(iter(n["id"] for n in clone["nodes"]))
+            for key, reference in (("designations", "target"), ("substitutions", "targetId")):
+                if key in clone:
+                    clone[key] = [item for item in clone[key] if item[reference] in node_ids]
         included.update(n["id"] for n in clone["nodes"])
         result["studies"].append(clone)
     result["matches"] = [copy.deepcopy(m) for m in state["matches"] if m["leftNode"] in included and m["rightNode"] in included]
-    result["proposals"] = [copy.deepcopy(p) for p in state["proposals"] if p.get("studyId") in study_ids and (node_ids is None or p["value"].get("id") in node_ids)]
+    def selected_change(p):
+        value = p["value"]
+        if p.get("studyId") not in study_ids:
+            return False
+        if node_ids is None:
+            return True
+        if p["operation"].removeprefix("delete_") == "edge":
+            return value.get("from") in node_ids and value.get("to") in node_ids
+        return value.get("id") in node_ids or value.get("target") in node_ids or value.get("targetId") in node_ids
+    result["proposals"] = [copy.deepcopy(p) for p in state["proposals"] if selected_change(p)]
     # Export relevant imported provenance, without leaking unrelated investigations into a fragment.
     if include_imports:
         for imported in state["imports"]:
@@ -268,7 +288,7 @@ def project_state(state, study_ids, node_ids=None, include_imports=True, import_
             if not isinstance(doc, dict):
                 continue
             if doc.get("kind") == "changes":
-                changes = [copy.deepcopy(c) for c in doc["changes"] if c.get("studyId") in study_ids and (node_ids is None or c["value"].get("id") in node_ids)]
+                changes = [copy.deepcopy(c) for c in doc["changes"] if selected_change(c)]
                 if not changes:
                     continue
                 source = {**doc, "changes": changes}
@@ -356,25 +376,29 @@ def structural_diff(left, right, matches=None):
     relation_alignments = []
     right_signatures = {}
     for e in right["edges"]:
-        right_signatures.setdefault((e["from"], e["to"], e["type"]), []).append(e["id"])
+        right_signatures.setdefault((e["from"], e["to"], edge_role(e), e.get("type", ""), e.get("componentRole", "")), []).append(e["id"])
     for e in left["edges"]:
         candidate_ids = set()
         for a in mapping.get(e["from"], set()):
             for b in mapping.get(e["to"], set()):
-                candidate_ids.update(right_signatures.get((a, b, e["type"]), []))
+                candidate_ids.update(right_signatures.get((a, b, edge_role(e), e.get("type", ""), e.get("componentRole", "")), []))
         if candidate_ids:
             relation_alignments.append({"leftEdge": e["id"], "rightEdges": sorted(candidate_ids), "basis": "Confirmed endpoint mapping and exact relation type: structural resemblance only, not a decision to identify relations.", "notesDifferences": {eid: {"left": e.get("notes", ""), "right": right_edges[eid].get("notes", "")} for eid in sorted(candidate_ids) if e.get("notes", "") != right_edges[eid].get("notes", "")}})
     matched_right = {b for _, b in pairs}
     changes = []
     if left["id"] == right["id"]:
-        lm = {k: v for k, v in left.items() if k not in ("nodes", "edges")}
-        rm = {k: v for k, v in right.items() if k not in ("nodes", "edges")}
+        lm = metadata(left)
+        rm = metadata(right)
         if lm != rm:
             changes.append({"operation": "study", "studyId": left["id"], "base": lm, "value": rm})
-        for op, la, ra in (("node", left_nodes, right_nodes), ("edge", left_edges, right_edges)):
+        sets = [("node", left_nodes, right_nodes), ("edge", left_edges, right_edges)]
+        for op, key in (("designation", "designations"), ("substitution", "substitutions")):
+            sets.append((op, {obj["id"]: obj for obj in left.get(key, [])}, {obj["id"]: obj for obj in right.get(key, [])}))
+        for op, la, ra in sets:
             for i in sorted(la.keys() | ra.keys()):
                 if i not in ra:
-                    changes.append({"operation": "delete_" + op, "studyId": left["id"], "base": la[i], "value": {"id": i}})
+                    if op != "substitution":
+                        changes.append({"operation": "delete_" + op, "studyId": left["id"], "base": la[i], "value": {"id": i}})
                 elif la.get(i) != ra[i]:
                     changes.append({"operation": op, "studyId": left["id"], "base": la.get(i), "value": ra[i]})
     return envelope("diff", generatedAt=now(), basis="IDs for versions; confirmed manual correspondences for independent studies. Labels are not identity evidence.", left=copy.deepcopy(left), right=copy.deepcopy(right), correspondences=copy.deepcopy(decisions), aligned=aligned, onlyLeft=[i for i in left_nodes if i not in mapping], onlyRight=[i for i in right_nodes if i not in matched_right], relationAlignments=relation_alignments, edges={"onlyLeftIds": sorted(left_edges.keys() - right_edges.keys()), "onlyRightIds": sorted(right_edges.keys() - left_edges.keys()), "changedSameIds": [i for i in left_edges.keys() & right_edges.keys() if left_edges[i] != right_edges[i]]}, versionChanges=envelope("changes", changes=changes) if left["id"] == right["id"] else None)
