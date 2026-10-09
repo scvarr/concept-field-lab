@@ -1,0 +1,578 @@
+{
+  "experiment": "004",
+  "environment": {
+    "python": "3.13.2",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "ufal.udpipe": "1.4.0.1"
+  },
+  "model_sha256": "16894d425ee328ace668a9d2f7ea5ff945468247d146333e8688f9200fa114e2",
+  "parser_audit": {
+    "ud25_train_dev_sentences": 55398,
+    "ud25_train_dev_docs": 569,
+    "test_sentence_id_overlap": 0,
+    "test_doc_overlap": 0,
+    "test_exact_text_overlap": 23,
+    "excluded_docs": []
+  },
+  "diagnostics": {
+    "sentences_processed": 1296,
+    "tokens": 30046,
+    "correct_lemma": 28946,
+    "correct_pos": 28837,
+    "correct_head": 26336,
+    "correct_head_rel": 24291,
+    "targets": 1436,
+    "target_xcomp_preserved": 1355,
+    "target_xcomp_head_preserved": 1344
+  },
+  "parser_quality_selected_sentences": {
+    "lemma": 0.9633894694801305,
+    "pos": 0.9597616987286162,
+    "uas": 0.8765226652466218,
+    "las": 0.8084603607801372
+  },
+  "models": {
+    "gold_subject_rule": {
+      "all_annotated": {
+        "n": 911,
+        "docs": 62,
+        "exact": 0.8660812294182217,
+        "answered": 878,
+        "tp": 807,
+        "fp": 71,
+        "fn": 128,
+        "precision": 0.9191343963553531,
+        "recall": 0.8631016042780749,
+        "f1": 0.8902371759514617
+      },
+      "new_pair_known": {
+        "n": 453,
+        "docs": 59,
+        "exact": 0.82560706401766,
+        "answered": 426,
+        "tp": 381,
+        "fp": 45,
+        "fn": 82,
+        "precision": 0.8943661971830986,
+        "recall": 0.8228941684665226,
+        "f1": 0.8571428571428571
+      },
+      "depth_ge2": {
+        "n": 8,
+        "docs": 7,
+        "exact": 0.625,
+        "answered": 5,
+        "tp": 5,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.625,
+        "f1": 0.7692307692307693
+      }
+    },
+    "gold_object_first": {
+      "all_annotated": {
+        "n": 911,
+        "docs": 62,
+        "exact": 0.9253567508232712,
+        "answered": 907,
+        "tp": 861,
+        "fp": 46,
+        "fn": 74,
+        "precision": 0.9492833517089305,
+        "recall": 0.9208556149732621,
+        "f1": 0.9348534201954397
+      },
+      "new_pair_known": {
+        "n": 453,
+        "docs": 59,
+        "exact": 0.9293598233995585,
+        "answered": 452,
+        "tp": 428,
+        "fp": 24,
+        "fn": 35,
+        "precision": 0.9469026548672567,
+        "recall": 0.9244060475161987,
+        "f1": 0.9355191256830601
+      },
+      "depth_ge2": {
+        "n": 8,
+        "docs": 7,
+        "exact": 1.0,
+        "answered": 8,
+        "tp": 8,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "gold_learned_recursive": {
+      "all_annotated": {
+        "n": 911,
+        "docs": 62,
+        "exact": 0.9088913282107574,
+        "answered": 891,
+        "tp": 846,
+        "fp": 45,
+        "fn": 89,
+        "precision": 0.9494949494949495,
+        "recall": 0.9048128342245989,
+        "f1": 0.9266155531215772
+      },
+      "new_pair_known": {
+        "n": 453,
+        "docs": 59,
+        "exact": 0.9028697571743929,
+        "answered": 440,
+        "tp": 416,
+        "fp": 24,
+        "fn": 47,
+        "precision": 0.9454545454545454,
+        "recall": 0.8984881209503239,
+        "f1": 0.9213732004429679
+      },
+      "depth_ge2": {
+        "n": 8,
+        "docs": 7,
+        "exact": 0.875,
+        "answered": 7,
+        "tp": 7,
+        "fp": 0,
+        "fn": 1,
+        "precision": 1.0,
+        "recall": 0.875,
+        "f1": 0.9333333333333333
+      }
+    },
+    "gold_context_global": {
+      "all_annotated": {
+        "n": 911,
+        "docs": 62,
+        "exact": 0.9253567508232712,
+        "answered": 907,
+        "tp": 861,
+        "fp": 46,
+        "fn": 74,
+        "precision": 0.9492833517089305,
+        "recall": 0.9208556149732621,
+        "f1": 0.9348534201954397
+      },
+      "new_pair_known": {
+        "n": 453,
+        "docs": 59,
+        "exact": 0.9293598233995585,
+        "answered": 452,
+        "tp": 428,
+        "fp": 24,
+        "fn": 35,
+        "precision": 0.9469026548672567,
+        "recall": 0.9244060475161987,
+        "f1": 0.9355191256830601
+      },
+      "depth_ge2": {
+        "n": 8,
+        "docs": 7,
+        "exact": 1.0,
+        "answered": 8,
+        "tp": 8,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "gold_context_lexical": {
+      "all_annotated": {
+        "n": 911,
+        "docs": 62,
+        "exact": 0.9176728869374314,
+        "answered": 907,
+        "tp": 854,
+        "fp": 53,
+        "fn": 81,
+        "precision": 0.9415656008820287,
+        "recall": 0.9133689839572192,
+        "f1": 0.9272529858849077
+      },
+      "new_pair_known": {
+        "n": 453,
+        "docs": 59,
+        "exact": 0.9161147902869757,
+        "answered": 452,
+        "tp": 422,
+        "fp": 30,
+        "fn": 41,
+        "precision": 0.9336283185840708,
+        "recall": 0.9114470842332614,
+        "f1": 0.9224043715846995
+      },
+      "depth_ge2": {
+        "n": 8,
+        "docs": 7,
+        "exact": 1.0,
+        "answered": 8,
+        "tp": 8,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "parsed_subject_rule": {
+      "all_annotated": {
+        "n": 911,
+        "docs": 62,
+        "exact": 0.7497255762897914,
+        "answered": 785,
+        "tp": 701,
+        "fp": 96,
+        "fn": 234,
+        "precision": 0.8795483061480552,
+        "recall": 0.7497326203208556,
+        "f1": 0.8094688221709007
+      },
+      "new_pair_known": {
+        "n": 453,
+        "docs": 59,
+        "exact": 0.7350993377483444,
+        "answered": 389,
+        "tp": 340,
+        "fp": 55,
+        "fn": 123,
+        "precision": 0.8607594936708861,
+        "recall": 0.734341252699784,
+        "f1": 0.7925407925407926
+      },
+      "depth_ge2": {
+        "n": 8,
+        "docs": 7,
+        "exact": 0.375,
+        "answered": 3,
+        "tp": 3,
+        "fp": 0,
+        "fn": 5,
+        "precision": 1.0,
+        "recall": 0.375,
+        "f1": 0.5454545454545454
+      }
+    },
+    "parsed_object_first": {
+      "all_annotated": {
+        "n": 911,
+        "docs": 62,
+        "exact": 0.7947310647639956,
+        "answered": 821,
+        "tp": 741,
+        "fp": 91,
+        "fn": 194,
+        "precision": 0.890625,
+        "recall": 0.7925133689839572,
+        "f1": 0.8387096774193549
+      },
+      "new_pair_known": {
+        "n": 453,
+        "docs": 59,
+        "exact": 0.8123620309050773,
+        "answered": 416,
+        "tp": 374,
+        "fp": 47,
+        "fn": 89,
+        "precision": 0.8883610451306413,
+        "recall": 0.8077753779697624,
+        "f1": 0.8461538461538461
+      },
+      "depth_ge2": {
+        "n": 8,
+        "docs": 7,
+        "exact": 0.75,
+        "answered": 7,
+        "tp": 6,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.8571428571428571,
+        "recall": 0.75,
+        "f1": 0.8
+      }
+    },
+    "parsed_learned_recursive": {
+      "all_annotated": {
+        "n": 911,
+        "docs": 62,
+        "exact": 0.7815587266739846,
+        "answered": 792,
+        "tp": 730,
+        "fp": 74,
+        "fn": 205,
+        "precision": 0.9079601990049752,
+        "recall": 0.7807486631016043,
+        "f1": 0.8395629672225416
+      },
+      "new_pair_known": {
+        "n": 453,
+        "docs": 59,
+        "exact": 0.7924944812362031,
+        "answered": 397,
+        "tp": 366,
+        "fp": 37,
+        "fn": 97,
+        "precision": 0.9081885856079405,
+        "recall": 0.7904967602591793,
+        "f1": 0.8452655889145496
+      },
+      "depth_ge2": {
+        "n": 8,
+        "docs": 7,
+        "exact": 0.625,
+        "answered": 5,
+        "tp": 5,
+        "fp": 0,
+        "fn": 3,
+        "precision": 1.0,
+        "recall": 0.625,
+        "f1": 0.7692307692307693
+      }
+    },
+    "parsed_context_global": {
+      "all_annotated": {
+        "n": 911,
+        "docs": 62,
+        "exact": 0.7947310647639956,
+        "answered": 821,
+        "tp": 741,
+        "fp": 91,
+        "fn": 194,
+        "precision": 0.890625,
+        "recall": 0.7925133689839572,
+        "f1": 0.8387096774193549
+      },
+      "new_pair_known": {
+        "n": 453,
+        "docs": 59,
+        "exact": 0.8123620309050773,
+        "answered": 416,
+        "tp": 374,
+        "fp": 47,
+        "fn": 89,
+        "precision": 0.8883610451306413,
+        "recall": 0.8077753779697624,
+        "f1": 0.8461538461538461
+      },
+      "depth_ge2": {
+        "n": 8,
+        "docs": 7,
+        "exact": 0.75,
+        "answered": 7,
+        "tp": 6,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.8571428571428571,
+        "recall": 0.75,
+        "f1": 0.8
+      }
+    },
+    "parsed_context_lexical": {
+      "all_annotated": {
+        "n": 911,
+        "docs": 62,
+        "exact": 0.7881448957189902,
+        "answered": 821,
+        "tp": 735,
+        "fp": 97,
+        "fn": 200,
+        "precision": 0.8834134615384616,
+        "recall": 0.786096256684492,
+        "f1": 0.831918505942275
+      },
+      "new_pair_known": {
+        "n": 453,
+        "docs": 59,
+        "exact": 0.7991169977924945,
+        "answered": 416,
+        "tp": 368,
+        "fp": 53,
+        "fn": 95,
+        "precision": 0.8741092636579573,
+        "recall": 0.7948164146868251,
+        "f1": 0.832579185520362
+      },
+      "depth_ge2": {
+        "n": 8,
+        "docs": 7,
+        "exact": 0.75,
+        "answered": 7,
+        "tp": 6,
+        "fp": 1,
+        "fn": 2,
+        "precision": 0.8571428571428571,
+        "recall": 0.75,
+        "f1": 0.8
+      }
+    }
+  },
+  "paired": {
+    "all_annotated": {
+      "subject_rule": {
+        "delta": -0.1163556531284303,
+        "ci95": [
+          -0.1445358401880141,
+          -0.09101123595505618
+        ],
+        "docs": 62,
+        "repeats": 2000,
+        "seed": 20261009
+      },
+      "object_first": {
+        "delta": -0.13062568605927552,
+        "ci95": [
+          -0.15492957746478872,
+          -0.10816326530612246
+        ],
+        "docs": 62,
+        "repeats": 2000,
+        "seed": 20261009
+      },
+      "learned_recursive": {
+        "delta": -0.12733260153677278,
+        "ci95": [
+          -0.15643802647412755,
+          -0.10011778563015312
+        ],
+        "docs": 62,
+        "repeats": 2000,
+        "seed": 20261009
+      },
+      "context_global": {
+        "delta": -0.13062568605927552,
+        "ci95": [
+          -0.15492957746478872,
+          -0.10816326530612246
+        ],
+        "docs": 62,
+        "repeats": 2000,
+        "seed": 20261009
+      },
+      "context_lexical": {
+        "delta": -0.12952799121844127,
+        "ci95": [
+          -0.15375,
+          -0.10607621009268794
+        ],
+        "docs": 62,
+        "repeats": 2000,
+        "seed": 20261009
+      }
+    },
+    "new_pair_known": {
+      "subject_rule": {
+        "delta": -0.09050772626931568,
+        "ci95": [
+          -0.13122171945701358,
+          -0.057649667405764965
+        ],
+        "docs": 59,
+        "repeats": 2000,
+        "seed": 20261009
+      },
+      "object_first": {
+        "delta": -0.11699779249448124,
+        "ci95": [
+          -0.14795918367346939,
+          -0.08855291576673865
+        ],
+        "docs": 59,
+        "repeats": 2000,
+        "seed": 20261009
+      },
+      "learned_recursive": {
+        "delta": -0.11037527593818984,
+        "ci95": [
+          -0.14908256880733944,
+          -0.07658643326039387
+        ],
+        "docs": 59,
+        "repeats": 2000,
+        "seed": 20261009
+      },
+      "context_global": {
+        "delta": -0.11699779249448124,
+        "ci95": [
+          -0.14795918367346939,
+          -0.08855291576673865
+        ],
+        "docs": 59,
+        "repeats": 2000,
+        "seed": 20261009
+      },
+      "context_lexical": {
+        "delta": -0.11699779249448124,
+        "ci95": [
+          -0.14910025706940874,
+          -0.0855106888361045
+        ],
+        "docs": 59,
+        "repeats": 2000,
+        "seed": 20261009
+      }
+    },
+    "depth_ge2": {
+      "subject_rule": {
+        "delta": -0.25,
+        "ci95": [
+          -0.5714285714285714,
+          0.0
+        ],
+        "docs": 7,
+        "repeats": 2000,
+        "seed": 20261009
+      },
+      "object_first": {
+        "delta": -0.25,
+        "ci95": [
+          -0.5714285714285714,
+          0.0
+        ],
+        "docs": 7,
+        "repeats": 2000,
+        "seed": 20261009
+      },
+      "learned_recursive": {
+        "delta": -0.25,
+        "ci95": [
+          -0.5714285714285714,
+          0.0
+        ],
+        "docs": 7,
+        "repeats": 2000,
+        "seed": 20261009
+      },
+      "context_global": {
+        "delta": -0.25,
+        "ci95": [
+          -0.5714285714285714,
+          0.0
+        ],
+        "docs": 7,
+        "repeats": 2000,
+        "seed": 20261009
+      },
+      "context_lexical": {
+        "delta": -0.25,
+        "ci95": [
+          -0.5714285714285714,
+          0.0
+        ],
+        "docs": 7,
+        "repeats": 2000,
+        "seed": 20261009
+      }
+    }
+  },
+  "no_enhanced_answer": {
+    "n": 525
+  },
+  "elapsed_seconds": 14.744
+}

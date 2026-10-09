@@ -9,3 +9,5 @@
 - [literature.md](literature.md) — первичные источники и альтернативные подходы.
 - [steps/002-context-binding-plan.md](steps/002-context-binding-plan.md), [результат](steps/002-context-binding-results.md) — приобретение и исполнение правил привязки участников.
 - [steps/003-conditional-operators-plan.md](steps/003-conditional-operators-plan.md), [результат](steps/003-conditional-operators-results.md) — приобретение структурных условий оператора.
+- [steps/004-automatic-input-plan.md](steps/004-automatic-input-plan.md), [результат](steps/004-automatic-input-results.md) — влияние автоматического разбора.
+- [steps/005-external-semantic-audit-plan.md](steps/005-external-semantic-audit-plan.md) — внешний вспомогательный аудит смысла.
