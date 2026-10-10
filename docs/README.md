@@ -3,6 +3,9 @@
 - [AGENTS.md](../AGENTS.md) — правила автономной работы Codex и ограничения проекта.
 - [chatgpt.md](chatgpt.md) — внутренний рабочий контракт ChatGPT; не включается в задания Codex, кроме его непосредственного изменения.
 - [current-state.md](current-state.md) — состояние работы и ближайший шаг, необходимые для восстановления контекста.
+- [discussion/conclusion.md](discussion/conclusion.md) — последнее содержательное состояние чата о сценах, активациях и контекстных маршрутах, без восстановительных промптов.
+- [discussion/chronology.md](discussion/chronology.md) — последовательный журнал идей, отмен и переработок с основаниями в сообщениях.
+- [discussion/README.md](discussion/README.md) — источник, текстовый снимок, граница разбора и воспроизводимость.
 - [manual/user-guide.md](manual/user-guide.md) — запуск Windows cmd.exe и инструкция оператора.
 - [manual/data-format.md](manual/data-format.md) — формат JSON v1, история, ID, кандидаты и конфликты.
 - [manual/architecture.md](manual/architecture.md) — принятое инженерное решение (ADR M001).
