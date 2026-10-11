@@ -34,6 +34,42 @@ EXPANSIONS = {
     "текстура": "цвет рельеф",
 }
 
+# Одна выбранная декомпозиция после уточнения пользователя. Путь несёт
+# функцию описания камня; это не каталог всех возможных отношений слов.
+SELECTED = {
+    "камень": "характеристика",
+    "характеристика": "масса форма размер поверхность материал структура состояние",
+    "форма": "граница кривизна симметрия",
+    "размер": "длина объём",
+    "поверхность": "площадь шероховатость цвет блеск",
+    "материал": "состав плотность твёрдость прочность хрупкость",
+    "состав": "вещество",
+    "структура": "зернистость пористость слоистость",
+    "состояние": "температура влажность",
+}
+EXCLUSIONS = {
+    "тело": "Классификация объекта не раскрывает выбранное описание камня",
+    "величина": "Параллельная классификация параметров не нужна выбранной декомпозиции",
+    "ширина": "Ориентационная роль длины не задана; не дублировать длину",
+    "высота": "Ориентационная роль длины не задана; не дублировать длину",
+    "край": "Частный геометрический случай не раскрыт без условий применимости",
+    "грань": "Частный геометрический случай не раскрыт без условий применимости",
+    "вершина": "Частный геометрический случай не раскрыт без условий применимости",
+    "угол": "Относится к исключённому частному геометрическому случаю",
+    "рельеф": "Не различён с шероховатостью без масштаба; дополнительные связи не помогают",
+    "текстура": "Не различена с цветом/шероховатостью; не обходить это новыми связями",
+    "смачиваемость": "Дополнительное направление вне выбранного раскрытия поверхности",
+    "трещина": "Наличие части и параметр описания не различены; не имитировать аспектом",
+    "упругость": "Каталог дальнейших свойств материала не выполняет функцию в выбранном проходе",
+    "растворимость": "Каталог дальнейших свойств материала не выполняет функцию в выбранном проходе",
+    "прозрачность": "Не выражено различие материала и наблюдения поверхности; дубли не сохранять",
+    "теплопроводность": "Каталог дальнейших свойств материала не выполняет функцию в выбранном проходе",
+    "теплоёмкость": "Каталог дальнейших свойств материала не выполняет функцию в выбранном проходе",
+    "электропроводность": "Каталог дальнейших свойств материала не выполняет функцию в выбранном проходе",
+    "магнитность": "Широкое неоднозначное имя без раскрытия; исключено из выбранного прохода",
+    "происхождение": "Только называние вопроса, необходимое различие не представлено",
+}
+
 
 def write(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -147,9 +183,64 @@ def resistance_probe(store, evidence):
     assert current(store) == original
 
 
+def prune(store, evidence):
+    study = current(store)
+    sid = study["id"]
+    original = json.loads(json.dumps(study))
+    ids = {n["label"]: n["id"] for n in study["nodes"]}
+    by_id = {n["id"]: n["label"] for n in study["nodes"]}
+    wanted = [(a, b) for a, targets in SELECTED.items() for b in targets.split()]
+    labels = {label for pair in wanted for label in pair}
+    assert set(ids) == labels | set(EXCLUSIONS), "Ожидался исходный граф 49/114"
+    audit = {"sourceRevision": store.read()["revision"], "studyId": sid,
+             "removedNodes": [], "removedEdges": [], "movedEdges": [], "addedEdges": []}
+    retained = set()
+    for a, b in wanted:
+        existing = next((e for e in original["edges"] if e["from"] == ids[a]
+                         and e["to"] == ids[b] and e["type"] == "аспект"), None)
+        if existing:
+            retained.add(existing["id"])
+            continue
+        # Перенос из прежней непосредственной связи, если нового ребра ещё нет.
+        old = next((e for e in original["edges"] if e["to"] == ids[b]
+                    and e["type"] == "аспект" and e["id"] not in retained
+                    and ((a == "характеристика" and e["from"] == ids["камень"])
+                         or (a == "состав" and e["from"] == ids["материал"]))), None)
+        if old:
+            act(store, "edit_edge", studyId=sid, edgeId=old["id"], **{
+                "from": ids[a], "to": ids[b], "type": "аспект", "role": "relation", "notes": ""})
+            retained.add(old["id"])
+            audit["movedEdges"].append({"id": old["id"], "before": [by_id[old["from"]], b],
+                                         "after": [a, b], "reason": "Один маршрут вместо прямой связи"})
+        else:
+            connect(store, sid, ids, a, b, "аспект")
+            audit["addedEdges"].append({"from": a, "to": b, "reason": "Функция выбранного разложения"})
+    for e in original["edges"]:
+        if e["id"] not in retained:
+            a, b = by_id[e["from"]], by_id[e["to"]]
+            reason = EXCLUSIONS.get(a) or EXCLUSIONS.get(b)
+            if not reason:
+                reason = "Дублирующий маршрут, обратная классификация или невыраженная привязка параметра; не входит в SELECTED"
+            act(store, "delete_edge", studyId=sid, edgeId=e["id"])
+            audit["removedEdges"].append({"id": e["id"], "from": a, "to": b,
+                                          "type": e["type"], "reason": reason})
+    for label, reason in EXCLUSIONS.items():
+        act(store, "delete_node", studyId=sid, nodeId=ids[label])
+        audit["removedNodes"].append({"id": ids[label], "label": label, "reason": reason})
+    act(store, "edit_study", studyId=sid, title="Камень — K001",
+        description="Выбранная декомпозиция возможного описания камня: один путь на функцию. Аспект раскрывает позицию описания по пути от корня, не значение экземпляра. Это ручная гипотеза, не универсальная классификация. Функции и ограничения: docs/discussion/conclusion.md §12.4.")
+    audit["targetRevision"] = store.read()["revision"]
+    audit["selected"] = SELECTED
+    final = current(store)
+    assert len(final["nodes"]) == len(labels)
+    actual = {(by_id[e["from"]], by_id[e["to"]]) for e in final["edges"]}
+    assert actual == set(wanted) and len(final["edges"]) == len(wanted)
+    write(evidence, audit)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("phase", choices=("baseline", "expand", "discard-grouping", "probe", "export"))
+    parser.add_argument("phase", choices=("baseline", "expand", "discard-grouping", "probe", "prune", "export"))
     parser.add_argument("--db", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--evidence", type=Path)
@@ -165,6 +256,10 @@ def main():
         if args.evidence is None:
             parser.error("Для probe требуется отдельный --evidence")
         resistance_probe(store, args.evidence)
+    elif args.phase == "prune":
+        if args.evidence is None:
+            parser.error("Для prune требуется отдельный --evidence")
+        prune(store, args.evidence)
     export(store, args.output)
 
 
