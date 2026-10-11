@@ -63,9 +63,22 @@ M001 и M002–M003 — разные завершённые инженерные
 | [docs/manual/evidence/composition/browser-report.json](manual/evidence/composition/browser-report.json), [regression-browser-report.json](manual/evidence/composition/regression-browser-report.json), [scale-report.json](manual/evidence/composition/scale-report.json) | Исходы нового / регрессионного браузерных сценариев и измерения масштаба | Проверка результатов M002–M003; обновление с описанием соответствующего запуска |
 | [docs/manual/evidence/composition/nested-composition.png](manual/evidence/composition/nested-composition.png), [substitution.png](manual/evidence/composition/substitution.png), [large-composition.png](manual/evidence/composition/large-composition.png) | Визуальные свидетельства вложенности, замещения и большого состава | Проверка GUI в сценарии; исправление снимков с сохранением происхождения |
 
+Для предметного запуска K001 от 11 октября 2026 — новые свидетельства, старые M001/M002 не перезаписываются:
+
+| Пути | Назначение / когда обращаться |
+|---|---|
+| [verification.json](manual/evidence/stone/verification.json), [unit-tests.txt](manual/evidence/stone/unit-tests.txt) | 18 предметных проверок и 37 регрессий; аудит записи/обмена, не семантической истинности |
+| [browser-report.json](manual/evidence/stone/browser-report.json), [revision-audit.json](manual/evidence/stone/revision-audit.json) | 12 GUI-сценариев/пределы автоматизации и первичный журнал пересмотра 49/114 → 29/28; не второй статус проекта |
+| [baseline.jpg](manual/evidence/stone/baseline.jpg), [grouping.jpg](manual/evidence/stone/grouping.jpg), [final.jpg](manual/evidence/stone/final.jpg) | Исходный вид, отвергнутый состав, итоговая характеристика на глубине 1 |
+| [grouping-dom.txt](manual/evidence/stone/grouping-dom.txt), [mass-in-combination-dom.txt](manual/evidence/stone/mass-in-combination-dom.txt), [final-dom.txt](manual/evidence/stone/final-dom.txt) | Доступные операции, отдельная функция включения и итоговый вид |
+| [import-queue-dom.txt](manual/evidence/stone/import-queue-dom.txt), [import-accepted-dom.txt](manual/evidence/stone/import-accepted-dom.txt), [repeat-import-dom.txt](manual/evidence/stone/repeat-import-dom.txt) | Preview/очередь, принятие и отсутствие повторных кандидатов |
+| [grouping-trial.json](manual/evidence/stone/grouping-trial.json), [moved-edge-trial.json](manual/evidence/stone/moved-edge-trial.json), [resistance-trial.json](manual/evidence/stone/resistance-trial.json) | Отвергнутые пробы первого прохода; сохранение отрицательного результата. После уточнения пользователя не являются актуальным графом или обязательными повторными сценариями |
+
 ## Связанные средства и примеры вне `docs/`
 
 K001: [продолжаемый граф](../data/experiments/stone/stone.json), [исходный вариант](../data/experiments/stone/baseline.json) — исследовательские записи в существующем JSON v2, не синтетические фикстуры M001/M002. Первый файл — итог для дальнейшей правки, второй — первичное свидетельство K001.1. [Скрипт](../scripts/stone_decomposition.py) воспроизводит ручные предложения штатными операциями приложения; семантического механизма не добавляет. Первичные свидетельства нового запуска хранятся отдельно в `manual/evidence/stone/` (снимки/DOM и `grouping-trial.json`, `moved-edge-trial.json`, `resistance-trial.json`); это отвергнутые варианты и проверка операций, а не параллельное актуальное состояние. Выводы и пределы — раздел 12 заключения и датированное дополнение отчёта M002–M003.
+
+[scripts/verify_stone.py](../scripts/verify_stone.py) проверяет технические правила выбранной записи, восстановление истории и обмен канонического JSON. Используется для повторной предметной проверки; собственные временные данные остаются внутри `local-data/stone-k001/`. Изменение критериев отражать в датированном инженерном отчёте, исходные свидетельства не перегенерировать молча.
 
 | Путь | Назначение и основные сведения | Когда обращаться / обновлять |
 |---|---|---|

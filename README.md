@@ -17,6 +17,8 @@ start.cmd
 
 ## Проверки
 
+Ручное [исследование «камня»](data/experiments/stone/stone.json) (K001) можно импортировать в существующий редактор: 29 однословных концептов / 28 связей, один маршрут к каждой позиции описания, без значений экземпляров. Это исследовательское предложение; функции, отвергнутые варианты и ограничения — [§12 заключения](docs/discussion/conclusion.md), проверки и оценка редактора — в [дополнении отчёта](docs/manual/composition-verification.md). Актуальное продолжение хранится только в [current-state.md](docs/current-state.md).
+
 ```bat
 python -m unittest discover -s tests -v
 python -m scripts.benchmark_workbench

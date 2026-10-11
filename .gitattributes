@@ -1,2 +1,5 @@
 # Preserve the discussion snapshot bytes and its documented SHA-256 on checkout.
 docs/discussion/source-messages.json text eol=lf
+# Keep K001 JSON checksums reproducible across Windows/Linux checkouts.
+data/experiments/stone/*.json text eol=lf
+docs/manual/evidence/stone/*.json text eol=lf
