@@ -1,0 +1,152 @@
+{
+  "period": "2026-10-11–2026-10-12",
+  "browser": "Codex In-app Browser, engine version not exposed",
+  "base": "http://127.0.0.1:8774/",
+  "db": "local-data/ux-m004/run2.sqlite3",
+  "source": "6770275 plus final M004.3 changes",
+  "scenarios": [
+    {
+      "id": 1,
+      "result": "passed",
+      "observation": "K001 copy: edit/save, drag, history/editor preserve camera and selected node; canonical file unchanged"
+    },
+    {
+      "id": 2,
+      "result": "passed",
+      "observation": "Node Back restores selection and saved camera; camera Back restores viewport",
+      "immediateReturn": {
+        "before": "{\"x\":420.83331298828125,\"y\":72.5,\"scale\":1}",
+        "status": "Сохранение…",
+        "root": "{\"x\":0,\"y\":0,\"scale\":1}",
+        "after": "{\"x\":420.83331298828125,\"y\":72.5,\"scale\":1}"
+      }
+    },
+    {
+      "id": 3,
+      "result": "passed",
+      "observation": "Reload after API state wait restores selection, camera, manual coordinates and panel",
+      "camera": {
+        "before": "{\"x\":273.4967493633253,\"y\":11.674644639417195,\"scale\":1.4333294145603401}",
+        "after": "{\"x\":273.4967493633253,\"y\":11.674644639417195,\"scale\":1.4333294145603401}",
+        "positionBefore": "translate(450.83331298828125,90.5)",
+        "positionAfter": "translate(450.83331298828125,90.5)"
+      },
+      "selected": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8"
+    },
+    {
+      "id": 4,
+      "result": "passed within display limit",
+      "data": "1200 nodes / 1799 edges",
+      "display": "1000 nodes / up to 3000 edges",
+      "observation": "Node 1199 searchable; center and continuous drag recorded in large-drag-samples.json; no FPS claim"
+    },
+    {
+      "id": 5,
+      "result": "passed",
+      "observation": "Two independent studies; label/material candidates distinguished from dictionary forma on technical p-shape; selected pair environments; independent pan and exact shared scale",
+      "fitPair": [
+        {
+          "camera": "{\"x\":390,\"y\":90,\"scale\":0.31842105263157894}",
+          "id": "compare-left-graph"
+        },
+        {
+          "camera": "{\"x\":840,\"y\":0,\"scale\":0.31842105263157894}",
+          "id": "compare-right-graph"
+        }
+      ],
+      "zoomPair": [
+        {
+          "camera": "{\"x\":390,\"y\":90,\"scale\":0.3821052631578947}",
+          "id": "compare-left-graph"
+        },
+        {
+          "camera": "{\"x\":840,\"y\":0,\"scale\":0.3821052631578947}",
+          "id": "compare-right-graph"
+        }
+      ],
+      "pairBefore": [
+        {
+          "camera": "{\"x\":520,\"y\":-180,\"scale\":0.9508001684210525}",
+          "id": "compare-left-graph"
+        },
+        {
+          "camera": "{\"x\":480,\"y\":0,\"scale\":0.9508001684210525}",
+          "id": "compare-right-graph"
+        }
+      ],
+      "pairAfter": [
+        {
+          "camera": "{\"x\":490.55112006711335,\"y\":-196.82793139022095,\"scale\":0.9508001684210525}",
+          "id": "compare-left-graph"
+        },
+        {
+          "camera": "{\"x\":480,\"y\":0,\"scale\":0.9508001684210525}",
+          "id": "compare-right-graph"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "result": "passed for listed operations",
+      "observation": "GUI import preview/stage/accept, repeat import, four native JSON downloads, match with explicit reason, explicit merge with preserved originals/origins, restore retaining later versions, alpha + component edge editing and new standalone node/Back",
+      "scopeReturn": {
+        "before": "{\"x\":560,\"y\":28.5,\"scale\":1}",
+        "selected": "288b6591-36d2-43df-b096-b8b996e5c0ec",
+        "camera": "same",
+        "cleanup": "Restore revision 23 appended revision 25; trial 24 retained"
+      },
+      "sameStudySelection": {
+        "requested": "3876eb26-b999-4868-a889-7f7ed2617ee4",
+        "actual": "ux-process",
+        "visibleViews": 2,
+        "camerasAfter": [
+          {
+            "camera": "{\"x\":490.55112006711335,\"y\":-196.82793139022095,\"scale\":0.9508001684210525}",
+            "id": "compare-left-graph",
+            "nodes": 12
+          },
+          {
+            "camera": "{\"x\":480,\"y\":0,\"scale\":0.9508001684210525}",
+            "id": "compare-right-graph",
+            "nodes": 8
+          }
+        ],
+        "observation": "Existing option logic chooses another independent study; both views remain. Empty-pair cleanup branch was reviewed in source, not reached here."
+      }
+    }
+  ],
+  "draftPan": {
+    "before": "{\"x\":420.83331298828125,\"y\":72.5,\"scale\":1}",
+    "after": "{\"x\":273.4967493633253,\"y\":11.674644639417195,\"scale\":1.4333294145603401}",
+    "value": "Черновик M004: панорама сохраняет форму",
+    "status": "Есть несохранённый текст"
+  },
+  "narrow": {
+    "viewport": [
+      496,
+      932
+    ],
+    "graph": [
+      478,
+      549
+    ],
+    "inspectorBottom": 885,
+    "bodyWidth": 496
+  },
+  "continuousDragEvidence": [
+    "drag-samples.json",
+    "all-edges-drag.json",
+    "final-drag-samples.json",
+    "large-drag-samples.json"
+  ],
+  "limits": [
+    "Full old browser automation scripts not executed; manual browser pass and backend regression suite used",
+    "SVG Blob download not confirmed in IAB; JSON native downloads verified",
+    "Crossing/occluded edges can hit another edge/node; card list or scoped composition resolves test",
+    "Existing Store position action invalidates confirmed matches even for coordinate-only changes; observed reason shown in comparison",
+    "Import preview of repeated raw fixture reports changes before staging deduplicates 0 new / 21 repeats",
+    "No mini-map, multi-select, edge bends or more than two simultaneous comparison views",
+    "Unsaved form survives pan/zoom but not reload; asynchronous draft retention implemented, precisely timed pending-response typing not independently isolated"
+  ],
+  "consoleErrors": []
+}

@@ -9,7 +9,7 @@ async function stop(){if(server?.exitCode===null)await new Promise(r=>{server.on
 async function initial(){await page.goto(url);await page.locator('#save-status').filter({hasText:'Сохранено'}).waitFor();}
 async function snapshot(){return (await (await fetch(url+'/api/state')).json());}
 async function submit(label='Сохранить'){await page.locator('#modal-form').getByRole('button',{name:label,exact:true}).click();await page.locator('#dialog').waitFor({state:'hidden'});await page.waitForFunction(()=>!document.body.classList.contains('busy'));}
-async function create(word){await page.locator('#new-study').click();await page.locator('#modal-form [name="title"]').fill(word);await submit('Создать');}
+async function create(word){if(!await page.locator('#new-study').isVisible())await page.locator('#toggle-studies').click();await page.locator('#new-study').click();await page.locator('#modal-form [name="title"]').fill(word);await submit('Создать');if(!await page.locator('#node-search').isVisible())await page.locator('#toggle-elements').click();}
 async function select(id){await page.locator('#node-search').fill(id);await page.locator(`#node-list [data-node="${id}"]`).click();}
 async function add(label,combo=false){await page.locator(combo?'#add-combination':'#add-independent').click();if(label)await page.locator('#modal-form [name="label"]').fill(label);await submit('Добавить');const s=(await snapshot()).state.studies[0];return s.nodes.at(-1).id;}
 async function link(from,to,component=false,type=''){await select(from);await page.locator(component?'#include-component':'#link-node').click();await page.locator('#modal-form [name="to"]').fill(to);await page.locator('#modal-form [name="type"]').fill(type);await submit();}

@@ -1,0 +1,1725 @@
+{
+  "before": {
+    "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+    "edges": [
+      {
+        "from": "ux-importcheck-n0",
+        "id": "ux-importcheck-e1",
+        "labelX": "120",
+        "labelY": "-19",
+        "path": "M 80 0 Q 120 -12 160 0",
+        "to": "ux-importcheck-n1"
+      },
+      {
+        "from": "ux-importcheck-n0",
+        "id": "ux-importcheck-e2",
+        "labelX": "240",
+        "labelY": "-7",
+        "path": "M 80 0 Q 240 0 400 0",
+        "to": "ux-importcheck-n2"
+      },
+      {
+        "from": "ux-importcheck-n0",
+        "id": "ux-importcheck-e3",
+        "labelX": "360",
+        "labelY": "5",
+        "path": "M 80 0 Q 360 12 640 0",
+        "to": "ux-importcheck-n3"
+      },
+      {
+        "from": "ux-importcheck-n1",
+        "id": "ux-importcheck-e4",
+        "labelX": "600",
+        "labelY": "-19",
+        "path": "M 320 0 Q 600 -12 880 0",
+        "to": "ux-importcheck-n4"
+      },
+      {
+        "from": "ux-importcheck-n1",
+        "id": "ux-importcheck-e5",
+        "labelX": "720",
+        "labelY": "-7",
+        "path": "M 320 0 Q 720 0 1120 0",
+        "to": "ux-importcheck-n5"
+      },
+      {
+        "from": "ux-importcheck-n1",
+        "id": "ux-importcheck-e6",
+        "labelX": "840",
+        "labelY": "5",
+        "path": "M 320 0 Q 840 12 1360 0",
+        "to": "ux-importcheck-n6"
+      },
+      {
+        "from": "ux-importcheck-n2",
+        "id": "ux-importcheck-e7",
+        "labelX": "1080",
+        "labelY": "-19",
+        "path": "M 560 0 Q 1080 -12 1600 0",
+        "to": "ux-importcheck-n7"
+      },
+      {
+        "from": "ux-importcheck-n1",
+        "id": "ux-importcheck-cross1",
+        "labelX": "360",
+        "labelY": "-7",
+        "path": "M 320 0 Q 360 0 400 0",
+        "to": "ux-importcheck-n2"
+      },
+      {
+        "from": "ux-importcheck-n3",
+        "id": "ux-importcheck-cross3",
+        "labelX": "840",
+        "labelY": "5",
+        "path": "M 800 0 Q 840 12 880 0",
+        "to": "ux-importcheck-n4"
+      },
+      {
+        "from": "ux-importcheck-n5",
+        "id": "ux-importcheck-cross5",
+        "labelX": "1320",
+        "labelY": "-19",
+        "path": "M 1280 0 Q 1320 -12 1360 0",
+        "to": "ux-importcheck-n6"
+      },
+      {
+        "from": "ux-importcheck-n1",
+        "id": "ux-importcheck-self",
+        "labelX": "280",
+        "labelY": "-70",
+        "path": "M 305 -8 C 395 -105, 175 -110, 205 -30",
+        "to": "ux-importcheck-n1"
+      }
+    ]
+  },
+  "samples": [
+    {
+      "active": false,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "120",
+          "labelY": "-19",
+          "path": "M 80 0 Q 120 -12 160 0"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "600",
+          "labelY": "-19",
+          "path": "M 320 0 Q 600 -12 880 0"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "720",
+          "labelY": "-7",
+          "path": "M 320 0 Q 720 0 1120 0"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 320 0 Q 840 12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "360",
+          "labelY": "-7",
+          "path": "M 320 0 Q 360 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "280",
+          "labelY": "-70",
+          "path": "M 305 -8 C 395 -105, 175 -110, 205 -30"
+        }
+      ],
+      "node": "translate(240,0)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": false,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "120",
+          "labelY": "-19",
+          "path": "M 80 0 Q 120 -12 160 0"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "600",
+          "labelY": "-19",
+          "path": "M 320 0 Q 600 -12 880 0"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "720",
+          "labelY": "-7",
+          "path": "M 320 0 Q 720 0 1120 0"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 320 0 Q 840 12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "360",
+          "labelY": "-7",
+          "path": "M 320 0 Q 360 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "280",
+          "labelY": "-70",
+          "path": "M 305 -8 C 395 -105, 175 -110, 205 -30"
+        }
+      ],
+      "node": "translate(240,0)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": true,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "120",
+          "labelY": "-19",
+          "path": "M 80 0 Q 120 -12 160 0"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "600",
+          "labelY": "-19",
+          "path": "M 320 0 Q 600 -12 880 0"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "720",
+          "labelY": "-7",
+          "path": "M 320 0 Q 720 0 1120 0"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 320 0 Q 840 12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "360",
+          "labelY": "-7",
+          "path": "M 320 0 Q 360 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "280",
+          "labelY": "-70",
+          "path": "M 305 -8 C 395 -105, 175 -110, 205 -30"
+        }
+      ],
+      "node": "translate(240,0)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": true,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "126.83188880126126",
+          "labelY": "-15.495409531299769",
+          "path": "M 80 2.2134387351778657 Q 126.83188880126126 -8.495409531299769 173 4.786561264822135"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "606.3811939419246",
+          "labelY": "-15.49941186561094",
+          "path": "M 333 6.207920792079208 Q 606.3811939419246 -8.49941186561094 880 0.792079207920792"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "726.5",
+          "labelY": "-3.5",
+          "path": "M 333 6.408658922914467 Q 726.5 3.5 1120 0.5913410770855333"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "846.570765408084",
+          "labelY": "8.499791342228361",
+          "path": "M 333 6.528222409435552 Q 846.570765408084 15.499791342228361 1360 0.4717775905644481"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "366.5",
+          "labelY": "-3.5",
+          "path": "M 333 4.533039647577093 Q 366.5 3.5 400 2.4669603524229076"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "293",
+          "labelY": "-63",
+          "path": "M 318 -1 C 408 -98, 188 -103, 218 -23"
+        }
+      ],
+      "node": "translate(253,7)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": true,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "133.13307940829876",
+          "labelY": "-11.98328879994086",
+          "path": "M 80 4.226415094339623 Q 133.13307940829876 -4.98328879994086 185 9.773584905660378"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "612.2583224098166",
+          "labelY": "-11.997566084102356",
+          "path": "M 345 12.388489208633093 Q 612.2583224098166 -4.997566084102356 880 1.6115107913669067"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "732.5",
+          "labelY": "0",
+          "path": "M 345 12.802139037433156 Q 732.5 7 1120 1.1978609625668448"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "852.6429685755196",
+          "labelY": "11.999148302542721",
+          "path": "M 345 13.046808510638298 Q 852.6429685755196 18.99914830254272 1360 0.9531914893617022"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "372.5",
+          "labelY": "0",
+          "path": "M 345 8.790697674418604 Q 372.5 7 400 5.209302325581396"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "305",
+          "labelY": "-56",
+          "path": "M 330 6 C 420 -91, 200 -96, 230 -16"
+        }
+      ],
+      "node": "translate(265,14)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": true,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "133.13307940829876",
+          "labelY": "-11.98328879994086",
+          "path": "M 80 4.226415094339623 Q 133.13307940829876 -4.98328879994086 185 9.773584905660378"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "612.2583224098166",
+          "labelY": "-11.997566084102356",
+          "path": "M 345 12.388489208633093 Q 612.2583224098166 -4.997566084102356 880 1.6115107913669067"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "732.5",
+          "labelY": "0",
+          "path": "M 345 12.802139037433156 Q 732.5 7 1120 1.1978609625668448"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "852.6429685755196",
+          "labelY": "11.999148302542721",
+          "path": "M 345 13.046808510638298 Q 852.6429685755196 18.99914830254272 1360 0.9531914893617022"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "372.5",
+          "labelY": "0",
+          "path": "M 345 8.790697674418604 Q 372.5 7 400 5.209302325581396"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "305",
+          "labelY": "-56",
+          "path": "M 330 6 C 420 -91, 200 -96, 230 -16"
+        }
+      ],
+      "node": "translate(265,14)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": true,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "139.90389956090874",
+          "labelY": "-8.465908472982274",
+          "path": "M 80 6.043165467625899 Q 139.90389956090874 -1.4659084729822744 198 14.956834532374101"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "618.63067357776",
+          "labelY": "-8.494315236554169",
+          "path": "M 358 18.5366568914956 Q 618.63067357776 -1.4943152365541685 880 2.463343108504399"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "739",
+          "labelY": "3.5",
+          "path": "M 358 19.177874186550977 Q 739 10.5 1120 1.822125813449024"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "859.2168320632666",
+          "labelY": "15.498040834083689",
+          "path": "M 358 19.55421686746988 Q 859.2168320632666 22.49804083408369 1360 1.4457831325301203"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "379",
+          "labelY": "3.5",
+          "path": "M 358 12.683168316831683 Q 379 10.5 400 8.316831683168317"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "318",
+          "labelY": "-49",
+          "path": "M 343 13 C 433 -84, 213 -89, 243 -9"
+        }
+      ],
+      "node": "translate(278,21)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": true,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "139.90389956090874",
+          "labelY": "-8.465908472982274",
+          "path": "M 80 6.043165467625899 Q 139.90389956090874 -1.4659084729822744 198 14.956834532374101"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "618.63067357776",
+          "labelY": "-8.494315236554169",
+          "path": "M 358 18.5366568914956 Q 618.63067357776 -1.4943152365541685 880 2.463343108504399"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "739",
+          "labelY": "3.5",
+          "path": "M 358 19.177874186550977 Q 739 10.5 1120 1.822125813449024"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "859.2168320632666",
+          "labelY": "15.498040834083689",
+          "path": "M 358 19.55421686746988 Q 859.2168320632666 22.49804083408369 1360 1.4457831325301203"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "379",
+          "labelY": "3.5",
+          "path": "M 358 12.683168316831683 Q 379 10.5 400 8.316831683168317"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "318",
+          "labelY": "-49",
+          "path": "M 343 13 C 433 -84, 213 -89, 243 -9"
+        }
+      ],
+      "node": "translate(278,21)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": true,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "139.90389956090874",
+          "labelY": "-8.465908472982274",
+          "path": "M 80 6.043165467625899 Q 139.90389956090874 -1.4659084729822744 198 14.956834532374101"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "618.63067357776",
+          "labelY": "-8.494315236554169",
+          "path": "M 358 18.5366568914956 Q 618.63067357776 -1.4943152365541685 880 2.463343108504399"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "739",
+          "labelY": "3.5",
+          "path": "M 358 19.177874186550977 Q 739 10.5 1120 1.822125813449024"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "859.2168320632666",
+          "labelY": "15.498040834083689",
+          "path": "M 358 19.55421686746988 Q 859.2168320632666 22.49804083408369 1360 1.4457831325301203"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "379",
+          "labelY": "3.5",
+          "path": "M 358 12.683168316831683 Q 379 10.5 400 8.316831683168317"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "318",
+          "labelY": "-49",
+          "path": "M 343 13 C 433 -84, 213 -89, 243 -9"
+        }
+      ],
+      "node": "translate(278,21)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": true,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "146.194044628252",
+          "labelY": "-4.440446282519872",
+          "path": "M 80 8 Q 146.194044628252 2.559553717480128 210 21"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "624.4810828749095",
+          "labelY": "-4.48877495898925",
+          "path": "M 370 25.53731343283582 Q 624.4810828749095 2.51122504101075 880 3.462686567164179"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "745",
+          "labelY": "7.5",
+          "path": "M 370 26.45054945054945 Q 745 14.5 1120 2.5494505494505497"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "865.3025125245371",
+          "labelY": "19.496186317846945",
+          "path": "M 370 26.982608695652175 Q 865.3025125245371 26.496186317846945 1360 2.017391304347826"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "385",
+          "labelY": "7.5",
+          "path": "M 370 16.789473684210527 Q 385 14.5 400 12.210526315789473"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "330",
+          "labelY": "-41",
+          "path": "M 355 21 C 445 -76, 225 -81, 255 -1"
+        }
+      ],
+      "node": "translate(290,29)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": true,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "146.194044628252",
+          "labelY": "-4.440446282519872",
+          "path": "M 80 8 Q 146.194044628252 2.559553717480128 210 21"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "624.4810828749095",
+          "labelY": "-4.48877495898925",
+          "path": "M 370 25.53731343283582 Q 624.4810828749095 2.51122504101075 880 3.462686567164179"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "745",
+          "labelY": "7.5",
+          "path": "M 370 26.45054945054945 Q 745 14.5 1120 2.5494505494505497"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "865.3025125245371",
+          "labelY": "19.496186317846945",
+          "path": "M 370 26.982608695652175 Q 865.3025125245371 26.496186317846945 1360 2.017391304347826"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "385",
+          "labelY": "7.5",
+          "path": "M 370 16.789473684210527 Q 385 14.5 400 12.210526315789473"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "330",
+          "labelY": "-41",
+          "path": "M 355 21 C 445 -76, 225 -81, 255 -1"
+        }
+      ],
+      "node": "translate(290,29)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": true,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "152.91578479740278",
+          "labelY": "-0.9161887114732803",
+          "path": "M 79.99999999999999 9.504950495049505 Q 152.91578479740278 6.08381128852672 223 26.495049504950494"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "630.8434506395743",
+          "labelY": "-0.9820258277690499",
+          "path": "M 383 31.616438356164384 Q 630.8434506395743 6.01797417223095 880 4.383561643835616"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "751.5",
+          "labelY": "11",
+          "path": "M 383 32.78929765886288 Q 751.5 18 1120 3.210702341137124"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "871.879756924212",
+          "labelY": "22.99398952302832",
+          "path": "M 383 33.46701846965699 Q 871.879756924212 29.99398952302832 1360 2.532981530343008"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "391.5",
+          "labelY": "11",
+          "path": "M 383 19.728813559322035 Q 391.5 18 400 16.271186440677965"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "343",
+          "labelY": "-34",
+          "path": "M 368 28 C 458 -69, 238 -74, 268 6"
+        }
+      ],
+      "node": "translate(303,36)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": true,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "159.12304280969025",
+          "labelY": "2.6102677894784865",
+          "path": "M 80 10.920634920634921 Q 159.12304280969025 9.610267789478486 235 32.079365079365076"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "636.7017718737147",
+          "labelY": "2.5265781057206933",
+          "path": "M 395 37.666666666666664 Q 636.7017718737147 9.526578105720693 880 5.333333333333333"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "757.5",
+          "labelY": "14.5",
+          "path": "M 395 39.112994350282484 Q 757.5 21.5 1120 3.8870056497175143"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "877.9583319914833",
+          "labelY": "26.491243963225124",
+          "path": "M 395 39.94222222222222 Q 877.9583319914833 33.49124396322512 1360 3.057777777777778"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "397.5",
+          "labelY": "14.5",
+          "path": "M 395 22.151515151515152 Q 397.5 21.5 400 20.848484848484848"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "355",
+          "labelY": "-27",
+          "path": "M 380 35 C 470 -62, 250 -67, 280 13"
+        }
+      ],
+      "node": "translate(315,43)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": true,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "159.12304280969025",
+          "labelY": "2.6102677894784865",
+          "path": "M 80 10.920634920634921 Q 159.12304280969025 9.610267789478486 235 32.079365079365076"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "636.7017718737147",
+          "labelY": "2.5265781057206933",
+          "path": "M 395 37.666666666666664 Q 636.7017718737147 9.526578105720693 880 5.333333333333333"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "757.5",
+          "labelY": "14.5",
+          "path": "M 395 39.112994350282484 Q 757.5 21.5 1120 3.8870056497175143"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "877.9583319914833",
+          "labelY": "26.491243963225124",
+          "path": "M 395 39.94222222222222 Q 877.9583319914833 33.49124396322512 1360 3.057777777777778"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "397.5",
+          "labelY": "14.5",
+          "path": "M 395 22.151515151515152 Q 397.5 21.5 400 20.848484848484848"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "355",
+          "labelY": "-27",
+          "path": "M 380 35 C 470 -62, 250 -67, 280 13"
+        }
+      ],
+      "node": "translate(315,43)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": true,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "159.12304280969025",
+          "labelY": "2.6102677894784865",
+          "path": "M 80 10.920634920634921 Q 159.12304280969025 9.610267789478486 235 32.079365079365076"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "636.7017718737147",
+          "labelY": "2.5265781057206933",
+          "path": "M 395 37.666666666666664 Q 636.7017718737147 9.526578105720693 880 5.333333333333333"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "757.5",
+          "labelY": "14.5",
+          "path": "M 395 39.112994350282484 Q 757.5 21.5 1120 3.8870056497175143"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "877.9583319914833",
+          "labelY": "26.491243963225124",
+          "path": "M 395 39.94222222222222 Q 877.9583319914833 33.49124396322512 1360 3.057777777777778"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "397.5",
+          "labelY": "14.5",
+          "path": "M 395 22.151515151515152 Q 397.5 21.5 400 20.848484848484848"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "355",
+          "labelY": "-27",
+          "path": "M 380 35 C 470 -62, 250 -67, 280 13"
+        }
+      ],
+      "node": "translate(315,43)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": true,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "165.8083777277375",
+          "labelY": "6.137042106041896",
+          "path": "M 80 12.195121951219512 Q 165.8083777277375 13.137042106041896 248 37.80487804878049"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "643.053590087323",
+          "labelY": "6.037378703762844",
+          "path": "M 408 43.67088607594937 Q 643.053590087323 13.037378703762844 880 6.329113924050633"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "764",
+          "labelY": "18",
+          "path": "M 408 45.41284403669725 Q 764 25 1120 4.587155963302752"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "884.5390237310991",
+          "labelY": "29.987887779642918",
+          "path": "M 408 46.402877697841724 Q 884.5390237310991 36.98788777964292 1360 3.597122302158273"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "404",
+          "labelY": "18",
+          "path": "M 408 23.68421052631579 Q 404 25 400 26.31578947368421"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "368",
+          "labelY": "-20",
+          "path": "M 393 42 C 483 -55, 263 -60, 293 20"
+        }
+      ],
+      "node": "translate(328,50)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": true,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "165.8083777277375",
+          "labelY": "6.137042106041896",
+          "path": "M 80 12.195121951219512 Q 165.8083777277375 13.137042106041896 248 37.80487804878049"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "643.053590087323",
+          "labelY": "6.037378703762844",
+          "path": "M 408 43.67088607594937 Q 643.053590087323 13.037378703762844 880 6.329113924050633"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "764",
+          "labelY": "18",
+          "path": "M 408 45.41284403669725 Q 764 25 1120 4.587155963302752"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "884.5390237310991",
+          "labelY": "29.987887779642918",
+          "path": "M 408 46.402877697841724 Q 884.5390237310991 36.98788777964292 1360 3.597122302158273"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "404",
+          "labelY": "18",
+          "path": "M 408 23.68421052631579 Q 404 25 400 26.31578947368421"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "368",
+          "labelY": "-20",
+          "path": "M 393 42 C 483 -55, 263 -60, 293 20"
+        }
+      ],
+      "node": "translate(328,50)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": true,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "171.98407614612532",
+          "labelY": "9.665159830129664",
+          "path": "M 80 13.411764705882353 Q 171.98407614612532 16.665159830129664 260 43.588235294117645"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "648.9014071510964",
+          "labelY": "9.55039357332896",
+          "path": "M 420 49.645161290322584 Q 648.9014071510964 16.55039357332896 880 7.354838709677419"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "770",
+          "labelY": "21.5",
+          "path": "M 420 51.69767441860465 Q 770 28.5 1120 5.3023255813953485"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "890.620985029829",
+          "labelY": "33.48392162827879",
+          "path": "M 420 52.85454545454545 Q 890.620985029829 40.48392162827879 1360 4.1454545454545455"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "410",
+          "labelY": "21.5",
+          "path": "M 408.7719298245614 29 Q 410 28.5 411.2280701754386 28"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "380",
+          "labelY": "-13",
+          "path": "M 405 49 C 495 -48, 275 -53, 305 27"
+        }
+      ],
+      "node": "translate(340,57)",
+      "status": "Сохранено · версия 14"
+    },
+    {
+      "active": false,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "171.98407614612532",
+          "labelY": "9.665159830129664",
+          "path": "M 80 13.411764705882353 Q 171.98407614612532 16.665159830129664 260 43.588235294117645"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "648.9014071510964",
+          "labelY": "9.55039357332896",
+          "path": "M 420 49.645161290322584 Q 648.9014071510964 16.55039357332896 880 7.354838709677419"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "770",
+          "labelY": "21.5",
+          "path": "M 420 51.69767441860465 Q 770 28.5 1120 5.3023255813953485"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "890.620985029829",
+          "labelY": "33.48392162827879",
+          "path": "M 420 52.85454545454545 Q 890.620985029829 40.48392162827879 1360 4.1454545454545455"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "410",
+          "labelY": "21.5",
+          "path": "M 408.7719298245614 29 Q 410 28.5 411.2280701754386 28"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "380",
+          "labelY": "-13",
+          "path": "M 405 49 C 495 -48, 275 -53, 305 27"
+        }
+      ],
+      "node": "translate(340,57)",
+      "status": "Сохранение…"
+    },
+    {
+      "active": false,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "171.98407614612532",
+          "labelY": "9.665159830129664",
+          "path": "M 80 13.411764705882353 Q 171.98407614612532 16.665159830129664 260 43.588235294117645"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "648.9014071510964",
+          "labelY": "9.55039357332896",
+          "path": "M 420 49.645161290322584 Q 648.9014071510964 16.55039357332896 880 7.354838709677419"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "770",
+          "labelY": "21.5",
+          "path": "M 420 51.69767441860465 Q 770 28.5 1120 5.3023255813953485"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "890.620985029829",
+          "labelY": "33.48392162827879",
+          "path": "M 420 52.85454545454545 Q 890.620985029829 40.48392162827879 1360 4.1454545454545455"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "410",
+          "labelY": "21.5",
+          "path": "M 408.7719298245614 29 Q 410 28.5 411.2280701754386 28"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "380",
+          "labelY": "-13",
+          "path": "M 405 49 C 495 -48, 275 -53, 305 27"
+        }
+      ],
+      "node": "translate(340,57)",
+      "status": "Сохранение…"
+    },
+    {
+      "active": false,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "171.98407614612532",
+          "labelY": "9.665159830129664",
+          "path": "M 80 13.411764705882353 Q 171.98407614612532 16.665159830129664 260 43.588235294117645"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "648.9014071510964",
+          "labelY": "9.55039357332896",
+          "path": "M 420 49.645161290322584 Q 648.9014071510964 16.55039357332896 880 7.354838709677419"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "770",
+          "labelY": "21.5",
+          "path": "M 420 51.69767441860465 Q 770 28.5 1120 5.3023255813953485"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "890.620985029829",
+          "labelY": "33.48392162827879",
+          "path": "M 420 52.85454545454545 Q 890.620985029829 40.48392162827879 1360 4.1454545454545455"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "410",
+          "labelY": "21.5",
+          "path": "M 408.7719298245614 29 Q 410 28.5 411.2280701754386 28"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "380",
+          "labelY": "-13",
+          "path": "M 405 49 C 495 -48, 275 -53, 305 27"
+        }
+      ],
+      "node": "translate(340,57)",
+      "status": "Сохранение…"
+    },
+    {
+      "active": false,
+      "camera": "{\"x\":240,\"y\":0,\"scale\":1}",
+      "edges": [
+        {
+          "id": "ux-importcheck-e1",
+          "labelX": "171.98407614612532",
+          "labelY": "9.665159830129664",
+          "path": "M 80 13.411764705882353 Q 171.98407614612532 16.665159830129664 260 43.588235294117645"
+        },
+        {
+          "id": "ux-importcheck-e2",
+          "labelX": "240",
+          "labelY": "-7",
+          "path": "M 80 0 Q 240 0 400 0"
+        },
+        {
+          "id": "ux-importcheck-e3",
+          "labelX": "360",
+          "labelY": "5",
+          "path": "M 80 0 Q 360 12 640 0"
+        },
+        {
+          "id": "ux-importcheck-e4",
+          "labelX": "648.9014071510964",
+          "labelY": "9.55039357332896",
+          "path": "M 420 49.645161290322584 Q 648.9014071510964 16.55039357332896 880 7.354838709677419"
+        },
+        {
+          "id": "ux-importcheck-e5",
+          "labelX": "770",
+          "labelY": "21.5",
+          "path": "M 420 51.69767441860465 Q 770 28.5 1120 5.3023255813953485"
+        },
+        {
+          "id": "ux-importcheck-e6",
+          "labelX": "890.620985029829",
+          "labelY": "33.48392162827879",
+          "path": "M 420 52.85454545454545 Q 890.620985029829 40.48392162827879 1360 4.1454545454545455"
+        },
+        {
+          "id": "ux-importcheck-e7",
+          "labelX": "1080",
+          "labelY": "-19",
+          "path": "M 560 0 Q 1080 -12 1600 0"
+        },
+        {
+          "id": "ux-importcheck-cross1",
+          "labelX": "410",
+          "labelY": "21.5",
+          "path": "M 408.7719298245614 29 Q 410 28.5 411.2280701754386 28"
+        },
+        {
+          "id": "ux-importcheck-cross3",
+          "labelX": "840",
+          "labelY": "5",
+          "path": "M 800 0 Q 840 12 880 0"
+        },
+        {
+          "id": "ux-importcheck-cross5",
+          "labelX": "1320",
+          "labelY": "-19",
+          "path": "M 1280 0 Q 1320 -12 1360 0"
+        },
+        {
+          "id": "ux-importcheck-self",
+          "labelX": "380",
+          "labelY": "-13",
+          "path": "M 405 49 C 495 -48, 275 -53, 305 27"
+        }
+      ],
+      "node": "translate(340,57)",
+      "status": "Сохранение…"
+    }
+  ]
+}

@@ -13,7 +13,7 @@ let nodePage = 0, matchPage = 0, proposalPage = 0, historyPage = 0;
 let leftStudy, rightStudy, leftNode, rightNode, pairQueries = {left:'',right:''};
 let proposalRequest = 0;
 let proposalRows = [], proposalSelection = new Set();
-let toastTimer;
+let toastTimer, editVersion=0;
 const uiKey='concept-field-view-v1';
 let ui={graphs:{},studies:{},panels:{studies:false,elements:false,inspector:false}};
 try{const saved=JSON.parse(localStorage.getItem(uiKey));if(saved&&saved.version===1)ui={...ui,...saved};}catch{}
@@ -38,17 +38,19 @@ async function mutate(action,data) {
   if(busy) throw new Error('Предыдущее сохранение ещё выполняется.');
   busy=true; document.body.classList.add('busy'); $('#save-status').textContent='Сохранение…';
   try {
-    const result=await api('/api/action',{action,data,revision}); state=result.state; revision=result.revision; dirty=false;
+    const previous=action==='add_node'?{nodeId:selectedNode,scope:compositionScope,camera:cameraSnapshot()}:null;
+    const submittedEditVersion=editVersion;
+    const result=await api('/api/action',{action,data,revision}); state=result.state; revision=result.revision;if(editVersion===submittedEditVersion)dirty=false;
     if(result.result?.studyId && ['create_study','merge'].includes(action)) { selectedStudy=result.result.studyId; selectedNode=result.result.nodeId; view='editor'; }
-    if(action==='add_node') selectedNode=result.result.nodeId;
+    if(action==='add_node'){if(previous?.nodeId)navigation.push(previous);selectedNode=result.result.nodeId;}
     if(action==='delete_node') selectedNode=study()?.rootId;
-    if(action==='restore') { selectedStudy=state.studies.find(s=>!s.archived)?.id; selectedNode=study()?.rootId; }
+    if(action==='create_study'||action==='add_node')ui.panels.inspector=true;
     if(['create_study','merge','restore','delete_node','replace_concept','restore_substitution'].includes(action)){navigation=[];compositionScope=null;}
     if(['replace_concept','restore_substitution'].includes(action))selectedNode=result.result.nodeId;
     if(action==='add_node'&&isCombination(node()))compositionScope=selectedNode;
     render();
     return result.result;
-  } finally { busy=false; document.body.classList.remove('busy'); $('#save-status').textContent=`Сохранено · версия ${revision}`; }
+  } finally { busy=false; document.body.classList.remove('busy'); $('#save-status').textContent=dirty?'Есть несохранённый текст':`Сохранено · версия ${revision}`; }
 }
 function study(id=selectedStudy) { return state?.studies.find(s=>s.id===id); }
 function node(s=study(),id=selectedNode) { return s?.nodes.find(n=>n.id===id); }
@@ -72,6 +74,7 @@ function render() {
   if(!study()) { navigation=[];compositionScope=null;selectedStudy=state.studies.find(s=>!s.archived)?.id; selectedNode=study()?.rootId; }
   if(study()&&!node()){selectedNode=study().rootId;navigation=[];compositionScope=null;}
   if(compositionScope&&!isCombination(node(study(),compositionScope))){compositionScope=null;navigation=[];}
+  if(compositionScope&&selectedNode!==compositionScope&&!study().edges.some(e=>edgeRole(e)==='component'&&e.from===compositionScope&&e.to===selectedNode))compositionScope=null;
   navigation=navigation.filter(f=>node(study(),f.nodeId)&&(!f.scope||isCombination(node(study(),f.scope))));
   $('#workspace-title').textContent=study()?.title || 'Ваши исследования';
   $('#revision').textContent=`v${revision}`;
@@ -126,11 +129,14 @@ function renderNavigation(){
 }
 function renderInspector() {
   const s=study(),n=node();if(!n)return;
+  const previousForm=$('#node-form'),draft=dirty&&previousForm?.dataset.nodeId===n.id?Object.fromEntries(new FormData(previousForm)):null;
   const labels=new Map(s.nodes.map(n=>[n.id,displayName(n)]));
   const edges=s.edges.filter(e=>e.from===n.id||e.to===n.id);edgePage=Math.min(edgePage,Math.max(0,Math.ceil(edges.length/60)-1));
   $('#inspector').innerHTML=`<h2>${esc(displayName(n))}</h2><div class="id-label">ID ${esc(n.id)}</div><form id="node-form">${nodeFields(n)}<button class="primary" type="submit">Сохранить элемент</button></form><div class="actions"><button id="expand-node">＋ Раскрыть узел</button><button id="link-node">↗ Связать с существующим</button><button id="inspector-copy">Копировать фрагмент</button></div><div id="composition-actions"></div><h3>Связи · ${edges.length}</h3><p class="hint">Включение компонента и содержательное утверждение различны. Внешняя связь с α относится к целому.</p><div id="edge-pagination"></div>${edges.slice(edgePage*60,(edgePage+1)*60).map(e=>`<div class="relation-item"><span class="relation-title">${esc(labels.get(e.from))} → ${esc(labels.get(e.to))}</span><span class="${edgeRole(e)==='component'?'component-tag':''}">${esc(edgeTitle(e))}</span>${e.notes?`<p class="hint">${esc(e.notes)}</p>`:''}<div><button data-go="${esc(e.from===n.id?e.to:e.from)}">Перейти</button><button data-edit-edge="${esc(e.id)}">Изменить</button><button data-delete-edge="${esc(e.id)}" class="danger">Удалить связь</button></div></div>`).join('')||'<p class="hint">Раскройте элемент или свяжите его с уже существующим.</p>'}<h3>Происхождение · ${n.origins.length}</h3>${n.origins.map(o=>`<details><summary>${esc(o.studyTitle||o.studyId)} · ${esc(o.snapshot.label||o.nodeId)}</summary><pre>${esc(JSON.stringify(o,null,2))}</pre></details>`).join('')||'<p class="hint">История создания и принятых импортов сохраняется в истории рабочего пространства и JSON экспорте.</p>'}${n.id!==s.rootId?'<button id="delete-node" class="danger wide">Удалить элемент и его связи</button>':''}`;
   pagination($('#edge-pagination'),edgePage,edges.length,60,p=>{if(!canLeave())return;edgePage=p;renderInspector();});
-  $('#node-form').oninput=()=>{dirty=true;$('#save-status').textContent='Есть несохранённый текст';};
+  $('#node-form').dataset.nodeId=n.id;
+  if(draft)for(const [name,value]of Object.entries(draft))$(`[name="${name}"]`,$('#node-form')).value=value;
+  $('#node-form').oninput=()=>{dirty=true;editVersion++;$('#save-status').textContent='Есть несохранённый текст';};
   $('#node-form').onsubmit=run(async e=>{e.preventDefault();await mutate('edit_node',{studyId:s.id,nodeId:n.id,...Object.fromEntries(new FormData(e.target))});toast('Элемент сохранён. Изменённые соответствия требуют повторной проверки.');});
   bindStructuralFields($('#node-form'));renderCompositionActions(s,n);
   $('#expand-node').onclick=()=>addNode(n.id);$('#link-node').onclick=()=>edgeDialog();$('#inspector-copy').onclick=run(copyFragment);
@@ -193,13 +199,13 @@ function drawGraph(host,s,focus,onSelect,depth=2,persist=false,markings=new Map(
   if(host.graphKey!==key||!host.graphView){
     host.graphView?.observer.disconnect();host.graphKey=key;
     host.graphView=new GraphView(host,{
-      canInteract:()=>!busy&&(!dirty||canLeave()),select:onSelect,
+      canInteract:id=>!id||(!busy&&(!dirty||canLeave())),select:onSelect,
       editNode:id=>{if(persist){selectNode(id);openInspector();}},
       editEdge:id=>{if(persist)edgeDialog(study().edges.find(e=>e.id===id));},
       savePosition:(id,p)=>mutate('position',{studyId:s.id,nodeId:id,...p}),error:e=>toast(e.message,true),
       changed:snapshot=>{ui.graphs[key]=snapshot;saveUI();},
       cameraChanged:c=>{if(persist)$('#zoom-reset').textContent=Math.round(c.scale*100)+'%';},
-      sharedZoom:factor=>{if(!persist&&$('#shared-zoom').checked){const other=host.id==='compare-left-graph'?'compare-right-graph':'compare-left-graph';$('#'+other).graphView?.zoom(factor,undefined,false);}}
+      sharedZoom:(_,remember)=>{if(!persist)syncComparisonScale(host.id==='compare-left-graph'?'left':'right',remember);}
     });host.graphView.restore(ui.graphs[key]);
   }
   const layout=new Map(),levels=new Map(),dist=new Map([[s.rootId,0]]),queue=[s.rootId],adj=new Map(s.nodes.map(n=>[n.id,[]]));
@@ -217,8 +223,9 @@ function compareOptions() {
   for(const [selector,id]of [['#compare-left',leftStudy],['#compare-right',rightStudy]]){$(selector).innerHTML='<option value="">Выберите исследование</option>'+active.map(s=>`<option value="${esc(s.id)}" ${s.id===id?'selected':''}>${esc(s.title)}</option>`).join('');}
 }
 function renderCompare() {
+  $('#workspace-title').textContent='Сопоставление';
   compareOptions();const l=study(leftStudy),r=study(rightStudy);
-  if(!l||!r||l.id===r.id){$('#pair-details').innerHTML='<p class="hint">Создайте и выберите два разных исследования.</p>';$('#matches').innerHTML='';$('#comparison-summary').textContent='';for(const id of ['#compare-left-list','#compare-right-list','#compare-left-graph','#compare-right-graph'])$(id).innerHTML='';return;}
+  if(!l||!r||l.id===r.id){$('#pair-details').innerHTML='<p class="hint">Создайте и выберите два разных исследования.</p>';$('#matches').innerHTML='';$('#comparison-summary').textContent='';for(const id of ['#compare-left-list','#compare-right-list','#compare-left-graph','#compare-right-graph']){const host=$(id);host.graphView?.observer.disconnect();host.graphView=null;host.fit=null;host.innerHTML='';}return;}
   if(!node(l,leftNode))leftNode=l.rootId;if(!node(r,rightNode))rightNode=r.rootId;
   for(const [side,s,nid]of [['left',l,leftNode],['right',r,rightNode]]) {
     const host=$(`#compare-${side}-list`);
@@ -229,12 +236,13 @@ function renderCompare() {
     for(const m of state.matches)if(new Set([m.leftStudy,m.rightStudy]).has(leftStudy)&&new Set([m.leftStudy,m.rightStudy]).has(rightStudy)){const id=m.leftStudy===s.id?m.leftNode:m.rightNode;const mark=m.status==='confirmed'?'common':m.status==='rejected'?'disputed':'';if(mark&&markings.get(id)!=='common')markings.set(id,mark);}
     drawGraph($(`#compare-${side}-graph`),s,nid,id=>{if(side==='left')leftNode=id;else rightNode=id;renderCompare();},2,false,markings);
   }
-  renderPair();renderMatches();saveUI();
+  syncComparisonScale('left');renderPair();renderMatches();saveUI();
 }
+function syncComparisonScale(side,remember=false){if(!$('#shared-zoom').checked)return;const a=$('#compare-'+side+'-graph').graphView,b=$('#compare-'+(side==='left'?'right':'left')+'-graph').graphView;if(a&&b&&a.camera.scale!==b.camera.scale){if(remember)b.remember();b.setCamera({...b.camera,scale:a.camera.scale});}}
 function pairMatch(a=leftNode,b=rightNode){return state.matches.find(m=>(m.leftNode===a&&m.rightNode===b)||(m.leftNode===b&&m.rightNode===a));}
 function renderPair(){const l=node(study(leftStudy),leftNode),r=node(study(rightStudy),rightNode),match=pairMatch();if(!l||!r)return;
-  const keys=['label','structure','kind','notes','alternatives','source'],names={structure:'Структурная функция (concept по умолчанию)',label:'Название',kind:'Тип / роль',notes:'Содержание',alternatives:'Альтернативы',source:'Источник'};
-  $('#pair-details').innerHTML=`<div class="pair-card"><div class="toolbar"><h3>Выбранная пара: ${esc(displayName(l))} ↔ ${esc(displayName(r))}</h3><span class="tag ${match?.status||'pending'}">${statusNames[match?.status||'pending']}</span></div><div class="pair-columns">${[l,r].map(n=>`<div><div class="id-label">${esc(n.id)}</div>${keys.map(k=>`<div class="${l[k]===r[k]?'field-same':'field-diff'}"><strong>${names[k]}</strong><br>${esc(n[k]||'—')}</div>`).join('')}</div>`).join('')}</div>${match?.reason?`<p class="hint">${esc(match.reason)}</p>`:''}<p class="hint">Зелёным показаны равные поля, жёлтым — различия. Равные поля сами по себе не доказывают тождество элементов.</p><div class="actions"><button id="confirm-pair" class="primary">Подтвердить соответствие</button><button id="reject-pair">Отклонить соответствие</button><button id="pending-pair">Оставить кандидатом</button></div></div>`;
+  const keys=['label','structure','kind','notes','alternatives','source'],names={structure:'Структурная функция (concept по умолчанию)',label:'Техническое название',kind:'Тип / роль',notes:'Содержание',alternatives:'Альтернативы',source:'Источник'};
+  $('#pair-details').innerHTML=`<div class="pair-card"><div class="toolbar"><h3>Выбранная пара: ${esc(displayName(l))} ↔ ${esc(displayName(r))}</h3><span class="tag ${match?.status||'pending'}">${statusNames[match?.status||'pending']}</span></div><div class="actions"><button id="confirm-pair" class="primary">Подтвердить соответствие</button><button id="reject-pair">Отклонить соответствие</button><button id="pending-pair">Оставить кандидатом</button></div>${match?.reason?`<p class="hint">${esc(match.reason)}</p>`:''}<details><summary>Поля, словарь и происхождение выбранной пары</summary><div class="pair-columns">${[[l,study(leftStudy)],[r,study(rightStudy)]].map(([n,s])=>`<div><strong>${esc(s.title)}</strong><div class="id-label">ID ${esc(n.id)}</div><div class="field-same"><strong>Словарные обозначения</strong><br>${esc((s.designations||[]).filter(d=>d.target===n.id).map(d=>d.text).join(', ')||'—')}</div>${keys.map(k=>`<div class="${l[k]===r[k]?'field-same':'field-diff'}"><strong>${names[k]}</strong><br>${esc(n[k]||'—')}</div>`).join('')}<details><summary>Происхождение · ${n.origins.length}</summary><pre>${esc(JSON.stringify(n.origins,null,2))}</pre></details></div>`).join('')}</div><p class="hint">Зелёным — равные поля, жёлтым — различия. Совпадение не доказывает тождество.</p></details><p class="hint">Решение записывает соответствие. Исходные графы сохраняются независимо; объединение — отдельная операция.</p></div>`;
   $('#confirm-pair').onclick=()=>decidePair('confirmed');$('#reject-pair').onclick=()=>decidePair('rejected');$('#pending-pair').onclick=()=>decidePair('pending');
 }
 function decidePair(status){const l=node(study(leftStudy),leftNode),r=node(study(rightStudy),rightNode);if(!l||!r)return;const match=pairMatch();
@@ -256,7 +264,7 @@ function compareRows(){const l=study(leftStudy),r=study(rightStudy);if(!l||!r)re
 function renderMatches(){const query=$('#match-search').value.toLowerCase(),rows=compareRows().filter(x=>`${x.left.label} ${x.right.label} ${x.reason}`.toLowerCase().includes(query));
   const host=$('#matches');host.innerHTML='<div id="match-pagination"></div><table class="table"><thead><tr><th>Первый элемент</th><th>Второй элемент</th><th>Решение и основание</th><th></th></tr></thead><tbody></tbody></table>';
   matchPage=pagination($('#match-pagination'),matchPage,rows.length,60,p=>{matchPage=p;renderMatches();});
-  $('tbody',host).innerHTML=rows.slice(matchPage*60,(matchPage+1)*60).map(x=>`<tr><td>${esc(displayName(x.left))}<br><span class="muted">${esc(x.left.kind)}</span></td><td>${esc(displayName(x.right))}<br><span class="muted">${esc(x.right.kind)}</span></td><td><span class="tag ${x.status}">${statusNames[x.status]}</span><div class="reason">${esc(x.reason)}</div></td><td><button data-select-pair="${esc(x.a)}" data-right="${esc(x.b)}">Просмотреть пару</button></td></tr>`).join('')||'<tr><td colspan="4">Кандидатов по названию нет. Можно выбрать любые два элемента в графах или поиске выше.</td></tr>';
+  $('tbody',host).innerHTML=rows.slice(matchPage*60,(matchPage+1)*60).map(x=>`<tr><td>${esc(displayName(x.left))}<br><span class="muted">${esc(x.left.kind)}</span></td><td>${esc(displayName(x.right))}<br><span class="muted">${esc(x.right.kind)}</span></td><td><span class="tag ${x.status}">${statusNames[x.status]}</span><div class="reason">${esc(x.reason)}</div></td><td><button data-select-pair="${esc(x.a)}" data-right="${esc(x.b)}">Просмотреть пару</button></td></tr>`).join('')||'<tr><td colspan="4">Кандидатов по выбранному источнику нет. Можно сменить источник или выбрать пару в графах/поиске.</td></tr>';
   $$('[data-select-pair]').forEach(e=>e.onclick=()=>{leftNode=e.dataset.selectPair;rightNode=e.dataset.right;renderCompare();$('#compare-left-graph').graphView?.center(leftNode);$('#compare-right-graph').graphView?.center(rightNode);$('.comparison-graphs').scrollIntoView({behavior:'smooth',block:'start'});});
 }
 function mergeDialog(){const l=study(leftStudy),r=study(rightStudy);if(!l||!r||l.id===r.id)return toast('Выберите два разных исследования.',true);const rows=compareRows().filter(x=>x.status==='confirmed');
@@ -266,7 +274,7 @@ function mergeDialog(){const l=study(leftStudy),r=study(rightStudy);if(!l||!r||l
 function fragmentUrl(){if(!study()||!node())throw new Error('Сначала выберите исследование и узел.');const depth=$('#export-depth').value.trim();if(depth!=='all'&&!/^\d+$/.test(depth))throw new Error('Глубина должна быть целым числом ≥0 или all.');return `/api/graph-export?study=${encodeURIComponent(selectedStudy)}&node=${encodeURIComponent(selectedNode)}&depth=${depth}`;}
 async function clipboard(text){try{await navigator.clipboard.writeText(text);toast('Скопировано в буфер обмена.');}catch{dialog('Текст для копирования',`<p>Выделите текст и нажмите Ctrl+C.</p><textarea rows="14" id="copy-fallback">${esc(text)}</textarea>`);$('#copy-fallback').select();}}
 async function copyFragment(){await clipboard(JSON.stringify(await api(fragmentUrl()),null,2));}
-async function download(url,filename){const data=await api(url);downloadText(JSON.stringify(data,null,2),filename,'application/json');}
+async function download(url,filename){await api(url);const a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();}
 function downloadText(text,filename,type){const url=URL.createObjectURL(new Blob([text],{type})),a=document.createElement('a');a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
 async function promptChatGPT(){const doc=await api(fragmentUrl());const n=node();const template={format:'concept-field-graph',version:2,kind:'changes',changes:[{operation:'node',studyId:selectedStudy,base:null,value:{id:'NEW-UNIQUE-ID',label:'Новый элемент',kind:'свободный тип',notes:'Предлагаемое содержание',alternatives:'',source:'Предложение ChatGPT, требует проверки',origins:[]}},{operation:'edge',studyId:selectedStudy,base:null,value:{id:'NEW-EDGE-ID',from:n.id,to:'NEW-UNIQUE-ID',type:'раскрывается через',notes:'',origins:[]}}]};await clipboard(`Предложи ручное раскрытие выбранного элемента «${n.label}». Это неподтверждённые кандидаты; не отождествляй элементы по названию. Верни только JSON concept-field-graph v2 kind changes. Для новых объектов используй новые уникальные ID (UUID), base:null. Для изменения существующего объекта сохрани ID, все атрибуты и origins, укажи полный исходный объект в base. Анонимная комбинация: structure:"combination", label:""; обычный концепт: structure:"concept". Включение: edge.role:"component", from:ID комбинации, to:ID компонента; type и componentRole необязательны. Обычная связь имеет role:"relation". Не переноси внешние утверждения о комбинации на её компоненты. Словарное обозначение предлагается операцией designation с text,target,notes,source,origins. Не меняй существующие данные без обоснования. Не возвращай сам diff как изменения.\nПример формы ответа:\n${JSON.stringify(template,null,2)}\nИсходный фрагмент:\n${JSON.stringify(doc,null,2)}`);}
 async function stageImport(){const text=$('#import-text').value;if(!text.trim())throw new Error('Выберите файл или вставьте JSON.');let document;try{document=JSON.parse(text);}catch{throw new Error('JSON не разбирается. Вставьте только JSON, без Markdown ограждений и пояснений.');}
@@ -288,7 +296,7 @@ async function renderHistory(){const rows=await api('/api/history'),host=$('#his
   $$('[data-restore]').forEach(e=>e.onclick=()=>{const targetRevision=Number(e.dataset.restore);dialog(`Восстановление версии #${targetRevision}`,'<p>Всё рабочее пространство вернётся к выбранной версии, включая исследования, соответствия и очередь кандидатов. Текущая и последующие версии останутся в истории; действие обратимо.</p>',async()=>{await mutate('restore',{targetRevision});toast('Версия восстановлена новой записью истории.');},'Восстановить');});
   $$('[data-history-diff]').forEach(e=>e.onclick=run(async()=>{if(!study())throw new Error('Выберите исследование.');await download(`/api/diff?left=${encodeURIComponent(selectedStudy)}&revision=${e.dataset.historyDiff}`,'concept-field-version-diff.json');}));
 }
-function help(){dialog('Как работать с полем знаний',`<p>1. Создайте независимое исследование слова. В форме элемента записывайте любые характеристики, определения, альтернативы и источники. Поля типов свободные.</p><p>2. «Раскрыть узел» добавляет новый элемент и отношение. «Связать с существующим» позволяет повторное использование, циклы и самоссылки. Поиск охватывает название и содержание всех элементов; граф показывает ограниченное окружение выбранного узла.</p><p>Комбинация α может быть без названия. В неё включают новые или существующие компоненты; вложенную комбинацию открывают щелчком. «Назад» и «К исходному узлу» восстанавливают контекст без записи связей. Словарные обозначения доступны в инспекторе. Замещение требует просмотра, подтверждения эквивалентности и обоснования; неоднозначный перенос отклоняется.</p><p>3. Во вкладке сопоставления выберите две структуры и любые два элемента. Просмотрите равные и различающиеся поля, подтвердите или отклоните соответствие с обоснованием. После изменения элемента решение требует повторной проверки.</p><p>4. «Создать объединение» создаёт третью структуру. Выберите только нужные подтверждённые пары; все исходные интерпретации и отношения остаются в происхождении новых объектов.</p><p>5. Экспорт исследования и фрагмента содержит JSON v2 (импорт v1 совместим), ID и историю. Импорт не дублирует исходные ID: предложения попадают в очередь, конфликты показываются до применения. Экспорт различий доступен между исследованиями и в истории между версиями.</p><p>6. Сохраняйте форму кнопкой «Сохранить элемент». Другие действия сохраняются сразу в SQLite. Для резервной копии используйте экспорт всего рабочего пространства. При повторном запуске с тем же файлом базы работа продолжается.</p><p>Ctrl+K — поиск элементов, Esc — закрыть диалог. Колесо — масштаб графа, перетаскивание фона — движение, перетаскивание узла — его позиция.</p>`);}
+function help(){dialog('Как работать с полем знаний',`<p>1. Создайте независимое исследование слова. В форме элемента записывайте любые характеристики, определения, альтернативы и источники. Поля типов свободные.</p><p>2. «Раскрыть узел» добавляет новый элемент и отношение. «Связать с существующим» позволяет повторное использование, циклы и самоссылки. Поиск охватывает название и содержание всех элементов; «Весь граф» показывает до 1000 узлов / 3000 рёбер, «Окружение» — соседей на выбранную глубину. Ограничение вида не удаляет данные.</p><p>Комбинация α может быть без названия. В неё включают новые или существующие компоненты; вложенную комбинацию открывают щелчком. «Назад» и «К исходному узлу» восстанавливают контекст без записи связей. Словарные обозначения доступны в инспекторе. Замещение требует просмотра, подтверждения эквивалентности и обоснования; неоднозначный перенос отклоняется.</p><p>3. Во вкладке сопоставления выберите две структуры и любые два элемента. Просмотрите равные и различающиеся поля, подтвердите или отклоните соответствие с обоснованием. После изменения элемента решение требует повторной проверки.</p><p>4. «Создать объединение» создаёт третью структуру. Выберите только нужные подтверждённые пары; все исходные интерпретации и отношения остаются в происхождении новых объектов.</p><p>5. Экспорт исследования и фрагмента содержит JSON v2 (импорт v1 совместим), ID и историю. Импорт не дублирует исходные ID: предложения попадают в очередь, конфликты показываются до применения. Экспорт различий доступен между исследованиями и в истории между версиями.</p><p>6. Сохраняйте форму кнопкой «Сохранить элемент». Другие действия сохраняются сразу в SQLite. Для резервной копии используйте экспорт всего рабочего пространства. При повторном запуске с тем же файлом базы работа продолжается.</p><p>Ctrl+K — поиск элементов, Esc — закрыть диалог. Колесо — масштаб вокруг курсора, фон — панорама; узел и связанные линии двигаются синхронно, координаты сохраняются после отпускания. Вписать / К выбранному / К корню — явные переходы; Вернуть участок возвращает камеру, Назад — камеру и выбор. Камера, выбор и панели восстанавливаются в том же браузере/адресе; несохранённая форма не восстанавливается. Двойной щелчок — карточка, линия — правка. Сопоставление различает словарь и техническое название; совместный zoom не объединяет графы.</p>`);}
 $('#new-study').onclick=newStudy;$('#empty-create').onclick=newStudy;$('#help').onclick=help;
 $('#study-search').oninput=renderStudies;$('#toggle-archive').onclick=()=>{showArchive=!showArchive;renderStudies();};
 $$('.tabs button').forEach(e=>e.onclick=()=>{if(!canLeave())return;view=e.dataset.view;render();});
@@ -316,8 +324,8 @@ $('#center-root').onclick=()=>{selectNode(study()?.rootId);$('#graph').graphView
 $('#camera-back').onclick=()=>$('#graph').graphView?.back();
 $('#zoom-in').onclick=()=>$('#graph').graphView?.zoom(1.2);$('#zoom-out').onclick=()=>$('#graph').graphView?.zoom(1/1.2);
 $('#zoom-reset').onclick=()=>{const g=$('#graph').graphView;if(g)g.zoom(1/g.camera.scale);};
-$('#candidate-basis').onchange=()=>{matchPage=0;renderMatches();saveUI();};$('#shared-zoom').onchange=()=>{if($('#shared-zoom').checked){const a=$('#compare-left-graph').graphView,b=$('#compare-right-graph').graphView;if(a&&b)b.zoom(a.camera.scale/b.camera.scale);}saveUI();};
-$('#fit-both').onclick=()=>{for(const side of ['left','right'])$('#compare-'+side+'-graph').fit?.();if($('#shared-zoom').checked){const a=$('#compare-left-graph').graphView,b=$('#compare-right-graph').graphView;if(a&&b){const scale=Math.min(a.camera.scale,b.camera.scale);a.zoom(scale/a.camera.scale);b.zoom(scale/b.camera.scale);}}};
+$('#candidate-basis').onchange=()=>{matchPage=0;renderMatches();saveUI();};$('#shared-zoom').onchange=()=>{syncComparisonScale('left',true);saveUI();};
+$('#fit-both').onclick=()=>{for(const side of ['left','right'])$('#compare-'+side+'-graph').fit?.();if($('#shared-zoom').checked){const a=$('#compare-left-graph').graphView,b=$('#compare-right-graph').graphView;if(a&&b){const scale=Math.min(a.camera.scale,b.camera.scale);a.setCamera({...a.camera,scale});b.setCamera({...b.camera,scale});}}};
 for(const [id,factor]of [['zoom-both-in',1.2],['zoom-both-out',1/1.2]])$('#'+id).onclick=()=>{for(const side of ['left','right'])$('#compare-'+side+'-graph').graphView?.zoom(factor);};
-for(const controls of $$('.pair-controls')){const side=controls.dataset.side,get=()=>$('#compare-'+side+'-graph').graphView; $('[data-pair-fit]',controls).onclick=()=>get()?.fit();$('[data-pair-center]',controls).onclick=()=>get()?.center(side==='left'?leftNode:rightNode);$('[data-pair-root]',controls).onclick=()=>{if(side==='left')leftNode=study(leftStudy)?.rootId;else rightNode=study(rightStudy)?.rootId;renderCompare();get()?.center(side==='left'?leftNode:rightNode);};$('[data-pair-back]',controls).onclick=()=>get()?.back();}
+for(const controls of $$('.pair-controls')){const side=controls.dataset.side,get=()=>$('#compare-'+side+'-graph').graphView; $('[data-pair-fit]',controls).onclick=()=>{get()?.fit();syncComparisonScale(side,true);};$('[data-pair-center]',controls).onclick=()=>get()?.center(side==='left'?leftNode:rightNode);$('[data-pair-root]',controls).onclick=()=>{if(side==='left')leftNode=study(leftStudy)?.rootId;else rightNode=study(rightStudy)?.rootId;renderCompare();get()?.center(side==='left'?leftNode:rightNode);};$('[data-pair-back]',controls).onclick=()=>{get()?.back();syncComparisonScale(side);};}
 document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.key.toLowerCase()==='k'){ui.panels.elements=true;applyPanels();saveUI();}if(e.target.closest('input,textarea,select'))return;if(view==='editor'&&e.key==='Enter')openInspector();});
