@@ -1,0 +1,5219 @@
+{
+  "format": "concept-field-graph",
+  "version": 2,
+  "kind": "study",
+  "exportedAt": "2026-10-11T19:10:01.608786+00:00",
+  "state": {
+    "studies": [
+      {
+        "id": "3876eb26-b999-4868-a889-7f7ed2617ee4",
+        "title": "Камень — K001",
+        "description": "Ручная гипотеза описания отдельного физического камня. Аспекты не назначают значения; разновидность не запускает наследование. Не определение и не подтверждённые знания. Легенда: docs/discussion/conclusion.md §12.",
+        "rootId": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+        "nodes": [
+          {
+            "id": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "label": "камень",
+            "kind": "",
+            "notes": "",
+            "alternatives": "Рабочее чтение: отдельное физическое тело. Материал, драгоценность и другие значения не отождествлены.",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.680760+00:00"
+          },
+          {
+            "id": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "label": "тело",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.695407+00:00"
+          },
+          {
+            "id": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "label": "характеристика",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.702962+00:00"
+          },
+          {
+            "id": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "label": "величина",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.710236+00:00"
+          },
+          {
+            "id": "22b1ff0f-01a3-4edc-b67c-dfa7ff85aa59",
+            "label": "масса",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.718296+00:00"
+          },
+          {
+            "id": "431c7ba7-911d-43cc-a479-b886ca4e4d74",
+            "label": "объём",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.725511+00:00"
+          },
+          {
+            "id": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "label": "форма",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.732892+00:00"
+          },
+          {
+            "id": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "label": "размер",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.740013+00:00"
+          },
+          {
+            "id": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "label": "поверхность",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.747680+00:00"
+          },
+          {
+            "id": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "label": "материал",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.754810+00:00"
+          },
+          {
+            "id": "c55f9f18-2701-4397-b30a-7d2e41e65580",
+            "label": "структура",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.761989+00:00"
+          },
+          {
+            "id": "5518150f-aeb1-4668-a068-a3dcdc0166b1",
+            "label": "твёрдость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.769519+00:00"
+          },
+          {
+            "id": "6967f7be-4620-4eae-8991-b1d1d2d6beab",
+            "label": "хрупкость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.776689+00:00"
+          },
+          {
+            "id": "155ca237-789c-4361-8e92-5d0c8ead4b38",
+            "label": "прочность",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.784922+00:00"
+          },
+          {
+            "id": "a10cf95a-4a0b-4d21-b48b-418cb5b257da",
+            "label": "плотность",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.792339+00:00"
+          },
+          {
+            "id": "72bdc070-8360-4e0d-b779-7257461a7b90",
+            "label": "пористость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.799341+00:00"
+          },
+          {
+            "id": "b6386177-3030-4211-a594-0d8864e179a2",
+            "label": "температура",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.807719+00:00"
+          },
+          {
+            "id": "3a48d8c9-b951-4252-bb12-16fe412bf3e9",
+            "label": "влажность",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.814736+00:00"
+          },
+          {
+            "id": "f5d02865-2df4-4f41-9005-6e374836bd76",
+            "label": "цвет",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.822123+00:00"
+          },
+          {
+            "id": "71377a3c-0f40-401d-8491-d59c4252e181",
+            "label": "блеск",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.829325+00:00"
+          },
+          {
+            "id": "373d197d-1049-4ad2-a536-2b7ad7eca168",
+            "label": "длина",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.662925+00:00"
+          },
+          {
+            "id": "ffd0bf12-e029-4f9e-a916-2edaa4dcb0cb",
+            "label": "ширина",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.671305+00:00"
+          },
+          {
+            "id": "706e077f-3166-44bc-8f4e-a183e7c5f920",
+            "label": "высота",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.678569+00:00"
+          },
+          {
+            "id": "9990d418-8e2d-4705-8359-d087d2839883",
+            "label": "площадь",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.686303+00:00"
+          },
+          {
+            "id": "688c3774-6b08-4db7-8b13-44d4f54167cc",
+            "label": "кривизна",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.693886+00:00"
+          },
+          {
+            "id": "d302876e-41e8-4be7-9cb9-3c86f4e25d65",
+            "label": "симметрия",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.701647+00:00"
+          },
+          {
+            "id": "55121396-b8dc-4e1c-9f95-4efea4214b0f",
+            "label": "граница",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.709293+00:00"
+          },
+          {
+            "id": "8f570261-cdc6-4928-bcb5-7f1ab902be75",
+            "label": "рельеф",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.716875+00:00"
+          },
+          {
+            "id": "5529aee3-193b-4834-a87e-fef42ab8bba8",
+            "label": "шероховатость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.724234+00:00"
+          },
+          {
+            "id": "9ba8da35-e245-40b6-802f-93ba6c71fdd1",
+            "label": "смачиваемость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.733408+00:00"
+          },
+          {
+            "id": "38740f2d-fbed-4967-99dc-4fbcaba2ffc4",
+            "label": "состав",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.741095+00:00"
+          },
+          {
+            "id": "55ffeaf1-4179-4b85-9179-010ac8da156c",
+            "label": "зернистость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.748847+00:00"
+          },
+          {
+            "id": "bc23621a-58e5-4a98-a761-4e8f69676f92",
+            "label": "слоистость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.756669+00:00"
+          },
+          {
+            "id": "89d6be61-9de1-4ec1-9e19-53face38d0d3",
+            "label": "трещина",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.764368+00:00"
+          },
+          {
+            "id": "83ecfc58-5315-41ac-8d3e-b1103df5fba5",
+            "label": "вещество",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.772034+00:00"
+          },
+          {
+            "id": "efedb293-fb18-4ef0-aeb3-1f18af47b7c4",
+            "label": "упругость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.779773+00:00"
+          },
+          {
+            "id": "fb4d31c9-bf09-47b9-b2de-befd823263b8",
+            "label": "растворимость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.787552+00:00"
+          },
+          {
+            "id": "21372050-3dae-4b3d-88b3-e9844e076368",
+            "label": "прозрачность",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.795139+00:00"
+          },
+          {
+            "id": "35a10c5a-80e4-4902-a6cd-bf8874b4be68",
+            "label": "теплопроводность",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.802992+00:00"
+          },
+          {
+            "id": "2434b71c-6927-4334-852e-a5644befbc15",
+            "label": "теплоёмкость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.810719+00:00"
+          },
+          {
+            "id": "a830d3d3-5100-4be4-b8e5-fc1e83986944",
+            "label": "электропроводность",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.818509+00:00"
+          },
+          {
+            "id": "adafe62b-20e3-4d9e-b9cd-3eaf8fec77d0",
+            "label": "магнитность",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.826238+00:00"
+          },
+          {
+            "id": "83b22e90-6fdf-4c8f-a405-68569d0e2e72",
+            "label": "текстура",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.834088+00:00"
+          },
+          {
+            "id": "8589a9a2-f403-438d-ab88-dc9d212301aa",
+            "label": "состояние",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.841957+00:00"
+          },
+          {
+            "id": "b65fcc7b-6aae-4d54-ae3c-8a68c412cb39",
+            "label": "край",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.849811+00:00"
+          },
+          {
+            "id": "ebd52ad5-a475-4348-9910-52d906755ef4",
+            "label": "грань",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.857695+00:00"
+          },
+          {
+            "id": "f9fa3f9c-65cc-4a05-a570-ba0082fdc7bc",
+            "label": "вершина",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.865449+00:00"
+          },
+          {
+            "id": "45b06d29-6914-412c-a5a2-b7085fa9ee13",
+            "label": "угол",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.873125+00:00"
+          },
+          {
+            "id": "f8fd93c3-aaa2-4d18-8c23-43ea4664a517",
+            "label": "происхождение",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.880761+00:00"
+          },
+          {
+            "id": "269bd91c-7056-4c8c-b85b-4f40dcfad8f5",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:46.890580+00:00",
+            "structure": "combination"
+          }
+        ],
+        "edges": [
+          {
+            "id": "cc3e48b9-c03b-4d28-b30c-e190f5bd134d",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "43187a0a-48fc-4eca-a2f9-a94942c88bd9",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "22b1ff0f-01a3-4edc-b67c-dfa7ff85aa59",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "236c26b2-7043-40cd-b629-2bacc66c7f91",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "431c7ba7-911d-43cc-a479-b886ca4e4d74",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "77ed23d9-f820-424b-86e0-af233038ca6b",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "6ef6e2c3-70db-498d-ad8a-810ee918905d",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "bbc99784-9ee3-4fb9-ae9a-1311c2602034",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "cb630df5-3ffc-4a6f-b39d-896446f4b308",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "c4ede859-6390-4547-aaf3-27f5cae3fd82",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "c55f9f18-2701-4397-b30a-7d2e41e65580",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "f9e94d9d-0777-4502-82b4-c7568e65fb8f",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "5518150f-aeb1-4668-a068-a3dcdc0166b1",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "4dc6866c-3c7e-4811-9748-193b0d3c7d63",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "6967f7be-4620-4eae-8991-b1d1d2d6beab",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "c532796f-d595-4ff4-bbef-f898c14e13f7",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "155ca237-789c-4361-8e92-5d0c8ead4b38",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "6769026b-9868-4291-a745-49e54a4d2876",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "a10cf95a-4a0b-4d21-b48b-418cb5b257da",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "acb4e2ac-8bdd-4959-8fe2-11df076bdc9b",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "72bdc070-8360-4e0d-b779-7257461a7b90",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "9be9b995-61be-464b-9952-3e0a9639f540",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "b6386177-3030-4211-a594-0d8864e179a2",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "1b6fd909-c441-4fd5-bc70-02cf508d76f0",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "3a48d8c9-b951-4252-bb12-16fe412bf3e9",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "ed6e4a64-0462-4102-a7a2-4ed28a2d8169",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "f5d02865-2df4-4f41-9005-6e374836bd76",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "ae8a6781-04b1-4c67-b41a-65324ff35f92",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "71377a3c-0f40-401d-8491-d59c4252e181",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "531f01ec-0a27-4d3a-8f85-55153cb465dd",
+            "origins": [],
+            "from": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "771ce056-167b-4015-9bef-ee49a49750c6",
+            "origins": [],
+            "from": "22b1ff0f-01a3-4edc-b67c-dfa7ff85aa59",
+            "to": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "ac9005de-9892-4813-b1e9-d00b83719319",
+            "origins": [],
+            "from": "431c7ba7-911d-43cc-a479-b886ca4e4d74",
+            "to": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "9d9ce49c-57bf-4d9c-994a-17f4cf7b01fb",
+            "origins": [],
+            "from": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "4b490723-c0b8-45c7-8e0a-11c8736cdb69",
+            "origins": [],
+            "from": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "c7f4d993-4717-4fa6-8eda-881bdc177820",
+            "origins": [],
+            "from": "5518150f-aeb1-4668-a068-a3dcdc0166b1",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "b56ddddf-1ea3-4b8e-bb59-c0b75ec0eaae",
+            "origins": [],
+            "from": "6967f7be-4620-4eae-8991-b1d1d2d6beab",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "ec4ab8c5-fe8a-4744-ba59-3f79283cc8e5",
+            "origins": [],
+            "from": "155ca237-789c-4361-8e92-5d0c8ead4b38",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "80536b53-5ebd-4e98-b621-eacb7a0e2658",
+            "origins": [],
+            "from": "a10cf95a-4a0b-4d21-b48b-418cb5b257da",
+            "to": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "d3ece4d5-aa91-44bb-a523-83155da454e0",
+            "origins": [],
+            "from": "72bdc070-8360-4e0d-b779-7257461a7b90",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "86b86381-dc96-4c78-b90b-f538b873c381",
+            "origins": [],
+            "from": "b6386177-3030-4211-a594-0d8864e179a2",
+            "to": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "8900f417-e66b-4186-9f18-34e907e2e51f",
+            "origins": [],
+            "from": "3a48d8c9-b951-4252-bb12-16fe412bf3e9",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "660e383a-fe55-452c-aaf1-6a6d93bdc6a4",
+            "origins": [],
+            "from": "f5d02865-2df4-4f41-9005-6e374836bd76",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "23129024-e81f-44b3-9d4a-b1f3d33255c5",
+            "origins": [],
+            "from": "71377a3c-0f40-401d-8491-d59c4252e181",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "822034e4-bbc9-4426-b19b-594b17136cbf",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "8589a9a2-f403-438d-ab88-dc9d212301aa",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "c0bb205a-8fa5-4587-9e62-e4dc64ed0e65",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "f8fd93c3-aaa2-4d18-8c23-43ea4664a517",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "a4e79278-3fef-4fe9-9552-d6aa5254b9ff",
+            "origins": [],
+            "from": "373d197d-1049-4ad2-a536-2b7ad7eca168",
+            "to": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "caad9f30-daa1-4c98-9517-76d4df130c0f",
+            "origins": [],
+            "from": "9990d418-8e2d-4705-8359-d087d2839883",
+            "to": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "80b101d1-8123-45af-a531-6c2d3292e8b8",
+            "origins": [],
+            "from": "688c3774-6b08-4db7-8b13-44d4f54167cc",
+            "to": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "80886580-9840-4ab2-869f-2d2d39013a56",
+            "origins": [],
+            "from": "d302876e-41e8-4be7-9cb9-3c86f4e25d65",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "8743e3c0-1863-45b8-b866-cad035cbc108",
+            "origins": [],
+            "from": "8f570261-cdc6-4928-bcb5-7f1ab902be75",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "97006a01-a012-4c50-80aa-1d70eedb82d0",
+            "origins": [],
+            "from": "5529aee3-193b-4834-a87e-fef42ab8bba8",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "7367f1e8-7797-440c-a3ce-8ec632463355",
+            "origins": [],
+            "from": "9ba8da35-e245-40b6-802f-93ba6c71fdd1",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "a7cc834b-8769-44a4-bbe6-ed157f206929",
+            "origins": [],
+            "from": "55ffeaf1-4179-4b85-9179-010ac8da156c",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "38b03839-b075-4af2-ba9f-5bedf885bc37",
+            "origins": [],
+            "from": "bc23621a-58e5-4a98-a761-4e8f69676f92",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "f11526b9-c56c-4eb9-8f52-83481be95929",
+            "origins": [],
+            "from": "efedb293-fb18-4ef0-aeb3-1f18af47b7c4",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "5b773184-e260-4138-9670-24492c1677a2",
+            "origins": [],
+            "from": "fb4d31c9-bf09-47b9-b2de-befd823263b8",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "922091f9-1bd2-44ba-b504-02707cd5f9e1",
+            "origins": [],
+            "from": "21372050-3dae-4b3d-88b3-e9844e076368",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "cb73ee27-23af-4f35-9cbf-3cf5603478b4",
+            "origins": [],
+            "from": "35a10c5a-80e4-4902-a6cd-bf8874b4be68",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "1d5f1477-a596-4400-a8d1-5cb46defdb1c",
+            "origins": [],
+            "from": "2434b71c-6927-4334-852e-a5644befbc15",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "ab5ef2f0-cf13-4d42-93c8-133ffbebb40f",
+            "origins": [],
+            "from": "a830d3d3-5100-4be4-b8e5-fc1e83986944",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "6b5c3a87-ba0c-4676-b7ed-d609741fa595",
+            "origins": [],
+            "from": "adafe62b-20e3-4d9e-b9cd-3eaf8fec77d0",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "31de8164-ec86-45f6-86e4-321715de4090",
+            "origins": [],
+            "from": "83b22e90-6fdf-4c8f-a405-68569d0e2e72",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "dc955006-fdc4-4fc1-8134-fc3d38585490",
+            "origins": [],
+            "from": "45b06d29-6914-412c-a5a2-b7085fa9ee13",
+            "to": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "5e9ece06-411b-4fd3-affe-64f9df85feb8",
+            "origins": [],
+            "from": "f8fd93c3-aaa2-4d18-8c23-43ea4664a517",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "5a302d60-a5fc-4268-a35c-1dff4012c54e",
+            "origins": [],
+            "from": "ffd0bf12-e029-4f9e-a916-2edaa4dcb0cb",
+            "to": "373d197d-1049-4ad2-a536-2b7ad7eca168",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "8e8d4b1e-dc31-4121-b2ee-c780af8a0be6",
+            "origins": [],
+            "from": "706e077f-3166-44bc-8f4e-a183e7c5f920",
+            "to": "373d197d-1049-4ad2-a536-2b7ad7eca168",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "2b22edfa-0ed6-4582-bf37-b6e3cf252af4",
+            "origins": [],
+            "from": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "to": "22b1ff0f-01a3-4edc-b67c-dfa7ff85aa59",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "7230525a-d60e-4e94-8b0c-92b91ca40ec6",
+            "origins": [],
+            "from": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "to": "431c7ba7-911d-43cc-a479-b886ca4e4d74",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "4d180536-fbcc-4f65-9622-c15f33ff2a51",
+            "origins": [],
+            "from": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "to": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "b07dde70-f2ef-48f4-842a-083e70ee5c29",
+            "origins": [],
+            "from": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "to": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "f0a66904-aee4-418e-a2a7-ac6a6f76f1b5",
+            "origins": [],
+            "from": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "to": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "0e5126b4-3def-43b8-b954-1c816389fddf",
+            "origins": [],
+            "from": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "to": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "cdc28dde-f458-47d9-81f1-1c48b068748c",
+            "origins": [],
+            "from": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "to": "c55f9f18-2701-4397-b30a-7d2e41e65580",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "0cc26808-c323-4772-bb26-073aaf8f7ff4",
+            "origins": [],
+            "from": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "to": "8589a9a2-f403-438d-ab88-dc9d212301aa",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "fb618fd0-5946-4c58-9249-00ba204c6041",
+            "origins": [],
+            "from": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "to": "373d197d-1049-4ad2-a536-2b7ad7eca168",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "4c9b7a19-0a65-4f3d-9f25-909dc67ee9fc",
+            "origins": [],
+            "from": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "to": "ffd0bf12-e029-4f9e-a916-2edaa4dcb0cb",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "9cc24bf6-a623-48af-9243-11071200dcf1",
+            "origins": [],
+            "from": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "to": "706e077f-3166-44bc-8f4e-a183e7c5f920",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "b006d178-4a7c-40ad-a9b4-62c5025573d7",
+            "origins": [],
+            "from": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "to": "431c7ba7-911d-43cc-a479-b886ca4e4d74",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "c2a74b6a-03dd-48a7-a74b-6de77e1ca4cc",
+            "origins": [],
+            "from": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "to": "55121396-b8dc-4e1c-9f95-4efea4214b0f",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "e4899263-63c6-42d3-b537-bb24c03ea601",
+            "origins": [],
+            "from": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "to": "688c3774-6b08-4db7-8b13-44d4f54167cc",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "090eea30-7995-4666-bcf1-7d8aee4714ac",
+            "origins": [],
+            "from": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "to": "d302876e-41e8-4be7-9cb9-3c86f4e25d65",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "21766fd4-e66e-48be-8b2e-614b8868f22e",
+            "origins": [],
+            "from": "55121396-b8dc-4e1c-9f95-4efea4214b0f",
+            "to": "b65fcc7b-6aae-4d54-ae3c-8a68c412cb39",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "b05cb166-2d47-4c5e-9904-1da874daf3bd",
+            "origins": [],
+            "from": "55121396-b8dc-4e1c-9f95-4efea4214b0f",
+            "to": "ebd52ad5-a475-4348-9910-52d906755ef4",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "d636b554-cef3-44e1-b189-b7a334bed1ad",
+            "origins": [],
+            "from": "55121396-b8dc-4e1c-9f95-4efea4214b0f",
+            "to": "f9fa3f9c-65cc-4a05-a570-ba0082fdc7bc",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "c4c7b537-7dc0-4b56-9b37-50fe5790e507",
+            "origins": [],
+            "from": "b65fcc7b-6aae-4d54-ae3c-8a68c412cb39",
+            "to": "373d197d-1049-4ad2-a536-2b7ad7eca168",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "8e07a3b9-eb77-4f28-8940-71c247a373ce",
+            "origins": [],
+            "from": "b65fcc7b-6aae-4d54-ae3c-8a68c412cb39",
+            "to": "688c3774-6b08-4db7-8b13-44d4f54167cc",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "5e8f85a0-001f-4c39-baf2-2aaf573d4e01",
+            "origins": [],
+            "from": "ebd52ad5-a475-4348-9910-52d906755ef4",
+            "to": "9990d418-8e2d-4705-8359-d087d2839883",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "285025e4-0631-40ce-9b79-f84310fe7a63",
+            "origins": [],
+            "from": "ebd52ad5-a475-4348-9910-52d906755ef4",
+            "to": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "f8fcf27f-e745-4cd7-aa16-c08b8a255d27",
+            "origins": [],
+            "from": "f9fa3f9c-65cc-4a05-a570-ba0082fdc7bc",
+            "to": "45b06d29-6914-412c-a5a2-b7085fa9ee13",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "1ec25844-870d-4391-b0d8-232e666d2588",
+            "origins": [],
+            "from": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "to": "9990d418-8e2d-4705-8359-d087d2839883",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "dfa828d0-72b1-43bf-8a38-402b5717b33a",
+            "origins": [],
+            "from": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "to": "8f570261-cdc6-4928-bcb5-7f1ab902be75",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "8aa6f1ec-4d93-4cbf-8965-45f4e68da62b",
+            "origins": [],
+            "from": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "to": "5529aee3-193b-4834-a87e-fef42ab8bba8",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "410569c5-ce9b-4cf9-a300-f5ccf473729d",
+            "origins": [],
+            "from": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "to": "f5d02865-2df4-4f41-9005-6e374836bd76",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "4eb38706-9e0e-46c3-8d95-f43b6c1df33e",
+            "origins": [],
+            "from": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "to": "71377a3c-0f40-401d-8491-d59c4252e181",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "61e54ff5-79c7-425f-9f11-a77cadd661fc",
+            "origins": [],
+            "from": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "to": "9ba8da35-e245-40b6-802f-93ba6c71fdd1",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "67633e1a-d950-4af4-bae2-a95982a75fa1",
+            "origins": [],
+            "from": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "to": "83b22e90-6fdf-4c8f-a405-68569d0e2e72",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "f3fd606c-e62a-43ac-92f5-a29e03ec7655",
+            "origins": [],
+            "from": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "to": "21372050-3dae-4b3d-88b3-e9844e076368",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "7ffdbd22-8ffd-4eca-a5b3-7cb1486c7ca9",
+            "origins": [],
+            "from": "c55f9f18-2701-4397-b30a-7d2e41e65580",
+            "to": "38740f2d-fbed-4967-99dc-4fbcaba2ffc4",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "cd31dcaf-924b-484e-a831-d35b83543b34",
+            "origins": [],
+            "from": "c55f9f18-2701-4397-b30a-7d2e41e65580",
+            "to": "55ffeaf1-4179-4b85-9179-010ac8da156c",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "39292061-cc96-47a6-a371-a1fbd2bcd14c",
+            "origins": [],
+            "from": "c55f9f18-2701-4397-b30a-7d2e41e65580",
+            "to": "72bdc070-8360-4e0d-b779-7257461a7b90",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "8dcbbe98-c0b6-4e00-8cc3-42a73e557356",
+            "origins": [],
+            "from": "c55f9f18-2701-4397-b30a-7d2e41e65580",
+            "to": "bc23621a-58e5-4a98-a761-4e8f69676f92",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "b9e42248-1453-4d15-bd89-4002eb09b0b8",
+            "origins": [],
+            "from": "c55f9f18-2701-4397-b30a-7d2e41e65580",
+            "to": "89d6be61-9de1-4ec1-9e19-53face38d0d3",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "0fd7fa39-dcd6-4dfb-89f4-fc0d8923307a",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "83ecfc58-5315-41ac-8d3e-b1103df5fba5",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "f7b07622-4860-44d8-bc10-2543afc6036a",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "38740f2d-fbed-4967-99dc-4fbcaba2ffc4",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "80a471fc-6268-43d5-affd-9d21b9414c35",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "a10cf95a-4a0b-4d21-b48b-418cb5b257da",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "0a319546-8b9e-4153-b825-b6c95476c7a6",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "5518150f-aeb1-4668-a068-a3dcdc0166b1",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "e6b1ce90-6bd2-40dd-aca0-72fad0e8587d",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "155ca237-789c-4361-8e92-5d0c8ead4b38",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "5069d637-2dd2-4da6-b9ea-7f4b30e9f035",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "6967f7be-4620-4eae-8991-b1d1d2d6beab",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "902a266b-91c8-4938-a0cc-a2d85a1309ec",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "efedb293-fb18-4ef0-aeb3-1f18af47b7c4",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "9aea82d8-12d7-40b6-943c-65fbb88d95fd",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "fb4d31c9-bf09-47b9-b2de-befd823263b8",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "ad5d2835-d94c-4b30-bd9a-5e8e2d903f8b",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "35a10c5a-80e4-4902-a6cd-bf8874b4be68",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "6fcf3c03-1215-47b7-b928-ac86104b57f3",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "2434b71c-6927-4334-852e-a5644befbc15",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "6f5d4f67-0a17-4a4f-a2df-ee1029b94ab0",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "a830d3d3-5100-4be4-b8e5-fc1e83986944",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "0c28a5bf-ac73-4416-b3ee-0998b1d73344",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "adafe62b-20e3-4d9e-b9cd-3eaf8fec77d0",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "f2b06bf9-33fc-4f02-aad9-21881aa537e6",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "21372050-3dae-4b3d-88b3-e9844e076368",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "6b584bc1-7f5a-4f57-b910-1f3d21c4f009",
+            "origins": [],
+            "from": "8589a9a2-f403-438d-ab88-dc9d212301aa",
+            "to": "b6386177-3030-4211-a594-0d8864e179a2",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "b3efff68-ff5d-4930-bff5-1bd290f13c07",
+            "origins": [],
+            "from": "8589a9a2-f403-438d-ab88-dc9d212301aa",
+            "to": "3a48d8c9-b951-4252-bb12-16fe412bf3e9",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "f312e56a-56a1-424c-9607-c29d3e639325",
+            "origins": [],
+            "from": "89d6be61-9de1-4ec1-9e19-53face38d0d3",
+            "to": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "9c1f1904-64e1-4f59-b770-74144f17b713",
+            "origins": [],
+            "from": "89d6be61-9de1-4ec1-9e19-53face38d0d3",
+            "to": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "4705cf37-0db3-4390-acc2-fabd852f2195",
+            "origins": [],
+            "from": "89d6be61-9de1-4ec1-9e19-53face38d0d3",
+            "to": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "7b8ea7cd-eb19-4746-84bf-ea3a039aad30",
+            "origins": [],
+            "from": "8f570261-cdc6-4928-bcb5-7f1ab902be75",
+            "to": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "4fe80a58-a75e-441e-9e47-143267acd3ad",
+            "origins": [],
+            "from": "8f570261-cdc6-4928-bcb5-7f1ab902be75",
+            "to": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "90e03f99-24a7-4302-afb9-e4264e32b474",
+            "origins": [],
+            "from": "55ffeaf1-4179-4b85-9179-010ac8da156c",
+            "to": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "68049aa4-8b90-4032-80d8-aa6a1c959cfe",
+            "origins": [],
+            "from": "55ffeaf1-4179-4b85-9179-010ac8da156c",
+            "to": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "84d69094-2699-4f49-84d0-49edcf304b7c",
+            "origins": [],
+            "from": "83b22e90-6fdf-4c8f-a405-68569d0e2e72",
+            "to": "f5d02865-2df4-4f41-9005-6e374836bd76",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "43cb1db4-b7e2-46a4-904d-5d8a2ba8a9a3",
+            "origins": [],
+            "from": "83b22e90-6fdf-4c8f-a405-68569d0e2e72",
+            "to": "8f570261-cdc6-4928-bcb5-7f1ab902be75",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          },
+          {
+            "id": "f3ec404e-d46d-4a72-972d-87bc05877821",
+            "origins": [],
+            "from": "269bd91c-7056-4c8c-b85b-4f40dcfad8f5",
+            "to": "22b1ff0f-01a3-4edc-b67c-dfa7ff85aa59",
+            "type": "",
+            "notes": "",
+            "role": "component",
+            "componentRole": ""
+          },
+          {
+            "id": "6fbf33ac-ae0d-4fd0-8e5f-d4292963b1c7",
+            "origins": [],
+            "from": "269bd91c-7056-4c8c-b85b-4f40dcfad8f5",
+            "to": "431c7ba7-911d-43cc-a479-b886ca4e4d74",
+            "type": "",
+            "notes": "",
+            "role": "component",
+            "componentRole": ""
+          },
+          {
+            "id": "f9ec5265-0f8e-48cd-9b87-43159adc3736",
+            "origins": [],
+            "from": "269bd91c-7056-4c8c-b85b-4f40dcfad8f5",
+            "to": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "type": "",
+            "notes": "",
+            "role": "component",
+            "componentRole": ""
+          },
+          {
+            "id": "b9e1897e-1a5f-49d5-9235-6219e2674930",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "269bd91c-7056-4c8c-b85b-4f40dcfad8f5",
+            "type": "описание",
+            "notes": "",
+            "role": "relation",
+            "componentRole": ""
+          }
+        ],
+        "archived": false,
+        "createdAt": "2026-10-11T19:06:04.680772+00:00"
+      }
+    ],
+    "matches": [],
+    "imports": [],
+    "proposals": []
+  },
+  "historyEncoding": "rfc6902-chain-v1",
+  "history": [
+    {
+      "id": 1,
+      "time": "2026-10-11T19:06:04.680788+00:00",
+      "action": "create_study",
+      "detail": "Создано независимое исследование «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0",
+          "value": {
+            "id": "3876eb26-b999-4868-a889-7f7ed2617ee4",
+            "title": "Камень — K001",
+            "description": "Ручная гипотеза описания отдельного физического камня. Аспекты не назначают значения; разновидность не запускает наследование. Не определение и не подтверждённые знания. Легенда: docs/discussion/conclusion.md §12.",
+            "rootId": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "nodes": [
+              {
+                "id": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+                "label": "камень",
+                "kind": "слово",
+                "notes": "",
+                "alternatives": "",
+                "source": "",
+                "origins": [],
+                "createdAt": "2026-10-11T19:06:04.680760+00:00"
+              }
+            ],
+            "edges": [],
+            "archived": false,
+            "createdAt": "2026-10-11T19:06:04.680772+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "time": "2026-10-11T19:06:04.688117+00:00",
+      "action": "edit_node",
+      "detail": "edit_node: «камень» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/studies/0/nodes/0/alternatives",
+          "value": "Рабочее чтение: отдельное физическое тело. Материал, драгоценность и другие значения не отождествлены."
+        },
+        {
+          "op": "replace",
+          "path": "/studies/0/nodes/0/kind",
+          "value": ""
+        },
+        {
+          "op": "replace",
+          "path": "/studies/0/nodes/0/source",
+          "value": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "time": "2026-10-11T19:06:04.695425+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «тело» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/1",
+          "value": {
+            "id": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "label": "тело",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.695407+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "time": "2026-10-11T19:06:04.702982+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «характеристика» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/2",
+          "value": {
+            "id": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "label": "характеристика",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.702962+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "time": "2026-10-11T19:06:04.710259+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «величина» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/3",
+          "value": {
+            "id": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "label": "величина",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.710236+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "time": "2026-10-11T19:06:04.718319+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «масса» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/4",
+          "value": {
+            "id": "22b1ff0f-01a3-4edc-b67c-dfa7ff85aa59",
+            "label": "масса",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.718296+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "time": "2026-10-11T19:06:04.725534+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «объём» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/5",
+          "value": {
+            "id": "431c7ba7-911d-43cc-a479-b886ca4e4d74",
+            "label": "объём",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.725511+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "time": "2026-10-11T19:06:04.732915+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «форма» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/6",
+          "value": {
+            "id": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "label": "форма",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.732892+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "time": "2026-10-11T19:06:04.740038+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «размер» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/7",
+          "value": {
+            "id": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "label": "размер",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.740013+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "time": "2026-10-11T19:06:04.747707+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «поверхность» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/8",
+          "value": {
+            "id": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "label": "поверхность",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.747680+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "time": "2026-10-11T19:06:04.754837+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «материал» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/9",
+          "value": {
+            "id": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "label": "материал",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.754810+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "time": "2026-10-11T19:06:04.762017+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «структура» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/10",
+          "value": {
+            "id": "c55f9f18-2701-4397-b30a-7d2e41e65580",
+            "label": "структура",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.761989+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "time": "2026-10-11T19:06:04.769549+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «твёрдость» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/11",
+          "value": {
+            "id": "5518150f-aeb1-4668-a068-a3dcdc0166b1",
+            "label": "твёрдость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.769519+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "time": "2026-10-11T19:06:04.776719+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «хрупкость» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/12",
+          "value": {
+            "id": "6967f7be-4620-4eae-8991-b1d1d2d6beab",
+            "label": "хрупкость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.776689+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "time": "2026-10-11T19:06:04.784998+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «прочность» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/13",
+          "value": {
+            "id": "155ca237-789c-4361-8e92-5d0c8ead4b38",
+            "label": "прочность",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.784922+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "time": "2026-10-11T19:06:04.792370+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «плотность» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/14",
+          "value": {
+            "id": "a10cf95a-4a0b-4d21-b48b-418cb5b257da",
+            "label": "плотность",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.792339+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "time": "2026-10-11T19:06:04.799373+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «пористость» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/15",
+          "value": {
+            "id": "72bdc070-8360-4e0d-b779-7257461a7b90",
+            "label": "пористость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.799341+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "time": "2026-10-11T19:06:04.807752+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «температура» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/16",
+          "value": {
+            "id": "b6386177-3030-4211-a594-0d8864e179a2",
+            "label": "температура",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.807719+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "time": "2026-10-11T19:06:04.814771+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «влажность» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/17",
+          "value": {
+            "id": "3a48d8c9-b951-4252-bb12-16fe412bf3e9",
+            "label": "влажность",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.814736+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "time": "2026-10-11T19:06:04.822166+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «цвет» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/18",
+          "value": {
+            "id": "f5d02865-2df4-4f41-9005-6e374836bd76",
+            "label": "цвет",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.822123+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "time": "2026-10-11T19:06:04.829363+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «блеск» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/19",
+          "value": {
+            "id": "71377a3c-0f40-401d-8491-d59c4252e181",
+            "label": "блеск",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:06:04.829325+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "time": "2026-10-11T19:06:04.836881+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/0",
+          "value": {
+            "id": "cc3e48b9-c03b-4d28-b30c-e190f5bd134d",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "time": "2026-10-11T19:06:04.843947+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/1",
+          "value": {
+            "id": "43187a0a-48fc-4eca-a2f9-a94942c88bd9",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "22b1ff0f-01a3-4edc-b67c-dfa7ff85aa59",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "time": "2026-10-11T19:06:04.851250+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/2",
+          "value": {
+            "id": "236c26b2-7043-40cd-b629-2bacc66c7f91",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "431c7ba7-911d-43cc-a479-b886ca4e4d74",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "time": "2026-10-11T19:06:04.858487+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/3",
+          "value": {
+            "id": "77ed23d9-f820-424b-86e0-af233038ca6b",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "time": "2026-10-11T19:06:04.865628+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/4",
+          "value": {
+            "id": "6ef6e2c3-70db-498d-ad8a-810ee918905d",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "time": "2026-10-11T19:06:04.872896+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/5",
+          "value": {
+            "id": "bbc99784-9ee3-4fb9-ae9a-1311c2602034",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "time": "2026-10-11T19:06:04.880283+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/6",
+          "value": {
+            "id": "cb630df5-3ffc-4a6f-b39d-896446f4b308",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "time": "2026-10-11T19:06:04.887767+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/7",
+          "value": {
+            "id": "c4ede859-6390-4547-aaf3-27f5cae3fd82",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "c55f9f18-2701-4397-b30a-7d2e41e65580",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "time": "2026-10-11T19:06:04.894932+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/8",
+          "value": {
+            "id": "f9e94d9d-0777-4502-82b4-c7568e65fb8f",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "5518150f-aeb1-4668-a068-a3dcdc0166b1",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "time": "2026-10-11T19:06:04.902182+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/9",
+          "value": {
+            "id": "4dc6866c-3c7e-4811-9748-193b0d3c7d63",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "6967f7be-4620-4eae-8991-b1d1d2d6beab",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "time": "2026-10-11T19:06:04.909281+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/10",
+          "value": {
+            "id": "c532796f-d595-4ff4-bbef-f898c14e13f7",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "155ca237-789c-4361-8e92-5d0c8ead4b38",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "time": "2026-10-11T19:06:04.916686+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/11",
+          "value": {
+            "id": "6769026b-9868-4291-a745-49e54a4d2876",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "a10cf95a-4a0b-4d21-b48b-418cb5b257da",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "time": "2026-10-11T19:06:04.923913+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/12",
+          "value": {
+            "id": "acb4e2ac-8bdd-4959-8fe2-11df076bdc9b",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "72bdc070-8360-4e0d-b779-7257461a7b90",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "time": "2026-10-11T19:06:04.931267+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/13",
+          "value": {
+            "id": "9be9b995-61be-464b-9952-3e0a9639f540",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "b6386177-3030-4211-a594-0d8864e179a2",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "time": "2026-10-11T19:06:04.938919+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/14",
+          "value": {
+            "id": "1b6fd909-c441-4fd5-bc70-02cf508d76f0",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "3a48d8c9-b951-4252-bb12-16fe412bf3e9",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "time": "2026-10-11T19:06:04.946707+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/15",
+          "value": {
+            "id": "ed6e4a64-0462-4102-a7a2-4ed28a2d8169",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "f5d02865-2df4-4f41-9005-6e374836bd76",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "time": "2026-10-11T19:06:04.954263+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/16",
+          "value": {
+            "id": "ae8a6781-04b1-4c67-b41a-65324ff35f92",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "71377a3c-0f40-401d-8491-d59c4252e181",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "time": "2026-10-11T19:06:04.963278+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/17",
+          "value": {
+            "id": "531f01ec-0a27-4d3a-8f85-55153cb465dd",
+            "origins": [],
+            "from": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "time": "2026-10-11T19:06:04.971655+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/18",
+          "value": {
+            "id": "771ce056-167b-4015-9bef-ee49a49750c6",
+            "origins": [],
+            "from": "22b1ff0f-01a3-4edc-b67c-dfa7ff85aa59",
+            "to": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "time": "2026-10-11T19:06:04.979572+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/19",
+          "value": {
+            "id": "ac9005de-9892-4813-b1e9-d00b83719319",
+            "origins": [],
+            "from": "431c7ba7-911d-43cc-a479-b886ca4e4d74",
+            "to": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "time": "2026-10-11T19:06:04.987196+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/20",
+          "value": {
+            "id": "9d9ce49c-57bf-4d9c-994a-17f4cf7b01fb",
+            "origins": [],
+            "from": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "time": "2026-10-11T19:06:04.994738+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/21",
+          "value": {
+            "id": "4b490723-c0b8-45c7-8e0a-11c8736cdb69",
+            "origins": [],
+            "from": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "time": "2026-10-11T19:06:05.002216+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/22",
+          "value": {
+            "id": "c7f4d993-4717-4fa6-8eda-881bdc177820",
+            "origins": [],
+            "from": "5518150f-aeb1-4668-a068-a3dcdc0166b1",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "time": "2026-10-11T19:06:05.009493+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/23",
+          "value": {
+            "id": "b56ddddf-1ea3-4b8e-bb59-c0b75ec0eaae",
+            "origins": [],
+            "from": "6967f7be-4620-4eae-8991-b1d1d2d6beab",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "time": "2026-10-11T19:06:05.016972+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/24",
+          "value": {
+            "id": "ec4ab8c5-fe8a-4744-ba59-3f79283cc8e5",
+            "origins": [],
+            "from": "155ca237-789c-4361-8e92-5d0c8ead4b38",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "time": "2026-10-11T19:06:05.024526+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/25",
+          "value": {
+            "id": "80536b53-5ebd-4e98-b621-eacb7a0e2658",
+            "origins": [],
+            "from": "a10cf95a-4a0b-4d21-b48b-418cb5b257da",
+            "to": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "time": "2026-10-11T19:06:05.031837+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/26",
+          "value": {
+            "id": "d3ece4d5-aa91-44bb-a523-83155da454e0",
+            "origins": [],
+            "from": "72bdc070-8360-4e0d-b779-7257461a7b90",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "time": "2026-10-11T19:06:05.039594+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/27",
+          "value": {
+            "id": "86b86381-dc96-4c78-b90b-f538b873c381",
+            "origins": [],
+            "from": "b6386177-3030-4211-a594-0d8864e179a2",
+            "to": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "time": "2026-10-11T19:06:05.047004+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/28",
+          "value": {
+            "id": "8900f417-e66b-4186-9f18-34e907e2e51f",
+            "origins": [],
+            "from": "3a48d8c9-b951-4252-bb12-16fe412bf3e9",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "time": "2026-10-11T19:06:05.054437+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/29",
+          "value": {
+            "id": "660e383a-fe55-452c-aaf1-6a6d93bdc6a4",
+            "origins": [],
+            "from": "f5d02865-2df4-4f41-9005-6e374836bd76",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "time": "2026-10-11T19:06:05.062301+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/30",
+          "value": {
+            "id": "23129024-e81f-44b3-9d4a-b1f3d33255c5",
+            "origins": [],
+            "from": "71377a3c-0f40-401d-8491-d59c4252e181",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "time": "2026-10-11T19:08:30.663001+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «длина» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/20",
+          "value": {
+            "id": "373d197d-1049-4ad2-a536-2b7ad7eca168",
+            "label": "длина",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.662925+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "time": "2026-10-11T19:08:30.671373+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «ширина» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/21",
+          "value": {
+            "id": "ffd0bf12-e029-4f9e-a916-2edaa4dcb0cb",
+            "label": "ширина",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.671305+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "time": "2026-10-11T19:08:30.678635+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «высота» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/22",
+          "value": {
+            "id": "706e077f-3166-44bc-8f4e-a183e7c5f920",
+            "label": "высота",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.678569+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "time": "2026-10-11T19:08:30.686370+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «площадь» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/23",
+          "value": {
+            "id": "9990d418-8e2d-4705-8359-d087d2839883",
+            "label": "площадь",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.686303+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "time": "2026-10-11T19:08:30.693954+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «кривизна» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/24",
+          "value": {
+            "id": "688c3774-6b08-4db7-8b13-44d4f54167cc",
+            "label": "кривизна",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.693886+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 58,
+      "time": "2026-10-11T19:08:30.701718+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «симметрия» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/25",
+          "value": {
+            "id": "d302876e-41e8-4be7-9cb9-3c86f4e25d65",
+            "label": "симметрия",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.701647+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 59,
+      "time": "2026-10-11T19:08:30.709364+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «граница» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/26",
+          "value": {
+            "id": "55121396-b8dc-4e1c-9f95-4efea4214b0f",
+            "label": "граница",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.709293+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 60,
+      "time": "2026-10-11T19:08:30.716948+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «рельеф» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/27",
+          "value": {
+            "id": "8f570261-cdc6-4928-bcb5-7f1ab902be75",
+            "label": "рельеф",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.716875+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 61,
+      "time": "2026-10-11T19:08:30.724303+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «шероховатость» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/28",
+          "value": {
+            "id": "5529aee3-193b-4834-a87e-fef42ab8bba8",
+            "label": "шероховатость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.724234+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "time": "2026-10-11T19:08:30.733488+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «смачиваемость» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/29",
+          "value": {
+            "id": "9ba8da35-e245-40b6-802f-93ba6c71fdd1",
+            "label": "смачиваемость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.733408+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "time": "2026-10-11T19:08:30.741170+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «состав» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/30",
+          "value": {
+            "id": "38740f2d-fbed-4967-99dc-4fbcaba2ffc4",
+            "label": "состав",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.741095+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "time": "2026-10-11T19:08:30.748923+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «зернистость» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/31",
+          "value": {
+            "id": "55ffeaf1-4179-4b85-9179-010ac8da156c",
+            "label": "зернистость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.748847+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 65,
+      "time": "2026-10-11T19:08:30.756749+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «слоистость» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/32",
+          "value": {
+            "id": "bc23621a-58e5-4a98-a761-4e8f69676f92",
+            "label": "слоистость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.756669+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 66,
+      "time": "2026-10-11T19:08:30.764449+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «трещина» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/33",
+          "value": {
+            "id": "89d6be61-9de1-4ec1-9e19-53face38d0d3",
+            "label": "трещина",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.764368+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 67,
+      "time": "2026-10-11T19:08:30.772115+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «вещество» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/34",
+          "value": {
+            "id": "83ecfc58-5315-41ac-8d3e-b1103df5fba5",
+            "label": "вещество",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.772034+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 68,
+      "time": "2026-10-11T19:08:30.779852+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «упругость» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/35",
+          "value": {
+            "id": "efedb293-fb18-4ef0-aeb3-1f18af47b7c4",
+            "label": "упругость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.779773+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 69,
+      "time": "2026-10-11T19:08:30.787633+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «растворимость» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/36",
+          "value": {
+            "id": "fb4d31c9-bf09-47b9-b2de-befd823263b8",
+            "label": "растворимость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.787552+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "time": "2026-10-11T19:08:30.795220+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «прозрачность» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/37",
+          "value": {
+            "id": "21372050-3dae-4b3d-88b3-e9844e076368",
+            "label": "прозрачность",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.795139+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "time": "2026-10-11T19:08:30.803072+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «теплопроводность» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/38",
+          "value": {
+            "id": "35a10c5a-80e4-4902-a6cd-bf8874b4be68",
+            "label": "теплопроводность",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.802992+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 72,
+      "time": "2026-10-11T19:08:30.810802+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «теплоёмкость» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/39",
+          "value": {
+            "id": "2434b71c-6927-4334-852e-a5644befbc15",
+            "label": "теплоёмкость",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.810719+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 73,
+      "time": "2026-10-11T19:08:30.818595+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «электропроводность» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/40",
+          "value": {
+            "id": "a830d3d3-5100-4be4-b8e5-fc1e83986944",
+            "label": "электропроводность",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.818509+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "time": "2026-10-11T19:08:30.826325+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «магнитность» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/41",
+          "value": {
+            "id": "adafe62b-20e3-4d9e-b9cd-3eaf8fec77d0",
+            "label": "магнитность",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.826238+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 75,
+      "time": "2026-10-11T19:08:30.834178+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «текстура» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/42",
+          "value": {
+            "id": "83b22e90-6fdf-4c8f-a405-68569d0e2e72",
+            "label": "текстура",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.834088+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 76,
+      "time": "2026-10-11T19:08:30.842042+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «состояние» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/43",
+          "value": {
+            "id": "8589a9a2-f403-438d-ab88-dc9d212301aa",
+            "label": "состояние",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.841957+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 77,
+      "time": "2026-10-11T19:08:30.849900+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «край» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/44",
+          "value": {
+            "id": "b65fcc7b-6aae-4d54-ae3c-8a68c412cb39",
+            "label": "край",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.849811+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "time": "2026-10-11T19:08:30.857789+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «грань» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/45",
+          "value": {
+            "id": "ebd52ad5-a475-4348-9910-52d906755ef4",
+            "label": "грань",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.857695+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 79,
+      "time": "2026-10-11T19:08:30.865541+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «вершина» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/46",
+          "value": {
+            "id": "f9fa3f9c-65cc-4a05-a570-ba0082fdc7bc",
+            "label": "вершина",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.865449+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 80,
+      "time": "2026-10-11T19:08:30.873214+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «угол» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/47",
+          "value": {
+            "id": "45b06d29-6914-412c-a5a2-b7085fa9ee13",
+            "label": "угол",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.873125+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "time": "2026-10-11T19:08:30.880855+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «происхождение» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/48",
+          "value": {
+            "id": "f8fd93c3-aaa2-4d18-8c23-43ea4664a517",
+            "label": "происхождение",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "K001; ручная гипотеза Codex, 11.10.2026; docs/discussion/conclusion.md, раздел 12",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:30.880761+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "id": 82,
+      "time": "2026-10-11T19:08:30.888603+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/31",
+          "value": {
+            "id": "822034e4-bbc9-4426-b19b-594b17136cbf",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "8589a9a2-f403-438d-ab88-dc9d212301aa",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 83,
+      "time": "2026-10-11T19:08:30.898527+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/32",
+          "value": {
+            "id": "c0bb205a-8fa5-4587-9e62-e4dc64ed0e65",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "f8fd93c3-aaa2-4d18-8c23-43ea4664a517",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "time": "2026-10-11T19:08:30.906529+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/33",
+          "value": {
+            "id": "a4e79278-3fef-4fe9-9552-d6aa5254b9ff",
+            "origins": [],
+            "from": "373d197d-1049-4ad2-a536-2b7ad7eca168",
+            "to": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 85,
+      "time": "2026-10-11T19:08:30.915874+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/34",
+          "value": {
+            "id": "caad9f30-daa1-4c98-9517-76d4df130c0f",
+            "origins": [],
+            "from": "9990d418-8e2d-4705-8359-d087d2839883",
+            "to": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 86,
+      "time": "2026-10-11T19:08:30.923969+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/35",
+          "value": {
+            "id": "80b101d1-8123-45af-a531-6c2d3292e8b8",
+            "origins": [],
+            "from": "688c3774-6b08-4db7-8b13-44d4f54167cc",
+            "to": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 87,
+      "time": "2026-10-11T19:08:30.932249+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/36",
+          "value": {
+            "id": "80886580-9840-4ab2-869f-2d2d39013a56",
+            "origins": [],
+            "from": "d302876e-41e8-4be7-9cb9-3c86f4e25d65",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 88,
+      "time": "2026-10-11T19:08:30.940110+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/37",
+          "value": {
+            "id": "8743e3c0-1863-45b8-b866-cad035cbc108",
+            "origins": [],
+            "from": "8f570261-cdc6-4928-bcb5-7f1ab902be75",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 89,
+      "time": "2026-10-11T19:08:30.947786+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/38",
+          "value": {
+            "id": "97006a01-a012-4c50-80aa-1d70eedb82d0",
+            "origins": [],
+            "from": "5529aee3-193b-4834-a87e-fef42ab8bba8",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "time": "2026-10-11T19:08:30.955732+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/39",
+          "value": {
+            "id": "7367f1e8-7797-440c-a3ce-8ec632463355",
+            "origins": [],
+            "from": "9ba8da35-e245-40b6-802f-93ba6c71fdd1",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 91,
+      "time": "2026-10-11T19:08:30.963548+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/40",
+          "value": {
+            "id": "a7cc834b-8769-44a4-bbe6-ed157f206929",
+            "origins": [],
+            "from": "55ffeaf1-4179-4b85-9179-010ac8da156c",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 92,
+      "time": "2026-10-11T19:08:30.971431+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/41",
+          "value": {
+            "id": "38b03839-b075-4af2-ba9f-5bedf885bc37",
+            "origins": [],
+            "from": "bc23621a-58e5-4a98-a761-4e8f69676f92",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 93,
+      "time": "2026-10-11T19:08:30.979389+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/42",
+          "value": {
+            "id": "f11526b9-c56c-4eb9-8f52-83481be95929",
+            "origins": [],
+            "from": "efedb293-fb18-4ef0-aeb3-1f18af47b7c4",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "time": "2026-10-11T19:08:30.987882+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/43",
+          "value": {
+            "id": "5b773184-e260-4138-9670-24492c1677a2",
+            "origins": [],
+            "from": "fb4d31c9-bf09-47b9-b2de-befd823263b8",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 95,
+      "time": "2026-10-11T19:08:30.995630+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/44",
+          "value": {
+            "id": "922091f9-1bd2-44ba-b504-02707cd5f9e1",
+            "origins": [],
+            "from": "21372050-3dae-4b3d-88b3-e9844e076368",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 96,
+      "time": "2026-10-11T19:08:31.003539+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/45",
+          "value": {
+            "id": "cb73ee27-23af-4f35-9cbf-3cf5603478b4",
+            "origins": [],
+            "from": "35a10c5a-80e4-4902-a6cd-bf8874b4be68",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 97,
+      "time": "2026-10-11T19:08:31.011322+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/46",
+          "value": {
+            "id": "1d5f1477-a596-4400-a8d1-5cb46defdb1c",
+            "origins": [],
+            "from": "2434b71c-6927-4334-852e-a5644befbc15",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 98,
+      "time": "2026-10-11T19:08:31.019395+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/47",
+          "value": {
+            "id": "ab5ef2f0-cf13-4d42-93c8-133ffbebb40f",
+            "origins": [],
+            "from": "a830d3d3-5100-4be4-b8e5-fc1e83986944",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 99,
+      "time": "2026-10-11T19:08:31.027360+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/48",
+          "value": {
+            "id": "6b5c3a87-ba0c-4676-b7ed-d609741fa595",
+            "origins": [],
+            "from": "adafe62b-20e3-4d9e-b9cd-3eaf8fec77d0",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 100,
+      "time": "2026-10-11T19:08:31.035807+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/49",
+          "value": {
+            "id": "31de8164-ec86-45f6-86e4-321715de4090",
+            "origins": [],
+            "from": "83b22e90-6fdf-4c8f-a405-68569d0e2e72",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "time": "2026-10-11T19:08:31.043538+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/50",
+          "value": {
+            "id": "dc955006-fdc4-4fc1-8134-fc3d38585490",
+            "origins": [],
+            "from": "45b06d29-6914-412c-a5a2-b7085fa9ee13",
+            "to": "36f29bc7-d4fc-4ea1-b73f-e9decfa86b76",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "time": "2026-10-11T19:08:31.051523+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/51",
+          "value": {
+            "id": "5e9ece06-411b-4fd3-affe-64f9df85feb8",
+            "origins": [],
+            "from": "f8fd93c3-aaa2-4d18-8c23-43ea4664a517",
+            "to": "1a0b6d20-2047-4f81-a15c-6cc1a24cf6e8",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "time": "2026-10-11T19:08:31.059305+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/52",
+          "value": {
+            "id": "5a302d60-a5fc-4268-a35c-1dff4012c54e",
+            "origins": [],
+            "from": "ffd0bf12-e029-4f9e-a916-2edaa4dcb0cb",
+            "to": "373d197d-1049-4ad2-a536-2b7ad7eca168",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 104,
+      "time": "2026-10-11T19:08:31.067512+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/53",
+          "value": {
+            "id": "8e8d4b1e-dc31-4121-b2ee-c780af8a0be6",
+            "origins": [],
+            "from": "706e077f-3166-44bc-8f4e-a183e7c5f920",
+            "to": "373d197d-1049-4ad2-a536-2b7ad7eca168",
+            "type": "разновидность",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 105,
+      "time": "2026-10-11T19:08:31.075831+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/54",
+          "value": {
+            "id": "2b22edfa-0ed6-4582-bf37-b6e3cf252af4",
+            "origins": [],
+            "from": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "to": "22b1ff0f-01a3-4edc-b67c-dfa7ff85aa59",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 106,
+      "time": "2026-10-11T19:08:31.084016+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/55",
+          "value": {
+            "id": "7230525a-d60e-4e94-8b0c-92b91ca40ec6",
+            "origins": [],
+            "from": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "to": "431c7ba7-911d-43cc-a479-b886ca4e4d74",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 107,
+      "time": "2026-10-11T19:08:31.092126+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/56",
+          "value": {
+            "id": "4d180536-fbcc-4f65-9622-c15f33ff2a51",
+            "origins": [],
+            "from": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "to": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 108,
+      "time": "2026-10-11T19:08:31.100030+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/57",
+          "value": {
+            "id": "b07dde70-f2ef-48f4-842a-083e70ee5c29",
+            "origins": [],
+            "from": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "to": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 109,
+      "time": "2026-10-11T19:08:31.107888+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/58",
+          "value": {
+            "id": "f0a66904-aee4-418e-a2a7-ac6a6f76f1b5",
+            "origins": [],
+            "from": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "to": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 110,
+      "time": "2026-10-11T19:08:31.116407+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/59",
+          "value": {
+            "id": "0e5126b4-3def-43b8-b954-1c816389fddf",
+            "origins": [],
+            "from": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "to": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 111,
+      "time": "2026-10-11T19:08:31.124736+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/60",
+          "value": {
+            "id": "cdc28dde-f458-47d9-81f1-1c48b068748c",
+            "origins": [],
+            "from": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "to": "c55f9f18-2701-4397-b30a-7d2e41e65580",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "time": "2026-10-11T19:08:31.133655+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/61",
+          "value": {
+            "id": "0cc26808-c323-4772-bb26-073aaf8f7ff4",
+            "origins": [],
+            "from": "f0da1437-b77c-4421-b221-3f915b6fbea6",
+            "to": "8589a9a2-f403-438d-ab88-dc9d212301aa",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 113,
+      "time": "2026-10-11T19:08:31.141774+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/62",
+          "value": {
+            "id": "fb618fd0-5946-4c58-9249-00ba204c6041",
+            "origins": [],
+            "from": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "to": "373d197d-1049-4ad2-a536-2b7ad7eca168",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 114,
+      "time": "2026-10-11T19:08:31.149780+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/63",
+          "value": {
+            "id": "4c9b7a19-0a65-4f3d-9f25-909dc67ee9fc",
+            "origins": [],
+            "from": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "to": "ffd0bf12-e029-4f9e-a916-2edaa4dcb0cb",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 115,
+      "time": "2026-10-11T19:08:31.158126+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/64",
+          "value": {
+            "id": "9cc24bf6-a623-48af-9243-11071200dcf1",
+            "origins": [],
+            "from": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "to": "706e077f-3166-44bc-8f4e-a183e7c5f920",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 116,
+      "time": "2026-10-11T19:08:31.166518+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/65",
+          "value": {
+            "id": "b006d178-4a7c-40ad-a9b4-62c5025573d7",
+            "origins": [],
+            "from": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "to": "431c7ba7-911d-43cc-a479-b886ca4e4d74",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 117,
+      "time": "2026-10-11T19:08:31.174756+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/66",
+          "value": {
+            "id": "c2a74b6a-03dd-48a7-a74b-6de77e1ca4cc",
+            "origins": [],
+            "from": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "to": "55121396-b8dc-4e1c-9f95-4efea4214b0f",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 118,
+      "time": "2026-10-11T19:08:31.182711+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/67",
+          "value": {
+            "id": "e4899263-63c6-42d3-b537-bb24c03ea601",
+            "origins": [],
+            "from": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "to": "688c3774-6b08-4db7-8b13-44d4f54167cc",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 119,
+      "time": "2026-10-11T19:08:31.191453+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/68",
+          "value": {
+            "id": "090eea30-7995-4666-bcf1-7d8aee4714ac",
+            "origins": [],
+            "from": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "to": "d302876e-41e8-4be7-9cb9-3c86f4e25d65",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 120,
+      "time": "2026-10-11T19:08:31.200605+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/69",
+          "value": {
+            "id": "21766fd4-e66e-48be-8b2e-614b8868f22e",
+            "origins": [],
+            "from": "55121396-b8dc-4e1c-9f95-4efea4214b0f",
+            "to": "b65fcc7b-6aae-4d54-ae3c-8a68c412cb39",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 121,
+      "time": "2026-10-11T19:08:31.208662+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/70",
+          "value": {
+            "id": "b05cb166-2d47-4c5e-9904-1da874daf3bd",
+            "origins": [],
+            "from": "55121396-b8dc-4e1c-9f95-4efea4214b0f",
+            "to": "ebd52ad5-a475-4348-9910-52d906755ef4",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 122,
+      "time": "2026-10-11T19:08:31.216987+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/71",
+          "value": {
+            "id": "d636b554-cef3-44e1-b189-b7a334bed1ad",
+            "origins": [],
+            "from": "55121396-b8dc-4e1c-9f95-4efea4214b0f",
+            "to": "f9fa3f9c-65cc-4a05-a570-ba0082fdc7bc",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 123,
+      "time": "2026-10-11T19:08:31.225171+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/72",
+          "value": {
+            "id": "c4c7b537-7dc0-4b56-9b37-50fe5790e507",
+            "origins": [],
+            "from": "b65fcc7b-6aae-4d54-ae3c-8a68c412cb39",
+            "to": "373d197d-1049-4ad2-a536-2b7ad7eca168",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 124,
+      "time": "2026-10-11T19:08:31.233320+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/73",
+          "value": {
+            "id": "8e07a3b9-eb77-4f28-8940-71c247a373ce",
+            "origins": [],
+            "from": "b65fcc7b-6aae-4d54-ae3c-8a68c412cb39",
+            "to": "688c3774-6b08-4db7-8b13-44d4f54167cc",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 125,
+      "time": "2026-10-11T19:08:31.241590+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/74",
+          "value": {
+            "id": "5e8f85a0-001f-4c39-baf2-2aaf573d4e01",
+            "origins": [],
+            "from": "ebd52ad5-a475-4348-9910-52d906755ef4",
+            "to": "9990d418-8e2d-4705-8359-d087d2839883",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 126,
+      "time": "2026-10-11T19:08:31.249873+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/75",
+          "value": {
+            "id": "285025e4-0631-40ce-9b79-f84310fe7a63",
+            "origins": [],
+            "from": "ebd52ad5-a475-4348-9910-52d906755ef4",
+            "to": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 127,
+      "time": "2026-10-11T19:08:31.257981+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/76",
+          "value": {
+            "id": "f8fcf27f-e745-4cd7-aa16-c08b8a255d27",
+            "origins": [],
+            "from": "f9fa3f9c-65cc-4a05-a570-ba0082fdc7bc",
+            "to": "45b06d29-6914-412c-a5a2-b7085fa9ee13",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 128,
+      "time": "2026-10-11T19:08:31.266329+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/77",
+          "value": {
+            "id": "1ec25844-870d-4391-b0d8-232e666d2588",
+            "origins": [],
+            "from": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "to": "9990d418-8e2d-4705-8359-d087d2839883",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 129,
+      "time": "2026-10-11T19:08:31.274567+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/78",
+          "value": {
+            "id": "dfa828d0-72b1-43bf-8a38-402b5717b33a",
+            "origins": [],
+            "from": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "to": "8f570261-cdc6-4928-bcb5-7f1ab902be75",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 130,
+      "time": "2026-10-11T19:08:31.282882+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/79",
+          "value": {
+            "id": "8aa6f1ec-4d93-4cbf-8965-45f4e68da62b",
+            "origins": [],
+            "from": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "to": "5529aee3-193b-4834-a87e-fef42ab8bba8",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 131,
+      "time": "2026-10-11T19:08:31.292582+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/80",
+          "value": {
+            "id": "410569c5-ce9b-4cf9-a300-f5ccf473729d",
+            "origins": [],
+            "from": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "to": "f5d02865-2df4-4f41-9005-6e374836bd76",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 132,
+      "time": "2026-10-11T19:08:31.301282+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/81",
+          "value": {
+            "id": "4eb38706-9e0e-46c3-8d95-f43b6c1df33e",
+            "origins": [],
+            "from": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "to": "71377a3c-0f40-401d-8491-d59c4252e181",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 133,
+      "time": "2026-10-11T19:08:31.309431+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/82",
+          "value": {
+            "id": "61e54ff5-79c7-425f-9f11-a77cadd661fc",
+            "origins": [],
+            "from": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "to": "9ba8da35-e245-40b6-802f-93ba6c71fdd1",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 134,
+      "time": "2026-10-11T19:08:31.318024+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/83",
+          "value": {
+            "id": "67633e1a-d950-4af4-bae2-a95982a75fa1",
+            "origins": [],
+            "from": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "to": "83b22e90-6fdf-4c8f-a405-68569d0e2e72",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 135,
+      "time": "2026-10-11T19:08:31.326544+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/84",
+          "value": {
+            "id": "f3fd606c-e62a-43ac-92f5-a29e03ec7655",
+            "origins": [],
+            "from": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "to": "21372050-3dae-4b3d-88b3-e9844e076368",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 136,
+      "time": "2026-10-11T19:08:31.335571+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/85",
+          "value": {
+            "id": "7ffdbd22-8ffd-4eca-a5b3-7cb1486c7ca9",
+            "origins": [],
+            "from": "c55f9f18-2701-4397-b30a-7d2e41e65580",
+            "to": "38740f2d-fbed-4967-99dc-4fbcaba2ffc4",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 137,
+      "time": "2026-10-11T19:08:31.344873+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/86",
+          "value": {
+            "id": "cd31dcaf-924b-484e-a831-d35b83543b34",
+            "origins": [],
+            "from": "c55f9f18-2701-4397-b30a-7d2e41e65580",
+            "to": "55ffeaf1-4179-4b85-9179-010ac8da156c",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 138,
+      "time": "2026-10-11T19:08:31.353280+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/87",
+          "value": {
+            "id": "39292061-cc96-47a6-a371-a1fbd2bcd14c",
+            "origins": [],
+            "from": "c55f9f18-2701-4397-b30a-7d2e41e65580",
+            "to": "72bdc070-8360-4e0d-b779-7257461a7b90",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 139,
+      "time": "2026-10-11T19:08:31.361255+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/88",
+          "value": {
+            "id": "8dcbbe98-c0b6-4e00-8cc3-42a73e557356",
+            "origins": [],
+            "from": "c55f9f18-2701-4397-b30a-7d2e41e65580",
+            "to": "bc23621a-58e5-4a98-a761-4e8f69676f92",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 140,
+      "time": "2026-10-11T19:08:31.369434+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/89",
+          "value": {
+            "id": "b9e42248-1453-4d15-bd89-4002eb09b0b8",
+            "origins": [],
+            "from": "c55f9f18-2701-4397-b30a-7d2e41e65580",
+            "to": "89d6be61-9de1-4ec1-9e19-53face38d0d3",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 141,
+      "time": "2026-10-11T19:08:31.377814+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/90",
+          "value": {
+            "id": "0fd7fa39-dcd6-4dfb-89f4-fc0d8923307a",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "83ecfc58-5315-41ac-8d3e-b1103df5fba5",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 142,
+      "time": "2026-10-11T19:08:31.386418+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/91",
+          "value": {
+            "id": "f7b07622-4860-44d8-bc10-2543afc6036a",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "38740f2d-fbed-4967-99dc-4fbcaba2ffc4",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 143,
+      "time": "2026-10-11T19:08:31.394695+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/92",
+          "value": {
+            "id": "80a471fc-6268-43d5-affd-9d21b9414c35",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "a10cf95a-4a0b-4d21-b48b-418cb5b257da",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 144,
+      "time": "2026-10-11T19:08:31.403627+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/93",
+          "value": {
+            "id": "0a319546-8b9e-4153-b825-b6c95476c7a6",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "5518150f-aeb1-4668-a068-a3dcdc0166b1",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 145,
+      "time": "2026-10-11T19:08:31.411813+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/94",
+          "value": {
+            "id": "e6b1ce90-6bd2-40dd-aca0-72fad0e8587d",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "155ca237-789c-4361-8e92-5d0c8ead4b38",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 146,
+      "time": "2026-10-11T19:08:31.420192+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/95",
+          "value": {
+            "id": "5069d637-2dd2-4da6-b9ea-7f4b30e9f035",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "6967f7be-4620-4eae-8991-b1d1d2d6beab",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 147,
+      "time": "2026-10-11T19:08:31.428641+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/96",
+          "value": {
+            "id": "902a266b-91c8-4938-a0cc-a2d85a1309ec",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "efedb293-fb18-4ef0-aeb3-1f18af47b7c4",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 148,
+      "time": "2026-10-11T19:08:31.437084+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/97",
+          "value": {
+            "id": "9aea82d8-12d7-40b6-943c-65fbb88d95fd",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "fb4d31c9-bf09-47b9-b2de-befd823263b8",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 149,
+      "time": "2026-10-11T19:08:31.445294+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/98",
+          "value": {
+            "id": "ad5d2835-d94c-4b30-bd9a-5e8e2d903f8b",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "35a10c5a-80e4-4902-a6cd-bf8874b4be68",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 150,
+      "time": "2026-10-11T19:08:31.453559+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/99",
+          "value": {
+            "id": "6fcf3c03-1215-47b7-b928-ac86104b57f3",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "2434b71c-6927-4334-852e-a5644befbc15",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 151,
+      "time": "2026-10-11T19:08:31.461912+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/100",
+          "value": {
+            "id": "6f5d4f67-0a17-4a4f-a2df-ee1029b94ab0",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "a830d3d3-5100-4be4-b8e5-fc1e83986944",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 152,
+      "time": "2026-10-11T19:08:31.470537+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/101",
+          "value": {
+            "id": "0c28a5bf-ac73-4416-b3ee-0998b1d73344",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "adafe62b-20e3-4d9e-b9cd-3eaf8fec77d0",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 153,
+      "time": "2026-10-11T19:08:31.478807+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/102",
+          "value": {
+            "id": "f2b06bf9-33fc-4f02-aad9-21881aa537e6",
+            "origins": [],
+            "from": "9e97b021-9e5f-4ded-958c-25c027917bce",
+            "to": "21372050-3dae-4b3d-88b3-e9844e076368",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 154,
+      "time": "2026-10-11T19:08:31.487135+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/103",
+          "value": {
+            "id": "6b584bc1-7f5a-4f57-b910-1f3d21c4f009",
+            "origins": [],
+            "from": "8589a9a2-f403-438d-ab88-dc9d212301aa",
+            "to": "b6386177-3030-4211-a594-0d8864e179a2",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 155,
+      "time": "2026-10-11T19:08:31.495621+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/104",
+          "value": {
+            "id": "b3efff68-ff5d-4930-bff5-1bd290f13c07",
+            "origins": [],
+            "from": "8589a9a2-f403-438d-ab88-dc9d212301aa",
+            "to": "3a48d8c9-b951-4252-bb12-16fe412bf3e9",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 156,
+      "time": "2026-10-11T19:08:31.503973+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/105",
+          "value": {
+            "id": "f312e56a-56a1-424c-9607-c29d3e639325",
+            "origins": [],
+            "from": "89d6be61-9de1-4ec1-9e19-53face38d0d3",
+            "to": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 157,
+      "time": "2026-10-11T19:08:31.512309+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/106",
+          "value": {
+            "id": "9c1f1904-64e1-4f59-b770-74144f17b713",
+            "origins": [],
+            "from": "89d6be61-9de1-4ec1-9e19-53face38d0d3",
+            "to": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 158,
+      "time": "2026-10-11T19:08:31.520942+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/107",
+          "value": {
+            "id": "4705cf37-0db3-4390-acc2-fabd852f2195",
+            "origins": [],
+            "from": "89d6be61-9de1-4ec1-9e19-53face38d0d3",
+            "to": "3766d778-58a6-4f76-bac1-8f0c08fd34da",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 159,
+      "time": "2026-10-11T19:08:31.529183+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/108",
+          "value": {
+            "id": "7b8ea7cd-eb19-4746-84bf-ea3a039aad30",
+            "origins": [],
+            "from": "8f570261-cdc6-4928-bcb5-7f1ab902be75",
+            "to": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 160,
+      "time": "2026-10-11T19:08:31.537603+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/109",
+          "value": {
+            "id": "4fe80a58-a75e-441e-9e47-143267acd3ad",
+            "origins": [],
+            "from": "8f570261-cdc6-4928-bcb5-7f1ab902be75",
+            "to": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 161,
+      "time": "2026-10-11T19:08:31.546142+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/110",
+          "value": {
+            "id": "90e03f99-24a7-4302-afb9-e4264e32b474",
+            "origins": [],
+            "from": "55ffeaf1-4179-4b85-9179-010ac8da156c",
+            "to": "f4e2b086-af22-4e82-9f37-eab5cbf2b073",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 162,
+      "time": "2026-10-11T19:08:31.554762+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/111",
+          "value": {
+            "id": "68049aa4-8b90-4032-80d8-aa6a1c959cfe",
+            "origins": [],
+            "from": "55ffeaf1-4179-4b85-9179-010ac8da156c",
+            "to": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 163,
+      "time": "2026-10-11T19:08:31.563100+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/112",
+          "value": {
+            "id": "84d69094-2699-4f49-84d0-49edcf304b7c",
+            "origins": [],
+            "from": "83b22e90-6fdf-4c8f-a405-68569d0e2e72",
+            "to": "f5d02865-2df4-4f41-9005-6e374836bd76",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 164,
+      "time": "2026-10-11T19:08:31.571441+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/113",
+          "value": {
+            "id": "43cb1db4-b7e2-46a4-904d-5d8a2ba8a9a3",
+            "origins": [],
+            "from": "83b22e90-6fdf-4c8f-a405-68569d0e2e72",
+            "to": "8f570261-cdc6-4928-bcb5-7f1ab902be75",
+            "type": "аспект",
+            "notes": "",
+            "role": "relation"
+          }
+        }
+      ]
+    },
+    {
+      "id": 165,
+      "time": "2026-10-11T19:08:46.890732+00:00",
+      "action": "add_node",
+      "detail": "Добавлен элемент «» в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/nodes/49",
+          "value": {
+            "id": "269bd91c-7056-4c8c-b85b-4f40dcfad8f5",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "origins": [],
+            "createdAt": "2026-10-11T19:08:46.890580+00:00",
+            "structure": "combination"
+          }
+        }
+      ]
+    },
+    {
+      "id": 166,
+      "time": "2026-10-11T19:09:07.318422+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/114",
+          "value": {
+            "id": "f3ec404e-d46d-4a72-972d-87bc05877821",
+            "origins": [],
+            "from": "269bd91c-7056-4c8c-b85b-4f40dcfad8f5",
+            "to": "22b1ff0f-01a3-4edc-b67c-dfa7ff85aa59",
+            "type": "",
+            "notes": "",
+            "role": "component",
+            "componentRole": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": 167,
+      "time": "2026-10-11T19:09:15.742179+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/115",
+          "value": {
+            "id": "6fbf33ac-ae0d-4fd0-8e5f-d4292963b1c7",
+            "origins": [],
+            "from": "269bd91c-7056-4c8c-b85b-4f40dcfad8f5",
+            "to": "431c7ba7-911d-43cc-a479-b886ca4e4d74",
+            "type": "",
+            "notes": "",
+            "role": "component",
+            "componentRole": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": 168,
+      "time": "2026-10-11T19:09:16.342955+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/116",
+          "value": {
+            "id": "f9ec5265-0f8e-48cd-9b87-43159adc3736",
+            "origins": [],
+            "from": "269bd91c-7056-4c8c-b85b-4f40dcfad8f5",
+            "to": "e204eea9-9173-4eb5-a009-087d8e803852",
+            "type": "",
+            "notes": "",
+            "role": "component",
+            "componentRole": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": 169,
+      "time": "2026-10-11T19:09:34.058872+00:00",
+      "action": "add_edge",
+      "detail": "add_edge: отношение в «Камень — K001»",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/studies/0/edges/117",
+          "value": {
+            "id": "b9e1897e-1a5f-49d5-9235-6219e2674930",
+            "origins": [],
+            "from": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+            "to": "269bd91c-7056-4c8c-b85b-4f40dcfad8f5",
+            "type": "описание",
+            "notes": "",
+            "role": "relation",
+            "componentRole": ""
+          }
+        }
+      ]
+    }
+  ],
+  "selection": {
+    "studyId": "3876eb26-b999-4868-a889-7f7ed2617ee4",
+    "nodeId": null,
+    "sourceRootId": "fd56711a-6a3e-421e-bbe4-268ca9630f4b",
+    "depth": "all",
+    "direction": "both"
+  }
+}

@@ -108,17 +108,63 @@ def export(store, path):
                       "nodes": len(study["nodes"]), "edges": len(study["edges"])}, ensure_ascii=False))
 
 
+def discard_grouping(store):
+    """Удалить только собственную пробу после восстановления прямого ребра."""
+    study = current(store)
+    combos = [n for n in study["nodes"] if n.get("structure") == "combination"]
+    if not combos:
+        print("Пробная комбинация уже удалена; повторной мутации нет")
+        return
+    if len(combos) != 1 or combos[0]["label"]:
+        raise ValueError("Ожидалась одна анонимная пробная группировка K001")
+    ids = {n["label"]: n["id"] for n in study["nodes"]}
+    assert any(e["from"] == ids["камень"] and e["to"] == ids["масса"]
+               and e["type"] == "аспект" for e in study["edges"])
+    cid = combos[0]["id"]
+    affected = [e for e in study["edges"] if cid in (e["from"], e["to"])]
+    assert len(affected) == 4
+    assert {e["to"] for e in affected if e.get("role") == "component"} == {
+        ids[k] for k in ("масса", "объём", "форма")}
+    act(store, "delete_node", studyId=study["id"], nodeId=cid)
+
+
+def resistance_probe(store, evidence):
+    """Конечный контрпример: общий посредник теряет привязку двух смыслов."""
+    study = current(store)
+    sid = study["id"]
+    ids = {n["label"]: n["id"] for n in study["nodes"]}
+    original = json.loads(json.dumps(study))
+    temporary = ["сопротивление", "деформация", "разрушение"]
+    assert not any(label in ids for label in temporary)
+    for label in temporary:
+        ids[label] = add_node(store, sid, label)
+    for a, b in (("твёрдость", "сопротивление"), ("прочность", "сопротивление"),
+                 ("сопротивление", "деформация"), ("сопротивление", "разрушение")):
+        connect(store, sid, ids, a, b, "аспект")
+    export(store, evidence)
+    for label in temporary:
+        act(store, "delete_node", studyId=sid, nodeId=ids[label])
+    assert current(store) == original
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("phase", choices=("baseline", "expand", "export"))
+    parser.add_argument("phase", choices=("baseline", "expand", "discard-grouping", "probe", "export"))
     parser.add_argument("--db", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--evidence", type=Path)
     args = parser.parse_args()
     store = Store(args.db)
     if args.phase == "baseline":
         baseline(store)
     elif args.phase == "expand":
         expand(store)
+    elif args.phase == "discard-grouping":
+        discard_grouping(store)
+    elif args.phase == "probe":
+        if args.evidence is None:
+            parser.error("Для probe требуется отдельный --evidence")
+        resistance_probe(store, args.evidence)
     export(store, args.output)
 
 
