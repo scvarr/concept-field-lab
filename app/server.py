@@ -93,7 +93,7 @@ def make_server(path, port=8765):
                     return self.send(200, structural_diff(left, right, snapshot["state"]["matches"]), download="concept-field-diff.json")
                 except (Invalid, ValueError, TypeError, KeyError) as exc:
                     return self.send(400, {"error": str(exc)})
-            files = {"/": ("index.html", "text/html"), "/app.js": ("app.js", "text/javascript"), "/style.css": ("style.css", "text/css"), "/favicon.svg": ("favicon.svg", "image/svg+xml")}
+            files = {"/": ("index.html", "text/html"), "/app.js": ("app.js", "text/javascript"), "/graph-view.js": ("graph-view.js", "text/javascript"), "/style.css": ("style.css", "text/css"), "/favicon.svg": ("favicon.svg", "image/svg+xml")}
             if path not in files:
                 return self.send(404, {"error": "Страница не найдена."})
             filename, mime = files[path]

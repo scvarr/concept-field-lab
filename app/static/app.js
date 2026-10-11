@@ -14,6 +14,16 @@ let leftStudy, rightStudy, leftNode, rightNode, pairQueries = {left:'',right:''}
 let proposalRequest = 0;
 let proposalRows = [], proposalSelection = new Set();
 let toastTimer;
+const uiKey='concept-field-view-v1';
+let ui={graphs:{},studies:{},panels:{studies:false,elements:false,inspector:false}};
+try{const saved=JSON.parse(localStorage.getItem(uiKey));if(saved&&saved.version===1)ui={...ui,...saved};}catch{}
+let uiTimer;
+function saveUI(){clearTimeout(uiTimer);uiTimer=setTimeout(()=>{try{localStorage.setItem(uiKey,JSON.stringify({...ui,version:1,selectedStudy,selectedNode,view,navigation,compositionScope,leftStudy,rightStudy,leftNode,rightNode,pairQueries,depth:$('#graph-depth').value,mode:$('#graph-mode').value,basis:$('#candidate-basis').value,shared:$('#shared-zoom').checked}));}catch{toast('Состояние просмотра не сохранено в браузере. Данные графа остаются в SQLite.',true);}},120);}
+function applyPanels(){document.body.classList.toggle('studies-open',!!ui.panels.studies);document.body.classList.toggle('elements-open',!!ui.panels.elements);document.body.classList.toggle('inspector-open',!!ui.panels.inspector);for(const [id,key]of [['toggle-studies','studies'],['toggle-elements','elements'],['toggle-inspector','inspector']])$('#'+id).setAttribute('aria-expanded',!!ui.panels[key]);}
+function openInspector(){ui.panels.inspector=true;applyPanels();saveUI();}
+function cameraSnapshot(){return $('#graph').graphView?.snapshot().camera;}
+function rememberStudy(){if(study())ui.studies[selectedStudy]={selectedNode,navigation,compositionScope};saveUI();}
+
 function toast(message, error=false) { $('#toast').textContent=message; $('#toast').classList.toggle('error',error); $('#toast').hidden=false; clearTimeout(toastTimer); toastTimer=setTimeout(()=>$('#toast').hidden=true,error?11000:4500); }
 function run(fn) { return async (...args) => { try { await fn(...args); } catch(error) { toast(error.message,true); } }; }
 async function api(path, body) {
@@ -72,19 +82,20 @@ function render() {
   if(view==='compare') renderCompare();
   if(view==='exchange') run(renderProposals)();
   if(view==='history') run(renderHistory)();
+  applyPanels();rememberStudy();
 }
 function renderStudies() {
   const query=$('#study-search').value.toLowerCase();
   const rows=state.studies.filter(s=>s.archived===showArchive && `${s.title} ${s.description}`.toLowerCase().includes(query));
   $('#studies').innerHTML=rows.map(s=>`<button class="study-item ${s.id===selectedStudy?'active':''}" data-study="${esc(s.id)}"><strong>${esc(s.title)}</strong><small>${s.nodes.length} элементов · ${s.edges.length} отношений</small></button>`).join('')||'<p class="hint">Здесь пока нет исследований.</p>';
-  $$('[data-study]').forEach(e=>e.onclick=()=>{if(!canLeave())return;navigation=[];compositionScope=null;selectedStudy=e.dataset.study;selectedNode=study().rootId;nodePage=0;$('#node-search').value='';view='editor';render();});
+  $$('[data-study]').forEach(e=>e.onclick=()=>{if(!canLeave())return;rememberStudy();selectedStudy=e.dataset.study;const saved=ui.studies[selectedStudy];navigation=saved?.navigation||[];compositionScope=saved?.compositionScope||null;selectedNode=saved?.selectedNode||study().rootId;nodePage=0;$('#node-search').value='';view='editor';render();});
   $('#toggle-archive').textContent=showArchive?'Активные':'Архив';
 }
 function renderEditor() {
   const s=study();$('#empty').hidden=!!s;$('#editor-content').hidden=!s;if(!s)return;
   $('#study-meta').innerHTML=`<span class="tag">${s.archived?'Архив':'Независимое пространство'}</span> <span class="muted">${s.nodes.length} элементов · ${s.edges.length} отношений</span>${s.description?`<p class="hint">${esc(s.description)}</p>`:''}`;
   $('#archive-study').textContent=s.archived?'Вернуть из архива':'В архив';
-  $('.graph-controls span').textContent=compositionScope?'Состав комбинации':'Окружение узла';$('#graph-depth').disabled=!!compositionScope;
+  $('.graph-controls span').textContent=compositionScope?'Состав комбинации':'Записанные связи';$('#graph-depth').disabled=!!compositionScope||$('#graph-mode').value==='all';$('#selected-caption').textContent=displayName(node());
   renderNodes();renderInspector();renderNavigation();drawGraph($('#graph'),s,selectedNode,id=>selectNode(id),Number($('#graph-depth').value),true,new Map(),compositionScope);
 }
 function renderNodes() {
@@ -98,20 +109,20 @@ function renderNodes() {
 }
 function selectNode(id) {
   if(!canLeave()||!node(study(),id))return;
-  if(id!==selectedNode||isCombination(node(study(),id))&&compositionScope!==id)navigation.push({nodeId:selectedNode,scope:compositionScope});
+  if(id!==selectedNode||isCombination(node(study(),id))&&compositionScope!==id)navigation.push({nodeId:selectedNode,scope:compositionScope,camera:cameraSnapshot()});
   selectedNode=id;edgePage=0;
   if(isCombination(node()))compositionScope=id;
   else if(compositionScope&&!study().edges.some(e=>edgeRole(e)==='component'&&e.from===compositionScope&&e.to===id))compositionScope=null;
-  renderEditor();
+  renderEditor();rememberStudy();
 }
 function renderNavigation(){
   let host=$('#navigation');if(!host){host=document.createElement('div');host.id='navigation';host.className='navigation';$('.graph-panel').prepend(host);}
   const frames=[...navigation,{nodeId:selectedNode,scope:compositionScope}];
   host.innerHTML=`<div>${frames.map((f,i)=>i>0&&i<frames.length-8?'':`<button data-frame="${i}" ${i===frames.length-1?'disabled':''}>${esc(displayName(node(study(),f.nodeId)))}</button>`).join(' → ')}</div><div class="actions"><button id="nav-back" ${navigation.length?'':'disabled'}>← Назад</button><button id="nav-origin" ${navigation.length?'':'disabled'}>К исходному узлу</button>${compositionScope?'<button id="nav-environment">Показать окружение</button>':''}</div><small>${compositionScope?`Состав ${esc(displayName(node(study(),compositionScope)))} · пунктир означает включение`: 'Окружение · показаны только записанные связи'}</small>`;
-  function restoreFrame(i){if(!canLeave())return;const f=frames[i];selectedNode=f.nodeId;compositionScope=f.scope;navigation=frames.slice(0,i);renderEditor();}
+  function restoreFrame(i){if(!canLeave())return;const f=frames[i];selectedNode=f.nodeId;compositionScope=f.scope;navigation=frames.slice(0,i);renderEditor();$('#graph').graphView?.setCamera(f.camera);rememberStudy();}
   $('#nav-back').onclick=()=>restoreFrame(navigation.length-1);$('#nav-origin').onclick=()=>restoreFrame(0);
   $$('[data-frame]',host).forEach(e=>e.onclick=()=>restoreFrame(Number(e.dataset.frame)));
-  if($('#nav-environment'))$('#nav-environment').onclick=()=>{if(!canLeave())return;navigation.push({nodeId:selectedNode,scope:compositionScope});compositionScope=null;renderEditor();};
+  if($('#nav-environment'))$('#nav-environment').onclick=()=>{if(!canLeave())return;navigation.push({nodeId:selectedNode,scope:compositionScope,camera:cameraSnapshot()});compositionScope=null;renderEditor();};
 }
 function renderInspector() {
   const s=study(),n=node();if(!n)return;
@@ -171,24 +182,33 @@ function graphSlice(s,focus,depth,limit=180) {
   return {nodes:s.nodes.filter(n=>distance.has(n.id)),edges:s.edges.filter(e=>distance.has(e.from)&&distance.has(e.to)),distance,truncated};
 }
 function drawGraph(host,s,focus,onSelect,depth=2,persist=false,markings=new Map(),scope=null) {
-  if(!s||!focus){host.innerHTML='<p class="hint">Выберите исследование и элемент.</p>';return;}
+  if(!s||!focus){host.graphView?.observer.disconnect();host.graphView=null;host.innerHTML='<p class="hint">Выберите исследование и элемент.</p>';return;}
   let graph;
-  if(scope){const ids=new Set([scope,...s.edges.filter(e=>edgeRole(e)==='component'&&e.from===scope).map(e=>e.to)]),all=s.nodes.filter(n=>ids.has(n.id)),shown=all.slice(0,15);if(!shown.some(n=>n.id===scope)){shown.pop();shown.unshift(node(s,scope));}if(ids.has(focus)&&!shown.some(n=>n.id===focus)){shown.pop();shown.push(node(s,focus));}const visible=new Set(shown.map(n=>n.id));graph={nodes:shown,edges:s.edges.filter(e=>visible.has(e.from)&&visible.has(e.to)),distance:new Map(shown.map(n=>[n.id,n.id===scope?0:1])),truncated:all.length>15};}
-  else graph=graphSlice(s,focus,Math.max(0,Math.min(depth||0,100)));
-  const levels=new Map(),positions=new Map();
-  for(const n of graph.nodes){const d=graph.distance.get(n.id);if(!levels.has(d))levels.set(d,[]);levels.get(d).push(n);}
-  for(const [d,rows]of levels)rows.forEach((n,i)=>positions.set(n.id,{x:Number.isFinite(n.x)?n.x:scope&&d?240+Math.floor(i/7)*210:d*240,y:Number.isFinite(n.y)?n.y:scope&&d?(i%7-(Math.min(7,rows.length)-1)/2)*80:(i-(rows.length-1)/2)*90}));
-  const marker=`arrow-${host.id}`;
-  let box;
-  function fit(){const pts=[...positions.values()];const minX=Math.min(...pts.map(p=>p.x))-110,minY=Math.min(...pts.map(p=>p.y))-65,maxX=Math.max(...pts.map(p=>p.x))+110,maxY=Math.max(...pts.map(p=>p.y))+65;box={x:minX,y:minY,w:Math.max(300,maxX-minX),h:Math.max(260,maxY-minY)};setBox();}
-  function setBox(){const svg=$('svg',host);if(svg)svg.setAttribute('viewBox',`${box.x} ${box.y} ${box.w} ${box.h}`);}
-  function line(e,i){const a=positions.get(e.from),b=positions.get(e.to);if(e.from===e.to)return {d:`M ${a.x+65} ${a.y-8} C ${a.x+155} ${a.y-105}, ${a.x-65} ${a.y-110}, ${a.x-35} ${a.y-30}`,x:a.x+40,y:a.y-70};const dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy)||1,offset=(i%3-1)*12;const mx=(a.x+b.x)/2-dy/len*offset,my=(a.y+b.y)/2+dx/len*offset;return {d:`M ${a.x+dx/len*62} ${a.y+dy/len*24} Q ${mx} ${my} ${b.x-dx/len*75} ${b.y-dy/len*29}`,x:mx,y:my-7};}
-  function draw(){host.innerHTML=`<svg xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Граф ${esc(s.title)}"><defs><marker id="${marker}" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="#92aaa0"/></marker></defs><g>${graph.edges.slice(0,500).map((e,i)=>{const p=line(e,i);return `<path class="edge ${edgeRole(e)==='component'?'component-edge':''}" d="${p.d}" marker-end="url(#${marker})"/><text class="edge-label" x="${p.x}" y="${p.y}" text-anchor="middle">${esc(edgeTitle(e).slice(0,32))}<title>${esc(edgeTitle(e)+' '+e.notes)}</title></text>`;}).join('')}${graph.nodes.map(n=>{const p=positions.get(n.id);return `<g class="node ${isCombination(n)?'combination-node':''} ${n.id===focus?'selected':''} ${markings.get(n.id)||''}" data-graph-node="${esc(n.id)}" transform="translate(${p.x},${p.y})"><rect x="-80" y="-28" width="160" height="56" rx="9"/><text text-anchor="middle" y="-2">${esc(displayName(n).length>21?displayName(n).slice(0,20)+'…':displayName(n))}</text><text class="kind-label" text-anchor="middle" y="15">${esc((isCombination(n)?'α · '+n.kind:n.kind).slice(0,26))}</text><title>${esc(displayName(n)+'\n'+n.notes)}</title></g>`;}).join('')}</g></svg>`;if(box)setBox();bind();}
-  let drag;
-  function point(e){const svg=$('svg',host),p=svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(svg.getScreenCTM().inverse());}
-  function bind(){const svg=$('svg',host);svg.onpointerdown=e=>{if(e.button!==0)return;if(persist&&dirty&&!canLeave())return;const target=e.target.closest('[data-graph-node]');const p=point(e);drag={id:target?.dataset.graphNode,start:p,last:p,clientX:e.clientX,clientY:e.clientY,moved:false};svg.setPointerCapture(e.pointerId);};svg.onpointermove=e=>{if(!drag)return;const p=point(e);if(Math.hypot(e.clientX-drag.clientX,e.clientY-drag.clientY)>4)drag.moved=true;if(!drag.moved)return;if(drag.id){const pos=positions.get(drag.id);pos.x+=p.x-drag.last.x;pos.y+=p.y-drag.last.y;drag.last=p;const element=$(`[data-graph-node="${CSS.escape(drag.id)}"]`,host);element.setAttribute('transform',`translate(${pos.x},${pos.y})`);}else{box.x-=p.x-drag.last.x;box.y-=p.y-drag.last.y;setBox();}};svg.onpointerup=run(async()=>{if(!drag)return;const d=drag;drag=null;if(d.id&&!d.moved){onSelect(d.id);return;}if(d.id&&d.moved){draw();if(persist){const pos=positions.get(d.id);await mutate('position',{studyId:s.id,nodeId:d.id,x:pos.x,y:pos.y});}}});svg.onpointercancel=()=>{drag=null;};svg.onwheel=e=>{e.preventDefault();const p=point(e),f=e.deltaY>0?1.13:.885;if(box.w*f<100||box.w*f>200000)return;box.x=p.x-(p.x-box.x)*f;box.y=p.y-(p.y-box.y)*f;box.w*=f;box.h*=f;setBox();};}
-  draw();fit();host.fit=fit;
-  if(persist) $('#graph-caption').textContent=`Показано ${graph.nodes.length} из ${s.nodes.length} элементов · ${Math.min(graph.edges.length,500)} связей${graph.truncated||graph.edges.length>500?' · Ограничено для читаемости; используйте поиск и переходы':''}. Колесо — масштаб, фон — перемещение, узел — выбор / перетаскивание.`;
+  if(scope){const ids=new Set([scope,...s.edges.filter(e=>edgeRole(e)==='component'&&e.from===scope).map(e=>e.to)]),all=s.nodes.filter(n=>ids.has(n.id)),shown=all.slice(0,15);if(!shown.some(n=>n.id===scope)){shown.pop();shown.unshift(node(s,scope));}if(ids.has(focus)&&!shown.some(n=>n.id===focus)){shown.pop();shown.push(node(s,focus));}const visible=new Set(shown.map(n=>n.id));graph={nodes:shown,edges:s.edges.filter(e=>visible.has(e.from)&&visible.has(e.to)),truncated:all.length>15};}
+  else if(persist&&$('#graph-mode').value==='all'){
+    if(s.nodes.length<=1000)graph={nodes:s.nodes,edges:s.edges,truncated:false};
+    else graph=graphSlice(s,focus,100,1000);
+  }else graph=graphSlice(s,focus,Math.max(0,Math.min(depth||0,100)),1000);
+  const key=host.id+':'+s.id;
+  if(host.graphKey!==key||!host.graphView){
+    host.graphView?.observer.disconnect();host.graphKey=key;
+    host.graphView=new GraphView(host,{
+      canInteract:()=>!busy&&(!dirty||canLeave()),select:onSelect,
+      editNode:id=>{if(persist){selectNode(id);openInspector();}},
+      editEdge:id=>{if(persist)edgeDialog(study().edges.find(e=>e.id===id));},
+      savePosition:(id,p)=>mutate('position',{studyId:s.id,nodeId:id,...p}),error:e=>toast(e.message,true),
+      changed:snapshot=>{ui.graphs[key]=snapshot;saveUI();},
+      cameraChanged:c=>{if(persist)$('#zoom-reset').textContent=Math.round(c.scale*100)+'%';},
+      sharedZoom:factor=>{if(!persist&&$('#shared-zoom').checked){const other=host.id==='compare-left-graph'?'compare-right-graph':'compare-left-graph';$('#'+other).graphView?.zoom(factor,undefined,false);}}
+    });host.graphView.restore(ui.graphs[key]);
+  }
+  const layout=new Map(),levels=new Map(),dist=new Map([[s.rootId,0]]),queue=[s.rootId],adj=new Map(s.nodes.map(n=>[n.id,[]]));
+  for(const e of s.edges){adj.get(e.from)?.push(e.to);adj.get(e.to)?.push(e.from);}
+  for(let i=0;i<queue.length;i++)for(const id of adj.get(queue[i])||[])if(!dist.has(id)){dist.set(id,dist.get(queue[i])+1);queue.push(id);}
+  for(const n of s.nodes){const d=dist.get(n.id)??Math.max(1,...dist.values())+1;if(!levels.has(d))levels.set(d,[]);levels.get(d).push(n);}
+  for(const [d,rows]of levels)rows.forEach((n,i)=>layout.set(n.id,{x:Math.min(100000,d*260),y:Math.max(-100000,Math.min(100000,(i-(rows.length-1)/2)*90))}));
+  host.graphView.update(s,graph,focus,markings,layout);host.fit=()=>host.graphView.fit();
+  if(persist)$('#graph-caption').textContent=`Показано ${graph.nodes.length} из ${s.nodes.length} элементов · ${Math.min(graph.edges.length,3000)} связей${graph.truncated||graph.edges.length>3000?' · Вид ограничен: поиск и окружение показывают остальные элементы':''}. Колесо — масштаб · фон — панорама · двойной щелчок — карточка · щелчок по ребру — правка.`;
 }
 function compareOptions() {
   const active=state.studies.filter(s=>!s.archived);
@@ -203,13 +223,13 @@ function renderCompare() {
   for(const [side,s,nid]of [['left',l,leftNode],['right',r,rightNode]]) {
     const host=$(`#compare-${side}-list`);
     host.innerHTML=`<input type="search" placeholder="Найти элемент в ${esc(s.title)}" value="${esc(pairQueries[side])}" aria-label="Найти элемент ${side}"><div class="pair-nodes"></div><small class="muted"></small>`;
-    function fill(){const rows=s.nodes.filter(n=>`${n.label} ${n.kind} ${n.notes}`.toLowerCase().includes(pairQueries[side].toLowerCase()));$('.pair-nodes',host).innerHTML=rows.slice(0,40).map(n=>`<button class="${n.id===nid?'active':''}" data-pair-node="${esc(n.id)}">${esc(displayName(n))} <span class="muted">${esc(n.kind)}</span></button>`).join('');$('small',host).textContent=`${Math.min(40,rows.length)} из ${rows.length} · уточните поиск для остальных`;$$('[data-pair-node]',host).forEach(e=>e.onclick=()=>{if(side==='left')leftNode=e.dataset.pairNode;else rightNode=e.dataset.pairNode;renderCompare();});}
+    function fill(){const aliases=new Set((s.designations||[]).filter(d=>d.text.toLowerCase().includes(pairQueries[side].toLowerCase())).map(d=>d.target));const rows=s.nodes.filter(n=>aliases.has(n.id)||`${n.label} ${n.kind} ${n.notes} ${n.id}`.toLowerCase().includes(pairQueries[side].toLowerCase()));$('.pair-nodes',host).innerHTML=rows.slice(0,40).map(n=>`<button class="${n.id===nid?'active':''}" data-pair-node="${esc(n.id)}">${esc(displayName(n))} <span class="muted">${esc((s.designations||[]).filter(d=>d.target===n.id).map(d=>'словарь: '+d.text).join(', ')||n.kind)}</span></button>`).join('');$('small',host).textContent=`${Math.min(40,rows.length)} из ${rows.length} · уточните поиск для остальных`;$$('[data-pair-node]',host).forEach(e=>e.onclick=()=>{if(side==='left')leftNode=e.dataset.pairNode;else rightNode=e.dataset.pairNode;renderCompare();$(`#compare-${side}-graph`).graphView?.center(e.dataset.pairNode);});}
     $('input',host).oninput=e=>{pairQueries[side]=e.target.value;fill();};fill();
     const markings=new Map();
     for(const m of state.matches)if(new Set([m.leftStudy,m.rightStudy]).has(leftStudy)&&new Set([m.leftStudy,m.rightStudy]).has(rightStudy)){const id=m.leftStudy===s.id?m.leftNode:m.rightNode;const mark=m.status==='confirmed'?'common':m.status==='rejected'?'disputed':'';if(mark&&markings.get(id)!=='common')markings.set(id,mark);}
     drawGraph($(`#compare-${side}-graph`),s,nid,id=>{if(side==='left')leftNode=id;else rightNode=id;renderCompare();},2,false,markings);
   }
-  renderPair();renderMatches();
+  renderPair();renderMatches();saveUI();
 }
 function pairMatch(a=leftNode,b=rightNode){return state.matches.find(m=>(m.leftNode===a&&m.rightNode===b)||(m.leftNode===b&&m.rightNode===a));}
 function renderPair(){const l=node(study(leftStudy),leftNode),r=node(study(rightStudy),rightNode),match=pairMatch();if(!l||!r)return;
@@ -222,8 +242,14 @@ function decidePair(status){const l=node(study(leftStudy),leftNode),r=node(study
 }
 function compareRows(){const l=study(leftStudy),r=study(rightStudy);if(!l||!r)return[];const ln=new Map(l.nodes.map(n=>[n.id,n])),rn=new Map(r.nodes.map(n=>[n.id,n]));const rows=[],seen=new Set();
   for(const m of state.matches){if(new Set([m.leftStudy,m.rightStudy]).has(l.id)&&new Set([m.leftStudy,m.rightStudy]).has(r.id)){const a=m.leftStudy===l.id?m.leftNode:m.rightNode,b=m.leftStudy===l.id?m.rightNode:m.leftNode;rows.push({a,b,status:m.status,reason:m.reason,id:m.id});seen.add(`${a}/${b}`);}}
-  const labels=new Map();for(const n of r.nodes){if(!n.label.trim())continue;const label=n.label.toLocaleLowerCase('ru').trim();if(!labels.has(label))labels.set(label,[]);labels.get(label).push(n.id);}
-  let omitted=0;for(const n of l.nodes)for(const b of labels.get(n.label.toLocaleLowerCase('ru').trim())||[]){if(!seen.has(`${n.id}/${b}`)){if(rows.length<10000)rows.push({a:n.id,b,status:'pending',reason:'Совпадает название; семантическое решение отсутствует.'});else omitted++;}}
+  const basis=$('#candidate-basis').value,terms=s=>{
+    const result=[];
+    if(basis!=='label')for(const d of s.designations||[])result.push({id:d.target,text:d.text,source:'словарь'});
+    if(basis!=='designation')for(const n of s.nodes)if(n.label.trim())result.push({id:n.id,text:n.label,source:'техническое название'});
+    return result;
+  },labels=new Map();
+  for(const term of terms(r)){const label=term.text.toLocaleLowerCase('ru').trim();if(!labels.has(label))labels.set(label,[]);labels.get(label).push(term);}
+  let omitted=0;for(const term of terms(l))for(const other of labels.get(term.text.toLocaleLowerCase('ru').trim())||[]){const pair=term.id+'/'+other.id;if(!seen.has(pair)){seen.add(pair);if(rows.length<10000)rows.push({a:term.id,b:other.id,status:'pending',reason:`Совпадает «${term.text}»: ${term.source} ↔ ${other.source}; решение отсутствует.`});else omitted++;}}
   $('#comparison-summary').textContent=`Подтверждено: ${rows.filter(x=>x.status==='confirmed').length} · отклонено: ${rows.filter(x=>x.status==='rejected').length} · кандидатов: ${rows.filter(x=>x.status==='pending').length}. Без подтверждённого соответствия: ${l.nodes.filter(n=>!rows.some(x=>x.status==='confirmed'&&x.a===n.id)).length} слева, ${r.nodes.filter(n=>!rows.some(x=>x.status==='confirmed'&&x.b===n.id)).length} справа.${omitted?` Ещё ${omitted} сочетаний одноимённых узлов не выведено; выбирайте нужную пару вручную.`:''}`;
   return rows.map(row=>({...row,left:ln.get(row.a),right:rn.get(row.b)})).filter(x=>x.left&&x.right);
 }
@@ -231,7 +257,7 @@ function renderMatches(){const query=$('#match-search').value.toLowerCase(),rows
   const host=$('#matches');host.innerHTML='<div id="match-pagination"></div><table class="table"><thead><tr><th>Первый элемент</th><th>Второй элемент</th><th>Решение и основание</th><th></th></tr></thead><tbody></tbody></table>';
   matchPage=pagination($('#match-pagination'),matchPage,rows.length,60,p=>{matchPage=p;renderMatches();});
   $('tbody',host).innerHTML=rows.slice(matchPage*60,(matchPage+1)*60).map(x=>`<tr><td>${esc(displayName(x.left))}<br><span class="muted">${esc(x.left.kind)}</span></td><td>${esc(displayName(x.right))}<br><span class="muted">${esc(x.right.kind)}</span></td><td><span class="tag ${x.status}">${statusNames[x.status]}</span><div class="reason">${esc(x.reason)}</div></td><td><button data-select-pair="${esc(x.a)}" data-right="${esc(x.b)}">Просмотреть пару</button></td></tr>`).join('')||'<tr><td colspan="4">Кандидатов по названию нет. Можно выбрать любые два элемента в графах или поиске выше.</td></tr>';
-  $$('[data-select-pair]').forEach(e=>e.onclick=()=>{leftNode=e.dataset.selectPair;rightNode=e.dataset.right;renderCompare();$('#pair-details').scrollIntoView({behavior:'smooth',block:'center'});});
+  $$('[data-select-pair]').forEach(e=>e.onclick=()=>{leftNode=e.dataset.selectPair;rightNode=e.dataset.right;renderCompare();$('#compare-left-graph').graphView?.center(leftNode);$('#compare-right-graph').graphView?.center(rightNode);$('.comparison-graphs').scrollIntoView({behavior:'smooth',block:'start'});});
 }
 function mergeDialog(){const l=study(leftStudy),r=study(rightStudy);if(!l||!r||l.id===r.id)return toast('Выберите два разных исследования.',true);const rows=compareRows().filter(x=>x.status==='confirmed');
   if(!rows.length)return toast('Сначала вручную подтвердите хотя бы одно соответствие.',true);
@@ -267,7 +293,7 @@ $('#new-study').onclick=newStudy;$('#empty-create').onclick=newStudy;$('#help').
 $('#study-search').oninput=renderStudies;$('#toggle-archive').onclick=()=>{showArchive=!showArchive;renderStudies();};
 $$('.tabs button').forEach(e=>e.onclick=()=>{if(!canLeave())return;view=e.dataset.view;render();});
 $('#node-search').oninput=()=>{nodePage=0;renderNodes();};$('#match-search').oninput=()=>{matchPage=0;renderMatches();};
-$('#add-independent').onclick=()=>addNode();$('#add-combination').onclick=()=>addNode(undefined,true);$('#graph-depth').onchange=()=>{if(canLeave())renderEditor();};$('#fit-graph').onclick=()=>$('#graph').fit?.();
+$('#add-independent').onclick=()=>addNode();$('#add-combination').onclick=()=>addNode(undefined,true);$('#graph-depth').onchange=()=>{if(canLeave()){renderEditor();saveUI();}};$('#graph-mode').onchange=()=>{if(canLeave()){renderEditor();saveUI();}};$('#fit-graph').onclick=()=>$('#graph').fit?.();
 $('#save-svg').onclick=run(async()=>{const svg=$('svg',$('#graph'));if(!svg)throw new Error('Нет графа для экспорта.');const clone=svg.cloneNode(true),style=document.createElementNS('http://www.w3.org/2000/svg','style');style.textContent='.edge.component-edge{stroke:#8066a2;stroke-dasharray:6 4}.node.combination-node rect{stroke-width:3}.node rect{fill:white;stroke:#b7cac2;stroke-width:1.5}.node.selected rect{fill:#286c61;stroke:#194f43}.node text{fill:#223d36;font:13px Segoe UI,Arial,sans-serif}.node.selected text{fill:white}.node .kind-label{font-size:9px}.edge{fill:none;stroke:#a1b4ac;stroke-width:1.4}.edge-label{font:10px Segoe UI,Arial,sans-serif;fill:#5a7065}';clone.prepend(style);clone.setAttribute('width','1200');clone.setAttribute('height','800');downloadText(new XMLSerializer().serializeToString(clone),'concept-field-view.svg','image/svg+xml');});
 $('#edit-study').onclick=()=>{if(!study()||!canLeave())return;const s=study();dialog('Название и описание',`<label>Название<input name="title" value="${esc(s.title)}" required maxlength="1000"></label><label>Описание<textarea name="description" rows="4">${esc(s.description)}</textarea></label>`,f=>mutate('edit_study',{studyId:s.id,...Object.fromEntries(f)}));};
 $('#archive-study').onclick=run(async()=>{if(!study()||!canLeave())return;const s=study();if(confirm(s.archived?'Вернуть исследование из архива?':'Архивировать исследование? Его данные и история сохранятся.'))await mutate('archive_study',{studyId:s.id,archived:!s.archived});});
@@ -280,5 +306,18 @@ $('#import-file').onchange=run(async e=>{const file=e.target.files[0];if(!file)r
 $('#stage-import').onclick=run(stageImport);$('#select-proposals').onclick=run(async()=>{if(proposalSelection.size===proposalRows.length)proposalSelection.clear();else proposalRows.forEach(p=>proposalSelection.add(p.id));await renderProposals();});
 $('#accept-proposals').onclick=()=>reviewProposals('accept');$('#reject-proposals').onclick=()=>reviewProposals('reject');
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});
-document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.key.toLowerCase()==='k'){e.preventDefault();if(!canLeave())return;view='editor';render();$('#node-search').focus();}});
-run(async()=>{const initial=await api('/api/state');({state,revision,token}=initial);selectedStudy=state.studies.find(s=>!s.archived)?.id;selectedNode=study()?.rootId;render();$('#save-status').textContent=`Сохранено · версия ${revision}`;})().catch(()=>{});
+document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.key.toLowerCase()==='k'){e.preventDefault();if(!canLeave())return;view='editor';ui.panels.elements=true;render();$('#node-search').focus();saveUI();}});
+run(async()=>{const initial=await api('/api/state');({state,revision,token}=initial);selectedStudy=study(ui.selectedStudy)?.id||state.studies.find(s=>!s.archived)?.id;selectedNode=ui.selectedNode||study()?.rootId;view=['editor','compare','exchange','history'].includes(ui.view)?ui.view:'editor';navigation=ui.navigation||[];compositionScope=ui.compositionScope||null;leftStudy=ui.leftStudy;rightStudy=ui.rightStudy;leftNode=ui.leftNode;rightNode=ui.rightNode;pairQueries=ui.pairQueries||pairQueries;$('#graph-depth').value=ui.depth||2;$('#graph-mode').value=ui.mode||'all';$('#candidate-basis').value=ui.basis||'designation';$('#shared-zoom').checked=!!ui.shared;render();$('#save-status').textContent=`Сохранено · версия ${revision}`;})().catch(()=>{});
+
+for(const [id,key]of [['toggle-studies','studies'],['toggle-elements','elements'],['toggle-inspector','inspector']])$('#'+id).onclick=()=>{ui.panels[key]=!ui.panels[key];applyPanels();saveUI();};
+$('#quick-edit').onclick=openInspector;$('#quick-expand').onclick=()=>addNode(selectedNode);$('#quick-link').onclick=()=>edgeDialog();
+$('#center-selected').onclick=()=>$('#graph').graphView?.center(selectedNode);
+$('#center-root').onclick=()=>{selectNode(study()?.rootId);$('#graph').graphView?.center(selectedNode);};
+$('#camera-back').onclick=()=>$('#graph').graphView?.back();
+$('#zoom-in').onclick=()=>$('#graph').graphView?.zoom(1.2);$('#zoom-out').onclick=()=>$('#graph').graphView?.zoom(1/1.2);
+$('#zoom-reset').onclick=()=>{const g=$('#graph').graphView;if(g)g.zoom(1/g.camera.scale);};
+$('#candidate-basis').onchange=()=>{matchPage=0;renderMatches();saveUI();};$('#shared-zoom').onchange=()=>{if($('#shared-zoom').checked){const a=$('#compare-left-graph').graphView,b=$('#compare-right-graph').graphView;if(a&&b)b.zoom(a.camera.scale/b.camera.scale);}saveUI();};
+$('#fit-both').onclick=()=>{for(const side of ['left','right'])$('#compare-'+side+'-graph').fit?.();if($('#shared-zoom').checked){const a=$('#compare-left-graph').graphView,b=$('#compare-right-graph').graphView;if(a&&b){const scale=Math.min(a.camera.scale,b.camera.scale);a.zoom(scale/a.camera.scale);b.zoom(scale/b.camera.scale);}}};
+for(const [id,factor]of [['zoom-both-in',1.2],['zoom-both-out',1/1.2]])$('#'+id).onclick=()=>{for(const side of ['left','right'])$('#compare-'+side+'-graph').graphView?.zoom(factor);};
+for(const controls of $$('.pair-controls')){const side=controls.dataset.side,get=()=>$('#compare-'+side+'-graph').graphView; $('[data-pair-fit]',controls).onclick=()=>get()?.fit();$('[data-pair-center]',controls).onclick=()=>get()?.center(side==='left'?leftNode:rightNode);$('[data-pair-root]',controls).onclick=()=>{if(side==='left')leftNode=study(leftStudy)?.rootId;else rightNode=study(rightStudy)?.rootId;renderCompare();get()?.center(side==='left'?leftNode:rightNode);};$('[data-pair-back]',controls).onclick=()=>get()?.back();}
+document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.key.toLowerCase()==='k'){ui.panels.elements=true;applyPanels();saveUI();}if(e.target.closest('input,textarea,select'))return;if(view==='editor'&&e.key==='Enter')openInspector();});
