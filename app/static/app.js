@@ -15,6 +15,7 @@ let proposalRequest = 0;
 let proposalRows = [], proposalSelection = new Set();
 let toastTimer, editVersion=0;
 const uiKey='concept-field-view-v1';
+let accumulationUI;
 let ui={graphs:{},studies:{},panels:{studies:false,elements:false,inspector:false}};
 try{const saved=JSON.parse(localStorage.getItem(uiKey));if(saved&&saved.version===1)ui={...ui,...saved};}catch{}
 let uiTimer;
@@ -41,7 +42,7 @@ async function mutate(action,data) {
     const previous=action==='add_node'?{nodeId:selectedNode,scope:compositionScope,camera:cameraSnapshot()}:null;
     const submittedEditVersion=editVersion;
     const result=await api('/api/action',{action,data,revision}); state=result.state; revision=result.revision;if(editVersion===submittedEditVersion)dirty=false;
-    if(result.result?.studyId && ['create_study','merge'].includes(action)) { selectedStudy=result.result.studyId; selectedNode=result.result.nodeId; view='editor'; }
+    if(result.result?.studyId && ['create_study','merge','create_accumulation'].includes(action)) { selectedStudy=result.result.studyId; selectedNode=result.result.nodeId; view=action==='create_accumulation'?'accumulation':'editor'; }
     if(action==='add_node'){if(previous?.nodeId)navigation.push(previous);selectedNode=result.result.nodeId;}
     if(action==='delete_node') selectedNode=study()?.rootId;
     if(action==='create_study'||action==='add_node')ui.panels.inspector=true;
@@ -80,7 +81,10 @@ function render() {
   $('#revision').textContent=`v${revision}`;
   $('#candidate-count').textContent=state.proposals.filter(p=>p.status==='pending').length || '';
   renderStudies();
+  if(view==='editor'&&study()?.accumulation)view='accumulation';
   $$('.view').forEach(e=>e.hidden=e.id!==view); $$('.tabs button').forEach(e=>e.classList.toggle('active',e.dataset.view===view));
+  accumulationUI?.visibility(view==='accumulation');
+  if(view==='accumulation')run(()=>accumulationUI.render())();
   if(view==='editor') renderEditor();
   if(view==='compare') renderCompare();
   if(view==='exchange') run(renderProposals)();
@@ -217,7 +221,7 @@ function drawGraph(host,s,focus,onSelect,depth=2,persist=false,markings=new Map(
   if(persist)$('#graph-caption').textContent=`Показано ${graph.nodes.length} из ${s.nodes.length} элементов · ${Math.min(graph.edges.length,3000)} связей${graph.truncated||graph.edges.length>3000?' · Вид ограничен: поиск и окружение показывают остальные элементы':''}. Колесо — масштаб · фон — панорама · двойной щелчок — карточка · щелчок по ребру — правка.`;
 }
 function compareOptions() {
-  const active=state.studies.filter(s=>!s.archived);
+  const active=state.studies.filter(s=>!s.archived&&!s.accumulation);
   if(!active.some(s=>s.id===leftStudy))leftStudy=active[0]?.id;
   if(!active.some(s=>s.id===rightStudy)||rightStudy===leftStudy)rightStudy=active.find(s=>s.id!==leftStudy)?.id;
   for(const [selector,id]of [['#compare-left',leftStudy],['#compare-right',rightStudy]]){$(selector).innerHTML='<option value="">Выберите исследование</option>'+active.map(s=>`<option value="${esc(s.id)}" ${s.id===id?'selected':''}>${esc(s.title)}</option>`).join('');}
@@ -315,7 +319,9 @@ $('#stage-import').onclick=run(stageImport);$('#select-proposals').onclick=run(a
 $('#accept-proposals').onclick=()=>reviewProposals('accept');$('#reject-proposals').onclick=()=>reviewProposals('reject');
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});
 document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.key.toLowerCase()==='k'){e.preventDefault();if(!canLeave())return;view='editor';ui.panels.elements=true;render();$('#node-search').focus();saveUI();}});
-run(async()=>{const initial=await api('/api/state');({state,revision,token}=initial);selectedStudy=study(ui.selectedStudy)?.id||state.studies.find(s=>!s.archived)?.id;selectedNode=ui.selectedNode||study()?.rootId;view=['editor','compare','exchange','history'].includes(ui.view)?ui.view:'editor';navigation=ui.navigation||[];compositionScope=ui.compositionScope||null;leftStudy=ui.leftStudy;rightStudy=ui.rightStudy;leftNode=ui.leftNode;rightNode=ui.rightNode;pairQueries=ui.pairQueries||pairQueries;$('#graph-depth').value=ui.depth||2;$('#graph-mode').value=ui.mode||'all';$('#candidate-basis').value=ui.basis||'designation';$('#shared-zoom').checked=!!ui.shared;render();$('#save-status').textContent=`Сохранено · версия ${revision}`;})().catch(()=>{});
+accumulationUI=new AccumulationWorkbench({state:()=>state,study:()=>study(),ui:()=>ui,saveUI,busy:()=>busy,api,mutate,toast,run,dialog,download,
+  activate:id=>{if(!canLeave())return;selectedStudy=id;selectedNode=study().rootId;navigation=[];compositionScope=null;view='accumulation';render();}});
+run(async()=>{const initial=await api('/api/state');({state,revision,token}=initial);selectedStudy=study(ui.selectedStudy)?.id||state.studies.find(s=>!s.archived)?.id;selectedNode=ui.selectedNode||study()?.rootId;view=['editor','accumulation','compare','exchange','history'].includes(ui.view)?ui.view:'editor';navigation=ui.navigation||[];compositionScope=ui.compositionScope||null;leftStudy=ui.leftStudy;rightStudy=ui.rightStudy;leftNode=ui.leftNode;rightNode=ui.rightNode;pairQueries=ui.pairQueries||pairQueries;$('#graph-depth').value=ui.depth||2;$('#graph-mode').value=ui.mode||'all';$('#candidate-basis').value=ui.basis||'designation';$('#shared-zoom').checked=!!ui.shared;render();$('#save-status').textContent=`Сохранено · версия ${revision}`;})().catch(()=>{});
 
 for(const [id,key]of [['toggle-studies','studies'],['toggle-elements','elements'],['toggle-inspector','inspector']])$('#'+id).onclick=()=>{ui.panels[key]=!ui.panels[key];applyPanels();saveUI();};
 $('#quick-edit').onclick=openInspector;$('#quick-expand').onclick=()=>addNode(selectedNode);$('#quick-link').onclick=()=>edgeDialog();

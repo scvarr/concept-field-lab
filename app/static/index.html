@@ -15,7 +15,8 @@
   </aside>
   <main>
     <header><button id="toggle-studies" aria-expanded="false">Исследования</button><div><span class="eyebrow">РАБОЧЕЕ ПРОСТРАНСТВО</span><h1 id="workspace-title">Ваши исследования</h1></div><div class="header-actions"><span id="save-status" role="status">Подключение…</span><button id="help">Справка</button><button id="backup">Резервная копия ↓</button></div></header>
-    <nav class="tabs" aria-label="Режимы"><button data-view="editor" class="active">Исследование</button><button data-view="compare">Сопоставление</button><button data-view="exchange">Обмен и кандидаты <span id="candidate-count"></span></button><button data-view="history">История</button></nav>
+    <nav class="tabs" aria-label="Режимы"><button data-view="editor" class="active">Исследование</button><button data-view="accumulation">Единое полотно</button><button data-view="compare">Сопоставление</button><button data-view="exchange">Обмен и кандидаты <span id="candidate-count"></span></button><button data-view="history">История</button></nav>
+    <section id="accumulation" class="view" hidden></section>
     <section id="editor" class="view">
       <div id="empty" class="empty"><div class="empty-symbol">◈</div><h2>Начните с одного слова</h2><p>Создайте исследование, раскройте его элементы и сохраните собственную структуру знаний.</p><button id="empty-create" class="primary">Создать исследование</button></div>
       <div id="editor-content" hidden>
@@ -43,6 +44,6 @@
     <footer>Ручные структуры знаний · без автоматического раскрытия и отождествления <span id="revision"></span></footer>
   </main>
   <dialog id="dialog"><div id="dialog-body"></div></dialog><div id="toast" role="alert" hidden></div>
-  <script src="/graph-view.js"></script><script src="/app.js"></script>
+  <script src="/graph-view.js"></script><script src="/accumulation.js"></script><script src="/app.js"></script>
 </body>
 </html>

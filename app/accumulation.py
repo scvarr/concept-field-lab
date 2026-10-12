@@ -199,13 +199,15 @@ def operate(state, action, data):
         return {}, "Добавлено обозначение рабочего словаря; исходник сохранён"
     if action != "accumulation_decide":
         raise Invalid("Неизвестная операция накопления.")
-    groups, _, _ = partition(acc)
+    groups, _, rejections = partition(acc)
     left, right = data.get("leftNode"), data.get("rightNode")
     if left not in groups or right not in groups or left == right:
         raise Invalid("Выберите два разных узла текущего полотна.")
     status = data.get("status")
     if status not in ("confirmed", "rejected", "pending"):
         raise Invalid("Решение: confirmed, rejected или pending.")
+    if status == "pending" and tuple(sorted((left, right))) in rejections:
+        raise Invalid("Пара уже признана разными концептами. Неопределённость не отменяет сохранённый отказ; для пересмотра восстановите подходящую версию истории.")
     reason = clean(data.get("reason", ""), "обоснование", status != "pending")
     evidence = data.get("evidence", [])
     if not isinstance(evidence, list) or any(not isinstance(x, dict) for x in evidence):

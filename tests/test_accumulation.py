@@ -113,6 +113,9 @@ class AccumulationTest(unittest.TestCase):
         with self.assertRaisesRegex(Invalid,"противоречит"):
             self.decide(self.local(c,"disputed"),self.local(self.b,"disputed"),"confirmed")
         self.assertEqual(self.store.read(),before)
+        with self.assertRaisesRegex(Invalid,"Неопределённость"):
+            self.decide(self.local(c,"disputed"),self.local(self.b,"disputed"),"pending")
+        self.assertEqual(self.store.read(),before)
 
     def test_no_mixed_route_and_no_auxiliary_traversal(self):
         a_root = self.local(self.a,"root")
