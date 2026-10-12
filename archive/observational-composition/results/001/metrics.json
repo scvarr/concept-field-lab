@@ -1,0 +1,740 @@
+{
+  "experiment": "001",
+  "environment": {
+    "python": "3.13.2",
+    "platform": "Windows-10-10.0.19045-SP0"
+  },
+  "train": {
+    "sentences": 69631,
+    "arcs": 65119,
+    "triples": 7124,
+    "nouns": 8564,
+    "verbs": 5883,
+    "profiles": 3546,
+    "documents": 615
+  },
+  "grid": [
+    {
+      "k": 5,
+      "strength": 1,
+      "dev_accuracy": 0.6778455284552846
+    },
+    {
+      "k": 5,
+      "strength": 5,
+      "dev_accuracy": 0.6758130081300813
+    },
+    {
+      "k": 5,
+      "strength": 20,
+      "dev_accuracy": 0.6758130081300813
+    },
+    {
+      "k": 20,
+      "strength": 1,
+      "dev_accuracy": 0.6686991869918699
+    },
+    {
+      "k": 20,
+      "strength": 5,
+      "dev_accuracy": 0.6626016260162602
+    },
+    {
+      "k": 20,
+      "strength": 20,
+      "dev_accuracy": 0.6626016260162602
+    },
+    {
+      "k": 50,
+      "strength": 1,
+      "dev_accuracy": 0.7012195121951219
+    },
+    {
+      "k": 50,
+      "strength": 5,
+      "dev_accuracy": 0.6971544715447154
+    },
+    {
+      "k": 50,
+      "strength": 20,
+      "dev_accuracy": 0.693089430894309
+    }
+  ],
+  "selected": {
+    "k": 50,
+    "strength": 1,
+    "dev_accuracy": 0.7012195121951219
+  },
+  "evaluations": {
+    "syntagrus_dev": {
+      "sentences": 8906,
+      "raw_triples": 850,
+      "excluded_train_text_overlap": 5,
+      "document_overlap": 0,
+      "models": {
+        "noun_prior": {
+          "all": {
+            "n": 845,
+            "docs": 55,
+            "accuracy": 0.7372781065088757,
+            "ties": 26,
+            "transfer_support": 0
+          },
+          "both_pairs_new": {
+            "n": 492,
+            "docs": 53,
+            "accuracy": 0.6758130081300813,
+            "ties": 25,
+            "transfer_support": 0
+          },
+          "both_pairs_new_known": {
+            "n": 347,
+            "docs": 53,
+            "accuracy": 0.69164265129683,
+            "ties": 8,
+            "transfer_support": 0
+          },
+          "one_pair_new": {
+            "n": 286,
+            "docs": 53,
+            "accuracy": 0.8199300699300699,
+            "ties": 1,
+            "transfer_support": 0
+          },
+          "one_pair_new_known": {
+            "n": 254,
+            "docs": 51,
+            "accuracy": 0.8228346456692913,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "new_triple": {
+            "n": 52,
+            "docs": 31,
+            "accuracy": 0.8076923076923077,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "new_triple_known": {
+            "n": 52,
+            "docs": 31,
+            "accuracy": 0.8076923076923077,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "seen_triple": {
+            "n": 15,
+            "docs": 14,
+            "accuracy": 0.9333333333333333,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "seen_triple_known": {
+            "n": 15,
+            "docs": 14,
+            "accuracy": 0.9333333333333333,
+            "ties": 0,
+            "transfer_support": 0
+          }
+        },
+        "pair_memory": {
+          "all": {
+            "n": 845,
+            "docs": 55,
+            "accuracy": 0.7875739644970414,
+            "ties": 25,
+            "transfer_support": 0
+          },
+          "both_pairs_new": {
+            "n": 492,
+            "docs": 53,
+            "accuracy": 0.6758130081300813,
+            "ties": 25,
+            "transfer_support": 0
+          },
+          "both_pairs_new_known": {
+            "n": 347,
+            "docs": 53,
+            "accuracy": 0.69164265129683,
+            "ties": 8,
+            "transfer_support": 0
+          },
+          "one_pair_new": {
+            "n": 286,
+            "docs": 53,
+            "accuracy": 0.9475524475524476,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "one_pair_new_known": {
+            "n": 254,
+            "docs": 51,
+            "accuracy": 0.9448818897637795,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "new_triple": {
+            "n": 52,
+            "docs": 31,
+            "accuracy": 0.9038461538461539,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "new_triple_known": {
+            "n": 52,
+            "docs": 31,
+            "accuracy": 0.9038461538461539,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "seen_triple": {
+            "n": 15,
+            "docs": 14,
+            "accuracy": 1.0,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "seen_triple_known": {
+            "n": 15,
+            "docs": 14,
+            "accuracy": 1.0,
+            "ties": 0,
+            "transfer_support": 0
+          }
+        },
+        "transfer": {
+          "all": {
+            "n": 845,
+            "docs": 55,
+            "accuracy": 0.8035502958579882,
+            "ties": 22,
+            "transfer_support": 587
+          },
+          "both_pairs_new": {
+            "n": 492,
+            "docs": 53,
+            "accuracy": 0.7012195121951219,
+            "ties": 22,
+            "transfer_support": 245
+          },
+          "both_pairs_new_known": {
+            "n": 347,
+            "docs": 53,
+            "accuracy": 0.7363112391930836,
+            "ties": 7,
+            "transfer_support": 204
+          },
+          "one_pair_new": {
+            "n": 286,
+            "docs": 53,
+            "accuracy": 0.951048951048951,
+            "ties": 0,
+            "transfer_support": 275
+          },
+          "one_pair_new_known": {
+            "n": 254,
+            "docs": 51,
+            "accuracy": 0.9488188976377953,
+            "ties": 0,
+            "transfer_support": 246
+          },
+          "new_triple": {
+            "n": 52,
+            "docs": 31,
+            "accuracy": 0.9038461538461539,
+            "ties": 0,
+            "transfer_support": 52
+          },
+          "new_triple_known": {
+            "n": 52,
+            "docs": 31,
+            "accuracy": 0.9038461538461539,
+            "ties": 0,
+            "transfer_support": 52
+          },
+          "seen_triple": {
+            "n": 15,
+            "docs": 14,
+            "accuracy": 1.0,
+            "ties": 0,
+            "transfer_support": 15
+          },
+          "seen_triple_known": {
+            "n": 15,
+            "docs": 14,
+            "accuracy": 1.0,
+            "ties": 0,
+            "transfer_support": 15
+          }
+        }
+      },
+      "transfer_minus_prior": {
+        "delta": 0.02540650406504065,
+        "ci95": [
+          -0.0011876484560570072,
+          0.05122950819672131
+        ],
+        "docs": 53,
+        "repeats": 2000,
+        "seed": 20261009
+      },
+      "transfer_minus_memory": {
+        "delta": 0.02540650406504065,
+        "ci95": [
+          -0.0011876484560570072,
+          0.05122950819672131
+        ],
+        "docs": 53,
+        "repeats": 2000,
+        "seed": 20261009
+      }
+    },
+    "syntagrus_test": {
+      "sentences": 8800,
+      "raw_triples": 815,
+      "excluded_train_text_overlap": 0,
+      "document_overlap": 0,
+      "models": {
+        "noun_prior": {
+          "all": {
+            "n": 815,
+            "docs": 63,
+            "accuracy": 0.7386503067484662,
+            "ties": 24,
+            "transfer_support": 0
+          },
+          "both_pairs_new": {
+            "n": 468,
+            "docs": 62,
+            "accuracy": 0.6784188034188035,
+            "ties": 23,
+            "transfer_support": 0
+          },
+          "both_pairs_new_known": {
+            "n": 352,
+            "docs": 60,
+            "accuracy": 0.7002840909090909,
+            "ties": 5,
+            "transfer_support": 0
+          },
+          "one_pair_new": {
+            "n": 306,
+            "docs": 61,
+            "accuracy": 0.8251633986928104,
+            "ties": 1,
+            "transfer_support": 0
+          },
+          "one_pair_new_known": {
+            "n": 270,
+            "docs": 60,
+            "accuracy": 0.8333333333333334,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "new_triple": {
+            "n": 30,
+            "docs": 21,
+            "accuracy": 0.7333333333333333,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "new_triple_known": {
+            "n": 30,
+            "docs": 21,
+            "accuracy": 0.7333333333333333,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "seen_triple": {
+            "n": 11,
+            "docs": 8,
+            "accuracy": 0.9090909090909091,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "seen_triple_known": {
+            "n": 11,
+            "docs": 8,
+            "accuracy": 0.9090909090909091,
+            "ties": 0,
+            "transfer_support": 0
+          }
+        },
+        "pair_memory": {
+          "all": {
+            "n": 815,
+            "docs": 63,
+            "accuracy": 0.7834355828220859,
+            "ties": 23,
+            "transfer_support": 0
+          },
+          "both_pairs_new": {
+            "n": 468,
+            "docs": 62,
+            "accuracy": 0.6784188034188035,
+            "ties": 23,
+            "transfer_support": 0
+          },
+          "both_pairs_new_known": {
+            "n": 352,
+            "docs": 60,
+            "accuracy": 0.7002840909090909,
+            "ties": 5,
+            "transfer_support": 0
+          },
+          "one_pair_new": {
+            "n": 306,
+            "docs": 61,
+            "accuracy": 0.9248366013071896,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "one_pair_new_known": {
+            "n": 270,
+            "docs": 60,
+            "accuracy": 0.9296296296296296,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "new_triple": {
+            "n": 30,
+            "docs": 21,
+            "accuracy": 0.9,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "new_triple_known": {
+            "n": 30,
+            "docs": 21,
+            "accuracy": 0.9,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "seen_triple": {
+            "n": 11,
+            "docs": 8,
+            "accuracy": 1.0,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "seen_triple_known": {
+            "n": 11,
+            "docs": 8,
+            "accuracy": 1.0,
+            "ties": 0,
+            "transfer_support": 0
+          }
+        },
+        "transfer": {
+          "all": {
+            "n": 815,
+            "docs": 63,
+            "accuracy": 0.7987730061349694,
+            "ties": 22,
+            "transfer_support": 606
+          },
+          "both_pairs_new": {
+            "n": 468,
+            "docs": 62,
+            "accuracy": 0.7008547008547008,
+            "ties": 22,
+            "transfer_support": 276
+          },
+          "both_pairs_new_known": {
+            "n": 352,
+            "docs": 60,
+            "accuracy": 0.7386363636363636,
+            "ties": 4,
+            "transfer_support": 234
+          },
+          "one_pair_new": {
+            "n": 306,
+            "docs": 61,
+            "accuracy": 0.9281045751633987,
+            "ties": 0,
+            "transfer_support": 289
+          },
+          "one_pair_new_known": {
+            "n": 270,
+            "docs": 60,
+            "accuracy": 0.9333333333333333,
+            "ties": 0,
+            "transfer_support": 258
+          },
+          "new_triple": {
+            "n": 30,
+            "docs": 21,
+            "accuracy": 0.9333333333333333,
+            "ties": 0,
+            "transfer_support": 30
+          },
+          "new_triple_known": {
+            "n": 30,
+            "docs": 21,
+            "accuracy": 0.9333333333333333,
+            "ties": 0,
+            "transfer_support": 30
+          },
+          "seen_triple": {
+            "n": 11,
+            "docs": 8,
+            "accuracy": 1.0,
+            "ties": 0,
+            "transfer_support": 11
+          },
+          "seen_triple_known": {
+            "n": 11,
+            "docs": 8,
+            "accuracy": 1.0,
+            "ties": 0,
+            "transfer_support": 11
+          }
+        }
+      },
+      "transfer_minus_prior": {
+        "delta": 0.022435897435897436,
+        "ci95": [
+          -0.007075471698113208,
+          0.05241935483870968
+        ],
+        "docs": 62,
+        "repeats": 2000,
+        "seed": 20261009
+      },
+      "transfer_minus_memory": {
+        "delta": 0.022435897435897436,
+        "ci95": [
+          -0.007075471698113208,
+          0.05241935483870968
+        ],
+        "docs": 62,
+        "repeats": 2000,
+        "seed": 20261009
+      }
+    },
+    "gsd_test": {
+      "sentences": 601,
+      "raw_triples": 78,
+      "excluded_train_text_overlap": 0,
+      "document_overlap": 0,
+      "models": {
+        "noun_prior": {
+          "all": {
+            "n": 78,
+            "docs": 78,
+            "accuracy": 0.75,
+            "ties": 3,
+            "transfer_support": 0
+          },
+          "both_pairs_new": {
+            "n": 38,
+            "docs": 38,
+            "accuracy": 0.7368421052631579,
+            "ties": 2,
+            "transfer_support": 0
+          },
+          "both_pairs_new_known": {
+            "n": 28,
+            "docs": 28,
+            "accuracy": 0.7857142857142857,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "one_pair_new": {
+            "n": 31,
+            "docs": 31,
+            "accuracy": 0.8548387096774194,
+            "ties": 1,
+            "transfer_support": 0
+          },
+          "one_pair_new_known": {
+            "n": 26,
+            "docs": 26,
+            "accuracy": 0.8846153846153846,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "new_triple": {
+            "n": 5,
+            "docs": 5,
+            "accuracy": 0.6,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "new_triple_known": {
+            "n": 5,
+            "docs": 5,
+            "accuracy": 0.6,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "seen_triple": {
+            "n": 4,
+            "docs": 4,
+            "accuracy": 0.25,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "seen_triple_known": {
+            "n": 4,
+            "docs": 4,
+            "accuracy": 0.25,
+            "ties": 0,
+            "transfer_support": 0
+          }
+        },
+        "pair_memory": {
+          "all": {
+            "n": 78,
+            "docs": 78,
+            "accuracy": 0.8589743589743589,
+            "ties": 2,
+            "transfer_support": 0
+          },
+          "both_pairs_new": {
+            "n": 38,
+            "docs": 38,
+            "accuracy": 0.7368421052631579,
+            "ties": 2,
+            "transfer_support": 0
+          },
+          "both_pairs_new_known": {
+            "n": 28,
+            "docs": 28,
+            "accuracy": 0.7857142857142857,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "one_pair_new": {
+            "n": 31,
+            "docs": 31,
+            "accuracy": 0.967741935483871,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "one_pair_new_known": {
+            "n": 26,
+            "docs": 26,
+            "accuracy": 0.9615384615384616,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "new_triple": {
+            "n": 5,
+            "docs": 5,
+            "accuracy": 1.0,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "new_triple_known": {
+            "n": 5,
+            "docs": 5,
+            "accuracy": 1.0,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "seen_triple": {
+            "n": 4,
+            "docs": 4,
+            "accuracy": 1.0,
+            "ties": 0,
+            "transfer_support": 0
+          },
+          "seen_triple_known": {
+            "n": 4,
+            "docs": 4,
+            "accuracy": 1.0,
+            "ties": 0,
+            "transfer_support": 0
+          }
+        },
+        "transfer": {
+          "all": {
+            "n": 78,
+            "docs": 78,
+            "accuracy": 0.8205128205128205,
+            "ties": 2,
+            "transfer_support": 58
+          },
+          "both_pairs_new": {
+            "n": 38,
+            "docs": 38,
+            "accuracy": 0.6578947368421053,
+            "ties": 2,
+            "transfer_support": 19
+          },
+          "both_pairs_new_known": {
+            "n": 28,
+            "docs": 28,
+            "accuracy": 0.7142857142857143,
+            "ties": 0,
+            "transfer_support": 15
+          },
+          "one_pair_new": {
+            "n": 31,
+            "docs": 31,
+            "accuracy": 0.967741935483871,
+            "ties": 0,
+            "transfer_support": 30
+          },
+          "one_pair_new_known": {
+            "n": 26,
+            "docs": 26,
+            "accuracy": 0.9615384615384616,
+            "ties": 0,
+            "transfer_support": 25
+          },
+          "new_triple": {
+            "n": 5,
+            "docs": 5,
+            "accuracy": 1.0,
+            "ties": 0,
+            "transfer_support": 5
+          },
+          "new_triple_known": {
+            "n": 5,
+            "docs": 5,
+            "accuracy": 1.0,
+            "ties": 0,
+            "transfer_support": 5
+          },
+          "seen_triple": {
+            "n": 4,
+            "docs": 4,
+            "accuracy": 1.0,
+            "ties": 0,
+            "transfer_support": 4
+          },
+          "seen_triple_known": {
+            "n": 4,
+            "docs": 4,
+            "accuracy": 1.0,
+            "ties": 0,
+            "transfer_support": 4
+          }
+        }
+      },
+      "transfer_minus_prior": {
+        "delta": -0.07894736842105263,
+        "ci95": [
+          -0.21052631578947367,
+          0.02631578947368421
+        ],
+        "docs": 38,
+        "repeats": 2000,
+        "seed": 20261009
+      },
+      "transfer_minus_memory": {
+        "delta": -0.07894736842105263,
+        "ci95": [
+          -0.21052631578947367,
+          0.02631578947368421
+        ],
+        "docs": 38,
+        "repeats": 2000,
+        "seed": 20261009
+      }
+    }
+  },
+  "elapsed_seconds": 2.863
+}

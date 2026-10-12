@@ -1,0 +1,32 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/17d6bbfb7f138f9ba2cf04692f15d892becf0246/inst/udpipe-ud-2.5-191206/russian-syntagrus-ud-2.5-191206.udpipe",
+    "path": "data/raw/parser/russian-syntagrus-ud-2.5-191206.udpipe",
+    "bytes": 45859472,
+    "sha256": "16894d425ee328ace668a9d2f7ea5ff945468247d146333e8688f9200fa114e2"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/17d6bbfb7f138f9ba2cf04692f15d892becf0246/inst/udpipe-ud-2.5-191206/README",
+    "path": "data/raw/parser/README",
+    "bytes": 44615,
+    "sha256": "1369ca753e1e8844e0b777657c99e2bf3f36208b48d319c95ebdc36ea1b913dd"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/jwijffels/udpipe.models.ud.2.5/17d6bbfb7f138f9ba2cf04692f15d892becf0246/inst/udpipe-ud-2.5-191206/LICENSE",
+    "path": "data/raw/parser/LICENSE",
+    "bytes": 20717,
+    "sha256": "b74fbcfc8ced6f7893b729b2685fc23cf221c72bcd716bd04cd884bf8a33bd48"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-SynTagRus/de62ad531ce770b026b5dd97d82911810d45ba95/ru_syntagrus-ud-train.conllu",
+    "path": "data/raw/syntagrus25/ru_syntagrus-ud-train.conllu",
+    "bytes": 81043533,
+    "sha256": "44a6ff0a831ec954ead032e2000e652aa20692eae211f18c012b9c3424ffd2fe"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/UniversalDependencies/UD_Russian-SynTagRus/de62ad531ce770b026b5dd97d82911810d45ba95/ru_syntagrus-ud-dev.conllu",
+    "path": "data/raw/syntagrus25/ru_syntagrus-ud-dev.conllu",
+    "bytes": 10903424,
+    "sha256": "c941688d54a69469c25989a8a2c67451d464ee3c35d319665f08c428a9a61a79"
+  }
+]

@@ -1,0 +1,126 @@
+{
+  "experiment": "005",
+  "annotation_kind": "auxiliary_LLM_not_human_gold",
+  "frozen_annotation_commit": "c91988c",
+  "annotation_canonical_sha256": "03974e49dcfd32912cfcef557d7fe2eeb3c207322fe518a66d2b005055e2c231",
+  "environment": {
+    "python": "3.13.2",
+    "platform": "Windows-10-10.0.19045-SP0",
+    "ufal.udpipe": "1.4.0.1"
+  },
+  "statuses": {
+    "clear": 25,
+    "no_overt_participant": 14,
+    "ambiguous": 1
+  },
+  "excluded_overlap": [],
+  "models_clear": {
+    "basic_subject_rule": {
+      "n": 25,
+      "docs": 21,
+      "exact": 0.72,
+      "answered": 20,
+      "tp": 18,
+      "fp": 2,
+      "fn": 7,
+      "precision": 0.9,
+      "recall": 0.72,
+      "f1": 0.8
+    },
+    "basic_object_first": {
+      "n": 25,
+      "docs": 21,
+      "exact": 0.88,
+      "answered": 22,
+      "tp": 22,
+      "fp": 0,
+      "fn": 3,
+      "precision": 1.0,
+      "recall": 0.88,
+      "f1": 0.9361702127659575
+    },
+    "basic_learned_recursive": {
+      "n": 25,
+      "docs": 21,
+      "exact": 0.8,
+      "answered": 21,
+      "tp": 20,
+      "fp": 1,
+      "fn": 5,
+      "precision": 0.9523809523809523,
+      "recall": 0.8,
+      "f1": 0.8695652173913043
+    },
+    "basic_context_global": {
+      "n": 25,
+      "docs": 21,
+      "exact": 0.88,
+      "answered": 22,
+      "tp": 22,
+      "fp": 0,
+      "fn": 3,
+      "precision": 1.0,
+      "recall": 0.88,
+      "f1": 0.9361702127659575
+    },
+    "parsed_subject_rule": {
+      "n": 25,
+      "docs": 21,
+      "exact": 0.52,
+      "answered": 18,
+      "tp": 13,
+      "fp": 6,
+      "fn": 12,
+      "precision": 0.6842105263157895,
+      "recall": 0.52,
+      "f1": 0.5909090909090909
+    },
+    "parsed_object_first": {
+      "n": 25,
+      "docs": 21,
+      "exact": 0.6,
+      "answered": 19,
+      "tp": 15,
+      "fp": 5,
+      "fn": 10,
+      "precision": 0.75,
+      "recall": 0.6,
+      "f1": 0.6666666666666666
+    },
+    "parsed_learned_recursive": {
+      "n": 25,
+      "docs": 21,
+      "exact": 0.56,
+      "answered": 18,
+      "tp": 14,
+      "fp": 5,
+      "fn": 11,
+      "precision": 0.7368421052631579,
+      "recall": 0.56,
+      "f1": 0.6363636363636364
+    },
+    "parsed_context_global": {
+      "n": 25,
+      "docs": 21,
+      "exact": 0.6,
+      "answered": 19,
+      "tp": 15,
+      "fp": 5,
+      "fn": 10,
+      "precision": 0.75,
+      "recall": 0.6,
+      "f1": 0.6666666666666666
+    }
+  },
+  "nonclear_outputs": {
+    "basic_subject_rule": 0,
+    "basic_object_first": 0,
+    "basic_learned_recursive": 0,
+    "basic_context_global": 0,
+    "parsed_subject_rule": 0,
+    "parsed_object_first": 1,
+    "parsed_learned_recursive": 0,
+    "parsed_context_global": 1
+  },
+  "elapsed_seconds": 6.245
+}

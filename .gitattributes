@@ -6,3 +6,7 @@ docs/manual/evidence/stone/*.json text eol=lf
 # Preserve downloaded distributions and the measured input byte-for-byte.
 /app/static/vendor/*.js -text
 /docs/manual/evidence/layout/geometry-input.json text eol=lf
+# Archived branch snapshots retain their original Git bytes across checkouts.
+/archive/observational-composition/** text eol=lf
+# CoNLL-U sentence blocks intentionally end with a blank separator line.
+/archive/observational-composition/results/004/parsed_input.conllu whitespace=-blank-at-eof
