@@ -12,7 +12,8 @@ from pathlib import Path
 from uuid import uuid4
 
 FORMAT = "concept-field-graph"
-VERSION = 2
+VERSION = 3
+SUPPORTED_VERSIONS = (1, 2, 3)
 
 
 class Invalid(ValueError):
@@ -158,6 +159,10 @@ def validate(state):
                 raise Invalid("Неверная исходная позиция замещённого концепта.")
             if replacement["status"] == "active" and (replacement.get("sourceId") in ids or replacement.get("targetId") not in ids or structure(nodes[replacement["targetId"]]) != "combination"):
                 raise Invalid("Активное замещение требует комбинацию назначения и отсутствие замещённого концепта; отмените замещение перед удалением цели.")
+    for study in state["studies"]:
+        if "accumulation" in study:
+            from app.accumulation import validate_accumulation
+            validate_accumulation(study)
     pairs = set()
     for match in state["matches"]:
         identity(match)
@@ -185,7 +190,7 @@ def validate(state):
     for imported in state["imports"]:
         identity(imported)
         document = imported.get("document")
-        if not isinstance(document, dict) or document.get("format") != FORMAT or document.get("version") not in (1, VERSION) or document.get("kind") not in ("workspace", "study", "fragment", "changes"):
+        if not isinstance(document, dict) or document.get("format") != FORMAT or document.get("version") not in SUPPORTED_VERSIONS or document.get("kind") not in ("workspace", "study", "fragment", "changes"):
             raise Invalid("Некорректный архив происхождения импорта.")
 
 
@@ -250,7 +255,14 @@ class Store:
             result = {}
             detail = action
             changed_study = None
-            if action == "create_study":
+            if action in {"add_node", "edit_node", "delete_node", "add_edge", "edit_edge", "delete_edge", "add_designation", "edit_designation", "delete_designation", "replace_concept", "restore_substitution"}:
+                selected = lookup(state["studies"], data.get("studyId"), "исследование")
+                if selected.get("accumulation"):
+                    raise Invalid("Накопление сохраняет исходные представления. Используйте решения / рабочий словарь; содержательные правки выполняются в независимом исследовании.")
+            if action == "create_accumulation" or action in {"accumulation_add_source", "accumulation_decide", "accumulation_camera", "accumulation_alias"}:
+                from app.accumulation import operate
+                result, detail = operate(state, action, data)
+            elif action == "create_study":
                 title = clean(data.get("title"), "название исследования", True, 1000)
                 nid, sid = uid(), uid()
                 node = {"id": nid, **fields({"label": data.get("label", title), "kind": "слово"}), "origins": [], "createdAt": now()}
@@ -346,6 +358,8 @@ class Store:
             elif action == "match":
                 left, ln = study_node(state, data.get("leftStudy"), data.get("leftNode"))
                 right, rn = study_node(state, data.get("rightStudy"), data.get("rightNode"))
+                if left.get("accumulation") or right.get("accumulation"):
+                    raise Invalid("Для накопительного полотна используйте его журнал решений.")
                 if left["id"] == right["id"]:
                     raise Invalid("Выберите разные исследования.")
                 pair = {ln["id"], rn["id"]}
@@ -391,6 +405,8 @@ class Store:
         from app.composition import structure
         left = lookup(state["studies"], data.get("leftStudy"), "левое исследование")
         right = lookup(state["studies"], data.get("rightStudy"), "правое исследование")
+        if left.get("accumulation") or right.get("accumulation"):
+            raise Invalid("Накопление продолжается добавлением исходника и решениями на одном полотне.")
         if left["id"] == right["id"]:
             raise Invalid("Нельзя объединять исследование с собой.")
         selected = data.get("matchIds", [])

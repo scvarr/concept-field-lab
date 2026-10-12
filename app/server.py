@@ -55,9 +55,20 @@ def make_server(path, port=8765):
                 return self.send(200, store.history())
             if path == "/api/export":
                 return self.send(200, store.export(), download="concept-field-workspace.json")
-            if path in ("/api/graph-export", "/api/diff", "/api/proposals", "/api/substitution-preview"):
+            if path in ("/api/graph-export", "/api/diff", "/api/proposals", "/api/substitution-preview", "/api/accumulation-index", "/api/accumulation-neighbourhood"):
                 try:
                     query = parse_qs(urlparse(self.path).query)
+                    if path in ("/api/accumulation-index", "/api/accumulation-neighbourhood"):
+                        from app.accumulation import lexical_index, neighbourhood
+                        from app.store import lookup
+                        study = lookup(store.read()["state"]["studies"], query.get("study", [None])[0], "накопительное полотно")
+                        if not study.get("accumulation"):
+                            raise Invalid("Выберите накопительное полотно.")
+                        sources = query.get("source")
+                        if path == "/api/accumulation-index":
+                            return self.send(200, lexical_index(study, query.get("basis", ["designation"])[0], sources,
+                                query.get("status", ["all"])[0], query.get("q", [""])[0]))
+                        return self.send(200, neighbourhood(study, query.get("node", [None])[0], int(query.get("depth", ["1"])[0]), sources))
                     if path == "/api/substitution-preview":
                         from app.composition import replacement_preview
                         return self.send(200, replacement_preview(store.read()["state"], query.get("study", [None])[0], query.get("source", [None])[0], query.get("target", [None])[0]))
@@ -93,7 +104,7 @@ def make_server(path, port=8765):
                     return self.send(200, structural_diff(left, right, snapshot["state"]["matches"]), download="concept-field-diff.json")
                 except (Invalid, ValueError, TypeError, KeyError) as exc:
                     return self.send(400, {"error": str(exc)})
-            files = {"/": ("index.html", "text/html"), "/app.js": ("app.js", "text/javascript"), "/graph-view.js": ("graph-view.js", "text/javascript"), "/style.css": ("style.css", "text/css"), "/favicon.svg": ("favicon.svg", "image/svg+xml")}
+            files = {"/": ("index.html", "text/html"), "/app.js": ("app.js", "text/javascript"), "/graph-view.js": ("graph-view.js", "text/javascript"), "/accumulation.js": ("accumulation.js", "text/javascript"), "/style.css": ("style.css", "text/css"), "/favicon.svg": ("favicon.svg", "image/svg+xml")}
             if path not in files:
                 return self.send(404, {"error": "Страница не найдена."})
             filename, mime = files[path]

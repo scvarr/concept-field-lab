@@ -6,7 +6,7 @@ import hashlib
 import json
 from collections import deque
 
-from app.store import FORMAT, VERSION, Invalid, fields, lookup, now, uid, validate
+from app.store import FORMAT, VERSION, SUPPORTED_VERSIONS, Invalid, fields, lookup, now, uid, validate
 from app.composition import COLLECTIONS, OPERATIONS, collection, edge_role, metadata
 
 
@@ -19,9 +19,13 @@ def canonical(value):
 
 
 def parse_document(document):
-    if not isinstance(document, dict) or document.get("format") != FORMAT or document.get("version") not in (1, VERSION):
-        raise Invalid("Ожидается JSON concept-field-graph версии 1 или 2.")
+    if not isinstance(document, dict) or document.get("format") != FORMAT or document.get("version") not in SUPPORTED_VERSIONS:
+        raise Invalid("Ожидается JSON concept-field-graph версии 1, 2 или 3.")
     kind = document.get("kind")
+    supplied_state = document.get("state")
+    supplied_studies = supplied_state.get("studies", []) if isinstance(supplied_state, dict) else []
+    if document["version"] < 3 and isinstance(supplied_studies, list) and any(isinstance(s, dict) and s.get("accumulation") for s in supplied_studies):
+        raise Invalid("Накопительное полотно требует JSON v3; не меняйте номер версии вручную.")
     if kind == "changes":
         changes = document.get("changes")
         if not isinstance(changes, list) or len(changes) > 100000:
@@ -35,6 +39,8 @@ def parse_document(document):
                 raise Invalid("Укажите исходный или новый уникальный id.")
             if c["operation"] == "node":
                 fields(c["value"])
+            if document["version"] < 3 and c["value"].get("accumulation"):
+                raise Invalid("Метаданные накопления требуют JSON v3.")
         return copy.deepcopy(changes)
     if kind not in ("workspace", "study", "fragment"):
         raise Invalid("Можно импортировать workspace, study, fragment или changes. Diff — отчёт; его соответствия не считаются подтверждёнными.")
@@ -44,6 +50,8 @@ def parse_document(document):
     latest = None
     for row in expand_history(document):
         validate(row["state"])
+        if document["version"] < 3 and any(s.get("accumulation") for s in row["state"]["studies"]):
+            raise Invalid("История накопления требует JSON v3.")
         latest = row["state"]
     if latest is not None and latest != state:
         raise Invalid("Последняя версия истории не совпадает с экспортированным состоянием.")
@@ -193,6 +201,8 @@ def review(state, data):
                 existing.update(metadata(value))
             else:
                 created = {**value, "nodes": [], "edges": []}
+                if value.get("accumulation"):
+                    created.update(designations=[], substitutions=[])
                 state["studies"].append(created)
                 studies[value["id"]] = created
         else:
@@ -335,6 +345,8 @@ def _graph_export_locked(store, study_id, node_id, depth):
     from app.journal import compact_history
     current = store.read()["state"]
     study = lookup(current["studies"], study_id, "исследование")
+    if study.get("accumulation") and node_id is not None:
+        raise Invalid("Накопление экспортируется целиком: снимки и решения определяют все его узлы. Локальные окружения доступны в инспекторах.")
     ids = neighbourhood(study, node_id, depth) if node_id else None
     import_cache = {}
     state = project_state(current, {study_id}, ids, import_cache=import_cache)

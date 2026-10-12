@@ -165,7 +165,7 @@ class CompositionTest(unittest.TestCase):
         alpha, _, _ = self.alpha()
         self.act("replace_concept", studyId=self.sid, sourceId=self.x, targetId=alpha, confirmed=True, reason="Тест")
         document = graph_export(self.store, self.sid)
-        self.assertEqual(document["version"], 2)
+        self.assertEqual(document["version"], 3)
         self.assertEqual(list(expand_history(document))[-1]["state"], document["state"])
         other = Store(Path(self.temp.name) / "other.sqlite3")
         self.import_accept(other, document)
