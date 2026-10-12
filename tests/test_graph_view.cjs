@@ -24,3 +24,9 @@ test('fit includes node padding and respects viewport aspect ratio',()=>{
   assert.equal(c.x,0);assert.equal(c.y,0);
   assert.ok(610*c.scale<=400);assert.ok(165*c.scale<=300);
 });
+
+test('parallel source relations and loops remain visually distinct',()=>{
+  const a={x:0,y:0},b={x:300,y:0};
+  assert.equal(new Set([1,2,3,4].map(i=>geometry.edge(a,b,i).d)).size,4);
+  assert.equal(new Set([1,2,3].map(i=>geometry.edge(a,a,i).d)).size,3);
+});
