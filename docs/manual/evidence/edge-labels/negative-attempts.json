@@ -1,0 +1,61 @@
+[
+  {
+    "run": "edge-labels-1791825019689",
+    "failure": "AssertionError [ERR_ASSERTION]: Traceback (most recent call last):\r\n  File \"<string>\", line 8, in <module>\r\n    edge=act(s,'add_edge',studyId=a['studyId'],**{'from':alpha,'to':a['shared'],'role':'component','componentRole':'тестовая грань','type':'включение','notes':'Метаданные не должны исчезнуть'})['edgeId']\r\n         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^\r\nKeyError: 'edgeId'\r\n\n\n1 !== 0\n\n    at E:\\Projects\\concept-field-lab\\tests\\edge-labels-browser.cjs:40:10",
+    "completedScenarios": []
+  },
+  {
+    "run": "edge-labels-1791825043683",
+    "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-study=\"d1cce040-0773-40ad-8108-bcc8293d074b\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button class=\"study-item active\" data-study=\"d1cce040-0773-40ad-8108-bcc8293d074b\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    57 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at E:\\Projects\\concept-field-lab\\tests\\edge-labels-browser.cjs:49:61",
+    "completedScenarios": []
+  },
+  {
+    "run": "edge-labels-1791825098538",
+    "failure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#compare-right-graph [data-graph-edge]').first() to be visible\u001b[22m\n\u001b[2m    63 × locator resolved to hidden <g class=\"\" tabindex=\"0\" role=\"button\" data-visual-only=\"false\" aria-label=\"Ребро первичное\" data-to=\"89a6c5dd-f2ae-4606-b318-54f78bd8d301\" data-from=\"15e6ee90-6982-4014-8d23-2d884ecf6a61\" data-graph-edge=\"287c379a-d98c-48b9-b422-cb21c16387ed\">…</g>\u001b[22m\n\n    at inspect (E:\\Projects\\concept-field-lab\\tests\\edge-labels-browser.cjs:16:59)\n    at E:\\Projects\\concept-field-lab\\tests\\edge-labels-browser.cjs:62:46",
+    "completedScenarios": [
+      "editor: arrows, component dash, tooltip/ARIA and keyboard editing preserve metadata"
+    ]
+  },
+  {
+    "run": "edge-labels-1791825141563",
+    "failure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#accum-index-count').filter({ hasText: 'нерешённых пар' }) to be visible\u001b[22m\n\u001b[2m    62 × locator resolved to hidden <p id=\"accum-index-count\">2 групп · 2 нерешённых пар. Счётчики групп полные.</p>\u001b[22m\n\n    at E:\\Projects\\concept-field-lab\\tests\\edge-labels-browser.cjs:66:79",
+    "completedScenarios": [
+      "editor: arrows, component dash, tooltip/ARIA and keyboard editing preserve metadata",
+      "comparison: both independent views have unlabelled directed edges"
+    ]
+  },
+  {
+    "run": "edge-labels-1791825191041",
+    "failure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#accum-graph [data-graph-edge]').first()\u001b[22m\n\n    at inspect (E:\\Projects\\concept-field-lab\\tests\\edge-labels-browser.cjs:16:59)\n    at E:\\Projects\\concept-field-lab\\tests\\edge-labels-browser.cjs:81:43",
+    "completedScenarios": [
+      "editor: arrows, component dash, tooltip/ARIA and keyboard editing preserve metadata",
+      "comparison: both independent views have unlabelled directed edges",
+      "accumulation and inspector: origins, alpha, auxiliary candidates, metadata and decision dialog remain distinct",
+      "existing K001+K002 portable canvas displayed without semantic edits"
+    ]
+  },
+  {
+    "run": "edge-labels-1791825239921",
+    "failure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#accum-graph [data-graph-edge]').first()\u001b[22m\n\n    at inspect (E:\\Projects\\concept-field-lab\\tests\\edge-labels-browser.cjs:16:59)\n    at E:\\Projects\\concept-field-lab\\tests\\edge-labels-browser.cjs:81:100",
+    "completedScenarios": [
+      "editor: arrows, component dash, tooltip/ARIA and keyboard editing preserve metadata",
+      "comparison: both independent views have unlabelled directed edges",
+      "accumulation and inspector: origins, alpha, auxiliary candidates, metadata and decision dialog remain distinct",
+      "existing K001+K002 portable canvas displayed without semantic edits"
+    ]
+  },
+  {
+    "run": "edge-labels-1791825291732",
+    "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  [\n    {\n      archived: false,\n      createdAt: '2026-10-12T17:14:51.807430+00:00',\n      description: 'Синтетическая инженерная структура; решения проверяют редактор, не смысл.',\n...\n        aliases: [],\n+       camera: {\n+         scale: 0.7988095238095239,\n+         x: 730,\n+         y: 0\n+       },\n-       camera: null,\n        decisions: [],\n        sources: [\n          {\n            addedAt: '2026-10-12T17:14:51.986194+00:00',\n            designationIds: {\n\n    at E:\\Projects\\concept-field-lab\\tests\\edge-labels-browser.cjs:82:10\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)",
+    "completedScenarios": [
+      "editor: arrows, component dash, tooltip/ARIA and keyboard editing preserve metadata",
+      "comparison: both independent views have unlabelled directed edges",
+      "accumulation and inspector: origins, alpha, auxiliary candidates, metadata and decision dialog remain distinct",
+      "existing K001+K002 portable canvas displayed without semantic edits"
+    ]
+  },
+  {
+    "run": "syntax-before-final-run",
+    "failure": "Duplicate local content variable after adding comparison projection; renamed studyContent. No server or data action."
+  }
+]
