@@ -101,6 +101,8 @@ def validate(state):
             if structure(node) not in ("concept", "combination"):
                 raise Invalid("Структурная функция — concept или combination; содержательный тип задаётся отдельно.")
             fields(node)
+            if "layoutPinned" in node and not isinstance(node["layoutPinned"], bool):
+                raise Invalid("Закрепление узла должно быть логическим значением.")
             if not isinstance(node.get("origins"), list):
                 raise Invalid("Неверное происхождение элемента.")
             for origin in node["origins"]:
@@ -261,6 +263,9 @@ class Store:
                     raise Invalid("Накопление сохраняет исходные представления. Используйте решения / рабочий словарь; содержательные правки выполняются в независимом исследовании.")
             if action == "create_accumulation" or action in {"accumulation_add_source", "accumulation_decide", "accumulation_camera", "accumulation_alias"}:
                 from app.accumulation import operate
+                result, detail = operate(state, action, data)
+            elif action in {"layout_positions", "layout_restore", "layout_pin"}:
+                from app.geometry import operate
                 result, detail = operate(state, action, data)
             elif action == "create_study":
                 title = clean(data.get("title"), "название исследования", True, 1000)

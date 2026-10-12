@@ -31,6 +31,7 @@ window.AccumulationWorkbench = class {
   async render() {
     const s=this.study();
     if(!s?.accumulation) {
+      this.layoutControls?.dispose();
       this.host.innerHTML=`<div class="accum-intro"><h2>Одно полотно для независимых графов</h2><p>Добавьте исходные исследования. Совпадения слов останутся кандидатами до вашего решения.</p><button id="accum-create" class="primary">Создать полотно</button>${this.ctx.state().studies.filter(s=>s.accumulation&&!s.archived).map(s=>`<button data-open-accum="${this.html(s.id)}">${this.html(s.title)}</button>`).join('')}</div>`;
       this.host.querySelector('#accum-create').onclick=()=>this.create();
       this.host.querySelectorAll('[data-open-accum]').forEach(b=>b.onclick=()=>this.ctx.activate(b.dataset.openAccum));
@@ -57,11 +58,13 @@ window.AccumulationWorkbench = class {
     await this.refreshWindows();
   }
   mount() {
+    this.layoutControls?.dispose();
     const old=this.host.querySelector('#accum-graph')?.graphView;old?.observer.disconnect();
     this.host.innerHTML=`
       <div class="accum-toolbar"><strong id="accum-title"></strong><button id="accum-create">Новое полотно</button><button id="accum-add-source">Добавить граф</button><button id="accum-export">Экспорт полотна ↓</button><span id="accum-source-count"></span></div>
       <div id="accum-legend" class="accum-legend"></div>
       <div class="accum-controls"><button id="accum-toggle-index">Индекс совпадений</button><label>Рёбра <select id="accum-route"></select></label><label class="checkbox"><input type="checkbox" id="accum-show-candidates">Вспомогательные кандидаты</label><button id="accum-fit">Вписать полотно</button><button id="accum-center">К выбранному</button><button id="accum-back">Вернуть участок</button><button id="accum-zoom-out" aria-label="Уменьшить полотно">−</button><button id="accum-zoom-reset">100%</button><button id="accum-zoom-in" aria-label="Увеличить полотно">＋</button><label>Корень источника <select id="accum-roots"></select></label><button id="accum-go-root">Перейти к корню</button></div>
+      <div id="accum-layout-controls"></div>
       <div class="accum-layout">
         <aside id="accum-index" class="accum-index" hidden><h3>Индекс совпадений</h3><label>Источник обозначений<select id="accum-basis"><option value="designation">Словарные обозначения</option><option value="label">Технические названия</option><option value="both">Оба · раздельные группы</option></select></label><input type="search" id="accum-index-query" aria-label="Поиск совпадений" placeholder="Обозначение…"><label>Исходные графы индекса<select id="accum-index-sources" multiple size="3"></select></label><small>Без выбора — все исходники.</small><label>Статус решений<select id="accum-index-status"><option value="all">Все решения</option><option value="pending">Не определены</option><option value="confirmed">Объединены</option><option value="rejected">Различны</option></select></label><p id="accum-index-count"></p><div id="accum-index-groups"></div><div id="accum-group-details"></div></aside>
         <div class="accum-canvas"><div id="accum-graph" class="graph" aria-label="Накопительное полотно"></div><p id="accum-graph-caption"></p><div id="accum-selection" class="accum-selection"></div></div>
@@ -72,7 +75,7 @@ window.AccumulationWorkbench = class {
     bind('accum-create',()=>this.create());bind('accum-add-source',()=>this.addSource());
     bind('accum-export',()=>this.ctx.run(async()=>{await this.persistCamera();await this.persistCamera();await this.ctx.download(`/api/graph-export?study=${encodeURIComponent(this.study().id)}`,'concept-field-accumulation.json');})());
     bind('accum-toggle-index',()=>this.toggleIndex());
-    bind('accum-fit',()=>this.graph()?.fit());bind('accum-center',()=>this.graph()?.center(this.settings().focus));bind('accum-back',()=>this.graph()?.back());
+    bind('accum-fit',()=>this.fitCanvas());bind('accum-center',()=>this.graph()?.center(this.settings().focus));bind('accum-back',()=>this.graph()?.back());
     bind('accum-zoom-out',()=>this.graph()?.zoom(1/1.2));bind('accum-zoom-in',()=>this.graph()?.zoom(1.2));bind('accum-zoom-reset',()=>{const g=this.graph();if(g)g.zoom(1/g.camera.scale);});
     bind('accum-go-root',()=>this.select(this.host.querySelector('#accum-roots').value,true));
     this.host.querySelector('#accum-route').onchange=e=>{this.settings().routeSource=e.target.value;this.renderCanvas();this.save();};
@@ -81,6 +84,7 @@ window.AccumulationWorkbench = class {
     this.host.querySelector('#accum-index-status').onchange=e=>{this.settings().status=e.target.value;this.refreshIndex();this.save();};
     this.host.querySelector('#accum-index-sources').onchange=e=>{this.settings().sources=[...e.target.selectedOptions].map(o=>o.value);this.refreshIndex();this.save();};
     this.host.querySelector('#accum-index-query').oninput=e=>{this.settings().query=e.target.value;clearTimeout(this.searchTimer);this.searchTimer=setTimeout(()=>this.refreshIndex(),180);this.save();};
+    this.layoutControls=new CanvasLayoutControls(this,this.host.querySelector('#accum-layout-controls'));
   }
   graph() { return this.host.querySelector('#accum-graph')?.graphView; }
   toggleIndex(toggle=true) {
@@ -119,24 +123,26 @@ window.AccumulationWorkbench = class {
   renderCanvas() {
     const s=this.study();if(!s?.accumulation)return;
     const prefs=this.settings(),host=this.host.querySelector('#accum-graph');if(!host)return;
+    this.layoutControls?.refresh();
     const key=host.id+':'+s.id;
     if(host.graphKey!==key||!host.graphView) {
       host.graphView?.observer.disconnect();host.graphKey=key;
-      host.graphView=new GraphView(host,{canInteract:id=>!id||!this.ctx.busy(),select:id=>this.select(id),editNode:id=>this.openInspector(id),editEdge:id=>this.openEdge(id),
+      host.graphView=new GraphView(host,{minScale:.002,canInteract:id=>!id||(!this.ctx.busy()&&!this.layoutControls?.active()),select:(id,additive)=>{this.layoutControls?.toggle(id,additive);this.select(id);},editNode:id=>this.openInspector(id),editEdge:id=>this.openEdge(id),
         savePosition:(id,p)=>this.ctx.mutate('position',{studyId:s.id,nodeId:id,...p}),error:e=>this.ctx.toast(e.message,true),
         changed:snapshot=>{this.ctx.ui().graphs[key]=snapshot;this.save();this.queueCamera(s.id,snapshot.camera);},
-        cameraChanged:c=>{this.host.querySelector('#accum-zoom-reset').textContent=Math.round(c.scale*100)+'%';}});
+        cameraChanged:c=>{this.host.querySelector('#accum-zoom-reset').textContent=(c.scale<.01?(c.scale*100).toFixed(1):Math.round(c.scale*100))+'%';}});
       const saved=this.ctx.ui().graphs[key];host.graphView.restore(saved||{camera:s.accumulation.camera});
     }
     let nodes=s.nodes.slice(0,1000);
     if(!nodes.some(n=>n.id===prefs.focus)){nodes=nodes.slice(0,999);nodes.push(this.node(prefs.focus));}
     const visible=new Set(nodes.map(n=>n.id)),group=this.indexStudy===s.id?this.index?.groups.find(g=>g.key===prefs.groupKey):null;
-    const highlighted=new Set(group?.nodeIds||[]),markings=new Map(nodes.map(n=>[n.id,`${n.origins.length>1?'merged-node':''} ${highlighted.has(n.id)?'index-highlight':''}`]));
+    const highlighted=new Set(group?.nodeIds||[]),markings=new Map(nodes.map(n=>[n.id,`${n.origins.length>1?'merged-node':''} ${highlighted.has(n.id)?'index-highlight':''} ${this.layoutControls?.selected.has(n.id)?'layout-selected':''} ${n.layoutPinned?'layout-pinned':''}`]));
     const originalEdges=s.edges.filter(e=>(prefs.routeSource==='all'||e.accumulationSourceId===prefs.routeSource)&&visible.has(e.from)&&visible.has(e.to));
     const auxiliary=this.indexStudy===s.id&&prefs.showCandidates?this.index.candidates.filter(e=>visible.has(e.from)&&visible.has(e.to)).map(e=>({...e,color:'#a21caf',highlight:e.evidence.some(x=>x.indexKey===prefs.groupKey),displayTitle:`Кандидат · ${e.evidence.map(x=>(x.basis==='designation'?'словарь':'название')+': '+x.term).join('; ')}`,notes:'Вспомогательная визуальная связь; не отношение концептуального графа.'})):[];
     const contentBudget=Math.min(originalEdges.length,2800),candidateBudget=3000-contentBudget;
     const edges=[...this.decoratedEdges(originalEdges.slice(0,contentBudget)),...auxiliary.slice(0,candidateBudget)];
-    host.graphView.update(s,{nodes:nodes.map(n=>({...n,badge:n.origins.length>1?`${n.origins.length} исходных представлений`:n.kind})),edges},prefs.focus,markings);
+    const preview=this.layoutControls?.preview?.positions||{};
+    host.graphView.update(s,{nodes:nodes.map(n=>({...n,...preview[n.id],badge:`${n.layoutPinned?'⚓ ':''}${n.origins.length>1?`${n.origins.length} исходных представлений`:n.kind}`})),edges},prefs.focus,markings);
     this.host.querySelector('#accum-graph-caption').textContent=`Показано ${nodes.length} из ${s.nodes.length} узлов, ${contentBudget} из ${originalEdges.length} доступных содержательных рёбер, ${Math.min(auxiliary.length,candidateBudget)} вспомогательных. ${s.nodes.length>nodes.length||contentBudget<originalEdges.length||auxiliary.length>candidateBudget||this.index?.candidatesTruncated?'Показ неполный: используйте индекс и независимые инспекторы. ':''}${group?`Подсвечено ${nodes.filter(n=>highlighted.has(n.id)).length} из ${group.nodes} узлов группы. `:''}Цвет различает исходник; общий показ не подтверждает смешанный маршрут.`;
   }
   queueCamera(sid,camera) {
@@ -144,6 +150,11 @@ window.AccumulationWorkbench = class {
     if(JSON.stringify(camera)===JSON.stringify(this.study().accumulation.camera)){if(this.pendingCamera?.sid===sid){this.pendingCamera=null;clearTimeout(this.cameraTimer);}return;}
     this.pendingCamera={sid,camera:{...camera}};clearTimeout(this.cameraTimer);
     this.cameraTimer=setTimeout(()=>this.persistCamera().catch(()=>{}),500);
+  }
+  fitCanvas() {
+    const graph=this.graph();if(!graph)return;
+    const preview=this.layoutControls?.preview?.positions||{},points=this.study().nodes.map(n=>preview[n.id]||{x:n.x,y:n.y});
+    const {width,height}=graph.size();graph.remember();graph.setCamera(GraphGeometry.fit(points,width,height,.002));
   }
   async persistCamera() {
     if(this.cameraWrite){await this.cameraWrite;return;}
@@ -216,6 +227,7 @@ window.AccumulationWorkbench = class {
     host.innerHTML=decisions.slice().reverse().map(d=>`<article><strong>${d.status==='confirmed'?'Объединено':d.status==='rejected'?'Различны':'Не определено'}</strong> · ${this.html(new Date(d.time).toLocaleString('ru-RU'))}<p>${this.html(d.reason)}</p><small>${d.left.length} ↔ ${d.right.length} исходных представлений · ${this.html(d.id)}</small><details><summary>Исходная пара и свидетельства</summary><pre>${this.html(JSON.stringify(d,null,2))}</pre></details></article>`).join('')||'<p>Решений пока нет.</p>';
   }
   visibility(active) {
+    if(!active&&this.layoutControls?.active())this.layoutControls.cancel('Предпросмотр закрыт при переходе в другой раздел.');
     this.active=active;
     for(const w of this.windows.values())w.el.hidden=!active||this.study()?.id!==w.props.studyId;
   }

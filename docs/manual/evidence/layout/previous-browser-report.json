@@ -1,0 +1,168 @@
+{
+  "date": "2026-10-12T09:13:28.045Z",
+  "node": "v24.19.0",
+  "scenarios": [
+    "2004 / 3001: calculation uses all nodes, only 1000 rendered",
+    "full force preview, responsive pan, cancel without coordinate revision",
+    "four algorithms applied and undone, hidden last node preserved, one transaction each",
+    "source subset: all 2000 included, 4 exterior nodes and pin unchanged",
+    "dictionary springs opt-in preserves all semantic edges, origins and decisions",
+    "GUI JSON export/import, reload and imported previous geometry, pin retained",
+    "Shift multiple selection, 80px gap, heuristic off; exterior 2003 nodes fixed",
+    "immediate live-worker cancellation leaves coordinates unchanged",
+    "narrow viewport and process restart persistence"
+  ],
+  "measurements": [
+    {
+      "result": 2004,
+      "maxFrameMs": 66.80000000000018,
+      "maxBeatMs": 92,
+      "beats": 56,
+      "frames": 168,
+      "algorithm": "force",
+      "wallMs": 2849.6756000000005,
+      "status": "Предпросмотр: 2004 узлов, расчёт 2.669 с; словарных пружин 0. Координаты ещё не сохранены. Примените или отмените."
+    },
+    {
+      "result": 2004,
+      "maxFrameMs": 50,
+      "maxBeatMs": 85.09999996423721,
+      "beats": 59,
+      "frames": 177,
+      "algorithm": "force",
+      "wallMs": 2999.3282,
+      "status": "Предпросмотр: 2004 узлов, расчёт 2.838 с; словарных пружин 0. Координаты ещё не сохранены. Примените или отмените.",
+      "applyMs": 1046.826399999998
+    },
+    {
+      "result": 2004,
+      "maxFrameMs": 66.79999999999927,
+      "maxBeatMs": 72.19999998807907,
+      "beats": 3,
+      "frames": 9,
+      "algorithm": "hierarchical",
+      "wallMs": 175.63110000000233,
+      "status": "Предпросмотр: 2004 узлов, расчёт 0.018 с; словарных пружин 0. Координаты ещё не сохранены. Примените или отмените.",
+      "applyMs": 1075.291799999999
+    },
+    {
+      "result": 2004,
+      "maxFrameMs": 50,
+      "maxBeatMs": 103.79999995231628,
+      "beats": 2,
+      "frames": 8,
+      "algorithm": "radial",
+      "wallMs": 156.9975000000013,
+      "status": "Предпросмотр: 2004 узлов, расчёт 0.011 с; словарных пружин 0. Координаты ещё не сохранены. Примените или отмените.",
+      "applyMs": 1061.357899999999
+    },
+    {
+      "result": 2004,
+      "maxFrameMs": 49.89999999999782,
+      "maxBeatMs": 84.80000001192093,
+      "beats": 59,
+      "frames": 179,
+      "algorithm": "clusters",
+      "wallMs": 2993.095799999999,
+      "status": "Предпросмотр: 2004 узлов, расчёт 2.826 с; словарных пружин 0. Координаты ещё не сохранены. Примените или отмените.",
+      "applyMs": 1058.4577999999965
+    },
+    {
+      "result": 2004,
+      "maxFrameMs": 133.39999999999418,
+      "maxBeatMs": 140,
+      "beats": 98,
+      "frames": 293,
+      "algorithm": "force",
+      "wallMs": 5001.581100000003,
+      "status": "Предпросмотр: 2000 узлов, расчёт 4.754 с; словарных пружин 0. Координаты ещё не сохранены. Примените или отмените."
+    },
+    {
+      "result": 2004,
+      "maxFrameMs": 116.70000000000437,
+      "maxBeatMs": 132.10000002384186,
+      "beats": 92,
+      "frames": 276,
+      "algorithm": "force",
+      "wallMs": 4700.590199999999,
+      "status": "Предпросмотр: 2003 узлов, расчёт 4.454 с; словарных пружин 202. Координаты ещё не сохранены. Примените или отмените."
+    },
+    {
+      "result": 2004,
+      "maxFrameMs": 166.6999999999989,
+      "maxBeatMs": 190.69999998807907,
+      "beats": 3,
+      "frames": 10,
+      "algorithm": "hierarchical",
+      "wallMs": 296.5411000000022,
+      "status": "Предпросмотр: 1 узлов, расчёт 0.004 с; словарных пружин 0. Координаты ещё не сохранены. Примените или отмените."
+    }
+  ],
+  "errors": [],
+  "layoutActions": [
+    {
+      "action": "layout_positions",
+      "count": 2004
+    },
+    {
+      "action": "layout_restore",
+      "count": 0
+    },
+    {
+      "action": "layout_positions",
+      "count": 2004
+    },
+    {
+      "action": "layout_restore",
+      "count": 0
+    },
+    {
+      "action": "layout_positions",
+      "count": 2004
+    },
+    {
+      "action": "layout_restore",
+      "count": 0
+    },
+    {
+      "action": "layout_positions",
+      "count": 2004
+    },
+    {
+      "action": "layout_restore",
+      "count": 0
+    },
+    {
+      "action": "layout_pin",
+      "count": 0
+    },
+    {
+      "action": "layout_positions",
+      "count": 2000
+    },
+    {
+      "action": "layout_restore",
+      "count": 0
+    },
+    {
+      "action": "layout_positions",
+      "count": 2003
+    },
+    {
+      "action": "layout_restore",
+      "count": 0
+    },
+    {
+      "action": "layout_positions",
+      "count": 1
+    },
+    {
+      "action": "layout_restore",
+      "count": 0
+    }
+  ],
+  "browser": "154.0.8037.98",
+  "success": true,
+  "db": "E:\\Projects\\concept-field-lab\\local-data\\accumulation-m005\\layout-browser-1791796408045\\workspace.sqlite3",
+  "output": "E:\\Projects\\concept-field-lab\\test-output\\layout-1791796408045"
+}

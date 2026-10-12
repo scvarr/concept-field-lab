@@ -83,6 +83,10 @@ def projection(acc, previous=None):
         saved = previous_nodes.get(gid)
         point = saved if saved is not None else source["positions"][original["id"]]
         node.update(x=point["x"], y=point["y"])
+        if saved is not None and "layoutPinned" in saved:
+            node["layoutPinned"] = saved["layoutPinned"]
+        elif saved is not None:
+            node.pop("layoutPinned", None)
         nodes.append(node)
     for source in acc["sources"]:
         snapshot = source["snapshot"]
@@ -228,7 +232,7 @@ def check_camera(camera):
         raise Invalid("Камера содержит x, y и scale.")
     if any(not isinstance(camera[k], (int, float)) or isinstance(camera[k], bool) or not math.isfinite(camera[k]) for k in camera):
         raise Invalid("Координаты камеры должны быть конечными числами.")
-    if not .03 <= camera["scale"] <= 4 or any(abs(camera[k]) > 1e7 for k in ("x", "y")):
+    if not .002 <= camera["scale"] <= 4 or any(abs(camera[k]) > 1e7 for k in ("x", "y")):
         raise Invalid("Камера вне диапазона редактора.")
 
 
@@ -297,6 +301,9 @@ def validate_accumulation(study):
         clean(a.get("notes"), "пояснение")
         clean(a.get("time"), "время обозначения", True)
     check_camera(acc.get("camera"))
+    if "lastLayout" in acc:
+        from app.geometry import validate_record
+        validate_record(acc["lastLayout"])
     for n in study["nodes"]:
         if any(not isinstance(n.get(k), (int, float)) or isinstance(n[k], bool) or not math.isfinite(n[k]) or abs(n[k]) > 100000 for k in ("x", "y")):
             raise Invalid("Координаты узла накопления должны быть конечными числами ±100000.")
