@@ -1,0 +1,88 @@
+{
+  "baseline": {
+    "file": "data/experiments/stone/stone.json",
+    "sha256": "78a4ad3ffcd03ff0cb475e9f542f1d3d1f6aa20630c6a36ee9c4656c9824d4f0"
+  },
+  "scope": "Сравнение после построения K002, без matches / merge / замещения",
+  "sameLabels": [
+    {
+      "label": "вещество",
+      "k001Id": "83ecfc58-5315-41ac-8d3e-b1103df5fba5",
+      "k002Id": "bda15eb2-6b81-40b3-9493-75da17f773c6",
+      "k001Path": [
+        "камень",
+        "характеристика",
+        "материал",
+        "состав",
+        "вещество"
+      ],
+      "k002Paths": [
+        {
+          "sense": "agent",
+          "path": [
+            "agent",
+            "вещество"
+          ]
+        }
+      ],
+      "decision": "Не отождествлено; отдельный человеческий review функций и области"
+    },
+    {
+      "label": "состояние",
+      "k001Id": "8589a9a2-f403-438d-ab88-dc9d212301aa",
+      "k002Id": "2da10f95-5fa8-4c86-a4cd-c3d41447b50d",
+      "k001Path": [
+        "камень",
+        "характеристика",
+        "состояние"
+      ],
+      "k002Paths": [
+        {
+          "sense": "gear",
+          "path": [
+            "gear",
+            "configuration",
+            "состояние"
+          ]
+        }
+      ],
+      "decision": "Не отождествлено; отдельный человеческий review функций и области"
+    },
+    {
+      "label": "форма",
+      "k001Id": "e204eea9-9173-4eb5-a009-087d8e803852",
+      "k002Id": "d05a4491-5448-4c6c-9204-780ee5bb9bc0",
+      "k001Path": [
+        "камень",
+        "характеристика",
+        "форма"
+      ],
+      "k002Paths": [
+        {
+          "sense": "rendering",
+          "path": [
+            "rendering",
+            "форма"
+          ]
+        }
+      ],
+      "decision": "Не отождествлено; отдельный человеческий review функций и области"
+    }
+  ],
+  "excludedOnly": [
+    "масса",
+    "температура"
+  ],
+  "counts": {
+    "K001": {
+      "concepts": 29,
+      "combinations": 0,
+      "edges": 28
+    },
+    "K002": {
+      "concepts": 69,
+      "combinations": 24,
+      "edges": 108
+    }
+  }
+}
