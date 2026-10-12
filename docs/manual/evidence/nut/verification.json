@@ -1,0 +1,115 @@
+{
+  "scope": "Техническая запись / обмен / восстановление. Истинность, элементарность и полнота смыслов не проверяются.",
+  "environment": {
+    "python": "3.13.2",
+    "sqlite": "3.45.3",
+    "platform": "Windows-10-10.0.19045-SP0"
+  },
+  "graph": {
+    "file": "E:/Projects/concept-field-lab/data/experiments/nut/nut.json",
+    "sha256": "f1af2df1882cff05352ca1d0230f04adf60c71a3d7084ad0338c18ec39344600",
+    "studyId": "670ced93-5775-42f5-9eb9-3cf78f04bf66",
+    "rootId": "5d225fa7-f0f3-4576-b7a9-bdda6b316992",
+    "concepts": 41,
+    "alpha": 1,
+    "edges": 41
+  },
+  "decisions": {
+    "selected": 37,
+    "excluded": 25,
+    "split": 1,
+    "composition": 1
+  },
+  "isolatedRun": "E:\\Projects\\concept-field-lab\\local-data\\nut-k003\\verification\\roundtrip-oyfjl9e2",
+  "checks": [
+    {
+      "name": "Standalone v3 study; no automatic accumulation or identity",
+      "passed": true
+    },
+    {
+      "name": "Full mixed inventory and decision coverage",
+      "passed": true
+    },
+    {
+      "name": "Counts match recorded final result",
+      "passed": true
+    },
+    {
+      "name": "Audit addresses every final node and edge",
+      "passed": true
+    },
+    {
+      "name": "All directed edges have valid distinct endpoints and explanations",
+      "passed": true
+    },
+    {
+      "name": "All nodes reachable by the chosen directed decomposition",
+      "passed": true
+    },
+    {
+      "name": "Single selected route per non-root position",
+      "passed": true
+    },
+    {
+      "name": "One anonymous alpha with six geometrical components",
+      "passed": true
+    },
+    {
+      "name": "No universal semantic edge classification inserted",
+      "passed": true
+    },
+    {
+      "name": "External vocabulary separate from conceptual nodes",
+      "passed": true
+    },
+    {
+      "name": "Ungrouped evidence remains 65/0",
+      "passed": true
+    },
+    {
+      "name": "Complete history reconstructs the final state",
+      "passed": true
+    },
+    {
+      "name": "History retains the pre-grouping snapshot",
+      "passed": true
+    },
+    {
+      "name": "Import only stages before review",
+      "passed": true
+    },
+    {
+      "name": "Accepted graph and all ID/fields exactly preserved",
+      "passed": true
+    },
+    {
+      "name": "Export preserves complete study",
+      "passed": true
+    },
+    {
+      "name": "Re-export imports into another clean database exactly",
+      "passed": true
+    },
+    {
+      "name": "Repeated import: no new candidates or graph duplicates",
+      "passed": true
+    },
+    {
+      "name": "Local history restore exactly recovers pre-edit state",
+      "passed": true
+    },
+    {
+      "name": "New Store process preserves the graph",
+      "passed": true
+    },
+    {
+      "name": "Import K003 separately preserves existing K001+K002 canvas",
+      "passed": true
+    },
+    {
+      "name": "No third source appended or semantic matches accepted",
+      "passed": true
+    }
+  ],
+  "passed": 22
+}
