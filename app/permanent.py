@@ -48,11 +48,10 @@ def validate_graph(graph):
         clean(e.get('type', ''), 'тип', False, 1000)
     for d in graph['designations']:
         identity(d)
-        clean(d.get('text'), 'обозначение', True, 1000)
+        from app.designations import validate_designation
+        validate_designation(d)
         if d.get('target') not in nodes:
             raise Invalid('Обозначение требует существующий концепт.')
-    if any(not any(d['target'] == n for d in graph['designations']) for n in nodes):
-        raise Invalid('Концепт должен иметь внешнее обозначение.')
     validate_extension(graph, identity)
 
 
@@ -207,6 +206,9 @@ class PermanentStore(Store):
             result, detail = {}, action
             if action in ('definition_save', 'definition_publish'):
                 result, detail = operate(state, action, data)
+            elif action in ('designation_save', 'designation_remove'):
+                from app.designations import operate as edit_designation
+                result, detail = edit_designation(state, action, data)
             elif action == 'position':
                 node = lookup(state['nodes'], data.get('nodeId'), 'концепт')
                 node.update(x=data.get('x'), y=data.get('y'))

@@ -35,6 +35,7 @@ def search(state, query, canvas_id=None):
                 'labels': list(dict.fromkeys(names)), 'kind': node.get('kind', ''), 'notes': node.get('notes', ''),
                 'location': 'permanent' if permanent else 'canvas' if study.get('accumulation') else 'source', 'archived': study.get('archived', False),
                 'selectable': permanent or study['id'] == canvas_id, 'origins': node.get('origins', []), 'edges': edges,
+                'designations': [d for d in study.get('designations', []) if d['target'] == node['id']],
                 'definitions': [{'id': did, 'title': p['title'], 'definition': p['definition']} for did, p in (study if permanent else study.get('accumulation', {})).get('definitionPublications', {}).items() if node['id'] in p['nodeIds']],
                 'contexts': [c for c in (study if permanent else study.get('accumulation', {}).get('manual', {})).get('contextEdges', [])
                              if c['from'] in {e['id'] for e in edges} or c['to'] in {e['id'] for e in edges}]})

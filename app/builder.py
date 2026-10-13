@@ -34,7 +34,16 @@ def validate_draft(draft):
     for n in draft['nodes']:
         if not isinstance(n.get('existing'), bool):
             raise Invalid('Выберите новый или существующий концепт.')
-        clean(n.get('designation', ''), 'обозначение', not n['existing'], 1000)
+        clean(n.get('designation', ''), 'обозначение', not n['existing'] and 'designations' not in n, 1000)
+        if 'designations' in n:
+            from app.designations import validate_designation
+            if not isinstance(n['designations'], list) or len(n['designations']) > 80:
+                raise Invalid('Не более 80 обозначений поля в черновике.')
+            for designation in n['designations']:
+                validate_designation(designation)
+                if designation['id'] in ids:
+                    raise Invalid('Повтор ID обозначения в черновике.')
+                ids.add(designation['id'])
         for k in ('x', 'y'):
             if k in n and (isinstance(n[k], bool) or not isinstance(n[k], (int, float)) or not math.isfinite(n[k]) or abs(n[k]) > 100000):
                 raise Invalid('Позиции должны быть конечными числами ±100000.')
@@ -114,6 +123,11 @@ def prepare(study, draft):
     old = {key: [o for o in layer[key] if o['definitionId'] == draft['id']] for key in layer}
     for key in layer:
         layer[key] = [o for o in layer[key] if o['definitionId'] != draft['id']]
+    # Permanent designations are independent entry points. Republishing a stale
+    # field caption must never undo an operator's edit/deletion of a mapping.
+    if not legacy:
+        surviving = {n['id'] for n in layer['nodes']} | {n['id'] for n in draft['nodes']}
+        layer['designations'] = [copy.deepcopy(d) for d in study['designations'] if d['target'] in surviving]
     current_nodes = {n['id']: n for n in study['nodes']}
     current_edges = {e['id']: e for e in study['edges']}
     old_nodes = {n['id']: n for n in old['nodes']}
@@ -126,7 +140,8 @@ def prepare(study, draft):
             # Own nodes remain owned by the original definition on reopening.
             if n['id'] in old_nodes:
                 layer['nodes'].append(copy.deepcopy(old_nodes[n['id']]))
-                layer['designations'].extend(copy.deepcopy(d) for d in old['designations'] if d['target'] == n['id'])
+                if legacy:
+                    layer['designations'].extend(copy.deepcopy(d) for d in old['designations'] if d['target'] == n['id'])
             continue
         if n['id'] in current_nodes and n['id'] not in old_nodes:
             raise Invalid('Новый ID уже существует; выберите существующий концепт.')
@@ -137,8 +152,11 @@ def prepare(study, draft):
                 'y': n.get('y', current_nodes.get(n['id'], {}).get('y', max([v.get('y', 0) for v in study['nodes']] + [0]) + 220 + 140 * (index // 5)))}
         layer['nodes'].append(node)
         previous = next((d for d in old['designations'] if d['target'] == n['id']), None)
-        layer['designations'].append({'id': previous['id'] if previous else str(uuid5(NAMESPACE_URL, 'concept-field-designation:' + n['id'])), 'target': n['id'], 'text': n['designation'],
-            'notes': '', 'source': 'Ручной ввод определения', 'origins': [origin], 'definitionId': draft['id']})
+        if legacy or n['id'] not in current_nodes:
+            pending = n.get('designations', [{'id': previous['id'] if previous else str(uuid5(NAMESPACE_URL, 'concept-field-designation:' + n['id'])), 'text': n.get('designation', '')}])
+            for designation in pending:
+                layer['designations'].append({**copy.deepcopy(designation), 'target': n['id'],
+                    'notes': designation.get('notes', ''), 'source': 'Ручной ввод определения', 'origins': [origin], 'definitionId': draft['id']})
         new_nodes.append(n['id'])
     old_edges = {e['id']: e for e in old['edges']}
     new_edges = []
@@ -180,6 +198,7 @@ def prepare(study, draft):
         from app.permanent import validate_graph
         validate_graph(result)
     return result, {'nodes': new_nodes, 'edges': new_edges, 'contextEdges': copy.deepcopy(draft['contextEdges']),
+        'designations': [copy.deepcopy(d) for d in layer['designations'] if not any(d == v for v in study.get('designations', []))],
         'removed': {key: [v['id'] for v in old[key] if not any(o['id'] == v['id'] for o in layer[key])] for key in layer},
         'reusedNodes': [n['id'] for n in draft['nodes'] if n['existing']], 'reusedEdges': [e['id'] for e in draft['edges'] if e['existing']]}
 

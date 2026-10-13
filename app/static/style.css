@@ -94,3 +94,5 @@ body.permanent-workspace {display:block}
 #transition-notice {padding:12px;background:#edf7f1;border:1px solid #bed5c8;border-radius:8px;margin-bottom:14px}
 @media(max-width:1200px){.work-columns{grid-template-columns:1fr}#permanent-panel{position:static;max-height:none}}
 @media(max-width:700px){.permanent-workspace main{padding:12px}.permanent-workspace #builder .definition-layout{grid-template-columns:1fr}.work-nav{flex-wrap:wrap}}
+
+.field-aliases{border-top:1px solid var(--line);padding-top:10px;margin-top:5px}.alias-row{padding:8px 0;display:flex;flex-wrap:wrap;gap:6px;align-items:center}.alias-row strong,.alias-row code,.alias-row small{display:block;width:100%;overflow-wrap:anywhere}.alias-row small{color:var(--muted)}
