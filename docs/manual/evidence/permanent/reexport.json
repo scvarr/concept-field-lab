@@ -1,0 +1,3696 @@
+{
+  "format": "concept-field-permanent",
+  "version": 1,
+  "kind": "graph",
+  "exportedAt": "2026-10-13T11:01:24.274535+00:00",
+  "state": {
+    "nodes": [
+      {
+        "id": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+        "label": "",
+        "kind": "",
+        "notes": "",
+        "alternatives": "",
+        "source": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "origins": [
+          {
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "snapshot": {
+              "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+              "dictionaryId": "opencorpora:2b653a687e442614d55c",
+              "source": {
+                "name": "Русский Викисловарь",
+                "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                "revision": 14297625,
+                "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                "attribution": "Участники Викисловаря",
+                "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                "lemma": "гайка",
+                "senseId": "1",
+                "entry": "гайка I",
+                "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                "operatorEdited": false
+              }
+            }
+          }
+        ],
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+        "x": 0,
+        "y": 220
+      },
+      {
+        "id": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+        "label": "",
+        "kind": "",
+        "notes": "",
+        "alternatives": "",
+        "source": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "origins": [
+          {
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "snapshot": {
+              "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+              "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+              "source": {
+                "name": "Русский Викисловарь",
+                "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                "revision": 14297625,
+                "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                "attribution": "Участники Викисловаря",
+                "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                "lemma": "гайка",
+                "senseId": "1",
+                "entry": "гайка I",
+                "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                "operatorEdited": false
+              }
+            }
+          }
+        ],
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+        "x": 260,
+        "y": 220
+      },
+      {
+        "id": "0622fa15-212d-4563-8de8-722a3264bd81",
+        "label": "",
+        "kind": "",
+        "notes": "",
+        "alternatives": "",
+        "source": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "origins": [
+          {
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "snapshot": {
+              "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+              "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+              "source": {
+                "name": "Русский Викисловарь",
+                "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                "revision": 14297625,
+                "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                "attribution": "Участники Викисловаря",
+                "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                "lemma": "гайка",
+                "senseId": "1",
+                "entry": "гайка I",
+                "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                "operatorEdited": false
+              }
+            }
+          }
+        ],
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+        "x": 520,
+        "y": 220
+      },
+      {
+        "id": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+        "label": "",
+        "kind": "",
+        "notes": "",
+        "alternatives": "",
+        "source": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "origins": [
+          {
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "snapshot": {
+              "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+              "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+              "source": {
+                "name": "Русский Викисловарь",
+                "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                "revision": 14297625,
+                "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                "attribution": "Участники Викисловаря",
+                "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                "lemma": "гайка",
+                "senseId": "1",
+                "entry": "гайка I",
+                "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                "operatorEdited": false
+              }
+            }
+          }
+        ],
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+        "x": 780,
+        "y": 220
+      },
+      {
+        "id": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+        "label": "",
+        "kind": "",
+        "notes": "",
+        "alternatives": "",
+        "source": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "origins": [
+          {
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "snapshot": {
+              "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+              "dictionaryId": "opencorpora:8d12f0872e5b2ea65644",
+              "source": {
+                "name": "Русский Викисловарь",
+                "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                "revision": 14297625,
+                "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                "attribution": "Участники Викисловаря",
+                "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                "lemma": "гайка",
+                "senseId": "1",
+                "entry": "гайка I",
+                "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                "operatorEdited": false
+              }
+            }
+          }
+        ],
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+        "x": 1040,
+        "y": 220
+      }
+    ],
+    "edges": [
+      {
+        "id": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+        "from": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+        "to": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+        "role": "relation",
+        "type": "",
+        "notes": "",
+        "origins": [
+          {
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "snapshot": {
+              "id": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+              "from": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+              "to": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+              "existing": false
+            }
+          }
+        ],
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+        "parallelReason": ""
+      },
+      {
+        "id": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+        "from": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+        "to": "0622fa15-212d-4563-8de8-722a3264bd81",
+        "role": "relation",
+        "type": "",
+        "notes": "",
+        "origins": [
+          {
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "snapshot": {
+              "id": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+              "from": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+              "to": "0622fa15-212d-4563-8de8-722a3264bd81",
+              "existing": false
+            }
+          }
+        ],
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+        "parallelReason": ""
+      },
+      {
+        "id": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+        "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+        "to": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+        "role": "relation",
+        "type": "",
+        "notes": "",
+        "origins": [
+          {
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "snapshot": {
+              "id": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+              "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+              "to": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+              "existing": false
+            }
+          }
+        ],
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+        "parallelReason": ""
+      },
+      {
+        "id": "57754806-5e0f-4ad4-ab3b-0b08c5becf4b",
+        "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+        "to": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+        "role": "relation",
+        "type": "",
+        "notes": "",
+        "origins": [
+          {
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "snapshot": {
+              "id": "57754806-5e0f-4ad4-ab3b-0b08c5becf4b",
+              "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+              "to": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+              "existing": false
+            }
+          }
+        ],
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+        "parallelReason": ""
+      }
+    ],
+    "designations": [
+      {
+        "id": "760eb3ab-0f90-5bba-9f4a-2deabc3e27a4",
+        "target": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+        "text": "гайка",
+        "notes": "",
+        "source": "Ручной ввод определения",
+        "origins": [
+          {
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "snapshot": {
+              "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+              "dictionaryId": "opencorpora:2b653a687e442614d55c",
+              "source": {
+                "name": "Русский Викисловарь",
+                "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                "revision": 14297625,
+                "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                "attribution": "Участники Викисловаря",
+                "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                "lemma": "гайка",
+                "senseId": "1",
+                "entry": "гайка I",
+                "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                "operatorEdited": false
+              }
+            }
+          }
+        ],
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+      },
+      {
+        "id": "ed31a1e7-5a91-5246-ba9f-fcf1cda174a9",
+        "target": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+        "text": "крепёжный",
+        "notes": "",
+        "source": "Ручной ввод определения",
+        "origins": [
+          {
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "snapshot": {
+              "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+              "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+              "source": {
+                "name": "Русский Викисловарь",
+                "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                "revision": 14297625,
+                "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                "attribution": "Участники Викисловаря",
+                "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                "lemma": "гайка",
+                "senseId": "1",
+                "entry": "гайка I",
+                "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                "operatorEdited": false
+              }
+            }
+          }
+        ],
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+      },
+      {
+        "id": "f16e46ce-a006-5aa3-80d5-8f470d2fa386",
+        "target": "0622fa15-212d-4563-8de8-722a3264bd81",
+        "text": "деталь",
+        "notes": "",
+        "source": "Ручной ввод определения",
+        "origins": [
+          {
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "snapshot": {
+              "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+              "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+              "source": {
+                "name": "Русский Викисловарь",
+                "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                "revision": 14297625,
+                "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                "attribution": "Участники Викисловаря",
+                "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                "lemma": "гайка",
+                "senseId": "1",
+                "entry": "гайка I",
+                "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                "operatorEdited": false
+              }
+            }
+          }
+        ],
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+      },
+      {
+        "id": "5bbe21ea-852e-5184-bc0d-b442249214c6",
+        "target": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+        "text": "резьба",
+        "notes": "",
+        "source": "Ручной ввод определения",
+        "origins": [
+          {
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "snapshot": {
+              "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+              "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+              "source": {
+                "name": "Русский Викисловарь",
+                "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                "revision": 14297625,
+                "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                "attribution": "Участники Викисловаря",
+                "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                "lemma": "гайка",
+                "senseId": "1",
+                "entry": "гайка I",
+                "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                "operatorEdited": false
+              }
+            }
+          }
+        ],
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+      },
+      {
+        "id": "e8ce6fe4-433b-5104-9b39-3f7a532e1f4a",
+        "target": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+        "text": "внутренний",
+        "notes": "",
+        "source": "Ручной ввод определения",
+        "origins": [
+          {
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "snapshot": {
+              "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+              "dictionaryId": "opencorpora:8d12f0872e5b2ea65644",
+              "source": {
+                "name": "Русский Викисловарь",
+                "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                "revision": 14297625,
+                "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                "license": "CC BY-SA 4.0",
+                "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                "attribution": "Участники Викисловаря",
+                "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                "lemma": "гайка",
+                "senseId": "1",
+                "entry": "гайка I",
+                "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                "operatorEdited": false
+              }
+            }
+          }
+        ],
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+      }
+    ],
+    "contextEdges": [
+      {
+        "id": "3f8a201e-d662-40bb-a066-f0f3fefb418c",
+        "from": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+        "to": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+      },
+      {
+        "id": "03292cda-0c0a-4a5e-a923-9f9d438e7de8",
+        "from": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+        "to": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+      },
+      {
+        "id": "571b5ae7-d27b-413a-8f58-820dc63ef928",
+        "from": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+        "to": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+        "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+      }
+    ],
+    "definitionDrafts": [
+      {
+        "id": "8d22ce89-2805-4e72-813b-6acb555b652e",
+        "title": "гайка",
+        "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+        "nodes": [
+          {
+            "id": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+            "designation": "гайка",
+            "existing": false,
+            "dictionaryId": "opencorpora:2b653a687e442614d55c"
+          },
+          {
+            "id": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+            "designation": "крепёжный",
+            "existing": false,
+            "dictionaryId": "opencorpora:777efdda048053b0d3a7"
+          },
+          {
+            "id": "0622fa15-212d-4563-8de8-722a3264bd81",
+            "designation": "деталь",
+            "existing": false,
+            "dictionaryId": "opencorpora:3487f9e2125bef0714a1"
+          },
+          {
+            "id": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+            "designation": "резьба",
+            "existing": false,
+            "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1"
+          },
+          {
+            "id": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+            "designation": "внутренний",
+            "existing": false,
+            "dictionaryId": "opencorpora:8d12f0872e5b2ea65644"
+          }
+        ],
+        "edges": [
+          {
+            "id": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+            "from": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+            "to": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+            "existing": false
+          },
+          {
+            "id": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+            "from": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+            "to": "0622fa15-212d-4563-8de8-722a3264bd81",
+            "existing": false
+          },
+          {
+            "id": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+            "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+            "to": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+            "existing": false
+          },
+          {
+            "id": "57754806-5e0f-4ad4-ab3b-0b08c5becf4b",
+            "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+            "to": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+            "existing": false
+          }
+        ],
+        "contextEdges": [
+          {
+            "id": "3f8a201e-d662-40bb-a066-f0f3fefb418c",
+            "from": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+            "to": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7"
+          },
+          {
+            "id": "03292cda-0c0a-4a5e-a923-9f9d438e7de8",
+            "from": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+            "to": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd"
+          },
+          {
+            "id": "571b5ae7-d27b-413a-8f58-820dc63ef928",
+            "from": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+            "to": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd"
+          }
+        ],
+        "routes": [
+          {
+            "id": "95820580-1336-4b0b-bfd5-c76529040c26",
+            "edgeIds": [
+              "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+              "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+              "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd"
+            ]
+          }
+        ],
+        "source": {
+          "name": "Русский Викисловарь",
+          "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+          "revision": 14297625,
+          "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+          "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "attribution": "Участники Викисловаря",
+          "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+          "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+          "lemma": "гайка",
+          "senseId": "1",
+          "entry": "гайка I",
+          "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+          "operatorEdited": false
+        }
+      },
+      {
+        "id": "a9bb3ce3-e77d-4e6e-b122-b771f89502ab",
+        "title": "Офлайн-проба",
+        "definition": "Собственное определение оператора.",
+        "nodes": [],
+        "edges": [],
+        "contextEdges": [],
+        "routes": []
+      },
+      {
+        "id": "4661475a-97a2-4e1c-9afe-a934dc439f8d",
+        "nodes": [
+          {
+            "id": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+            "existing": true,
+            "designation": "гайка",
+            "base": {
+              "id": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+              "label": "",
+              "kind": "",
+              "notes": "",
+              "alternatives": "",
+              "source": "",
+              "designationOnly": true,
+              "structure": "concept",
+              "origins": [
+                {
+                  "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                  "snapshot": {
+                    "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "dictionaryId": "opencorpora:2b653a687e442614d55c",
+                    "source": {
+                      "name": "Русский Викисловарь",
+                      "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                      "revision": 14297625,
+                      "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                      "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                      "license": "CC BY-SA 4.0",
+                      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                      "attribution": "Участники Викисловаря",
+                      "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                      "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                      "lemma": "гайка",
+                      "senseId": "1",
+                      "entry": "гайка I",
+                      "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                      "operatorEdited": false
+                    }
+                  }
+                }
+              ],
+              "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+              "x": 0,
+              "y": 220
+            }
+          },
+          {
+            "id": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+            "existing": true,
+            "designation": "крепёжный",
+            "base": {
+              "id": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+              "label": "",
+              "kind": "",
+              "notes": "",
+              "alternatives": "",
+              "source": "",
+              "designationOnly": true,
+              "structure": "concept",
+              "origins": [
+                {
+                  "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                  "snapshot": {
+                    "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                    "source": {
+                      "name": "Русский Викисловарь",
+                      "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                      "revision": 14297625,
+                      "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                      "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                      "license": "CC BY-SA 4.0",
+                      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                      "attribution": "Участники Викисловаря",
+                      "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                      "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                      "lemma": "гайка",
+                      "senseId": "1",
+                      "entry": "гайка I",
+                      "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                      "operatorEdited": false
+                    }
+                  }
+                }
+              ],
+              "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+              "x": 260,
+              "y": 220
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+            "from": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+            "to": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+            "existing": true
+          }
+        ],
+        "contextEdges": [],
+        "routes": [],
+        "title": "гайка",
+        "definition": "жарг. кольцо, перстень",
+        "source": {
+          "name": "Русский Викисловарь",
+          "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+          "revision": 14297625,
+          "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+          "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "attribution": "Участники Викисловаря",
+          "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+          "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+          "lemma": "гайка",
+          "senseId": "4",
+          "entry": "гайка I",
+          "originalText": "жарг. кольцо, перстень",
+          "operatorEdited": false
+        }
+      }
+    ],
+    "definitionPublications": {
+      "8d22ce89-2805-4e72-813b-6acb555b652e": {
+        "title": "гайка",
+        "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+        "nodeIds": [
+          "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+          "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+          "0622fa15-212d-4563-8de8-722a3264bd81",
+          "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+          "909ee10b-41cd-48df-b5d8-5e3a3a684f1f"
+        ],
+        "edgeIds": [
+          "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+          "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+          "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+          "57754806-5e0f-4ad4-ab3b-0b08c5becf4b"
+        ],
+        "contextIds": [
+          "3f8a201e-d662-40bb-a066-f0f3fefb418c",
+          "03292cda-0c0a-4a5e-a923-9f9d438e7de8",
+          "571b5ae7-d27b-413a-8f58-820dc63ef928"
+        ],
+        "source": {
+          "name": "Русский Викисловарь",
+          "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+          "revision": 14297625,
+          "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+          "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "attribution": "Участники Викисловаря",
+          "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+          "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+          "lemma": "гайка",
+          "senseId": "1",
+          "entry": "гайка I",
+          "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+          "operatorEdited": false
+        }
+      },
+      "4661475a-97a2-4e1c-9afe-a934dc439f8d": {
+        "title": "гайка",
+        "definition": "жарг. кольцо, перстень",
+        "nodeIds": [
+          "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+          "47ceb473-765b-46fb-9ed7-b0292d9841a4"
+        ],
+        "edgeIds": [
+          "ab98523d-3322-43fd-8bb5-8fa58b8acbc7"
+        ],
+        "contextIds": [],
+        "source": {
+          "name": "Русский Викисловарь",
+          "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+          "revision": 14297625,
+          "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+          "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "attribution": "Участники Викисловаря",
+          "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+          "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+          "lemma": "гайка",
+          "senseId": "4",
+          "entry": "гайка I",
+          "originalText": "жарг. кольцо, перстень",
+          "operatorEdited": false
+        }
+      }
+    }
+  },
+  "historyEncoding": "rfc6902-chain-v1",
+  "history": [
+    {
+      "id": 0,
+      "time": "2026-10-13T11:01:23.535064+00:00",
+      "action": "init",
+      "detail": "{\"message\": \"Создан пустой постоянный граф\", \"legacyBackup\": null}",
+      "patch": [
+        {
+          "op": "remove",
+          "path": "/imports"
+        },
+        {
+          "op": "remove",
+          "path": "/matches"
+        },
+        {
+          "op": "remove",
+          "path": "/proposals"
+        },
+        {
+          "op": "remove",
+          "path": "/studies"
+        },
+        {
+          "op": "add",
+          "path": "/contextEdges",
+          "value": []
+        },
+        {
+          "op": "add",
+          "path": "/definitionDrafts",
+          "value": []
+        },
+        {
+          "op": "add",
+          "path": "/definitionPublications",
+          "value": {}
+        },
+        {
+          "op": "add",
+          "path": "/designations",
+          "value": []
+        },
+        {
+          "op": "add",
+          "path": "/edges",
+          "value": []
+        },
+        {
+          "op": "add",
+          "path": "/nodes",
+          "value": []
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "time": "2026-10-13T11:01:23.845935+00:00",
+      "action": "import",
+      "detail": "Подтверждён импорт постоянного графа с сохранением ID",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/contextEdges/0",
+          "value": {
+            "id": "3f8a201e-d662-40bb-a066-f0f3fefb418c",
+            "from": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+            "to": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/contextEdges/1",
+          "value": {
+            "id": "03292cda-0c0a-4a5e-a923-9f9d438e7de8",
+            "from": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+            "to": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/contextEdges/2",
+          "value": {
+            "id": "571b5ae7-d27b-413a-8f58-820dc63ef928",
+            "from": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+            "to": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/definitionDrafts/0",
+          "value": {
+            "id": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "title": "гайка",
+            "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+            "nodes": [
+              {
+                "id": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                "designation": "гайка",
+                "existing": false,
+                "dictionaryId": "opencorpora:2b653a687e442614d55c"
+              },
+              {
+                "id": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "designation": "крепёжный",
+                "existing": false,
+                "dictionaryId": "opencorpora:777efdda048053b0d3a7"
+              },
+              {
+                "id": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "designation": "деталь",
+                "existing": false,
+                "dictionaryId": "opencorpora:3487f9e2125bef0714a1"
+              },
+              {
+                "id": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+                "designation": "резьба",
+                "existing": false,
+                "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1"
+              },
+              {
+                "id": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+                "designation": "внутренний",
+                "existing": false,
+                "dictionaryId": "opencorpora:8d12f0872e5b2ea65644"
+              }
+            ],
+            "edges": [
+              {
+                "id": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                "from": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                "to": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "existing": false
+              },
+              {
+                "id": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                "from": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "to": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "existing": false
+              },
+              {
+                "id": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+                "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "to": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+                "existing": false
+              },
+              {
+                "id": "57754806-5e0f-4ad4-ab3b-0b08c5becf4b",
+                "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "to": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+                "existing": false
+              }
+            ],
+            "contextEdges": [
+              {
+                "id": "3f8a201e-d662-40bb-a066-f0f3fefb418c",
+                "from": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                "to": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7"
+              },
+              {
+                "id": "03292cda-0c0a-4a5e-a923-9f9d438e7de8",
+                "from": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                "to": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd"
+              },
+              {
+                "id": "571b5ae7-d27b-413a-8f58-820dc63ef928",
+                "from": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                "to": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd"
+              }
+            ],
+            "routes": [
+              {
+                "id": "95820580-1336-4b0b-bfd5-c76529040c26",
+                "edgeIds": [
+                  "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                  "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                  "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd"
+                ]
+              }
+            ],
+            "source": {
+              "name": "Русский Викисловарь",
+              "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+              "revision": 14297625,
+              "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+              "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+              "license": "CC BY-SA 4.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "attribution": "Участники Викисловаря",
+              "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+              "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+              "lemma": "гайка",
+              "senseId": "1",
+              "entry": "гайка I",
+              "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+              "operatorEdited": false
+            }
+          }
+        },
+        {
+          "op": "add",
+          "path": "/definitionDrafts/1",
+          "value": {
+            "id": "a9bb3ce3-e77d-4e6e-b122-b771f89502ab",
+            "title": "Офлайн-проба",
+            "definition": "Собственное определение оператора.",
+            "nodes": [],
+            "edges": [],
+            "contextEdges": [],
+            "routes": []
+          }
+        },
+        {
+          "op": "add",
+          "path": "/definitionDrafts/2",
+          "value": {
+            "id": "4661475a-97a2-4e1c-9afe-a934dc439f8d",
+            "nodes": [
+              {
+                "id": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                "existing": true,
+                "designation": "гайка",
+                "base": {
+                  "id": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                  "label": "",
+                  "kind": "",
+                  "notes": "",
+                  "alternatives": "",
+                  "source": "",
+                  "designationOnly": true,
+                  "structure": "concept",
+                  "origins": [
+                    {
+                      "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                      "snapshot": {
+                        "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                        "dictionaryId": "opencorpora:2b653a687e442614d55c",
+                        "source": {
+                          "name": "Русский Викисловарь",
+                          "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                          "revision": 14297625,
+                          "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                          "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                          "license": "CC BY-SA 4.0",
+                          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                          "attribution": "Участники Викисловаря",
+                          "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                          "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                          "lemma": "гайка",
+                          "senseId": "1",
+                          "entry": "гайка I",
+                          "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                          "operatorEdited": false
+                        }
+                      }
+                    }
+                  ],
+                  "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                  "x": 0,
+                  "y": 220
+                }
+              },
+              {
+                "id": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "existing": true,
+                "designation": "крепёжный",
+                "base": {
+                  "id": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                  "label": "",
+                  "kind": "",
+                  "notes": "",
+                  "alternatives": "",
+                  "source": "",
+                  "designationOnly": true,
+                  "structure": "concept",
+                  "origins": [
+                    {
+                      "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                      "snapshot": {
+                        "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                        "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                        "source": {
+                          "name": "Русский Викисловарь",
+                          "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                          "revision": 14297625,
+                          "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                          "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                          "license": "CC BY-SA 4.0",
+                          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                          "attribution": "Участники Викисловаря",
+                          "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                          "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                          "lemma": "гайка",
+                          "senseId": "1",
+                          "entry": "гайка I",
+                          "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                          "operatorEdited": false
+                        }
+                      }
+                    }
+                  ],
+                  "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                  "x": 260,
+                  "y": 220
+                }
+              }
+            ],
+            "edges": [
+              {
+                "id": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                "from": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                "to": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "existing": true
+              }
+            ],
+            "contextEdges": [],
+            "routes": [],
+            "title": "гайка",
+            "definition": "жарг. кольцо, перстень",
+            "source": {
+              "name": "Русский Викисловарь",
+              "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+              "revision": 14297625,
+              "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+              "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+              "license": "CC BY-SA 4.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "attribution": "Участники Викисловаря",
+              "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+              "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+              "lemma": "гайка",
+              "senseId": "4",
+              "entry": "гайка I",
+              "originalText": "жарг. кольцо, перстень",
+              "operatorEdited": false
+            }
+          }
+        },
+        {
+          "op": "add",
+          "path": "/definitionPublications/4661475a-97a2-4e1c-9afe-a934dc439f8d",
+          "value": {
+            "title": "гайка",
+            "definition": "жарг. кольцо, перстень",
+            "nodeIds": [
+              "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+              "47ceb473-765b-46fb-9ed7-b0292d9841a4"
+            ],
+            "edgeIds": [
+              "ab98523d-3322-43fd-8bb5-8fa58b8acbc7"
+            ],
+            "contextIds": [],
+            "source": {
+              "name": "Русский Викисловарь",
+              "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+              "revision": 14297625,
+              "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+              "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+              "license": "CC BY-SA 4.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "attribution": "Участники Викисловаря",
+              "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+              "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+              "lemma": "гайка",
+              "senseId": "4",
+              "entry": "гайка I",
+              "originalText": "жарг. кольцо, перстень",
+              "operatorEdited": false
+            }
+          }
+        },
+        {
+          "op": "add",
+          "path": "/definitionPublications/8d22ce89-2805-4e72-813b-6acb555b652e",
+          "value": {
+            "title": "гайка",
+            "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+            "nodeIds": [
+              "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+              "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+              "0622fa15-212d-4563-8de8-722a3264bd81",
+              "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+              "909ee10b-41cd-48df-b5d8-5e3a3a684f1f"
+            ],
+            "edgeIds": [
+              "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+              "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+              "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+              "57754806-5e0f-4ad4-ab3b-0b08c5becf4b"
+            ],
+            "contextIds": [
+              "3f8a201e-d662-40bb-a066-f0f3fefb418c",
+              "03292cda-0c0a-4a5e-a923-9f9d438e7de8",
+              "571b5ae7-d27b-413a-8f58-820dc63ef928"
+            ],
+            "source": {
+              "name": "Русский Викисловарь",
+              "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+              "revision": 14297625,
+              "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+              "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+              "license": "CC BY-SA 4.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "attribution": "Участники Викисловаря",
+              "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+              "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+              "lemma": "гайка",
+              "senseId": "1",
+              "entry": "гайка I",
+              "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+              "operatorEdited": false
+            }
+          }
+        },
+        {
+          "op": "add",
+          "path": "/designations/0",
+          "value": {
+            "id": "760eb3ab-0f90-5bba-9f4a-2deabc3e27a4",
+            "target": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+            "text": "гайка",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:2b653a687e442614d55c",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/designations/1",
+          "value": {
+            "id": "ed31a1e7-5a91-5246-ba9f-fcf1cda174a9",
+            "target": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+            "text": "крепёжный",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/designations/2",
+          "value": {
+            "id": "f16e46ce-a006-5aa3-80d5-8f470d2fa386",
+            "target": "0622fa15-212d-4563-8de8-722a3264bd81",
+            "text": "деталь",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/designations/3",
+          "value": {
+            "id": "5bbe21ea-852e-5184-bc0d-b442249214c6",
+            "target": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+            "text": "резьба",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/designations/4",
+          "value": {
+            "id": "e8ce6fe4-433b-5104-9b39-3f7a532e1f4a",
+            "target": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+            "text": "внутренний",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:8d12f0872e5b2ea65644",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/edges/0",
+          "value": {
+            "id": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+            "from": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+            "to": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "id": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                  "from": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                  "to": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                  "existing": false
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "parallelReason": ""
+          }
+        },
+        {
+          "op": "add",
+          "path": "/edges/1",
+          "value": {
+            "id": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+            "from": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+            "to": "0622fa15-212d-4563-8de8-722a3264bd81",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "id": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                  "from": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                  "to": "0622fa15-212d-4563-8de8-722a3264bd81",
+                  "existing": false
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "parallelReason": ""
+          }
+        },
+        {
+          "op": "add",
+          "path": "/edges/2",
+          "value": {
+            "id": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+            "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+            "to": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "id": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+                  "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+                  "to": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+                  "existing": false
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "parallelReason": ""
+          }
+        },
+        {
+          "op": "add",
+          "path": "/edges/3",
+          "value": {
+            "id": "57754806-5e0f-4ad4-ab3b-0b08c5becf4b",
+            "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+            "to": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "id": "57754806-5e0f-4ad4-ab3b-0b08c5becf4b",
+                  "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+                  "to": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+                  "existing": false
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "parallelReason": ""
+          }
+        },
+        {
+          "op": "add",
+          "path": "/nodes/0",
+          "value": {
+            "id": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:2b653a687e442614d55c",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "x": 0,
+            "y": 220
+          }
+        },
+        {
+          "op": "add",
+          "path": "/nodes/1",
+          "value": {
+            "id": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "x": 260,
+            "y": 220
+          }
+        },
+        {
+          "op": "add",
+          "path": "/nodes/2",
+          "value": {
+            "id": "0622fa15-212d-4563-8de8-722a3264bd81",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "x": 520,
+            "y": 220
+          }
+        },
+        {
+          "op": "add",
+          "path": "/nodes/3",
+          "value": {
+            "id": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "x": 780,
+            "y": 220
+          }
+        },
+        {
+          "op": "add",
+          "path": "/nodes/4",
+          "value": {
+            "id": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:8d12f0872e5b2ea65644",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "x": 1040,
+            "y": 220
+          }
+        }
+      ]
+    }
+  ],
+  "importedHistory": [
+    {
+      "format": "concept-field-permanent",
+      "version": 1,
+      "kind": "graph",
+      "exportedAt": "2026-10-13T11:01:23.185695+00:00",
+      "state": {
+        "nodes": [
+          {
+            "id": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:2b653a687e442614d55c",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "x": 0,
+            "y": 220
+          },
+          {
+            "id": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "x": 260,
+            "y": 220
+          },
+          {
+            "id": "0622fa15-212d-4563-8de8-722a3264bd81",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "x": 520,
+            "y": 220
+          },
+          {
+            "id": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "x": 780,
+            "y": 220
+          },
+          {
+            "id": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:8d12f0872e5b2ea65644",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "x": 1040,
+            "y": 220
+          }
+        ],
+        "edges": [
+          {
+            "id": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+            "from": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+            "to": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "id": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                  "from": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                  "to": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                  "existing": false
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "parallelReason": ""
+          },
+          {
+            "id": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+            "from": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+            "to": "0622fa15-212d-4563-8de8-722a3264bd81",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "id": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                  "from": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                  "to": "0622fa15-212d-4563-8de8-722a3264bd81",
+                  "existing": false
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "parallelReason": ""
+          },
+          {
+            "id": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+            "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+            "to": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "id": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+                  "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+                  "to": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+                  "existing": false
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "parallelReason": ""
+          },
+          {
+            "id": "57754806-5e0f-4ad4-ab3b-0b08c5becf4b",
+            "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+            "to": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "id": "57754806-5e0f-4ad4-ab3b-0b08c5becf4b",
+                  "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+                  "to": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+                  "existing": false
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "parallelReason": ""
+          }
+        ],
+        "designations": [
+          {
+            "id": "760eb3ab-0f90-5bba-9f4a-2deabc3e27a4",
+            "target": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+            "text": "гайка",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:2b653a687e442614d55c",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+          },
+          {
+            "id": "ed31a1e7-5a91-5246-ba9f-fcf1cda174a9",
+            "target": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+            "text": "крепёжный",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+          },
+          {
+            "id": "f16e46ce-a006-5aa3-80d5-8f470d2fa386",
+            "target": "0622fa15-212d-4563-8de8-722a3264bd81",
+            "text": "деталь",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+          },
+          {
+            "id": "5bbe21ea-852e-5184-bc0d-b442249214c6",
+            "target": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+            "text": "резьба",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+          },
+          {
+            "id": "e8ce6fe4-433b-5104-9b39-3f7a532e1f4a",
+            "target": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+            "text": "внутренний",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "snapshot": {
+                  "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "dictionaryId": "opencorpora:8d12f0872e5b2ea65644",
+                  "source": {
+                    "name": "Русский Викисловарь",
+                    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                    "revision": 14297625,
+                    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                    "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                    "license": "CC BY-SA 4.0",
+                    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                    "attribution": "Участники Викисловаря",
+                    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                    "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                    "lemma": "гайка",
+                    "senseId": "1",
+                    "entry": "гайка I",
+                    "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                    "operatorEdited": false
+                  }
+                }
+              }
+            ],
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+          }
+        ],
+        "contextEdges": [
+          {
+            "id": "3f8a201e-d662-40bb-a066-f0f3fefb418c",
+            "from": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+            "to": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+          },
+          {
+            "id": "03292cda-0c0a-4a5e-a923-9f9d438e7de8",
+            "from": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+            "to": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+          },
+          {
+            "id": "571b5ae7-d27b-413a-8f58-820dc63ef928",
+            "from": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+            "to": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+            "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+          }
+        ],
+        "definitionDrafts": [
+          {
+            "id": "8d22ce89-2805-4e72-813b-6acb555b652e",
+            "title": "гайка",
+            "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+            "nodes": [
+              {
+                "id": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                "designation": "гайка",
+                "existing": false,
+                "dictionaryId": "opencorpora:2b653a687e442614d55c"
+              },
+              {
+                "id": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "designation": "крепёжный",
+                "existing": false,
+                "dictionaryId": "opencorpora:777efdda048053b0d3a7"
+              },
+              {
+                "id": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "designation": "деталь",
+                "existing": false,
+                "dictionaryId": "opencorpora:3487f9e2125bef0714a1"
+              },
+              {
+                "id": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+                "designation": "резьба",
+                "existing": false,
+                "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1"
+              },
+              {
+                "id": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+                "designation": "внутренний",
+                "existing": false,
+                "dictionaryId": "opencorpora:8d12f0872e5b2ea65644"
+              }
+            ],
+            "edges": [
+              {
+                "id": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                "from": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                "to": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "existing": false
+              },
+              {
+                "id": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                "from": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "to": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "existing": false
+              },
+              {
+                "id": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+                "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "to": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+                "existing": false
+              },
+              {
+                "id": "57754806-5e0f-4ad4-ab3b-0b08c5becf4b",
+                "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "to": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+                "existing": false
+              }
+            ],
+            "contextEdges": [
+              {
+                "id": "3f8a201e-d662-40bb-a066-f0f3fefb418c",
+                "from": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                "to": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7"
+              },
+              {
+                "id": "03292cda-0c0a-4a5e-a923-9f9d438e7de8",
+                "from": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                "to": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd"
+              },
+              {
+                "id": "571b5ae7-d27b-413a-8f58-820dc63ef928",
+                "from": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                "to": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd"
+              }
+            ],
+            "routes": [
+              {
+                "id": "95820580-1336-4b0b-bfd5-c76529040c26",
+                "edgeIds": [
+                  "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                  "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                  "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd"
+                ]
+              }
+            ],
+            "source": {
+              "name": "Русский Викисловарь",
+              "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+              "revision": 14297625,
+              "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+              "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+              "license": "CC BY-SA 4.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "attribution": "Участники Викисловаря",
+              "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+              "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+              "lemma": "гайка",
+              "senseId": "1",
+              "entry": "гайка I",
+              "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+              "operatorEdited": false
+            }
+          },
+          {
+            "id": "a9bb3ce3-e77d-4e6e-b122-b771f89502ab",
+            "title": "Офлайн-проба",
+            "definition": "Собственное определение оператора.",
+            "nodes": [],
+            "edges": [],
+            "contextEdges": [],
+            "routes": []
+          },
+          {
+            "id": "4661475a-97a2-4e1c-9afe-a934dc439f8d",
+            "nodes": [
+              {
+                "id": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                "existing": true,
+                "designation": "гайка",
+                "base": {
+                  "id": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                  "label": "",
+                  "kind": "",
+                  "notes": "",
+                  "alternatives": "",
+                  "source": "",
+                  "designationOnly": true,
+                  "structure": "concept",
+                  "origins": [
+                    {
+                      "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                      "snapshot": {
+                        "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                        "dictionaryId": "opencorpora:2b653a687e442614d55c",
+                        "source": {
+                          "name": "Русский Викисловарь",
+                          "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                          "revision": 14297625,
+                          "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                          "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                          "license": "CC BY-SA 4.0",
+                          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                          "attribution": "Участники Викисловаря",
+                          "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                          "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                          "lemma": "гайка",
+                          "senseId": "1",
+                          "entry": "гайка I",
+                          "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                          "operatorEdited": false
+                        }
+                      }
+                    }
+                  ],
+                  "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                  "x": 0,
+                  "y": 220
+                }
+              },
+              {
+                "id": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "existing": true,
+                "designation": "крепёжный",
+                "base": {
+                  "id": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                  "label": "",
+                  "kind": "",
+                  "notes": "",
+                  "alternatives": "",
+                  "source": "",
+                  "designationOnly": true,
+                  "structure": "concept",
+                  "origins": [
+                    {
+                      "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                      "snapshot": {
+                        "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                        "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                        "source": {
+                          "name": "Русский Викисловарь",
+                          "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                          "revision": 14297625,
+                          "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                          "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                          "license": "CC BY-SA 4.0",
+                          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                          "attribution": "Участники Викисловаря",
+                          "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                          "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                          "lemma": "гайка",
+                          "senseId": "1",
+                          "entry": "гайка I",
+                          "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                          "operatorEdited": false
+                        }
+                      }
+                    }
+                  ],
+                  "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                  "x": 260,
+                  "y": 220
+                }
+              }
+            ],
+            "edges": [
+              {
+                "id": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                "from": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                "to": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "existing": true
+              }
+            ],
+            "contextEdges": [],
+            "routes": [],
+            "title": "гайка",
+            "definition": "жарг. кольцо, перстень",
+            "source": {
+              "name": "Русский Викисловарь",
+              "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+              "revision": 14297625,
+              "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+              "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+              "license": "CC BY-SA 4.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "attribution": "Участники Викисловаря",
+              "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+              "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+              "lemma": "гайка",
+              "senseId": "4",
+              "entry": "гайка I",
+              "originalText": "жарг. кольцо, перстень",
+              "operatorEdited": false
+            }
+          }
+        ],
+        "definitionPublications": {
+          "8d22ce89-2805-4e72-813b-6acb555b652e": {
+            "title": "гайка",
+            "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+            "nodeIds": [
+              "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+              "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+              "0622fa15-212d-4563-8de8-722a3264bd81",
+              "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+              "909ee10b-41cd-48df-b5d8-5e3a3a684f1f"
+            ],
+            "edgeIds": [
+              "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+              "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+              "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+              "57754806-5e0f-4ad4-ab3b-0b08c5becf4b"
+            ],
+            "contextIds": [
+              "3f8a201e-d662-40bb-a066-f0f3fefb418c",
+              "03292cda-0c0a-4a5e-a923-9f9d438e7de8",
+              "571b5ae7-d27b-413a-8f58-820dc63ef928"
+            ],
+            "source": {
+              "name": "Русский Викисловарь",
+              "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+              "revision": 14297625,
+              "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+              "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+              "license": "CC BY-SA 4.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "attribution": "Участники Викисловаря",
+              "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+              "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+              "lemma": "гайка",
+              "senseId": "1",
+              "entry": "гайка I",
+              "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+              "operatorEdited": false
+            }
+          },
+          "4661475a-97a2-4e1c-9afe-a934dc439f8d": {
+            "title": "гайка",
+            "definition": "жарг. кольцо, перстень",
+            "nodeIds": [
+              "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+              "47ceb473-765b-46fb-9ed7-b0292d9841a4"
+            ],
+            "edgeIds": [
+              "ab98523d-3322-43fd-8bb5-8fa58b8acbc7"
+            ],
+            "contextIds": [],
+            "source": {
+              "name": "Русский Викисловарь",
+              "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+              "revision": 14297625,
+              "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+              "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+              "license": "CC BY-SA 4.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "attribution": "Участники Викисловаря",
+              "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+              "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+              "lemma": "гайка",
+              "senseId": "4",
+              "entry": "гайка I",
+              "originalText": "жарг. кольцо, перстень",
+              "operatorEdited": false
+            }
+          }
+        }
+      },
+      "historyEncoding": "rfc6902-chain-v1",
+      "history": [
+        {
+          "id": 0,
+          "time": "2026-10-13T11:01:16.728974+00:00",
+          "action": "init",
+          "detail": "{\"message\": \"Создан пустой постоянный граф\", \"legacyBackup\": {\"sourcePath\": \"E:\\\\Projects\\\\concept-field-lab\\\\local-data\\\\permanent-1791889274059\\\\workspace.sqlite3\", \"backupPath\": \"E:\\\\Projects\\\\concept-field-lab\\\\local-data\\\\permanent-1791889274059\\\\backups\\\\workspace-legacy-2d24e6a3-c3e9-4c51-9fc4-3863bbb9e256.sqlite3\", \"createdAt\": \"2026-10-13T11:01:16.721592+00:00\", \"sha256\": \"68a473ba535ba17d33c830c9231aee9ec708cce9b6c4720060414b389e501bd3\", \"logicalSha256\": \"82dfa89e79e398778aac723c3cba0ab02fdc7f38042141f8286285415ea557a0\", \"integrity\": \"ok\", \"method\": \"sqlite3.Connection.backup from an open read transaction (including WAL)\"}}",
+          "patch": [
+            {
+              "op": "remove",
+              "path": "/imports"
+            },
+            {
+              "op": "remove",
+              "path": "/matches"
+            },
+            {
+              "op": "remove",
+              "path": "/proposals"
+            },
+            {
+              "op": "remove",
+              "path": "/studies"
+            },
+            {
+              "op": "add",
+              "path": "/contextEdges",
+              "value": []
+            },
+            {
+              "op": "add",
+              "path": "/definitionDrafts",
+              "value": []
+            },
+            {
+              "op": "add",
+              "path": "/definitionPublications",
+              "value": {}
+            },
+            {
+              "op": "add",
+              "path": "/designations",
+              "value": []
+            },
+            {
+              "op": "add",
+              "path": "/edges",
+              "value": []
+            },
+            {
+              "op": "add",
+              "path": "/nodes",
+              "value": []
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "time": "2026-10-13T11:01:17.854965+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0",
+              "value": {
+                "id": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "title": "гайка",
+                "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                "nodes": [],
+                "edges": [],
+                "contextEdges": [],
+                "routes": [],
+                "source": {
+                  "name": "Русский Викисловарь",
+                  "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                  "revision": 14297625,
+                  "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                  "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                  "license": "CC BY-SA 4.0",
+                  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                  "attribution": "Участники Викисловаря",
+                  "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                  "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                  "lemma": "гайка",
+                  "senseId": "1",
+                  "entry": "гайка I",
+                  "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "time": "2026-10-13T11:01:17.949856+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/nodes/0",
+              "value": {
+                "id": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                "designation": "гайка",
+                "existing": false,
+                "dictionaryId": "opencorpora:2b653a687e442614d55c"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/source/operatorEdited",
+              "value": false
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "time": "2026-10-13T11:01:18.316366+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/nodes/1",
+              "value": {
+                "id": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "designation": "крепёжный",
+                "existing": false,
+                "dictionaryId": "opencorpora:777efdda048053b0d3a7"
+              }
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "time": "2026-10-13T11:01:18.682144+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/nodes/2",
+              "value": {
+                "id": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "designation": "деталь",
+                "existing": false,
+                "dictionaryId": "opencorpora:3487f9e2125bef0714a1"
+              }
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "time": "2026-10-13T11:01:19.033252+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/nodes/3",
+              "value": {
+                "id": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+                "designation": "резьба",
+                "existing": false,
+                "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1"
+              }
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "time": "2026-10-13T11:01:19.401239+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/nodes/4",
+              "value": {
+                "id": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+                "designation": "внутренний",
+                "existing": false,
+                "dictionaryId": "opencorpora:8d12f0872e5b2ea65644"
+              }
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "time": "2026-10-13T11:01:19.482916+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/edges/0",
+              "value": {
+                "id": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                "from": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                "to": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "existing": false
+              }
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "time": "2026-10-13T11:01:19.583498+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/edges/1",
+              "value": {
+                "id": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                "from": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "to": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "existing": false
+              }
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "time": "2026-10-13T11:01:19.683261+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/edges/2",
+              "value": {
+                "id": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+                "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "to": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+                "existing": false
+              }
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "time": "2026-10-13T11:01:19.787584+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/edges/3",
+              "value": {
+                "id": "57754806-5e0f-4ad4-ab3b-0b08c5becf4b",
+                "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "to": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+                "existing": false
+              }
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "time": "2026-10-13T11:01:20.068273+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/contextEdges/0",
+              "value": {
+                "id": "3f8a201e-d662-40bb-a066-f0f3fefb418c",
+                "from": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                "to": "39d62539-e1ef-4d86-84e4-8cc558e8d359"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/contextEdges/1",
+              "value": {
+                "id": "03292cda-0c0a-4a5e-a923-9f9d438e7de8",
+                "from": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                "to": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/contextEdges/2",
+              "value": {
+                "id": "571b5ae7-d27b-413a-8f58-820dc63ef928",
+                "from": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                "to": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/routes/0",
+              "value": {
+                "id": "95820580-1336-4b0b-bfd5-c76529040c26",
+                "edgeIds": [
+                  "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                  "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                  "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "time": "2026-10-13T11:01:20.318076+00:00",
+          "action": "definition_publish",
+          "detail": "Подтверждён ручной миниграф; прежние исходники сохранены",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/contextEdges/0",
+              "value": {
+                "id": "3f8a201e-d662-40bb-a066-f0f3fefb418c",
+                "from": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                "to": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/contextEdges/1",
+              "value": {
+                "id": "03292cda-0c0a-4a5e-a923-9f9d438e7de8",
+                "from": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                "to": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/contextEdges/2",
+              "value": {
+                "id": "571b5ae7-d27b-413a-8f58-820dc63ef928",
+                "from": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                "to": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/definitionPublications/8d22ce89-2805-4e72-813b-6acb555b652e",
+              "value": {
+                "title": "гайка",
+                "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                "nodeIds": [
+                  "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                  "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                  "0622fa15-212d-4563-8de8-722a3264bd81",
+                  "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+                  "909ee10b-41cd-48df-b5d8-5e3a3a684f1f"
+                ],
+                "edgeIds": [
+                  "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                  "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                  "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+                  "57754806-5e0f-4ad4-ab3b-0b08c5becf4b"
+                ],
+                "contextIds": [
+                  "3f8a201e-d662-40bb-a066-f0f3fefb418c",
+                  "03292cda-0c0a-4a5e-a923-9f9d438e7de8",
+                  "571b5ae7-d27b-413a-8f58-820dc63ef928"
+                ],
+                "source": {
+                  "name": "Русский Викисловарь",
+                  "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                  "revision": 14297625,
+                  "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                  "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                  "license": "CC BY-SA 4.0",
+                  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                  "attribution": "Участники Викисловаря",
+                  "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                  "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                  "lemma": "гайка",
+                  "senseId": "1",
+                  "entry": "гайка I",
+                  "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                  "operatorEdited": false
+                }
+              }
+            },
+            {
+              "op": "add",
+              "path": "/designations/0",
+              "value": {
+                "id": "760eb3ab-0f90-5bba-9f4a-2deabc3e27a4",
+                "target": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                "text": "гайка",
+                "notes": "",
+                "source": "Ручной ввод определения",
+                "origins": [
+                  {
+                    "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                    "snapshot": {
+                      "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                      "dictionaryId": "opencorpora:2b653a687e442614d55c",
+                      "source": {
+                        "name": "Русский Викисловарь",
+                        "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                        "revision": 14297625,
+                        "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                        "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                        "license": "CC BY-SA 4.0",
+                        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                        "attribution": "Участники Викисловаря",
+                        "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                        "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                        "lemma": "гайка",
+                        "senseId": "1",
+                        "entry": "гайка I",
+                        "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                        "operatorEdited": false
+                      }
+                    }
+                  }
+                ],
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/designations/1",
+              "value": {
+                "id": "ed31a1e7-5a91-5246-ba9f-fcf1cda174a9",
+                "target": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "text": "крепёжный",
+                "notes": "",
+                "source": "Ручной ввод определения",
+                "origins": [
+                  {
+                    "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                    "snapshot": {
+                      "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                      "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                      "source": {
+                        "name": "Русский Викисловарь",
+                        "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                        "revision": 14297625,
+                        "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                        "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                        "license": "CC BY-SA 4.0",
+                        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                        "attribution": "Участники Викисловаря",
+                        "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                        "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                        "lemma": "гайка",
+                        "senseId": "1",
+                        "entry": "гайка I",
+                        "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                        "operatorEdited": false
+                      }
+                    }
+                  }
+                ],
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/designations/2",
+              "value": {
+                "id": "f16e46ce-a006-5aa3-80d5-8f470d2fa386",
+                "target": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "text": "деталь",
+                "notes": "",
+                "source": "Ручной ввод определения",
+                "origins": [
+                  {
+                    "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                    "snapshot": {
+                      "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                      "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                      "source": {
+                        "name": "Русский Викисловарь",
+                        "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                        "revision": 14297625,
+                        "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                        "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                        "license": "CC BY-SA 4.0",
+                        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                        "attribution": "Участники Викисловаря",
+                        "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                        "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                        "lemma": "гайка",
+                        "senseId": "1",
+                        "entry": "гайка I",
+                        "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                        "operatorEdited": false
+                      }
+                    }
+                  }
+                ],
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/designations/3",
+              "value": {
+                "id": "5bbe21ea-852e-5184-bc0d-b442249214c6",
+                "target": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+                "text": "резьба",
+                "notes": "",
+                "source": "Ручной ввод определения",
+                "origins": [
+                  {
+                    "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                    "snapshot": {
+                      "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                      "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+                      "source": {
+                        "name": "Русский Викисловарь",
+                        "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                        "revision": 14297625,
+                        "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                        "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                        "license": "CC BY-SA 4.0",
+                        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                        "attribution": "Участники Викисловаря",
+                        "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                        "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                        "lemma": "гайка",
+                        "senseId": "1",
+                        "entry": "гайка I",
+                        "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                        "operatorEdited": false
+                      }
+                    }
+                  }
+                ],
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/designations/4",
+              "value": {
+                "id": "e8ce6fe4-433b-5104-9b39-3f7a532e1f4a",
+                "target": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+                "text": "внутренний",
+                "notes": "",
+                "source": "Ручной ввод определения",
+                "origins": [
+                  {
+                    "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                    "snapshot": {
+                      "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                      "dictionaryId": "opencorpora:8d12f0872e5b2ea65644",
+                      "source": {
+                        "name": "Русский Викисловарь",
+                        "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                        "revision": 14297625,
+                        "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                        "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                        "license": "CC BY-SA 4.0",
+                        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                        "attribution": "Участники Викисловаря",
+                        "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                        "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                        "lemma": "гайка",
+                        "senseId": "1",
+                        "entry": "гайка I",
+                        "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                        "operatorEdited": false
+                      }
+                    }
+                  }
+                ],
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/edges/0",
+              "value": {
+                "id": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                "from": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                "to": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "role": "relation",
+                "type": "",
+                "notes": "",
+                "origins": [
+                  {
+                    "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                    "snapshot": {
+                      "id": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                      "from": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                      "to": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                      "existing": false
+                    }
+                  }
+                ],
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "parallelReason": ""
+              }
+            },
+            {
+              "op": "add",
+              "path": "/edges/1",
+              "value": {
+                "id": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                "from": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "to": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "role": "relation",
+                "type": "",
+                "notes": "",
+                "origins": [
+                  {
+                    "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                    "snapshot": {
+                      "id": "39d62539-e1ef-4d86-84e4-8cc558e8d359",
+                      "from": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                      "to": "0622fa15-212d-4563-8de8-722a3264bd81",
+                      "existing": false
+                    }
+                  }
+                ],
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "parallelReason": ""
+              }
+            },
+            {
+              "op": "add",
+              "path": "/edges/2",
+              "value": {
+                "id": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+                "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "to": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+                "role": "relation",
+                "type": "",
+                "notes": "",
+                "origins": [
+                  {
+                    "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                    "snapshot": {
+                      "id": "ed083b4d-8ad7-4b7c-a310-b65854ed8ccd",
+                      "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+                      "to": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+                      "existing": false
+                    }
+                  }
+                ],
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "parallelReason": ""
+              }
+            },
+            {
+              "op": "add",
+              "path": "/edges/3",
+              "value": {
+                "id": "57754806-5e0f-4ad4-ab3b-0b08c5becf4b",
+                "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "to": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+                "role": "relation",
+                "type": "",
+                "notes": "",
+                "origins": [
+                  {
+                    "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                    "snapshot": {
+                      "id": "57754806-5e0f-4ad4-ab3b-0b08c5becf4b",
+                      "from": "0622fa15-212d-4563-8de8-722a3264bd81",
+                      "to": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+                      "existing": false
+                    }
+                  }
+                ],
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "parallelReason": ""
+              }
+            },
+            {
+              "op": "add",
+              "path": "/nodes/0",
+              "value": {
+                "id": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                "label": "",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "",
+                "designationOnly": true,
+                "structure": "concept",
+                "origins": [
+                  {
+                    "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                    "snapshot": {
+                      "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                      "dictionaryId": "opencorpora:2b653a687e442614d55c",
+                      "source": {
+                        "name": "Русский Викисловарь",
+                        "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                        "revision": 14297625,
+                        "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                        "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                        "license": "CC BY-SA 4.0",
+                        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                        "attribution": "Участники Викисловаря",
+                        "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                        "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                        "lemma": "гайка",
+                        "senseId": "1",
+                        "entry": "гайка I",
+                        "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                        "operatorEdited": false
+                      }
+                    }
+                  }
+                ],
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "x": 0,
+                "y": 220
+              }
+            },
+            {
+              "op": "add",
+              "path": "/nodes/1",
+              "value": {
+                "id": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "label": "",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "",
+                "designationOnly": true,
+                "structure": "concept",
+                "origins": [
+                  {
+                    "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                    "snapshot": {
+                      "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                      "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                      "source": {
+                        "name": "Русский Викисловарь",
+                        "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                        "revision": 14297625,
+                        "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                        "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                        "license": "CC BY-SA 4.0",
+                        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                        "attribution": "Участники Викисловаря",
+                        "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                        "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                        "lemma": "гайка",
+                        "senseId": "1",
+                        "entry": "гайка I",
+                        "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                        "operatorEdited": false
+                      }
+                    }
+                  }
+                ],
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "x": 260,
+                "y": 220
+              }
+            },
+            {
+              "op": "add",
+              "path": "/nodes/2",
+              "value": {
+                "id": "0622fa15-212d-4563-8de8-722a3264bd81",
+                "label": "",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "",
+                "designationOnly": true,
+                "structure": "concept",
+                "origins": [
+                  {
+                    "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                    "snapshot": {
+                      "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                      "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                      "source": {
+                        "name": "Русский Викисловарь",
+                        "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                        "revision": 14297625,
+                        "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                        "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                        "license": "CC BY-SA 4.0",
+                        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                        "attribution": "Участники Викисловаря",
+                        "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                        "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                        "lemma": "гайка",
+                        "senseId": "1",
+                        "entry": "гайка I",
+                        "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                        "operatorEdited": false
+                      }
+                    }
+                  }
+                ],
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "x": 520,
+                "y": 220
+              }
+            },
+            {
+              "op": "add",
+              "path": "/nodes/3",
+              "value": {
+                "id": "6a66a227-7ed8-4590-be17-16fedc9f8ff8",
+                "label": "",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "",
+                "designationOnly": true,
+                "structure": "concept",
+                "origins": [
+                  {
+                    "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                    "snapshot": {
+                      "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                      "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+                      "source": {
+                        "name": "Русский Викисловарь",
+                        "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                        "revision": 14297625,
+                        "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                        "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                        "license": "CC BY-SA 4.0",
+                        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                        "attribution": "Участники Викисловаря",
+                        "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                        "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                        "lemma": "гайка",
+                        "senseId": "1",
+                        "entry": "гайка I",
+                        "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                        "operatorEdited": false
+                      }
+                    }
+                  }
+                ],
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "x": 780,
+                "y": 220
+              }
+            },
+            {
+              "op": "add",
+              "path": "/nodes/4",
+              "value": {
+                "id": "909ee10b-41cd-48df-b5d8-5e3a3a684f1f",
+                "label": "",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "",
+                "designationOnly": true,
+                "structure": "concept",
+                "origins": [
+                  {
+                    "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                    "snapshot": {
+                      "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                      "dictionaryId": "opencorpora:8d12f0872e5b2ea65644",
+                      "source": {
+                        "name": "Русский Викисловарь",
+                        "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                        "revision": 14297625,
+                        "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                        "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                        "license": "CC BY-SA 4.0",
+                        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                        "attribution": "Участники Викисловаря",
+                        "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                        "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                        "lemma": "гайка",
+                        "senseId": "1",
+                        "entry": "гайка I",
+                        "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                        "operatorEdited": false
+                      }
+                    }
+                  }
+                ],
+                "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                "x": 1040,
+                "y": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "time": "2026-10-13T11:01:20.711492+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/1",
+              "value": {
+                "id": "a9bb3ce3-e77d-4e6e-b122-b771f89502ab",
+                "title": "Новое определение",
+                "definition": "",
+                "nodes": [],
+                "edges": [],
+                "contextEdges": [],
+                "routes": []
+              }
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "time": "2026-10-13T11:01:21.104596+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "replace",
+              "path": "/definitionDrafts/1/definition",
+              "value": "Собственное определение оператора."
+            },
+            {
+              "op": "replace",
+              "path": "/definitionDrafts/1/title",
+              "value": "Офлайн-проба"
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "time": "2026-10-13T11:01:21.756709+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/2",
+              "value": {
+                "id": "4661475a-97a2-4e1c-9afe-a934dc439f8d",
+                "nodes": [],
+                "edges": [],
+                "contextEdges": [],
+                "routes": [],
+                "title": "гайка",
+                "definition": "жарг. кольцо, перстень",
+                "source": {
+                  "name": "Русский Викисловарь",
+                  "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                  "revision": 14297625,
+                  "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                  "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                  "license": "CC BY-SA 4.0",
+                  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                  "attribution": "Участники Викисловаря",
+                  "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                  "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                  "lemma": "гайка",
+                  "senseId": "4",
+                  "entry": "гайка I",
+                  "originalText": "жарг. кольцо, перстень"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "time": "2026-10-13T11:01:21.852606+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/2/nodes/0",
+              "value": {
+                "id": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                "existing": true,
+                "designation": "гайка",
+                "base": {
+                  "id": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                  "label": "",
+                  "kind": "",
+                  "notes": "",
+                  "alternatives": "",
+                  "source": "",
+                  "designationOnly": true,
+                  "structure": "concept",
+                  "origins": [
+                    {
+                      "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                      "snapshot": {
+                        "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                        "dictionaryId": "opencorpora:2b653a687e442614d55c",
+                        "source": {
+                          "name": "Русский Викисловарь",
+                          "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                          "revision": 14297625,
+                          "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                          "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                          "license": "CC BY-SA 4.0",
+                          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                          "attribution": "Участники Викисловаря",
+                          "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                          "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                          "lemma": "гайка",
+                          "senseId": "1",
+                          "entry": "гайка I",
+                          "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                          "operatorEdited": false
+                        }
+                      }
+                    }
+                  ],
+                  "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                  "x": 0,
+                  "y": 220
+                }
+              }
+            },
+            {
+              "op": "add",
+              "path": "/definitionDrafts/2/source/operatorEdited",
+              "value": false
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "time": "2026-10-13T11:01:22.220606+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/2/nodes/1",
+              "value": {
+                "id": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "existing": true,
+                "designation": "крепёжный",
+                "base": {
+                  "id": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                  "label": "",
+                  "kind": "",
+                  "notes": "",
+                  "alternatives": "",
+                  "source": "",
+                  "designationOnly": true,
+                  "structure": "concept",
+                  "origins": [
+                    {
+                      "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                      "snapshot": {
+                        "definition": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                        "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                        "source": {
+                          "name": "Русский Викисловарь",
+                          "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                          "revision": 14297625,
+                          "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                          "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                          "license": "CC BY-SA 4.0",
+                          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                          "attribution": "Участники Викисловаря",
+                          "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                          "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                          "lemma": "гайка",
+                          "senseId": "1",
+                          "entry": "гайка I",
+                          "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)",
+                          "operatorEdited": false
+                        }
+                      }
+                    }
+                  ],
+                  "definitionId": "8d22ce89-2805-4e72-813b-6acb555b652e",
+                  "x": 260,
+                  "y": 220
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "time": "2026-10-13T11:01:22.404011+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/2/edges/0",
+              "value": {
+                "id": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7",
+                "from": "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                "to": "47ceb473-765b-46fb-9ed7-b0292d9841a4",
+                "existing": true
+              }
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "time": "2026-10-13T11:01:22.654509+00:00",
+          "action": "definition_publish",
+          "detail": "Подтверждён ручной миниграф; прежние исходники сохранены",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionPublications/4661475a-97a2-4e1c-9afe-a934dc439f8d",
+              "value": {
+                "title": "гайка",
+                "definition": "жарг. кольцо, перстень",
+                "nodeIds": [
+                  "6108a891-961e-4607-a7c7-f6c7a547bfcc",
+                  "47ceb473-765b-46fb-9ed7-b0292d9841a4"
+                ],
+                "edgeIds": [
+                  "ab98523d-3322-43fd-8bb5-8fa58b8acbc7"
+                ],
+                "contextIds": [],
+                "source": {
+                  "name": "Русский Викисловарь",
+                  "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                  "revision": 14297625,
+                  "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                  "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                  "license": "CC BY-SA 4.0",
+                  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                  "attribution": "Участники Викисловаря",
+                  "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                  "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                  "lemma": "гайка",
+                  "senseId": "4",
+                  "entry": "гайка I",
+                  "originalText": "жарг. кольцо, перстень",
+                  "operatorEdited": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "time": "2026-10-13T11:01:22.819715+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "replace",
+              "path": "/definitionDrafts/0/contextEdges/0/from",
+              "value": "39d62539-e1ef-4d86-84e4-8cc558e8d359"
+            },
+            {
+              "op": "replace",
+              "path": "/definitionDrafts/0/contextEdges/0/to",
+              "value": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7"
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "time": "2026-10-13T11:01:23.038009+00:00",
+          "action": "definition_publish",
+          "detail": "Подтверждён ручной миниграф; прежние исходники сохранены",
+          "patch": [
+            {
+              "op": "replace",
+              "path": "/contextEdges/0/from",
+              "value": "39d62539-e1ef-4d86-84e4-8cc558e8d359"
+            },
+            {
+              "op": "replace",
+              "path": "/contextEdges/0/to",
+              "value": "ab98523d-3322-43fd-8bb5-8fa58b8acbc7"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "legacyRowsByteEqual": 9,
+  "nodeIdsExactlyDraftIds": true,
+  "edgeIdsExactlyDraftIds": true,
+  "newGraphHasNoStudiesOrAccumulation": true,
+  "roundtripExact": true,
+  "importedHistoryPreserved": true,
+  "backupSha256Verified": "68a473ba535ba17d33c830c9231aee9ec708cce9b6c4720060414b389e501bd3",
+  "pythonTests": 71,
+  "jsTests": 13,
+  "browserGroups": 8,
+  "protectedGitBlobs": {
+    "data/experiments/stone/stone.json": "c74b33bb3d3a14eb16af563180b739021d2795e9",
+    "data/experiments/transfer/transfer.json": "95f9abfca610719e04d920cd49bfd648facc9fcc",
+    "data/experiments/nut/nut.json": "5a3d951439c2e2ae4a29b57d25472844910425c4",
+    "data/experiments/nut/nut-revised.json": "2a75534b8c9430ac6ebed8633a10ef6a122f171d",
+    "data/experiments/accumulation/k001-k002-workspace.json": "368a02197b8631529a66ceb9ca6203fac366afac",
+    "data/dictionary/lemmas.json": "1189624f0450313f7b655aca88c4ee6f0ca5f7de",
+    "data/dictionary/provenance.json": "a476e8cc1c521345c7532926954ddf373bbfa937"
+  },
+  "fileSha256": {
+    "cmd-report.json": "3ed06a051559a861046d033e67ce8dc85c9c984c0cd1b58a448f8aa3a2368b12",
+    "dictionary-senses.json": "f1b136fcb5e4653e7ded40dbbe1d56b687074f217ecbc2b6eb600ab94cee3aa2",
+    "narrow.png": "f87ac8c840c77484f6673fe1b935ba69155606755f249aab683f8ee92a2038ce",
+    "negative-attempts.json": "e42d23f192c0e48229540721fbf9198ebe36061301193dd8bc8de6cc005963c6",
+    "permanent.json": "3d9b57a4cd248dd84564f5ea4410bb9655bd396d603237093127a496a77dddc8",
+    "reexport.json": "3ff06c361ef2d572dc28ba511af09ba1dc38fcfb751eba8eee7e1675ac9342c0",
+    "report.json": "013c2338215bf87ec532261b69ae90479f3f4ccfe8e837e870e1cda0fae7c6dc",
+    "unified.png": "37a525070fc8058cf3ac2c8606d9e618bbab56a68d4d41f8aa754a8fff39762c",
+    "unit-tests.txt": "9fce6977d6db02ac9794a2a26a14f327631d174ad8e7b08152c59326b2160689"
+  },
+  "relativeLinksChecked": 427
+}

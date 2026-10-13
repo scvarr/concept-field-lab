@@ -80,6 +80,16 @@ class PermanentTest(unittest.TestCase):
         with self.assertRaises(Invalid):self.call('import',document=conflict,confirmed=True)
         self.assertEqual(self.store.read(),before)
 
+    def test_same_designation_does_not_identify_concepts(self):
+        from app.dictionary import search
+        draft=self.draft();draft['nodes'][2]['designation']='гайка'
+        state=self.publish(draft)['state']
+        results=search(state,'гайка')
+        ids={c['nodeId'] for c in results['concepts']}
+        self.assertEqual(ids,{draft['nodes'][0]['id'],draft['nodes'][2]['id']})
+        self.assertTrue(results['multipleConcepts'])
+        self.assertTrue(all(c['location']=='permanent' and c['selectable'] for c in results['concepts']))
+
     def test_direct_ids_reuse_context_edit_export_import_restart(self):
         d = self.draft()
         first = self.publish(d)['state']

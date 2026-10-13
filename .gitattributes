@@ -18,3 +18,5 @@ docs/manual/evidence/nut-revision/*.json text eol=lf
 /data/dictionary/*.json text eol=lf
 /docs/manual/evidence/builder/*.json text eol=lf
 /docs/manual/evidence/builder/unit-tests.txt text eol=lf
+/docs/manual/evidence/permanent/*.json text eol=lf
+/docs/manual/evidence/permanent/*.txt text eol=lf

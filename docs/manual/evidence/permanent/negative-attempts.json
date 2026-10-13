@@ -1,0 +1,99 @@
+{
+  "sourceProbe": "Python TLS chain failed (expired certificate); verified OS Schannel succeeded, without disabling TLS verification. Initial parser assumed h2 language headings; actual API had h1; corrected and covered by tests.",
+  "sqliteProbe": "sqlite3 connection context manager did not close handles on Windows. Changed to contextlib.closing; recovery uses a copy, backup stays untouched.",
+  "browser": [
+    {
+      "run": "permanent-1791887714663",
+      "report": {
+        "date": "2026-10-13T10:35:14.663Z",
+        "node": "v24.19.0",
+        "scope": "Technical operation test, no proposed semantic decomposition",
+        "scenarios": [
+          "Legacy database opens as one empty permanent graph, no historical records or mandatory study/source actions in UI; verified backup exists",
+          "Search shows lemma, grammar and five meanings with provenance; explicit selection fills draft, no automatic nodes",
+          "Branching mini-graph and explicit forward context confirmed directly into global graph; original node/edge IDs retained without copies",
+          "Shared interface, global ID search and position, neighbourhood and edge/context inspector",
+          "Second dictionary definition reuses exact concept and edge IDs; first draft reopens for manual context correction"
+        ],
+        "errors": [],
+        "dictionary": {
+          "name": "Русский Викисловарь",
+          "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+          "revision": 14297625,
+          "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+          "retrievedAt": "2026-10-13T10:35:17.575468+00:00",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "attribution": "Участники Викисловаря",
+          "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+          "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67"
+        },
+        "browser": "155.0.8059.40",
+        "backup": {
+          "mode": "permanent",
+          "database": "E:\\Projects\\concept-field-lab\\local-data\\permanent-1791887714663\\workspace.sqlite3",
+          "legacyRowsProtected": 9,
+          "legacyBackup": {
+            "sourcePath": "E:\\Projects\\concept-field-lab\\local-data\\permanent-1791887714663\\workspace.sqlite3",
+            "backupPath": "E:\\Projects\\concept-field-lab\\local-data\\permanent-1791887714663\\backups\\workspace-legacy-60f7e367-6401-41af-ae95-280f13337fa6.sqlite3",
+            "createdAt": "2026-10-13T10:35:17.701405+00:00",
+            "sha256": "5610e07ba668a6a33873ce941d9594ec550fd6e29581aa6ceb34281b318c201a",
+            "logicalSha256": "5c52fe8e8f4831a88b50c3bb8af71425f269fe31e209f80f42da8b239d9082ae",
+            "integrity": "ok",
+            "method": "sqlite3.Connection.backup from an open read transaction (including WAL)"
+          }
+        },
+        "failure": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert((await page.locator('#dialog').textContent()).includes('\"duplicates\": true'))\n\n    at E:\\Projects\\concept-field-lab\\tests\\permanent-browser.cjs:48:135"
+      },
+      "assessment": "Superseded: harness waits for async preview / resets viewport before legacy status check. No JavaScript errors or data loss observed."
+    },
+    {
+      "run": "permanent-1791888452814",
+      "report": {
+        "date": "2026-10-13T10:47:32.814Z",
+        "node": "v24.19.0",
+        "scope": "Technical operation test, no proposed semantic decomposition",
+        "scenarios": [
+          "Legacy database opens as one empty permanent graph, no historical records or mandatory study/source actions in UI; verified backup exists",
+          "Search shows lemma, grammar and five meanings with provenance; explicit selection fills draft, no automatic nodes",
+          "Branching mini-graph and explicit forward context confirmed directly into global graph; original node/edge IDs retained without copies",
+          "Shared interface, global ID search and position, neighbourhood and edge/context inspector",
+          "Offline response injected at UI boundary (backend network/cache cases unit-tested): local forms and own saved definition remain usable, no graph writes",
+          "Second dictionary definition reuses exact concept and edge IDs; first draft reopens for manual context correction",
+          "Export with provenance and history, server restart, exact GUI import into clean database and duplicate-free repeat"
+        ],
+        "errors": [],
+        "dictionary": {
+          "name": "Русский Викисловарь",
+          "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+          "revision": 14297625,
+          "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+          "retrievedAt": "2026-10-13T10:47:35.412272+00:00",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "attribution": "Участники Викисловаря",
+          "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+          "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67"
+        },
+        "browser": "155.0.8059.40",
+        "backup": {
+          "mode": "permanent",
+          "database": "E:\\Projects\\concept-field-lab\\local-data\\permanent-1791888452814\\workspace.sqlite3",
+          "legacyRowsProtected": 9,
+          "legacyBackup": {
+            "sourcePath": "E:\\Projects\\concept-field-lab\\local-data\\permanent-1791888452814\\workspace.sqlite3",
+            "backupPath": "E:\\Projects\\concept-field-lab\\local-data\\permanent-1791888452814\\backups\\workspace-legacy-d88bdca9-1008-4f93-8de6-18bb7fe56441.sqlite3",
+            "createdAt": "2026-10-13T10:47:35.532288+00:00",
+            "sha256": "c8ae73d662cffcce61e50c7196448987e8713853d260efaa0159ce5722ba2f78",
+            "logicalSha256": "acfe78933ccd6843aed21e1ba7e5139e9e120ccbd18183670a7746f170ef29c5",
+            "integrity": "ok",
+            "method": "sqlite3.Connection.backup from an open read transaction (including WAL)"
+          },
+          "importedHistoryArchives": 0
+        },
+        "failure": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#save-status').filter({ hasText: 'Сохранено' }) to be visible\u001b[22m\n\u001b[2m    60 × locator resolved to hidden <span role=\"status\" id=\"save-status\">Сохранено · версия 8</span>\u001b[22m\n\n    at saved (E:\\Projects\\concept-field-lab\\tests\\permanent-browser.cjs:10:163)\n    at async E:\\Projects\\concept-field-lab\\tests\\permanent-browser.cjs:57:51"
+      },
+      "assessment": "Superseded: harness waits for async preview / resets viewport before legacy status check. No JavaScript errors or data loss observed."
+    }
+  ]
+}

@@ -99,8 +99,8 @@ def parse_document(document):
     if latest is not None and latest != document['state']:
         raise Invalid('Последняя строка истории не совпадает с графом.')
     archives = document.get('importedHistory', [])
-    if not isinstance(archives, list) or len(archives) > 100:
-        raise Invalid('Архивы импортной истории: список до 100 документов.')
+    if not isinstance(archives, list):
+        raise Invalid('Архивы импортной истории должны быть списком.')
     for archive in archives:
         if not isinstance(archive, dict) or 'importedHistory' in archive:
             raise Invalid('Вложенные архивы истории не допускаются.')
