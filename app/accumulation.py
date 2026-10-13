@@ -433,10 +433,9 @@ def neighbourhood(study, node_id, depth=1, source_ids=None, node_limit=150, edge
     # Each manual definition is also inspected separately, never as a mixed route.
     from app.builder import manual
     layer = manual(acc)
-    for draft in acc.get('definitionDrafts', []):
-        local_edges = [e for e in layer['edges'] if e['definitionId'] == draft['id']]
-        local_ids = {n['id'] for n in layer['nodes'] if n['definitionId'] == draft['id']}
-        local_ids.update(v for e in local_edges for v in (e['from'], e['to']))
+    for did, publication in acc.get('definitionPublications', {}).items():
+        local_edges = [e for e in study['edges'] if e['id'] in publication['edgeIds']]
+        local_ids = set(publication['nodeIds'])
         if node_id not in local_ids or source_ids:
             continue
         distances = {node_id: 0}
@@ -453,7 +452,7 @@ def neighbourhood(study, node_id, depth=1, source_ids=None, node_limit=150, edge
                         queue.append(target)
         seen_nodes.update(distances)
         seen_edges.update(e['id'] for e in local_edges if e['from'] in distances and e['to'] in distances)
-        source_counts.append({'sourceId': draft['id'], 'nodes': len(distances), 'edges': len(local_edges)})
+        source_counts.append({'sourceId': did, 'nodes': len(distances), 'edges': len(local_edges)})
     # Focus stays visible even if the selected source has no representation.
     seen_nodes.add(node_id)
     all_nodes = {n["id"]: n for n in study["nodes"]}

@@ -69,4 +69,6 @@ body.busy :is(.accum-controls,.accum-inspector) button{pointer-events:auto;opaci
 .definition-context,.definition-edge-list>div {display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:12px;border-bottom:1px solid #cad5ce}
 #builder code,#builder pre {overflow-wrap:anywhere;white-space:pre-wrap;font-size:12px}
 #builder .actions label {min-width:180px;flex:1}
+#builder label.checkbox {display:flex;align-items:center;gap:8px}
+#builder input[type=checkbox] {width:auto}
 @media(max-width:1000px){.definition-layout{grid-template-columns:1fr}}

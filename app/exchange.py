@@ -25,8 +25,14 @@ def parse_document(document):
     supplied_state = document.get("state")
     supplied_studies = supplied_state.get("studies", []) if isinstance(supplied_state, dict) else []
     def require_v4(studies):
-        if document['version'] < 4 and any(s.get('accumulation', {}).get('manual') is not None or 'definitionDrafts' in s.get('accumulation', {}) or any(n.get('designationOnly') for n in s.get('nodes', [])) for s in studies):
-            raise Invalid('Конструктор определений требует JSON v4; не меняйте номер версии.')
+        if not isinstance(studies, list):
+            raise Invalid('Ожидался список исследований.')
+        for s in studies:
+            if not isinstance(s, dict) or not isinstance(s.get('nodes', []), list) or not isinstance(s.get('accumulation', {}), dict):
+                raise Invalid('Неверная структура исследования.')
+            acc = s.get('accumulation', {})
+            if document['version'] < 4 and ('manual' in acc or 'definitionDrafts' in acc or 'definitionPublications' in acc or any(isinstance(n, dict) and n.get('designationOnly') for n in s.get('nodes', []))):
+                raise Invalid('Конструктор определений требует JSON v4; не меняйте номер версии.')
     require_v4(supplied_studies)
     if document["version"] < 3 and isinstance(supplied_studies, list) and any(isinstance(s, dict) and s.get("accumulation") for s in supplied_studies):
         raise Invalid("Накопительное полотно требует JSON v3; не меняйте номер версии вручную.")

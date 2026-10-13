@@ -58,10 +58,12 @@ window.DefinitionBuilder = class {
   }
   draw() {
     const host=this.host.querySelector('#def-graph');if(!host)return;
-    this.graph?.observer.disconnect();const d=this.draft;
+    const d=this.draft,snapshot=this.graphDraft===d.id?this.graph?.snapshot():null;this.graph?.observer.disconnect();this.graphDraft=d.id;
+    if(!d.nodes.length){this.graph=null;host.textContent='Найдите существующий концепт или создайте первое поле.';return;}
     const nodes=d.nodes.map((n,i)=>({id:n.id,label:this.ids?n.id:this.name(n.id),x:n.x??(i%4)*245,y:n.y??Math.floor(i/4)*125,origins:[],badge:n.existing?'Повторно используется':'Новый'}));
     this.graph=new GraphView(host,{select:id=>this.inspect(id),editNode:id=>this.inspect(id),editEdge:id=>this.ctx.dialog('Обычное ребро',`<p>${this.h(this.edgeName(id))}</p>`),savePosition:this.ctx.run(async(id,p)=>{this.capture();Object.assign(d.nodes.find(n=>n.id===id),p);await this.save();}),canInteract:()=>!this.ctx.busy(),error:e=>this.ctx.toast(e.message,true)});
-    this.graph.update({id:d.id,rootId:nodes[0]?.id,nodes,edges:d.edges},{nodes,edges:d.edges.map(e=>({...e,type:'',displayTitle:this.edgeName(e.id)}))},nodes[0]?.id);if(nodes.length)this.graph.fit();
+    if(snapshot)this.graph.restore(snapshot);
+    this.graph.update({id:d.id,rootId:nodes[0]?.id,nodes,edges:d.edges},{nodes,edges:d.edges.map(e=>({...e,type:'',displayTitle:this.edgeName(e.id)}))},nodes[0]?.id);if(!snapshot)this.graph.fit();
   }
   prune(ids) { this.draft.contextEdges=this.draft.contextEdges.filter(c=>!ids.includes(c.from)&&!ids.includes(c.to));this.draft.routes=this.draft.routes.filter(r=>!r.edgeIds.some(id=>ids.includes(id)));this.route=this.route.filter(id=>!ids.includes(id)); }
   async addNew(designation,dictionaryId) { this.draft.nodes.push({id:crypto.randomUUID(),designation,existing:false,dictionaryId:dictionaryId||null});await this.save(); }
@@ -78,9 +80,9 @@ window.DefinitionBuilder = class {
   }
   inspect(id) {
     const c=this.canvas(),n=c.nodes.find(n=>n.id===id);if(!n)return this.ctx.dialog('Новое поле',`<p>${this.h(this.name(id))} · ${this.h(id)}</p><p>Ещё не включено на полотно.</p>`);
-    this.showUsage({nodeId:id,studyTitle:c.title,labels:[this.name(id)],origins:n.origins,edges:c.edges.filter(e=>e.from===id||e.to===id),contexts:(c.accumulation.manual?.contextEdges||[]).filter(v=>c.edges.some(e=>(e.from===id||e.to===id)&&(v.from===e.id||v.to===e.id)))});
+    this.showUsage({nodeId:id,studyTitle:c.title,labels:[this.name(id)],origins:n.origins,definitions:Object.entries(c.accumulation.definitionPublications||{}).filter(([,p])=>p.nodeIds.includes(id)).map(([id,p])=>({id,...p})),edges:c.edges.filter(e=>e.from===id||e.to===id),contexts:(c.accumulation.manual?.contextEdges||[]).filter(v=>c.edges.some(e=>(e.from===id||e.to===id)&&(v.from===e.id||v.to===e.id)))});
   }
-  showUsage(c) { this.ctx.dialog('Использование концепта',`<p>${this.h(c.labels.join(' / '))} · ${this.h(c.nodeId)} · ${this.h(c.studyTitle)}</p><h3>Существующие связи</h3><pre>${this.h(JSON.stringify(c.edges,null,2))}</pre><h3>Контекст между рёбрами</h3><pre>${this.h(JSON.stringify(c.contexts||[],null,2))}</pre><h3>Происхождение</h3><pre>${this.h(JSON.stringify(c.origins,null,2))}</pre>`); }
+  showUsage(c) { this.ctx.dialog('Использование концепта',`<p>${this.h(c.labels.join(' / '))} · ${this.h(c.nodeId)} · ${this.h(c.studyTitle)}</p><h3>Подтверждённые определения</h3><pre>${this.h(JSON.stringify(c.definitions||[],null,2))}</pre><h3>Существующие связи</h3><pre>${this.h(JSON.stringify(c.edges,null,2))}</pre><h3>Контекст между рёбрами</h3><pre>${this.h(JSON.stringify(c.contexts||[],null,2))}</pre><h3>Происхождение</h3><pre>${this.h(JSON.stringify(c.origins,null,2))}</pre>`); }
   includeSource(c) {
     const s=this.canvas(),source=s.accumulation.sources.find(v=>v.studyId===c.studyId);
     if(source){const n=s.nodes.find(n=>n.origins.some(o=>o.studyId===c.studyId&&o.nodeId===c.nodeId));return this.addExisting(n.id);}

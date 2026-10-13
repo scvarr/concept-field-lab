@@ -14,3 +14,7 @@ docs/manual/evidence/nut-revision/*.json text eol=lf
 /archive/observational-composition/** text eol=lf
 # CoNLL-U sentence blocks intentionally end with a blank separator line.
 /archive/observational-composition/results/004/parsed_input.conllu whitespace=-blank-at-eof
+# Keep M007 lexical/evidence checksums stable across checkouts.
+/data/dictionary/*.json text eol=lf
+/docs/manual/evidence/builder/*.json text eol=lf
+/docs/manual/evidence/builder/unit-tests.txt -text

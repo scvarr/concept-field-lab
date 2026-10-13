@@ -80,6 +80,20 @@ def validate_extension(study, identity):
         for obj in data[key]:
             if obj.get('definitionId') not in seen:
                 raise Invalid('Ручной объект требует сохранённого определения происхождения.')
+    publications = acc.get('definitionPublications', {})
+    if not isinstance(publications, dict) or not set(publications) <= seen:
+        raise Invalid('Включение требует сохранённого черновика.')
+    node_ids = {n['id'] for n in study['nodes']}
+    context_ids = {c['id'] for c in data['contextEdges']}
+    for publication in publications.values():
+        if not isinstance(publication, dict):
+            raise Invalid('Неверная запись включения определения.')
+        clean(publication.get('title'), 'название включения', True, 1000)
+        clean(publication.get('definition'), 'определение включения', True)
+        for key, allowed in (('nodeIds', node_ids), ('edgeIds', edge_ids), ('contextIds', context_ids)):
+            rows = publication.get(key)
+            if not isinstance(rows, list) or any(not isinstance(v, str) for v in rows) or len(rows) != len(set(rows)) or not set(rows) <= allowed:
+                raise Invalid('Изменение удаляет объект другого подтверждённого определения. Пересмотрите его включение отдельно.')
 
 
 def comparable(node):
@@ -152,6 +166,9 @@ def prepare(study, draft):
             continue
         layer['contextEdges'].append({**copy.deepcopy(c), 'definitionId': draft['id']})
     acc['manual'] = layer
+    acc.setdefault('definitionPublications', {})[draft['id']] = {'title': draft['title'], 'definition': draft['definition'],
+        'nodeIds': [n['id'] for n in draft['nodes']], 'edgeIds': [e['id'] for e in draft['edges']],
+        'contextIds': [c['id'] for c in draft['contextEdges']]}
     result.update(projection(acc, result))
     validate({'studies': [result], 'matches': [], 'imports': [], 'proposals': []})
     return result, {'nodes': new_nodes, 'edges': new_edges, 'contextEdges': copy.deepcopy(draft['contextEdges']),

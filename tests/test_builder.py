@@ -55,6 +55,30 @@ class BuilderTest(unittest.TestCase):
         self.assertTrue(result['multipleConcepts'])
         self.assertEqual(self.store.read(), before)
 
+    def test_reused_edge_publication_protected_even_without_new_objects(self):
+        draft = self.draft()
+        self.save(draft)
+        self.publish(draft)
+        other = {'id': uid(), 'title': 'Reuse', 'definition': 'Явное повторное использование', 'nodes': [], 'edges': [], 'routes': [], 'contextEdges': []}
+        edge = draft['edges'][0]
+        for n in self.canvas()['nodes']:
+            if n['id'] in (edge['from'], edge['to']):
+                other['nodes'].append({'id': n['id'], 'existing': True, 'designation': '', 'base': n})
+        other['edges'] = [{**edge, 'existing': True}]
+        self.save(other)
+        self.publish(other)
+        from app.accumulation import neighbourhood
+        view = neighbourhood(self.canvas(), edge['from'])
+        self.assertTrue(any(p['sourceId'] == other['id'] for p in view['sourceCounts']))
+        draft['edges'] = draft['edges'][1:]
+        draft['contextEdges'] = []
+        draft['routes'] = []
+        self.save(draft)
+        before = self.store.read()
+        with self.assertRaises(Invalid):
+            self.publish(draft)
+        self.assertEqual(before, self.store.read())
+
     def test_preview_commit_reopen_branch_and_reuse(self):
         before = self.canvas()
         draft = self.draft()

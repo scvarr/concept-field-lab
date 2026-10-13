@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-13T09:35:37.128Z",
+  "node": "v24.19.0",
+  "scope": "Technical operator choices only; no semantic truth or decomposition claim",
+  "scenarios": [
+    "Dictionary normal noun/adjective forms and draft persistence without canvas mutation",
+    "Historic canvas node and ordinary edge IDs selected explicitly",
+    "Two explicit branching routes; five forward contexts, no arbitrary cross-branch pair; ID display toggle",
+    "Confirmed inclusion, unchanged K001/K002 and operator decisions, repeat idempotence, reload and manual context correction",
+    "Manual node visible on historic accumulation; separate definition neighbourhood inspector",
+    "Next definition finds previously used concept and displays its ordinary/context edge IDs",
+    "JSON v4 download, new server, exact clean Store import/repeat and GUI candidate review import"
+  ],
+  "errors": [],
+  "browser": "155.0.8059.40",
+  "initial": {
+    "nodes": 66,
+    "edges": 66,
+    "sources": 2
+  },
+  "final": {
+    "nodes": 71,
+    "edges": 70,
+    "contexts": 5
+  },
+  "ids": {
+    "nodes": [
+      "052cb704-aa37-47e0-bac8-80b6c7c58ac7",
+      "878294b9-fb9f-49a4-a9de-1d782a9f2a0c",
+      "1b4058f0-7c77-4b88-b694-27391ca7e37e",
+      "a7cc17c0-989c-4b9f-b59a-b526fa4ef64f",
+      "a8ba0488-3d5a-4ddd-ae41-02d84fd2767d"
+    ],
+    "edges": [
+      "5e108b9d-78d4-4a41-9ec7-0fb19e21c311",
+      "63631743-5fe2-48d9-8e6b-28f98d23a3b2",
+      "62afe3c7-09b9-4cd0-a8ee-a6c029f476c6",
+      "4d2e4550-5bcb-4462-8239-4ac4d87c494a"
+    ]
+  },
+  "ok": true
+}
