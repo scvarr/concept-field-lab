@@ -7,7 +7,7 @@ const port=18000+stamp%20000,url=`http://127.0.0.1:${port}`;
 const report={date:new Date().toISOString(),node:process.version,scenarios:[],errors:[]};let server,browser,page;
 const pause=ms=>new Promise(r=>setTimeout(r,ms));
 async function start(){
-  server=spawn('python',['-m','app.server','--no-browser','--port',String(port),'--db',db],{cwd:root,windowsHide:true,env:{...process.env,PYTHONUTF8:'1'}});
+  server=spawn('python',['-m','app.server','--legacy','--no-browser','--port',String(port),'--db',db],{cwd:root,windowsHide:true,env:{...process.env,PYTHONUTF8:'1'}});
   let log='';server.stdout.on('data',c=>log+=c);server.stderr.on('data',c=>log+=c);
   for(let i=0;i<100;i++){if(log.includes('http://'))return;if(server.exitCode!==null)throw Error(log);await pause(100);}throw Error(log);
 }

@@ -18,8 +18,14 @@ STATIC = Path(__file__).parent / "static"
 MAX_BODY = 64 * 1024 * 1024
 
 
-def make_server(path, port=8765):
-    store = Store(path)
+def make_server(path, port=8765, legacy=False, definition_fetcher=None):
+    if legacy:
+        store = Store(path)
+    else:
+        from app.permanent import PermanentStore
+        store = PermanentStore(path)
+    from app.definitions import Definitions, fetch_json
+    definitions = Definitions(Path(path).resolve().parent / 'definition-cache', definition_fetcher or fetch_json)
     token = secrets.token_urlsafe(32)
 
     class Handler(BaseHTTPRequestHandler):
@@ -55,6 +61,32 @@ def make_server(path, port=8765):
                 return self.send(200, store.history())
             if path == "/api/export":
                 return self.send(200, store.export(), download="concept-field-workspace.json")
+            if not legacy:
+                try:
+                    query = parse_qs(urlparse(self.path).query)
+                    if path == '/api/dictionary':
+                        from app.dictionary import search
+                        return self.send(200, search(store.read()['state'], query.get('q', [''])[0]))
+                    if path == '/api/definitions':
+                        return self.send(200, definitions.get(query.get('lemma', [''])[0], query.get('refresh', ['0'])[0] == '1'))
+                    if path == '/api/definition-preview':
+                        from app.builder import prepare
+                        from app.store import lookup
+                        snapshot = store.read()
+                        draft = lookup(snapshot['state']['definitionDrafts'], query.get('draft', [None])[0], 'черновик')
+                        _, preview = prepare(snapshot['state'], draft)
+                        return self.send(200, {'revision': snapshot['revision'], **preview})
+                    if path == '/api/diagnostics':
+                        return self.send(200, store.diagnostics())
+                    if path == '/api/legacy-backup':
+                        info = store.diagnostics()['legacyBackup']
+                        if not info:
+                            raise Invalid('В этой базе нет исторического перехода.')
+                        return self.send(200, Path(info['backupPath']).read_bytes(), 'application/vnd.sqlite3', download='concept-field-legacy-backup.sqlite3')
+                    if path.startswith('/api/'):
+                        return self.send(404, {'error': 'В постоянном графе нет старых разделов и операций исследований.'})
+                except (Invalid, ValueError, TypeError, KeyError) as exc:
+                    return self.send(400, {'error': str(exc)})
             if path in ('/api/dictionary', '/api/definition-preview'):
                 try:
                     query = parse_qs(urlparse(self.path).query)
@@ -119,13 +151,15 @@ def make_server(path, port=8765):
                     return self.send(200, structural_diff(left, right, snapshot["state"]["matches"]), download="concept-field-diff.json")
                 except (Invalid, ValueError, TypeError, KeyError) as exc:
                     return self.send(400, {"error": str(exc)})
-            files = {"/": ("index.html", "text/html"), "/app.js": ("app.js", "text/javascript"), "/builder.js": ("builder.js", "text/javascript"), "/graph-view.js": ("graph-view.js", "text/javascript"), "/accumulation.js": ("accumulation.js", "text/javascript"), "/style.css": ("style.css", "text/css"), "/favicon.svg": ("favicon.svg", "image/svg+xml")}
+            files = {"/": ("index.html", "text/html"), "/app.js": ("app.js", "text/javascript"), "/workspace.js": ("workspace.js", "text/javascript"), "/builder.js": ("builder.js", "text/javascript"), "/graph-view.js": ("graph-view.js", "text/javascript"), "/accumulation.js": ("accumulation.js", "text/javascript"), "/style.css": ("style.css", "text/css"), "/favicon.svg": ("favicon.svg", "image/svg+xml")}
             if path not in files:
                 layout_files = {"/layout-controls.js": "layout-controls.js", "/layout-engine.js": "layout-engine.js", "/layout-worker.js": "layout-worker.js", "/vendor/d3-7.9.0.min.js": "vendor/d3-7.9.0.min.js", "/vendor/dagre-1.1.5.min.js": "vendor/dagre-1.1.5.min.js"}
                 if path in layout_files:
                     return self.send(200, (STATIC / layout_files[path]).read_bytes(), "text/javascript; charset=utf-8")
                 return self.send(404, {"error": "Страница не найдена."})
             filename, mime = files[path]
+            if filename == 'index.html' and legacy:
+                filename = 'legacy.html'
             return self.send(200, (STATIC / filename).read_bytes(), mime + "; charset=utf-8")
 
         def do_POST(self):
@@ -143,6 +177,8 @@ def make_server(path, port=8765):
                     raise Invalid("Ожидался объект запроса.")
                 path = urlparse(self.path).path
                 if path == "/api/import-preview":
+                    if not legacy:
+                        return self.send(200, store.import_preview(data.get('document')))
                     changes = parse_document(data.get("document"))
                     state = store.read()["state"]
                     indexed = object_index(state)
@@ -171,9 +207,10 @@ def main():
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--db", type=Path, default=Path(__file__).resolve().parents[1] / "local-data" / "workspace.sqlite3")
     parser.add_argument("--no-browser", action="store_true")
+    parser.add_argument('--legacy', action='store_true', help='Явно открыть исторический редактор; для восстановления используйте копию резервной базы')
     args = parser.parse_args()
     try:
-        server = make_server(args.db, args.port)
+        server = make_server(args.db, args.port, legacy=args.legacy)
     except (OSError, ValueError, sqlite3.Error) as exc:
         parser.exit(1, f"Не удалось запустить: {exc}. Проверьте порт и путь к базе.\n")
     url = f"http://127.0.0.1:{server.server_port}"

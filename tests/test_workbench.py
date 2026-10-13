@@ -274,7 +274,7 @@ class WorkbenchTest(unittest.TestCase):
         self.assertEqual(changed["notes"], "Предлагаемая правка")
 
     def test_http_security_persistence_and_errors(self):
-        server = make_server(self.path, 0)
+        server = make_server(self.path, 0, legacy=True)
         thread = threading.Thread(target=server.serve_forever, daemon=True)
         thread.start()
         url = f"http://127.0.0.1:{server.server_port}"
@@ -306,7 +306,7 @@ class WorkbenchTest(unittest.TestCase):
             server.shutdown()
             server.server_close()
             thread.join()
-        restarted = make_server(self.path, 0)
+        restarted = make_server(self.path, 0, legacy=True)
         self.assertEqual(Store(self.path).read()["state"]["studies"][0]["title"], "камень")
         restarted.server_close()
 

@@ -56,8 +56,8 @@ def validate_draft(draft):
 
 
 def validate_extension(study, identity):
-    acc = study['accumulation']
-    data = manual(acc)
+    acc = study.get('accumulation', study)
+    data = manual(acc) if 'accumulation' in study else {k: study[k] for k in ('nodes', 'edges', 'designations', 'contextEdges')}
     if not isinstance(data, dict) or set(data) != {'nodes', 'edges', 'designations', 'contextEdges'} or any(not isinstance(data[k], list) for k in data):
         raise Invalid('Неверный ручной слой полотна.')
     drafts = acc.get('definitionDrafts', [])
@@ -108,8 +108,9 @@ def prepare(study, draft):
     if not draft['nodes'] or not draft['definition'].strip():
         raise Invalid('Для включения нужны определение и хотя бы одно поле.')
     result = copy.deepcopy(study)
-    acc = result['accumulation']
-    layer = copy.deepcopy(manual(acc))
+    legacy = 'accumulation' in result
+    acc = result['accumulation'] if legacy else result
+    layer = copy.deepcopy(manual(acc) if legacy else {k: result[k] for k in ('nodes', 'edges', 'designations', 'contextEdges')})
     old = {key: [o for o in layer[key] if o['definitionId'] == draft['id']] for key in layer}
     for key in layer:
         layer[key] = [o for o in layer[key] if o['definitionId'] != draft['id']]
@@ -129,7 +130,7 @@ def prepare(study, draft):
             continue
         if n['id'] in current_nodes and n['id'] not in old_nodes:
             raise Invalid('Новый ID уже существует; выберите существующий концепт.')
-        origin = {'definitionId': draft['id'], 'snapshot': {'definition': draft['definition'], 'dictionaryId': n.get('dictionaryId')}}
+        origin = {'definitionId': draft['id'], 'snapshot': {'definition': draft['definition'], 'dictionaryId': n.get('dictionaryId'), 'source': copy.deepcopy(draft.get('source'))}}
         node = {**copy.deepcopy(old_nodes.get(n['id'], {})), 'id': n['id'], **fields({'label': '', 'designationOnly': True}),
                 'designationOnly': True, 'structure': 'concept', 'origins': [origin], 'definitionId': draft['id'],
                 'x': n.get('x', current_nodes.get(n['id'], {}).get('x', 260 * (index % 5))),
@@ -165,22 +166,30 @@ def prepare(study, draft):
                 raise Invalid('Контекстная пара уже записана; используйте существующий ID.')
             continue
         layer['contextEdges'].append({**copy.deepcopy(c), 'definitionId': draft['id']})
-    acc['manual'] = layer
+    if legacy:
+        acc['manual'] = layer
+    else:
+        result.update(layer)
     acc.setdefault('definitionPublications', {})[draft['id']] = {'title': draft['title'], 'definition': draft['definition'],
         'nodeIds': [n['id'] for n in draft['nodes']], 'edgeIds': [e['id'] for e in draft['edges']],
-        'contextIds': [c['id'] for c in draft['contextEdges']]}
-    result.update(projection(acc, result))
-    validate({'studies': [result], 'matches': [], 'imports': [], 'proposals': []})
+        'contextIds': [c['id'] for c in draft['contextEdges']], **({'source': copy.deepcopy(draft['source'])} if draft.get('source') else {})}
+    if legacy:
+        result.update(projection(acc, result))
+        validate({'studies': [result], 'matches': [], 'imports': [], 'proposals': []})
+    else:
+        from app.permanent import validate_graph
+        validate_graph(result)
     return result, {'nodes': new_nodes, 'edges': new_edges, 'contextEdges': copy.deepcopy(draft['contextEdges']),
         'removed': {key: [v['id'] for v in old[key] if not any(o['id'] == v['id'] for o in layer[key])] for key in layer},
         'reusedNodes': [n['id'] for n in draft['nodes'] if n['existing']], 'reusedEdges': [e['id'] for e in draft['edges'] if e['existing']]}
 
 
 def operate(state, action, data):
-    study = lookup(state['studies'], data.get('studyId'), 'полотно')
-    if not study.get('accumulation'):
+    legacy = 'studies' in state
+    study = lookup(state['studies'], data.get('studyId'), 'полотно') if legacy else state
+    if legacy and not study.get('accumulation'):
         raise Invalid('Выберите накопительное полотно.')
-    drafts = study['accumulation'].setdefault('definitionDrafts', [])
+    drafts = study.get('accumulation', study).setdefault('definitionDrafts', [])
     if action == 'definition_save':
         draft = copy.deepcopy(data.get('draft'))
         validate_draft(draft)

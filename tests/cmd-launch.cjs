@@ -12,7 +12,7 @@ const root=path.resolve(__dirname,'..'),port=8877;
     for(let i=0;i<100&&!output.includes(`http://127.0.0.1:${port}`);i++){if(child.exitCode!==null)throw Error('start.cmd exited early: '+output);await new Promise(r=>setTimeout(r,100));}
     if(!output.includes(`http://127.0.0.1:${port}`))throw Error('start.cmd timed out: '+output);
     const response=await fetch(`http://127.0.0.1:${port}/api/state`),state=await response.json();
-    if(!response.ok||state.revision!==0||state.state.studies.length)throw Error('Unexpected cmd.exe startup state');
+    if(!response.ok||state.revision!==0||state.state.nodes.length||state.state.edges.length||'studies'in state.state)throw Error('Unexpected permanent graph startup state');
     await fs.writeFile(path.join(root,'test-output','cmd-report.json'),JSON.stringify({result:'passed',command:'start.cmd --no-browser --port 8877 --db <isolated project test directory>',shell:'cmd.exe',revision:state.revision},null,2));
     console.log('Windows cmd.exe entrypoint passed.');
   }finally{

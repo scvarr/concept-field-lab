@@ -41,7 +41,7 @@ Path(sys.argv[2]).write_text(json.dumps({'a':a,'b':b,'alpha':alpha,'edge':edge,'
 `,db,path.join(output,'manifest.json')],{cwd:root,encoding:'utf8',windowsHide:true,env:{...process.env,PYTHONUTF8:'1'}});
   assert.equal(setup.status,0,setup.stderr);
   const fixture=JSON.parse(await fs.readFile(path.join(output,'manifest.json'),'utf8'));
-  server=spawn('python',['-m','app.server','--no-browser','--port',String(port),'--db',db],{cwd:root,windowsHide:true,env:{...process.env,PYTHONUTF8:'1'}});
+  server=spawn('python',['-m','app.server','--legacy','--no-browser','--port',String(port),'--db',db],{cwd:root,windowsHide:true,env:{...process.env,PYTHONUTF8:'1'}});
   let log='';server.stdout.on('data',c=>log+=c);server.stderr.on('data',c=>log+=c);
   for(let i=0;i<100;i++){if(log.includes('http://'))break;if(server.exitCode!==null)throw Error(log);await pause(100);}
   browser=await chromium.launch({channel:'chrome',headless:true});report.browser=browser.version();

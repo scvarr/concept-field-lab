@@ -72,3 +72,25 @@ body.busy :is(.accum-controls,.accum-inspector) button{pointer-events:auto;opaci
 #builder label.checkbox {display:flex;align-items:center;gap:8px}
 #builder input[type=checkbox] {width:auto}
 @media(max-width:1000px){.definition-layout{grid-template-columns:1fr}}
+
+/* M008 keeps the existing constructor and renderer in two working areas. */
+body.permanent-workspace {display:block}
+.permanent-workspace .header-actions span {display:inline}
+.permanent-workspace main {width:100%;padding:20px;max-width:none}
+.work-nav {display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.work-columns {display:grid;grid-template-columns:minmax(610px,1.3fr) minmax(410px,.85fr);gap:22px;align-items:start}
+#permanent-panel {position:sticky;top:12px;background:white;border:1px solid var(--line);border-radius:10px;padding:16px;max-height:calc(100vh - 30px);overflow:auto}
+#permanent-panel>h2 {margin-top:0}#permanent-panel input[type=search]{width:100%}
+#permanent-graph {height:410px;min-height:300px;margin:14px 0}
+#permanent-graph svg {min-height:300px}
+#graph-results {max-height:180px;overflow:auto}#graph-results button,#graph-inspector>button {display:block;text-align:left;width:100%;margin:4px 0;font-size:12px}
+#graph-results code,#graph-results small,#graph-inspector small {display:block;overflow-wrap:anywhere}
+#graph-depth {width:60px}#graph-caption {font-size:11px;color:var(--muted)}
+#graph-inspector {overflow-wrap:anywhere}#graph-inspector code{font-size:11px}#graph-inspector p{font-size:12px}
+.permanent-workspace #builder .definition-layout {grid-template-columns:minmax(230px,.8fr) minmax(280px,1fr)}
+.permanent-workspace #builder .intro h2{font-size:20px}.permanent-workspace #builder .toolbar{gap:10px;align-items:center}
+.permanent-workspace #def-open{max-width:100%;min-width:0;flex:1}
+.sense {border-top:1px solid var(--line);padding:12px 0}.sense button {display:block;margin-top:8px}.sense small{font-size:11px}
+#transition-notice {padding:12px;background:#edf7f1;border:1px solid #bed5c8;border-radius:8px;margin-bottom:14px}
+@media(max-width:1200px){.work-columns{grid-template-columns:1fr}#permanent-panel{position:static;max-height:none}}
+@media(max-width:700px){.permanent-workspace main{padding:12px}.permanent-workspace #builder .definition-layout{grid-template-columns:1fr}.work-nav{flex-wrap:wrap}}

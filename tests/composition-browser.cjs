@@ -4,7 +4,7 @@ const {spawn,spawnSync}=require('node:child_process');
 const fs=require('node:fs/promises'),path=require('node:path'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..'),url='http://127.0.0.1:8878',output=path.join(root,'test-output',`composition-${Date.now()}`);
 let server,browser,page,db='workspace.sqlite3';const errors=[],expectedHttpErrors=[];
-async function start(){server=spawn('python',['-m','app.server','--no-browser','--port','8878','--db',path.join(output,db)],{cwd:root,windowsHide:true,env:{...process.env,PYTHONUTF8:'1'}});let log='';server.stdout.on('data',c=>log+=c);server.stderr.on('data',c=>log+=c);for(let i=0;i<100;i++){if(log.includes('http://'))return;if(server.exitCode!==null)throw Error(log);await new Promise(r=>setTimeout(r,100));}throw Error(log);}
+async function start(){server=spawn('python',['-m','app.server','--legacy','--no-browser','--port','8878','--db',path.join(output,db)],{cwd:root,windowsHide:true,env:{...process.env,PYTHONUTF8:'1'}});let log='';server.stdout.on('data',c=>log+=c);server.stderr.on('data',c=>log+=c);for(let i=0;i<100;i++){if(log.includes('http://'))return;if(server.exitCode!==null)throw Error(log);await new Promise(r=>setTimeout(r,100));}throw Error(log);}
 async function stop(){if(server?.exitCode===null)await new Promise(r=>{server.once('exit',r);server.kill();});}
 async function initial(){await page.goto(url);await page.locator('#save-status').filter({hasText:'Сохранено'}).waitFor();}
 async function snapshot(){return (await (await fetch(url+'/api/state')).json());}

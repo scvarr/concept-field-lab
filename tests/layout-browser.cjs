@@ -6,7 +6,7 @@ const db=path.join(root,'local-data','accumulation-m005',`layout-browser-${stamp
 const port=12000+stamp%30000,url=`http://127.0.0.1:${port}`;let server,browser,page,sid;
 const report={date:new Date().toISOString(),node:process.version,scenarios:[],measurements:[],errors:[],layoutActions:[]};
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-async function start(dbPath){server=spawn('python',['-m','app.server','--no-browser','--port',String(port),'--db',dbPath],{cwd:root,windowsHide:true,env:{...process.env,PYTHONUTF8:'1'}});let log='';server.stdout.on('data',c=>log+=c);server.stderr.on('data',c=>log+=c);for(let i=0;i<100;i++){if(log.includes('http://'))return;if(server.exitCode!==null)throw Error(log);await sleep(100);}throw Error(log);}
+async function start(dbPath){server=spawn('python',['-m','app.server','--legacy','--no-browser','--port',String(port),'--db',dbPath],{cwd:root,windowsHide:true,env:{...process.env,PYTHONUTF8:'1'}});let log='';server.stdout.on('data',c=>log+=c);server.stderr.on('data',c=>log+=c);for(let i=0;i<100;i++){if(log.includes('http://'))return;if(server.exitCode!==null)throw Error(log);await sleep(100);}throw Error(log);}
 async function stop(){if(server?.exitCode===null)await new Promise(r=>{server.once('exit',r);server.kill();});}
 async function snapshot(){return (await (await fetch(url+'/api/state')).json());}
 const study=snap=>snap.state.studies.find(s=>s.id===sid);

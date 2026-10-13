@@ -10,7 +10,7 @@ let server, browser, page;
 const errors=[];
 const output = path.join(root,'test-output',`browser-${Date.now()}`);
 async function start() {
-  server=spawn(process.env.PYTHON || 'python',['-m','app.server','--no-browser','--port','8876','--db',path.join(output,'workspace.sqlite3')],{cwd:root,windowsHide:true,env:{...process.env,PYTHONUTF8:'1'}});
+  server=spawn(process.env.PYTHON || 'python',['-m','app.server','--legacy','--no-browser','--port','8876','--db',path.join(output,'workspace.sqlite3')],{cwd:root,windowsHide:true,env:{...process.env,PYTHONUTF8:'1'}});
   let log='';server.stdout.on('data',chunk=>log+=chunk);server.stderr.on('data',chunk=>log+=chunk);
   for(let i=0;i<100;i++){if(log.includes('http://'))return;if(server.exitCode!==null)throw Error(log);await new Promise(r=>setTimeout(r,100));}
   throw Error('Server startup timed out: '+log);
