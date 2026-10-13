@@ -17,4 +17,4 @@ docs/manual/evidence/nut-revision/*.json text eol=lf
 # Keep M007 lexical/evidence checksums stable across checkouts.
 /data/dictionary/*.json text eol=lf
 /docs/manual/evidence/builder/*.json text eol=lf
-/docs/manual/evidence/builder/unit-tests.txt -text
+/docs/manual/evidence/builder/unit-tests.txt text eol=lf
