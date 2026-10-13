@@ -1,0 +1,1678 @@
+{
+  "experiment": "K003r",
+  "date": "2026-10-13",
+  "originalSha256": "f1af2df1882cff05352ca1d0230f04adf60c71a3d7084ad0338c18ec39344600",
+  "originalRejectedByOperator": true,
+  "studyId": "9ababb92-ecc8-4551-b6f5-19d1942cbf3f",
+  "rootId": "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+  "revision": 137,
+  "nodeIds": {
+    "гайка": "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+    "масса": "cbd6f4dd-a649-4be6-bf08-04f470d2a5fc",
+    "форма": "8e870830-22ce-4aa1-aa86-fde7c36e801b",
+    "цвет": "dfd66c15-fd56-4ef2-a5e0-afc207652cb4",
+    "материал": "386b5e48-4acc-4bfe-985e-8f0268e4bb07",
+    "поверхность": "15be48e8-165c-4330-ad38-bf38e4c4b21c",
+    "строение": "687a36fc-e9d0-4fdc-a580-00283ba3c428",
+    "назначение": "9810349f-5f99-4ec4-955d-cc7af8b2f7bf",
+    "изменение": "ef02cb06-5a35-442c-a15f-a27ef5bdf2a5",
+    "размер": "0b829a06-84f6-4daa-8886-022f5ac8d911",
+    "симметрия": "0c68bd17-c023-4a10-880f-fe50647a498b",
+    "кривизна": "b8e9459f-6727-465b-ab9d-9a8d80f5d8bd",
+    "состав": "511d858b-5b6f-48ee-9580-f8804f7f5e62",
+    "твёрдость": "eec37896-0669-4aa6-b69f-fb0065088620",
+    "упругость": "c21f9d0c-efe6-40a9-ad7d-518fdab58e1e",
+    "прочность": "9f9152e2-ab7a-4d1f-b429-e8397b08b30a",
+    "вещество": "38046b6d-15a0-407d-b77a-931ceb25f67c",
+    "площадь": "a024fc24-2466-48d8-b848-fbd8269d9281",
+    "шероховатость": "730330e5-e141-4516-abb9-7c3e60963a3a",
+    "корпус": "c4dc6c9b-7e77-46cf-b8a9-c08fb49a70d1",
+    "отверстие": "d3b2a414-97af-46f0-8435-09e0a9a545ec",
+    "стенка": "5ba92bb2-c96e-4014-bd5f-5db30b608687",
+    "покрытие": "e8b08047-9778-4a05-8136-cdc7b7add300",
+    "вставка": "070d4020-15e4-48bc-89fa-cc9a0690675f",
+    "толщина": "8cbec89b-48f3-48ce-9314-fe60ebc0d637",
+    "резьба": "a33093fe-c7f4-4feb-81d0-0561b1b1745c",
+    "виток": "d9a16875-541e-4ebe-a329-55a2f855dd82",
+    "контакт": "fb5f28a5-b3b2-4e9b-a5ae-81caee06eb8b",
+    "допуск": "8660a961-36a4-46e3-9aba-4a67836adcb9",
+    "спираль": "dfc91704-f8cc-4e85-bd1d-0c6ee6bb5929",
+    "профиль": "c465ee00-d9f0-4c71-ba66-3f243c272101",
+    "шаг": "3e226af5-e270-4022-9ea8-8a10f5d5bbbc",
+    "направление": "8a329d4c-f03a-4b05-a3cf-47fcdc1cb908",
+    "угол": "0097951b-b006-4b8f-8810-c69c41a2238b",
+    "отклонение": "3af5fd93-38bf-444b-af91-5b388d36821a",
+    "соединение": "0e768ec4-c655-45fd-98f9-610ca6faa21d",
+    "опора": "ea2adfdd-a628-49e1-acba-ca505e67860e",
+    "крепление": "5d8d1474-dd09-4b4f-8e96-1eb994b63ebf",
+    "разъёмность": "62ecada7-ab5f-4fc9-a62e-3da4e7b35b39",
+    "трение": "7983f762-f34c-4465-9c21-c5ffc0d63fe5",
+    "деформация": "b8a0e8a2-ad5a-4c27-a3d0-ee7f236dc801",
+    "износ": "b5a821ef-9525-47eb-b112-70b4117eddfc",
+    "коррозия": "414f8864-b26d-4314-8e16-1b8501d109d6",
+    "длина": "cc1cd881-9229-4f33-9aae-97cd15180ccd",
+    "объём": "ea9bfce4-7455-41e4-80a0-8ce890d69f0f"
+  },
+  "routes": [
+    [
+      "гайка",
+      "масса"
+    ],
+    [
+      "гайка",
+      "форма"
+    ],
+    [
+      "гайка",
+      "цвет"
+    ],
+    [
+      "гайка",
+      "материал"
+    ],
+    [
+      "гайка",
+      "поверхность"
+    ],
+    [
+      "гайка",
+      "строение"
+    ],
+    [
+      "гайка",
+      "назначение"
+    ],
+    [
+      "гайка",
+      "изменение"
+    ],
+    [
+      "гайка",
+      "размер"
+    ],
+    [
+      "форма",
+      "симметрия"
+    ],
+    [
+      "форма",
+      "кривизна"
+    ],
+    [
+      "материал",
+      "состав"
+    ],
+    [
+      "материал",
+      "твёрдость"
+    ],
+    [
+      "материал",
+      "упругость"
+    ],
+    [
+      "материал",
+      "прочность"
+    ],
+    [
+      "состав",
+      "вещество"
+    ],
+    [
+      "поверхность",
+      "площадь"
+    ],
+    [
+      "поверхность",
+      "шероховатость"
+    ],
+    [
+      "строение",
+      "корпус"
+    ],
+    [
+      "строение",
+      "отверстие"
+    ],
+    [
+      "корпус",
+      "стенка"
+    ],
+    [
+      "корпус",
+      "покрытие"
+    ],
+    [
+      "корпус",
+      "вставка"
+    ],
+    [
+      "стенка",
+      "толщина"
+    ],
+    [
+      "отверстие",
+      "резьба"
+    ],
+    [
+      "резьба",
+      "виток"
+    ],
+    [
+      "резьба",
+      "контакт"
+    ],
+    [
+      "резьба",
+      "допуск"
+    ],
+    [
+      "виток",
+      "спираль"
+    ],
+    [
+      "виток",
+      "профиль"
+    ],
+    [
+      "спираль",
+      "шаг"
+    ],
+    [
+      "спираль",
+      "направление"
+    ],
+    [
+      "профиль",
+      "угол"
+    ],
+    [
+      "допуск",
+      "отклонение"
+    ],
+    [
+      "назначение",
+      "соединение"
+    ],
+    [
+      "назначение",
+      "опора"
+    ],
+    [
+      "соединение",
+      "крепление"
+    ],
+    [
+      "соединение",
+      "разъёмность"
+    ],
+    [
+      "опора",
+      "контакт"
+    ],
+    [
+      "контакт",
+      "трение"
+    ],
+    [
+      "изменение",
+      "деформация"
+    ],
+    [
+      "изменение",
+      "износ"
+    ],
+    [
+      "изменение",
+      "коррозия"
+    ],
+    [
+      "размер",
+      "длина"
+    ],
+    [
+      "размер",
+      "объём"
+    ]
+  ],
+  "counts": {
+    "concepts": 45,
+    "alpha": 0,
+    "edges": 45
+  },
+  "inventoryDecisions": [
+    {
+      "key": "резьба",
+      "label": "резьба",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "a33093fe-c7f4-4feb-81d0-0561b1b1745c",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "масса",
+      "label": "масса",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "cbd6f4dd-a649-4be6-bf08-04f470d2a5fc",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "трение",
+      "label": "трение",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "7983f762-f34c-4465-9c21-c5ffc0d63fe5",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "отверстие",
+      "label": "отверстие",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "d3b2a414-97af-46f0-8435-09e0a9a545ec",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "крепление",
+      "label": "крепление",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "5d8d1474-dd09-4b4f-8e96-1eb994b63ebf",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "цвет",
+      "label": "цвет",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "dfd66c15-fd56-4ef2-a5e0-afc207652cb4",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "виток",
+      "label": "виток",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "d9a16875-541e-4ebe-a329-55a2f855dd82",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "материал",
+      "label": "материал",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "386b5e48-4acc-4bfe-985e-8f0268e4bb07",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "контакт",
+      "label": "контакт",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "fb5f28a5-b3b2-4e9b-a5ae-81caee06eb8b",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "покрытие",
+      "label": "покрытие",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "e8b08047-9778-4a05-8136-cdc7b7add300",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "форма",
+      "label": "форма",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "8e870830-22ce-4aa1-aa86-fde7c36e801b",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "шаг",
+      "label": "шаг",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "3e226af5-e270-4022-9ea8-8a10f5d5bbbc",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "корпус",
+      "label": "корпус",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "c4dc6c9b-7e77-46cf-b8a9-c08fb49a70d1",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "упругость",
+      "label": "упругость",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "c21f9d0c-efe6-40a9-ad7d-518fdab58e1e",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "срез",
+      "label": "срез",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "excluded",
+      "targetId": null,
+      "reason": "Действие / отказ без адреса конкретной части не выражает сопротивления срезу витков."
+    },
+    {
+      "key": "направление",
+      "label": "направление",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "8a329d4c-f03a-4b05-a3cf-47fcdc1cb908",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "толщина",
+      "label": "толщина",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "8cbec89b-48f3-48ce-9314-fe60ebc0d637",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "вещество",
+      "label": "вещество",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "38046b6d-15a0-407d-b77a-931ceb25f67c",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "опора",
+      "label": "опора",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "ea2adfdd-a628-49e1-acba-ca505e67860e",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "зазор",
+      "label": "зазор",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "excluded",
+      "targetId": null,
+      "reason": "Требуются относительное положение и два участия; не подменять их свободным листом."
+    },
+    {
+      "key": "прочность",
+      "label": "прочность",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "9f9152e2-ab7a-4d1f-b429-e8397b08b30a",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "профиль",
+      "label": "профиль",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "c465ee00-d9f0-4c71-ba66-3f243c272101",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "вставка",
+      "label": "вставка",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "070d4020-15e4-48bc-89fa-cc9a0690675f",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "соединение",
+      "label": "соединение",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "0e768ec4-c655-45fd-98f9-610ca6faa21d",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "износ",
+      "label": "износ",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "b5a821ef-9525-47eb-b112-70b4117eddfc",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "стенка",
+      "label": "стенка",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "5ba92bb2-c96e-4014-bd5f-5db30b608687",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "площадь",
+      "label": "площадь",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "a024fc24-2466-48d8-b848-fbd8269d9281",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "допуск",
+      "label": "допуск",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "8660a961-36a4-46e3-9aba-4a67836adcb9",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "спираль",
+      "label": "спираль",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "dfc91704-f8cc-4e85-bd1d-0c6ee6bb5929",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "разъёмность",
+      "label": "разъёмность",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "62ecada7-ab5f-4fc9-a62e-3da4e7b35b39",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "состав",
+      "label": "состав",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "511d858b-5b6f-48ee-9580-f8804f7f5e62",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "шероховатость",
+      "label": "шероховатость",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "730330e5-e141-4516-abb9-7c3e60963a3a",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "размер",
+      "label": "размер",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "0b829a06-84f6-4daa-8886-022f5ac8d911",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "коррозия",
+      "label": "коррозия",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "414f8864-b26d-4314-8e16-1b8501d109d6",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "твёрдость",
+      "label": "твёрдость",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "eec37896-0669-4aa6-b69f-fb0065088620",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "угол",
+      "label": "угол",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "0097951b-b006-4b8f-8810-c69c41a2238b",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "длина",
+      "label": "длина",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "cc1cd881-9229-4f33-9aae-97cd15180ccd",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "деформация",
+      "label": "деформация",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "b8a0e8a2-ad5a-4c27-a3d0-ee7f236dc801",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "симметрия",
+      "label": "симметрия",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "0c68bd17-c023-4a10-880f-fe50647a498b",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "объём",
+      "label": "объём",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "ea9bfce4-7455-41e4-80a0-8ce890d69f0f",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "кривизна",
+      "label": "кривизна",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "b8e9459f-6727-465b-ab9d-9a8d80f5d8bd",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "момент",
+      "label": "момент",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "excluded",
+      "targetId": null,
+      "reason": "Слово многозначно; вращающий момент без структурного раскрытия не сохраняется простым сокращением."
+    },
+    {
+      "key": "вращение",
+      "label": "вращение",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "excluded",
+      "targetId": null,
+      "reason": "Не приписывать вращение каждой гайке и не заменять сопротивление вращению его наличием."
+    },
+    {
+      "key": "фиксация",
+      "label": "фиксация",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "excluded",
+      "targetId": null,
+      "reason": "Не получено выраженное различие закрепления корпуса и крепления соединения."
+    },
+    {
+      "key": "захват",
+      "label": "захват",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "excluded",
+      "targetId": null,
+      "reason": "Ручной / инструментальный контекст не представлен, отдельный общий лист не решает различия."
+    },
+    {
+      "key": "диаметр",
+      "label": "диаметр",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "excluded",
+      "targetId": null,
+      "reason": "Номинальная и средняя размерные роли не выражены; не сворачивать их в один атрибут."
+    },
+    {
+      "key": "нагрузка",
+      "label": "нагрузка",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "excluded",
+      "targetId": null,
+      "reason": "Не построены силовые роли и нагрузочная способность; сам термин не является решением."
+    },
+    {
+      "key": "стойкость",
+      "label": "стойкость",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "excluded",
+      "targetId": null,
+      "reason": "Предложенный общий род не выражает направленность сопротивления конкретному изменению."
+    },
+    {
+      "key": "свойство",
+      "label": "свойство",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "excluded",
+      "targetId": null,
+      "reason": "Обязательная общая классификация не нужна для выбранных областей; не копировать вход K001 ради вида."
+    },
+    {
+      "key": "строение",
+      "label": "строение",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "687a36fc-e9d0-4fdc-a580-00283ba3c428",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "назначение",
+      "label": "назначение",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "9810349f-5f99-4ec4-955d-cc7af8b2f7bf",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    },
+    {
+      "key": "изменение",
+      "label": "изменение",
+      "grammar": {
+        "partOfSpeech": "noun",
+        "case": "nominative",
+        "number": "singular"
+      },
+      "status": "selected",
+      "targetId": "ef02cb06-5a35-442c-a15f-a27ef5bdf2a5",
+      "reason": "Выбрана самостоятельная концептуальная позиция; значение не назначено."
+    }
+  ],
+  "newGeneralizations": [
+    "поверхность",
+    "отклонение"
+  ],
+  "originalNodeReview": [
+    {
+      "originalId": "5d225fa7-f0f3-4576-b7a9-bdda6b316992",
+      "originalLabel": "гайка",
+      "status": "entry",
+      "paths": [
+        [
+          "гайка"
+        ]
+      ],
+      "pathIds": [
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e"
+        ]
+      ],
+      "limitationOrDecision": "Сохранён вход в выбранное крепёжное чтение, не полная дефиниция."
+    },
+    {
+      "originalId": "10f98108-db13-43fc-a512-fcaaadf5b1fb",
+      "originalLabel": "внутренняя резьба",
+      "status": "decomposition",
+      "paths": [
+        [
+          "гайка",
+          "строение",
+          "отверстие",
+          "резьба"
+        ]
+      ],
+      "pathIds": [
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "687a36fc-e9d0-4fdc-a580-00283ba3c428",
+          "d3b2a414-97af-46f0-8435-09e0a9a545ec",
+          "a33093fe-c7f4-4feb-81d0-0561b1b1745c"
+        ]
+      ],
+      "limitationOrDecision": "Размещение резьбы под отверстием выражено маршрутом. Отдельная модель внутренних поверхностей / участия не построена."
+    },
+    {
+      "originalId": "f93acfe4-64d6-41bf-a202-bb630237dcaa",
+      "originalLabel": "крепёжное удержание",
+      "status": "partial",
+      "paths": [
+        [
+          "гайка",
+          "назначение",
+          "соединение",
+          "крепление"
+        ]
+      ],
+      "pathIds": [
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "9810349f-5f99-4ec4-955d-cc7af8b2f7bf",
+          "0e768ec4-c655-45fd-98f9-610ca6faa21d",
+          "5d8d1474-dd09-4b4f-8e96-1eb994b63ebf"
+        ]
+      ],
+      "limitationOrDecision": "Крепёжное назначение раскрыто; силовой / осевой механизм удержания не выражен."
+    },
+    {
+      "originalId": "83a93134-0046-4d15-b6f9-c313b2e3a3e2",
+      "originalLabel": "ручной захват",
+      "status": "limited",
+      "paths": [],
+      "pathIds": [],
+      "limitationOrDecision": "Рука, инструмент и их роли требуют другого выражения связи. Не заменено голым «захват». "
+    },
+    {
+      "originalId": "87746d99-1dfd-4d4f-9a5e-954cf0f350cf",
+      "originalLabel": "шаг резьбы",
+      "status": "decomposition",
+      "paths": [
+        [
+          "резьба",
+          "виток",
+          "спираль",
+          "шаг"
+        ]
+      ],
+      "pathIds": [
+        [
+          "a33093fe-c7f4-4feb-81d0-0561b1b1745c",
+          "d9a16875-541e-4ebe-a329-55a2f855dd82",
+          "dfc91704-f8cc-4e85-bd1d-0c6ee6bb5929",
+          "3e226af5-e270-4022-9ea8-8a10f5d5bbbc"
+        ]
+      ],
+      "limitationOrDecision": "Повторяемая винтовая геометрия вынесена в маршрут; значение / алгоритм измерения шага не добавлены."
+    },
+    {
+      "originalId": "8c91b644-4f21-4579-aea8-306cf4531e8b",
+      "originalLabel": "опорная поверхность",
+      "status": "partial",
+      "paths": [
+        [
+          "гайка",
+          "поверхность"
+        ],
+        [
+          "гайка",
+          "назначение",
+          "опора"
+        ]
+      ],
+      "pathIds": [
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "15be48e8-165c-4330-ad38-bf38e4c4b21c"
+        ],
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "9810349f-5f99-4ec4-955d-cc7af8b2f7bf",
+          "ea2adfdd-a628-49e1-acba-ca505e67860e"
+        ]
+      ],
+      "limitationOrDecision": "Поверхность и опора самостоятельны; привязка конкретной зоны поверхности к опорному участию не представлена."
+    },
+    {
+      "originalId": "108be652-f43b-4cf4-8514-61455a98366e",
+      "originalLabel": "сопротивление коррозии",
+      "status": "partial",
+      "paths": [
+        [
+          "гайка",
+          "изменение",
+          "коррозия"
+        ]
+      ],
+      "pathIds": [
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "ef02cb06-5a35-442c-a15f-a27ef5bdf2a5",
+          "414f8864-b26d-4314-8e16-1b8501d109d6"
+        ]
+      ],
+      "limitationOrDecision": "Представлена коррозия как область возможного изменения. Сопротивление ей НЕ представлено и не переименовано в коррозию."
+    },
+    {
+      "originalId": "b43e257c-1986-4aec-abe7-c6f111085e23",
+      "originalLabel": "грани под инструмент",
+      "status": "limited",
+      "paths": [],
+      "pathIds": [],
+      "limitationOrDecision": "Конкретная функция грани относительно инструмента не выражена. Геометрический частный случай не принят обязательным."
+    },
+    {
+      "originalId": "58dfbcc4-7e5a-493b-bd74-459ffefd100f",
+      "originalLabel": "профиль резьбы",
+      "status": "decomposition",
+      "paths": [
+        [
+          "резьба",
+          "виток",
+          "профиль"
+        ]
+      ],
+      "pathIds": [
+        [
+          "a33093fe-c7f4-4feb-81d0-0561b1b1745c",
+          "d9a16875-541e-4ebe-a329-55a2f855dd82",
+          "c465ee00-d9f0-4c71-ba66-3f243c272101"
+        ]
+      ],
+      "limitationOrDecision": "Привязка области профиля вынесена в путь; не получено полное геометрическое определение."
+    },
+    {
+      "originalId": "09570354-06c4-4b8a-b8d8-de7e4f77b462",
+      "originalLabel": "разъёмность резьбового сопряжения",
+      "status": "partial",
+      "paths": [
+        [
+          "гайка",
+          "назначение",
+          "соединение",
+          "разъёмность"
+        ]
+      ],
+      "pathIds": [
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "9810349f-5f99-4ec4-955d-cc7af8b2f7bf",
+          "0e768ec4-c655-45fd-98f9-610ca6faa21d",
+          "62ecada7-ab5f-4fc9-a62e-3da4e7b35b39"
+        ]
+      ],
+      "limitationOrDecision": "Разъёмность относится к понятию соединения. Не гарантирует отделимость корпуса или конкретного монтажа."
+    },
+    {
+      "originalId": "b6cf769c-f9e3-4159-b5e6-e61b721024fc",
+      "originalLabel": "допуск резьбы",
+      "status": "decomposition",
+      "paths": [
+        [
+          "резьба",
+          "допуск",
+          "отклонение"
+        ]
+      ],
+      "pathIds": [
+        [
+          "a33093fe-c7f4-4feb-81d0-0561b1b1745c",
+          "8660a961-36a4-46e3-9aba-4a67836adcb9",
+          "3af5fd93-38bf-444b-af91-5b388d36821a"
+        ]
+      ],
+      "limitationOrDecision": "Допуск и отклонение разделены. Конкретные интервалы, размерные роли и стандарты не кодируются."
+    },
+    {
+      "originalId": "0c7dadd5-2410-420f-83f0-f125de7b3369",
+      "originalLabel": "вставка",
+      "status": "retained",
+      "paths": [
+        [
+          "строение",
+          "корпус",
+          "вставка"
+        ]
+      ],
+      "pathIds": [
+        [
+          "687a36fc-e9d0-4fdc-a580-00283ba3c428",
+          "c4dc6c9b-7e77-46cf-b8a9-c08fb49a70d1",
+          "070d4020-15e4-48bc-89fa-cc9a0690675f"
+        ]
+      ],
+      "limitationOrDecision": "Возможный элемент строения; не обязательная часть всех гаек."
+    },
+    {
+      "originalId": "f1c551b4-b001-4be0-a5ae-2392aef882d1",
+      "originalLabel": "длина резьбового зацепления",
+      "status": "limited",
+      "paths": [],
+      "pathIds": [],
+      "limitationOrDecision": "Длина зацепления зависит от двух конкретных участий / глубины контакта. Общая длина гайки не выдаётся за её замену."
+    },
+    {
+      "originalId": "d49f1d65-c2c7-47eb-aa7b-0521415e441b",
+      "originalLabel": "фиксация корпуса",
+      "status": "limited",
+      "paths": [],
+      "pathIds": [],
+      "limitationOrDecision": "Не перенесена в «фиксацию» без адресуемого корпуса и отношения. Функция закрепления корпуса остаётся вне итоговой записи."
+    },
+    {
+      "originalId": "2c2419a6-f734-4c47-b10c-ba1389bf5cda",
+      "originalLabel": "площадь опоры",
+      "status": "partial",
+      "paths": [
+        [
+          "гайка",
+          "поверхность",
+          "площадь"
+        ]
+      ],
+      "pathIds": [
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "15be48e8-165c-4330-ad38-bf38e4c4b21c",
+          "a024fc24-2466-48d8-b848-fbd8269d9281"
+        ]
+      ],
+      "limitationOrDecision": "Площадь поверхности представлена; площадь конкретной опорной зоны не адресуется."
+    },
+    {
+      "originalId": "b00696e5-11ef-4894-adc1-49a6bdaa9701",
+      "originalLabel": "боковая поверхность витка",
+      "status": "partial",
+      "paths": [
+        [
+          "резьба",
+          "виток",
+          "профиль",
+          "угол"
+        ]
+      ],
+      "pathIds": [
+        [
+          "a33093fe-c7f4-4feb-81d0-0561b1b1745c",
+          "d9a16875-541e-4ebe-a329-55a2f855dd82",
+          "c465ee00-d9f0-4c71-ba66-3f243c272101",
+          "0097951b-b006-4b8f-8810-c69c41a2238b"
+        ]
+      ],
+      "limitationOrDecision": "Сохранена геометрическая область профиля / угла. Выделение боковой поверхности и её нормали не выражено."
+    },
+    {
+      "originalId": "26a9eb2a-c08b-4ead-a9f4-db50853a751c",
+      "originalLabel": "осевое удержание",
+      "status": "limited",
+      "paths": [],
+      "pathIds": [],
+      "limitationOrDecision": "Ось / силовой смысл / удерживаемые участия не представлены. Простое «удержание» не внесено как решение."
+    },
+    {
+      "originalId": "94b1feaf-4675-4012-abc2-4387a1ec531e",
+      "originalLabel": "заход резьбы",
+      "status": "limited",
+      "paths": [],
+      "pathIds": [],
+      "limitationOrDecision": "Неясность между входной фаской и геометрической заходностью. Требуется самостоятельное различение, не сокращение слова."
+    },
+    {
+      "originalId": "4565590c-e367-4bf1-8343-959601020023",
+      "originalLabel": "толщина несущей стенки",
+      "status": "partial",
+      "paths": [
+        [
+          "строение",
+          "корпус",
+          "стенка",
+          "толщина"
+        ]
+      ],
+      "pathIds": [
+        [
+          "687a36fc-e9d0-4fdc-a580-00283ba3c428",
+          "c4dc6c9b-7e77-46cf-b8a9-c08fb49a70d1",
+          "5ba92bb2-c96e-4014-bd5f-5db30b608687",
+          "8cbec89b-48f3-48ce-9314-fe60ebc0d637"
+        ]
+      ],
+      "limitationOrDecision": "Структурная привязка толщины к стенке есть; её несущая роль и допустимая нагрузка не выражены."
+    },
+    {
+      "originalId": "ffb38fd9-0de5-42f1-817b-ad48eb201ab9",
+      "originalLabel": "сопротивление самоотвинчиванию",
+      "status": "limited",
+      "paths": [],
+      "pathIds": [],
+      "limitationOrDecision": "Полярность сопротивления, относительное вращение и причинный механизм не выражены; нет скрытого описания в notes."
+    },
+    {
+      "originalId": "8502bec8-fff5-46d4-a378-d33880d0d74a",
+      "originalLabel": "средний диаметр резьбы",
+      "status": "limited",
+      "paths": [],
+      "pathIds": [],
+      "limitationOrDecision": "Не слит с номинальным диаметром. Геометрические роли диаметров не моделируются простым общим концом «диаметр». "
+    },
+    {
+      "originalId": "4b4c9c4b-ae29-42a9-ac5d-2695a07a1750",
+      "originalLabel": "упругая контактная деформация",
+      "status": "partial",
+      "paths": [
+        [
+          "гайка",
+          "изменение",
+          "деформация"
+        ],
+        [
+          "гайка",
+          "материал",
+          "упругость"
+        ]
+      ],
+      "pathIds": [
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "ef02cb06-5a35-442c-a15f-a27ef5bdf2a5",
+          "b8a0e8a2-ad5a-4c27-a3d0-ee7f236dc801"
+        ],
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "386b5e48-4acc-4bfe-985e-8f0268e4bb07",
+          "c21f9d0c-efe6-40a9-ad7d-518fdab58e1e"
+        ]
+      ],
+      "limitationOrDecision": "Деформация и упругость самостоятельны; связать характеристику конкретной контактной деформации этой записью не удалось."
+    },
+    {
+      "originalId": "f5e26112-d70a-4209-9f19-67807e262aef",
+      "originalLabel": "материал тела",
+      "status": "generalized",
+      "paths": [
+        [
+          "гайка",
+          "материал"
+        ]
+      ],
+      "pathIds": [
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "386b5e48-4acc-4bfe-985e-8f0268e4bb07"
+        ]
+      ],
+      "limitationOrDecision": "Материал применим к целому независимо от специфичности. Состав частей / их разные материалы не назначаются автоматически."
+    },
+    {
+      "originalId": "2a9c1549-9560-41a9-9fca-4ac1c8731a69",
+      "originalLabel": "несущая способность",
+      "status": "limited",
+      "paths": [],
+      "pathIds": [],
+      "limitationOrDecision": "Способность выдержать определённую нагрузку не выражается набором голых прочности / нагрузки. Не имитируется α."
+    },
+    {
+      "originalId": "96d8b3cb-aa50-4f18-a9cc-c2ff55b0848a",
+      "originalLabel": "зазор сопряжения",
+      "status": "limited",
+      "paths": [],
+      "pathIds": [],
+      "limitationOrDecision": "Зазор требует взаимного размещения адресуемых частей. Не объявлен потомком допуска как эквивалент или следствие."
+    },
+    {
+      "originalId": "da7d5890-2878-4250-b4b6-772b448ea0ec",
+      "originalLabel": "направление навивки",
+      "status": "decomposition",
+      "paths": [
+        [
+          "резьба",
+          "виток",
+          "спираль",
+          "направление"
+        ]
+      ],
+      "pathIds": [
+        [
+          "a33093fe-c7f4-4feb-81d0-0561b1b1745c",
+          "d9a16875-541e-4ebe-a329-55a2f855dd82",
+          "dfc91704-f8cc-4e85-bd1d-0c6ee6bb5929",
+          "8a329d4c-f03a-4b05-a3cf-47fcdc1cb908"
+        ]
+      ],
+      "limitationOrDecision": "Ориентация относится к спирали через маршрут; левое / правое не назначены как значения."
+    },
+    {
+      "originalId": "edcd3045-0f9f-49a5-9417-f2a27d71bb18",
+      "originalLabel": "поверхностный слой",
+      "status": "partial",
+      "paths": [
+        [
+          "строение",
+          "корпус",
+          "покрытие"
+        ]
+      ],
+      "pathIds": [
+        [
+          "687a36fc-e9d0-4fdc-a580-00283ba3c428",
+          "c4dc6c9b-7e77-46cf-b8a9-c08fb49a70d1",
+          "e8b08047-9778-4a05-8136-cdc7b7add300"
+        ]
+      ],
+      "limitationOrDecision": "Выбрано покрытие как самостоятельный возможный элемент. Не каждый поверхностный слой является покрытием; тождество не принято."
+    },
+    {
+      "originalId": "03fc9688-496d-4a16-b4ad-93251ae92f1b",
+      "originalLabel": "посадочное удержание",
+      "status": "limited",
+      "paths": [],
+      "pathIds": [],
+      "limitationOrDecision": "Конкретная посадка и удерживаемые участия не описаны; не заменено общим креплением."
+    },
+    {
+      "originalId": "d1a13e6e-e213-491a-8e7f-d3dd524d858a",
+      "originalLabel": "сопротивление срезу витков",
+      "status": "limited",
+      "paths": [],
+      "pathIds": [],
+      "limitationOrDecision": "Прочность материала сохранена отдельно; сопротивление срезу конкретных витков не выражено и не приравнено ей."
+    },
+    {
+      "originalId": "fc3b54e1-3bc9-4358-981b-edafe7d55889",
+      "originalLabel": "твёрдость",
+      "status": "retained",
+      "paths": [
+        [
+          "гайка",
+          "материал",
+          "твёрдость"
+        ]
+      ],
+      "pathIds": [
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "386b5e48-4acc-4bfe-985e-8f0268e4bb07",
+          "eec37896-0669-4aa6-b69f-fb0065088620"
+        ]
+      ],
+      "limitationOrDecision": "Самостоятельная характеристика, не прочность и не успешная нагрузочная проверка."
+    },
+    {
+      "originalId": "459bb913-16e7-4f8e-a0ff-383d33afe890",
+      "originalLabel": "шероховатость контакта",
+      "status": "partial",
+      "paths": [
+        [
+          "гайка",
+          "поверхность",
+          "шероховатость"
+        ]
+      ],
+      "pathIds": [
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "15be48e8-165c-4330-ad38-bf38e4c4b21c",
+          "730330e5-e141-4516-abb9-7c3e60963a3a"
+        ]
+      ],
+      "limitationOrDecision": "Шероховатость поверхности есть; локальная контактная область / масштаб измерения не адресуются."
+    },
+    {
+      "originalId": "6057b9fd-1ad0-4e05-8e74-202a810c5868",
+      "originalLabel": "сопротивление износу",
+      "status": "partial",
+      "paths": [
+        [
+          "гайка",
+          "изменение",
+          "износ"
+        ]
+      ],
+      "pathIds": [
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "ef02cb06-5a35-442c-a15f-a27ef5bdf2a5",
+          "b5a821ef-9525-47eb-b112-70b4117eddfc"
+        ]
+      ],
+      "limitationOrDecision": "Износ сохранён как изменение; сопротивление / ресурс не представлены. Эти смыслы не объявлены тождественными."
+    },
+    {
+      "originalId": "290603d7-486d-4ada-9320-3004691e695b",
+      "originalLabel": "дополнительное стопорение",
+      "status": "limited",
+      "paths": [],
+      "pathIds": [],
+      "limitationOrDecision": "Устройство, условность и дополнительность стопорения не представимы одним существительным. Не записано как обязательное."
+    },
+    {
+      "originalId": "a00d2b9b-190c-4a67-8b39-0344e3ae2e72",
+      "originalLabel": "номинальный диаметр резьбы",
+      "status": "limited",
+      "paths": [],
+      "pathIds": [],
+      "limitationOrDecision": "Номинальная размерная роль не представлена; не слита со средним / фактическим диаметром."
+    },
+    {
+      "originalId": "b27a674d-1e8b-45ae-81b8-dc1dab575a6b",
+      "originalLabel": "деформируемость материала",
+      "status": "partial",
+      "paths": [
+        [
+          "гайка",
+          "изменение",
+          "деформация"
+        ],
+        [
+          "гайка",
+          "материал",
+          "упругость"
+        ]
+      ],
+      "pathIds": [
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "ef02cb06-5a35-442c-a15f-a27ef5bdf2a5",
+          "b8a0e8a2-ad5a-4c27-a3d0-ee7f236dc801"
+        ],
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "386b5e48-4acc-4bfe-985e-8f0268e4bb07",
+          "c21f9d0c-efe6-40a9-ad7d-518fdab58e1e"
+        ]
+      ],
+      "limitationOrDecision": "Восстановлены самостоятельные области деформации / упругости, но способность материала к каждой деформации не определена."
+    },
+    {
+      "originalId": "8cffcbf4-ec08-414c-a100-52b5c7751f05",
+      "originalLabel": "восприятие вращающего момента",
+      "status": "limited",
+      "paths": [],
+      "pathIds": [],
+      "limitationOrDecision": "Роль момента, поворот и закрепление тела требуют адресуемых связей. Общий «момент» неоднозначен и не решает задачу."
+    },
+    {
+      "originalId": "25592907-8549-4bb5-85ee-998e112af39b",
+      "originalLabel": "прочность корпуса",
+      "status": "partial",
+      "paths": [
+        [
+          "гайка",
+          "материал",
+          "прочность"
+        ]
+      ],
+      "pathIds": [
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "386b5e48-4acc-4bfe-985e-8f0268e4bb07",
+          "9f9152e2-ab7a-4d1f-b429-e8397b08b30a"
+        ]
+      ],
+      "limitationOrDecision": "Прочность материала представлена. Прочность конструкции / корпуса не объявлена её синонимом."
+    },
+    {
+      "originalId": "af2ada91-d6b5-42d2-9ac7-8ca9aa0ca897",
+      "originalLabel": "доступность резьбового канала",
+      "status": "partial",
+      "paths": [
+        [
+          "строение",
+          "отверстие",
+          "резьба"
+        ]
+      ],
+      "pathIds": [
+        [
+          "687a36fc-e9d0-4fdc-a580-00283ba3c428",
+          "d3b2a414-97af-46f0-8435-09e0a9a545ec",
+          "a33093fe-c7f4-4feb-81d0-0561b1b1745c"
+        ]
+      ],
+      "limitationOrDecision": "Резьбовая область структурно размещена; сквозность / закрытый конец / доступ не заданы."
+    },
+    {
+      "originalId": "57209b5b-3a41-44d9-ad9e-53c28189b713",
+      "originalLabel": "исполнение тела",
+      "status": "decomposition",
+      "paths": [
+        [
+          "гайка",
+          "строение",
+          "корпус"
+        ],
+        [
+          "гайка",
+          "материал"
+        ]
+      ],
+      "pathIds": [
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "687a36fc-e9d0-4fdc-a580-00283ba3c428",
+          "c4dc6c9b-7e77-46cf-b8a9-c08fb49a70d1"
+        ],
+        [
+          "40d8eccf-c2d0-4f69-b00c-92a7850c616e",
+          "386b5e48-4acc-4bfe-985e-8f0268e4bb07"
+        ]
+      ],
+      "limitationOrDecision": "Строение и материал разделены. Смешанное техническое обобщение не сохранено как универсальный концепт."
+    },
+    {
+      "originalId": "f2f95044-000d-4c7d-85e8-0215824924f3",
+      "originalLabel": "трение опорного контакта",
+      "status": "shared-concept",
+      "paths": [
+        [
+          "назначение",
+          "опора",
+          "контакт",
+          "трение"
+        ]
+      ],
+      "pathIds": [
+        [
+          "9810349f-5f99-4ec4-955d-cc7af8b2f7bf",
+          "ea2adfdd-a628-49e1-acba-ca505e67860e",
+          "fb5f28a5-b3b2-4e9b-a5ae-81caee06eb8b",
+          "7983f762-f34c-4465-9c21-c5ffc0d63fe5"
+        ]
+      ],
+      "limitationOrDecision": "Контакт и трение — общие концепты. Маршрут показывает область рассмотрения, не ID конкретного контакта или его значение."
+    },
+    {
+      "originalId": "27f90d72-8f9b-4042-ab5f-30f9b388420b",
+      "originalLabel": "трение резьбового контакта",
+      "status": "shared-concept",
+      "paths": [
+        [
+          "строение",
+          "отверстие",
+          "резьба",
+          "контакт",
+          "трение"
+        ]
+      ],
+      "pathIds": [
+        [
+          "687a36fc-e9d0-4fdc-a580-00283ba3c428",
+          "d3b2a414-97af-46f0-8435-09e0a9a545ec",
+          "a33093fe-c7f4-4feb-81d0-0561b1b1745c",
+          "fb5f28a5-b3b2-4e9b-a5ae-81caee06eb8b",
+          "7983f762-f34c-4465-9c21-c5ffc0d63fe5"
+        ]
+      ],
+      "limitationOrDecision": "Использованы те же концептуальные ID контакта / трения. Тождество реальных участий и разрешённый смешанный переход не следуют."
+    },
+    {
+      "originalId": "9b6e0f87-6fe5-4c95-8731-77229a56472b",
+      "originalLabel": "",
+      "status": "rejected-composition",
+      "paths": [],
+      "pathIds": [],
+      "limitationOrDecision": "Первоначальная α паковала шесть технических позиций. Именные роли диаметров, применимость и зависимость параметров она не выражала; состав не перенесён как решённый механизм."
+    }
+  ],
+  "basicApplicability": [
+    {
+      "concept": "масса",
+      "status": "applicable",
+      "route": [
+        "гайка",
+        "масса"
+      ],
+      "reason": "Для материальной крепёжной детали применима масса; отсутствие специфичности не причина удаления. Значение неизвестно."
+    },
+    {
+      "concept": "форма",
+      "status": "applicable",
+      "route": [
+        "гайка",
+        "форма"
+      ],
+      "reason": "Область геометрического описания применима; шестигранность не назначена."
+    },
+    {
+      "concept": "цвет",
+      "status": "applicable",
+      "route": [
+        "гайка",
+        "цвет"
+      ],
+      "reason": "Возможное визуальное описание применимо независимо от цвета / однородности конкретного изделия."
+    },
+    {
+      "concept": "материал",
+      "status": "applicable",
+      "route": [
+        "гайка",
+        "материал"
+      ],
+      "reason": "Вещественная основа применима без предписания стали / единственного материала."
+    }
+  ],
+  "rejectedCompositions": [
+    {
+      "proposal": [
+        [
+          "опора",
+          "контакт",
+          "трение"
+        ],
+        [
+          "резьба",
+          "контакт",
+          "трение"
+        ]
+      ],
+      "reason": "Два набора компонентов технически различимы, но α не привязывает свойство к адресуемому участию. Не принято как решение контекстной задачи."
+    },
+    {
+      "proposal": [
+        [
+          "диаметр",
+          "шаг",
+          "направление",
+          "допуск",
+          "профиль"
+        ]
+      ],
+      "reason": "Пакет параметров не выражает номинальную / среднюю роль диаметра и зависимости. Прежняя α не перенесена."
+    },
+    {
+      "proposal": [
+        [
+          "прочность",
+          "корпус"
+        ],
+        [
+          "упругость",
+          "деформация",
+          "контакт"
+        ]
+      ],
+      "reason": "Совместное включение слов не задаёт отношение свойства и конкретного носителя. Скрытые объяснения запрещены."
+    }
+  ],
+  "semanticReview": {
+    "method": "Ручная проверка всех маршрутов и прежних 42 позиций по шести требованиям оператора, без чтения notes итогового графа.",
+    "grammar": "Все 45 названий вручную сверены как однословные существительные в именительном падеже.",
+    "sharedConcepts": {
+      "контакт": [
+        [
+          "резьба",
+          "контакт"
+        ],
+        [
+          "опора",
+          "контакт"
+        ]
+      ],
+      "трение": [
+        [
+          "контакт",
+          "трение"
+        ]
+      ]
+    },
+    "participationLimit": "ID концепта не является ID конкретного контакта. Маршруты показывают области обращения, не значения / тождество участий или разрешение смешанного перехода.",
+    "status": "Самопроверка исследовательского предложения; принятие оператором и независимая семантическая проверка ещё не выполнены."
+  }
+}

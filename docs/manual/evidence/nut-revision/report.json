@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-13T06:03:29.983Z",
+  "node": "v24.19.0",
+  "scenarios": [
+    "GUI preview / 92 candidates / atomic separate import preserves the entire revised study",
+    "all 45 single-word conceptual entries visible, 45 arrows, no hidden note descriptions",
+    "local neighborhood shares contact / friction without context-specific duplicates, notes field empty",
+    "real complete GUI export exactly equal; repeated import creates no candidates",
+    "GUI history restores exact complete pre-edit workspace",
+    "new server / reload: historical K003 and two-source canvas unchanged, no revised accumulation or identity decisions"
+  ],
+  "errors": [],
+  "browser": "155.0.8059.40",
+  "importCandidates": 92
+}

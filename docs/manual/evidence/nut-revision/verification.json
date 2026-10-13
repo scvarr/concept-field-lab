@@ -1,0 +1,119 @@
+{
+  "scope": "Техническая согласованность записи / покрытия ручного review. Не автоматическое доказательство семантики или принятие оператором.",
+  "environment": {
+    "python": "3.13.2",
+    "sqlite": "3.45.3",
+    "platform": "Windows-10-10.0.19045-SP0"
+  },
+  "graph": {
+    "file": "E:\\Projects\\concept-field-lab\\data\\experiments\\nut\\nut-revised.json",
+    "sha256": "da1b99a377b5729b3f280bfde6712e811451e05eba4587596ee5107788158261",
+    "studyId": "9ababb92-ecc8-4551-b6f5-19d1942cbf3f",
+    "revision": 137,
+    "concepts": 45,
+    "alpha": 0,
+    "edges": 45
+  },
+  "review": {
+    "entry": 1,
+    "decomposition": 6,
+    "partial": 14,
+    "limited": 15,
+    "retained": 2,
+    "generalized": 1,
+    "shared-concept": 2,
+    "rejected-composition": 1
+  },
+  "checks": [
+    {
+      "name": "Original K003 remains byte-identical historical evidence",
+      "passed": true
+    },
+    {
+      "name": "New independent study and all new object IDs",
+      "passed": true
+    },
+    {
+      "name": "45 concepts / no alpha / 45 edges; no automatic identities",
+      "passed": true
+    },
+    {
+      "name": "Single-word spelling; nominative noun judgment is recorded separately",
+      "passed": true
+    },
+    {
+      "name": "No semantic descriptions hidden in node fields",
+      "passed": true
+    },
+    {
+      "name": "No semantic descriptions hidden in edge fields",
+      "passed": true
+    },
+    {
+      "name": "Vocabulary does not hide old multiword entries",
+      "passed": true
+    },
+    {
+      "name": "Audit route addresses exactly match the graph",
+      "passed": true
+    },
+    {
+      "name": "Every conceptual entry reachable from the root",
+      "passed": true
+    },
+    {
+      "name": "Only contact has two incoming references; no duplicate context-specific concepts",
+      "passed": true
+    },
+    {
+      "name": "Four basic characteristics independently retained",
+      "passed": true
+    },
+    {
+      "name": "Every initial candidate and every original node critically reviewed",
+      "passed": true
+    },
+    {
+      "name": "Every claimed reconstructed route actually exists",
+      "passed": true
+    },
+    {
+      "name": "Unrepresented diameter roles, engagement and anti-loosening not falsely collapsed",
+      "passed": true
+    },
+    {
+      "name": "Partial reinterpretations / rejected compositions explicitly distinguished",
+      "passed": true
+    },
+    {
+      "name": "History reconstructs the exact final study",
+      "passed": true
+    },
+    {
+      "name": "Import does not accept proposed content before review",
+      "passed": true
+    },
+    {
+      "name": "Imported graph and export preserve all fields / IDs exactly",
+      "passed": true
+    },
+    {
+      "name": "Re-export imports exactly into another clean database",
+      "passed": true
+    },
+    {
+      "name": "Repeated import: no new proposals or duplicate concepts",
+      "passed": true
+    },
+    {
+      "name": "Restore and new Store recover exact pre-edit state",
+      "passed": true
+    },
+    {
+      "name": "Original K003 and existing two-source canvas remain exact after separate revised import",
+      "passed": true
+    }
+  ],
+  "passed": 22,
+  "isolatedRun": "E:\\Projects\\concept-field-lab\\local-data\\nut-k003-revision\\verification\\roundtrip-6fhp9n3e"
+}

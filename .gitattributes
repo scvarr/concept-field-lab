@@ -6,6 +6,7 @@ docs/manual/evidence/stone/*.json text eol=lf
 # Keep the independent K003 records and evidence checksums portable.
 data/experiments/nut/*.json text eol=lf
 docs/manual/evidence/nut/*.json text eol=lf
+docs/manual/evidence/nut-revision/*.json text eol=lf
 # Preserve downloaded distributions and the measured input byte-for-byte.
 /app/static/vendor/*.js -text
 /docs/manual/evidence/layout/geometry-input.json text eol=lf
