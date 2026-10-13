@@ -12,7 +12,7 @@ window.AccumulationWorkbench = class {
     this.palette = ['#2563eb','#d97706','#16a34a','#be185d','#7c3aed','#0891b2','#9a3412','#4d7c0f'];
   }
   html(value) { return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-  name(n) { return n?.label || `α · ${n?.id?.slice(0,8)||'?'}`; }
+  name(n) { return n?.label || this.study()?.designations?.find(d=>d.target===n?.id)?.text || `${n?.structure==='combination'?'α':'ID'} · ${n?.id?.slice(0,8)||'?'}`; }
   study() { return this.ctx.study(); }
   settings() {
     const ui=this.ctx.ui();ui.accumulations ||= {};
@@ -21,9 +21,9 @@ window.AccumulationWorkbench = class {
   save() { this.ctx.saveUI(); }
   source(sid) { return this.study().accumulation.sources.find(s=>s.studyId===sid); }
   color(sid) { return this.palette[this.study().accumulation.sources.findIndex(s=>s.studyId===sid)%this.palette.length]||'#64748b'; }
-  refs(id) { return (this.study().nodes.find(n=>n.id===id)?.origins||[]).map(o=>JSON.stringify([o.studyId,o.nodeId])); }
+  refs(id) { const n=this.node(id);return n?.definitionId?[JSON.stringify(['manual',id])]:(n?.origins||[]).map(o=>JSON.stringify([o.studyId,o.nodeId])); }
   fromRef(ref) { const [sid,nid]=JSON.parse(ref);return {source:this.source(sid),node:this.source(sid)?.snapshot.nodes.find(n=>n.id===nid),sid,nid}; }
-  currentId(ref) { return this.study().nodes.find(n=>(n.origins||[]).some(o=>JSON.stringify([o.studyId,o.nodeId])===ref))?.id; }
+  currentId(ref) { if(!ref)return;const [sid,id]=JSON.parse(ref);if(sid==='manual')return this.node(id)?.id;return this.study().nodes.find(n=>(n.origins||[]).some(o=>JSON.stringify([o.studyId,o.nodeId])===ref))?.id; }
   node(id) { return this.study().nodes.find(n=>n.id===id); }
   endpointLabel(snapshot,id) { return this.name(snapshot.nodes.find(n=>n.id===id)); }
   edgeName(e) { return e.role==='component'?`компонент${e.componentRole?' · '+e.componentRole:''}`:e.type||'связь без типа'; }
@@ -43,7 +43,7 @@ window.AccumulationWorkbench = class {
     if(!this.node(prefs.focus))prefs.focus=s.rootId;
     if(this.mounted!==s.id) { this.mount();this.mounted=s.id; }
     this.host.querySelector('#accum-title').textContent=s.title;
-    this.host.querySelector('#accum-source-count').textContent=`${s.accumulation.sources.length} исходных графов · ${s.nodes.length} узлов · ${s.edges.length} содержательных рёбер`;
+    this.host.querySelector('#accum-source-count').textContent=`${s.accumulation.sources.length} исходных графов · ${s.nodes.length} узлов · ${s.edges.length} содержательных рёбер · ${s.accumulation.manual?.contextEdges.length||0} контекстных`;
     this.host.querySelector('#accum-legend').innerHTML=s.accumulation.sources.map((source,i)=>`<span style="--source-color:${this.palette[i%this.palette.length]}">${this.html(source.snapshot.title)}</span>`).join('');
     const sourceOptions=s.accumulation.sources.map(source=>`<option value="${this.html(source.studyId)}">${this.html(source.snapshot.title)}</option>`).join('');
     const filter=this.host.querySelector('#accum-index-sources');filter.innerHTML=sourceOptions;for(const option of filter.options)option.selected=prefs.sources.includes(option.value);
@@ -118,7 +118,7 @@ window.AccumulationWorkbench = class {
     details.querySelector('#accum-group-prev').onclick=()=>{this.groupPage--;this.renderIndex();};details.querySelector('#accum-group-next').onclick=()=>{this.groupPage++;this.renderIndex();};
   }
   decoratedEdges(edges) {
-    return edges.map(e=>({...e,color:this.color(e.accumulationSourceId),displayTitle:`${this.source(e.accumulationSourceId)?.snapshot.title||'?'} · ${this.edgeName(e)}`}));
+    return edges.map(e=>({...e,color:this.color(e.accumulationSourceId),displayTitle:`${this.source(e.accumulationSourceId)?.snapshot.title||(e.definitionId?'Ручное определение':'?')} · ${this.edgeName(e)} · ${e.id}`}));
   }
   renderCanvas() {
     const s=this.study();if(!s?.accumulation)return;
@@ -142,7 +142,7 @@ window.AccumulationWorkbench = class {
     const contentBudget=Math.min(originalEdges.length,2800),candidateBudget=3000-contentBudget;
     const edges=[...this.decoratedEdges(originalEdges.slice(0,contentBudget)),...auxiliary.slice(0,candidateBudget)];
     const preview=this.layoutControls?.preview?.positions||{};
-    host.graphView.update(s,{nodes:nodes.map(n=>({...n,...preview[n.id],badge:`${n.layoutPinned?'⚓ ':''}${n.origins.length>1?`${n.origins.length} исходных представлений`:n.kind}`})),edges},prefs.focus,markings);
+    host.graphView.update(s,{nodes:nodes.map(n=>({...n,label:this.name(n),...preview[n.id],badge:`${n.layoutPinned?'⚓ ':''}${n.origins.length>1?`${n.origins.length} исходных представлений`:n.kind}`})),edges},prefs.focus,markings);
     this.host.querySelector('#accum-graph-caption').textContent=`Показано ${nodes.length} из ${s.nodes.length} узлов, ${contentBudget} из ${originalEdges.length} доступных содержательных рёбер, ${Math.min(auxiliary.length,candidateBudget)} вспомогательных. ${s.nodes.length>nodes.length||contentBudget<originalEdges.length||auxiliary.length>candidateBudget||this.index?.candidatesTruncated?'Показ неполный: используйте индекс и независимые инспекторы. ':''}${group?`Подсвечено ${nodes.filter(n=>highlighted.has(n.id)).length} из ${group.nodes} узлов группы. `:''}Цвет различает исходник; общий показ не подтверждает смешанный маршрут.`;
   }
   queueCamera(sid,camera) {
@@ -176,7 +176,7 @@ window.AccumulationWorkbench = class {
     selection.querySelector('#accum-pick-left').onclick=()=>this.pickPair(n.id,'left');selection.querySelector('#accum-pick-right').onclick=()=>this.pickPair(n.id,'right');
     this.renderPair();
   }
-  pickPair(id,side) { this.settings()[side+'Ref']=this.refs(id)[0];this.renderPair();this.save(); }
+  pickPair(id,side) { if(this.node(id)?.definitionId)return this.ctx.toast('Ручной концепт повторно используется по ID в конструкторе; отождествление с исходниками пока не поддержано.');this.settings()[side+'Ref']=this.refs(id)[0];this.renderPair();this.save(); }
   renderPair() {
     const prefs=this.settings(),left=prefs.leftRef&&this.currentId(prefs.leftRef),right=prefs.rightRef&&this.currentId(prefs.rightRef),host=this.host.querySelector('#accum-pair');if(!host)return;
     host.innerHTML=`<span>Пара из полотна / инспекторов: ${this.html(left?this.name(this.node(left)):'не выбрано')} ↔ ${this.html(right?this.name(this.node(right)):'не выбрано')}</span><button id="accum-decide-pair" ${left&&right&&left!==right?'':'disabled'}>Решить пару</button><button id="accum-clear-pair">Очистить выбор</button>`;
@@ -200,6 +200,7 @@ window.AccumulationWorkbench = class {
     return `<h4>${this.html(source.snapshot.title)} · ${this.html(this.name(node))}</h4><p>${this.html(node.notes)}</p><small>Исходный ID ${this.html(node.id)} · ${edges.length} инцидентных рёбер</small><ul>${edges.slice(0,12).map(e=>`<li>${this.html(this.endpointLabel(source.snapshot,e.from))} → ${this.html(this.endpointLabel(source.snapshot,e.to))} · ${this.html(this.edgeName(e))}</li>`).join('')}</ul>${edges.length>12?'<p>Показаны первые 12; откройте независимый инспектор.</p>':''}<details><summary>Поля исходного представления</summary><pre>${this.html(JSON.stringify(node,null,2))}</pre></details>`;
   }
   originals(id) {
+    const n=this.node(id);if(n?.definitionId){const draft=this.study().accumulation.definitionDrafts.find(d=>d.id===n.definitionId);this.ctx.dialog('Ручное определение',`<p>${this.html(draft?.title)} · ${this.html(n.id)}</p><p>${this.html(draft?.definition)}</p><pre>${this.html(JSON.stringify(n.origins,null,2))}</pre><p>Редактирование обозначения — в конструкторе определений.</p>`);return;}
     const refs=this.refs(id);
     this.ctx.dialog('Исходные представления узла',`<label>Исходное представление<select id="accum-original-select">${refs.map(r=>{const x=this.fromRef(r);return `<option value="${this.html(r)}">${this.html(x.source.snapshot.title)} · ${this.html(this.name(x.node))} · ${this.html(x.nid.slice(0,8))}</option>`;}).join('')}</select></label><div id="accum-original-fields"></div><button type="button" id="accum-original-inspect">Открыть окружение исходника</button><h3>Рабочий словарь</h3><p>Добавленное обозначение относится к этому исходному представлению в накоплении; исходное исследование не меняется.</p><label>Новое обозначение<input name="text" required maxlength="1000"></label><label>Пояснение<textarea name="notes"></textarea></label>`,
       f=>this.ctx.mutate('accumulation_alias',{studyId:this.study().id,reference:document.querySelector('#accum-original-select').value,text:f.get('text'),notes:f.get('notes')}),'Добавить обозначение');
@@ -302,7 +303,7 @@ window.AccumulationWorkbench = class {
         editEdge:id=>this.openEdge(id),savePosition:async()=>{},error:e=>this.ctx.toast(e.message,true),
         changed:snapshot=>{this.ctx.ui().graphs[key]=snapshot;this.save();},cameraChanged:c=>{w.el.querySelector('[data-zoom]').textContent=Math.round(c.scale*100)+'%';}});w.graph.restore(this.ctx.ui().graphs[key]);}
       // Local visual positions never edit the accumulated graph's coordinates.
-      w.graphData={nodes:data.nodes.map(n=>{const clone={...n};delete clone.x;delete clone.y;return clone;}),edges:this.decoratedEdges(data.edges)};
+      w.graphData={nodes:data.nodes.map(n=>{const clone={...n,label:this.name(n)};delete clone.x;delete clone.y;return clone;}),edges:this.decoratedEdges(data.edges)};
       const layout=new Map(data.nodes.map((n,i)=>[n.id,{x:(i%4)*220,y:Math.floor(i/4)*100}]));
       w.graph.update(s,w.graphData,selected,new Map(),layout);if(w.restoreCamera){w.graph.setCamera(w.restoreCamera);w.restoreCamera=null;}
       w.el.querySelector('.accum-window-caption').textContent=`Глубина ${props.depth}: показано ${data.nodes.length} из ${data.totalNodes} узлов, ${data.edges.length} из ${data.totalEdges} рёбер. ${data.truncated?'Показ неполный (до 150 узлов / 400 рёбер); уточните источник, глубину или откройте другой узел. ':''}${data.sourceCounts.length===0?'У этого узла нет представления в выбранном источнике. ':''}${data.traversal}`;

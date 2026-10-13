@@ -12,8 +12,8 @@ from pathlib import Path
 from uuid import uuid4
 
 FORMAT = "concept-field-graph"
-VERSION = 3
-SUPPORTED_VERSIONS = (1, 2, 3)
+VERSION = 4
+SUPPORTED_VERSIONS = (1, 2, 3, 4)
 
 
 class Invalid(ValueError):
@@ -50,7 +50,7 @@ def clean(value, name, required=False, limit=50000):
 
 
 def fields(data):
-    return {key: clean(data.get(key, ""), key, key == "label" and data.get("structure", "concept") != "combination", 1000 if key in ("label", "kind") else 50000)
+    return {key: clean(data.get(key, ""), key, key == "label" and data.get("structure", "concept") != "combination" and data.get("designationOnly") is not True, 1000 if key in ("label", "kind") else 50000)
             for key in ("label", "kind", "notes", "alternatives", "source")}
 
 
@@ -101,6 +101,8 @@ def validate(state):
             if structure(node) not in ("concept", "combination"):
                 raise Invalid("Структурная функция — concept или combination; содержательный тип задаётся отдельно.")
             fields(node)
+            if 'designationOnly' in node and not isinstance(node['designationOnly'], bool):
+                raise Invalid('Неверный признак внешнего обозначения.')
             if "layoutPinned" in node and not isinstance(node["layoutPinned"], bool):
                 raise Invalid("Закрепление узла должно быть логическим значением.")
             if not isinstance(node.get("origins"), list):
@@ -163,6 +165,8 @@ def validate(state):
                 raise Invalid("Активное замещение требует комбинацию назначения и отсутствие замещённого концепта; отмените замещение перед удалением цели.")
     for study in state["studies"]:
         if "accumulation" in study:
+            from app.builder import validate_extension
+            validate_extension(study, identity)
             from app.accumulation import validate_accumulation
             validate_accumulation(study)
     pairs = set()
@@ -261,7 +265,10 @@ class Store:
                 selected = lookup(state["studies"], data.get("studyId"), "исследование")
                 if selected.get("accumulation"):
                     raise Invalid("Накопление сохраняет исходные представления. Используйте решения / рабочий словарь; содержательные правки выполняются в независимом исследовании.")
-            if action == "create_accumulation" or action in {"accumulation_add_source", "accumulation_decide", "accumulation_camera", "accumulation_alias"}:
+            if action in {'definition_save', 'definition_publish'}:
+                from app.builder import operate
+                result, detail = operate(state, action, data)
+            elif action == "create_accumulation" or action in {"accumulation_add_source", "accumulation_decide", "accumulation_camera", "accumulation_alias"}:
                 from app.accumulation import operate
                 result, detail = operate(state, action, data)
             elif action in {"layout_positions", "layout_restore", "layout_pin"}:

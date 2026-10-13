@@ -6,7 +6,7 @@ const statusNames = {pending:'Не решено',confirmed:'Подтвержде
 let state, revision, token, selectedStudy, selectedNode, view = 'editor', showArchive = false, dirty = false, busy = false;
 let navigation = [], compositionScope = null, edgePage = 0;
 const isCombination = n => n?.structure === 'combination';
-const displayName = n => n?.label || `α · ${n?.id?.slice(0,8) || '?'}`;
+const displayName = n => n?.label || state?.studies.flatMap(s=>s.designations||[]).find(d=>d.target===n?.id)?.text || `${n?.structure==='combination'?'α':'ID'} · ${n?.id?.slice(0,8) || '?'}`;
 const edgeRole = e => e.role || 'relation';
 const edgeTitle = e => edgeRole(e)==='component' ? `компонент${e.componentRole?' · '+e.componentRole:''}` : e.type || 'связь без типа';
 let nodePage = 0, matchPage = 0, proposalPage = 0, historyPage = 0;
@@ -15,7 +15,7 @@ let proposalRequest = 0;
 let proposalRows = [], proposalSelection = new Set();
 let toastTimer, editVersion=0;
 const uiKey='concept-field-view-v1';
-let accumulationUI;
+let accumulationUI, definitionUI;
 let ui={graphs:{},studies:{},panels:{studies:false,elements:false,inspector:false}};
 try{const saved=JSON.parse(localStorage.getItem(uiKey));if(saved&&saved.version===1)ui={...ui,...saved};}catch{}
 let uiTimer;
@@ -85,6 +85,7 @@ function render() {
   $$('.view').forEach(e=>e.hidden=e.id!==view); $$('.tabs button').forEach(e=>e.classList.toggle('active',e.dataset.view===view));
   accumulationUI?.visibility(view==='accumulation');
   if(view==='accumulation')run(()=>accumulationUI.render())();
+  if(view==='builder')definitionUI?.render();
   if(view==='editor') renderEditor();
   if(view==='compare') renderCompare();
   if(view==='exchange') run(renderProposals)();
@@ -319,9 +320,10 @@ $('#stage-import').onclick=run(stageImport);$('#select-proposals').onclick=run(a
 $('#accept-proposals').onclick=()=>reviewProposals('accept');$('#reject-proposals').onclick=()=>reviewProposals('reject');
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});
 document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.key.toLowerCase()==='k'){e.preventDefault();if(!canLeave())return;view='editor';ui.panels.elements=true;render();$('#node-search').focus();saveUI();}});
+definitionUI=new DefinitionBuilder({state:()=>state,study:()=>study(),ui:()=>ui,saveUI,busy:()=>busy,api,mutate,toast,run,dialog,download,activate:id=>{selectedStudy=id;selectedNode=study().rootId;definitionUI.draft=null;render();}});
 accumulationUI=new AccumulationWorkbench({state:()=>state,study:()=>study(),ui:()=>ui,saveUI,busy:()=>busy,api,mutate,toast,run,dialog,download,
   activate:id=>{if(!canLeave())return;selectedStudy=id;selectedNode=study().rootId;navigation=[];compositionScope=null;view='accumulation';render();}});
-run(async()=>{const initial=await api('/api/state');({state,revision,token}=initial);selectedStudy=study(ui.selectedStudy)?.id||state.studies.find(s=>!s.archived)?.id;selectedNode=ui.selectedNode||study()?.rootId;view=['editor','accumulation','compare','exchange','history'].includes(ui.view)?ui.view:'editor';navigation=ui.navigation||[];compositionScope=ui.compositionScope||null;leftStudy=ui.leftStudy;rightStudy=ui.rightStudy;leftNode=ui.leftNode;rightNode=ui.rightNode;pairQueries=ui.pairQueries||pairQueries;$('#graph-depth').value=ui.depth||2;$('#graph-mode').value=ui.mode||'all';$('#candidate-basis').value=ui.basis||'designation';$('#shared-zoom').checked=!!ui.shared;render();$('#save-status').textContent=`Сохранено · версия ${revision}`;})().catch(()=>{});
+run(async()=>{const initial=await api('/api/state');({state,revision,token}=initial);selectedStudy=study(ui.selectedStudy)?.id||state.studies.find(s=>!s.archived)?.id;selectedNode=ui.selectedNode||study()?.rootId;view=['editor','accumulation','builder','compare','exchange','history'].includes(ui.view)?ui.view:'editor';navigation=ui.navigation||[];compositionScope=ui.compositionScope||null;leftStudy=ui.leftStudy;rightStudy=ui.rightStudy;leftNode=ui.leftNode;rightNode=ui.rightNode;pairQueries=ui.pairQueries||pairQueries;$('#graph-depth').value=ui.depth||2;$('#graph-mode').value=ui.mode||'all';$('#candidate-basis').value=ui.basis||'designation';$('#shared-zoom').checked=!!ui.shared;render();$('#save-status').textContent=`Сохранено · версия ${revision}`;})().catch(()=>{});
 
 for(const [id,key]of [['toggle-studies','studies'],['toggle-elements','elements'],['toggle-inspector','inspector']])$('#'+id).onclick=()=>{ui.panels[key]=!ui.panels[key];applyPanels();saveUI();};
 $('#quick-edit').onclick=openInspector;$('#quick-expand').onclick=()=>addNode(selectedNode);$('#quick-link').onclick=()=>edgeDialog();

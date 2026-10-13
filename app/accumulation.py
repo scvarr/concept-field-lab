@@ -109,6 +109,17 @@ def projection(acc, previous=None):
             "notes": alias["notes"], "source": "Рабочий словарь накопления; исходное исследование не изменено",
             "createdAt": alias["time"], "origins": [{"studyId": refs[alias["reference"]][0]["studyId"], "snapshot": copy.deepcopy(alias)}]})
     roots = list(dict.fromkeys(node_map[reference(s["studyId"], s["snapshot"]["rootId"])] for s in acc["sources"]))
+    if 'manual' in acc:
+        from app.builder import manual
+        layer = manual(acc)
+        for node in layer['nodes']:
+            clone = copy.deepcopy(node)
+            saved = previous_nodes.get(node['id'])
+            if saved:
+                clone.update({k: saved[k] for k in ('x', 'y', 'layoutPinned') if k in saved})
+            nodes.append(clone)
+        edges.extend(copy.deepcopy(layer['edges']))
+        designations.extend(copy.deepcopy(layer['designations']))
     return {"nodes": nodes, "edges": edges, "designations": designations, "substitutions": substitutions,
             "rootIds": roots, "rootId": roots[0]}
 
@@ -389,7 +400,7 @@ def neighbourhood(study, node_id, depth=1, source_ids=None, node_limit=150, edge
         raise Invalid("Глубина инспектора — целое число от 0.")
     acc = study["accumulation"]
     groups, node_map, _ = partition(acc)
-    if node_id not in groups:
+    if node_id not in {n['id'] for n in study['nodes']}:
         raise Invalid("Узел отсутствует на накопительном полотне.")
     selected = set(source_ids or [s["studyId"] for s in acc["sources"]])
     seen_nodes, seen_edges, source_counts = set(), set(), []
@@ -419,6 +430,30 @@ def neighbourhood(study, node_id, depth=1, source_ids=None, node_limit=150, edge
         seen_nodes.update(node_map[reference(sid,n)] for n in distances)
         seen_edges.update(source["edgeIds"][e["id"]] for e in edges)
         source_counts.append({"sourceId": sid, "nodes": len(distances), "edges": len(edges)})
+    # Each manual definition is also inspected separately, never as a mixed route.
+    from app.builder import manual
+    layer = manual(acc)
+    for draft in acc.get('definitionDrafts', []):
+        local_edges = [e for e in layer['edges'] if e['definitionId'] == draft['id']]
+        local_ids = {n['id'] for n in layer['nodes'] if n['definitionId'] == draft['id']}
+        local_ids.update(v for e in local_edges for v in (e['from'], e['to']))
+        if node_id not in local_ids or source_ids:
+            continue
+        distances = {node_id: 0}
+        queue = deque([node_id])
+        while queue:
+            n = queue.popleft()
+            if distances[n] >= depth:
+                continue
+            for e in local_edges:
+                if n in (e['from'], e['to']):
+                    target = e['to'] if e['from'] == n else e['from']
+                    if target not in distances:
+                        distances[target] = distances[n] + 1
+                        queue.append(target)
+        seen_nodes.update(distances)
+        seen_edges.update(e['id'] for e in local_edges if e['from'] in distances and e['to'] in distances)
+        source_counts.append({'sourceId': draft['id'], 'nodes': len(distances), 'edges': len(local_edges)})
     # Focus stays visible even if the selected source has no representation.
     seen_nodes.add(node_id)
     all_nodes = {n["id"]: n for n in study["nodes"]}

@@ -1,0 +1,84 @@
+{
+  "source": "OpenCorpora / pymorphy3-dicts-ru",
+  "url": "https://pypi.org/project/pymorphy3-dicts-ru/2.4.417150.4580142/",
+  "upstreamUrl": "https://opencorpora.org/?page=downloads",
+  "license": "CC BY-SA 3.0 (data); MIT (package code)",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+  "packageVersion": "2.4.417150.4580142",
+  "toolVersions": {
+    "pymorphy3": "2.0.6",
+    "dawg2-python": "0.9.0"
+  },
+  "dictionary": {
+    "language_code": "ru",
+    "format_version": "2.4",
+    "pymorphy2_version": "0.0.1",
+    "compiled_at": "2022-01-08T22:09:24.565962",
+    "source": "opencorpora.org",
+    "source_version": "0.92",
+    "source_revision": "417150",
+    "source_lexemes_count": 391778,
+    "source_links_count": 258607,
+    "gramtab_length": 5532,
+    "gramtab_formats": {
+      "opencorpora-ext": "gramtab-opencorpora-ext.json",
+      "opencorpora-int": "gramtab-opencorpora-int.json"
+    },
+    "paradigms_length": 3456,
+    "suffixes_length": 16311,
+    "words_dawg_length": 5140211,
+    "compile_options": {
+      "min_ending_freq": 2,
+      "min_paradigm_popularity": 3,
+      "max_suffix_length": 5,
+      "paradigm_prefixes": [
+        "",
+        "по",
+        "наи"
+      ]
+    },
+    "prediction_suffixes_dawg_lengths": [
+      375373,
+      1882,
+      21
+    ],
+    "P(t|w)": true,
+    "P(t|w)_unique_words": 45471,
+    "P(t|w)_outcomes": 518367,
+    "P(t|w)_min_word_freq": 1,
+    "corpus_revision": "4580142"
+  },
+  "entries": 185215,
+  "posCounts": {
+    "ADJF": 43187,
+    "NOUN": 105505,
+    "CONJ": 183,
+    "INTJ": 303,
+    "PRCL": 131,
+    "PREP": 126,
+    "ADVB": 4187,
+    "INFN": 31352,
+    "PRED": 81,
+    "GRND": 1,
+    "ADJS": 48,
+    "NUMR": 66,
+    "NPRO": 43,
+    "PRTF": 1,
+    "VERB": 1
+  },
+  "inputSha256": {
+    "grammemes.json": "0c2dae69cf15c3cdd9b92c7bce2273b2f1ca0f806228a01de0fe3f24145337fb",
+    "gramtab-opencorpora-ext.json": "07ba6280d93ade73563289edac1a8fff4ce2388a813d0f47d32431cfaae84d90",
+    "gramtab-opencorpora-int.json": "1a72703ac84c16572deee6a92779a322b59763cbc336021433d52c33160fa05b",
+    "meta.json": "0c16fa06946dbda7db6df209128004f5edb36f9d8bdf48e5efff6045ec21a2fd",
+    "p_t_given_w.intdawg": "000a4d34ff42c44c65aca33ebcae689c77455a9a244145881b28fd8b8b7ea21e",
+    "paradigms.array": "dfc465558f1a2760bbde6fa89f0447a5c93896da429efe658fe2f0638954758b",
+    "prediction-suffixes-0.dawg": "85f38ab5a14566b7b22b8bfb5a63118992013f45757bf60ef1e5e937a92f1aae",
+    "prediction-suffixes-1.dawg": "31ddaef03712c6168488241be17ce59afa0f4c465e1ba7bf3a5bf095f2053b5f",
+    "prediction-suffixes-2.dawg": "4e6d6e687031b89e5e7035647570f69d28528e7df123210cc994b8aea36c85fd",
+    "suffixes.json": "c827ccc32b85e42c3edab8ac235bf91fdbc392e94455ad139da06fb1babcdb74",
+    "words.dawg": "ae4381a9d6e4e636309ac1a242e480a9470a05723f6673d5fcc3fcf293aa8a9e"
+  },
+  "lemmasSha256": "5e52d3d99d86e6fc8606d1e70176f8298b0b78b3aa5a8586982ac94b59d55a47",
+  "transformation": "Enumerate compiled words DAWG, retain paradigm index 0 only; deduplicate (normal form, grammemes). External lexical IDs are hashes, not original XML lemma IDs. No predictions, inflected forms, definitions or graph nodes."
+}

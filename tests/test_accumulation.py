@@ -141,7 +141,7 @@ class AccumulationTest(unittest.TestCase):
         self.decide(self.local(self.a,"common"),self.local(self.b,"common"),"confirmed")
         self.decide(self.local(self.a,"disputed"),self.local(self.b,"disputed"),"rejected")
         document = graph_export(self.store,self.sid)
-        self.assertEqual(document["version"],3)
+        self.assertEqual(document["version"],4)
         other = Store(Path(self.temp.name)/"import.sqlite3")
         added = other.mutate("import",{"document":document},other.read()["revision"])
         pending = [p["id"] for p in added["state"]["proposals"] if p["status"] == "pending"]

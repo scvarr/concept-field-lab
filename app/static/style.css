@@ -58,3 +58,15 @@ body.busy :is(.graph-controls,.navigation,.tabs,.pair-controls,.compare-navigati
 body.busy :is(.accum-controls,.accum-inspector) button{pointer-events:auto;opacity:1}
 .graph [data-graph-edge] .edge-label{pointer-events:all;cursor:pointer}
 .layout-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:end}.layout-controls label{min-width:150px}.layout-controls input[type=number]{width:90px}#accum-layout-controls{padding:8px 12px;background:#f3f7f5;border:1px solid #cddbd4;border-radius:8px}#accum-layout-controls p{font-size:12px;margin:8px 0}#accum-layout-controls .actions{flex-wrap:wrap}.graph .layout-selected rect{stroke:#0f766e;stroke-width:4}.graph .layout-pinned rect{stroke-dasharray:5 3}#layout-status{font-weight:600}
+
+/* Small manual definitions, alongside the existing accumulation. */
+.definition-layout {display:grid;grid-template-columns:minmax(300px, .8fr) minmax(450px, 1.5fr);gap:16px}
+#builder .card {margin:16px 0;padding:18px}
+#def-graph {height:420px;min-height:320px}
+.definition-search-results {max-height:440px;overflow:auto}
+.definition-search-results>div,.definition-fields>div {display:flex;flex-direction:column;gap:7px;padding:12px;border-bottom:1px solid var(--border,#cad5ce)}
+.definition-fields {display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.definition-context,.definition-edge-list>div {display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:12px;border-bottom:1px solid #cad5ce}
+#builder code,#builder pre {overflow-wrap:anywhere;white-space:pre-wrap;font-size:12px}
+#builder .actions label {min-width:180px;flex:1}
+@media(max-width:1000px){.definition-layout{grid-template-columns:1fr}}

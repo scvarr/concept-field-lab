@@ -20,10 +20,14 @@ def canonical(value):
 
 def parse_document(document):
     if not isinstance(document, dict) or document.get("format") != FORMAT or document.get("version") not in SUPPORTED_VERSIONS:
-        raise Invalid("Ожидается JSON concept-field-graph версии 1, 2 или 3.")
+        raise Invalid("Ожидается JSON concept-field-graph версии 1, 2, 3 или 4.")
     kind = document.get("kind")
     supplied_state = document.get("state")
     supplied_studies = supplied_state.get("studies", []) if isinstance(supplied_state, dict) else []
+    def require_v4(studies):
+        if document['version'] < 4 and any(s.get('accumulation', {}).get('manual') is not None or 'definitionDrafts' in s.get('accumulation', {}) or any(n.get('designationOnly') for n in s.get('nodes', [])) for s in studies):
+            raise Invalid('Конструктор определений требует JSON v4; не меняйте номер версии.')
+    require_v4(supplied_studies)
     if document["version"] < 3 and isinstance(supplied_studies, list) and any(isinstance(s, dict) and s.get("accumulation") for s in supplied_studies):
         raise Invalid("Накопительное полотно требует JSON v3; не меняйте номер версии вручную.")
     if kind == "changes":
@@ -39,6 +43,9 @@ def parse_document(document):
                 raise Invalid("Укажите исходный или новый уникальный id.")
             if c["operation"] == "node":
                 fields(c["value"])
+                require_v4([{'nodes': [c['value']]}])
+            if c['operation'] == 'study':
+                require_v4([c['value']])
             if document["version"] < 3 and c["value"].get("accumulation"):
                 raise Invalid("Метаданные накопления требуют JSON v3.")
         return copy.deepcopy(changes)
@@ -50,6 +57,7 @@ def parse_document(document):
     latest = None
     for row in expand_history(document):
         validate(row["state"])
+        require_v4(row['state']['studies'])
         if document["version"] < 3 and any(s.get("accumulation") for s in row["state"]["studies"]):
             raise Invalid("История накопления требует JSON v3.")
         latest = row["state"]
@@ -231,7 +239,8 @@ def review(state, data):
                         origins = {canonical(o): o for o in existing.get("origins", [])}
                         origins.update({canonical(o): o for o in value["origins"]})
                         value["origins"] = list(origins.values())
-                    value.setdefault("createdAt", now())
+                    if not value.get('designationOnly'):
+                        value.setdefault("createdAt", now())
                     for field_key in fields(value):
                         value.setdefault(field_key, "")
                 elif op in ("edge", "designation"):

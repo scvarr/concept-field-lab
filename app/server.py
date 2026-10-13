@@ -55,6 +55,21 @@ def make_server(path, port=8765):
                 return self.send(200, store.history())
             if path == "/api/export":
                 return self.send(200, store.export(), download="concept-field-workspace.json")
+            if path in ('/api/dictionary', '/api/definition-preview'):
+                try:
+                    query = parse_qs(urlparse(self.path).query)
+                    snapshot = store.read()
+                    if path == '/api/dictionary':
+                        from app.dictionary import search
+                        return self.send(200, search(snapshot['state'], query.get('q', [''])[0], query.get('study', [None])[0]))
+                    from app.builder import prepare
+                    from app.store import lookup
+                    study = lookup(snapshot['state']['studies'], query.get('study', [None])[0], 'полотно')
+                    draft = lookup(study.get('accumulation', {}).get('definitionDrafts', []), query.get('draft', [None])[0], 'черновик')
+                    _, preview = prepare(study, draft)
+                    return self.send(200, {'revision': snapshot['revision'], **preview})
+                except (Invalid, ValueError, TypeError, KeyError) as exc:
+                    return self.send(400, {'error': str(exc)})
             if path in ("/api/graph-export", "/api/diff", "/api/proposals", "/api/substitution-preview", "/api/accumulation-index", "/api/accumulation-neighbourhood"):
                 try:
                     query = parse_qs(urlparse(self.path).query)
@@ -104,7 +119,7 @@ def make_server(path, port=8765):
                     return self.send(200, structural_diff(left, right, snapshot["state"]["matches"]), download="concept-field-diff.json")
                 except (Invalid, ValueError, TypeError, KeyError) as exc:
                     return self.send(400, {"error": str(exc)})
-            files = {"/": ("index.html", "text/html"), "/app.js": ("app.js", "text/javascript"), "/graph-view.js": ("graph-view.js", "text/javascript"), "/accumulation.js": ("accumulation.js", "text/javascript"), "/style.css": ("style.css", "text/css"), "/favicon.svg": ("favicon.svg", "image/svg+xml")}
+            files = {"/": ("index.html", "text/html"), "/app.js": ("app.js", "text/javascript"), "/builder.js": ("builder.js", "text/javascript"), "/graph-view.js": ("graph-view.js", "text/javascript"), "/accumulation.js": ("accumulation.js", "text/javascript"), "/style.css": ("style.css", "text/css"), "/favicon.svg": ("favicon.svg", "image/svg+xml")}
             if path not in files:
                 layout_files = {"/layout-controls.js": "layout-controls.js", "/layout-engine.js": "layout-engine.js", "/layout-worker.js": "layout-worker.js", "/vendor/d3-7.9.0.min.js": "vendor/d3-7.9.0.min.js", "/vendor/dagre-1.1.5.min.js": "vendor/dagre-1.1.5.min.js"}
                 if path in layout_files:
