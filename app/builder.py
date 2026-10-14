@@ -162,7 +162,10 @@ def prepare(study, draft):
             raise Invalid('Новый ID уже существует; выберите существующий концепт.')
         origin = {'definitionId': draft['id'], 'snapshot': {'definition': draft['definition'], 'dictionaryId': n.get('dictionaryId'), 'source': copy.deepcopy(draft.get('source'))}}
         node = {**copy.deepcopy(old_nodes.get(n['id'], {})), 'id': n['id'], **fields({'label': '', 'designationOnly': True, 'kind': n.get('kind', ''), 'notes': n.get('notes', '')}),
-                'designationOnly': True, 'structure': n.get('structure', 'concept'), 'origins': [origin], 'definitionId': draft['id'],
+                'designationOnly': True, 'structure': n.get('structure', 'concept'),
+                # Republishing changes the current definition, not the node's saved creation context.
+                # An explicitly missing origin must stay missing rather than be reconstructed.
+                'origins': copy.deepcopy(old_nodes[n['id']]['origins']) if n['id'] in old_nodes else [origin], 'definitionId': draft['id'],
                 'x': n.get('x', current_nodes.get(n['id'], {}).get('x', 260 * (index % 5))),
                 'y': n.get('y', current_nodes.get(n['id'], {}).get('y', max([v.get('y', 0) for v in study['nodes']] + [0]) + 220 + 140 * (index // 5)))}
         layer['nodes'].append(node)

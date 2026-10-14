@@ -1,0 +1,12 @@
+{
+  "python": "3.13.2",
+  "node": "v24.19.0",
+  "browser": "Chrome 155.0.8059.40",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "compileall": "passed",
+  "builderSyntax": "passed",
+  "diffCheck": "passed",
+  "base": "57e0980",
+  "branch": "codex/concept-provenance",
+  "isolatedData": true
+}

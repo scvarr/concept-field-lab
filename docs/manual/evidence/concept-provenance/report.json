@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-14T17:59:28.539Z",
+  "node": "v24.19.0",
+  "base": "57e0980",
+  "checks": [
+    "Three distinct same-designation IDs are distinguishable before selection; creation source, missing source, full long text, reuse context, readable inspector and read-only state verified",
+    "GUI republication retains saved creation text while exposing revised publication separately",
+    "Unpublished reuse is separate; real process restart and GUI export/import preserve exact state, all IDs, origins, sources, drafts, publications and archived history",
+    "Missing imported origins explicitly reported while publication remains usage only; 600/360px have no document overflow"
+  ],
+  "errors": [],
+  "fixture": "Synthetic dictionary response; no semantic truth claim",
+  "browser": "155.0.8059.40",
+  "ids": {
+    "first": "11c26df2-f040-40e5-8852-67a88abc7038",
+    "second": "645b4afc-c2ee-4bf5-84ff-bdfa5d3e7ccb",
+    "third": "001be2fe-fc29-4e2f-8a8c-992b046c9c83",
+    "screw": "5315d5a4-1441-4e37-b253-8830150fcf2c"
+  },
+  "ok": true
+}
