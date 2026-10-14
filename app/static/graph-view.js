@@ -3,6 +3,12 @@
 // Geometry is independent of application state, persistence and the rendering surface.
 const GraphGeometry = {
   edge(a,b,index=0) {
+    if(Number.isFinite(a.radius)&&Number.isFinite(b.radius)){
+      if(a===b||a.x===b.x&&a.y===b.y){const r=a.radius,s=45+index*14,p=[{x:a.x+r*.8,y:a.y-r*.6},{x:a.x+r+s,y:a.y-r-s},{x:a.x-r-s,y:a.y-r-s},{x:b.x-b.radius*.8,y:b.y-b.radius*.6}];return {d:`M ${p[0].x} ${p[0].y} C ${p[1].x} ${p[1].y}, ${p[2].x} ${p[2].y}, ${p[3].x} ${p[3].y}`,points:p,x:a.x,y:a.y-r-s};}
+      const dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy),offset=index===1?0:(index%2? -1:1)*Math.ceil(index/2)*18,c={x:(a.x+b.x)/2-dy/len*offset,y:(a.y+b.y)/2+dx/len*offset};
+      const boundary=(n,c)=>{const d=Math.hypot(c.x-n.x,c.y-n.y)||1;return {x:n.x+(c.x-n.x)*n.radius/d,y:n.y+(c.y-n.y)*n.radius/d};},start=boundary(a,c),end=boundary(b,c);
+      return {d:`M ${start.x} ${start.y} Q ${c.x} ${c.y} ${end.x} ${end.y}`,points:[start,c,end],x:c.x,y:c.y};
+    }
     if(a===b){const spread=Math.max(0,index-1)*24;return {d:`M ${a.x+65} ${a.y-8} C ${a.x+155+spread} ${a.y-105-spread}, ${a.x-65-spread} ${a.y-110-spread}, ${a.x-35} ${a.y-30}`,x:a.x+40,y:a.y-70-spread,points:[{x:a.x+65,y:a.y-8},{x:a.x+155+spread,y:a.y-105-spread},{x:a.x-65-spread,y:a.y-110-spread},{x:a.x-35,y:a.y-30}]};}
     const dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy)||1,offset=index===1?0:index===0?-12:(index%2===0?index/2:-(index-1)/2)*22;
     const x=(a.x+b.x)/2-dy/len*offset,y=(a.y+b.y)/2+dx/len*offset;
@@ -16,7 +22,7 @@ const GraphGeometry = {
     while(points.length>1)points=points.slice(1).map((p,i)=>({x:points[i].x*(1-t)+p.x*t,y:points[i].y*(1-t)+p.y*t}));
     return points[0];
   },
-  obstacles(positions){return positions.map(p=>({left:p.x-90,right:p.x+90,top:p.y-38,bottom:p.y+38}));},
+  obstacles(positions){return positions.map(p=>({left:p.x-(p.radius===undefined?90:p.radius+10),right:p.x+(p.radius===undefined?90:p.radius+10),top:p.y-(p.radius===undefined?38:p.radius+10),bottom:p.y+(p.radius===undefined?38:p.radius+10)}));},
   inside(p,r){return p.x>r.left&&p.x<r.right&&p.y>r.top&&p.y<r.bottom;},
   segmentClear(a,b,rects) {
     if(a.x!==b.x&&a.y!==b.y)return false;
@@ -74,7 +80,7 @@ if(typeof window!=='undefined') {
   const svgElement=(tag,attrs={},text)=>{const e=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;return e;};
   window.GraphView=class {
     constructor(host,options) {
-      this.host=host;this.options=options;this.nodes=new Map();this.edges=new Map();this.contexts=new Map();this.incident=new Map();this.positions=new Map();this.camera=null;this.frames=[];
+      this.host=host;this.options=options;this.nodes=new Map();this.edges=new Map();this.contexts=new Map();this.incident=new Map();this.positions=new Map();this.camera=null;this.frames=[];this.autoLabels=false;
       this.svg=svgElement('svg',{role:'img',tabindex:'0','aria-label':'Граф'});
       const defs=svgElement('defs'),marker=svgElement('marker',{id:`arrow-${host.id}`,markerWidth:8,markerHeight:8,refX:7,refY:4,orient:'auto'});this.defs=defs;this.markers=new Map();
       marker.append(svgElement('path',{d:'M0 0 L8 4 L0 8',fill:'#92aaa0'}));defs.append(marker);
@@ -88,20 +94,20 @@ if(typeof window!=='undefined') {
     remember(){if(this.camera)this.frames.push({...this.camera});this.frames=this.frames.slice(-40);}
     restore(snapshot){this.camera=snapshot?.camera&&{...snapshot.camera};this.frames=snapshot?.frames||[];this.positions=new Map(Object.entries(snapshot?.positions||{}));}
     update(s,graph,focus,markings=new Map(),layout=new Map()) {
-      this.study=s;this.focus=focus;this.svg.setAttribute('aria-label',`Граф ${s.title}`);
+      this.study=s;this.focus=focus;this.radii=new Map(graph.nodes.map(n=>[n.id,n.radius]));this.svg.setAttribute('aria-label',`Граф ${s.title}`);
       const ids=new Set(graph.nodes.map(n=>n.id));
       for(const [id,e]of this.nodes)if(!ids.has(id)){e.remove();this.nodes.delete(id);}
       for(const n of graph.nodes) {
         const saved=Number.isFinite(n.x)&&Number.isFinite(n.y)?{x:n.x,y:n.y}:null;
         this.positions.set(n.id,saved||this.positions.get(n.id)||layout.get(n.id)||{x:0,y:0});
         let g=this.nodes.get(n.id);
-        if(!g){g=svgElement('g',{'data-graph-node':n.id,role:'button',tabindex:0});g.append(svgElement('rect',{x:-80,y:-28,width:160,height:56,rx:9}),svgElement('text',{'text-anchor':'middle',y:-2}),svgElement('text',{'class':'kind-label','text-anchor':'middle',y:15}),svgElement('title'));this.nodeLayer.append(g);this.nodes.set(n.id,g);}
+        if(!g){g=svgElement('g',{'data-graph-node':n.id,role:'button',tabindex:0});g.append(this.options.circular?svgElement('circle',{r:n.radius||8}):svgElement('rect',{x:-80,y:-28,width:160,height:56,rx:9}),svgElement('text',{'text-anchor':'middle',y:-2}),svgElement('text',{'class':'kind-label','text-anchor':'middle',y:15}),svgElement('title'));this.nodeLayer.append(g);this.nodes.set(n.id,g);}
         const name=n.label||`α · ${n.id.slice(0,8)}`;
         g.setAttribute('class',`node ${['combination','alpha'].includes(n.structure)?'combination-node':''} ${n.id===focus?'selected':''} ${markings.get(n.id)||''}`);
-        g.setAttribute('aria-label',`Узел ${name}`);g.children[1].textContent=name.length>21?name.slice(0,20)+'…':name;g.children[2].textContent=(n.badge||n.kind||'').slice(0,26);g.children[3].textContent=`${n.displayTitle||name}\n${n.notes||''}`;
+        g.classList.toggle('round-node',!!this.options.circular);g.dataset.radius=String(n.radius||0);g.dataset.degree=String(n.degree||0);g.dataset.pinned=n.layoutPinned?'true':'false';if(this.options.circular){g.children[0].setAttribute('r',n.radius);g.children[1].setAttribute('y',-n.radius-8);g.children[1].setAttribute('class','overview-label');g.children[2].textContent='';g.onmouseenter=()=>{this.hovered=n.id;this.paintLabels();};g.onmouseleave=()=>{this.hovered=null;this.paintLabels();};g.onfocus=()=>{this.focused=n.id;this.paintLabels();};g.onblur=()=>{this.focused=null;this.paintLabels();};}g.setAttribute('aria-label',`Узел ${name}`);g.children[1].textContent=name.length>(this.options.circular?48:21)?name.slice(0,this.options.circular?47:20)+'…':name;g.children[2].textContent=this.options.circular?'':(n.badge||n.kind||'').slice(0,26);g.children[3].textContent=`${n.displayTitle||name}\n${n.notes||''}`;
         const p=this.positions.get(n.id);g.setAttribute('transform',`translate(${p.x},${p.y})`);
       }
-      const shown=graph.edges.slice(0,3000),edgeIds=new Set(shown.map(e=>e.id));
+      const shown=graph.edges.slice(0,this.options.edgeLimit||3000),edgeIds=new Set(shown.map(e=>e.id));
       for(const [id,item]of this.edges)if(!edgeIds.has(id)){item.g.remove();this.edges.delete(id);}
       this.incident=new Map(graph.nodes.map(n=>[n.id,new Set()]));
       const parallel=new Map();
@@ -118,11 +124,11 @@ if(typeof window!=='undefined') {
       if(!this.camera){const size=this.size();this.camera=GraphGeometry.fit(graph.nodes.map(n=>this.positions.get(n.id)).concat(this.contextPoints||[]),size.width,size.height);if(this.camera.scale<.6){const p=this.positions.get(focus)||{x:0,y:0};this.camera={...p,scale:1};}}
       this.paintCamera();this.changed();
     }
-    paintEdge(item){const a=this.positions.get(item.edge.from),b=this.positions.get(item.edge.to);if(!a||!b)return;const p=GraphGeometry.edge(a,b,item.index);item.geometry=p;item.path.setAttribute('d',p.d);item.hit.setAttribute('d',p.d);item.label.setAttribute('x',p.x);item.label.setAttribute('y',p.y);}
+    paintEdge(item){const a=this.positions.get(item.edge.from),b=this.positions.get(item.edge.to);if(!a||!b)return;const aa=this.options.circular?{...a,radius:this.radii.get(item.edge.from)}:a,bb=item.edge.from===item.edge.to?aa:this.options.circular?{...b,radius:this.radii.get(item.edge.to)}:b;const p=GraphGeometry.edge(aa,bb,item.index);item.geometry=p;item.path.setAttribute('d',p.d);item.hit.setAttribute('d',p.d);item.label.setAttribute('x',p.x);item.label.setAttribute('y',p.y);}
     paintContexts(){
-      const rects=GraphGeometry.obstacles([...this.nodes.keys()].map(id=>this.positions.get(id))),keep=new Set();this.contextPoints=[];let blocked=0,filtered=0,limited=0,attempted=0;
+      const rects=GraphGeometry.obstacles([...this.nodes.keys()].map(id=>this.options.circular?{...this.positions.get(id),radius:this.radii.get(id)}:this.positions.get(id))),keep=new Set(),started=performance.now();this.contextPoints=[];let blocked=0,filtered=0,limited=0,attempted=0;
       for(const [i,c] of (this.contextEdges||[]).entries()){
-        const from=this.edges.get(c.from),to=this.edges.get(c.to);if(!from?.geometry||!to?.geometry){filtered++;continue;}if(attempted++>=800){limited++;continue;}
+        const from=this.edges.get(c.from),to=this.edges.get(c.to);if(!from?.geometry||!to?.geometry){filtered++;continue;}if(attempted++>=800||performance.now()-started>(this.options.contextBudgetMs||Infinity)){limited++;continue;}
         const start=GraphGeometry.anchor(from.geometry,rects,i%3),end=GraphGeometry.anchor(to.geometry,rects,(i+1)%3),points=GraphGeometry.orthogonal(start,end,rects);
         if(!points){blocked++;continue;}keep.add(c.id);this.contextPoints.push(...points);
         let item=this.contexts.get(c.id);if(!item){const g=svgElement('g',{'data-graph-context':c.id,role:'button',tabindex:0}),hit=svgElement('path',{'class':'context-hit',fill:'none',stroke:'transparent','stroke-width':12}),path=svgElement('path',{'class':'context-edge',fill:'none','marker-end':`url(#context-arrow-${this.host.id})`}),source=svgElement('circle',{'class':'context-port',r:3}),target=svgElement('circle',{'class':'context-port target-port',r:3}),title=svgElement('title');g.append(hit,path,source,target,title);this.contextLayer.append(g);item={g,hit,path,source,target,title};this.contexts.set(c.id,item);}
@@ -133,8 +139,14 @@ if(typeof window!=='undefined') {
       this.host.dataset.contextShown=String(keep.size);this.host.dataset.contextBlocked=String(blocked);this.host.dataset.contextFiltered=String(filtered);this.host.dataset.contextLimited=String(limited);
       this.legend.hidden=!this.contextEdges?.length;this.legend.textContent=`Пунктир → контекст между рёбрами · ${keep.size}/${this.contextEdges?.length||0}${blocked?` · не проложено: ${blocked} (переместите поля или откройте список)`:''}${filtered?` · вне вида: ${filtered}`:''}${limited?` · сверх лимита: ${limited}`:''}`;
     }
-    paintNode(id){const p=this.positions.get(id);this.nodes.get(id)?.setAttribute('transform',`translate(${p.x},${p.y})`);for(const edge of this.incident.get(id)||[])this.paintEdge(this.edges.get(edge));this.paintContexts();}
-    paintCamera(){if(!this.camera)return;const {width,height}=this.size(),c=this.camera;this.svg.setAttribute('viewBox',`${c.x-width/c.scale/2} ${c.y-height/c.scale/2} ${width/c.scale} ${height/c.scale}`);this.host.dataset.zoom=String(Math.round(c.scale*100));this.host.dataset.camera=JSON.stringify(c);this.host.classList.toggle('overview',c.scale<.45);this.options.cameraChanged?.(c);}
+    paintNode(id){const p=this.positions.get(id);this.nodes.get(id)?.setAttribute('transform',`translate(${p.x},${p.y})`);for(const edge of this.incident.get(id)||[])this.paintEdge(this.edges.get(edge));this.paintContexts();this.paintLabels();}
+    paintCamera(){if(!this.camera)return;const {width,height}=this.size(),c=this.camera;this.svg.setAttribute('viewBox',`${c.x-width/c.scale/2} ${c.y-height/c.scale/2} ${width/c.scale} ${height/c.scale}`);this.host.dataset.zoom=String(Math.round(c.scale*100));this.host.dataset.camera=JSON.stringify(c);this.host.classList.toggle('overview',c.scale<.45);this.options.cameraChanged?.(c);this.paintLabels();}
+    paintLabels(){
+      if(!this.options.circular||!this.camera)return;
+      const scale=this.camera.scale,mode=this.options.labelMode?.()||'auto';if(scale>=.85)this.autoLabels=true;else if(scale<=.65)this.autoLabels=false;this.host.dataset.autoLabels=String(!!this.autoLabels);
+      const obstacles=[...this.nodes].map(([id])=>{const p=this.positions.get(id),r=this.radii.get(id);return {id,l:(p.x-r)*scale,r:(p.x+r)*scale,t:(p.y-r)*scale,b:(p.y+r)*scale};}),boxes=[],nodes=[...this.nodes].sort(([a],[b])=>Number(b===this.focus||this.nodes.get(b).classList.contains('search-match'))-Number(a===this.focus||this.nodes.get(a).classList.contains('search-match')));
+      for(const [id,g] of nodes){const p=this.positions.get(id),text=g.children[1],forced=id===this.focus||id===this.hovered||id===this.focused||g.classList.contains('search-match');let shown=forced||mode==='always'||mode==='auto'&&this.autoLabels;if(g.labelText!==text.textContent){text.style.display='block';text.style.fontSize='13px';g.labelText=text.textContent;g.labelWidth=text.getComputedTextLength()||text.textContent.length*8;}text.style.fontSize=(13/scale)+'px';text.style.strokeWidth=String(3/scale);const width=g.labelWidth+4,size=this.size(),sx=(p.x-this.camera.x)*scale+size.width/2,sy=(p.y-this.camera.y)*scale+size.height/2,radius=this.radii.get(id),anchor=sx<width/2+8?'start':sx>size.width-width/2-8?'end':'middle',below=sy-radius*scale<25; text.setAttribute('text-anchor',anchor);text.setAttribute('y',below?radius+20/scale:-radius-8/scale);const left=p.x*scale-(anchor==='middle'?width/2:anchor==='end'?width:0),box={l:left,r:left+width,t:below?(p.y+radius)*scale+4:(p.y-radius)*scale-25,b:below?(p.y+radius)*scale+24:(p.y-radius)*scale-4};if(shown&&!forced&&mode==='auto'&&[...boxes,...obstacles.filter(o=>o.id!==id)].some(b=>box.l<b.r&&box.r>b.l&&box.t<b.b&&box.b>b.t))shown=false;if(shown)boxes.push(box);text.style.display=shown?'block':'none';g.dataset.labelShown=String(shown);}
+    }
     fit(){this.remember();const {width,height}=this.size();this.camera=GraphGeometry.fit([...this.nodes.keys()].map(id=>this.positions.get(id)).concat(this.contextPoints||[]),width,height,this.options.minScale);this.paintCamera();this.changed();}
     center(id){const p=this.positions.get(id);if(!p)return;this.remember();this.camera={...p,scale:this.camera?.scale||1};this.paintCamera();this.changed();}
     back(){const c=this.frames.pop();if(c){this.camera=c;this.paintCamera();this.changed();}}

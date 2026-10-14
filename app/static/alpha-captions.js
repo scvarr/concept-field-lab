@@ -38,7 +38,8 @@
       const queue=[{id,depth:0}],seen=new Set([id]);let cursor=0;
       while(cursor<queue.length){const v=queue[cursor++];if((terms.get(v.id)||[]).some(t=>normalize(t).includes(q)))return true;if(v.depth<20)for(const child of children.get(v.id)||[])if(!seen.has(child)&&queue.length<2048){seen.add(child);queue.push({id:child,depth:v.depth+1});}}return false;
     }
-    return {label:id=>captions.get(id)||label(id),display,token,matches,anonymous:id=>nodes.get(id)?.structure==='alpha'&&!terms.has(id)};
+    function rank(id,query){const q=query.trim().toLocaleLowerCase('ru').replaceAll('ё','е'),norm=s=>String(s).toLocaleLowerCase('ru').replaceAll('ё','е'),forms=[id,...terms.get(id)||[],captions.get(id)||''];if(forms.some(s=>norm(s)===q))return 0;if([id,...terms.get(id)||[]].some(s=>norm(s).includes(q))||q.startsWith('#')&&display(id).includes(q))return 1;if(nodes.get(id)?.structure==='alpha'&&!terms.has(id)&&q.startsWith('{')&&norm(display(id)).includes(q))return 1;return matches(id,query)?2:Infinity;}
+    return {label:id=>captions.get(id)||label(id),display,token,matches,rank,anonymous:id=>nodes.get(id)?.structure==='alpha'&&!terms.has(id)};
   }
   const api={create,view};if(typeof module!=='undefined')module.exports=api;else root.AlphaCaptions=api;
 })(typeof window==='undefined'?globalThis:window);

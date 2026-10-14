@@ -1,0 +1,599 @@
+{
+  "result": "passed",
+  "base": "1d215ab",
+  "python": "3.13.2",
+  "sqlite": "3.45.3",
+  "checks": [
+    {
+      "name": "Actual M015 browser run",
+      "passed": true
+    },
+    {
+      "name": "Same JSON v2 and exact roundtrip",
+      "passed": true
+    },
+    {
+      "name": "ID/structure/designations/drafts/context unchanged",
+      "passed": true
+    },
+    {
+      "name": "Full source history archive",
+      "passed": true
+    },
+    {
+      "name": "Complete history ends in graph",
+      "passed": true
+    },
+    {
+      "name": "Explicit layout/pin/undo journal",
+      "passed": true
+    },
+    {
+      "name": "Pin snapshots survive in history",
+      "passed": true
+    },
+    {
+      "name": "Degree and bounded circle radii",
+      "passed": true
+    },
+    {
+      "name": "Two coloured structural types",
+      "passed": true
+    },
+    {
+      "name": "No circle overlaps in preview geometry",
+      "passed": true
+    },
+    {
+      "name": "Circle arrow boundaries 4f45b19a-b3a4-4177-95a9-d00e2ad42bd4",
+      "passed": true
+    },
+    {
+      "name": "Circle arrow boundaries 3a1503ca-a0c7-4885-84d1-a02cfa014f37",
+      "passed": true
+    },
+    {
+      "name": "Circle arrow boundaries ae9e4ea5-4a9d-4e95-b6bc-4d6c4c3c4d8b",
+      "passed": true
+    },
+    {
+      "name": "Circle arrow boundaries e69067db-fea5-4ad8-a0c9-c8d384347924",
+      "passed": true
+    },
+    {
+      "name": "Circle arrow boundaries 9bdbfe7c-d20d-4b96-997d-e42f8a46db46",
+      "passed": true
+    },
+    {
+      "name": "Circle arrow boundaries 51eecdea-f7e3-4ca0-976d-b769ff2217a7",
+      "passed": true
+    },
+    {
+      "name": "Circle arrow boundaries fcd94095-7de3-4613-86de-1679573f9b9b",
+      "passed": true
+    },
+    {
+      "name": "Circle arrow boundaries 30fa4946-5973-4364-b245-736dbee2435d",
+      "passed": true
+    },
+    {
+      "name": "Circle arrow boundaries c05426e7-b7d7-4325-a03f-17310e29ede1",
+      "passed": true
+    },
+    {
+      "name": "Context port on actual ordinary curve ae9e4ea5-4a9d-4e95-b6bc-4d6c4c3c4d8b",
+      "passed": true
+    },
+    {
+      "name": "Context port on actual ordinary curve e69067db-fea5-4ad8-a0c9-c8d384347924",
+      "passed": true
+    },
+    {
+      "name": "Orthogonal segment df7c8953-62b0-4a43-88e1-8dd0de743892",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle c77d570f-6acd-4923-8d56-ca927b3057b0",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 402fa658-cb02-4136-a61d-5ba477037d43",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 2c3ceac7-2a37-4ce9-b63f-3ba3321960c9",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 21e6c6dd-5866-4e8b-9949-b689da712066",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 3e7bdecb-b016-4d66-b071-26afe8441e11",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 1d0586e2-8028-42c2-8b48-ad4e4d31424d",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 6c187c78-3a91-4659-a9b7-773f1288411a",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle cd27a3e1-0b77-47ba-ae9f-d55014ff59b5",
+      "passed": true
+    },
+    {
+      "name": "Orthogonal segment df7c8953-62b0-4a43-88e1-8dd0de743892",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle c77d570f-6acd-4923-8d56-ca927b3057b0",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 402fa658-cb02-4136-a61d-5ba477037d43",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 2c3ceac7-2a37-4ce9-b63f-3ba3321960c9",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 21e6c6dd-5866-4e8b-9949-b689da712066",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 3e7bdecb-b016-4d66-b071-26afe8441e11",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 1d0586e2-8028-42c2-8b48-ad4e4d31424d",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 6c187c78-3a91-4659-a9b7-773f1288411a",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle cd27a3e1-0b77-47ba-ae9f-d55014ff59b5",
+      "passed": true
+    },
+    {
+      "name": "Orthogonal segment df7c8953-62b0-4a43-88e1-8dd0de743892",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle c77d570f-6acd-4923-8d56-ca927b3057b0",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 402fa658-cb02-4136-a61d-5ba477037d43",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 2c3ceac7-2a37-4ce9-b63f-3ba3321960c9",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 21e6c6dd-5866-4e8b-9949-b689da712066",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 3e7bdecb-b016-4d66-b071-26afe8441e11",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 1d0586e2-8028-42c2-8b48-ad4e4d31424d",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 6c187c78-3a91-4659-a9b7-773f1288411a",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle cd27a3e1-0b77-47ba-ae9f-d55014ff59b5",
+      "passed": true
+    },
+    {
+      "name": "Context port on actual ordinary curve ae9e4ea5-4a9d-4e95-b6bc-4d6c4c3c4d8b",
+      "passed": true
+    },
+    {
+      "name": "Context port on actual ordinary curve 9bdbfe7c-d20d-4b96-997d-e42f8a46db46",
+      "passed": true
+    },
+    {
+      "name": "Orthogonal segment 05b0a3c2-aac1-4247-95a7-1403943e00f2",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle c77d570f-6acd-4923-8d56-ca927b3057b0",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 402fa658-cb02-4136-a61d-5ba477037d43",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 2c3ceac7-2a37-4ce9-b63f-3ba3321960c9",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 21e6c6dd-5866-4e8b-9949-b689da712066",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 3e7bdecb-b016-4d66-b071-26afe8441e11",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 1d0586e2-8028-42c2-8b48-ad4e4d31424d",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 6c187c78-3a91-4659-a9b7-773f1288411a",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle cd27a3e1-0b77-47ba-ae9f-d55014ff59b5",
+      "passed": true
+    },
+    {
+      "name": "Orthogonal segment 05b0a3c2-aac1-4247-95a7-1403943e00f2",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle c77d570f-6acd-4923-8d56-ca927b3057b0",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 402fa658-cb02-4136-a61d-5ba477037d43",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 2c3ceac7-2a37-4ce9-b63f-3ba3321960c9",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 21e6c6dd-5866-4e8b-9949-b689da712066",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 3e7bdecb-b016-4d66-b071-26afe8441e11",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 1d0586e2-8028-42c2-8b48-ad4e4d31424d",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 6c187c78-3a91-4659-a9b7-773f1288411a",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle cd27a3e1-0b77-47ba-ae9f-d55014ff59b5",
+      "passed": true
+    },
+    {
+      "name": "Orthogonal segment 05b0a3c2-aac1-4247-95a7-1403943e00f2",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle c77d570f-6acd-4923-8d56-ca927b3057b0",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 402fa658-cb02-4136-a61d-5ba477037d43",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 2c3ceac7-2a37-4ce9-b63f-3ba3321960c9",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 21e6c6dd-5866-4e8b-9949-b689da712066",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 3e7bdecb-b016-4d66-b071-26afe8441e11",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 1d0586e2-8028-42c2-8b48-ad4e4d31424d",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 6c187c78-3a91-4659-a9b7-773f1288411a",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle cd27a3e1-0b77-47ba-ae9f-d55014ff59b5",
+      "passed": true
+    },
+    {
+      "name": "Context port on actual ordinary curve e69067db-fea5-4ad8-a0c9-c8d384347924",
+      "passed": true
+    },
+    {
+      "name": "Context port on actual ordinary curve 9bdbfe7c-d20d-4b96-997d-e42f8a46db46",
+      "passed": true
+    },
+    {
+      "name": "Orthogonal segment 40ba6879-2c1f-4a5a-8240-5c2fe719c979",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle c77d570f-6acd-4923-8d56-ca927b3057b0",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 402fa658-cb02-4136-a61d-5ba477037d43",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 2c3ceac7-2a37-4ce9-b63f-3ba3321960c9",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 21e6c6dd-5866-4e8b-9949-b689da712066",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 3e7bdecb-b016-4d66-b071-26afe8441e11",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 1d0586e2-8028-42c2-8b48-ad4e4d31424d",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 6c187c78-3a91-4659-a9b7-773f1288411a",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle cd27a3e1-0b77-47ba-ae9f-d55014ff59b5",
+      "passed": true
+    },
+    {
+      "name": "Orthogonal segment 40ba6879-2c1f-4a5a-8240-5c2fe719c979",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle c77d570f-6acd-4923-8d56-ca927b3057b0",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 402fa658-cb02-4136-a61d-5ba477037d43",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 2c3ceac7-2a37-4ce9-b63f-3ba3321960c9",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 21e6c6dd-5866-4e8b-9949-b689da712066",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 3e7bdecb-b016-4d66-b071-26afe8441e11",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 1d0586e2-8028-42c2-8b48-ad4e4d31424d",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 6c187c78-3a91-4659-a9b7-773f1288411a",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle cd27a3e1-0b77-47ba-ae9f-d55014ff59b5",
+      "passed": true
+    },
+    {
+      "name": "Orthogonal segment 40ba6879-2c1f-4a5a-8240-5c2fe719c979",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle c77d570f-6acd-4923-8d56-ca927b3057b0",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 402fa658-cb02-4136-a61d-5ba477037d43",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 2c3ceac7-2a37-4ce9-b63f-3ba3321960c9",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 21e6c6dd-5866-4e8b-9949-b689da712066",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 3e7bdecb-b016-4d66-b071-26afe8441e11",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 1d0586e2-8028-42c2-8b48-ad4e4d31424d",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle 6c187c78-3a91-4659-a9b7-773f1288411a",
+      "passed": true
+    },
+    {
+      "name": "Context outside circle cd27a3e1-0b77-47ba-ae9f-d55014ff59b5",
+      "passed": true
+    },
+    {
+      "name": "Context shown or explicitly blocked",
+      "passed": true
+    },
+    {
+      "name": "Live worker cancellation is read-only",
+      "passed": true
+    },
+    {
+      "name": "Zoom hysteresis observed",
+      "passed": true
+    },
+    {
+      "name": "Whole graph scales include hidden nodes",
+      "passed": true
+    },
+    {
+      "name": "GUI regression alpha",
+      "passed": true
+    },
+    {
+      "name": "GUI regression captions",
+      "passed": true
+    },
+    {
+      "name": "GUI regression context",
+      "passed": true
+    },
+    {
+      "name": "GUI regression canvas",
+      "passed": true
+    },
+    {
+      "name": "GUI regression workspace-views",
+      "passed": true
+    },
+    {
+      "name": "GUI regression layout",
+      "passed": true
+    },
+    {
+      "name": "Retained semantic engine app/alpha.py",
+      "passed": true
+    },
+    {
+      "name": "Retained semantic engine app/builder.py",
+      "passed": true
+    },
+    {
+      "name": "Retained semantic engine app/designations.py",
+      "passed": true
+    },
+    {
+      "name": "Retained semantic engine app/journal.py",
+      "passed": true
+    },
+    {
+      "name": "Retained semantic engine data/dictionary/lemmas.json",
+      "passed": true
+    }
+  ],
+  "files": [
+    {
+      "name": "before.json",
+      "bytes": 29029,
+      "sha256": "01a8c80a4edf002115e2050d81730d6f8c41334c58889bafd2a8b3a01e0c4f1e"
+    },
+    {
+      "name": "javascript-tests.txt",
+      "bytes": 3483,
+      "sha256": "33919e09e7cb423ad97265addb58bc1c45b7bae3ddb60fcba5a01c48c6542ee6"
+    },
+    {
+      "name": "labels-hidden-search.png",
+      "bytes": 60346,
+      "sha256": "b233b969194b659ff2004429c5308397c0a827396fb65018ff349f880c1d9128"
+    },
+    {
+      "name": "negative-attempts.json",
+      "bytes": 36310,
+      "sha256": "9f355df30a6f1d07fbd20dd91ce99e447c450031d9a70fa41f12d7eb51da5582"
+    },
+    {
+      "name": "overview.png",
+      "bytes": 58320,
+      "sha256": "24ea108408e575c14fc23dc5a943359c204b05d5221eeb21574229a4faa87bac"
+    },
+    {
+      "name": "permanent.json",
+      "bytes": 57674,
+      "sha256": "b0e7acfab51061868878936681ebc2648d11c7c67eff6ee48400c7c80eb7a5f2"
+    },
+    {
+      "name": "preview.png",
+      "bytes": 59338,
+      "sha256": "261059ca03dd4a8b0cd197a965483546ba304c28e24d67e93f0e688d254305ab"
+    },
+    {
+      "name": "python-tests.txt",
+      "bytes": 13458,
+      "sha256": "f4aeb1e4ea393ea11ad7be24678a125c8b93d05246bab16ac8259ddbd3dd22f0"
+    },
+    {
+      "name": "reexport.json",
+      "bytes": 101796,
+      "sha256": "320097c1eb43409facaaf65aee52a33f15b52ae18d0d4bacd36bd1a61897c688"
+    },
+    {
+      "name": "regression-alpha.json",
+      "bytes": 3220,
+      "sha256": "e6b61cf6f354865e51b89c5d23e053750a8d06a65345e689f4536e8d853aac72"
+    },
+    {
+      "name": "regression-canvas.json",
+      "bytes": 2863,
+      "sha256": "f80882075d0108d07d09547778b9a59100d1bb7cc499e76b9d2ff8f14807043d"
+    },
+    {
+      "name": "regression-captions.json",
+      "bytes": 1529,
+      "sha256": "ea2aef9e324f22f3341aa48d6a85c147ac01af4d45061d560d2d3ede7f007ed4"
+    },
+    {
+      "name": "regression-context.json",
+      "bytes": 44906,
+      "sha256": "2439236dfc5ca9af0dd9f5cb075bfc5d70dc3419cfd5cde0e03aaeefa0e783d9"
+    },
+    {
+      "name": "regression-layout.json",
+      "bytes": 6307,
+      "sha256": "833165a5112084e3fb8dc1e125002f126be6ba8947c7464fd46d13b45179808e"
+    },
+    {
+      "name": "regression-workspace-views.json",
+      "bytes": 1475,
+      "sha256": "753eb58af1bc4dba0f76aaa521203c48f3f52059dd6241e858c597d9e44f437a"
+    },
+    {
+      "name": "report.json",
+      "bytes": 8963,
+      "sha256": "bc7b53ad1561ce4ba80cc3ab89c89e6d45cf07da0048131d6241a3e771c00350"
+    },
+    {
+      "name": "scale-2000.png",
+      "bytes": 732682,
+      "sha256": "0659224a00aa92e545557f8f3dde8cf2e1b34a295d3da093213f4fa9ef5a77ad"
+    },
+    {
+      "name": "scale-labels-always.png",
+      "bytes": 468986,
+      "sha256": "354ad7e7a1c91255c838f0789401203ce46a90ba21e5b03f725f4f7c3a78e3dd"
+    },
+    {
+      "name": "scale-search.png",
+      "bytes": 693363,
+      "sha256": "12a8c9d72578f4066cf760bdadf8e6e497591084ab5a1e88c8917bebe3b7dbcc"
+    },
+    {
+      "name": "search.png",
+      "bytes": 63688,
+      "sha256": "28d6386c2bbfb3f2c7f52bf1f8dd7f9665ec216f1fc945cc65c875eba9d6e07d"
+    },
+    {
+      "name": "technical-checks.json",
+      "bytes": 1155,
+      "sha256": "a0ab4016bcc893330d7dc2f04a4469e405651dee0a20646e8e99a5b49f8c2e56"
+    }
+  ]
+}

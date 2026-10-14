@@ -150,3 +150,16 @@ body.permanent-workspace {height:100dvh;overflow:hidden}
 .graph .target-port{fill:#8b509a}
 .graph [data-graph-context]:hover .context-edge,.graph [data-graph-context]:focus-visible .context-edge{stroke:#663275;stroke-width:3;stroke-dasharray:5 3}
 .context-legend{position:absolute;bottom:8px;left:8px;right:8px;width:fit-content;max-width:calc(100% - 16px);background:#fafcfbe8;border:1px solid #d7c3dd;border-radius:5px;padding:5px 8px;color:#733b81;font-size:11px;pointer-events:none}
+
+/* M015 permanent overview; constructor rectangle styling is preserved. */
+#permanent-graph .round-node circle {fill:#448da7;stroke:#256178;stroke-width:2}
+#permanent-graph .round-node.combination-node circle {fill:#9b77bb;stroke:#70478f}
+#permanent-graph .round-node.selected circle {stroke:#152f39;stroke-width:4}
+#permanent-graph .round-node[data-pinned="true"] circle {stroke-dasharray:3 2}
+#permanent-graph .round-node .overview-label {font-size:13px;fill:#19342e;paint-order:stroke;stroke:white;stroke-width:3px;pointer-events:none}
+#permanent-graph .round-node .kind-label {display:none}
+#permanent-graph .search-match circle {stroke:#ef9d12;stroke-width:4}
+#permanent-graph .search-dim:not(.selected) {opacity:.22}
+#permanent-graph .node:hover,#permanent-graph .node:focus {opacity:1}
+#permanent-graph.overview .overview-label {visibility:visible}
+#graph-layout-status {font-size:12px;color:#70478f}

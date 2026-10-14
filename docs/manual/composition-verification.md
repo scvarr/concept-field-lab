@@ -1,5 +1,48 @@
 # Инженерные проверки составов, накопления и геометрии
 
+## M015: обзор и раскладка постоянного графа, 14 октября 2026
+
+Вопрос: можно ли визуально исследовать сотни/тысячи общих узлов M013–M014 без постоянных длинных подписей и ручного растаскивания каждого поля? Способ — отдельный circular-режим существующего renderer, ранжированный UI-поиск, адаптация исторического Worker engine без source-model, транзакционная геометрия, тесты и Chrome на изолированных базах. Критерий — отсутствие наложений после layout, правильные radius/types/arrows/context, preview/cancel/apply/pin/undo, ID/semantics/v2/history сохранены, режимы подписей и регрессии. Ресурсная граница — контрольный граф 8 узлов/9 рёбер/3 context, один конечный GUI-сценарий с четырьмя масштабами 100/1000/2000/3000, текущие unit-наборы и шесть регрессионных GUI-сценариев; до четырёх исправлений отрицательных проверочных попыток. Публикация, источник исследований, активация и автоматический смысл не расширяются.
+
+После fetch актуальный `origin/codex/alpha-captions = 1d215ab`; создана `codex/permanent-overview`. M013–M014 сохранены. Принято [ADR M015 в существующем layout-architecture](layout-architecture.md). D3 7.9.0/Dagre 1.1.5 остаются локальными vendor с прежними лицензиями; адаптированы размеры/collision/separation, прямоугольный default не изменил результаты legacy-проверок. UI постоянного графа предлагает три режима без source-clusters/лексических пружин, работает по полному графу/окружению. Координаты/pin — единственные новые записи объектов, undo metadata — существующий journal.detail, FORMAT/VERSION=2 прежние.
+
+Результаты: **89 Python / 30 JS** прошли. Новый Chrome-сценарий шести групп: «Гайка» → общий concept «Деталь» → «Резьба» → «Завинчивание» с тремя явно подтверждёнными context; «Винт» — α(Деталь, α(Стержень, Головка)), те же общие IDs, отдельное отношение головки к завинчиванию. Ноль наложений в preview/после подтверждения, два цвета, формула radius=min(26,8+3*sqrt(degree)), ordinary/component концы на реальных окружностях, контекстные порты на самих Bezier и трассы вне кругов проверены по SVG-атрибутам. Preview/cancel, в том числе отмена работающего force Worker на 2000 узлах, не записали state; apply сохранил структуру/ID/словарь/черновики, manual drag сохранил позицию, pin удержал ID в force, radial local/apply/undo вернули исходные координаты. Серверный undo отдельно проверен после независимой правки обозначения: правка не потерялась. Отказы stale preview, неверных/pinned ID, наложений, отсутствия подтверждения и undo после движения атомарны.
+
+Режимы подписей auto/always/hidden, наведение/клавиатурный фокус/поиск/выбор и реальный zoom проверены без записи SQLite. Auto гистерезис: включение >=0.85, выключение <=0.65; одинаковый промежуточный масштаб сохраняет прежнее решение. Необязательные auto-подписи избегают других подписей/кругов; forced названия и режим Always могут накладываться. Exact designation занимает первое место раньше partial/component; это закрывает замечание review M014, поиск остаётся UI-подсветкой. Restart/export/import сохранили точный v2 snapshot и полный архив исходной истории, включая pin/layout/undo.
+
+Производительность финального Chrome-run `overview-1791989422684` (reload + render + Worker hierarchical preview + подтверждение + fit + проверки): **100 — 423 мс; 1000 — 871 мс; 2000 — 1568 мс; 3000 — 1709 мс**. Для 3000 рисуются 2000, но координаты/нулевые наложения проверены для всех 3000 IDs. Предельный критерий каждого прогона 30 с. Node-пробы трёх алгоритмов на 100/1000/3000 прошли с нулём наложений, force на 3000 около 2,7 с (точные значения в javascript-tests.txt). Это конкретные синтетические деревья/наборы, не гарантия произвольной плотности или 10000 узлов. Новый radius/degree учитывает весь graph, включая ненарисованные рёбра.
+
+GUI-регрессии **M013 alpha, M014 captions, M012 context, M011 canvas, M010 workspace-views и исторический layout M006** прошли. Последний проверяет 2004/3001, четыре старых алгоритма, hidden IDs, source-subsets, pin/undo, responsive cancel и экспорт. Изменения harness ограничены circle/rect selectors, геометрическим radius и ожиданием закрытия формы. Пользовательская база/`docs/patches/` не открывались/не менялись. Старые свидетельства не переписаны.
+
+Первичные данные — [evidence/overview/report.json](evidence/overview/report.json), [before](evidence/overview/before.json), [verification](evidence/overview/verification.json), preview/overview/search/labels-hidden-search.png, scale-2000/scale-labels-always/scale-search.png, export/reexport, Python/JS журналы и regression-*.json. Независимый `scripts/verify_overview.py` выполняет **121 проверок** SVG/портов/контекстных сегментов, семантического baseline, ID/истории/pin/совместимости и защищённых семантических файлов. Предыдущие verify_alpha/verify_alpha_captions относятся к своим checkpoint и требуют прежнего ядра; M015 проверяется новым аудитом своей ответственности.
+
+[Отрицательные попытки](evidence/overview/negative-attempts.json): (1) Node 24.19 Undici Parser.finish упал при большом HTTP body во время переключения тестовых серверов; harness теперь читает через Playwright request context/consume body, runtime server не менялся. (2) M012 считал круги прямоугольниками 160×56 и сообщил ложное пересечение; проверка использует фактический radius. (3) Отложенный scroll после формы закрыл меню; harness ждёт закрытия и два кадра, CanvasMenu не менялся. (4) SVGMatrix отдавал float32 координаты, строгий endpoint-test расходился на округлении; читаются точные атрибуты transform/path, после чего границы/порты прошли. Неудачные попытки не повторялись без изменения проверки.
+
+Среда: Python 3.13.2, SQLite 3.45.3, Node v24.19.0, Chrome 155.0.8059.40, прежний Playwright. Каждый GUI-run создаёт свою SQLite под local-data и артефакты под test-output; завершает собственные процессы. Размерные фикстуры импортированы только в собственные базы и являются инженерными деревьями, не доказательством семантики. Воспроизведение:
+
+```powershell
+python -m unittest discover -s tests -v
+node --test tests/test_overview.cjs tests/test_alpha_captions.cjs tests/test_graph_view.cjs tests/test_layout.cjs
+$env:NODE_PATH=(Resolve-Path local-data/browser-tools/node_modules).Path
+node tests/overview-browser.cjs
+node tests/alpha-browser.cjs
+node tests/alpha-captions-browser.cjs
+node tests/context-browser.cjs
+node tests/canvas-browser.cjs
+node tests/workspace-views-browser.cjs
+node tests/layout-browser.cjs
+python -m scripts.verify_overview
+python -m compileall -q app scripts tests
+node --check app/static/graph-view.js
+node --check app/static/layout-engine.js
+node --check app/static/permanent-layout.js
+node --check app/static/overview-geometry.js
+node --check app/static/workspace.js
+git diff --check
+```
+
+Ограничения: вид 2000/6000, Worker 10000/100000 и 30 с, context до 800/120 мс (одна трасса может завершиться позже), fallback до 40000 клеток; превышения видны и доступны по IDs. Подписи M014 и дерево сохраняют свои пределы. Preview разделяет target от всех obstacles, но фиксированные вне области наложения остаются с предупреждением; pinned-конфликт в области блокирует результат. Обычные кривые могут пересекать другие линии/посторонние узлы, пересечения не являются семантическими узлами. Always/forced тексты не обещают отсутствие всех наложений. Длительная человеческая эксплуатация и произвольные 10000-node графы не проверены. Следующий конечный шаг — external review diff относительно `1d215ab`, ADR, отказы/границы и снимки; критерий — конкретное решение reviewer, граница — M015. Merge main не выполняется.
+
 ## M014: вычисляемые подписи α, 14 октября 2026
 
 Вопрос: можно ли находить и выбирать безымянные вложенные α без длинных UUID, сохраняя точную идентичность и данные M013? Способ — чистый индекс UI, компонентный поиск без записи, тесты ограничений и реальные Chrome-сценарии на изолированных SQLite. Критерий — именованная/безымянная/вложенная/пустая подпись во всех видах выбора, поиск по компонентам и строке, различение одинаково выглядящих IDs, обновление состава, exact v2/history roundtrip и регрессии M013. Ресурсная граница — один миниграф 7 узлов/7 component-рёбер, пять групп нового GUI-сценария, четыре существующих регрессионных GUI-сценария, два исправления отрицательных проб, вычислительные пробы 80/160 и 1000/3000; без науки, семантического вывода и изменения модели.

@@ -1,0 +1,1666 @@
+{
+  "date": "2026-10-14T14:23:05.421Z",
+  "node": "v24.19.0",
+  "scope": "Display and manual editing only; no semantic claim",
+  "checks": [
+    "Finite maximum-draft SVG probe: 80 fields, 160 ordinary IDs and 800 context pairs complete initial rendering and full rerouting within five seconds each",
+    "Explicit branched mini-graph: three directed contextual links are dashed SVG paths between ordinary IDs; all segments orthogonal and outside every node rectangle",
+    "Dragging a node not incident to either ordinary edge reroutes existing context around its new rectangle without changing IDs",
+    "Actual line click, right-click, Shift+F10 and Enter open context form; reversal updates direction, deletion removes only selected pair, explicit addition restores a pair",
+    "Permanent graph shows same context IDs; inspection returns to originating draft; neighbourhood omits links with invisible endpoint edges and reports them",
+    "Fit, zoom and three viewport sizes retain obstacle-free orthogonal links without adding a second page",
+    "Covered attachment points report unrouted pairs explicitly; all IDs remain accessible in the object list and reappear when the obstructing field moves away",
+    "Process restart, GUI export/import and archived full history retain exact IDs, context direction, drafts and routes; routing geometry is derived, absent from stored format"
+  ],
+  "geometry": [
+    {
+      "surface": "#def-graph",
+      "shown": 3,
+      "blocked": 0,
+      "filtered": 0,
+      "links": [
+        {
+          "id": "53e100bc-d280-499d-b948-9d2c66000ca6",
+          "from": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "to": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "points": [
+            {
+              "x": 122.5,
+              "y": 0
+            },
+            {
+              "x": 122.5,
+              "y": -38
+            },
+            {
+              "x": 354.75,
+              "y": -38
+            },
+            {
+              "x": 354.75,
+              "y": 0
+            }
+          ],
+          "d": "M 122.5 0 L 122.5 -38 L 354.75 -38 L 354.75 0",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "941fa2a8-86f9-4bc8-85e0-b7a4a71ddfe3",
+          "from": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 109.75,
+              "y": 0
+            },
+            {
+              "x": 109.75,
+              "y": 108.6
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 108.6
+            }
+          ],
+          "d": "M 109.75 0 L 109.75 108.6 L 637.8166666666667 108.6",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "aa57377f-2951-47f9-b7c4-1f1d1446265a",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 380.25,
+              "y": 0
+            },
+            {
+              "x": 380.25,
+              "y": 90
+            },
+            {
+              "x": 612.5,
+              "y": 90
+            }
+          ],
+          "d": "M 380.25 0 L 380.25 90 L 612.5 90",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "4d6ae2b8-475a-4227-b1be-5e02ce3358d3",
+          "x": 0,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "37939d17-a468-4f70-9346-bfda5c212a14",
+          "x": 245,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "521072e8-60db-4b3c-9121-b5fdf701d576",
+          "x": 490,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "0e4e6828-90d6-4186-9132-70ae682d561c",
+          "x": 735,
+          "y": 180,
+          "radius": null
+        },
+        {
+          "id": "1dab5ff5-d047-4ec7-af46-125cf4f7f853",
+          "x": 0,
+          "y": 125,
+          "radius": null
+        }
+      ]
+    },
+    {
+      "surface": "#def-graph",
+      "shown": 3,
+      "blocked": 0,
+      "filtered": 0,
+      "links": [
+        {
+          "id": "53e100bc-d280-499d-b948-9d2c66000ca6",
+          "from": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "to": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "points": [
+            {
+              "x": 122.5,
+              "y": 0
+            },
+            {
+              "x": 122.5,
+              "y": -38
+            },
+            {
+              "x": 354.75,
+              "y": -38
+            },
+            {
+              "x": 354.75,
+              "y": 0
+            }
+          ],
+          "d": "M 122.5 0 L 122.5 -38 L 354.75 -38 L 354.75 0",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "941fa2a8-86f9-4bc8-85e0-b7a4a71ddfe3",
+          "from": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 109.75,
+              "y": 0
+            },
+            {
+              "x": 109.75,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 108.6
+            }
+          ],
+          "d": "M 109.75 0 L 109.75 38 L 637.8166666666667 38 L 637.8166666666667 108.6",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "aa57377f-2951-47f9-b7c4-1f1d1446265a",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 380.25,
+              "y": 0
+            },
+            {
+              "x": 380.25,
+              "y": 38
+            },
+            {
+              "x": 612.5,
+              "y": 38
+            },
+            {
+              "x": 612.5,
+              "y": 90
+            }
+          ],
+          "d": "M 380.25 0 L 380.25 38 L 612.5 38 L 612.5 90",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "4d6ae2b8-475a-4227-b1be-5e02ce3358d3",
+          "x": 0,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "37939d17-a468-4f70-9346-bfda5c212a14",
+          "x": 245,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "521072e8-60db-4b3c-9121-b5fdf701d576",
+          "x": 490,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "0e4e6828-90d6-4186-9132-70ae682d561c",
+          "x": 735,
+          "y": 180,
+          "radius": null
+        },
+        {
+          "id": "1dab5ff5-d047-4ec7-af46-125cf4f7f853",
+          "x": 373.7833251953125,
+          "y": 108.5999755859375,
+          "radius": null
+        }
+      ]
+    },
+    {
+      "surface": "#def-graph",
+      "shown": 3,
+      "blocked": 0,
+      "filtered": 0,
+      "links": [
+        {
+          "id": "53e100bc-d280-499d-b948-9d2c66000ca6",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "points": [
+            {
+              "x": 367.5,
+              "y": 0
+            },
+            {
+              "x": 367.5,
+              "y": -38
+            },
+            {
+              "x": 109.75,
+              "y": -38
+            },
+            {
+              "x": 109.75,
+              "y": 0
+            }
+          ],
+          "d": "M 367.5 0 L 367.5 -38 L 109.75 -38 L 109.75 0",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "941fa2a8-86f9-4bc8-85e0-b7a4a71ddfe3",
+          "from": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 109.75,
+              "y": 0
+            },
+            {
+              "x": 109.75,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 108.6
+            }
+          ],
+          "d": "M 109.75 0 L 109.75 38 L 637.8166666666667 38 L 637.8166666666667 108.6",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "aa57377f-2951-47f9-b7c4-1f1d1446265a",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 380.25,
+              "y": 0
+            },
+            {
+              "x": 380.25,
+              "y": 38
+            },
+            {
+              "x": 612.5,
+              "y": 38
+            },
+            {
+              "x": 612.5,
+              "y": 90
+            }
+          ],
+          "d": "M 380.25 0 L 380.25 38 L 612.5 38 L 612.5 90",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "4d6ae2b8-475a-4227-b1be-5e02ce3358d3",
+          "x": 0,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "37939d17-a468-4f70-9346-bfda5c212a14",
+          "x": 245,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "521072e8-60db-4b3c-9121-b5fdf701d576",
+          "x": 490,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "0e4e6828-90d6-4186-9132-70ae682d561c",
+          "x": 735,
+          "y": 180,
+          "radius": null
+        },
+        {
+          "id": "1dab5ff5-d047-4ec7-af46-125cf4f7f853",
+          "x": 373.7833251953125,
+          "y": 108.5999755859375,
+          "radius": null
+        }
+      ]
+    },
+    {
+      "surface": "#def-graph",
+      "shown": 2,
+      "blocked": 0,
+      "filtered": 0,
+      "links": [
+        {
+          "id": "941fa2a8-86f9-4bc8-85e0-b7a4a71ddfe3",
+          "from": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 122.5,
+              "y": 0
+            },
+            {
+              "x": 122.5,
+              "y": 38
+            },
+            {
+              "x": 587.1833333333333,
+              "y": 38
+            },
+            {
+              "x": 587.1833333333333,
+              "y": 71.39999999999999
+            }
+          ],
+          "d": "M 122.5 0 L 122.5 38 L 587.1833333333333 38 L 587.1833333333333 71.39999999999999",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "aa57377f-2951-47f9-b7c4-1f1d1446265a",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 354.75,
+              "y": 0
+            },
+            {
+              "x": 354.75,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 108.6
+            }
+          ],
+          "d": "M 354.75 0 L 354.75 38 L 637.8166666666667 38 L 637.8166666666667 108.6",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "4d6ae2b8-475a-4227-b1be-5e02ce3358d3",
+          "x": 0,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "37939d17-a468-4f70-9346-bfda5c212a14",
+          "x": 245,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "521072e8-60db-4b3c-9121-b5fdf701d576",
+          "x": 490,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "0e4e6828-90d6-4186-9132-70ae682d561c",
+          "x": 735,
+          "y": 180,
+          "radius": null
+        },
+        {
+          "id": "1dab5ff5-d047-4ec7-af46-125cf4f7f853",
+          "x": 373.7833251953125,
+          "y": 108.5999755859375,
+          "radius": null
+        }
+      ]
+    },
+    {
+      "surface": "#def-graph",
+      "shown": 3,
+      "blocked": 0,
+      "filtered": 0,
+      "links": [
+        {
+          "id": "941fa2a8-86f9-4bc8-85e0-b7a4a71ddfe3",
+          "from": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 122.5,
+              "y": 0
+            },
+            {
+              "x": 122.5,
+              "y": 38
+            },
+            {
+              "x": 587.1833333333333,
+              "y": 38
+            },
+            {
+              "x": 587.1833333333333,
+              "y": 71.39999999999999
+            }
+          ],
+          "d": "M 122.5 0 L 122.5 38 L 587.1833333333333 38 L 587.1833333333333 71.39999999999999",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "aa57377f-2951-47f9-b7c4-1f1d1446265a",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 354.75,
+              "y": 0
+            },
+            {
+              "x": 354.75,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 108.6
+            }
+          ],
+          "d": "M 354.75 0 L 354.75 38 L 637.8166666666667 38 L 637.8166666666667 108.6",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "17683cbe-a37c-4ae6-a16f-7f2b82b4a2b9",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "points": [
+            {
+              "x": 380.25,
+              "y": 0
+            },
+            {
+              "x": 380.25,
+              "y": -38
+            },
+            {
+              "x": 122.5,
+              "y": -38
+            },
+            {
+              "x": 122.5,
+              "y": 0
+            }
+          ],
+          "d": "M 380.25 0 L 380.25 -38 L 122.5 -38 L 122.5 0",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "4d6ae2b8-475a-4227-b1be-5e02ce3358d3",
+          "x": 0,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "37939d17-a468-4f70-9346-bfda5c212a14",
+          "x": 245,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "521072e8-60db-4b3c-9121-b5fdf701d576",
+          "x": 490,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "0e4e6828-90d6-4186-9132-70ae682d561c",
+          "x": 735,
+          "y": 180,
+          "radius": null
+        },
+        {
+          "id": "1dab5ff5-d047-4ec7-af46-125cf4f7f853",
+          "x": 373.7833251953125,
+          "y": 108.5999755859375,
+          "radius": null
+        }
+      ]
+    },
+    {
+      "surface": "#permanent-graph",
+      "shown": 3,
+      "blocked": 0,
+      "filtered": 0,
+      "links": [
+        {
+          "id": "941fa2a8-86f9-4bc8-85e0-b7a4a71ddfe3",
+          "from": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 130,
+              "y": 220
+            },
+            {
+              "x": 130,
+              "y": 197.7573593128807
+            },
+            {
+              "x": 598.8608323833612,
+              "y": 197.7573593128807
+            },
+            {
+              "x": 598.8608323833612,
+              "y": 205.32821723100255
+            }
+          ],
+          "d": "M 130 220 L 130 197.7573593128807 L 598.8608323833612 197.7573593128807 L 598.8608323833612 205.32821723100255",
+          "marker": "url(#context-arrow-permanent-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "aa57377f-2951-47f9-b7c4-1f1d1446265a",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 354.6727922061358,
+              "y": 220
+            },
+            {
+              "x": 354.6727922061358,
+              "y": 194.67178276899745
+            },
+            {
+              "x": 656.1391676166388,
+              "y": 194.67178276899745
+            }
+          ],
+          "d": "M 354.6727922061358 220 L 354.6727922061358 194.67178276899745 L 656.1391676166388 194.67178276899745",
+          "marker": "url(#context-arrow-permanent-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "17683cbe-a37c-4ae6-a16f-7f2b82b4a2b9",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "points": [
+            {
+              "x": 425.3272077938642,
+              "y": 220
+            },
+            {
+              "x": 425.3272077938642,
+              "y": 197.7573593128807
+            },
+            {
+              "x": 130,
+              "y": 197.7573593128807
+            },
+            {
+              "x": 130,
+              "y": 220
+            }
+          ],
+          "d": "M 425.3272077938642 220 L 425.3272077938642 197.7573593128807 L 130 197.7573593128807 L 130 220",
+          "marker": "url(#context-arrow-permanent-graph)",
+          "dash": "7px, 5px"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "4d6ae2b8-475a-4227-b1be-5e02ce3358d3",
+          "x": 0,
+          "y": 220,
+          "radius": 12.242640687119286
+        },
+        {
+          "id": "37939d17-a468-4f70-9346-bfda5c212a14",
+          "x": 260,
+          "y": 220,
+          "radius": 12.242640687119286
+        },
+        {
+          "id": "521072e8-60db-4b3c-9121-b5fdf701d576",
+          "x": 520,
+          "y": 220,
+          "radius": 12.242640687119286
+        },
+        {
+          "id": "0e4e6828-90d6-4186-9132-70ae682d561c",
+          "x": 735,
+          "y": 180,
+          "radius": 12.242640687119286
+        },
+        {
+          "id": "1dab5ff5-d047-4ec7-af46-125cf4f7f853",
+          "x": 373.7833251953125,
+          "y": 108.5999755859375,
+          "radius": 8
+        }
+      ]
+    },
+    {
+      "surface": "#permanent-graph",
+      "shown": 3,
+      "blocked": 0,
+      "filtered": 0,
+      "links": [
+        {
+          "id": "941fa2a8-86f9-4bc8-85e0-b7a4a71ddfe3",
+          "from": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 130,
+              "y": 220
+            },
+            {
+              "x": 130,
+              "y": 197.7573593128807
+            },
+            {
+              "x": 598.8608323833612,
+              "y": 197.7573593128807
+            },
+            {
+              "x": 598.8608323833612,
+              "y": 205.32821723100255
+            }
+          ],
+          "d": "M 130 220 L 130 197.7573593128807 L 598.8608323833612 197.7573593128807 L 598.8608323833612 205.32821723100255",
+          "marker": "url(#context-arrow-permanent-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "aa57377f-2951-47f9-b7c4-1f1d1446265a",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 354.6727922061358,
+              "y": 220
+            },
+            {
+              "x": 354.6727922061358,
+              "y": 194.67178276899745
+            },
+            {
+              "x": 656.1391676166388,
+              "y": 194.67178276899745
+            }
+          ],
+          "d": "M 354.6727922061358 220 L 354.6727922061358 194.67178276899745 L 656.1391676166388 194.67178276899745",
+          "marker": "url(#context-arrow-permanent-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "17683cbe-a37c-4ae6-a16f-7f2b82b4a2b9",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "points": [
+            {
+              "x": 425.3272077938642,
+              "y": 220
+            },
+            {
+              "x": 425.3272077938642,
+              "y": 197.7573593128807
+            },
+            {
+              "x": 130,
+              "y": 197.7573593128807
+            },
+            {
+              "x": 130,
+              "y": 220
+            }
+          ],
+          "d": "M 425.3272077938642 220 L 425.3272077938642 197.7573593128807 L 130 197.7573593128807 L 130 220",
+          "marker": "url(#context-arrow-permanent-graph)",
+          "dash": "7px, 5px"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "4d6ae2b8-475a-4227-b1be-5e02ce3358d3",
+          "x": 0,
+          "y": 220,
+          "radius": 12.242640687119286
+        },
+        {
+          "id": "37939d17-a468-4f70-9346-bfda5c212a14",
+          "x": 260,
+          "y": 220,
+          "radius": 12.242640687119286
+        },
+        {
+          "id": "521072e8-60db-4b3c-9121-b5fdf701d576",
+          "x": 520,
+          "y": 220,
+          "radius": 12.242640687119286
+        },
+        {
+          "id": "0e4e6828-90d6-4186-9132-70ae682d561c",
+          "x": 735,
+          "y": 180,
+          "radius": 12.242640687119286
+        },
+        {
+          "id": "1dab5ff5-d047-4ec7-af46-125cf4f7f853",
+          "x": 373.7833251953125,
+          "y": 108.5999755859375,
+          "radius": 8
+        }
+      ]
+    },
+    {
+      "surface": "#def-graph",
+      "shown": 3,
+      "blocked": 0,
+      "filtered": 0,
+      "links": [
+        {
+          "id": "941fa2a8-86f9-4bc8-85e0-b7a4a71ddfe3",
+          "from": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 122.5,
+              "y": 0
+            },
+            {
+              "x": 122.5,
+              "y": 38
+            },
+            {
+              "x": 587.1833333333333,
+              "y": 38
+            },
+            {
+              "x": 587.1833333333333,
+              "y": 71.39999999999999
+            }
+          ],
+          "d": "M 122.5 0 L 122.5 38 L 587.1833333333333 38 L 587.1833333333333 71.39999999999999",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "aa57377f-2951-47f9-b7c4-1f1d1446265a",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 354.75,
+              "y": 0
+            },
+            {
+              "x": 354.75,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 108.6
+            }
+          ],
+          "d": "M 354.75 0 L 354.75 38 L 637.8166666666667 38 L 637.8166666666667 108.6",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "17683cbe-a37c-4ae6-a16f-7f2b82b4a2b9",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "points": [
+            {
+              "x": 380.25,
+              "y": 0
+            },
+            {
+              "x": 380.25,
+              "y": -38
+            },
+            {
+              "x": 122.5,
+              "y": -38
+            },
+            {
+              "x": 122.5,
+              "y": 0
+            }
+          ],
+          "d": "M 380.25 0 L 380.25 -38 L 122.5 -38 L 122.5 0",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "4d6ae2b8-475a-4227-b1be-5e02ce3358d3",
+          "x": 0,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "37939d17-a468-4f70-9346-bfda5c212a14",
+          "x": 245,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "521072e8-60db-4b3c-9121-b5fdf701d576",
+          "x": 490,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "0e4e6828-90d6-4186-9132-70ae682d561c",
+          "x": 735,
+          "y": 180,
+          "radius": null
+        },
+        {
+          "id": "1dab5ff5-d047-4ec7-af46-125cf4f7f853",
+          "x": 373.7833251953125,
+          "y": 108.5999755859375,
+          "radius": null
+        }
+      ]
+    },
+    {
+      "surface": "#def-graph",
+      "shown": 3,
+      "blocked": 0,
+      "filtered": 0,
+      "links": [
+        {
+          "id": "941fa2a8-86f9-4bc8-85e0-b7a4a71ddfe3",
+          "from": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 122.5,
+              "y": 0
+            },
+            {
+              "x": 122.5,
+              "y": 38
+            },
+            {
+              "x": 587.1833333333333,
+              "y": 38
+            },
+            {
+              "x": 587.1833333333333,
+              "y": 71.39999999999999
+            }
+          ],
+          "d": "M 122.5 0 L 122.5 38 L 587.1833333333333 38 L 587.1833333333333 71.39999999999999",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "aa57377f-2951-47f9-b7c4-1f1d1446265a",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 354.75,
+              "y": 0
+            },
+            {
+              "x": 354.75,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 108.6
+            }
+          ],
+          "d": "M 354.75 0 L 354.75 38 L 637.8166666666667 38 L 637.8166666666667 108.6",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "17683cbe-a37c-4ae6-a16f-7f2b82b4a2b9",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "points": [
+            {
+              "x": 380.25,
+              "y": 0
+            },
+            {
+              "x": 380.25,
+              "y": -38
+            },
+            {
+              "x": 122.5,
+              "y": -38
+            },
+            {
+              "x": 122.5,
+              "y": 0
+            }
+          ],
+          "d": "M 380.25 0 L 380.25 -38 L 122.5 -38 L 122.5 0",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "4d6ae2b8-475a-4227-b1be-5e02ce3358d3",
+          "x": 0,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "37939d17-a468-4f70-9346-bfda5c212a14",
+          "x": 245,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "521072e8-60db-4b3c-9121-b5fdf701d576",
+          "x": 490,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "0e4e6828-90d6-4186-9132-70ae682d561c",
+          "x": 735,
+          "y": 180,
+          "radius": null
+        },
+        {
+          "id": "1dab5ff5-d047-4ec7-af46-125cf4f7f853",
+          "x": 373.7833251953125,
+          "y": 108.5999755859375,
+          "radius": null
+        }
+      ]
+    },
+    {
+      "surface": "#def-graph",
+      "shown": 3,
+      "blocked": 0,
+      "filtered": 0,
+      "links": [
+        {
+          "id": "941fa2a8-86f9-4bc8-85e0-b7a4a71ddfe3",
+          "from": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 122.5,
+              "y": 0
+            },
+            {
+              "x": 122.5,
+              "y": 38
+            },
+            {
+              "x": 587.1833333333333,
+              "y": 38
+            },
+            {
+              "x": 587.1833333333333,
+              "y": 71.39999999999999
+            }
+          ],
+          "d": "M 122.5 0 L 122.5 38 L 587.1833333333333 38 L 587.1833333333333 71.39999999999999",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "aa57377f-2951-47f9-b7c4-1f1d1446265a",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 354.75,
+              "y": 0
+            },
+            {
+              "x": 354.75,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 108.6
+            }
+          ],
+          "d": "M 354.75 0 L 354.75 38 L 637.8166666666667 38 L 637.8166666666667 108.6",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "17683cbe-a37c-4ae6-a16f-7f2b82b4a2b9",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "points": [
+            {
+              "x": 380.25,
+              "y": 0
+            },
+            {
+              "x": 380.25,
+              "y": -38
+            },
+            {
+              "x": 122.5,
+              "y": -38
+            },
+            {
+              "x": 122.5,
+              "y": 0
+            }
+          ],
+          "d": "M 380.25 0 L 380.25 -38 L 122.5 -38 L 122.5 0",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "4d6ae2b8-475a-4227-b1be-5e02ce3358d3",
+          "x": 0,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "37939d17-a468-4f70-9346-bfda5c212a14",
+          "x": 245,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "521072e8-60db-4b3c-9121-b5fdf701d576",
+          "x": 490,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "0e4e6828-90d6-4186-9132-70ae682d561c",
+          "x": 735,
+          "y": 180,
+          "radius": null
+        },
+        {
+          "id": "1dab5ff5-d047-4ec7-af46-125cf4f7f853",
+          "x": 373.7833251953125,
+          "y": 108.5999755859375,
+          "radius": null
+        }
+      ]
+    },
+    {
+      "surface": "#def-graph",
+      "shown": 3,
+      "blocked": 0,
+      "filtered": 0,
+      "links": [
+        {
+          "id": "941fa2a8-86f9-4bc8-85e0-b7a4a71ddfe3",
+          "from": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 122.5,
+              "y": 0
+            },
+            {
+              "x": 122.5,
+              "y": 38
+            },
+            {
+              "x": 587.1833333333333,
+              "y": 38
+            },
+            {
+              "x": 587.1833333333333,
+              "y": 71.39999999999999
+            }
+          ],
+          "d": "M 122.5 0 L 122.5 38 L 587.1833333333333 38 L 587.1833333333333 71.39999999999999",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "aa57377f-2951-47f9-b7c4-1f1d1446265a",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 354.75,
+              "y": 0
+            },
+            {
+              "x": 354.75,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 108.6
+            }
+          ],
+          "d": "M 354.75 0 L 354.75 38 L 637.8166666666667 38 L 637.8166666666667 108.6",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "17683cbe-a37c-4ae6-a16f-7f2b82b4a2b9",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "points": [
+            {
+              "x": 380.25,
+              "y": 0
+            },
+            {
+              "x": 380.25,
+              "y": -38
+            },
+            {
+              "x": 122.5,
+              "y": -38
+            },
+            {
+              "x": 122.5,
+              "y": 0
+            }
+          ],
+          "d": "M 380.25 0 L 380.25 -38 L 122.5 -38 L 122.5 0",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "4d6ae2b8-475a-4227-b1be-5e02ce3358d3",
+          "x": 0,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "37939d17-a468-4f70-9346-bfda5c212a14",
+          "x": 245,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "521072e8-60db-4b3c-9121-b5fdf701d576",
+          "x": 490,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "0e4e6828-90d6-4186-9132-70ae682d561c",
+          "x": 735,
+          "y": 180,
+          "radius": null
+        },
+        {
+          "id": "1dab5ff5-d047-4ec7-af46-125cf4f7f853",
+          "x": 373.7833251953125,
+          "y": 108.5999755859375,
+          "radius": null
+        }
+      ]
+    },
+    {
+      "surface": "#def-graph",
+      "shown": 3,
+      "blocked": 0,
+      "filtered": 0,
+      "links": [
+        {
+          "id": "941fa2a8-86f9-4bc8-85e0-b7a4a71ddfe3",
+          "from": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 122.5,
+              "y": 0
+            },
+            {
+              "x": 122.5,
+              "y": 38
+            },
+            {
+              "x": 587.1833333333333,
+              "y": 38
+            },
+            {
+              "x": 587.1833333333333,
+              "y": 71.39999999999999
+            }
+          ],
+          "d": "M 122.5 0 L 122.5 38 L 587.1833333333333 38 L 587.1833333333333 71.39999999999999",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "aa57377f-2951-47f9-b7c4-1f1d1446265a",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 354.75,
+              "y": 0
+            },
+            {
+              "x": 354.75,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 108.6
+            }
+          ],
+          "d": "M 354.75 0 L 354.75 38 L 637.8166666666667 38 L 637.8166666666667 108.6",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "17683cbe-a37c-4ae6-a16f-7f2b82b4a2b9",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "points": [
+            {
+              "x": 380.25,
+              "y": 0
+            },
+            {
+              "x": 380.25,
+              "y": -38
+            },
+            {
+              "x": 122.5,
+              "y": -38
+            },
+            {
+              "x": 122.5,
+              "y": 0
+            }
+          ],
+          "d": "M 380.25 0 L 380.25 -38 L 122.5 -38 L 122.5 0",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "4d6ae2b8-475a-4227-b1be-5e02ce3358d3",
+          "x": 0,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "37939d17-a468-4f70-9346-bfda5c212a14",
+          "x": 245,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "521072e8-60db-4b3c-9121-b5fdf701d576",
+          "x": 490,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "0e4e6828-90d6-4186-9132-70ae682d561c",
+          "x": 735,
+          "y": 180,
+          "radius": null
+        },
+        {
+          "id": "1dab5ff5-d047-4ec7-af46-125cf4f7f853",
+          "x": 373.7833251953125,
+          "y": 108.5999755859375,
+          "radius": null
+        }
+      ]
+    },
+    {
+      "surface": "#def-graph",
+      "shown": 3,
+      "blocked": 0,
+      "filtered": 0,
+      "links": [
+        {
+          "id": "941fa2a8-86f9-4bc8-85e0-b7a4a71ddfe3",
+          "from": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 122.5,
+              "y": 0
+            },
+            {
+              "x": 122.5,
+              "y": 38
+            },
+            {
+              "x": 587.1833333333333,
+              "y": 38
+            },
+            {
+              "x": 587.1833333333333,
+              "y": 71.39999999999999
+            }
+          ],
+          "d": "M 122.5 0 L 122.5 38 L 587.1833333333333 38 L 587.1833333333333 71.39999999999999",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "aa57377f-2951-47f9-b7c4-1f1d1446265a",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 354.75,
+              "y": 0
+            },
+            {
+              "x": 354.75,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 38
+            },
+            {
+              "x": 637.8166666666667,
+              "y": 108.6
+            }
+          ],
+          "d": "M 354.75 0 L 354.75 38 L 637.8166666666667 38 L 637.8166666666667 108.6",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "17683cbe-a37c-4ae6-a16f-7f2b82b4a2b9",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "points": [
+            {
+              "x": 380.25,
+              "y": 0
+            },
+            {
+              "x": 380.25,
+              "y": -38
+            },
+            {
+              "x": 122.5,
+              "y": -38
+            },
+            {
+              "x": 122.5,
+              "y": 0
+            }
+          ],
+          "d": "M 380.25 0 L 380.25 -38 L 122.5 -38 L 122.5 0",
+          "marker": "url(#context-arrow-def-graph)",
+          "dash": "7px, 5px"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "4d6ae2b8-475a-4227-b1be-5e02ce3358d3",
+          "x": 0,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "37939d17-a468-4f70-9346-bfda5c212a14",
+          "x": 245,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "521072e8-60db-4b3c-9121-b5fdf701d576",
+          "x": 490,
+          "y": 0,
+          "radius": null
+        },
+        {
+          "id": "0e4e6828-90d6-4186-9132-70ae682d561c",
+          "x": 735,
+          "y": 180,
+          "radius": null
+        },
+        {
+          "id": "1dab5ff5-d047-4ec7-af46-125cf4f7f853",
+          "x": 373.7833251953125,
+          "y": 108.5999755859375,
+          "radius": null
+        }
+      ]
+    },
+    {
+      "surface": "#permanent-graph",
+      "shown": 3,
+      "blocked": 0,
+      "filtered": 0,
+      "links": [
+        {
+          "id": "941fa2a8-86f9-4bc8-85e0-b7a4a71ddfe3",
+          "from": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 130,
+              "y": 220
+            },
+            {
+              "x": 130,
+              "y": 197.7573593128807
+            },
+            {
+              "x": 598.8608323833612,
+              "y": 197.7573593128807
+            },
+            {
+              "x": 598.8608323833612,
+              "y": 205.32821723100255
+            }
+          ],
+          "d": "M 130 220 L 130 197.7573593128807 L 598.8608323833612 197.7573593128807 L 598.8608323833612 205.32821723100255",
+          "marker": "url(#context-arrow-permanent-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "aa57377f-2951-47f9-b7c4-1f1d1446265a",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+          "points": [
+            {
+              "x": 354.6727922061358,
+              "y": 220
+            },
+            {
+              "x": 354.6727922061358,
+              "y": 194.67178276899745
+            },
+            {
+              "x": 656.1391676166388,
+              "y": 194.67178276899745
+            }
+          ],
+          "d": "M 354.6727922061358 220 L 354.6727922061358 194.67178276899745 L 656.1391676166388 194.67178276899745",
+          "marker": "url(#context-arrow-permanent-graph)",
+          "dash": "7px, 5px"
+        },
+        {
+          "id": "17683cbe-a37c-4ae6-a16f-7f2b82b4a2b9",
+          "from": "1e628969-c902-4a76-9ef6-caa73941be42",
+          "to": "3bd6812f-928f-4477-97b0-41333c6e41ef",
+          "points": [
+            {
+              "x": 425.3272077938642,
+              "y": 220
+            },
+            {
+              "x": 425.3272077938642,
+              "y": 197.7573593128807
+            },
+            {
+              "x": 130,
+              "y": 197.7573593128807
+            },
+            {
+              "x": 130,
+              "y": 220
+            }
+          ],
+          "d": "M 425.3272077938642 220 L 425.3272077938642 197.7573593128807 L 130 197.7573593128807 L 130 220",
+          "marker": "url(#context-arrow-permanent-graph)",
+          "dash": "7px, 5px"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "4d6ae2b8-475a-4227-b1be-5e02ce3358d3",
+          "x": 0,
+          "y": 220,
+          "radius": 12.242640687119286
+        },
+        {
+          "id": "37939d17-a468-4f70-9346-bfda5c212a14",
+          "x": 260,
+          "y": 220,
+          "radius": 12.242640687119286
+        },
+        {
+          "id": "521072e8-60db-4b3c-9121-b5fdf701d576",
+          "x": 520,
+          "y": 220,
+          "radius": 12.242640687119286
+        },
+        {
+          "id": "0e4e6828-90d6-4186-9132-70ae682d561c",
+          "x": 735,
+          "y": 180,
+          "radius": 12.242640687119286
+        },
+        {
+          "id": "1dab5ff5-d047-4ec7-af46-125cf4f7f853",
+          "x": 373.7833251953125,
+          "y": 108.5999755859375,
+          "radius": 8
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "browser": "155.0.8059.40",
+  "performance": {
+    "nodes": 80,
+    "ordinaryEdges": 160,
+    "contextEdges": 800,
+    "firstMs": 51.399999998509884,
+    "redrawMs": 27.399999998509884,
+    "shown": 800,
+    "blocked": 0,
+    "limited": 0
+  },
+  "blocked": {
+    "shown": 1,
+    "blocked": 2,
+    "legend": "Пунктир → контекст между рёбрами · 1/3 · не проложено: 2 (переместите поля или откройте список)"
+  },
+  "ids": {
+    "nodes": [
+      "4d6ae2b8-475a-4227-b1be-5e02ce3358d3",
+      "37939d17-a468-4f70-9346-bfda5c212a14",
+      "521072e8-60db-4b3c-9121-b5fdf701d576",
+      "0e4e6828-90d6-4186-9132-70ae682d561c",
+      "1dab5ff5-d047-4ec7-af46-125cf4f7f853"
+    ],
+    "edges": [
+      "3bd6812f-928f-4477-97b0-41333c6e41ef",
+      "1e628969-c902-4a76-9ef6-caa73941be42",
+      "399b36ed-0def-49b3-bbc8-e0a0a9cb3c06",
+      "f1651437-c23e-4b5d-a535-e9c519e6a2f6"
+    ],
+    "contextEdges": [
+      "941fa2a8-86f9-4bc8-85e0-b7a4a71ddfe3",
+      "aa57377f-2951-47f9-b7c4-1f1d1446265a",
+      "17683cbe-a37c-4ae6-a16f-7f2b82b4a2b9"
+    ]
+  },
+  "counts": {
+    "nodes": 5,
+    "edges": 4,
+    "contextEdges": 3
+  },
+  "ok": true
+}

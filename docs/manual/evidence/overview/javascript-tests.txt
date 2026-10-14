@@ -1,0 +1,49 @@
+{"nodes":80,"edges":160,"captionAndSearchMs":0.5660999999999987}
+{"nodes":1000,"edges":3000,"captionAndSearchMs":9.292399999999994}
+✔ nested captions, naming priority and component search never mutate graph (1.193ms)
+✔ equal structures retain distinct tokens even with colliding ID prefixes (0.2249ms)
+✔ draft overlay replaces owned membership, keeps canonical data untouched (0.2289ms)
+✔ cycles, deep and broad structures produce finite bounded captions (7.2289ms)
+✔ 80/160 draft and 1000/3000 canvas caption computation is bounded (11.1819ms)
+✔ zoom preserves world point under cursor, including scale limits (0.5548ms)
+✔ edge intersects vertical and horizontal node boundaries, and supports loops (0.3224ms)
+✔ fit includes node padding and respects viewport aspect ratio (0.7062ms)
+✔ parallel source relations and loops remain visually distinct (0.2751ms)
+✔ context anchors follow actual quadratic and cubic curves (0.8461ms)
+✔ rectilinear context avoids a node between ordinary edge anchors (0.564ms)
+✔ moving a nonincident blocking node changes the context route (0.1632ms)
+✔ alternating obstacles require more than three segments and exercise bounded A star (0.3433ms)
+✔ covered anchors, coincident endpoints and enclosed endpoints give explicit failure (0.5726ms)
+✔ touching and overlapping rectangles retain avoidance with reversed direction (0.1538ms)
+✔ fit contains context detours as well as node rectangles (0.0929ms)
+✔ force: detached partial graph, pins, finite deterministic coordinates (22.5309ms)
+✔ hierarchical: detached partial graph, pins, finite deterministic coordinates (5.3945ms)
+✔ radial: detached partial graph, pins, finite deterministic coordinates (0.2842ms)
+✔ clusters: detached partial graph, pins, finite deterministic coordinates (4.6624ms)
+✔ cycles, parallel edges, loops and disconnected nodes are retained (12.5915ms)
+✔ scalable hierarchy covers hidden 2004 nodes / 3001 edges without Dagre dummy explosion (12.9215ms)
+✔ hierarchical ordering reduces crossings on a reproducible bipartite example (3.3811ms)
+✔ unanchored source clusters have disjoint bounding boxes; accepted shared origin is one cluster (11.2003ms)
+✔ large canvas fit has an explicit lower zoom bound without changing editor default (1.1028ms)
+{"size":100,"algorithm":"hierarchical","ms":10.832099999999997,"overlaps":0}
+{"size":100,"algorithm":"force","ms":47.898,"overlaps":0}
+{"size":100,"algorithm":"radial","ms":0.33629999999999427,"overlaps":0}
+{"size":1000,"algorithm":"hierarchical","ms":4.756599999999992,"overlaps":0}
+{"size":1000,"algorithm":"force","ms":727.9943999999999,"overlaps":0}
+{"size":1000,"algorithm":"radial","ms":1.3958000000000084,"overlaps":0}
+{"size":3000,"algorithm":"hierarchical","ms":6.6737000000000535,"overlaps":0}
+{"size":3000,"algorithm":"force","ms":2619.5243,"overlaps":0}
+{"size":3000,"algorithm":"radial","ms":4.876099999999951,"overlaps":0}
+✔ circle boundaries and parallel/loop context anchors use actual radii (0.7216ms)
+✔ degree includes relation/component once for self-loop and radius is bounded (0.2389ms)
+✔ exact designation/ID/caption outranks partial and component matches (0.3584ms)
+✔ circle layouts preserve pins/exterior and resolve overlaps for three modes (11.8051ms)
+✔ 100/1000/3000-node circle layouts run within finite resource budget (3435.2651ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3549.9

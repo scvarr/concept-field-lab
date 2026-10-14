@@ -61,7 +61,10 @@ def search(state, query, canvas_id=None):
                 'definitions': [{'id': did, 'title': p['title'], 'definition': p['definition']} for did, p in (study if permanent else study.get('accumulation', {})).get('definitionPublications', {}).items() if node['id'] in p['nodeIds']],
                 'contexts': [c for c in (study if permanent else study.get('accumulation', {}).get('manual', {})).get('contextEdges', [])
                              if c['from'] in {e['id'] for e in edges} or c['to'] in {e['id'] for e in edges}]})
-    concepts.sort(key=lambda c: (not c['selectable'], c['studyTitle'], c['nodeId']))
+    def rank(c):
+        forms = [c['nodeId'], *c['labels']]
+        return 0 if any(normalized(s) == q for s in forms) else 1 if any(q in normalized(s) for s in forms) else 2
+    concepts.sort(key=lambda c: (not c['selectable'], rank(c) if permanent else 0, c['studyTitle'], c['nodeId']))
     words = [{'id': 'opencorpora:' + r[0], 'lemma': r[1], 'grammemes': r[2],
               'hasConcept': any(normalized(r[1]) == normalized(t) for c in concepts for t in c['labels'])} for r in lemmas[:60]]
     return {'words': words, 'concepts': concepts[:80], 'wordCount': len(lemmas), 'conceptCount': len(concepts),

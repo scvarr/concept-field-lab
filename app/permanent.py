@@ -38,6 +38,8 @@ def validate_graph(graph):
             raise Invalid('Новый концепт адресуется по ID и внешним обозначениям, без переноса исторической модели.')
         if not isinstance(n.get('origins'), list):
             raise Invalid('Неверное происхождение концепта.')
+        if 'layoutPinned' in n and n['layoutPinned'] is not True:
+            raise Invalid('Закрепление layoutPinned должно быть true либо отсутствовать.')
         for k in ('x', 'y'):
             if not isinstance(n.get(k), (int, float)) or isinstance(n[k], bool) or not math.isfinite(n[k]) or abs(n[k]) > 100000:
                 raise Invalid('Координаты графа должны быть конечными числами ±100000.')
@@ -221,6 +223,9 @@ class PermanentStore(Store):
                 node = lookup(state['nodes'], data.get('nodeId'), 'концепт')
                 node.update(x=data.get('x'), y=data.get('y'))
                 detail = 'Изменена позиция концепта'
+            elif action in ('layout_apply', 'layout_restore', 'layout_pin'):
+                from app.permanent_geometry import operate as geometry
+                result, detail = geometry(state, action, data, db, row['id'])
             elif action == 'import':
                 if data.get('confirmed') is not True:
                     raise Invalid('Просмотрите и подтвердите импорт.')

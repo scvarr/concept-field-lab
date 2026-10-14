@@ -1,0 +1,23 @@
+'use strict';
+window.PermanentLayout=class {
+  constructor(ctx){this.ctx=ctx;this.preview=null;this.worker=null;}
+  open(){
+    this.ctx.dialog('Размещение постоянного графа',`<p>Вычисление отдельно от графа; публикация определения никогда не запускает раскладку. Закреплённые и внешние узлы остаются препятствиями.</p><label>Режим<select name="algorithm"><option value="hierarchical">Иерархический</option><option value="force">Силовой</option><option value="radial">Радиальный от выбранного ID</option></select></label><label>Область<select name="scope"><option value="all">Весь граф (включая скрытые узлы)</option><option value="local">Окружение выбранного ID на текущую глубину</option></select></label><label>Зазор между узлами<input name="spacing" type="number" min="20" max="400" value="35"></label><label class="checkbox"><input name="reduce" type="checkbox" checked>Упорядочить связи</label><p>После вычисления просмотрите полотно и отдельно подтвердите применение. Максимум 10 000 узлов / 100 000 рёбер; процесс можно отменить.</p>`,f=>{this.calculate(f);},'Предпросмотр');
+  }
+  calculate(f){
+    this.cancel();const state=this.ctx.state();if(!state.nodes.length||state.nodes.length>10000||state.edges.length>100000)throw Error('Раскладка: нужны 1–10 000 узлов и до 100 000 рёбер.');
+    const metric=OverviewGeometry.metrics(state),targets=f.get('scope')==='all'?state.nodes.map(n=>n.id):this.ctx.neighbourhood(),base=this.ctx.revision();
+    const input={algorithm:f.get('algorithm'),spacing:Number(f.get('spacing')),reduceCrossings:f.has('reduce'),rootId:this.ctx.selected(),geometry:'circle',targetIds:targets,nodes:state.nodes.map(n=>({id:n.id,x:n.x,y:n.y,radius:metric.get(n.id).radius,pinned:!!n.layoutPinned})),edges:state.edges.map(e=>({from:e.from,to:e.to}))};
+    const worker=this.worker=new Worker('/layout-worker.js');const timer=setTimeout(()=>{this.cancel();this.ctx.toast('Вычисление превысило 30 секунд. Выберите меньшую область.',true);},30000);this.timer=timer;
+    const finish=()=>{clearTimeout(timer);worker.terminate();if(this.worker===worker)this.worker=null;};
+    worker.onerror=()=>{if(this.worker!==worker)return;finish();this.ctx.toast('Ошибка Worker; граф не изменён.',true);this.refresh();};
+    worker.onmessage=event=>{if(this.worker!==worker)return;const value=event.data;if(value.percent!==undefined){document.querySelector('#graph-layout-status').textContent=`Расчёт ${value.percent}%`;return;}finish();if(value.error){this.ctx.toast(value.error,true);this.refresh();return;}
+      const nodes=input.nodes.map(n=>({...n,...value.result.positions[n.id]})),pairs=OverviewGeometry.overlaps(nodes),targetSet=new Set(targets);if(OverviewGeometry.overlaps(nodes,1,targetSet).length){this.ctx.toast('В области остаются наложения закреплённых узлов. Открепите их или измените область.',true);this.refresh();return;}
+      this.preview={...value.result,algorithm:input.algorithm,revision:base,outsideOverlaps:pairs.length};this.ctx.render();this.ctx.graph()?.fit();this.refresh();};
+    worker.postMessage(input);this.refresh();
+  }
+  cancel(){clearTimeout(this.timer);this.worker?.terminate();this.worker=null;this.preview=null;this.ctx.render();this.refresh();}
+  apply(){const p=this.preview;if(!p)return;if(p.revision!==this.ctx.revision())throw Error('Предпросмотр устарел. Рассчитайте заново.');this.ctx.dialog('Применить расположение',`<p>Будут сохранены позиции ${p.moved} узлов одной версией. ID, состав, отношения и обозначения сохраняются.${p.outsideOverlaps?` За областью остаётся наложений: ${p.outsideOverlaps}.`:''}</p><label class="checkbox"><input name="confirmed" type="checkbox" required>Я просмотрел расположение и подтверждаю применение</label>`,async f=>{await this.ctx.mutate('layout_apply',{positions:p.positions,algorithm:p.algorithm,previewRevision:p.revision,confirmed:f.has('confirmed')});this.preview=null;this.ctx.render();this.refresh();},'Применить');}
+  undo(){this.cancel();this.ctx.dialog('Отменить последнюю раскладку',`<p>Вернутся только предыдущие координаты. Если затронутые узлы перемещены или закреплены после раскладки, действие будет отклонено. История сохраняется.</p><label class="checkbox"><input name="confirmed" type="checkbox" required>Подтверждаю возврат расположения</label>`,f=>this.ctx.mutate('layout_restore',{confirmed:f.has('confirmed')}),'Вернуть позиции');}
+  refresh(){const p=this.preview;document.querySelector('#graph-layout-apply').hidden=!p;document.querySelector('#graph-layout-cancel').hidden=!p&&!this.worker;document.querySelector('#graph-layout-status').textContent=this.worker?'Расчёт…':p?`Предпросмотр: ${p.moved} узлов · ${Math.round(p.elapsedMs)} мс · ещё не сохранено`:'';}
+};

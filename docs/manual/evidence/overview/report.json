@@ -1,0 +1,276 @@
+{
+  "date": "2026-10-14T14:50:22.684Z",
+  "node": "v24.19.0",
+  "base": "1d215ab",
+  "scope": "Circle overview, ranked search and explicit geometry-only layouts",
+  "checks": [
+    "Nut/screw share actual concept and nested alpha IDs; circle colours distinguish types and bounded radii count relation/component incidence; constructor remains rectangular",
+    "Worker preview/cancel performs no SQLite writes; confirmed batch has zero circle overlaps and no semantic changes; contextual paths avoid circles or explicitly report blocked IDs",
+    "Exact designation search ranks above alpha component matches and highlights circles directly; hidden/always/auto modes, hover, keyboard focus and zoom change only local UI",
+    "Pins persist and remain fixed in force layout; manual drag saves; radial local preview/apply/undo restores coordinates without changing graph semantics",
+    "Restart/export/import preserve exact coordinates, pin fields, IDs, designations and full history in JSONv2",
+    "Actual Chrome render, Worker layout, confirmation and no-overlap checks at 100/1000/2000/3000 nodes (including hidden nodes) finish within 30 seconds per graph; dense graph labels and hidden-label search remain available"
+  ],
+  "errors": [],
+  "negative": [],
+  "browser": "155.0.8059.40",
+  "geometry": {
+    "nodes": [
+      {
+        "id": "c77d570f-6acd-4923-8d56-ca927b3057b0",
+        "x": 265.65,
+        "y": 225.045,
+        "radius": 11,
+        "degree": 1,
+        "type": "concept",
+        "colour": "rgb(68, 141, 167)",
+        "label": "true"
+      },
+      {
+        "id": "402fa658-cb02-4136-a61d-5ba477037d43",
+        "x": 327.042,
+        "y": 235.045,
+        "radius": 13.196152422706632,
+        "degree": 3,
+        "type": "concept",
+        "colour": "rgb(68, 141, 167)",
+        "label": "true"
+      },
+      {
+        "id": "2c3ceac7-2a37-4ce9-b63f-3ba3321960c9",
+        "x": 388.435,
+        "y": 255.393,
+        "radius": 13.196152422706632,
+        "degree": 3,
+        "type": "concept",
+        "colour": "rgb(68, 141, 167)",
+        "label": "true"
+      },
+      {
+        "id": "21e6c6dd-5866-4e8b-9949-b689da712066",
+        "x": 448.873,
+        "y": 285.613,
+        "radius": 12.242640687119286,
+        "degree": 2,
+        "type": "concept",
+        "colour": "rgb(68, 141, 167)",
+        "label": "true"
+      },
+      {
+        "id": "3e7bdecb-b016-4d66-b071-26afe8441e11",
+        "x": 448.873,
+        "y": 384.552,
+        "radius": 11,
+        "degree": 1,
+        "type": "concept",
+        "colour": "rgb(68, 141, 167)",
+        "label": "true"
+      },
+      {
+        "id": "1d0586e2-8028-42c2-8b48-ad4e4d31424d",
+        "x": 388.435,
+        "y": 335.559,
+        "radius": 12.242640687119286,
+        "degree": 2,
+        "type": "concept",
+        "colour": "rgb(68, 141, 167)",
+        "label": "true"
+      },
+      {
+        "id": "6c187c78-3a91-4659-a9b7-773f1288411a",
+        "x": 327.042,
+        "y": 374.68,
+        "radius": 13.196152422706632,
+        "degree": 3,
+        "type": "alpha",
+        "colour": "rgb(155, 119, 187)",
+        "label": "false"
+      },
+      {
+        "id": "cd27a3e1-0b77-47ba-ae9f-d55014ff59b5",
+        "x": 265.65,
+        "y": 304.113,
+        "radius": 13.196152422706632,
+        "degree": 3,
+        "type": "alpha",
+        "colour": "rgb(155, 119, 187)",
+        "label": "true"
+      }
+    ],
+    "edges": [
+      {
+        "id": "4f45b19a-b3a4-4177-95a9-d00e2ad42bd4",
+        "from": "6c187c78-3a91-4659-a9b7-773f1288411a",
+        "to": "3e7bdecb-b016-4d66-b071-26afe8441e11",
+        "d": "M 340.1950422503034 375.7457946917861 Q 387.9575 379.616 437.9089356182958 383.66357879705345",
+        "marker": "url(#arrow-permanent-graph)"
+      },
+      {
+        "id": "3a1503ca-a0c7-4885-84d1-a02cfa014f37",
+        "from": "6c187c78-3a91-4659-a9b7-773f1288411a",
+        "to": "1d0586e2-8028-42c2-8b48-ad4e4d31424d",
+        "d": "M 338.1707543350536 367.588507511579 Q 357.7385 355.1195 378.1103738320842 342.138083939782",
+        "marker": "url(#arrow-permanent-graph)"
+      },
+      {
+        "id": "ae9e4ea5-4a9d-4e95-b6bc-4d6c4c3c4d8b",
+        "from": "c77d570f-6acd-4923-8d56-ca927b3057b0",
+        "to": "402fa658-cb02-4136-a61d-5ba477037d43",
+        "d": "M 276.50691295158634 226.81345728296623 Q 296.346 230.045 314.01750198643714 232.92346983099378",
+        "marker": "url(#arrow-permanent-graph)"
+      },
+      {
+        "id": "e69067db-fea5-4ad8-a0c9-c8d384347924",
+        "from": "402fa658-cb02-4136-a61d-5ba477037d43",
+        "to": "2c3ceac7-2a37-4ce9-b63f-3ba3321960c9",
+        "d": "M 339.56807185613457 239.1966216853489 Q 357.7385 245.219 375.9089281438654 251.2413783146511",
+        "marker": "url(#arrow-permanent-graph)"
+      },
+      {
+        "id": "9bdbfe7c-d20d-4b96-997d-e42f8a46db46",
+        "from": "2c3ceac7-2a37-4ce9-b63f-3ba3321960c9",
+        "to": "21e6c6dd-5866-4e8b-9949-b689da712066",
+        "d": "M 400.2379194265307 261.29465500297425 Q 418.654 270.503 437.92292175223776 280.13777969741926",
+        "marker": "url(#arrow-permanent-graph)"
+      },
+      {
+        "id": "51eecdea-f7e3-4ca0-976d-b769ff2217a7",
+        "from": "cd27a3e1-0b77-47ba-ae9f-d55014ff59b5",
+        "to": "402fa658-cb02-4136-a61d-5ba477037d43",
+        "d": "M 274.41690466319994 294.2499466497606 Q 296.346 269.579 318.2750953368 244.90805335023938",
+        "marker": "url(#arrow-permanent-graph)"
+      },
+      {
+        "id": "fcd94095-7de3-4613-86de-1679573f9b9b",
+        "from": "cd27a3e1-0b77-47ba-ae9f-d55014ff59b5",
+        "to": "6c187c78-3a91-4659-a9b7-773f1288411a",
+        "d": "M 274.31139530678917 314.06883598211806 Q 296.346 339.3965 318.3806046932108 364.72416401788195",
+        "marker": "url(#arrow-permanent-graph)"
+      },
+      {
+        "id": "30fa4946-5973-4364-b245-736dbee2435d",
+        "from": "cd27a3e1-0b77-47ba-ae9f-d55014ff59b5",
+        "to": "2c3ceac7-2a37-4ce9-b63f-3ba3321960c9",
+        "d": "M 277.9158451559209 299.24602132999576 Q 327.0425 279.753 376.169154844079 260.2599786700042",
+        "marker": "url(#arrow-permanent-graph)"
+      },
+      {
+        "id": "c05426e7-b7d7-4325-a03f-17310e29ede1",
+        "from": "1d0586e2-8028-42c2-8b48-ad4e4d31424d",
+        "to": "21e6c6dd-5866-4e8b-9949-b689da712066",
+        "d": "M 397.8721541584544 327.7601300572791 Q 418.654 310.586 439.4358458415456 293.4118699427209",
+        "marker": "url(#arrow-permanent-graph)"
+      }
+    ],
+    "shown": 3,
+    "blocked": 0,
+    "points": [
+      {
+        "id": "df7c8953-62b0-4a43-88e1-8dd0de743892",
+        "points": [
+          {
+            "x": 295.8041037345059,
+            "y": 229.95673177849
+          },
+          {
+            "x": 295.8041037345059,
+            "y": 258.2411524227066
+          },
+          {
+            "x": 352.28737155684036,
+            "y": 258.2411524227066
+          },
+          {
+            "x": 352.28737155684036,
+            "y": 243.41228650560467
+          }
+        ]
+      },
+      {
+        "id": "05b0a3c2-aac1-4247-95a7-1403943e00f2",
+        "points": [
+          {
+            "x": 290.1287447153838,
+            "y": 229.03228575634995
+          },
+          {
+            "x": 290.1287447153838,
+            "y": 278.58915242270666
+          },
+          {
+            "x": 424.5391495700705,
+            "y": 278.58915242270666
+          },
+          {
+            "x": 424.5391495700705,
+            "y": 273.44567216002395
+          }
+        ]
+      },
+      {
+        "id": "40ba6879-2c1f-4a5a-8240-5c2fe719c979",
+        "points": [
+          {
+            "x": 363.1896284431596,
+            "y": 247.02571349439532
+          },
+          {
+            "x": 363.1896284431596,
+            "y": 278.58915242270666
+          },
+          {
+            "x": 418.8672102946921,
+            "y": 278.58915242270666
+          },
+          {
+            "x": 418.8672102946921,
+            "y": 270.60960867509834
+          }
+        ]
+      }
+    ]
+  },
+  "labelModes": {
+    "low": 1,
+    "high": 8,
+    "hysteresis": true
+  },
+  "performance": [
+    {
+      "size": 100,
+      "visible": 100,
+      "elapsedMs": 423,
+      "overlaps": 0
+    },
+    {
+      "size": 1000,
+      "visible": 1000,
+      "elapsedMs": 871,
+      "overlaps": 0
+    },
+    {
+      "size": 2000,
+      "visible": 2000,
+      "elapsedMs": 1568,
+      "overlaps": 0
+    },
+    {
+      "size": 3000,
+      "visible": 2000,
+      "elapsedMs": 1709,
+      "overlaps": 0
+    }
+  ],
+  "workerCancel": true,
+  "ids": {
+    "nut": "c77d570f-6acd-4923-8d56-ca927b3057b0",
+    "part": "402fa658-cb02-4136-a61d-5ba477037d43",
+    "thread": "2c3ceac7-2a37-4ce9-b63f-3ba3321960c9",
+    "turn": "21e6c6dd-5866-4e8b-9949-b689da712066",
+    "rod": "3e7bdecb-b016-4d66-b071-26afe8441e11",
+    "head": "1d0586e2-8028-42c2-8b48-ad4e4d31424d",
+    "inner": "6c187c78-3a91-4659-a9b7-773f1288411a",
+    "screw": "cd27a3e1-0b77-47ba-ae9f-d55014ff59b5"
+  },
+  "ok": true
+}

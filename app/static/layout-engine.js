@@ -14,7 +14,8 @@ function calculateLayout(input, d3, dagre, progress=()=>{}) {
   const adjacency=new Map(nodes.map(n=>[n.id,[]]));
   for(const e of edges){if(e.from===e.to)continue;adjacency.get(e.from).push(e.to);adjacency.get(e.to).push(e.from);}
   const center=movable.reduce((p,n)=>({x:p.x+n.x/movable.length,y:p.y+n.y/movable.length}),{x:0,y:0});
-  const distance=180+spacing;
+  const circular=input.geometry==='circle',width=circular?Math.max(...nodes.map(n=>n.radius||8))*2:160,height=circular?width:56;
+  const distance=(circular?width+20:180)+spacing;
   let repairs=0;
   function separate(rows,obstacles) {
     const cell=distance,grid=new Map(),key=(x,y)=>`${x},${y}`;
@@ -25,7 +26,7 @@ function calculateLayout(input, d3, dagre, progress=()=>{}) {
       for(let attempt=0;attempt<300;attempt++) {
         const gx=Math.floor(n.x/cell),gy=Math.floor(n.y/cell);let collision=false;
         for(let x=gx-1;x<=gx+1&&!collision;x++)for(let y=gy-1;y<=gy+1&&!collision;y++)for(const other of grid.get(key(x,y))||[])
-          if(Math.abs(n.x-other.x)<160+spacing&&Math.abs(n.y-other.y)<56+spacing){collision=true;break;}
+          if(circular?Math.hypot(n.x-other.x,n.y-other.y)<(n.radius||8)+(other.radius||8)+spacing:Math.abs(n.x-other.x)<width+spacing&&Math.abs(n.y-other.y)<height+spacing){collision=true;break;}
         if(!collision){found=true;break;}
         const a=attempt*2.399963229728653,r=distance*Math.sqrt(attempt+1);n.x=ox+Math.cos(a)*r;n.y=oy+Math.sin(a)*r;repairs++;
       }
@@ -40,7 +41,7 @@ function calculateLayout(input, d3, dagre, progress=()=>{}) {
     const sim=d3.forceSimulation(group).stop().alphaDecay(1-Math.pow(.001,1/ticks))
       .force('charge',d3.forceManyBody().strength(-distance*7).distanceMax(distance*20))
       .force('links',d3.forceLink(links.map(e=>({source:e.from,target:e.to}))).id(n=>n.id).distance(distance).strength(.15))
-      .force('collision',d3.forceCollide((Math.hypot(160,56)+spacing)/2).iterations(2))
+      .force('collision',d3.forceCollide(circular?n=>(n.radius||8)+spacing/2:(Math.hypot(160,56)+spacing)/2).iterations(2))
       .force('x',d3.forceX(cx).strength(.018)).force('y',d3.forceY(cy).strength(.018));
     try {for(let i=0;i<ticks;i++){sim.tick();if(i%40===0)progress(Math.round(i/ticks*90));}}finally{sim.stop();}
   }
@@ -72,11 +73,11 @@ function calculateLayout(input, d3, dagre, progress=()=>{}) {
       // empty 190000 x 88000 canvas. Edges themselves retain their direction.
       const slots=new Map();let x=0,y=0,bandHeight=0;
       for(const [,layer] of ordered) {
-        const columns=Math.max(1,Math.ceil(Math.sqrt(layer.length*(56+spacing)/(160+spacing)))),rows=Math.ceil(layer.length/columns);
-        const width=columns*(160+spacing),height=rows*(56+spacing);
-        if(x&&x+width>12000){x=0;y+=bandHeight+distance;bandHeight=0;}
-        layer.forEach((n,i)=>slots.set(n.id,{x:x+Math.floor(i/rows)*(160+spacing),y:y+(i%rows)*(56+spacing)}));
-        x+=width+spacing;bandHeight=Math.max(bandHeight,height);
+        const columns=Math.max(1,Math.ceil(Math.sqrt(layer.length*(height+spacing)/(width+spacing)))),rows=Math.ceil(layer.length/columns);
+        const layerWidth=columns*(width+spacing),layerHeight=rows*(height+spacing);
+        if(x&&x+layerWidth>12000){x=0;y+=bandHeight+distance;bandHeight=0;}
+        layer.forEach((n,i)=>slots.set(n.id,{x:x+Math.floor(i/rows)*(width+spacing),y:y+(i%rows)*(height+spacing)}));
+        x+=layerWidth+spacing;bandHeight=Math.max(bandHeight,layerHeight);
       }
       const cx=chosen.reduce((s,n)=>s+slots.get(n.id).x/chosen.length,0),cy=chosen.reduce((s,n)=>s+slots.get(n.id).y/chosen.length,0);
       chosen.forEach(n=>{if(!fixed(n)){const p=slots.get(n.id);n.x=center.x+p.x-cx;n.y=center.y+p.y-cy;}});
@@ -85,7 +86,7 @@ function calculateLayout(input, d3, dagre, progress=()=>{}) {
     const g=new dagre.graphlib.Graph({multigraph:true});
     g.setGraph({rankdir:'LR',nodesep:spacing,ranksep:spacing,edgesep:20,ranker:'longest-path'});
     g.setDefaultEdgeLabel(()=>({}));
-    chosen.forEach(n=>g.setNode(n.id,{width:160,height:56}));
+    chosen.forEach(n=>g.setNode(n.id,{width:circular?n.radius*2:160,height:circular?n.radius*2:56}));
     edges.forEach((e,i)=>{if(selected.has(e.from)&&selected.has(e.to))g.setEdge(e.from,e.to,{},String(i));});
     dagre.layout(g,{disableOptimalOrderHeuristic:!reduceCrossings});progress(85);
     const laid=chosen.map(n=>g.node(n.id)),cx=laid.reduce((s,p)=>s+p.x/laid.length,0),cy=laid.reduce((s,p)=>s+p.y/laid.length,0);

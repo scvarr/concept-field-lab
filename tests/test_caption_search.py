@@ -19,3 +19,5 @@ class CaptionSearchTest(unittest.TestCase):
         self.assertNotIn('outer', {r['nodeId'] for r in search(graph, 'головка')['concepts']})
         graph['edges'] = before['edges']
         self.assertEqual(graph, before)
+        result=search(graph,'Головка')
+        self.assertEqual(result['concepts'][0]['nodeId'],'head')
