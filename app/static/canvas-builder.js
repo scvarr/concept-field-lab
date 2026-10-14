@@ -7,7 +7,7 @@ Object.assign(DefinitionBuilder.prototype,{
     if(!this.draft){this.draft=structuredClone(this.drafts().find(d=>d.id===this.ctx.ui().definitionDraft)||this.drafts()[0]||{id:crypto.randomUUID(),title:'Новое определение',definition:'',nodes:[],edges:[],contextEdges:[],routes:[]});this.route=[];this.interaction=null;this.selectedObject=null;}
     const d=this.draft,h=v=>this.h(v);this.ctx.ui().definitionDraft=d.id;this.ctx.saveUI();
     this.route=this.route.filter(id=>d.edges.some(e=>e.id===id));
-    if(this.selectedObject&&!d[this.selectedObject.kind==='node'?'nodes':'edges'].some(v=>v.id===this.selectedObject.id))this.selectedObject=null;
+    if(this.selectedObject&&!d[this.selectedObject.kind==='node'?'nodes':this.selectedObject.kind==='context'?'contextEdges':'edges'].some(v=>v.id===this.selectedObject.id))this.selectedObject=null;
     if(this.interaction&&!d[this.interaction.kind==='connect'?'nodes':'edges'].some(v=>v.id===this.interaction.from))this.interaction=null;
     this.host.innerHTML=`<div class="canvas-toolbar"><select id="def-open" aria-label="Сохранённые определения">${this.drafts().some(v=>v.id===d.id)?'':`<option value="${h(d.id)}">${h(d.title)}</option>`}${this.drafts().map(v=>`<option value="${h(v.id)}" ${v.id===d.id?'selected':''}>${h(v.title)}</option>`).join('')}</select><button id="def-new" aria-label="Новое определение">Новое</button><button id="def-definition">Определение</button><button id="def-search-open">Добавить поле</button><button id="def-routes-open">Маршруты и контекст</button><button id="def-preview" class="primary">Включить в граф…</button><button id="def-actions" aria-haspopup="menu">Действия ▾</button><button id="def-fit">Вписать</button><label class="checkbox"><input id="def-ids" type="checkbox" ${this.ids?'checked':''}>ID</label></div><div id="def-graph" class="graph canvas-surface" tabindex="0" aria-label="Миниграф определения"></div><div class="canvas-status"><span id="def-canvas-status" role="status"></span><button id="def-mode-cancel" ${this.interaction?'':'hidden'}>Отменить выбор</button><button id="def-route-confirm" ${this.route.length?'':'hidden'}>Подтвердить маршрут (${this.route.length})</button><button id="def-route-clear" ${this.route.length?'':'hidden'}>Очистить маршрут</button></div>`;
     const bind=(sel,fn)=>this.host.querySelector(sel).onclick=this.act(fn);
@@ -29,7 +29,7 @@ Object.assign(DefinitionBuilder.prototype,{
     this.ctx.run(async()=>{
       const mode=this.interaction;
       if(mode){if(kind!==(mode.kind==='connect'?'node':'edge'))return this.ctx.toast('Выберите объект указанного типа.');if(mode.kind==='context'&&id===mode.from)throw Error('Выберите другое обычное ребро.');this.interaction=null;if(mode.kind==='connect')await this.connect(mode.from,id);else{this.addContext(mode.from,id);await this.save();}this.render();return;}
-      this.selectedObject={kind,id};if(kind==='edge')this.openDraftEdge(id);else{this.draw();this.refreshStatus();}
+      this.selectedObject={kind,id};if(kind==='context')this.openContext(id);else if(kind==='edge')this.openDraftEdge(id);else{this.draw();this.refreshStatus();}
     })();
   },
   startPick(kind,from) { this.ctx.closeDialog();this.interaction={kind,from};this.render(); },
@@ -38,8 +38,8 @@ Object.assign(DefinitionBuilder.prototype,{
     let position=null;if(kind==='canvas'&&this.graph&&event?.clientX!==undefined){const p=this.graph.point(event);position={x:Math.max(-100000,Math.min(100000,p.x)),y:Math.max(-100000,Math.min(100000,p.y))};}
     const action=(id,label,fn,disabled=false)=>({id,label,disabled,run:this.act(fn)});
     const common=[action('definition','Исходное определение…',()=>this.openDefinition()),action('search','Добавить поле / найти ID…',()=>{this.spawnPosition=position;this.openSearch();}),action('objects','Поля и рёбра по ID…',()=>this.openObjects()),action('routes','Маршруты и контекст…',()=>this.openRoutes()),action('publish','Просмотреть и включить…',()=>this.preview())];
-    const actions=kind==='node'?[action('edit-node','Обозначения и свойства…',()=>this.openNode(id)),action('connect','Соединить отсюда →',()=>this.startPick('connect',id)),action('alias','Добавить обозначение…',()=>this.editAlias(id)),action('usage','Окружение и происхождение…',()=>this.inspect(id)),action('remove-node','Убрать поле из миниграфа…',()=>this.removeField(id)),...common]:kind==='edge'?[action('edit-edge','Ребро и его контекст…',()=>this.openDraftEdge(id)),action('route-add','＋ В выбранный маршрут',()=>{if(!this.route.includes(id))this.route.push(id);this.render();}),action('context','Контекст отсюда →',()=>this.startPick('context',id)),action('route-confirm','Подтвердить выбранный маршрут…',()=>this.confirmRoute(),!this.route.length),action('remove-edge','Убрать ребро из миниграфа…',()=>this.removeDraftEdge(id)),action('routes','Все маршруты и контекст…',()=>this.openRoutes()),action('objects','Поля и рёбра по ID…',()=>this.openObjects())]:[...common,action('route-confirm','Подтвердить выбранный маршрут…',()=>this.confirmRoute(),!this.route.length),action('fit','Вписать миниграф',()=>this.graph?.fit())];
-    this.ctx.menu.open(event,kind==='node'?this.name(id):kind==='edge'?this.edgeName(id):'Миниграф',actions);
+    const actions=kind==='context'?[action('edit-context','Контекстная связь…',()=>this.openContext(id)),action('routes','Все маршруты и контекст…',()=>this.openRoutes())]:kind==='node'?[action('edit-node','Обозначения и свойства…',()=>this.openNode(id)),action('connect','Соединить отсюда →',()=>this.startPick('connect',id)),action('alias','Добавить обозначение…',()=>this.editAlias(id)),action('usage','Окружение и происхождение…',()=>this.inspect(id)),action('remove-node','Убрать поле из миниграфа…',()=>this.removeField(id)),...common]:kind==='edge'?[action('edit-edge','Ребро и его контекст…',()=>this.openDraftEdge(id)),action('route-add','＋ В выбранный маршрут',()=>{if(!this.route.includes(id))this.route.push(id);this.render();}),action('context','Контекст отсюда →',()=>this.startPick('context',id)),action('route-confirm','Подтвердить выбранный маршрут…',()=>this.confirmRoute(),!this.route.length),action('remove-edge','Убрать ребро из миниграфа…',()=>this.removeDraftEdge(id)),action('routes','Все маршруты и контекст…',()=>this.openRoutes()),action('objects','Поля и рёбра по ID…',()=>this.openObjects())]:[...common,action('route-confirm','Подтвердить выбранный маршрут…',()=>this.confirmRoute(),!this.route.length),action('fit','Вписать миниграф',()=>this.graph?.fit())];
+    this.ctx.menu.open(event,kind==='node'?this.name(id):kind==='edge'?this.edgeName(id):kind==='context'?'Контекст '+id:'Миниграф',actions);
   },
   openDefinition() {
     this.capture();const d=this.draft,h=v=>this.h(v),source=d.source;
@@ -55,8 +55,9 @@ Object.assign(DefinitionBuilder.prototype,{
   },
   openObjects() {
     const h=v=>this.h(v),d=this.draft;
-    this.ctx.dialog('Поля и рёбра миниграфа',`<p>Объекты можно выбрать по ID, даже если они перекрываются на полотне.${this.interaction?' Выберите конечный объект текущей операции.':''}</p><h3>Поля (${d.nodes.length})</h3>${d.nodes.map(n=>`<button type="button" class="object-choice" data-object-node="${h(n.id)}">${h(this.name(n.id))}<code>${h(n.id)}</code></button>`).join('')}<h3>Обычные рёбра (${d.edges.length})</h3>${d.edges.map(e=>`<button type="button" class="object-choice" data-object-edge="${h(e.id)}">${h(this.edgeName(e.id))}</button>`).join('')}`);
+    this.ctx.dialog('Поля и рёбра миниграфа',`<p>Объекты можно выбрать по ID, даже если они перекрываются на полотне.${this.interaction?' Выберите конечный объект текущей операции.':''}</p><h3>Поля (${d.nodes.length})</h3>${d.nodes.map(n=>`<button type="button" class="object-choice" data-object-node="${h(n.id)}">${h(this.name(n.id))}<code>${h(n.id)}</code></button>`).join('')}<h3>Обычные рёбра (${d.edges.length})</h3>${d.edges.map(e=>`<button type="button" class="object-choice" data-object-edge="${h(e.id)}">${h(this.edgeName(e.id))}</button>`).join('')}<h3>Контекстные связи (${d.contextEdges.length})</h3>${d.contextEdges.map(c=>`<button type="button" class="object-choice" data-object-context="${h(c.id)}">${h(c.from)} → ${h(c.to)}<code>${h(c.id)}</code></button>`).join('')}`);
     document.querySelectorAll('[data-object-node]').forEach(b=>b.onclick=()=>{const id=b.dataset.objectNode;if(this.interaction){this.ctx.closeDialog();this.pickObject('node',id);}else this.openNode(id);});
+    document.querySelectorAll('[data-object-context]').forEach(b=>b.onclick=()=>this.interaction?this.ctx.toast('Выберите обычное ребро или поле.'):this.openContext(b.dataset.objectContext));
     document.querySelectorAll('[data-object-edge]').forEach(b=>b.onclick=()=>{const id=b.dataset.objectEdge;if(this.interaction){this.ctx.closeDialog();this.pickObject('edge',id);}else this.openDraftEdge(id);});
   },
   openNode(id,options={}) {
@@ -79,6 +80,12 @@ Object.assign(DefinitionBuilder.prototype,{
   bindContexts(reopen) {
     const form=document.querySelector('#modal-form');form.querySelectorAll('[data-def-context-remove]').forEach(b=>b.onclick=this.act(async()=>{this.draft.contextEdges=this.draft.contextEdges.filter(c=>c.id!==b.dataset.defContextRemove);await this.save();reopen();}));
     form.querySelectorAll('[data-def-context-reverse]').forEach(b=>b.onclick=this.act(async()=>{const c=this.draft.contextEdges.find(c=>c.id===b.dataset.defContextReverse);if(this.draft.contextEdges.some(v=>v.from===c.to&&v.to===c.from))throw Error('Обратная пара уже записана.');[c.from,c.to]=[c.to,c.from];await this.save();reopen();}));
+  },
+  openContext(id) {
+    const c=this.draft.contextEdges.find(v=>v.id===id),h=v=>this.h(v);if(!c)return;
+    this.selectedObject={kind:'context',id};
+    this.ctx.dialog('Направленная контекстная связь',`<p><code>${h(c.id)}</code></p><p>${h(this.edgeName(c.from))}<br>→ ${h(this.edgeName(c.to))}</p><p>Связывает ID двух обычных рёбер. Изменения общего графа требуют просмотра и включения.</p><div class="actions"><button type="button" data-def-context-reverse="${h(c.id)}">Развернуть</button><button type="button" data-def-context-remove="${h(c.id)}">Удалить</button></div>`);
+    this.bindContexts(()=>this.draft.contextEdges.some(v=>v.id===id)?this.openContext(id):this.openRoutes());
   },
   openDraftEdge(id) {
     const e=this.draft.edges.find(e=>e.id===id),h=v=>this.h(v);if(!e)return;

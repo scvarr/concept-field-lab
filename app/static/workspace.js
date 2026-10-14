@@ -1,7 +1,7 @@
 'use strict';
 // The existing constructor and SVG view operate on one canonical graph.
 const $=s=>document.querySelector(s),h=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let state,revision,token,busy=false,selected,selectedEdge,graph,definitionUI,toastTimer,view='builder';
+let state,revision,token,busy=false,selected,selectedEdge,selectedContext,graph,definitionUI,toastTimer,view='builder';
 const canvasMenu=new CanvasMenu();
 let ui={};try{ui=JSON.parse(localStorage.getItem('concept-field-permanent-ui')||'{}');}catch{}
 function saveUI(){try{localStorage.setItem('concept-field-permanent-ui',JSON.stringify(ui));}catch{}}
@@ -15,7 +15,7 @@ function closeDialog(){definitionUI?.capture();$('#dialog').close();canvasMenu.c
 function dialog(title,content,submit,button='Сохранить'){
   definitionUI?.capture();canvasMenu.close(false);
   $('#dialog-body').innerHTML=`<h2>${h(title)}</h2><form id="modal-form">${content}<div class="dialog-actions"><button id="modal-cancel" type="button">Отмена</button>${submit?`<button type="submit" class="primary">${h(button)}</button>`:'<button id="modal-close" type="button">Закрыть</button>'}</div></form>`;
-  const dlg=$('#dialog');if(!dlg.open)dlg.showModal();$('#modal-cancel').onclick=closeDialog;if($('#modal-close'))$('#modal-close').onclick=closeDialog;$('#modal-form').onsubmit=run(async e=>{e.preventDefault();if(await submit(new FormData(e.target))!==false)dlg.close();});
+  const dlg=$('#dialog');if(!dlg.open)dlg.showModal();$('#modal-cancel').onclick=closeDialog;if($('#modal-close'))$('#modal-close').onclick=closeDialog;$('#modal-form').onsubmit=run(async e=>{e.preventDefault();if(submit&&await submit(new FormData(e.target))!==false)dlg.close();});
 }
 async function download(url,filename){const r=await fetch(url);if(!r.ok)throw Error((await r.json()).error);const a=document.createElement('a');a.href=URL.createObjectURL(await r.blob());a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500);}
 function render(){if(view==='builder')definitionUI.render();else renderGraph();$('#global-count').textContent=`${state.nodes.length} концептов · ${state.edges.length} обычных рёбер · ${state.contextEdges.length} контекстных`;}
@@ -27,6 +27,8 @@ function showView(next){
 }
 function renderGraph(){
   if(!state.nodes.some(n=>n.id===selected))selected=state.nodes[0]?.id;
+  if(!state.edges.some(e=>e.id===selectedEdge))selectedEdge=null;
+  if(!state.contextEdges.some(c=>c.id===selectedContext))selectedContext=null;
   const q=$('#graph-search').value.trim().toLocaleLowerCase('ru').replaceAll('ё','е');
   const rows=state.nodes.filter(n=>`${name(n.id)} ${n.id}`.toLocaleLowerCase('ru').replaceAll('ё','е').includes(q));
   $('#graph-results').innerHTML=q?`<small>${rows.length} совпадений · показано до 40</small>${rows.slice(0,40).map(n=>`<button data-global-node="${h(n.id)}">${h(name(n.id))}<code>${h(n.id)}</code><small>Позиция ${n.x}, ${n.y} · ${state.edges.filter(e=>e.from===n.id||e.to===n.id).length} связей</small></button>`).join('')}`:'';
@@ -35,28 +37,37 @@ function renderGraph(){
   if($('#graph-mode').value==='neighbourhood'&&selected){const seen=new Set([selected]);let front=[selected];const depth=Math.max(0,Math.min(10,Number($('#graph-depth').value)||0));for(let i=0;i<depth;i++){const next=[];for(const e of state.edges)if(front.includes(e.from)||front.includes(e.to))for(const id of [e.from,e.to])if(!seen.has(id)){seen.add(id);next.push(id);}front=next;}candidates=state.nodes.filter(n=>seen.has(n.id));}
   let nodes=candidates.slice(0,1000);if(selected&&!nodes.some(n=>n.id===selected)){nodes=nodes.slice(0,999);nodes.push(state.nodes.find(n=>n.id===selected));}
   const ids=new Set(nodes.map(n=>n.id)),edges=state.edges.filter(e=>ids.has(e.from)&&ids.has(e.to));
-  if(nodes.length){if(!graph){graph=new GraphView($('#permanent-graph'),{select:id=>select(id),editNode:id=>openNode(id),editEdge:id=>openEdge(id),contextMenu:(kind,id,e)=>globalMenu(kind,id,e),canInteract:()=>!busy,savePosition:(id,p)=>mutate('position',{nodeId:id,...p}),error:e=>toast(e.message,true),changed:snapshot=>{ui.graph=snapshot;saveUI();}});if(ui.graph)graph.restore(ui.graph);}
-    graph.update({id:'permanent',title:'Постоянный граф',rootId:selected},{nodes:nodes.map(n=>({...n,label:$('#graph-ids').checked?n.id:name(n.id)})),edges:edges.slice(0,3000).map(e=>({...e,displayTitle:edgeName(e)}))},selected);
+  if(nodes.length){if(!graph){graph=new GraphView($('#permanent-graph'),{select:id=>select(id),editNode:id=>openNode(id),editEdge:id=>openEdge(id),editContext:id=>openContext(id),contextMenu:(kind,id,e)=>globalMenu(kind,id,e),canInteract:()=>!busy,savePosition:(id,p)=>mutate('position',{nodeId:id,...p}),error:e=>toast(e.message,true),changed:snapshot=>{ui.graph=snapshot;saveUI();}});if(ui.graph)graph.restore(ui.graph);}
+    graph.update({id:'permanent',title:'Постоянный граф',rootId:selected},{nodes:nodes.map(n=>({...n,label:$('#graph-ids').checked?n.id:name(n.id)})),edges:edges.slice(0,3000).map(e=>({...e,displayTitle:edgeName(e)})),contextEdges:state.contextEdges},selected);
   }else{$('#permanent-graph').textContent='Граф пуст. Выберите определение в конструкторе и подтвердите включение.';graph?.observer.disconnect();graph=null;}
   $('#graph-caption').textContent=`Показано ${nodes.length} из ${candidates.length} концептов, ${Math.min(edges.length,3000)} из ${edges.length} рёбер. Окружение показывает связность общего графа; допустимые маршруты задаются контекстом.`;
 }
-function select(id,center=false){selected=id;selectedEdge=null;renderGraph();if(center)graph?.center(id);}
+function select(id,center=false){selected=id;selectedEdge=null;selectedContext=null;renderGraph();if(center)graph?.center(id);}
 async function reuseNode(id){closeDialog();showView('builder');await definitionUI.addExisting(id);}
-function neighbours(id){closeDialog();selected=id;selectedEdge=null;$('#graph-mode').value='neighbourhood';renderGraph();graph?.fit();}
+function neighbours(id){closeDialog();selected=id;selectedEdge=null;selectedContext=null;$('#graph-mode').value='neighbourhood';renderGraph();graph?.fit();}
 async function editDefinition(id){
   definitionUI.capture();if(definitionUI.changed)await definitionUI.save();
   const draft=state.definitionDrafts.find(d=>d.id===id);if(!draft)throw Error('Черновик происхождения не найден.');
   closeDialog();definitionUI.draft=structuredClone(draft);definitionUI.route=[];definitionUI.interaction=null;definitionUI.selectedObject=null;ui.definitionDraft=id;showView('builder');
 }
-function openNode(id){selected=id;selectedEdge=null;definitionUI.openNode(id,{global:true,reuse:reuseNode,neighbours,editDefinition});}
+function openNode(id){selected=id;selectedEdge=null;selectedContext=null;definitionUI.openNode(id,{global:true,reuse:reuseNode,neighbours,editDefinition});}
 function globalMenu(kind,id,event){
   if(busy)return;
-  if(kind==='node'){selected=id;selectedEdge=null;}else if(kind==='edge')selectedEdge=id;
+  if(kind==='node'){selected=id;selectedEdge=null;selectedContext=null;}else if(kind==='edge'){selectedEdge=id;selectedContext=null;}else if(kind==='context'){selectedContext=id;selectedEdge=null;}
   const action=(id,label,fn)=>({id,label,run:run(fn)});
-  const actions=kind==='node'?[action('edit-node','Обозначения и свойства…',()=>openNode(id)),action('reuse','Использовать ID в миниграфе',()=>reuseNode(id)),action('neighbours','Открыть окружение',()=>neighbours(id)),action('edit-definition','Редактировать в конструкторе…',()=>editDefinition(state.nodes.find(n=>n.id===id).definitionId))]:kind==='edge'?[action('inspect-edge','Ребро и его контекст…',()=>openEdge(id)),action('edit-definition','Редактировать в конструкторе…',()=>editDefinition(state.edges.find(e=>e.id===id).definitionId))]:[action('builder','Открыть конструктор',()=>showView('builder')),action('all','Показать весь граф',()=>{$('#graph-mode').value='all';renderGraph();graph?.fit();}),action('fit','Вписать граф',()=>graph?.fit())];
-  canvasMenu.open(event,kind==='node'?name(id):kind==='edge'?edgeName(state.edges.find(e=>e.id===id)):'Постоянный граф',actions);
+  const actions=kind==='context'?[action('inspect-context','Контекстная связь…',()=>openContext(id)),action('edit-definition','Редактировать в конструкторе…',()=>editDefinition(state.contextEdges.find(c=>c.id===id).definitionId))]:kind==='node'?[action('edit-node','Обозначения и свойства…',()=>openNode(id)),action('reuse','Использовать ID в миниграфе',()=>reuseNode(id)),action('neighbours','Открыть окружение',()=>neighbours(id)),action('edit-definition','Редактировать в конструкторе…',()=>editDefinition(state.nodes.find(n=>n.id===id).definitionId))]:kind==='edge'?[action('inspect-edge','Ребро и его контекст…',()=>openEdge(id)),action('edit-definition','Редактировать в конструкторе…',()=>editDefinition(state.edges.find(e=>e.id===id).definitionId))]:[action('builder','Открыть конструктор',()=>showView('builder')),action('all','Показать весь граф',()=>{$('#graph-mode').value='all';renderGraph();graph?.fit();}),action('fit','Вписать граф',()=>graph?.fit())];
+  actions.push(action('contexts','Контекстные связи по ID…',()=>openContexts()));
+  canvasMenu.open(event,kind==='node'?name(id):kind==='edge'?edgeName(state.edges.find(e=>e.id===id)):kind==='context'?'Контекст '+id:'Постоянный граф',actions);
 }
-function openEdge(id){selectedEdge=id;const edge=state.edges.find(e=>e.id===id);if(!edge)return;const contexts=state.contextEdges.filter(c=>c.from===id||c.to===id);dialog('Обычное ребро и контекст',`<p>${h(edgeName(edge))}</p><p>Направление ${h(edge.from)} → ${h(edge.to)}</p><h3>Контекстные связи</h3>${contexts.map(c=>`<p><code>${h(c.id)}</code><br>${h(c.from)} → ${h(c.to)}</p>`).join('')||'<p>Нет контекстных пар.</p>'}<details><summary>Происхождение</summary><pre>${h(JSON.stringify(edge.origins,null,2))}</pre></details><button type="button" id="edge-origin">Редактировать в конструкторе</button>`);$('#edge-origin').onclick=run(()=>editDefinition(edge.definitionId));}
+function openContexts(){
+  dialog('Контекстные связи постоянного графа',`<p>Все пары доступны независимо от фильтра и геометрии полотна. Поиск: контекстный ID или ID обычного ребра.</p><input id="global-context-search" type="search" aria-label="Поиск контекстных связей" placeholder="ID контекста или обычного ребра"><div id="global-context-results"></div>`);
+  const draw=()=>{const q=$('#global-context-search').value.trim().toLowerCase(),rows=state.contextEdges.filter(c=>`${c.id} ${c.from} ${c.to}`.toLowerCase().includes(q));$('#global-context-results').innerHTML=`<p>${rows.length} пар · показано до 800</p>${rows.slice(0,800).map(c=>`<button type="button" class="object-choice" data-global-context="${h(c.id)}">${h(edgeName(state.edges.find(e=>e.id===c.from)))}<br>→ ${h(edgeName(state.edges.find(e=>e.id===c.to)))}<code>${h(c.id)}</code></button>`).join('')}`;$('#global-context-results').querySelectorAll('[data-global-context]').forEach(b=>b.onclick=()=>openContext(b.dataset.globalContext));};$('#global-context-search').oninput=draw;draw();
+}
+function openEdge(id){selectedContext=null;selectedEdge=id;const edge=state.edges.find(e=>e.id===id);if(!edge)return;const contexts=state.contextEdges.filter(c=>c.from===id||c.to===id);dialog('Обычное ребро и контекст',`<p>${h(edgeName(edge))}</p><p>Направление ${h(edge.from)} → ${h(edge.to)}</p><h3>Контекстные связи</h3>${contexts.map(c=>`<p><code>${h(c.id)}</code><br>${h(c.from)} → ${h(c.to)}</p>`).join('')||'<p>Нет контекстных пар.</p>'}<details><summary>Происхождение</summary><pre>${h(JSON.stringify(edge.origins,null,2))}</pre></details><button type="button" id="edge-origin">Редактировать в конструкторе</button>`);$('#edge-origin').onclick=run(()=>editDefinition(edge.definitionId));}
+function openContext(id){
+  const c=state.contextEdges.find(v=>v.id===id);if(!c)return;selectedContext=id;selectedEdge=null;
+  dialog('Направленная контекстная связь',`<p><code>${h(c.id)}</code></p><p>${h(edgeName(state.edges.find(e=>e.id===c.from)))}<br>→ ${h(edgeName(state.edges.find(e=>e.id===c.to)))}</p><p>Контекст соединяет обычные рёбра, а не концепты.</p><button type="button" id="context-origin">Редактировать в конструкторе</button>`);$('#context-origin').onclick=run(()=>editDefinition(c.definitionId));
+}
 async function tools(){
   definitionUI.capture();if(definitionUI.changed)await definitionUI.save();const diagnostics=await api('/api/diagnostics'),rows=await api('/api/history');
   dialog('Данные, история и диагностика',`<button type="button" id="global-export">Экспорт графа и резервная копия JSON ↓</button><label>Импорт постоянного графа<input id="global-import-file" type="file" accept=".json,application/json"></label><button type="button" id="global-import-preview">Просмотреть импорт</button><p>Импорт сохраняет ID, добавляет отсутствующие объекты и отклоняет конфликты. Исторические документы открываются отдельно.</p>${diagnostics.legacyBackup?'<p id="transition-notice">Историческая база сохранена и проверена. Новый граф создан отдельно от прежних данных.</p><button type="button" id="legacy-download">Скачать проверенную старую SQLite ↓</button>':''}<details><summary>Диагностика и сохранность истории</summary><pre>${h(JSON.stringify(diagnostics,null,2))}</pre></details><details><summary>История постоянного графа (${rows.length})</summary>${rows.slice(0,80).map(r=>`<p>#${r.id} · ${h(r.time)} · ${h(r.action)}<br>${h(r.detail)} <button type="button" data-global-restore="${r.id}">Восстановить версию</button></p>`).join('')}</details>`);
@@ -65,7 +76,7 @@ async function tools(){
   document.querySelectorAll('[data-global-restore]').forEach(b=>b.onclick=()=>{const targetRevision=Number(b.dataset.globalRestore);dialog('Восстановление всего постоянного графа',`<p>Текущие ${state.nodes.length} узлов / ${state.edges.length} рёбер будут заменены сохранённой версией #${targetRevision}. Более поздняя история сохранится.</p><label class="checkbox"><input name="confirmed" type="checkbox" required>Подтверждаю восстановление всего графа</label>`,f=>mutate('restore',{targetRevision,confirmed:f.has('confirmed')}),'Восстановить');});
 }
 definitionUI=new DefinitionBuilder({permanent:true,state:()=>state,study:()=>({...state,id:'permanent',title:'Постоянный граф'}),ui:()=>ui,saveUI,busy:()=>busy,api,mutate,toast,run,dialog,download,closeDialog,menu:canvasMenu});
-$('#graph-actions').onclick=e=>globalMenu(selectedEdge?'edge':selected?'node':'canvas',selectedEdge||selected,e);$('#permanent-graph').oncontextmenu=e=>{if(e.target.closest('svg'))return;e.preventDefault();globalMenu('canvas',null,e);};$('#workspace-tools').onclick=run(tools);$('#graph-search').oninput=renderGraph;$('#graph-mode').onchange=renderGraph;$('#graph-depth').onchange=renderGraph;$('#graph-ids').onchange=renderGraph;$('#graph-fit').onclick=()=>graph?.fit();$('#go-builder').onclick=()=>showView('builder');$('#go-graph').onclick=()=>showView('graph');
+$('#graph-actions').onclick=e=>globalMenu(selectedContext?'context':selectedEdge?'edge':selected?'node':'canvas',selectedContext||selectedEdge||selected,e);$('#permanent-graph').oncontextmenu=e=>{if(e.target.closest('svg'))return;e.preventDefault();globalMenu('canvas',null,e);};$('#workspace-tools').onclick=run(tools);$('#graph-search').oninput=renderGraph;$('#graph-mode').onchange=renderGraph;$('#graph-depth').onchange=renderGraph;$('#graph-ids').onchange=renderGraph;$('#graph-fit').onclick=()=>graph?.fit();$('#go-builder').onclick=()=>showView('builder');$('#go-graph').onclick=()=>showView('graph');
 window.addEventListener('keydown',e=>{if(e.key==='Escape'&&view==='builder'&&definitionUI.interaction){definitionUI.interaction=null;definitionUI.render();}});
 $('#dialog').addEventListener('cancel',()=>definitionUI.capture());
 window.addEventListener('beforeunload',e=>{if(definitionUI.changed){e.preventDefault();e.returnValue='';}});

@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-14T09:30:58.701Z",
+  "node": "v24.19.0",
+  "scope": "Display and manual editing only; no semantic claim",
+  "checks": [],
+  "geometry": [],
+  "errors": [],
+  "browser": "155.0.8059.40",
+  "failure": "locator.evaluate: Error: No visible hit segment for be327d2f-80a6-4f7c-aa75-f3e861efd1ae\n    at eval (eval at evaluate (:290:30), <anonymous>:1:303)\n    at UtilityScript.evaluate (<anonymous>:292:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)\n    at menu (E:\\Projects\\concept-field-lab\\tests\\canvas-browser-helpers.cjs:8:84)\n    at Object.routeAdd (E:\\Projects\\concept-field-lab\\tests\\canvas-browser-helpers.cjs:19:35)\n    at E:\\Projects\\concept-field-lab\\tests\\context-browser.cjs:30:47"
+}

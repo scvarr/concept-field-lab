@@ -1,0 +1,225 @@
+{
+  "result": "passed",
+  "python": "3.13.2",
+  "sqlite": "3.45.3",
+  "baseCheckpoint": "048c8ca1ce400371f7d1d091bd408003e6d33a6f",
+  "checks": [
+    {
+      "name": "Eight browser groups and no page/UI error toasts",
+      "passed": true
+    },
+    {
+      "name": "Exact import state and complete archived history",
+      "passed": true
+    },
+    {
+      "name": "Canonical five nodes/four edges/three contexts",
+      "passed": true
+    },
+    {
+      "name": "Explicit reversal and no unconfirmed cross-branch pair",
+      "passed": true
+    },
+    {
+      "name": "Only identity/provenance stored for context, not SVG geometry",
+      "passed": true
+    },
+    {
+      "name": "Valid full journal ends in exported state",
+      "passed": true
+    },
+    {
+      "name": "Saved SVG sample 0 attaches to edge IDs, is orthogonal and avoids all nodes",
+      "passed": true
+    },
+    {
+      "name": "Saved SVG sample 1 attaches to edge IDs, is orthogonal and avoids all nodes",
+      "passed": true
+    },
+    {
+      "name": "Saved SVG sample 2 attaches to edge IDs, is orthogonal and avoids all nodes",
+      "passed": true
+    },
+    {
+      "name": "Saved SVG sample 3 attaches to edge IDs, is orthogonal and avoids all nodes",
+      "passed": true
+    },
+    {
+      "name": "Saved SVG sample 4 attaches to edge IDs, is orthogonal and avoids all nodes",
+      "passed": true
+    },
+    {
+      "name": "Saved SVG sample 5 attaches to edge IDs, is orthogonal and avoids all nodes",
+      "passed": true
+    },
+    {
+      "name": "Saved SVG sample 6 attaches to edge IDs, is orthogonal and avoids all nodes",
+      "passed": true
+    },
+    {
+      "name": "Saved SVG sample 7 attaches to edge IDs, is orthogonal and avoids all nodes",
+      "passed": true
+    },
+    {
+      "name": "Saved SVG sample 8 attaches to edge IDs, is orthogonal and avoids all nodes",
+      "passed": true
+    },
+    {
+      "name": "Saved SVG sample 9 attaches to edge IDs, is orthogonal and avoids all nodes",
+      "passed": true
+    },
+    {
+      "name": "Saved SVG sample 10 attaches to edge IDs, is orthogonal and avoids all nodes",
+      "passed": true
+    },
+    {
+      "name": "Saved SVG sample 11 attaches to edge IDs, is orthogonal and avoids all nodes",
+      "passed": true
+    },
+    {
+      "name": "Saved SVG sample 12 attaches to edge IDs, is orthogonal and avoids all nodes",
+      "passed": true
+    },
+    {
+      "name": "Saved SVG sample 13 attaches to edge IDs, is orthogonal and avoids all nodes",
+      "passed": true
+    },
+    {
+      "name": "Covered ports explicitly counted, not replaced by intersecting lines",
+      "passed": true
+    },
+    {
+      "name": "Maximum draft probe accounted for all 800 contexts within finite time",
+      "passed": true
+    },
+    {
+      "name": "Regression regression-canvas.json",
+      "passed": true
+    },
+    {
+      "name": "Regression regression-legacy.json",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object app/builder.py",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object app/permanent.py",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object app/store.py",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object app/designations.py",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object app/dictionary.py",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object app/definitions.py",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object app/server.py",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object data/dictionary/lemmas.json",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object data/experiments/stone/stone.json",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object data/experiments/transfer/transfer.json",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object data/experiments/nut/nut-revised.json",
+      "passed": true
+    }
+  ],
+  "files": [
+    {
+      "name": "builder-routed.png",
+      "bytes": 44993,
+      "sha256": "bfd1ad5531a9abb1a15587595c5b2825d5c94b3ce8986fadaac33b4fa36ff7ff"
+    },
+    {
+      "name": "context-2385.png",
+      "bytes": 56780,
+      "sha256": "809aa68fee7b3095764a3201f01d62c9e817a032e9f4709ca5ddec7e5c3601aa"
+    },
+    {
+      "name": "context-360.png",
+      "bytes": 28440,
+      "sha256": "57307c09c9121597ad056f9631f0991a8bda6e63bd6f5a353bf18ef856b3f561"
+    },
+    {
+      "name": "context-600.png",
+      "bytes": 38520,
+      "sha256": "cf6bcebd7918ac480038af11474fcd2b79482637859057f69c6762ca7728d709"
+    },
+    {
+      "name": "negative-attempts.json",
+      "bytes": 1694,
+      "sha256": "13136b2308cb0566ed510f2f04cf40587eaaf544550b8a352d3d12b253bb6b0b"
+    },
+    {
+      "name": "negative-collinear-branch.json",
+      "bytes": 739,
+      "sha256": "510b8f4f3c4c3f26289aa882bb750449f860f3d89c3066edd9d5c922828d88f9"
+    },
+    {
+      "name": "negative-form-submit.png",
+      "bytes": 48436,
+      "sha256": "caba0f5a3604684c4079ccd977060b4858c9f466ca3b51e270497d37b054d41e"
+    },
+    {
+      "name": "permanent-routed.png",
+      "bytes": 46181,
+      "sha256": "8c1daba538c2e2959e181589275797c4049b33f1525361c122d408105a8a431b"
+    },
+    {
+      "name": "permanent.json",
+      "bytes": 29389,
+      "sha256": "e614ad0e392ad9c09d55db2cc9ca9fabbe5a0c41ac39021e1d8a9c01c0298ff3"
+    },
+    {
+      "name": "python-tests.txt",
+      "bytes": 11443,
+      "sha256": "66b354c52a0b70b8019e097b1db6549066021e90af7c5d790b57a1c141e0e84e"
+    },
+    {
+      "name": "reexport.json",
+      "bytes": 85742,
+      "sha256": "c13cce08f958c40d302ae9e52059fe64285528c9d3068de3f8a1e4670dd7259a"
+    },
+    {
+      "name": "regression-canvas.json",
+      "bytes": 2863,
+      "sha256": "9a03ce4fd8f04446bd79111ec7f4e36c01560ff132132341746a3b158e46728f"
+    },
+    {
+      "name": "regression-legacy.json",
+      "bytes": 1539,
+      "sha256": "182e973ac6b5ae4603c2f7833d7e9178a579e5484b876af3de1974ae7fc27028"
+    },
+    {
+      "name": "report.json",
+      "bytes": 42229,
+      "sha256": "7e0ee3f528f390e429ca8e731d70ff00a5b85cf4594a19d93c9ad2d79bb5bda7"
+    },
+    {
+      "name": "unit-tests.txt",
+      "bytes": 1857,
+      "sha256": "8b26e9fa3f916e89d22c9e4351dea7159cbac0353e4ffcc24dcd339eeb5d55c7"
+    }
+  ]
+}

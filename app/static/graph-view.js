@@ -3,13 +3,59 @@
 // Geometry is independent of application state, persistence and the rendering surface.
 const GraphGeometry = {
   edge(a,b,index=0) {
-    if(a===b){const spread=Math.max(0,index-1)*24;return {d:`M ${a.x+65} ${a.y-8} C ${a.x+155+spread} ${a.y-105-spread}, ${a.x-65-spread} ${a.y-110-spread}, ${a.x-35} ${a.y-30}`,x:a.x+40,y:a.y-70-spread};}
+    if(a===b){const spread=Math.max(0,index-1)*24;return {d:`M ${a.x+65} ${a.y-8} C ${a.x+155+spread} ${a.y-105-spread}, ${a.x-65-spread} ${a.y-110-spread}, ${a.x-35} ${a.y-30}`,x:a.x+40,y:a.y-70-spread,points:[{x:a.x+65,y:a.y-8},{x:a.x+155+spread,y:a.y-105-spread},{x:a.x-65-spread,y:a.y-110-spread},{x:a.x-35,y:a.y-30}]};}
     const dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy)||1,offset=index===1?0:index===0?-12:(index%2===0?index/2:-(index-1)/2)*22;
     const x=(a.x+b.x)/2-dy/len*offset,y=(a.y+b.y)/2+dx/len*offset;
     // Intersect the ray with the rectangular node boundary (80 by 28 half-size).
     const t=Math.min(dx?80/Math.abs(dx):Infinity,dy?28/Math.abs(dy):Infinity);
     const pad=Number.isFinite(t)?t:0;
-    return {d:`M ${a.x+dx*pad} ${a.y+dy*pad} Q ${x} ${y} ${b.x-dx*pad} ${b.y-dy*pad}`,x,y:y-7};
+    return {d:`M ${a.x+dx*pad} ${a.y+dy*pad} Q ${x} ${y} ${b.x-dx*pad} ${b.y-dy*pad}`,x,y:y-7,points:[{x:a.x+dx*pad,y:a.y+dy*pad},{x,y},{x:b.x-dx*pad,y:b.y-dy*pad}]};
+  },
+  sample(edge,t) {
+    let points=edge.points.map(p=>({...p}));
+    while(points.length>1)points=points.slice(1).map((p,i)=>({x:points[i].x*(1-t)+p.x*t,y:points[i].y*(1-t)+p.y*t}));
+    return points[0];
+  },
+  obstacles(positions){return positions.map(p=>({left:p.x-90,right:p.x+90,top:p.y-38,bottom:p.y+38}));},
+  inside(p,r){return p.x>r.left&&p.x<r.right&&p.y>r.top&&p.y<r.bottom;},
+  segmentClear(a,b,rects) {
+    if(a.x!==b.x&&a.y!==b.y)return false;
+    return !rects.some(r=>a.x===b.x?a.x>r.left&&a.x<r.right&&Math.max(a.y,b.y)>r.top&&Math.min(a.y,b.y)<r.bottom:a.y>r.top&&a.y<r.bottom&&Math.max(a.x,b.x)>r.left&&Math.min(a.x,b.x)<r.right);
+  },
+  anchor(edge,rects,offset=0) {
+    // Anchors belong to the actual Bezier curve, never to its label or a node.
+    const fractions=[.5,.35,.65,.2,.8,.1,.9,.05,.95];
+    for(let i=0;i<fractions.length;i++){const p=this.sample(edge,fractions[(i+offset)%fractions.length]);if(!rects.some(r=>this.inside(p,r)))return p;}
+    return null;
+  },
+  orthogonal(start,end,rects) {
+    if(!start||!end||rects.some(r=>this.inside(start,r)||this.inside(end,r)))return null;
+    if(start.x===end.x&&start.y===end.y)return null;
+    const simplify=points=>points.filter((p,i)=>!i||p.x!==points[i-1].x||p.y!==points[i-1].y).filter((p,i,a)=>!i||i===a.length-1||!((a[i-1].x===p.x&&p.x===a[i+1].x)||(a[i-1].y===p.y&&p.y===a[i+1].y)));
+    const clear=points=>points.slice(1).every((p,i)=>this.segmentClear(points[i],p,rects));
+    const length=points=>points.slice(1).reduce((sum,p,i)=>sum+Math.abs(p.x-points[i].x)+Math.abs(p.y-points[i].y),0);
+    const xs=[...new Set([start.x,end.x,...rects.flatMap(r=>[r.left,r.right])])].sort((a,b)=>a-b),ys=[...new Set([start.y,end.y,...rects.flatMap(r=>[r.top,r.bottom])])].sort((a,b)=>a-b);
+    // Most manual graphs need only one or two turns. Try inexpensive routes first.
+    const rails=(values,a,b)=>{const nearest=values.slice().sort((x,y)=>Math.abs(x-a)+Math.abs(x-b)-Math.abs(y-a)-Math.abs(y-b));return [...new Set([...nearest.slice(0,32),values[0],values.at(-1)])];};
+    const candidates=[[start,{x:end.x,y:start.y},end],[start,{x:start.x,y:end.y},end],...rails(xs,start.x,end.x).map(x=>[start,{x,y:start.y},{x,y:end.y},end]),...rails(ys,start.y,end.y).map(y=>[start,{x:start.x,y},{x:end.x,y},end])];
+    candidates.sort((a,b)=>length(a)-length(b));
+    for(const points of candidates)if(clear(points))return simplify(points);
+    // Finite fallback for alternating obstacles: A* on their coordinate grid.
+    // A failed/budget-limited route is reported; no line through nodes is substituted.
+    const nx=xs.length,ny=ys.length,count=nx*ny;if(count>40000)return null;
+    const horizontal=new Uint8Array(count),vertical=new Uint8Array(count);
+    const xi=new Map(xs.map((x,i)=>[x,i])),yi=new Map(ys.map((y,i)=>[y,i]));
+    for(const r of rects){const l=xi.get(r.left),rr=xi.get(r.right),t=yi.get(r.top),b=yi.get(r.bottom);for(let y=t;y<=b;y++)for(let x=l;x<=rr;x++){const id=y*nx+x;if(y>t&&y<b&&x<rr)horizontal[id]=1;if(x>l&&x<rr&&y<b)vertical[id]=1;}}
+    const first=yi.get(start.y)*nx+xi.get(start.x),last=yi.get(end.y)*nx+xi.get(end.x),distance=new Float64Array(count).fill(Infinity),parent=new Int32Array(count).fill(-1),heap=[];
+    const heuristic=id=>Math.abs(xs[id%nx]-end.x)+Math.abs(ys[Math.floor(id/nx)]-end.y);
+    const push=(id,g)=>{const entry={id,g,f:g+heuristic(id)};let i=heap.length;heap.push(entry);while(i){const p=(i-1)>>1;if(heap[p].f<=entry.f)break;heap[i]=heap[p];i=p;}heap[i]=entry;};
+    const pop=()=>{const result=heap[0],end=heap.pop();if(heap.length){let i=0;while(i*2+1<heap.length){let c=i*2+1;if(c+1<heap.length&&heap[c+1].f<heap[c].f)c++;if(heap[c].f>=end.f)break;heap[i]=heap[c];i=c;}heap[i]=end;}return result;};
+    distance[first]=0;push(first,0);
+    while(heap.length){const {id,g}=pop();if(g!==distance[id])continue;if(id===last){const points=[];for(let v=id;v!==-1;v=parent[v])points.push({x:xs[v%nx],y:ys[Math.floor(v/nx)]});return simplify(points.reverse());}const x=id%nx,y=Math.floor(id/nx),next=[];
+      if(x+1<nx&&!horizontal[id])next.push(id+1);if(x&&!horizontal[id-1])next.push(id-1);if(y+1<ny&&!vertical[id])next.push(id+nx);if(y&&!vertical[id-nx])next.push(id-nx);
+      for(const v of next){const cost=g+Math.abs(xs[v%nx]-xs[x])+Math.abs(ys[Math.floor(v/nx)]-ys[y]);if(cost<distance[v]){distance[v]=cost;parent[v]=id;push(v,cost);}}
+    }
+    return null;
   },
   zoom(camera,factor,anchor,width,height,minScale=.03) {
     const scale=Math.max(minScale,Math.min(4,camera.scale*factor)),ratio=camera.scale/scale;
@@ -28,11 +74,12 @@ if(typeof window!=='undefined') {
   const svgElement=(tag,attrs={},text)=>{const e=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))e.setAttribute(k,v);if(text!==undefined)e.textContent=text;return e;};
   window.GraphView=class {
     constructor(host,options) {
-      this.host=host;this.options=options;this.nodes=new Map();this.edges=new Map();this.incident=new Map();this.positions=new Map();this.camera=null;this.frames=[];
+      this.host=host;this.options=options;this.nodes=new Map();this.edges=new Map();this.contexts=new Map();this.incident=new Map();this.positions=new Map();this.camera=null;this.frames=[];
       this.svg=svgElement('svg',{role:'img',tabindex:'0','aria-label':'Граф'});
       const defs=svgElement('defs'),marker=svgElement('marker',{id:`arrow-${host.id}`,markerWidth:8,markerHeight:8,refX:7,refY:4,orient:'auto'});this.defs=defs;this.markers=new Map();
       marker.append(svgElement('path',{d:'M0 0 L8 4 L0 8',fill:'#92aaa0'}));defs.append(marker);
-      this.edgeLayer=svgElement('g');this.nodeLayer=svgElement('g');this.svg.append(defs,this.edgeLayer,this.nodeLayer);host.replaceChildren(this.svg);
+      const contextMarker=svgElement('marker',{id:`context-arrow-${host.id}`,markerWidth:8,markerHeight:8,refX:7,refY:4,orient:'auto'});contextMarker.append(svgElement('path',{d:'M0 0 L8 4 L0 8',fill:'#8b509a'}));defs.append(contextMarker);
+      this.contextLayer=svgElement('g',{'class':'context-layer'});this.edgeLayer=svgElement('g');this.nodeLayer=svgElement('g');this.svg.append(defs,this.contextLayer,this.edgeLayer,this.nodeLayer);this.legend=document.createElement('div');this.legend.className='context-legend';this.legend.hidden=true;host.replaceChildren(this.svg,this.legend);
       this.bind();this.observer=new ResizeObserver(()=>this.paintCamera());this.observer.observe(host);
     }
     size(){return {width:Math.max(1,this.host.clientWidth),height:Math.max(1,this.host.clientHeight)};}
@@ -67,13 +114,28 @@ if(typeof window!=='undefined') {
         if(e.color){item.path.style.stroke=e.color;item.label.style.fill=e.color;if(!this.markers.has(e.color)){const id=`arrow-${this.host.id}-${this.markers.size}`,m=svgElement('marker',{id,markerWidth:8,markerHeight:8,refX:7,refY:4,orient:'auto'});m.append(svgElement('path',{d:'M0 0 L8 4 L0 8',fill:e.color}));this.defs.append(m);this.markers.set(e.color,id);}item.path.setAttribute('marker-end',e.visualOnly?'':`url(#${this.markers.get(e.color)})`);}else{item.path.style.stroke='';item.label.style.fill='';item.path.setAttribute('marker-end',e.visualOnly?'':`url(#arrow-${this.host.id})`);}
         this.incident.get(e.from)?.add(e.id);this.incident.get(e.to)?.add(e.id);this.paintEdge(item);
       });
-      if(!this.camera){const size=this.size();this.camera=GraphGeometry.fit(graph.nodes.map(n=>this.positions.get(n.id)),size.width,size.height);if(this.camera.scale<.6){const p=this.positions.get(focus)||{x:0,y:0};this.camera={...p,scale:1};}}
+      this.contextEdges=graph.contextEdges||[];this.paintContexts();
+      if(!this.camera){const size=this.size();this.camera=GraphGeometry.fit(graph.nodes.map(n=>this.positions.get(n.id)).concat(this.contextPoints||[]),size.width,size.height);if(this.camera.scale<.6){const p=this.positions.get(focus)||{x:0,y:0};this.camera={...p,scale:1};}}
       this.paintCamera();this.changed();
     }
-    paintEdge(item){const a=this.positions.get(item.edge.from),b=this.positions.get(item.edge.to);if(!a||!b)return;const p=GraphGeometry.edge(a,b,item.index);item.path.setAttribute('d',p.d);item.hit.setAttribute('d',p.d);item.label.setAttribute('x',p.x);item.label.setAttribute('y',p.y);}
-    paintNode(id){const p=this.positions.get(id);this.nodes.get(id)?.setAttribute('transform',`translate(${p.x},${p.y})`);for(const edge of this.incident.get(id)||[])this.paintEdge(this.edges.get(edge));}
+    paintEdge(item){const a=this.positions.get(item.edge.from),b=this.positions.get(item.edge.to);if(!a||!b)return;const p=GraphGeometry.edge(a,b,item.index);item.geometry=p;item.path.setAttribute('d',p.d);item.hit.setAttribute('d',p.d);item.label.setAttribute('x',p.x);item.label.setAttribute('y',p.y);}
+    paintContexts(){
+      const rects=GraphGeometry.obstacles([...this.nodes.keys()].map(id=>this.positions.get(id))),keep=new Set();this.contextPoints=[];let blocked=0,filtered=0,limited=0,attempted=0;
+      for(const [i,c] of (this.contextEdges||[]).entries()){
+        const from=this.edges.get(c.from),to=this.edges.get(c.to);if(!from?.geometry||!to?.geometry){filtered++;continue;}if(attempted++>=800){limited++;continue;}
+        const start=GraphGeometry.anchor(from.geometry,rects,i%3),end=GraphGeometry.anchor(to.geometry,rects,(i+1)%3),points=GraphGeometry.orthogonal(start,end,rects);
+        if(!points){blocked++;continue;}keep.add(c.id);this.contextPoints.push(...points);
+        let item=this.contexts.get(c.id);if(!item){const g=svgElement('g',{'data-graph-context':c.id,role:'button',tabindex:0}),hit=svgElement('path',{'class':'context-hit',fill:'none',stroke:'transparent','stroke-width':12}),path=svgElement('path',{'class':'context-edge',fill:'none','marker-end':`url(#context-arrow-${this.host.id})`}),source=svgElement('circle',{'class':'context-port',r:3}),target=svgElement('circle',{'class':'context-port target-port',r:3}),title=svgElement('title');g.append(hit,path,source,target,title);this.contextLayer.append(g);item={g,hit,path,source,target,title};this.contexts.set(c.id,item);}
+        const d=points.map((p,j)=>`${j?'L':'M'} ${p.x} ${p.y}`).join(' ');item.path.setAttribute('d',d);item.hit.setAttribute('d',d);item.g.dataset.from=c.from;item.g.dataset.to=c.to;item.g.dataset.points=JSON.stringify(points);item.g.setAttribute('aria-label',`Контекст ${c.id}: ${c.from} → ${c.to}`);item.title.textContent=`Контекст ${c.id}\n${from.edge.displayTitle||c.from}\n→ ${to.edge.displayTitle||c.to}`;
+        for(const [port,p] of [[item.source,start],[item.target,end]]){port.setAttribute('cx',p.x);port.setAttribute('cy',p.y);}
+      }
+      for(const [id,item] of this.contexts)if(!keep.has(id)){item.g.remove();this.contexts.delete(id);}
+      this.host.dataset.contextShown=String(keep.size);this.host.dataset.contextBlocked=String(blocked);this.host.dataset.contextFiltered=String(filtered);this.host.dataset.contextLimited=String(limited);
+      this.legend.hidden=!this.contextEdges?.length;this.legend.textContent=`Пунктир → контекст между рёбрами · ${keep.size}/${this.contextEdges?.length||0}${blocked?` · не проложено: ${blocked} (переместите поля или откройте список)`:''}${filtered?` · вне вида: ${filtered}`:''}${limited?` · сверх лимита: ${limited}`:''}`;
+    }
+    paintNode(id){const p=this.positions.get(id);this.nodes.get(id)?.setAttribute('transform',`translate(${p.x},${p.y})`);for(const edge of this.incident.get(id)||[])this.paintEdge(this.edges.get(edge));this.paintContexts();}
     paintCamera(){if(!this.camera)return;const {width,height}=this.size(),c=this.camera;this.svg.setAttribute('viewBox',`${c.x-width/c.scale/2} ${c.y-height/c.scale/2} ${width/c.scale} ${height/c.scale}`);this.host.dataset.zoom=String(Math.round(c.scale*100));this.host.dataset.camera=JSON.stringify(c);this.host.classList.toggle('overview',c.scale<.45);this.options.cameraChanged?.(c);}
-    fit(){this.remember();const {width,height}=this.size();this.camera=GraphGeometry.fit([...this.nodes.keys()].map(id=>this.positions.get(id)),width,height,this.options.minScale);this.paintCamera();this.changed();}
+    fit(){this.remember();const {width,height}=this.size();this.camera=GraphGeometry.fit([...this.nodes.keys()].map(id=>this.positions.get(id)).concat(this.contextPoints||[]),width,height,this.options.minScale);this.paintCamera();this.changed();}
     center(id){const p=this.positions.get(id);if(!p)return;this.remember();this.camera={...p,scale:this.camera?.scale||1};this.paintCamera();this.changed();}
     back(){const c=this.frames.pop();if(c){this.camera=c;this.paintCamera();this.changed();}}
     setCamera(camera){if(camera){this.camera={...camera};this.paintCamera();this.changed();}}
@@ -81,20 +143,20 @@ if(typeof window!=='undefined') {
     point(e){const p=this.svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(this.svg.getScreenCTM().inverse());}
     flush(){if(this.pending){cancelAnimationFrame(this.pending);this.pending=null;}if(this.drag?.id)this.paintNode(this.drag.id);else this.paintCamera();}
     bind(){
-      this.svg.onpointerdown=e=>{const id=e.target.closest('[data-graph-node]')?.dataset.graphNode;if(e.button!==0||!this.options.canInteract?.(id))return;e.preventDefault();this.svg.focus({preventScroll:true});const edgeId=e.target.closest('[data-graph-edge]')?.dataset.graphEdge,p=this.point(e);this.drag={id,edgeId,additive:e.ctrlKey||e.metaKey||e.shiftKey,start:p,original:id?{...this.positions.get(id)}:null,camera:{...this.camera},clientX:e.clientX,clientY:e.clientY,moved:false};this.host.classList.add('dragging');this.svg.setPointerCapture(e.pointerId);};
+      this.svg.onpointerdown=e=>{const id=e.target.closest('[data-graph-node]')?.dataset.graphNode;if(e.button!==0||!this.options.canInteract?.(id))return;e.preventDefault();this.svg.focus({preventScroll:true});const edgeId=e.target.closest('[data-graph-edge]')?.dataset.graphEdge,contextId=e.target.closest('[data-graph-context]')?.dataset.graphContext,p=this.point(e);this.drag={id,edgeId,contextId,additive:e.ctrlKey||e.metaKey||e.shiftKey,start:p,original:id?{...this.positions.get(id)}:null,camera:{...this.camera},clientX:e.clientX,clientY:e.clientY,moved:false};this.host.classList.add('dragging');this.svg.setPointerCapture(e.pointerId);};
       this.svg.onpointermove=e=>{
         const d=this.drag;if(!d)return;if(Math.hypot(e.clientX-d.clientX,e.clientY-d.clientY)>3)d.moved=true;if(!d.moved)return;
         if(d.id){const p=this.point(e);this.positions.set(d.id,{x:Math.max(-100000,Math.min(100000,d.original.x+p.x-d.start.x)),y:Math.max(-100000,Math.min(100000,d.original.y+p.y-d.start.y))});}
         else {this.camera={...d.camera,x:d.camera.x-(e.clientX-d.clientX)/d.camera.scale,y:d.camera.y-(e.clientY-d.clientY)/d.camera.scale};}
         if(!this.pending)this.pending=requestAnimationFrame(()=>{this.pending=null;this.flush();});
       };
-      this.svg.onpointerup=async e=>{const d=this.drag;if(!d)return;this.flush();this.drag=null;this.host.classList.remove('dragging');if(this.svg.hasPointerCapture(e.pointerId))this.svg.releasePointerCapture(e.pointerId);if(!d.moved){if(d.id)this.options.select(d.id,d.additive);else if(d.edgeId)this.options.editEdge?.(d.edgeId);return;}if(!d.id){this.frames.push(d.camera);this.frames=this.frames.slice(-40);this.changed();return;}try{await this.options.savePosition(d.id,{...this.positions.get(d.id)});}catch(error){this.positions.set(d.id,d.original);this.paintNode(d.id);this.options.error(error);}this.changed();};
+      this.svg.onpointerup=async e=>{const d=this.drag;if(!d)return;this.flush();this.drag=null;this.host.classList.remove('dragging');if(this.svg.hasPointerCapture(e.pointerId))this.svg.releasePointerCapture(e.pointerId);if(!d.moved){if(d.id)this.options.select(d.id,d.additive);else if(d.contextId)this.options.editContext?.(d.contextId);else if(d.edgeId)this.options.editEdge?.(d.edgeId);return;}if(!d.id){this.frames.push(d.camera);this.frames=this.frames.slice(-40);this.changed();return;}try{await this.options.savePosition(d.id,{...this.positions.get(d.id)});}catch(error){this.positions.set(d.id,d.original);this.paintNode(d.id);this.options.error(error);}this.changed();};
       this.svg.onpointercancel=()=>{if(this.drag?.id){this.positions.set(this.drag.id,this.drag.original);this.paintNode(this.drag.id);}else if(this.drag)this.camera=this.drag.camera;this.drag=null;this.host.classList.remove('dragging');this.paintCamera();this.changed();};
       this.svg.onlostpointercapture=()=>{if(this.drag)this.svg.onpointercancel();};
       this.svg.addEventListener('wheel',e=>{e.preventDefault();if(this.drag)return;const delta=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?this.size().height:1),factor=Math.exp(-Math.max(-300,Math.min(300,delta))*.002);const anchor=this.point(e),remember=!this.wheelTimer;if(remember)this.remember();clearTimeout(this.wheelTimer);this.zoom(factor,anchor,false);this.options.sharedZoom?.(factor,remember);this.wheelTimer=setTimeout(()=>{this.wheelTimer=null;this.changed();},160);},{passive:false});
       this.svg.ondblclick=e=>{const id=e.target.closest('[data-graph-node]')?.dataset.graphNode;if(id)this.options.editNode?.(id);};
-      this.svg.oncontextmenu=e=>{if(!this.options.contextMenu)return;e.preventDefault();if(this.options.canInteract?.()===false)return;const id=e.target.closest('[data-graph-node]')?.dataset.graphNode,edge=e.target.closest('[data-graph-edge]')?.dataset.graphEdge;this.options.contextMenu(id?'node':edge?'edge':'canvas',id||edge,e);};
-      this.svg.onkeydown=e=>{const id=e.target.closest('[data-graph-node]')?.dataset.graphNode,edge=e.target.closest('[data-graph-edge]')?.dataset.graphEdge;if(this.options.contextMenu&&(e.key==='ContextMenu'||e.key==='F10'&&e.shiftKey)){e.preventDefault();if(this.options.canInteract?.()===false)return;const r=e.target.getBoundingClientRect();this.options.contextMenu(id?'node':edge?'edge':'canvas',id||edge,{clientX:r.left+r.width/2,clientY:r.top+r.height/2});return;}if(e.key==='Enter'){if(id){e.preventDefault();if(this.options.activateNode)this.options.activateNode(id);else{this.options.select(id);this.options.editNode?.(id);}}else if(edge){e.preventDefault();this.options.editEdge?.(edge);}}if(['+','=','-'].includes(e.key)){e.preventDefault();this.zoom(e.key==='-'?1/1.2:1.2);}if(e.key==='Home'){e.preventDefault();this.center(this.study.rootId);}};
+      this.svg.oncontextmenu=e=>{if(!this.options.contextMenu)return;e.preventDefault();if(this.options.canInteract?.()===false)return;const id=e.target.closest('[data-graph-node]')?.dataset.graphNode,edge=e.target.closest('[data-graph-edge]')?.dataset.graphEdge,context=e.target.closest('[data-graph-context]')?.dataset.graphContext;this.options.contextMenu(id?'node':context?'context':edge?'edge':'canvas',id||context||edge,e);};
+      this.svg.onkeydown=e=>{const id=e.target.closest('[data-graph-node]')?.dataset.graphNode,edge=e.target.closest('[data-graph-edge]')?.dataset.graphEdge,context=e.target.closest('[data-graph-context]')?.dataset.graphContext;if(this.options.contextMenu&&(e.key==='ContextMenu'||e.key==='F10'&&e.shiftKey)){e.preventDefault();if(this.options.canInteract?.()===false)return;const r=e.target.getBoundingClientRect();this.options.contextMenu(id?'node':context?'context':edge?'edge':'canvas',id||context||edge,{clientX:r.left+r.width/2,clientY:r.top+r.height/2});return;}if(e.key==='Enter'){if(id){e.preventDefault();if(this.options.activateNode)this.options.activateNode(id);else{this.options.select(id);this.options.editNode?.(id);}}else if(context){e.preventDefault();this.options.editContext?.(context);}else if(edge){e.preventDefault();this.options.editEdge?.(edge);}}if(['+','=','-'].includes(e.key)){e.preventDefault();this.zoom(e.key==='-'?1/1.2:1.2);}if(e.key==='Home'){e.preventDefault();this.center(this.study.rootId);}};
     }
   };
 }

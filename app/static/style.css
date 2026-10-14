@@ -142,3 +142,11 @@ body.permanent-workspace {height:100dvh;overflow:hidden}
 .canvas-surface .edge.highlight {stroke:var(--accent);stroke-width:3}
 #modal-form .object-choice {display:block;width:100%;text-align:left;margin:5px 0;overflow-wrap:anywhere}
 #modal-form .object-choice code {display:block}
+/* M012: contextual edge-to-edge links, distinct from ordinary relations. */
+.graph:has(.context-legend){position:relative}
+.graph .context-edge{stroke:#8b509a;stroke-width:2;stroke-dasharray:7 5;pointer-events:none}
+.graph .context-hit{pointer-events:stroke;cursor:pointer}
+.graph .context-port{fill:#fafcfb;stroke:#8b509a;stroke-width:1.5;pointer-events:none}
+.graph .target-port{fill:#8b509a}
+.graph [data-graph-context]:hover .context-edge,.graph [data-graph-context]:focus-visible .context-edge{stroke:#663275;stroke-width:3;stroke-dasharray:5 3}
+.context-legend{position:absolute;bottom:8px;left:8px;right:8px;width:fit-content;max-width:calc(100% - 16px);background:#fafcfbe8;border:1px solid #d7c3dd;border-radius:5px;padding:5px 8px;color:#733b81;font-size:11px;pointer-events:none}

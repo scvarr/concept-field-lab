@@ -1,0 +1,20 @@
+[
+  {
+    "case": "Maze unit fixture",
+    "observation": "Первый пример допускал обход одной горизонтальной линией по общей границе препятствий; проверка route.length>4 упала.",
+    "resolution": "Препятствия перекрывают внешние стены; исправленный пример требует чередования поворотов и проверяет A*.",
+    "scope": "Ошибка тестового примера, не пересечение узлов."
+  },
+  {
+    "case": "context-1791970258701",
+    "observation": "На одной строке обычная длинная ветвь перекрыла hit path короткого ребра: No visible hit segment.",
+    "resolution": "Поле ветви явно перемещено; выбор перекрытых объектов по ID сохранён.",
+    "evidence": "negative-collinear-branch.json"
+  },
+  {
+    "case": "Hidden form submit",
+    "observation": "Внешне пройденный прогон context-1791970342488 содержал красное сообщение submit is not a function на снимке. Словарные кнопки имели default type=submit; исключение перехватывалось toast, а pageerror не видел его.",
+    "resolution": "Кнопки поиска type=button; формы без callback не выполняют submit; новый тест отслеживает error toast наряду с pageerror. Финальный прогон без ошибок.",
+    "evidence": "negative-form-submit.png"
+  }
+]
