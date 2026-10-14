@@ -22,6 +22,48 @@ const GraphGeometry = {
     while(points.length>1)points=points.slice(1).map((p,i)=>({x:points[i].x*(1-t)+p.x*t,y:points[i].y*(1-t)+p.y*t}));
     return points[0];
   },
+  midpoint(edge) {
+    // Half arc length on this exact ID's Bezier, with a deterministic 64-step approximation.
+    const points=Array.from({length:65},(_,i)=>this.sample(edge,i/64)),lengths=[0];
+    for(let i=1;i<points.length;i++)lengths.push(lengths[i-1]+Math.hypot(points[i].x-points[i-1].x,points[i].y-points[i-1].y));
+    const half=lengths.at(-1)/2,i=lengths.findIndex(v=>v>=half);
+    return this.sample(edge,i<=0?0:(i-1+(half-lengths[i-1])/(lengths[i]-lengths[i-1]))/64);
+  },
+  lineClear(a,b,rects) {
+    // Slab intersection with open obstacle interiors; diagonals are allowed.
+    return !rects.some(r=>{
+      let lo=0,hi=1;
+      for(const [v,d,min,max] of [[a.x,b.x-a.x,r.left,r.right],[a.y,b.y-a.y,r.top,r.bottom]]){
+        if(Math.abs(d)<1e-12){if(v<=min||v>=max)return false;}
+        else {const t=(min-v)/d,u=(max-v)/d;lo=Math.max(lo,Math.min(t,u));hi=Math.min(hi,Math.max(t,u));}
+      }
+      return lo<hi-1e-10;
+    });
+  },
+  flexible(start,end,rects) {
+    if(!start||!end||rects.some(r=>this.inside(start,r)||this.inside(end,r))||Math.hypot(start.x-end.x,start.y-end.y)<1e-6)return null;
+    // A bounded rectilinear search supplies a safe corridor, never the final shape.
+    const corridor=rects.map(r=>{const padded={left:r.left-6,right:r.right+6,top:r.top-6,bottom:r.bottom+6};return this.inside(start,padded)||this.inside(end,padded)?r:padded;});
+    let points=this.lineClear(start,end,rects)?[start,end]:this.orthogonal(start,end,corridor);
+    if(!points)return null;
+    const short=[points[0]];
+    for(let i=0;i<points.length-1;){let j=points.length-1;while(j>i+1&&!this.lineClear(points[i],points[j],corridor))j--;short.push(points[j]);i=j;}
+    const commands=[`M ${start.x} ${start.y}`],segments=[];let previous=start;
+    const line=p=>{commands.push(`L ${p.x} ${p.y}`);segments.push([previous,p]);previous=p;};
+    for(let i=1;i<short.length-1;i++){
+      const a=short[i-1],b=short[i],c=short[i+1],ab=Math.hypot(b.x-a.x,b.y-a.y),bc=Math.hypot(c.x-b.x,c.y-b.y);
+      let radius=Math.min(24,ab/3,bc/3),entry,exit,safe=false;
+      for(let attempt=0;attempt<8;attempt++,radius/=2){
+        entry={x:b.x+(a.x-b.x)*radius/ab,y:b.y+(a.y-b.y)*radius/ab};exit={x:b.x+(c.x-b.x)*radius/bc,y:b.y+(c.y-b.y)*radius/bc};
+        // A quadratic lies in its control hull. Its bounding box disjoint from all
+        // padded obstacles proves clearance for the entire curve, not sampled points.
+        const box={left:Math.min(entry.x,b.x,exit.x),right:Math.max(entry.x,b.x,exit.x),top:Math.min(entry.y,b.y,exit.y),bottom:Math.max(entry.y,b.y,exit.y)};
+        safe=!rects.some(r=>box.left<r.right&&box.right>r.left&&box.top<r.bottom&&box.bottom>r.top);if(safe)break;
+      }
+      if(safe){line(entry);commands.push(`Q ${b.x} ${b.y} ${exit.x} ${exit.y}`);segments.push([entry,b,exit]);previous=exit;}else line(b);
+    }
+    line(end);return {d:commands.join(' '),points:short,segments};
+  },
   obstacles(positions){return positions.map(p=>({left:p.x-(p.radius===undefined?90:p.radius+10),right:p.x+(p.radius===undefined?90:p.radius+10),top:p.y-(p.radius===undefined?38:p.radius+10),bottom:p.y+(p.radius===undefined?38:p.radius+10)}));},
   inside(p,r){return p.x>r.left&&p.x<r.right&&p.y>r.top&&p.y<r.bottom;},
   segmentClear(a,b,rects) {
@@ -84,15 +126,21 @@ if(typeof window!=='undefined') {
       this.svg=svgElement('svg',{role:'img',tabindex:'0','aria-label':'Граф'});
       const defs=svgElement('defs'),marker=svgElement('marker',{id:`arrow-${host.id}`,markerWidth:8,markerHeight:8,refX:7,refY:4,orient:'auto'});this.defs=defs;this.markers=new Map();
       marker.append(svgElement('path',{d:'M0 0 L8 4 L0 8',fill:'#92aaa0'}));defs.append(marker);
-      const contextMarker=svgElement('marker',{id:`context-arrow-${host.id}`,markerWidth:8,markerHeight:8,refX:7,refY:4,orient:'auto'});contextMarker.append(svgElement('path',{d:'M0 0 L8 4 L0 8',fill:'#8b509a'}));defs.append(contextMarker);
-      this.contextLayer=svgElement('g',{'class':'context-layer'});this.edgeLayer=svgElement('g');this.nodeLayer=svgElement('g');this.svg.append(defs,this.contextLayer,this.edgeLayer,this.nodeLayer);this.legend=document.createElement('div');this.legend.className='context-legend';this.legend.hidden=true;host.replaceChildren(this.svg,this.legend);
+      const contextMarker=svgElement('marker',{id:`context-arrow-${host.id}`,markerWidth:8,markerHeight:8,refX:11,refY:4,orient:'auto'});contextMarker.append(svgElement('path',{d:'M0 0 L8 4 L0 8',fill:'#8b509a'}));defs.append(contextMarker);
+      this.contextLayer=svgElement('g',{'class':'context-layer'});this.edgeLayer=svgElement('g');this.nodeLayer=svgElement('g');this.svg.append(defs,this.edgeLayer,this.contextLayer,this.nodeLayer);this.legend=document.createElement('div');this.legend.className='context-legend';this.legend.hidden=true;host.replaceChildren(this.svg,this.legend);
+      this.markerLayer=svgElement('g',{'class':'relation-markers'});this.svg.insertBefore(this.markerLayer,this.nodeLayer);this.selectedEdges=new Set();this.markerMode='all';
+      this.controls=document.createElement('div');this.controls.className='relation-marker-controls';
+      this.controls.innerHTML='<label>Маркеры <select aria-label="Маркеры обычных рёбер"><option value="all">Все</option><option value="selected">Выбранные</option><option value="hidden">Скрыть</option></select></label><button type="button" data-marker-create>Контекст →</button><span role="status"></span>';
+      host.append(this.controls);this.controls.querySelector('select').onchange=e=>{this.markerMode=e.target.value;this.paintMarkers();this.changed();};
+      this.controls.querySelector('button').hidden=!options.createContext;
+      this.controls.querySelector('button').onclick=()=>{if(this.options.canInteract?.()===false)return;this.contextSource=null;this.creatingContext=!this.creatingContext;this.markerMode='all';this.paintMarkers();};
       this.bind();this.observer=new ResizeObserver(()=>this.paintCamera());this.observer.observe(host);
     }
     size(){return {width:Math.max(1,this.host.clientWidth),height:Math.max(1,this.host.clientHeight)};}
-    snapshot(){return {camera:this.camera&&{...this.camera},frames:this.frames.slice(-40),positions:Object.fromEntries(this.positions)};}
+    snapshot(){return {camera:this.camera&&{...this.camera},frames:this.frames.slice(-40),positions:Object.fromEntries(this.positions),markerMode:this.markerMode,selectedEdges:[...this.selectedEdges]};}
     changed(){this.options.changed?.(this.snapshot());}
     remember(){if(this.camera)this.frames.push({...this.camera});this.frames=this.frames.slice(-40);}
-    restore(snapshot){this.camera=snapshot?.camera&&{...snapshot.camera};this.frames=snapshot?.frames||[];this.positions=new Map(Object.entries(snapshot?.positions||{}));}
+    restore(snapshot){this.camera=snapshot?.camera&&{...snapshot.camera};this.frames=snapshot?.frames||[];this.positions=new Map(Object.entries(snapshot?.positions||{}));this.markerMode=snapshot?.markerMode||'all';this.selectedEdges=new Set(snapshot?.selectedEdges||[]);}
     update(s,graph,focus,markings=new Map(),layout=new Map()) {
       this.study=s;this.focus=focus;this.radii=new Map(graph.nodes.map(n=>[n.id,n.radius]));this.svg.setAttribute('aria-label',`Граф ${s.title}`);
       const ids=new Set(graph.nodes.map(n=>n.id));
@@ -110,9 +158,9 @@ if(typeof window!=='undefined') {
       const shown=graph.edges.slice(0,this.options.edgeLimit||3000),edgeIds=new Set(shown.map(e=>e.id));
       for(const [id,item]of this.edges)if(!edgeIds.has(id)){item.g.remove();this.edges.delete(id);}
       this.incident=new Map(graph.nodes.map(n=>[n.id,new Set()]));
-      const parallel=new Map();
+      const parallel=new Map();for(const e of shown){const pair=JSON.stringify([e.from,e.to].sort());if(!parallel.has(pair))parallel.set(pair,[]);parallel.get(pair).push(e.id);}for(const list of parallel.values())list.sort();
       shown.forEach(e=>{
-        const pair=JSON.stringify([e.from,e.to].sort()),index=(parallel.get(pair)||0)+1;parallel.set(pair,index);
+        const pair=JSON.stringify([e.from,e.to].sort()),index=parallel.get(pair).indexOf(e.id)+1;
         let item=this.edges.get(e.id);
         if(!item){const g=svgElement('g',{'data-graph-edge':e.id}),hit=svgElement('path',{'class':'edge-hit',fill:'none',stroke:'transparent','stroke-width':14});const path=svgElement('path',{'marker-end':`url(#arrow-${this.host.id})`}),label=svgElement('text',{'class':'edge-label','text-anchor':'middle'}),title=svgElement('title');g.append(hit,path,label,title);this.edgeLayer.append(g);item={g,hit,path,label,title};this.edges.set(e.id,item);}
         item.edge=e;item.index=index;item.g.dataset.from=e.from;item.g.dataset.to=e.to;item.g.dataset.visualOnly=e.visualOnly?'true':'false';item.g.setAttribute('role','button');item.g.setAttribute('tabindex','0');item.hit.setAttribute('stroke-width',e.visualOnly?24:14);item.g.setAttribute('class',e.visualOnly?'visual-candidate':'');item.path.setAttribute('class',`edge ${e.role==='component'?'component-edge':''} ${e.visualOnly?'candidate-edge':''} ${e.highlight?'candidate-highlight':''}`);
@@ -124,20 +172,55 @@ if(typeof window!=='undefined') {
       if(!this.camera){const size=this.size();this.camera=GraphGeometry.fit(graph.nodes.map(n=>this.positions.get(n.id)).concat(this.contextPoints||[]),size.width,size.height);if(this.camera.scale<.6){const p=this.positions.get(focus)||{x:0,y:0};this.camera={...p,scale:1};}}
       this.paintCamera();this.changed();
     }
-    paintEdge(item){const a=this.positions.get(item.edge.from),b=this.positions.get(item.edge.to);if(!a||!b)return;const aa=this.options.circular?{...a,radius:this.radii.get(item.edge.from)}:a,bb=item.edge.from===item.edge.to?aa:this.options.circular?{...b,radius:this.radii.get(item.edge.to)}:b;const p=GraphGeometry.edge(aa,bb,item.index);item.geometry=p;item.path.setAttribute('d',p.d);item.hit.setAttribute('d',p.d);item.label.setAttribute('x',p.x);item.label.setAttribute('y',p.y);}
+    paintEdge(item){
+      const a=this.positions.get(item.edge.from),b=this.positions.get(item.edge.to);if(!a||!b)return;
+      const aa=this.options.circular?{...a,radius:this.radii.get(item.edge.from)}:a,bb=item.edge.from===item.edge.to?aa:this.options.circular?{...b,radius:this.radii.get(item.edge.to)}:b;
+      const reversed=item.edge.from>item.edge.to,p=GraphGeometry.edge(reversed?bb:aa,reversed?aa:bb,item.index);
+      if(reversed){p.points.reverse();const v=p.points;p.d=v.length===3?`M ${v[0].x} ${v[0].y} Q ${v[1].x} ${v[1].y} ${v[2].x} ${v[2].y}`:`M ${v[0].x} ${v[0].y} C ${v[1].x} ${v[1].y} ${v[2].x} ${v[2].y} ${v[3].x} ${v[3].y}`;}
+      item.geometry=p;item.midpoint=GraphGeometry.midpoint(p);item.path.setAttribute('d',p.d);item.hit.setAttribute('d',p.d);item.label.setAttribute('x',p.x);item.label.setAttribute('y',p.y);
+    }
+    paintMarkers(){
+      const keep=new Set();
+      for(const [id,item] of this.edges){
+        if(item.edge.role==='component'||item.edge.visualOnly||!item.midpoint){item.square?.remove();item.square=null;continue;}keep.add(id);
+        if(!item.square){const g=svgElement('g',{'data-relation-marker':id,role:'button',tabindex:0}),square=svgElement('rect',{x:-5,y:-5,width:10,height:10}),title=svgElement('title');g.append(square,title);this.markerLayer.append(g);item.square=g;title.textContent=`Обычное ребро ${id}\n${item.edge.displayTitle||''}`;
+          g.onmouseenter=()=>this.highlightEdge(id);g.onmouseleave=()=>this.highlightEdge(null);g.onfocus=()=>this.highlightEdge(id);g.onblur=()=>this.highlightEdge(null);
+        }
+        const p=item.midpoint;item.square.setAttribute('transform',`translate(${p.x},${p.y})`);item.square.setAttribute('aria-label',`Маркер ребра ${id}`);item.square.setAttribute('aria-pressed',String(this.selectedEdges.has(id)));item.square.dataset.point=JSON.stringify(p);item.square.classList.toggle('selected',this.selectedEdges.has(id));item.square.style.display=this.markerMode==='hidden'||this.markerMode==='selected'&&!this.selectedEdges.has(id)?'none':'';
+        item.square.querySelector('title').textContent=`Обычное ребро ${id}\n${item.edge.displayTitle||''}`;
+      }
+      for(const g of this.markerLayer.children)if(!keep.has(g.dataset.relationMarker))g.remove();
+      this.selectedEdges=new Set([...this.selectedEdges].filter(id=>keep.has(id)));
+      this.controls.querySelector('select').value=this.markerMode;this.controls.querySelector('button').textContent=this.creatingContext?'Отменить контекст':'Контекст →';this.controls.querySelector('span').textContent=this.creatingContext?(this.contextSource?'Выберите квадрат назначения':'Выберите квадрат источника'):'';
+      this.host.dataset.markerMode=this.markerMode;
+    }
+    highlightEdge(id){
+      for(const [key,item] of this.edges)item.g.classList.toggle('context-highlight',key===id);
+      for(const item of this.contexts.values())item.g.classList.toggle('context-highlight',item.g.dataset.from===id||item.g.dataset.to===id);
+    }
+    pickMarker(id,additive=false){
+      if(this.options.canInteract?.()===false)return;
+      if(this.options.markerAction?.(id))return;
+      if(this.creatingContext){if(!this.contextSource){this.contextSource=id;this.selectedEdges=new Set([id]);}else if(id!==this.contextSource){const from=this.contextSource;this.creatingContext=false;this.contextSource=null;this.options.createContext?.(from,id);}this.paintMarkers();return;}
+      if(!additive)this.selectedEdges=new Set([id]);else if(this.selectedEdges.has(id))this.selectedEdges.delete(id);else this.selectedEdges.add(id);
+      this.paintMarkers();this.changed();
+    }
     paintContexts(){
-      const rects=GraphGeometry.obstacles([...this.nodes.keys()].map(id=>this.options.circular?{...this.positions.get(id),radius:this.radii.get(id)}:this.positions.get(id))),keep=new Set(),started=performance.now();this.contextPoints=[];let blocked=0,filtered=0,limited=0,attempted=0;
+      const rects=GraphGeometry.obstacles([...this.nodes.keys()].map(id=>this.options.circular?{...this.positions.get(id),radius:this.radii.get(id)}:this.positions.get(id))),keep=new Set(),started=performance.now(),diagnostics=[];this.contextPoints=[];let blocked=0,filtered=0,limited=0,attempted=0;
       for(const [i,c] of (this.contextEdges||[]).entries()){
         const from=this.edges.get(c.from),to=this.edges.get(c.to);if(!from?.geometry||!to?.geometry){filtered++;continue;}if(attempted++>=800||performance.now()-started>(this.options.contextBudgetMs||Infinity)){limited++;continue;}
-        const start=GraphGeometry.anchor(from.geometry,rects,i%3),end=GraphGeometry.anchor(to.geometry,rects,(i+1)%3),points=GraphGeometry.orthogonal(start,end,rects);
-        if(!points){blocked++;continue;}keep.add(c.id);this.contextPoints.push(...points);
+        if(from.edge.role==='component'||to.edge.role==='component'){filtered++;continue;}
+        const start=from.midpoint,end=to.midpoint,route=GraphGeometry.flexible(start,end,rects),points=route?.points;
+        if(!points){blocked++;diagnostics.push({id:c.id,from:c.from,to:c.to,reason:rects.some(r=>GraphGeometry.inside(start,r)||GraphGeometry.inside(end,r))?'marker-covered':Math.hypot(start.x-end.x,start.y-end.y)<1e-6?'coincident-markers':'no-corridor-or-grid-limit'});continue;}keep.add(c.id);this.contextPoints.push(...points);
         let item=this.contexts.get(c.id);if(!item){const g=svgElement('g',{'data-graph-context':c.id,role:'button',tabindex:0}),hit=svgElement('path',{'class':'context-hit',fill:'none',stroke:'transparent','stroke-width':12}),path=svgElement('path',{'class':'context-edge',fill:'none','marker-end':`url(#context-arrow-${this.host.id})`}),source=svgElement('circle',{'class':'context-port',r:3}),target=svgElement('circle',{'class':'context-port target-port',r:3}),title=svgElement('title');g.append(hit,path,source,target,title);this.contextLayer.append(g);item={g,hit,path,source,target,title};this.contexts.set(c.id,item);}
-        const d=points.map((p,j)=>`${j?'L':'M'} ${p.x} ${p.y}`).join(' ');item.path.setAttribute('d',d);item.hit.setAttribute('d',d);item.g.dataset.from=c.from;item.g.dataset.to=c.to;item.g.dataset.points=JSON.stringify(points);item.g.setAttribute('aria-label',`Контекст ${c.id}: ${c.from} → ${c.to}`);item.title.textContent=`Контекст ${c.id}\n${from.edge.displayTitle||c.from}\n→ ${to.edge.displayTitle||c.to}`;
+        const d=route.d;item.g.dataset.segments=JSON.stringify(route.segments);item.path.setAttribute('d',d);item.hit.setAttribute('d',d);item.g.dataset.from=c.from;item.g.dataset.to=c.to;item.g.dataset.points=JSON.stringify(points);item.g.setAttribute('aria-label',`Контекст ${c.id}: ${c.from} → ${c.to}`);item.title.textContent=`Контекст ${c.id}\n${from.edge.displayTitle||c.from}\n→ ${to.edge.displayTitle||c.to}`;
         for(const [port,p] of [[item.source,start],[item.target,end]]){port.setAttribute('cx',p.x);port.setAttribute('cy',p.y);}
       }
       for(const [id,item] of this.contexts)if(!keep.has(id)){item.g.remove();this.contexts.delete(id);}
+      this.paintMarkers();
       this.host.dataset.contextShown=String(keep.size);this.host.dataset.contextBlocked=String(blocked);this.host.dataset.contextFiltered=String(filtered);this.host.dataset.contextLimited=String(limited);
-      this.legend.hidden=!this.contextEdges?.length;this.legend.textContent=`Пунктир → контекст между рёбрами · ${keep.size}/${this.contextEdges?.length||0}${blocked?` · не проложено: ${blocked} (переместите поля или откройте список)`:''}${filtered?` · вне вида: ${filtered}`:''}${limited?` · сверх лимита: ${limited}`:''}`;
+      this.host.dataset.contextDiagnostics=JSON.stringify(diagnostics);
+      this.legend.hidden=!this.contextEdges?.length;this.legend.textContent=`Пунктир → контекст между рёбрами · ${keep.size}/${this.contextEdges?.length||0}${blocked?` · не проложено: ${blocked} (маркер закрыт узлом, точки совпали или обход недоступен; список ID доступен)`:''}${filtered?` · вне вида: ${filtered}`:''}${limited?` · сверх лимита: ${limited}`:''}`;
     }
     paintNode(id){const p=this.positions.get(id);this.nodes.get(id)?.setAttribute('transform',`translate(${p.x},${p.y})`);for(const edge of this.incident.get(id)||[])this.paintEdge(this.edges.get(edge));this.paintContexts();this.paintLabels();}
     paintCamera(){if(!this.camera)return;const {width,height}=this.size(),c=this.camera;this.svg.setAttribute('viewBox',`${c.x-width/c.scale/2} ${c.y-height/c.scale/2} ${width/c.scale} ${height/c.scale}`);this.host.dataset.zoom=String(Math.round(c.scale*100));this.host.dataset.camera=JSON.stringify(c);this.host.classList.toggle('overview',c.scale<.45);this.options.cameraChanged?.(c);this.paintLabels();}
@@ -155,20 +238,20 @@ if(typeof window!=='undefined') {
     point(e){const p=this.svg.createSVGPoint();p.x=e.clientX;p.y=e.clientY;return p.matrixTransform(this.svg.getScreenCTM().inverse());}
     flush(){if(this.pending){cancelAnimationFrame(this.pending);this.pending=null;}if(this.drag?.id)this.paintNode(this.drag.id);else this.paintCamera();}
     bind(){
-      this.svg.onpointerdown=e=>{const id=e.target.closest('[data-graph-node]')?.dataset.graphNode;if(e.button!==0||!this.options.canInteract?.(id))return;e.preventDefault();this.svg.focus({preventScroll:true});const edgeId=e.target.closest('[data-graph-edge]')?.dataset.graphEdge,contextId=e.target.closest('[data-graph-context]')?.dataset.graphContext,p=this.point(e);this.drag={id,edgeId,contextId,additive:e.ctrlKey||e.metaKey||e.shiftKey,start:p,original:id?{...this.positions.get(id)}:null,camera:{...this.camera},clientX:e.clientX,clientY:e.clientY,moved:false};this.host.classList.add('dragging');this.svg.setPointerCapture(e.pointerId);};
+      this.svg.onpointerdown=e=>{const id=e.target.closest('[data-graph-node]')?.dataset.graphNode;if(e.button!==0||!this.options.canInteract?.(id))return;e.preventDefault();this.svg.focus({preventScroll:true});const edgeId=(e.target.closest('[data-graph-edge]')?.dataset.graphEdge||e.target.closest('[data-relation-marker]')?.dataset.relationMarker),contextId=e.target.closest('[data-graph-context]')?.dataset.graphContext,p=this.point(e);this.drag={id,edgeId,contextId,marker:!!e.target.closest('[data-relation-marker]'),additive:e.ctrlKey||e.metaKey||e.shiftKey,start:p,original:id?{...this.positions.get(id)}:null,camera:{...this.camera},clientX:e.clientX,clientY:e.clientY,moved:false};this.host.classList.add('dragging');this.svg.setPointerCapture(e.pointerId);};
       this.svg.onpointermove=e=>{
         const d=this.drag;if(!d)return;if(Math.hypot(e.clientX-d.clientX,e.clientY-d.clientY)>3)d.moved=true;if(!d.moved)return;
         if(d.id){const p=this.point(e);this.positions.set(d.id,{x:Math.max(-100000,Math.min(100000,d.original.x+p.x-d.start.x)),y:Math.max(-100000,Math.min(100000,d.original.y+p.y-d.start.y))});}
         else {this.camera={...d.camera,x:d.camera.x-(e.clientX-d.clientX)/d.camera.scale,y:d.camera.y-(e.clientY-d.clientY)/d.camera.scale};}
         if(!this.pending)this.pending=requestAnimationFrame(()=>{this.pending=null;this.flush();});
       };
-      this.svg.onpointerup=async e=>{const d=this.drag;if(!d)return;this.flush();this.drag=null;this.host.classList.remove('dragging');if(this.svg.hasPointerCapture(e.pointerId))this.svg.releasePointerCapture(e.pointerId);if(!d.moved){if(d.id)this.options.select(d.id,d.additive);else if(d.contextId)this.options.editContext?.(d.contextId);else if(d.edgeId)this.options.editEdge?.(d.edgeId);return;}if(!d.id){this.frames.push(d.camera);this.frames=this.frames.slice(-40);this.changed();return;}try{await this.options.savePosition(d.id,{...this.positions.get(d.id)});}catch(error){this.positions.set(d.id,d.original);this.paintNode(d.id);this.options.error(error);}this.changed();};
+      this.svg.onpointerup=async e=>{const d=this.drag;if(!d)return;this.flush();this.drag=null;this.host.classList.remove('dragging');if(this.svg.hasPointerCapture(e.pointerId))this.svg.releasePointerCapture(e.pointerId);if(!d.moved){if(d.id)this.options.select(d.id,d.additive);else if(d.contextId)this.options.editContext?.(d.contextId);else if(d.edgeId){if(d.marker)this.pickMarker(d.edgeId,d.additive);else {this.selectedEdges=new Set([d.edgeId]);this.paintMarkers();this.options.editEdge?.(d.edgeId);}}return;}if(!d.id){this.frames.push(d.camera);this.frames=this.frames.slice(-40);this.changed();return;}try{await this.options.savePosition(d.id,{...this.positions.get(d.id)});}catch(error){this.positions.set(d.id,d.original);this.paintNode(d.id);this.options.error(error);}this.changed();};
       this.svg.onpointercancel=()=>{if(this.drag?.id){this.positions.set(this.drag.id,this.drag.original);this.paintNode(this.drag.id);}else if(this.drag)this.camera=this.drag.camera;this.drag=null;this.host.classList.remove('dragging');this.paintCamera();this.changed();};
       this.svg.onlostpointercapture=()=>{if(this.drag)this.svg.onpointercancel();};
       this.svg.addEventListener('wheel',e=>{e.preventDefault();if(this.drag)return;const delta=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?this.size().height:1),factor=Math.exp(-Math.max(-300,Math.min(300,delta))*.002);const anchor=this.point(e),remember=!this.wheelTimer;if(remember)this.remember();clearTimeout(this.wheelTimer);this.zoom(factor,anchor,false);this.options.sharedZoom?.(factor,remember);this.wheelTimer=setTimeout(()=>{this.wheelTimer=null;this.changed();},160);},{passive:false});
       this.svg.ondblclick=e=>{const id=e.target.closest('[data-graph-node]')?.dataset.graphNode;if(id)this.options.editNode?.(id);};
-      this.svg.oncontextmenu=e=>{if(!this.options.contextMenu)return;e.preventDefault();if(this.options.canInteract?.()===false)return;const id=e.target.closest('[data-graph-node]')?.dataset.graphNode,edge=e.target.closest('[data-graph-edge]')?.dataset.graphEdge,context=e.target.closest('[data-graph-context]')?.dataset.graphContext;this.options.contextMenu(id?'node':context?'context':edge?'edge':'canvas',id||context||edge,e);};
-      this.svg.onkeydown=e=>{const id=e.target.closest('[data-graph-node]')?.dataset.graphNode,edge=e.target.closest('[data-graph-edge]')?.dataset.graphEdge,context=e.target.closest('[data-graph-context]')?.dataset.graphContext;if(this.options.contextMenu&&(e.key==='ContextMenu'||e.key==='F10'&&e.shiftKey)){e.preventDefault();if(this.options.canInteract?.()===false)return;const r=e.target.getBoundingClientRect();this.options.contextMenu(id?'node':context?'context':edge?'edge':'canvas',id||context||edge,{clientX:r.left+r.width/2,clientY:r.top+r.height/2});return;}if(e.key==='Enter'){if(id){e.preventDefault();if(this.options.activateNode)this.options.activateNode(id);else{this.options.select(id);this.options.editNode?.(id);}}else if(context){e.preventDefault();this.options.editContext?.(context);}else if(edge){e.preventDefault();this.options.editEdge?.(edge);}}if(['+','=','-'].includes(e.key)){e.preventDefault();this.zoom(e.key==='-'?1/1.2:1.2);}if(e.key==='Home'){e.preventDefault();this.center(this.study.rootId);}};
+      this.svg.oncontextmenu=e=>{if(!this.options.contextMenu)return;e.preventDefault();if(this.options.canInteract?.()===false)return;const id=e.target.closest('[data-graph-node]')?.dataset.graphNode,edge=(e.target.closest('[data-graph-edge]')?.dataset.graphEdge||e.target.closest('[data-relation-marker]')?.dataset.relationMarker),context=e.target.closest('[data-graph-context]')?.dataset.graphContext;this.options.contextMenu(id?'node':context?'context':edge?'edge':'canvas',id||context||edge,e);};
+      this.svg.onkeydown=e=>{if(e.key==='Escape'&&this.creatingContext){this.creatingContext=false;this.contextSource=null;this.paintMarkers();e.preventDefault();return;}const id=e.target.closest('[data-graph-node]')?.dataset.graphNode,edge=(e.target.closest('[data-graph-edge]')?.dataset.graphEdge||e.target.closest('[data-relation-marker]')?.dataset.relationMarker),context=e.target.closest('[data-graph-context]')?.dataset.graphContext;if(this.options.contextMenu&&(e.key==='ContextMenu'||e.key==='F10'&&e.shiftKey)){e.preventDefault();if(this.options.canInteract?.()===false)return;const r=e.target.getBoundingClientRect();this.options.contextMenu(id?'node':context?'context':edge?'edge':'canvas',id||context||edge,{clientX:r.left+r.width/2,clientY:r.top+r.height/2});return;}if(e.key==='Enter'){if(id){e.preventDefault();if(this.options.activateNode)this.options.activateNode(id);else{this.options.select(id);this.options.editNode?.(id);}}else if(context){e.preventDefault();this.options.editContext?.(context);}else if(edge){e.preventDefault();if(e.target.closest('[data-relation-marker]'))this.pickMarker(edge,e.ctrlKey||e.shiftKey||e.metaKey);else this.options.editEdge?.(edge);}}if(['+','=','-'].includes(e.key)){e.preventDefault();this.zoom(e.key==='-'?1/1.2:1.2);}if(e.key==='Home'){e.preventDefault();this.center(this.study.rootId);}};
     }
   };
 }

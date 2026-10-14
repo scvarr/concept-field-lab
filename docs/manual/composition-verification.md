@@ -1,5 +1,43 @@
 # Инженерные проверки составов, накопления и геометрии
 
+## M017: маркеры рёбер и гибкий контекст, 14 октября 2026
+
+Вопрос: позволяет ли фиксированный квадрат ordinary ID и гибкая линия упростить выбор/создание контекста, сохранив привязку и обход видимых concept/α? Способ: переработка только SVG/UI, предметные тесты, реальный Chrome на изолированных SQLite и независимый аудит сохранённых SVG/JSON. Критерий завершения: marker принадлежит половине длины конкретной quadratic/cubic, parallel/opposing/loop ID однозначны; показанные линии не пересекают геометрию узлов; закрытые/совпавшие маркеры не смещаются, отказ диагностируется; выбор/hover/режимы/create/reverse/delete/ID, drag/layout/zoom, v2/restart/import/history и актуальные регрессии проходят. Предел конечного шага: одна инженерная итерация до 90 минут, синтетический миниграф 5/4/3, общий граф двух определений 8/9/3 с вложенными α, отдельные parallel/loop/crossing пробы, максимум 80/160/800 в mini и 100/200/850 в плотном контексте; регрессия M015 до 3000 узлов. Пользовательская SQLite и `docs/patches/` не затрагиваются. Научная истинность тестовых определений и удобство длительной операторской работы не проверяются; активации и LLM-механизма нет.
+
+Git fetch подтвердил последний проверенный checkpoint `2fde7df` в `origin/codex/concept-provenance`, содержащий M015 `57e0980` и завершённое M016. Новая ветка `codex/context-edge-markers` начинается именно от него. Каноническое принятое решение/альтернативы — [ADR M017](layout-architecture.md#adr-m017-маркеры-id-рёбер-и-гибкий-контекст-14-октября-2026); операции — [инструкция](user-guide.md); прежний v2 — [формат](data-format-permanent.md). Геометрия не пишется в данные; backend и ID сохранены.
+
+Наблюдаемый результат: **90 Python / 38 JS**, compileall, syntax и diff-check прошли. Chrome 155.0.8059.40 / Playwright 1.58.2 / Node 24.19.0 / Python 3.13.2, Windows; запуск с собственными временными базами. [Контекстный GUI](evidence/context-markers/report.json) проверил реальные квадратные кнопки, hover/focus, все/выбранные/скрыть, заполнение from/to без дубля прежней пары, перемещение неинцидентного препятствия, click/right-click/Shift+F10/Enter контекста, reverse/delete, общий граф, список точных ID, фильтр окружения, fit/wheel zoom и 2385/600/360 px без второй страницы. Середина сверена с реальной SVG getPointAtLength(totalLength/2), отклонение <0.3 единицы. Каждый прямой и quadratic-сегмент проверен против actual shapes; audit дополнительно читает actual d и доказывает безопасность всей quadratic через control box. [Закрытый маркер](evidence/context-markers/blocked.png) даёт marker-covered с конкретным ID и ни одной подставной линии.
+
+[Отдельный GUI/probe](evidence/context-markers/probe-report.json) импортировал прежний M015 JSON без модификации и клавиатурой выбрал два relation квадрата разных определений. Перед добавлением пары постоянный state контекста прежний; обычный preview/publish добавил только одну directed context pair. Полные nodes/edges равны исходным по ID, включая поля/provenance/геометрию. В rectangle/circle пробах opposing parallel и две cubic-петли имеют разные, стабильные при перестановке edges маркеры; component не имеет квадрата; пересекающиеся ordinary линии не подменяют from/to. [Плотная проба](evidence/context-markers/dense.png): 100 concept/α, 200 relation, 850 контекстов; 800 показаны, 50 сверх лимита явно посчитаны, при начальном проходе и после переноса узла каждая показанная линия безопасна. Первое отображение 105 мс, redraw 70.8 мс. Максимальный mini 80/160/800: 61.9/28.9 мс, все 800 показаны. Это измерения конкретных fixtures, не универсальный deadline.
+
+[Регрессия M015](evidence/context-markers/regression-overview.json) сохранила preview/cancel/apply, whole/local force/hierarchy/radial, pins/undo, aliases/search/labels, вложенные α, полную JSON/историю; 100/1000/2000/3000 узлов, максимум 2000 видимых, все позиции проверены. Проверка путей адаптирована с исторической ортогональности к проверке реальных гибких сегментов. [M011](evidence/context-markers/regression-canvas.json) и [M016](evidence/context-markers/regression-provenance.json) прошли; прежние файлы свидетельств не перезаписаны. [45 независимых проверок](evidence/context-markers/verification.json) подтверждают сохранённые кривые, фиксированные точки, direction, v2/state/history, межопределительную публикацию и неизменные backend Git blobs; manifest содержит SHA-256 свидетельств. Снимки общего графа, rectangle/circle loops, плотной пробы и узкого вида просмотрены.
+
+Отрицательные попытки/исправления: [журнал](evidence/context-markers/negative-attempts.json), [потеря выбранных ID](evidence/context-markers/negative-id-selection.json) и [снимок](evidence/context-markers/negative-id-selection.png), [перехват hit обычным ребром](evidence/context-markers/negative-hit-layer.json), [ошибка критерия порядка массивов](evidence/context-markers/negative-array-order.json). act(fn) отбрасывал аргументы — заменён на ctx.run; контекстный hit слой поднят над обычными линиями. Прежняя публикация переупорядочивает массивы без изменения objects — сравнение теперь по ID. Первое unit-требование диагонали в каждом обходе было избыточно: гибкий Q-обход может сохранять ортогональный коридор, критерий исправлен на безопасность/сглаживание и произвольную прямую без препятствий. Без изменений эти неудачные попытки не повторялись.
+
+Ограничения: линии между собой не разводятся; на плотном графе визуальная читаемость всех 800 пар не доказана. Закрытый фиксированный marker и coincident-markers требуют изменения расположения или просмотра списка ID. Консервативные obstacles/конечный поиск могут отказать, хотя геометрический путь существует. Обрабатывается до 800 пар, общий граф проверяет 120 мс между парами, fallback сетка до 40 000 vertices; лимиты считаются явно. Радиусы M015, existing selection и публикация прежние. Модель, history/семантические направления/JSON не менялись; механизм активации не реализован.
+
+Воспроизведение из корня (PowerShell):
+
+```powershell
+$env:PYTHONUTF8='1'
+python -m unittest discover -s tests -v
+node --test tests/test_graph_view.cjs tests/test_layout.cjs tests/test_overview.cjs tests/test_alpha_captions.cjs tests/test_concept_provenance.cjs tests/test_context_markers.cjs
+python -m compileall -q app scripts tests
+node --check app/static/graph-view.js
+node --check app/static/builder.js
+node --check app/static/workspace.js
+$env:NODE_PATH=(Resolve-Path local-data/browser-tools/node_modules).Path
+node tests/context-browser.cjs
+node tests/marker-browser.cjs
+node tests/overview-browser.cjs
+node tests/canvas-browser.cjs
+node tests/concept-provenance-browser.cjs
+python -m scripts.verify_context_markers
+git diff --check
+```
+
+Playwright — прежняя локальная проверочная зависимость, установленный Chrome; для другой машины используйте свой NODE_PATH. Сценарии создают собственные `local-data/<run>` и `test-output/<run>`, завершают только свои процессы. Новый audit проверяет сохранённые канонические свидетельства без изменения пользовательских данных. Следующий конечный шаг — external review diff от `2fde7df` и свидетельств; критерий — замечания/решение reviewer, граница — M017. Commit/push в экспериментальную ветку; **merge в main не выполняется**.
+
 ## M016: информативный выбор существующих концептов, 14 октября 2026
 
 Вопрос: может ли оператор различить одинаковые обозначения по сохранённому контексту разбора до выбора UUID? Способ — читаемый renderer сохранённых origins/публикаций/черновиков, предметные тесты и реальный Chrome GUI на изолированных SQLite. Критерий — три отдельных «детали» различаются по тексту/названию/источнику до кнопки выбора; reuse в «винте» отдельно от создания; отсутствие источника/происхождения явно; длинный текст раскрывается; инспектор без JSON; чтение не изменяет state; повторная публикация не стирает сохранённый контекст; restart/export/import сохраняют state/IDs/историю. Предел шага — четыре concept ID, три исходных определения, одно reuse-определение и один неподтверждённый черновик; текущие unit-наборы, один новый GUI-сценарий и три GUI-регрессии M009/M014/M015. Научная интерпретация тестовых определений не проверяется, LLM не заменяет механизм приложения.

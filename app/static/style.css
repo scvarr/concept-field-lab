@@ -167,3 +167,12 @@ body.permanent-workspace {height:100dvh;overflow:hidden}
 .concept-provenance { min-width:0; }
 .definition-provenance { margin: .65rem 0; padding: .65rem; border-left: 3px solid #5586b8; background: #f3f6fa; overflow-wrap:anywhere; }
 .provenance-text { white-space:pre-wrap; overflow-wrap:anywhere; line-height:1.5; }
+
+/* M017: relation IDs are UI ports, never conceptual nodes. */
+.relation-marker-controls{position:absolute;top:8px;right:8px;display:flex;flex-wrap:wrap;align-items:center;gap:6px;max-width:calc(100% - 16px);padding:4px 6px;background:#fafcfbe8;border:1px solid #d7c3dd;border-radius:5px;font-size:11px}
+.relation-marker-controls select,.relation-marker-controls button{font-size:11px;padding:3px;min-height:24px}
+.relation-marker-controls label{display:flex;gap:4px;align-items:center}
+.graph [data-relation-marker] rect{fill:#fff;stroke:#733b81;stroke-width:1.5;cursor:pointer}
+.graph [data-relation-marker].selected rect,.graph [data-relation-marker]:hover rect,.graph [data-relation-marker]:focus-visible rect{fill:#d7b6e0;stroke:#4f235c;stroke-width:2.5}
+.graph .context-highlight .edge,.graph .context-highlight .context-edge{stroke:#ae2979;stroke-width:3.5}
+.graph .context-port{display:none}

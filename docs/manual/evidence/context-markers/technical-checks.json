@@ -1,0 +1,48 @@
+{
+  "checks": [
+    {
+      "command": "python -m compileall -q app scripts tests",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "command": "node --check app/static/graph-view.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "command": "node --check app/static/builder.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "command": "node --check app/static/workspace.js",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "command": "node --check tests/context-browser.cjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "command": "node --check tests/marker-browser.cjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "command": "node --check tests/overview-browser.cjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "name": "Relative Markdown file links, excluding user docs/patches",
+      "broken": []
+    }
+  ]
+}
