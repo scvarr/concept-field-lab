@@ -36,7 +36,7 @@ python -m scripts.verify_context_markers
 git diff --check
 ```
 
-Playwright — прежняя локальная проверочная зависимость, установленный Chrome; для другой машины используйте свой NODE_PATH. Сценарии создают собственные `local-data/<run>` и `test-output/<run>`, завершают только свои процессы. Новый audit проверяет сохранённые канонические свидетельства без изменения пользовательских данных. Следующий конечный шаг — external review diff от `2fde7df` и свидетельств; критерий — замечания/решение reviewer, граница — M017. Commit/push в экспериментальную ветку; **merge в main не выполняется**.
+Playwright — прежняя локальная проверочная зависимость, установленный Chrome; для другой машины используйте свой NODE_PATH. Сценарии создают собственные `local-data/<run>` и `test-output/<run>`, завершают только свои процессы. Новый audit проверяет сохранённые канонические свидетельства без изменения пользовательских данных. Следующий конечный шаг — external review diff от `2fde7df` и свидетельств; критерий — замечания/решение reviewer, граница — M017. Checkpoint реализации `83c10c4` отправлен в `origin/codex/context-edge-markers`; [diff для external review](https://github.com/scvarr/concept-field-lab/compare/2fde7df...codex/context-edge-markers). Атрибуты LF сохраняют контрольные суммы новых свидетельств при checkout Windows/Linux. **Merge в main не выполнялся**.
 
 ## M016: информативный выбор существующих концептов, 14 октября 2026
 

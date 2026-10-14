@@ -107,7 +107,7 @@ def audit():
         check('Прежний backend '+name, subprocess.check_output(['git', 'hash-object', name]).strip() == subprocess.check_output(['git', 'rev-parse', '2fde7df:'+name]).strip())
     output = {'result': 'passed', 'base': '2fde7df', 'python': platform.python_version(), 'sqlite': sqlite3.sqlite_version, 'checks': checks,
               'files': [{'name': p.name, 'bytes': p.stat().st_size, 'sha256': hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(folder.iterdir()) if p.is_file() and p.name != 'verification.json']}
-    (folder/'verification.json').write_text(json.dumps(output, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+    (folder/'verification.json').write_text(json.dumps(output, ensure_ascii=False, indent=2)+'\n', encoding='utf-8', newline='\n')
     print(f'{len(checks)} независимых проверок M017 прошли')
 
 
