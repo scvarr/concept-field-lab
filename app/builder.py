@@ -32,9 +32,15 @@ def validate_draft(draft):
     node_ids = {n['id'] for n in draft['nodes']}
     edges = {e['id']: e for e in draft['edges']}
     for n in draft['nodes']:
+        if n.get('structure', 'concept') not in ('concept', 'alpha'):
+            raise Invalid('Структура поля: concept или alpha.')
         if not isinstance(n.get('existing'), bool):
             raise Invalid('Выберите новый или существующий концепт.')
-        clean(n.get('designation', ''), 'обозначение', not n['existing'] and 'designations' not in n, 1000)
+        if 'base' in n and n['base'] is not None and not isinstance(n['base'], dict):
+            raise Invalid('Снимок выбранного ID должен быть объектом.')
+        clean(n.get('kind', ''), 'характеристика', False, 1000)
+        clean(n.get('notes', ''), 'примечание')
+        clean(n.get('designation', ''), 'обозначение', not n['existing'] and n.get('structure') != 'alpha' and 'designations' not in n, 1000)
         if 'designations' in n:
             from app.designations import validate_designation
             if not isinstance(n['designations'], list) or len(n['designations']) > 80:
@@ -50,15 +56,18 @@ def validate_draft(draft):
     for e in draft['edges']:
         if e.get('from') not in node_ids or e.get('to') not in node_ids or not isinstance(e.get('existing'), bool):
             raise Invalid('Ребро требует два выбранных поля.')
+    from app.alpha import validate_structure
+    validate_structure(draft['nodes'], draft['edges'], complete=False)
+    relation_ids = {e['id'] for e in draft['edges'] if e.get('role', 'relation') == 'relation'}
     pairs = set()
     for c in draft['contextEdges']:
         pair = c.get('from'), c.get('to')
-        if pair[0] not in edges or pair[1] not in edges or pair[0] == pair[1] or pair in pairs:
+        if pair[0] not in relation_ids or pair[1] not in relation_ids or pair[0] == pair[1] or pair in pairs:
             raise Invalid('Контекст требует два разных обычных ребра без повторения пары.')
         pairs.add(pair)
     for r in draft['routes']:
         route = r.get('edgeIds')
-        if not isinstance(route, list) or not route or len(route) > 40 or len(set(route)) != len(route) or any(e not in edges for e in route):
+        if not isinstance(route, list) or not route or len(route) > 40 or len(set(route)) != len(route) or any(e not in relation_ids for e in route):
             raise Invalid('Маршрут: 1–40 различных рёбер.')
         if any(edges[a]['to'] != edges[b]['from'] for a, b in zip(route, route[1:])):
             raise Invalid('Рёбра маршрута должны последовательно соединяться.')
@@ -94,6 +103,7 @@ def validate_extension(study, identity):
         raise Invalid('Включение требует сохранённого черновика.')
     node_ids = {n['id'] for n in study['nodes']}
     context_ids = {c['id'] for c in data['contextEdges']}
+    component_ids = {e['id'] for e in study['edges'] if e.get('role') == 'component'}
     for publication in publications.values():
         if not isinstance(publication, dict):
             raise Invalid('Неверная запись включения определения.')
@@ -103,6 +113,9 @@ def validate_extension(study, identity):
             rows = publication.get(key)
             if not isinstance(rows, list) or any(not isinstance(v, str) for v in rows) or len(rows) != len(set(rows)) or not set(rows) <= allowed:
                 raise Invalid('Изменение удаляет объект другого подтверждённого определения. Пересмотрите его включение отдельно.')
+        rows = publication.get('componentIds', [])
+        if not isinstance(rows, list) or any(not isinstance(v, str) for v in rows) or len(rows) != len(set(rows)) or not set(rows) <= component_ids:
+            raise Invalid('Изменение удаляет обязательный компонент другого определения.')
 
 
 def comparable(node):
@@ -118,6 +131,8 @@ def prepare(study, draft):
         raise Invalid('Для включения нужны определение и хотя бы одно поле.')
     result = copy.deepcopy(study)
     legacy = 'accumulation' in result
+    if legacy and (any(n.get('structure') == 'alpha' for n in draft['nodes']) or any(e.get('role') == 'component' for e in draft['edges'])):
+        raise Invalid('Новые α доступны только в постоянном графе.')
     acc = result['accumulation'] if legacy else result
     layer = copy.deepcopy(manual(acc) if legacy else {k: result[k] for k in ('nodes', 'edges', 'designations', 'contextEdges')})
     old = {key: [o for o in layer[key] if o['definitionId'] == draft['id']] for key in layer}
@@ -146,14 +161,14 @@ def prepare(study, draft):
         if n['id'] in current_nodes and n['id'] not in old_nodes:
             raise Invalid('Новый ID уже существует; выберите существующий концепт.')
         origin = {'definitionId': draft['id'], 'snapshot': {'definition': draft['definition'], 'dictionaryId': n.get('dictionaryId'), 'source': copy.deepcopy(draft.get('source'))}}
-        node = {**copy.deepcopy(old_nodes.get(n['id'], {})), 'id': n['id'], **fields({'label': '', 'designationOnly': True}),
-                'designationOnly': True, 'structure': 'concept', 'origins': [origin], 'definitionId': draft['id'],
+        node = {**copy.deepcopy(old_nodes.get(n['id'], {})), 'id': n['id'], **fields({'label': '', 'designationOnly': True, 'kind': n.get('kind', ''), 'notes': n.get('notes', '')}),
+                'designationOnly': True, 'structure': n.get('structure', 'concept'), 'origins': [origin], 'definitionId': draft['id'],
                 'x': n.get('x', current_nodes.get(n['id'], {}).get('x', 260 * (index % 5))),
                 'y': n.get('y', current_nodes.get(n['id'], {}).get('y', max([v.get('y', 0) for v in study['nodes']] + [0]) + 220 + 140 * (index // 5)))}
         layer['nodes'].append(node)
         previous = next((d for d in old['designations'] if d['target'] == n['id']), None)
         if legacy or n['id'] not in current_nodes:
-            pending = n.get('designations', [{'id': previous['id'] if previous else str(uuid5(NAMESPACE_URL, 'concept-field-designation:' + n['id'])), 'text': n.get('designation', '')}])
+            pending = n.get('designations', [] if n.get('structure') == 'alpha' and not n.get('designation') else [{'id': previous['id'] if previous else str(uuid5(NAMESPACE_URL, 'concept-field-designation:' + n['id'])), 'text': n.get('designation', '')}])
             for designation in pending:
                 layer['designations'].append({**copy.deepcopy(designation), 'target': n['id'],
                     'notes': designation.get('notes', ''), 'source': 'Ручной ввод определения', 'origins': [origin], 'definitionId': draft['id']})
@@ -163,17 +178,17 @@ def prepare(study, draft):
     for e in draft['edges']:
         if e['existing']:
             actual = lookup(study['edges'], e['id'], 'выбранное ребро')
-            if actual['from'] != e['from'] or actual['to'] != e['to'] or actual.get('role', 'relation') != 'relation':
+            if actual['from'] != e['from'] or actual['to'] != e['to'] or actual.get('role', 'relation') != e.get('role', 'relation'):
                 raise Invalid('Выбранное ребро изменено или не является обычным.')
             if e['id'] in old_edges:
                 layer['edges'].append(copy.deepcopy(old_edges[e['id']]))
             continue
         if e['id'] in current_edges and e['id'] not in old_edges:
             raise Invalid('ID нового ребра занят.')
-        duplicate = [v for v in study['edges'] if v['from'] == e['from'] and v['to'] == e['to'] and v['id'] != e['id'] and v.get('role', 'relation') == 'relation']
+        duplicate = [v for v in study['edges'] if v['from'] == e['from'] and v['to'] == e['to'] and v['id'] != e['id'] and v.get('role', 'relation') == e.get('role', 'relation')]
         if duplicate and not e.get('parallelReason', '').strip():
             raise Invalid('Для этих концов уже есть ребро: повторно используйте его ID либо обоснуйте параллельное.')
-        layer['edges'].append({'id': e['id'], 'from': e['from'], 'to': e['to'], 'role': 'relation', 'type': '',
+        layer['edges'].append({'id': e['id'], 'from': e['from'], 'to': e['to'], 'role': e.get('role', 'relation'), 'type': '',
             'notes': '', 'origins': [{'definitionId': draft['id'], 'snapshot': copy.deepcopy(e)}], 'definitionId': draft['id'],
             'parallelReason': clean(e.get('parallelReason', ''), 'обоснование параллельного ребра')})
         new_edges.append(e['id'])
@@ -189,7 +204,8 @@ def prepare(study, draft):
     else:
         result.update(layer)
     acc.setdefault('definitionPublications', {})[draft['id']] = {'title': draft['title'], 'definition': draft['definition'],
-        'nodeIds': [n['id'] for n in draft['nodes']], 'edgeIds': [e['id'] for e in draft['edges']],
+        'nodeIds': [n['id'] for n in draft['nodes']], 'edgeIds': [e['id'] for e in draft['edges'] if e.get('role', 'relation') == 'relation'],
+        **({'componentIds': [e['id'] for e in draft['edges'] if e.get('role') == 'component']} if any(e.get('role') == 'component' for e in draft['edges']) else {}),
         'contextIds': [c['id'] for c in draft['contextEdges']], **({'source': copy.deepcopy(draft['source'])} if draft.get('source') else {})}
     if legacy:
         result.update(projection(acc, result))

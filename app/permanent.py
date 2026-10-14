@@ -10,7 +10,7 @@ from pathlib import Path
 from app.store import Store, Invalid, Conflict, clean, lookup, uid, now, encode, decode, fields
 
 FORMAT = 'concept-field-permanent'
-VERSION = 1
+VERSION = 2
 COLLECTIONS = ('nodes', 'edges', 'designations', 'contextEdges')
 
 
@@ -34,7 +34,7 @@ def validate_graph(graph):
     for n in graph['nodes']:
         identity(n)
         fields(n)
-        if n.get('structure') != 'concept' or n.get('designationOnly') is not True or n.get('label') != '':
+        if n.get('structure') not in ('concept', 'alpha') or n.get('designationOnly') is not True or n.get('label') != '':
             raise Invalid('Новый концепт адресуется по ID и внешним обозначениям, без переноса исторической модели.')
         if not isinstance(n.get('origins'), list):
             raise Invalid('Неверное происхождение концепта.')
@@ -43,7 +43,7 @@ def validate_graph(graph):
                 raise Invalid('Координаты графа должны быть конечными числами ±100000.')
     for e in graph['edges']:
         identity(e)
-        if e.get('from') not in nodes or e.get('to') not in nodes or e.get('role') != 'relation':
+        if e.get('from') not in nodes or e.get('to') not in nodes or e.get('role') not in ('relation', 'component'):
             raise Invalid('Обычное ребро требует два концептуальных ID этого графа.')
         clean(e.get('type', ''), 'тип', False, 1000)
     for d in graph['designations']:
@@ -52,6 +52,8 @@ def validate_graph(graph):
         validate_designation(d)
         if d.get('target') not in nodes:
             raise Invalid('Обозначение требует существующий концепт.')
+    from app.alpha import validate_structure
+    validate_structure(graph['nodes'], graph['edges'])
     validate_extension(graph, identity)
 
 
@@ -87,13 +89,19 @@ def verified_backup(path):
 
 
 def parse_document(document):
-    if not isinstance(document, dict) or document.get('format') != FORMAT or document.get('version') != VERSION or document.get('kind') != 'graph':
-        raise Invalid('Нужен экспорт concept-field-permanent v1. Старые графы не переносятся автоматически: откройте их в историческом режиме.')
-    validate_graph(document.get('state'))
+    if not isinstance(document, dict) or document.get('format') != FORMAT or document.get('version') not in (1, VERSION) or document.get('kind') != 'graph':
+        raise Invalid('Нужен экспорт concept-field-permanent v1/v2. Старые графы не переносятся автоматически: откройте их в историческом режиме.')
+    def validate_state(state):
+        validate_graph(state)
+        if document['version'] == 1:
+            bundles = [state, *state['definitionDrafts']]
+            if any(any(n.get('structure') == 'alpha' for n in b['nodes']) or any(e.get('role') == 'component' for e in b['edges']) for b in bundles):
+                raise Invalid('α и обязательные компоненты требуют экспорта v2.')
+    validate_state(document.get('state'))
     from app.journal import expand_history
     latest = None
     for row in expand_history(document):
-        validate_graph(row['state'])
+        validate_state(row['state'])
         latest = row['state']
     if latest is not None and latest != document['state']:
         raise Invalid('Последняя строка истории не совпадает с графом.')

@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-14T12:32:28.874Z",
+  "node": "v24.19.0",
+  "base": "09cc89b",
+  "scope": "Manual nested alpha, isolated SQLite; no semantic claim",
+  "checks": [
+    "Created anonymous alpha2, two direct components and independent head relation using forms and canvas",
+    "Created alpha1(part,alpha2), external designation винт, whole relation; inspected nested tree with exact IDs and no propagation",
+    "Edited alpha2 characteristic and added/removed component; explicit reference refresh after inspection preserves alpha and surviving edge IDs",
+    "Reused the same alpha2 ID in a third construction without copying its nodes",
+    "Permanent canvas shows alpha badges and dashed component edges; 600px and 360px fit without document overflow",
+    "Server process restart preserves graph and nested inspection",
+    "GUI export/import into a fresh SQLite retains exact state and archived complete history",
+    "Seven malformed structural imports return HTTP400 without changing state/revision"
+  ],
+  "errors": [],
+  "negative": [
+    {
+      "kind": "cycle",
+      "status": 400,
+      "error": "Цикл обязательного состава α не допускается."
+    },
+    {
+      "kind": "dangling",
+      "status": 400,
+      "error": "Обычное ребро требует два концептуальных ID этого графа."
+    },
+    {
+      "kind": "empty",
+      "status": 400,
+      "error": "Опубликованная α требует хотя бы один обязательный компонент."
+    },
+    {
+      "kind": "concept-owner",
+      "status": 400,
+      "error": "Обязательный компонент может принадлежать только α."
+    },
+    {
+      "kind": "duplicate",
+      "status": 400,
+      "error": "Повтор обязательного компонента одной α."
+    },
+    {
+      "kind": "component-context",
+      "status": 400,
+      "error": "Контекст полотна ссылается на неверные рёбра или повторяет пару."
+    },
+    {
+      "kind": "malformed-id",
+      "status": 400,
+      "error": "unhashable type: 'list'"
+    }
+  ],
+  "browser": "155.0.8059.40",
+  "tree": "α винт [992bc339-c79b-4305-84d7-742d303fcbd6]\n  Деталь [b15ab318-3409-40af-af8c-3495d6727c79]\n  α b72f57af-7fa8-4f0e-a37d-6fd3667e5ba8 [b72f57af-7fa8-4f0e-a37d-6fd3667e5ba8]\n    Стержень [2432065c-7f66-484c-875b-2d47c125d9e0]\n    Головка [916aae0a-077e-4bbd-a0f3-cd59f5fd3812]",
+  "ids": {
+    "inner": "a492941e-1873-4e6c-a008-aade2ec3d5e5",
+    "outer": "7bfab951-0c98-4e4a-936e-515fd4bd394d",
+    "a1": "992bc339-c79b-4305-84d7-742d303fcbd6",
+    "a2": "b72f57af-7fa8-4f0e-a37d-6fd3667e5ba8",
+    "a3": "810c62c6-7fb5-4ac2-9f16-eb3e92aaa337",
+    "rod": "2432065c-7f66-484c-875b-2d47c125d9e0",
+    "head": "916aae0a-077e-4bbd-a0f3-cd59f5fd3812",
+    "part": "b15ab318-3409-40af-af8c-3495d6727c79",
+    "turn": "370b5dc8-1d27-4e30-b7d8-942559b019c8",
+    "whole": "607cc8f9-2357-4e4d-b9b1-e26d391c542d"
+  },
+  "counts": {
+    "nodes": 9,
+    "components": 5,
+    "relations": 2,
+    "history": 42
+  },
+  "ok": true
+}

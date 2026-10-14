@@ -39,7 +39,7 @@ window.DefinitionBuilder = class {
       else{const n=this.draft.nodes.find(n=>n.id===id);n.designations=this.aliases(id).filter(d=>d.id!==aliasId);await this.save();}
     },'Удалить соответствие');
   }
-  edgeName(id) { const e=this.draft?.edges.find(e=>e.id===id);return e?`${this.name(e.from)} → ${this.name(e.to)} · ${id}`:id; }
+  edgeName(id) { const e=this.draft?.edges.find(e=>e.id===id);return e?`${e.role==='component'?'Компонент: ':''}${this.name(e.from)} → ${this.name(e.to)} · ${id}`:id; }
   capture() {
     if(!this.draft)return;
     const active=!this.ctx.permanent||document.querySelector('#dialog')?.open;
@@ -102,13 +102,13 @@ window.DefinitionBuilder = class {
     const host=this.host.querySelector('#def-graph');if(!host)return;
     const d=this.draft,snapshot=this.graphDraft===d.id?this.graph?.snapshot():null;this.graph?.observer.disconnect();this.graphDraft=d.id;
     if(!d.nodes.length){this.graph=null;host.textContent='Найдите существующий концепт или создайте первое поле.';return;}
-    const nodes=d.nodes.map((n,i)=>({id:n.id,label:this.ids?n.id:this.name(n.id),x:n.x??(i%4)*245,y:n.y??Math.floor(i/4)*125,origins:[],badge:n.existing?'Повторно используется':this.ctx.permanent&&this.canvas().nodes.some(v=>v.id===n.id)?'В постоянном графе':'Новый'}));
+    const nodes=d.nodes.map((n,i)=>({id:n.id,structure:n.structure||n.base?.structure,label:this.ids?n.id:this.name(n.id),x:n.x??(i%4)*245,y:n.y??Math.floor(i/4)*125,origins:[],badge:(n.structure||n.base?.structure)==='alpha'?'α · обязательный состав':n.existing?'Повторно используется':this.ctx.permanent&&this.canvas().nodes.some(v=>v.id===n.id)?'В постоянном графе':'Новый'}));
     this.graph=new GraphView(host,{select:id=>this.ctx.permanent?this.pickObject('node',id):this.inspect(id),editNode:id=>this.ctx.permanent?this.openNode(id):this.inspect(id),editEdge:id=>this.ctx.permanent?this.pickObject('edge',id):this.ctx.dialog('Обычное ребро',`<p>${this.h(this.edgeName(id))}</p>`),editContext:this.ctx.permanent?id=>this.pickObject('context',id):undefined,contextMenu:this.ctx.permanent?(kind,id,e)=>this.objectMenu(kind,id,e):undefined,activateNode:this.ctx.permanent?id=>this.interaction?this.pickObject('node',id):this.openNode(id):undefined,savePosition:this.ctx.run(async(id,p)=>{this.capture();Object.assign(d.nodes.find(n=>n.id===id),p);await this.save();}),canInteract:()=>!this.ctx.busy(),error:e=>this.ctx.toast(e.message,true)});
     if(snapshot)this.graph.restore(snapshot);
     this.graph.update({id:d.id,rootId:nodes[0]?.id,nodes,edges:d.edges},{nodes,edges:d.edges.map(e=>({...e,type:'',highlight:this.route.includes(e.id),displayTitle:this.edgeName(e.id)})),contextEdges:this.ctx.permanent?d.contextEdges:[]},this.selectedObject?.kind==='node'?this.selectedObject.id:nodes[0]?.id);if(!snapshot)this.graph.fit();
   }
   prune(ids) { this.draft.contextEdges=this.draft.contextEdges.filter(c=>!ids.includes(c.from)&&!ids.includes(c.to));this.draft.routes=this.draft.routes.filter(r=>!r.edgeIds.some(id=>ids.includes(id)));this.route=this.route.filter(id=>!ids.includes(id)); }
-  async addNew(designation,dictionaryId) { this.draft.nodes.push({id:crypto.randomUUID(),designation,existing:false,dictionaryId:dictionaryId||null,...(this.spawnPosition||{}),...(this.ctx.permanent?{designations:[{id:crypto.randomUUID(),text:designation,...(this.draft.source?.lemma===designation?{lexicalSource:structuredClone(this.draft.source)}:{})}]}:{})});this.spawnPosition=null;await this.save();if(this.ctx.permanent)this.ctx.closeDialog(); }
+  async addNew(designation,dictionaryId,structure='concept') { this.draft.nodes.push({id:crypto.randomUUID(),designation,existing:false,...(structure==='alpha'?{structure}:{}),dictionaryId:dictionaryId||null,...(this.spawnPosition||{}),...(this.ctx.permanent?{designations:designation?[{id:crypto.randomUUID(),text:designation,...(this.draft.source?.lemma===designation?{lexicalSource:structuredClone(this.draft.source)}:{})}]:[]}:{})});this.spawnPosition=null;await this.save();if(this.ctx.permanent)this.ctx.closeDialog(); }
   async loadSenses(lemma,refresh=false) {
     const sequence=this.senseSequence=(this.senseSequence||0)+1,host=this.searchHost('#def-senses');if(!host)return;
     host.innerHTML='<p>Получение толкований… Можно продолжать ручной ввод.</p>';
@@ -152,7 +152,7 @@ window.DefinitionBuilder = class {
   async connect(from=this.host.querySelector('#def-from')?.value,to=this.host.querySelector('#def-to')?.value) {
     if(!from||!to)throw Error('Выберите два поля.');
     const available=this.canvas().edges.filter(e=>e.from===from&&e.to===to&&(!e.role||e.role==='relation'));
-    if(this.draft.edges.some(e=>e.from===from&&e.to===to))throw Error('Эти поля уже соединены в черновике.');
+    if(this.draft.edges.some(e=>e.from===from&&e.to===to&&e.role!=='component'))throw Error('Эти поля уже соединены в черновике.');
     if(available.length){this.ctx.dialog('Выбрать ID обычного ребра',`<p>Эти концепты уже соединены. Выберите существующий ID или обоснуйте новое параллельное ребро.</p><select name="edgeId">${available.map(e=>`<option value="${this.h(e.id)}">${this.h(e.id)} · ${this.h(e.type||'без типа')} · ${this.h(e.notes)}</option>`).join('')}<option value="new">Новое параллельное ребро</option></select><label>Причина нового ребра<input name="reason"></label>`,async f=>{const id=f.get('edgeId');this.draft.edges.push(id==='new'?{id:crypto.randomUUID(),from,to,existing:false,parallelReason:f.get('reason')}:{id,from,to,existing:true});await this.save();},'Выбрать');return;}
     this.draft.edges.push({id:crypto.randomUUID(),from,to,existing:false});await this.save();
   }

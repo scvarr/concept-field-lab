@@ -1,0 +1,499 @@
+{
+  "result": "passed",
+  "base": "09cc89b",
+  "python": "3.13.2",
+  "sqlite": "3.45.3",
+  "checks": [
+    {
+      "name": "Actual alpha GUI run",
+      "passed": true
+    },
+    {
+      "name": "Exact roundtrip",
+      "passed": true
+    },
+    {
+      "name": "Full source history archived",
+      "passed": true
+    },
+    {
+      "name": "Journal latest equals graph",
+      "passed": true
+    },
+    {
+      "name": "alpha1 preserves nested alpha2",
+      "passed": true
+    },
+    {
+      "name": "alpha2 preserves direct rod/head",
+      "passed": true
+    },
+    {
+      "name": "alpha3 references same alpha2",
+      "passed": true
+    },
+    {
+      "name": "No identity copies",
+      "passed": true
+    },
+    {
+      "name": "Whole and head relations are separate",
+      "passed": true
+    },
+    {
+      "name": "Designation is external",
+      "passed": true
+    },
+    {
+      "name": "Component publications are separate",
+      "passed": true
+    },
+    {
+      "name": "Seven atomic HTTP refusals recorded",
+      "passed": true
+    },
+    {
+      "name": "M007–M012 GUI: context",
+      "passed": true
+    },
+    {
+      "name": "M007–M012 GUI: canvas",
+      "passed": true
+    },
+    {
+      "name": "M007–M012 GUI: designations",
+      "passed": true
+    },
+    {
+      "name": "M007–M012 GUI: permanent",
+      "passed": true
+    },
+    {
+      "name": "M007–M012 GUI: workspace-views",
+      "passed": true
+    },
+    {
+      "name": "M007–M012 GUI: builder",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/README.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/.gitignore",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/AGENTS.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/README.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/data/README.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/data/external-sources.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/data/parser-sources.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/data/sources.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/README.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/adr/001-separate-operators-and-episode-bindings.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/chatgpt.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/current-state.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/literature.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/research-findings.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/research-goal.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/steps/001-role-transfer-plan.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/steps/001-role-transfer-results.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/steps/002-context-binding-plan.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/steps/002-context-binding-results.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/steps/003-conditional-operators-plan.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/steps/003-conditional-operators-results.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/steps/004-automatic-input-plan.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/steps/004-automatic-input-results.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/steps/005-external-semantic-audit-plan.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/docs/steps/005-external-semantic-audit-results.md",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/requirements-parser.txt",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/001/gsd_test_predictions.jsonl",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/001/metrics.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/001/syntagrus_dev_predictions.jsonl",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/001/syntagrus_test_predictions.jsonl",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/002/dev_predictions.jsonl",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/002/metrics.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/002/operators.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/002/test_predictions.jsonl",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/003/metrics.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/003/operators.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/003/predictions.jsonl",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/004/metrics.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/004/parsed_input.conllu",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/004/predictions.jsonl",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/005/annotation-input.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/005/annotations.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/005/coverage.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/005/metrics.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/results/005/predictions.jsonl",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/scripts/automatic_input.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/scripts/conditional_operators.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/scripts/context_binding.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/scripts/external_semantic_audit.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/scripts/fetch_parser.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/scripts/fetch_ud.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/scripts/prepare_external_audit.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/scripts/role_transfer.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/scripts/verify_results.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/tests/test_automatic_input.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/tests/test_conditional_operators.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/tests/test_context_binding.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: archive/observational-composition/tests/test_role_transfer.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/accumulation/k001-k002-workspace.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/nut/inventory.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/nut/nut-revised.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/nut/nut.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/nut/revision-audit.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/nut/revision-inventory.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/nut/sources.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/nut/structure-audit.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/nut/ungrouped.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/stone/baseline.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/stone/stone.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/transfer/comparison-k001.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/transfer/inventory.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/transfer/relevance.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/transfer/structure-audit.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/transfer/transfer.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/experiments/transfer/ungrouped.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/fixtures/composition-example.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: data/fixtures/manual-example.json",
+      "passed": true
+    },
+    {
+      "name": "Retained file: app/store.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: app/composition.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: app/journal.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: app/designations.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: app/definitions.py",
+      "passed": true
+    },
+    {
+      "name": "Retained file: app/dictionary.py",
+      "passed": true
+    }
+  ],
+  "files": [
+    {
+      "name": "graph-360.png",
+      "bytes": 29922,
+      "sha256": "bfa0cba33105de01f671af476b2e12e5dd34ff7517a6053db12608cbaf9e9428"
+    },
+    {
+      "name": "graph-600.png",
+      "bytes": 41646,
+      "sha256": "cf623b039d4f80367e5f2a517c0c8b771b6b4c2c4c22f28062fc23b58f775037"
+    },
+    {
+      "name": "javascript-tests.txt",
+      "bytes": 1859,
+      "sha256": "628a560112cc91aaf518725edcff9d34fb51784a2bb3131063620772066e88c0"
+    },
+    {
+      "name": "negative-attempts.json",
+      "bytes": 21135,
+      "sha256": "02b1439bbf1a8efcbf83fe1341832e1aa26f640a72b89acc65a9fdb1a1917c90"
+    },
+    {
+      "name": "nested-tree.png",
+      "bytes": 87951,
+      "sha256": "1921fcd3b6e8502e81d5a23e7c4ca2f1a8c0432929a31bf4f84fcac9e5482779"
+    },
+    {
+      "name": "permanent.json",
+      "bytes": 62135,
+      "sha256": "dcf8d13641a4ebf147318002f05e4720ab27d3c4fda281bcb8bdc088a9133279"
+    },
+    {
+      "name": "permanent.png",
+      "bytes": 58544,
+      "sha256": "c00921423928591d4f042ed6b7bc5638306c7c2fcead2fee38d32d4e0159cf66"
+    },
+    {
+      "name": "python-tests.txt",
+      "bytes": 12601,
+      "sha256": "0946fe7782ca185cfb740486c6aaaddc2365a3e202ed598aec188bb9074d05a1"
+    },
+    {
+      "name": "reexport.json",
+      "bytes": 100231,
+      "sha256": "c79b0d7b1f27d8ef608a97a1cc71b861df6170d5b7060dbfb9a10b54fc2b8cff"
+    },
+    {
+      "name": "regression-builder.json",
+      "bytes": 1539,
+      "sha256": "e3f205babf3a027a0d3994d78297157e2420b65dcb91f7cd6113331afa62dd40"
+    },
+    {
+      "name": "regression-canvas.json",
+      "bytes": 2863,
+      "sha256": "e471e72b02654da0c02fc3cd6d69169631044d0914a043c570335c0b2e0ab5e9"
+    },
+    {
+      "name": "regression-context.json",
+      "bytes": 42243,
+      "sha256": "b0a1da222151ab0257f76e67e7c34608f21babf18173b7c0c2de1351273b120c"
+    },
+    {
+      "name": "regression-designations.json",
+      "bytes": 2812,
+      "sha256": "7f67ca1db9b9f49c44a4768e36e5d467c2e152ba45017b5f731fc31d1a1a9414"
+    },
+    {
+      "name": "regression-permanent.json",
+      "bytes": 3404,
+      "sha256": "37e8e615865ca4e2b5842d60f324a5a14abf88a48065c9ed1241d46922d5d03d"
+    },
+    {
+      "name": "regression-workspace-views.json",
+      "bytes": 1475,
+      "sha256": "2b1f672132ee597ea2b3e9d07fe57198c3e0be604d3479722405ede71ed7e7a7"
+    },
+    {
+      "name": "report.json",
+      "bytes": 3215,
+      "sha256": "a294fb6646b32d99d83853c171ced3a8805c867bc77e82235d6559a58fde5508"
+    },
+    {
+      "name": "technical-checks.json",
+      "bytes": 746,
+      "sha256": "ec91452e646ed8028ae328f0d19cb3dce12be8c8b8caf6ceb7c9232b1c1356e3"
+    }
+  ]
+}

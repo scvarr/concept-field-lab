@@ -33,3 +33,7 @@ docs/manual/evidence/nut-revision/*.json text eol=lf
 /docs/manual/evidence/integration/**/*.json text eol=lf
 /docs/manual/evidence/integration/*.json text eol=lf
 /docs/manual/evidence/integration/*.txt text eol=lf
+
+# Keep M013 alpha evidence and its checksum manifest portable.
+/docs/manual/evidence/alpha/*.json text eol=lf
+/docs/manual/evidence/alpha/*.txt text eol=lf
