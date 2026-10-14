@@ -98,7 +98,7 @@ if(typeof window!=='undefined') {
         if(!g){g=svgElement('g',{'data-graph-node':n.id,role:'button',tabindex:0});g.append(svgElement('rect',{x:-80,y:-28,width:160,height:56,rx:9}),svgElement('text',{'text-anchor':'middle',y:-2}),svgElement('text',{'class':'kind-label','text-anchor':'middle',y:15}),svgElement('title'));this.nodeLayer.append(g);this.nodes.set(n.id,g);}
         const name=n.label||`α · ${n.id.slice(0,8)}`;
         g.setAttribute('class',`node ${['combination','alpha'].includes(n.structure)?'combination-node':''} ${n.id===focus?'selected':''} ${markings.get(n.id)||''}`);
-        g.setAttribute('aria-label',`Узел ${name}`);g.children[1].textContent=name.length>21?name.slice(0,20)+'…':name;g.children[2].textContent=(n.badge||n.kind||'').slice(0,26);g.children[3].textContent=`${name}\n${n.notes||''}`;
+        g.setAttribute('aria-label',`Узел ${name}`);g.children[1].textContent=name.length>21?name.slice(0,20)+'…':name;g.children[2].textContent=(n.badge||n.kind||'').slice(0,26);g.children[3].textContent=`${n.displayTitle||name}\n${n.notes||''}`;
         const p=this.positions.get(n.id);g.setAttribute('transform',`translate(${p.x},${p.y})`);
       }
       const shown=graph.edges.slice(0,3000),edgeIds=new Set(shown.map(e=>e.id));

@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-14T13:19:19.474Z",
+  "node": "v24.19.0",
+  "scope": "Technical entry-point test; route semantics chosen only for verification",
+  "dictionaryMode": "Attributed M008 Wiktionary cache fixture, not a new live acquisition",
+  "scenarios": [
+    "Two draft concepts each receive two designations, Wiktionary senses 1 and 5 with revision; two manually confirmed routes preserve distinct IDs and directed contexts",
+    "Search shows both IDs, all lexical sources, incident edges and directed context in the usage inspector, without automatic identity",
+    "Published correspondence edits retain designation ID; add/remove changes only the chosen mapping; republishing a stale initial draft preserves all operator edits",
+    "Missing/network-unavailable meanings keep manual correspondence and optional manual provenance editable",
+    "A second definition reuses the same concept and ordinary edge IDs; all aliases are editable at the reused field; reopening the first draft does not reset the dictionary",
+    "Actual server process restart and GUI export/import into a separate clean database preserve mappings, sources, graph structure, drafts and original history",
+    "K001/K002/K003 historical SQLite states and all original revision bytes match the verified recoverable backup"
+  ],
+  "errors": [],
+  "browser": "155.0.8059.40",
+  "backup": {
+    "mode": "permanent",
+    "database": "E:\\Projects\\concept-field-lab\\local-data\\designations-1791983959474\\workspace.sqlite3",
+    "legacyRowsProtected": 7,
+    "legacyBackup": {
+      "sourcePath": "E:\\Projects\\concept-field-lab\\local-data\\designations-1791983959474\\workspace.sqlite3",
+      "backupPath": "E:\\Projects\\concept-field-lab\\local-data\\designations-1791983959474\\backups\\workspace-legacy-4b126209-6fcd-4555-95ec-fb22ae19dbd1.sqlite3",
+      "createdAt": "2026-10-14T13:19:20.198237+00:00",
+      "sha256": "37d0fa35fa60eb75cd0fac10fedb66d9b6ab5b965e49db31ad4fcc56e3c0f0c5",
+      "logicalSha256": "097b46801e2ec453b106638aa34dd5fd64028dc5301c3690e7b693825873254d",
+      "integrity": "ok",
+      "method": "sqlite3.Connection.backup from an open read transaction (including WAL)"
+    },
+    "importedHistoryArchives": 0
+  },
+  "ids": {
+    "detail": "32071b44-437f-49db-a3f5-69c8bc3fb5e4",
+    "bird": "494588bb-0e6f-4d83-bcd9-c444c696dde2",
+    "ordinaryEdges": [
+      "e49f23a9-cb18-4572-b1e2-b555c37d5ee7",
+      "6a8111cc-d93d-466a-9b39-2ae2c8d8d346",
+      "ee348aed-4bde-4df6-8f01-5b883929f530",
+      "1d09b814-a4ee-44f8-ad6a-7d6d47d885f7"
+    ],
+    "contexts": [
+      "ed1fdba8-b97f-4bb8-beeb-b872683c8d89",
+      "1b1decec-5786-4019-a1e6-9df2cc5e9f0f"
+    ]
+  },
+  "counts": {
+    "nodes": 4,
+    "ordinaryEdges": 4,
+    "contexts": 2,
+    "designations": 6,
+    "definitions": 2
+  },
+  "ok": true
+}

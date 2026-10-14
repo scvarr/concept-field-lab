@@ -5,7 +5,7 @@ let state,revision,token,busy=false,selected,selectedEdge,selectedContext,graph,
 const canvasMenu=new CanvasMenu();
 let ui={};try{ui=JSON.parse(localStorage.getItem('concept-field-permanent-ui')||'{}');}catch{}
 function saveUI(){try{localStorage.setItem('concept-field-permanent-ui',JSON.stringify(ui));}catch{}}
-const name=id=>state.designations.filter(d=>d.target===id).map(d=>d.text).join(' / ')||id;
+let captionState,captionIndex;function captions(){if(captionState!==state){captionState=state;captionIndex=AlphaCaptions.create(state);}return captionIndex;}const name=id=>captions().display(id);
 const edgeName=e=>`${e.role==='component'?'Обязательный компонент: ':''}${name(e.from)} → ${name(e.to)} · ${e.id}`;
 const run=fn=>async(...args)=>{try{return await fn(...args);}catch(e){toast(e.message,true);}};
 function toast(message,error=false){$('#toast').textContent=message;$('#toast').hidden=false;$('#toast').classList.toggle('error',error);clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,error?12000:4500);}
@@ -30,7 +30,7 @@ function renderGraph(){
   if(!state.edges.some(e=>e.id===selectedEdge))selectedEdge=null;
   if(!state.contextEdges.some(c=>c.id===selectedContext))selectedContext=null;
   const q=$('#graph-search').value.trim().toLocaleLowerCase('ru').replaceAll('ё','е');
-  const rows=state.nodes.filter(n=>`${name(n.id)} ${n.id}`.toLocaleLowerCase('ru').replaceAll('ё','е').includes(q));
+  const rows=state.nodes.filter(n=>captions().matches(n.id,q));
   $('#graph-results').innerHTML=q?`<small>${rows.length} совпадений · показано до 40</small>${rows.slice(0,40).map(n=>`<button data-global-node="${h(n.id)}">${h(name(n.id))}<code>${h(n.id)}</code><small>Позиция ${n.x}, ${n.y} · ${state.edges.filter(e=>e.from===n.id||e.to===n.id).length} связей</small></button>`).join('')}`:'';
   $('#graph-results').querySelectorAll('[data-global-node]').forEach(b=>b.onclick=()=>select(b.dataset.globalNode,true));
   let candidates=state.nodes;
@@ -38,7 +38,7 @@ function renderGraph(){
   let nodes=candidates.slice(0,1000);if(selected&&!nodes.some(n=>n.id===selected)){nodes=nodes.slice(0,999);nodes.push(state.nodes.find(n=>n.id===selected));}
   const ids=new Set(nodes.map(n=>n.id)),edges=state.edges.filter(e=>ids.has(e.from)&&ids.has(e.to));
   if(nodes.length){if(!graph){graph=new GraphView($('#permanent-graph'),{select:id=>select(id),editNode:id=>openNode(id),editEdge:id=>openEdge(id),editContext:id=>openContext(id),contextMenu:(kind,id,e)=>globalMenu(kind,id,e),canInteract:()=>!busy,savePosition:(id,p)=>mutate('position',{nodeId:id,...p}),error:e=>toast(e.message,true),changed:snapshot=>{ui.graph=snapshot;saveUI();}});if(ui.graph)graph.restore(ui.graph);}
-    graph.update({id:'permanent',title:'Постоянный граф',rootId:selected},{nodes:nodes.map(n=>({...n,label:$('#graph-ids').checked?n.id:name(n.id),badge:n.structure==='alpha'?'α · обязательный состав':n.kind})),edges:edges.slice(0,3000).map(e=>({...e,displayTitle:edgeName(e)})),contextEdges:state.contextEdges},selected);
+    graph.update({id:'permanent',title:'Постоянный граф',rootId:selected},{nodes:nodes.map(n=>({...n,label:$('#graph-ids').checked?n.id:name(n.id),displayTitle:captions().label(n.id)+'\nID: '+n.id,badge:n.structure==='alpha'?(captions().anonymous(n.id)?'α · #'+captions().token(n.id):'α · обязательный состав'):n.kind})),edges:edges.slice(0,3000).map(e=>({...e,displayTitle:edgeName(e)})),contextEdges:state.contextEdges},selected);
   }else{$('#permanent-graph').textContent='Граф пуст. Выберите определение в конструкторе и подтвердите включение.';graph?.observer.disconnect();graph=null;}
   $('#graph-caption').textContent=`Показано ${nodes.length} из ${candidates.length} концептов, ${Math.min(edges.length,3000)} из ${edges.length} рёбер. Окружение показывает связность общего графа; допустимые маршруты задаются контекстом.`;
 }

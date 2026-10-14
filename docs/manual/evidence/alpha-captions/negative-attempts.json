@@ -1,0 +1,32 @@
+[
+  {
+    "run": "captions-1791983707367",
+    "reason": "Первый ожидаемый текст не совпал: форма состава записала α до детали. Показ упорядочен: сначала concept, затем alpha, без изменения записанных рёбер.",
+    "report": {
+      "date": "2026-10-14T13:15:07.368Z",
+      "node": "v24.19.0",
+      "base": "40e0a8e",
+      "scope": "Derived alpha captions only; isolated SQLite",
+      "checks": [],
+      "errors": [],
+      "negative": [],
+      "browser": "155.0.8059.40",
+      "failure": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert((await title(outer)).includes('{Деталь, {Стержень, Головка}}'))\n\n    at E:\\Projects\\concept-field-lab\\tests\\alpha-captions-browser.cjs:25:64"
+    }
+  },
+  {
+    "run": "captions-1791983732460",
+    "reason": "После закрытия длинной формы фоновое меню закрылось при отложенном scroll. Harness ждёт скрытия dialog и два кадра, открывает выбор через штатную кнопку Действия.",
+    "report": {
+      "date": "2026-10-14T13:15:32.460Z",
+      "node": "v24.19.0",
+      "base": "40e0a8e",
+      "scope": "Derived alpha captions only; isolated SQLite",
+      "checks": [],
+      "errors": [],
+      "negative": [],
+      "browser": "155.0.8059.40",
+      "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-canvas-action=\"objects\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" role=\"menuitem\" data-canvas-action=\"objects\">Поля и рёбра по ID…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at Object.action (E:\\Projects\\concept-field-lab\\tests\\canvas-browser-helpers.cjs:14:78)\n    at open (E:\\Projects\\concept-field-lab\\tests\\alpha-captions-browser.cjs:13:58)\n    at async E:\\Projects\\concept-field-lab\\tests\\alpha-captions-browser.cjs:27:3"
+    }
+  }
+]

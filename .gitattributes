@@ -37,3 +37,7 @@ docs/manual/evidence/nut-revision/*.json text eol=lf
 # Keep M013 alpha evidence and its checksum manifest portable.
 /docs/manual/evidence/alpha/*.json text eol=lf
 /docs/manual/evidence/alpha/*.txt text eol=lf
+
+# Preserve derived-caption evidence hashes on checkout.
+/docs/manual/evidence/alpha-captions/*.json text eol=lf
+/docs/manual/evidence/alpha-captions/*.txt text eol=lf

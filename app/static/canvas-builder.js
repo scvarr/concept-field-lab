@@ -2,7 +2,7 @@
 // Canvas presentation of the existing DefinitionBuilder; persistence and semantics
 // remain in builder.js and the same preview/publish API used by the legacy UI.
 Object.assign(DefinitionBuilder.prototype,{
-  renderCanvas() {
+  renderCanvas() { this.captionIndex=null;
     const s=this.canvas();if(!s)return;
     if(!this.draft){this.draft=structuredClone(this.drafts().find(d=>d.id===this.ctx.ui().definitionDraft)||this.drafts()[0]||{id:crypto.randomUUID(),title:'Новое определение',definition:'',nodes:[],edges:[],contextEdges:[],routes:[]});this.route=[];this.interaction=null;this.selectedObject=null;}
     const d=this.draft,h=v=>this.h(v);this.ctx.ui().definitionDraft=d.id;this.ctx.saveUI();
@@ -63,7 +63,7 @@ Object.assign(DefinitionBuilder.prototype,{
   },
   openNode(id,options={}) {
     this.capture();const h=v=>this.h(v),actual=this.canvas().nodes.find(n=>n.id===id),field=this.draft.nodes.find(n=>n.id===id);
-    this.ctx.dialog('Концепт и словарные обозначения',`<p><strong>${h(this.name(id))}</strong><br><code>${h(id)}</code></p><p>${actual?'Постоянный ID графа':'Поле черновика · ещё не включено в общий граф'}</p>${this.aliasFields(id)}<div class="actions"><button type="button" id="node-usage">Окружение и происхождение</button>${options.global?'<button type="button" id="global-reuse">Использовать ID в черновике</button><button type="button" id="global-neighbours">Открыть окружение</button><button type="button" id="node-origin">Редактировать в конструкторе</button>':field?'<button type="button" id="node-connect">Соединить отсюда →</button><button type="button" id="node-remove">Убрать поле из миниграфа</button>':''}</div>`);
+    this.ctx.dialog('Концепт и словарные обозначения',`<p><strong>${h(options.global?this.captions(true).display(id):this.name(id))}</strong><br><code>${h(id)}</code></p><p>${actual?'Постоянный ID графа':'Поле черновика · ещё не включено в общий граф'}</p>${this.aliasFields(id)}<div class="actions"><button type="button" id="node-usage">Окружение и происхождение</button>${options.global?'<button type="button" id="global-reuse">Использовать ID в черновике</button><button type="button" id="global-neighbours">Открыть окружение</button><button type="button" id="node-origin">Редактировать в конструкторе</button>':field?'<button type="button" id="node-connect">Соединить отсюда →</button><button type="button" id="node-remove">Убрать поле из миниграфа</button>':''}</div>`);
     const form=document.querySelector('#modal-form');form.querySelectorAll('[data-alias-add]').forEach(b=>b.onclick=()=>this.editAlias(id));form.querySelectorAll('[data-alias-edit]').forEach(b=>b.onclick=()=>this.editAlias(id,b.dataset.aliasEdit));form.querySelectorAll('[data-alias-remove]').forEach(b=>b.onclick=()=>this.removeAlias(id,b.dataset.aliasRemove));
     form.querySelector('#node-usage').onclick=()=>this.inspect(id);
     if(options.global){form.querySelector('#global-reuse').onclick=this.ctx.run(()=>options.reuse(id));form.querySelector('#global-neighbours').onclick=()=>options.neighbours(id);form.querySelector('#node-origin').onclick=this.ctx.run(()=>options.editDefinition(actual.definitionId));}
@@ -117,8 +117,8 @@ Object.assign(DefinitionBuilder.prototype,{
     // Replace owned published edges with the working draft, retaining other IDs.
     for(const [key,e] of edges)if(!global&&e.definitionId===this.draft.id)edges.delete(key);
     for(const e of global?[]:this.draft.edges)edges.set(e.id,e);
-    const rows=[],stack=[{id,depth:0,path:new Set()}];
-    while(stack.length&&rows.length<200){const v=stack.pop(),n=nodes.get(v.id),alpha=n?.structure==='alpha';rows.push('  '.repeat(v.depth)+(alpha?'α ':'')+this.name(v.id)+' ['+v.id+']');if(v.path.has(v.id)){rows.push('  '.repeat(v.depth+1)+'Цикл');continue;}if(v.depth>=20){rows.push('  '.repeat(v.depth+1)+'Предел показа 20 уровней');continue;}const path=new Set([...v.path,v.id]);const children=[...edges.values()].filter(e=>e.role==='component'&&e.from===v.id);for(const e of children.reverse())stack.push({id:e.to,depth:v.depth+1,path});}
+    const captions=this.captions(global),rows=[],stack=[{id,depth:0,path:new Set()}];
+    while(stack.length&&rows.length<200){const v=stack.pop(),n=nodes.get(v.id),alpha=n?.structure==='alpha';rows.push('  '.repeat(v.depth)+(alpha?'α ':'')+captions.label(v.id)+' ['+v.id+']');if(v.path.has(v.id)){rows.push('  '.repeat(v.depth+1)+'Цикл');continue;}if(v.depth>=20){rows.push('  '.repeat(v.depth+1)+'Предел показа 20 уровней');continue;}const path=new Set([...v.path,v.id]);const children=[...edges.values()].filter(e=>e.role==='component'&&e.from===v.id);for(const e of children.reverse())stack.push({id:e.to,depth:v.depth+1,path});}
     if(stack.length)rows.push('Показ ограничен 200 строками; полный состав хранится в графе.');return rows.join('\n');
   },
   openComponents(id) {

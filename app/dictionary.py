@@ -26,9 +26,31 @@ def search(state, query, canvas_id=None):
         terms = {}
         for d in study.get('designations', []):
             terms.setdefault(d['target'], []).append(d['text'])
+        components = {}
+        for edge in study['edges']:
+            if edge.get('role') == 'component':
+                components.setdefault(edge['from'], []).append(edge['to'])
+        def component_match(node):
+            if not permanent or node.get('structure') != 'alpha' or terms.get(node['id']):
+                return False
+            from collections import deque
+            queue = deque([(node['id'], 0)])
+            seen = {node['id']}
+            count = 1
+            while queue:
+                ident, depth = queue.popleft()
+                if any(q in normalized(t) for t in terms.get(ident, [])):
+                    return True
+                if depth < 20:
+                    for child in components.get(ident, []):
+                        if child not in seen and count < 2048:
+                            seen.add(child)
+                            count += 1
+                            queue.append((child, depth + 1))
+            return False
         for node in study['nodes']:
             names = terms.get(node['id'], []) + ([node['label']] if node['label'] else [])
-            if not q or not (q in normalized(node['id']) or any(q in normalized(t) for t in names)):
+            if not q or not (q in normalized(node['id']) or any(q in normalized(t) for t in names) or component_match(node)):
                 continue
             edges = [e for e in study['edges'] if node['id'] in (e['from'], e['to'])]
             concepts.append({'studyId': study.get('id'), 'studyTitle': study.get('title', 'Постоянный граф'), 'nodeId': node['id'],
