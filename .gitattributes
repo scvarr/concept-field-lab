@@ -24,3 +24,6 @@ docs/manual/evidence/nut-revision/*.json text eol=lf
 /docs/manual/evidence/designations/*.txt text eol=lf
 
 /docs/manual/evidence/workspace-views/*.json text eol=lf
+
+/docs/manual/evidence/canvas/*.json text eol=lf
+/docs/manual/evidence/canvas/*.txt text eol=lf

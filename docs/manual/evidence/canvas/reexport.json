@@ -1,0 +1,3099 @@
+{
+  "format": "concept-field-permanent",
+  "version": 1,
+  "kind": "graph",
+  "exportedAt": "2026-10-14T08:00:55.153345+00:00",
+  "state": {
+    "nodes": [
+      {
+        "id": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+        "label": "",
+        "kind": "",
+        "notes": "",
+        "alternatives": "",
+        "source": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "origins": [
+          {
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "snapshot": {
+              "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+              "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+              "source": null
+            }
+          }
+        ],
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+        "x": 0,
+        "y": 220
+      },
+      {
+        "id": "26418a5a-9ccf-4507-b806-24314b659201",
+        "label": "",
+        "kind": "",
+        "notes": "",
+        "alternatives": "",
+        "source": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "origins": [
+          {
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "snapshot": {
+              "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+              "dictionaryId": "opencorpora:9a76be6b12520cd8c652",
+              "source": null
+            }
+          }
+        ],
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+        "x": 245,
+        "y": 180
+      },
+      {
+        "id": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+        "label": "",
+        "kind": "",
+        "notes": "",
+        "alternatives": "",
+        "source": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "origins": [
+          {
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "snapshot": {
+              "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+              "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+              "source": null
+            }
+          }
+        ],
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+        "x": 520,
+        "y": 220
+      },
+      {
+        "id": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+        "label": "",
+        "kind": "",
+        "notes": "",
+        "alternatives": "",
+        "source": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "origins": [
+          {
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "snapshot": {
+              "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+              "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+              "source": null
+            }
+          }
+        ],
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+        "x": 780,
+        "y": 220
+      }
+    ],
+    "edges": [
+      {
+        "id": "559604d3-308c-4ffd-882a-6903f318ea44",
+        "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+        "to": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+        "role": "relation",
+        "type": "",
+        "notes": "",
+        "origins": [
+          {
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "snapshot": {
+              "id": "559604d3-308c-4ffd-882a-6903f318ea44",
+              "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+              "to": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+              "existing": false
+            }
+          }
+        ],
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+        "parallelReason": ""
+      },
+      {
+        "id": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+        "from": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+        "to": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+        "role": "relation",
+        "type": "",
+        "notes": "",
+        "origins": [
+          {
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "snapshot": {
+              "id": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+              "from": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+              "to": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+              "existing": false
+            }
+          }
+        ],
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+        "parallelReason": ""
+      },
+      {
+        "id": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+        "from": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+        "to": "26418a5a-9ccf-4507-b806-24314b659201",
+        "role": "relation",
+        "type": "",
+        "notes": "",
+        "origins": [
+          {
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "snapshot": {
+              "id": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+              "from": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+              "to": "26418a5a-9ccf-4507-b806-24314b659201",
+              "existing": false
+            }
+          }
+        ],
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+        "parallelReason": ""
+      },
+      {
+        "id": "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391",
+        "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+        "to": "26418a5a-9ccf-4507-b806-24314b659201",
+        "role": "relation",
+        "type": "",
+        "notes": "",
+        "origins": [
+          {
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "snapshot": {
+              "id": "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391",
+              "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+              "to": "26418a5a-9ccf-4507-b806-24314b659201",
+              "existing": false
+            }
+          }
+        ],
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+        "parallelReason": ""
+      }
+    ],
+    "designations": [
+      {
+        "id": "5d461b06-088b-402f-9ba0-cdb27f2a1585",
+        "text": "деталь",
+        "notes": "",
+        "lexicalSource": null,
+        "target": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+        "source": "Ручной ввод определения",
+        "origins": [
+          {
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "snapshot": {
+              "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+              "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+              "source": null
+            }
+          }
+        ],
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+      },
+      {
+        "id": "04b74e95-c545-4bac-9f00-69e831feb91a",
+        "text": "гайка",
+        "notes": "",
+        "lexicalSource": {
+          "name": "Русский Викисловарь",
+          "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+          "revision": "14297625",
+          "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+          "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "attribution": "Участники Викисловаря",
+          "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+          "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+          "lemma": "гайка",
+          "senseId": "1",
+          "entry": "гайка I",
+          "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)"
+        },
+        "target": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+        "source": "Ручной ввод определения",
+        "origins": [
+          {
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "snapshot": {
+              "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+              "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+              "source": null
+            }
+          }
+        ],
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+      },
+      {
+        "id": "33f89f0a-aa7b-4426-9e89-fdff8302bbb1",
+        "text": "птица",
+        "target": "26418a5a-9ccf-4507-b806-24314b659201",
+        "notes": "",
+        "source": "Ручной ввод определения",
+        "origins": [
+          {
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "snapshot": {
+              "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+              "dictionaryId": "opencorpora:9a76be6b12520cd8c652",
+              "source": null
+            }
+          }
+        ],
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+      },
+      {
+        "id": "a9741c52-0f91-4841-8791-15300fbb9327",
+        "text": "гайка",
+        "notes": "",
+        "lexicalSource": {
+          "name": "Русский Викисловарь",
+          "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+          "revision": "14297625",
+          "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+          "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+          "attribution": "Участники Викисловаря",
+          "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+          "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+          "lemma": "гайка",
+          "senseId": "5",
+          "entry": "гайка II",
+          "originalText": "орнитол. маленькая птица, один из видов синиц"
+        },
+        "target": "26418a5a-9ccf-4507-b806-24314b659201",
+        "source": "Ручной ввод определения",
+        "origins": [
+          {
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "snapshot": {
+              "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+              "dictionaryId": "opencorpora:9a76be6b12520cd8c652",
+              "source": null
+            }
+          }
+        ],
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+      },
+      {
+        "id": "53980335-504a-44e6-88a6-0b27b6a98e22",
+        "text": "крепёжный",
+        "target": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+        "notes": "",
+        "source": "Ручной ввод определения",
+        "origins": [
+          {
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "snapshot": {
+              "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+              "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+              "source": null
+            }
+          }
+        ],
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+      },
+      {
+        "id": "7772effe-a9d1-4195-840d-e833dddd0cc8",
+        "text": "резьба",
+        "target": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+        "notes": "",
+        "source": "Ручной ввод определения",
+        "origins": [
+          {
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "snapshot": {
+              "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+              "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+              "source": null
+            }
+          }
+        ],
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+      }
+    ],
+    "contextEdges": [
+      {
+        "id": "f753b39a-7a61-4180-afb4-b26bc003df15",
+        "from": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+        "to": "559604d3-308c-4ffd-882a-6903f318ea44",
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+      },
+      {
+        "id": "c9eb0492-3788-467a-a819-2516809ba8c4",
+        "from": "559604d3-308c-4ffd-882a-6903f318ea44",
+        "to": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+      },
+      {
+        "id": "b31bd9b7-b061-42b5-9620-61adfcfd5c0c",
+        "from": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+        "to": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+        "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+      }
+    ],
+    "definitionDrafts": [
+      {
+        "id": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+        "title": "Гайка: техническая проба",
+        "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+        "nodes": [
+          {
+            "id": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+            "designation": "деталь",
+            "existing": false,
+            "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+            "designations": [
+              {
+                "id": "5d461b06-088b-402f-9ba0-cdb27f2a1585",
+                "text": "деталь крепежа",
+                "notes": "",
+                "lexicalSource": null
+              },
+              {
+                "id": "04b74e95-c545-4bac-9f00-69e831feb91a",
+                "text": "гайка",
+                "notes": "",
+                "lexicalSource": {
+                  "name": "Русский Викисловарь",
+                  "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                  "revision": "14297625",
+                  "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                  "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                  "license": "CC BY-SA 4.0",
+                  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                  "attribution": "Участники Викисловаря",
+                  "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                  "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                  "lemma": "гайка",
+                  "senseId": "1",
+                  "entry": "гайка I",
+                  "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)"
+                }
+              }
+            ]
+          },
+          {
+            "id": "26418a5a-9ccf-4507-b806-24314b659201",
+            "designation": "птица",
+            "existing": false,
+            "dictionaryId": "opencorpora:9a76be6b12520cd8c652",
+            "designations": [
+              {
+                "id": "33f89f0a-aa7b-4426-9e89-fdff8302bbb1",
+                "text": "птица"
+              },
+              {
+                "id": "a9741c52-0f91-4841-8791-15300fbb9327",
+                "text": "гайка",
+                "notes": "",
+                "lexicalSource": {
+                  "name": "Русский Викисловарь",
+                  "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                  "revision": "14297625",
+                  "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                  "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                  "license": "CC BY-SA 4.0",
+                  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                  "attribution": "Участники Викисловаря",
+                  "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                  "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                  "lemma": "гайка",
+                  "senseId": "5",
+                  "entry": "гайка II",
+                  "originalText": "орнитол. маленькая птица, один из видов синиц"
+                }
+              }
+            ],
+            "x": 245,
+            "y": 180
+          },
+          {
+            "id": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+            "designation": "крепёжный",
+            "existing": false,
+            "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+            "designations": [
+              {
+                "id": "53980335-504a-44e6-88a6-0b27b6a98e22",
+                "text": "крепёжный"
+              }
+            ]
+          },
+          {
+            "id": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+            "designation": "резьба",
+            "existing": false,
+            "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+            "designations": [
+              {
+                "id": "7772effe-a9d1-4195-840d-e833dddd0cc8",
+                "text": "резьба"
+              }
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "id": "559604d3-308c-4ffd-882a-6903f318ea44",
+            "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+            "to": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+            "existing": false
+          },
+          {
+            "id": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+            "from": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+            "to": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+            "existing": false
+          },
+          {
+            "id": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+            "from": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+            "to": "26418a5a-9ccf-4507-b806-24314b659201",
+            "existing": false
+          },
+          {
+            "id": "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391",
+            "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+            "to": "26418a5a-9ccf-4507-b806-24314b659201",
+            "existing": false
+          }
+        ],
+        "contextEdges": [
+          {
+            "id": "f753b39a-7a61-4180-afb4-b26bc003df15",
+            "from": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+            "to": "559604d3-308c-4ffd-882a-6903f318ea44"
+          },
+          {
+            "id": "c9eb0492-3788-467a-a819-2516809ba8c4",
+            "from": "559604d3-308c-4ffd-882a-6903f318ea44",
+            "to": "9be8d7c8-951d-441e-9b65-4579ce15e481"
+          },
+          {
+            "id": "b31bd9b7-b061-42b5-9620-61adfcfd5c0c",
+            "from": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+            "to": "9be8d7c8-951d-441e-9b65-4579ce15e481"
+          }
+        ],
+        "routes": [
+          {
+            "id": "8f8ce58d-f578-44d2-a9f0-c5b1a7c1b39c",
+            "edgeIds": [
+              "559604d3-308c-4ffd-882a-6903f318ea44",
+              "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+              "9be8d7c8-951d-441e-9b65-4579ce15e481"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "84d34b9d-4609-4199-8617-fb2c96aab75b",
+        "title": "Вторая техническая проба",
+        "definition": "Повторное использование ID и ребра",
+        "nodes": [
+          {
+            "id": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+            "existing": true,
+            "designation": "деталь",
+            "base": {
+              "id": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+              "label": "",
+              "kind": "",
+              "notes": "",
+              "alternatives": "",
+              "source": "",
+              "designationOnly": true,
+              "structure": "concept",
+              "origins": [
+                {
+                  "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                  "snapshot": {
+                    "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                    "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                    "source": null
+                  }
+                }
+              ],
+              "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+              "x": 0,
+              "y": 220
+            }
+          },
+          {
+            "id": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+            "existing": true,
+            "designation": "крепёжный",
+            "base": {
+              "id": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+              "label": "",
+              "kind": "",
+              "notes": "",
+              "alternatives": "",
+              "source": "",
+              "designationOnly": true,
+              "structure": "concept",
+              "origins": [
+                {
+                  "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                  "snapshot": {
+                    "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                    "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                    "source": null
+                  }
+                }
+              ],
+              "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+              "x": 520,
+              "y": 220
+            }
+          }
+        ],
+        "edges": [
+          {
+            "id": "559604d3-308c-4ffd-882a-6903f318ea44",
+            "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+            "to": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+            "existing": true
+          }
+        ],
+        "contextEdges": [],
+        "routes": []
+      }
+    ],
+    "definitionPublications": {
+      "267e571d-1a0c-4c1a-8982-9e496c8fa82f": {
+        "title": "Гайка: техническая проба",
+        "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+        "nodeIds": [
+          "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+          "26418a5a-9ccf-4507-b806-24314b659201",
+          "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+          "28320b2b-7dc4-4312-871a-d6cfcdcb533d"
+        ],
+        "edgeIds": [
+          "559604d3-308c-4ffd-882a-6903f318ea44",
+          "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+          "9be8d7c8-951d-441e-9b65-4579ce15e481",
+          "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391"
+        ],
+        "contextIds": [
+          "f753b39a-7a61-4180-afb4-b26bc003df15",
+          "c9eb0492-3788-467a-a819-2516809ba8c4",
+          "b31bd9b7-b061-42b5-9620-61adfcfd5c0c"
+        ]
+      },
+      "84d34b9d-4609-4199-8617-fb2c96aab75b": {
+        "title": "Вторая техническая проба",
+        "definition": "Повторное использование ID и ребра",
+        "nodeIds": [
+          "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+          "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb"
+        ],
+        "edgeIds": [
+          "559604d3-308c-4ffd-882a-6903f318ea44"
+        ],
+        "contextIds": []
+      }
+    }
+  },
+  "historyEncoding": "rfc6902-chain-v1",
+  "history": [
+    {
+      "id": 0,
+      "time": "2026-10-14T08:00:54.737494+00:00",
+      "action": "init",
+      "detail": "{\"message\": \"Создан пустой постоянный граф\", \"legacyBackup\": null}",
+      "patch": [
+        {
+          "op": "remove",
+          "path": "/imports"
+        },
+        {
+          "op": "remove",
+          "path": "/matches"
+        },
+        {
+          "op": "remove",
+          "path": "/proposals"
+        },
+        {
+          "op": "remove",
+          "path": "/studies"
+        },
+        {
+          "op": "add",
+          "path": "/contextEdges",
+          "value": []
+        },
+        {
+          "op": "add",
+          "path": "/definitionDrafts",
+          "value": []
+        },
+        {
+          "op": "add",
+          "path": "/definitionPublications",
+          "value": {}
+        },
+        {
+          "op": "add",
+          "path": "/designations",
+          "value": []
+        },
+        {
+          "op": "add",
+          "path": "/edges",
+          "value": []
+        },
+        {
+          "op": "add",
+          "path": "/nodes",
+          "value": []
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "time": "2026-10-14T08:00:55.062007+00:00",
+      "action": "import",
+      "detail": "Подтверждён импорт постоянного графа с сохранением ID",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/contextEdges/0",
+          "value": {
+            "id": "f753b39a-7a61-4180-afb4-b26bc003df15",
+            "from": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+            "to": "559604d3-308c-4ffd-882a-6903f318ea44",
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/contextEdges/1",
+          "value": {
+            "id": "c9eb0492-3788-467a-a819-2516809ba8c4",
+            "from": "559604d3-308c-4ffd-882a-6903f318ea44",
+            "to": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/contextEdges/2",
+          "value": {
+            "id": "b31bd9b7-b061-42b5-9620-61adfcfd5c0c",
+            "from": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+            "to": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/definitionDrafts/0",
+          "value": {
+            "id": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "title": "Гайка: техническая проба",
+            "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+            "nodes": [
+              {
+                "id": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "designation": "деталь",
+                "existing": false,
+                "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                "designations": [
+                  {
+                    "id": "5d461b06-088b-402f-9ba0-cdb27f2a1585",
+                    "text": "деталь крепежа",
+                    "notes": "",
+                    "lexicalSource": null
+                  },
+                  {
+                    "id": "04b74e95-c545-4bac-9f00-69e831feb91a",
+                    "text": "гайка",
+                    "notes": "",
+                    "lexicalSource": {
+                      "name": "Русский Викисловарь",
+                      "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                      "revision": "14297625",
+                      "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                      "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                      "license": "CC BY-SA 4.0",
+                      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                      "attribution": "Участники Викисловаря",
+                      "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                      "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                      "lemma": "гайка",
+                      "senseId": "1",
+                      "entry": "гайка I",
+                      "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "26418a5a-9ccf-4507-b806-24314b659201",
+                "designation": "птица",
+                "existing": false,
+                "dictionaryId": "opencorpora:9a76be6b12520cd8c652",
+                "designations": [
+                  {
+                    "id": "33f89f0a-aa7b-4426-9e89-fdff8302bbb1",
+                    "text": "птица"
+                  },
+                  {
+                    "id": "a9741c52-0f91-4841-8791-15300fbb9327",
+                    "text": "гайка",
+                    "notes": "",
+                    "lexicalSource": {
+                      "name": "Русский Викисловарь",
+                      "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                      "revision": "14297625",
+                      "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                      "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                      "license": "CC BY-SA 4.0",
+                      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                      "attribution": "Участники Викисловаря",
+                      "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                      "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                      "lemma": "гайка",
+                      "senseId": "5",
+                      "entry": "гайка II",
+                      "originalText": "орнитол. маленькая птица, один из видов синиц"
+                    }
+                  }
+                ],
+                "x": 245,
+                "y": 180
+              },
+              {
+                "id": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "designation": "крепёжный",
+                "existing": false,
+                "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                "designations": [
+                  {
+                    "id": "53980335-504a-44e6-88a6-0b27b6a98e22",
+                    "text": "крепёжный"
+                  }
+                ]
+              },
+              {
+                "id": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                "designation": "резьба",
+                "existing": false,
+                "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+                "designations": [
+                  {
+                    "id": "7772effe-a9d1-4195-840d-e833dddd0cc8",
+                    "text": "резьба"
+                  }
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "id": "559604d3-308c-4ffd-882a-6903f318ea44",
+                "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "to": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "existing": false
+              },
+              {
+                "id": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                "from": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "to": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                "existing": false
+              },
+              {
+                "id": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+                "from": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                "to": "26418a5a-9ccf-4507-b806-24314b659201",
+                "existing": false
+              },
+              {
+                "id": "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391",
+                "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "to": "26418a5a-9ccf-4507-b806-24314b659201",
+                "existing": false
+              }
+            ],
+            "contextEdges": [
+              {
+                "id": "f753b39a-7a61-4180-afb4-b26bc003df15",
+                "from": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                "to": "559604d3-308c-4ffd-882a-6903f318ea44"
+              },
+              {
+                "id": "c9eb0492-3788-467a-a819-2516809ba8c4",
+                "from": "559604d3-308c-4ffd-882a-6903f318ea44",
+                "to": "9be8d7c8-951d-441e-9b65-4579ce15e481"
+              },
+              {
+                "id": "b31bd9b7-b061-42b5-9620-61adfcfd5c0c",
+                "from": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                "to": "9be8d7c8-951d-441e-9b65-4579ce15e481"
+              }
+            ],
+            "routes": [
+              {
+                "id": "8f8ce58d-f578-44d2-a9f0-c5b1a7c1b39c",
+                "edgeIds": [
+                  "559604d3-308c-4ffd-882a-6903f318ea44",
+                  "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                  "9be8d7c8-951d-441e-9b65-4579ce15e481"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": "/definitionDrafts/1",
+          "value": {
+            "id": "84d34b9d-4609-4199-8617-fb2c96aab75b",
+            "title": "Вторая техническая проба",
+            "definition": "Повторное использование ID и ребра",
+            "nodes": [
+              {
+                "id": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "existing": true,
+                "designation": "деталь",
+                "base": {
+                  "id": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                  "label": "",
+                  "kind": "",
+                  "notes": "",
+                  "alternatives": "",
+                  "source": "",
+                  "designationOnly": true,
+                  "structure": "concept",
+                  "origins": [
+                    {
+                      "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                      "snapshot": {
+                        "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                        "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                        "source": null
+                      }
+                    }
+                  ],
+                  "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                  "x": 0,
+                  "y": 220
+                }
+              },
+              {
+                "id": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "existing": true,
+                "designation": "крепёжный",
+                "base": {
+                  "id": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                  "label": "",
+                  "kind": "",
+                  "notes": "",
+                  "alternatives": "",
+                  "source": "",
+                  "designationOnly": true,
+                  "structure": "concept",
+                  "origins": [
+                    {
+                      "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                      "snapshot": {
+                        "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                        "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                        "source": null
+                      }
+                    }
+                  ],
+                  "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                  "x": 520,
+                  "y": 220
+                }
+              }
+            ],
+            "edges": [
+              {
+                "id": "559604d3-308c-4ffd-882a-6903f318ea44",
+                "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "to": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "existing": true
+              }
+            ],
+            "contextEdges": [],
+            "routes": []
+          }
+        },
+        {
+          "op": "add",
+          "path": "/definitionPublications/267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+          "value": {
+            "title": "Гайка: техническая проба",
+            "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+            "nodeIds": [
+              "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+              "26418a5a-9ccf-4507-b806-24314b659201",
+              "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+              "28320b2b-7dc4-4312-871a-d6cfcdcb533d"
+            ],
+            "edgeIds": [
+              "559604d3-308c-4ffd-882a-6903f318ea44",
+              "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+              "9be8d7c8-951d-441e-9b65-4579ce15e481",
+              "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391"
+            ],
+            "contextIds": [
+              "f753b39a-7a61-4180-afb4-b26bc003df15",
+              "c9eb0492-3788-467a-a819-2516809ba8c4",
+              "b31bd9b7-b061-42b5-9620-61adfcfd5c0c"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": "/definitionPublications/84d34b9d-4609-4199-8617-fb2c96aab75b",
+          "value": {
+            "title": "Вторая техническая проба",
+            "definition": "Повторное использование ID и ребра",
+            "nodeIds": [
+              "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+              "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb"
+            ],
+            "edgeIds": [
+              "559604d3-308c-4ffd-882a-6903f318ea44"
+            ],
+            "contextIds": []
+          }
+        },
+        {
+          "op": "add",
+          "path": "/designations/0",
+          "value": {
+            "id": "5d461b06-088b-402f-9ba0-cdb27f2a1585",
+            "text": "деталь",
+            "notes": "",
+            "lexicalSource": null,
+            "target": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/designations/1",
+          "value": {
+            "id": "04b74e95-c545-4bac-9f00-69e831feb91a",
+            "text": "гайка",
+            "notes": "",
+            "lexicalSource": {
+              "name": "Русский Викисловарь",
+              "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+              "revision": "14297625",
+              "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+              "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+              "license": "CC BY-SA 4.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "attribution": "Участники Викисловаря",
+              "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+              "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+              "lemma": "гайка",
+              "senseId": "1",
+              "entry": "гайка I",
+              "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)"
+            },
+            "target": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/designations/2",
+          "value": {
+            "id": "33f89f0a-aa7b-4426-9e89-fdff8302bbb1",
+            "text": "птица",
+            "target": "26418a5a-9ccf-4507-b806-24314b659201",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:9a76be6b12520cd8c652",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/designations/3",
+          "value": {
+            "id": "a9741c52-0f91-4841-8791-15300fbb9327",
+            "text": "гайка",
+            "notes": "",
+            "lexicalSource": {
+              "name": "Русский Викисловарь",
+              "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+              "revision": "14297625",
+              "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+              "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+              "license": "CC BY-SA 4.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "attribution": "Участники Викисловаря",
+              "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+              "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+              "lemma": "гайка",
+              "senseId": "5",
+              "entry": "гайка II",
+              "originalText": "орнитол. маленькая птица, один из видов синиц"
+            },
+            "target": "26418a5a-9ccf-4507-b806-24314b659201",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:9a76be6b12520cd8c652",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/designations/4",
+          "value": {
+            "id": "53980335-504a-44e6-88a6-0b27b6a98e22",
+            "text": "крепёжный",
+            "target": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/designations/5",
+          "value": {
+            "id": "7772effe-a9d1-4195-840d-e833dddd0cc8",
+            "text": "резьба",
+            "target": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/edges/0",
+          "value": {
+            "id": "559604d3-308c-4ffd-882a-6903f318ea44",
+            "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+            "to": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "id": "559604d3-308c-4ffd-882a-6903f318ea44",
+                  "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                  "to": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                  "existing": false
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "parallelReason": ""
+          }
+        },
+        {
+          "op": "add",
+          "path": "/edges/1",
+          "value": {
+            "id": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+            "from": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+            "to": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "id": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                  "from": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                  "to": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                  "existing": false
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "parallelReason": ""
+          }
+        },
+        {
+          "op": "add",
+          "path": "/edges/2",
+          "value": {
+            "id": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+            "from": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+            "to": "26418a5a-9ccf-4507-b806-24314b659201",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "id": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+                  "from": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                  "to": "26418a5a-9ccf-4507-b806-24314b659201",
+                  "existing": false
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "parallelReason": ""
+          }
+        },
+        {
+          "op": "add",
+          "path": "/edges/3",
+          "value": {
+            "id": "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391",
+            "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+            "to": "26418a5a-9ccf-4507-b806-24314b659201",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "id": "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391",
+                  "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                  "to": "26418a5a-9ccf-4507-b806-24314b659201",
+                  "existing": false
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "parallelReason": ""
+          }
+        },
+        {
+          "op": "add",
+          "path": "/nodes/0",
+          "value": {
+            "id": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "x": 0,
+            "y": 220
+          }
+        },
+        {
+          "op": "add",
+          "path": "/nodes/1",
+          "value": {
+            "id": "26418a5a-9ccf-4507-b806-24314b659201",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:9a76be6b12520cd8c652",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "x": 245,
+            "y": 180
+          }
+        },
+        {
+          "op": "add",
+          "path": "/nodes/2",
+          "value": {
+            "id": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "x": 520,
+            "y": 220
+          }
+        },
+        {
+          "op": "add",
+          "path": "/nodes/3",
+          "value": {
+            "id": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "x": 780,
+            "y": 220
+          }
+        }
+      ]
+    }
+  ],
+  "importedHistory": [
+    {
+      "format": "concept-field-permanent",
+      "version": 1,
+      "kind": "graph",
+      "exportedAt": "2026-10-14T08:00:54.347970+00:00",
+      "state": {
+        "nodes": [
+          {
+            "id": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "x": 0,
+            "y": 220
+          },
+          {
+            "id": "26418a5a-9ccf-4507-b806-24314b659201",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:9a76be6b12520cd8c652",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "x": 245,
+            "y": 180
+          },
+          {
+            "id": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "x": 520,
+            "y": 220
+          },
+          {
+            "id": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "x": 780,
+            "y": 220
+          }
+        ],
+        "edges": [
+          {
+            "id": "559604d3-308c-4ffd-882a-6903f318ea44",
+            "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+            "to": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "id": "559604d3-308c-4ffd-882a-6903f318ea44",
+                  "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                  "to": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                  "existing": false
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "parallelReason": ""
+          },
+          {
+            "id": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+            "from": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+            "to": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "id": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                  "from": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                  "to": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                  "existing": false
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "parallelReason": ""
+          },
+          {
+            "id": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+            "from": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+            "to": "26418a5a-9ccf-4507-b806-24314b659201",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "id": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+                  "from": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                  "to": "26418a5a-9ccf-4507-b806-24314b659201",
+                  "existing": false
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "parallelReason": ""
+          },
+          {
+            "id": "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391",
+            "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+            "to": "26418a5a-9ccf-4507-b806-24314b659201",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "id": "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391",
+                  "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                  "to": "26418a5a-9ccf-4507-b806-24314b659201",
+                  "existing": false
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "parallelReason": ""
+          }
+        ],
+        "designations": [
+          {
+            "id": "5d461b06-088b-402f-9ba0-cdb27f2a1585",
+            "text": "деталь",
+            "notes": "",
+            "lexicalSource": null,
+            "target": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          },
+          {
+            "id": "04b74e95-c545-4bac-9f00-69e831feb91a",
+            "text": "гайка",
+            "notes": "",
+            "lexicalSource": {
+              "name": "Русский Викисловарь",
+              "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+              "revision": "14297625",
+              "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+              "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+              "license": "CC BY-SA 4.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "attribution": "Участники Викисловаря",
+              "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+              "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+              "lemma": "гайка",
+              "senseId": "1",
+              "entry": "гайка I",
+              "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)"
+            },
+            "target": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          },
+          {
+            "id": "33f89f0a-aa7b-4426-9e89-fdff8302bbb1",
+            "text": "птица",
+            "target": "26418a5a-9ccf-4507-b806-24314b659201",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:9a76be6b12520cd8c652",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          },
+          {
+            "id": "a9741c52-0f91-4841-8791-15300fbb9327",
+            "text": "гайка",
+            "notes": "",
+            "lexicalSource": {
+              "name": "Русский Викисловарь",
+              "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+              "revision": "14297625",
+              "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+              "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+              "license": "CC BY-SA 4.0",
+              "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+              "attribution": "Участники Викисловаря",
+              "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+              "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+              "lemma": "гайка",
+              "senseId": "5",
+              "entry": "гайка II",
+              "originalText": "орнитол. маленькая птица, один из видов синиц"
+            },
+            "target": "26418a5a-9ccf-4507-b806-24314b659201",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:9a76be6b12520cd8c652",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          },
+          {
+            "id": "53980335-504a-44e6-88a6-0b27b6a98e22",
+            "text": "крепёжный",
+            "target": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          },
+          {
+            "id": "7772effe-a9d1-4195-840d-e833dddd0cc8",
+            "text": "резьба",
+            "target": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "snapshot": {
+                  "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                  "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          }
+        ],
+        "contextEdges": [
+          {
+            "id": "f753b39a-7a61-4180-afb4-b26bc003df15",
+            "from": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+            "to": "559604d3-308c-4ffd-882a-6903f318ea44",
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          },
+          {
+            "id": "c9eb0492-3788-467a-a819-2516809ba8c4",
+            "from": "559604d3-308c-4ffd-882a-6903f318ea44",
+            "to": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          },
+          {
+            "id": "b31bd9b7-b061-42b5-9620-61adfcfd5c0c",
+            "from": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+            "to": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+            "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+          }
+        ],
+        "definitionDrafts": [
+          {
+            "id": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+            "title": "Гайка: техническая проба",
+            "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+            "nodes": [
+              {
+                "id": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "designation": "деталь",
+                "existing": false,
+                "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                "designations": [
+                  {
+                    "id": "5d461b06-088b-402f-9ba0-cdb27f2a1585",
+                    "text": "деталь крепежа",
+                    "notes": "",
+                    "lexicalSource": null
+                  },
+                  {
+                    "id": "04b74e95-c545-4bac-9f00-69e831feb91a",
+                    "text": "гайка",
+                    "notes": "",
+                    "lexicalSource": {
+                      "name": "Русский Викисловарь",
+                      "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                      "revision": "14297625",
+                      "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                      "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                      "license": "CC BY-SA 4.0",
+                      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                      "attribution": "Участники Викисловаря",
+                      "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                      "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                      "lemma": "гайка",
+                      "senseId": "1",
+                      "entry": "гайка I",
+                      "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "26418a5a-9ccf-4507-b806-24314b659201",
+                "designation": "птица",
+                "existing": false,
+                "dictionaryId": "opencorpora:9a76be6b12520cd8c652",
+                "designations": [
+                  {
+                    "id": "33f89f0a-aa7b-4426-9e89-fdff8302bbb1",
+                    "text": "птица"
+                  },
+                  {
+                    "id": "a9741c52-0f91-4841-8791-15300fbb9327",
+                    "text": "гайка",
+                    "notes": "",
+                    "lexicalSource": {
+                      "name": "Русский Викисловарь",
+                      "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                      "revision": "14297625",
+                      "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                      "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                      "license": "CC BY-SA 4.0",
+                      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                      "attribution": "Участники Викисловаря",
+                      "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                      "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                      "lemma": "гайка",
+                      "senseId": "5",
+                      "entry": "гайка II",
+                      "originalText": "орнитол. маленькая птица, один из видов синиц"
+                    }
+                  }
+                ],
+                "x": 245,
+                "y": 180
+              },
+              {
+                "id": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "designation": "крепёжный",
+                "existing": false,
+                "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                "designations": [
+                  {
+                    "id": "53980335-504a-44e6-88a6-0b27b6a98e22",
+                    "text": "крепёжный"
+                  }
+                ]
+              },
+              {
+                "id": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                "designation": "резьба",
+                "existing": false,
+                "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+                "designations": [
+                  {
+                    "id": "7772effe-a9d1-4195-840d-e833dddd0cc8",
+                    "text": "резьба"
+                  }
+                ]
+              }
+            ],
+            "edges": [
+              {
+                "id": "559604d3-308c-4ffd-882a-6903f318ea44",
+                "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "to": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "existing": false
+              },
+              {
+                "id": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                "from": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "to": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                "existing": false
+              },
+              {
+                "id": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+                "from": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                "to": "26418a5a-9ccf-4507-b806-24314b659201",
+                "existing": false
+              },
+              {
+                "id": "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391",
+                "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "to": "26418a5a-9ccf-4507-b806-24314b659201",
+                "existing": false
+              }
+            ],
+            "contextEdges": [
+              {
+                "id": "f753b39a-7a61-4180-afb4-b26bc003df15",
+                "from": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                "to": "559604d3-308c-4ffd-882a-6903f318ea44"
+              },
+              {
+                "id": "c9eb0492-3788-467a-a819-2516809ba8c4",
+                "from": "559604d3-308c-4ffd-882a-6903f318ea44",
+                "to": "9be8d7c8-951d-441e-9b65-4579ce15e481"
+              },
+              {
+                "id": "b31bd9b7-b061-42b5-9620-61adfcfd5c0c",
+                "from": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                "to": "9be8d7c8-951d-441e-9b65-4579ce15e481"
+              }
+            ],
+            "routes": [
+              {
+                "id": "8f8ce58d-f578-44d2-a9f0-c5b1a7c1b39c",
+                "edgeIds": [
+                  "559604d3-308c-4ffd-882a-6903f318ea44",
+                  "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                  "9be8d7c8-951d-441e-9b65-4579ce15e481"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "84d34b9d-4609-4199-8617-fb2c96aab75b",
+            "title": "Вторая техническая проба",
+            "definition": "Повторное использование ID и ребра",
+            "nodes": [
+              {
+                "id": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "existing": true,
+                "designation": "деталь",
+                "base": {
+                  "id": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                  "label": "",
+                  "kind": "",
+                  "notes": "",
+                  "alternatives": "",
+                  "source": "",
+                  "designationOnly": true,
+                  "structure": "concept",
+                  "origins": [
+                    {
+                      "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                      "snapshot": {
+                        "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                        "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                        "source": null
+                      }
+                    }
+                  ],
+                  "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                  "x": 0,
+                  "y": 220
+                }
+              },
+              {
+                "id": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "existing": true,
+                "designation": "крепёжный",
+                "base": {
+                  "id": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                  "label": "",
+                  "kind": "",
+                  "notes": "",
+                  "alternatives": "",
+                  "source": "",
+                  "designationOnly": true,
+                  "structure": "concept",
+                  "origins": [
+                    {
+                      "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                      "snapshot": {
+                        "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                        "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                        "source": null
+                      }
+                    }
+                  ],
+                  "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                  "x": 520,
+                  "y": 220
+                }
+              }
+            ],
+            "edges": [
+              {
+                "id": "559604d3-308c-4ffd-882a-6903f318ea44",
+                "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "to": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "existing": true
+              }
+            ],
+            "contextEdges": [],
+            "routes": []
+          }
+        ],
+        "definitionPublications": {
+          "267e571d-1a0c-4c1a-8982-9e496c8fa82f": {
+            "title": "Гайка: техническая проба",
+            "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+            "nodeIds": [
+              "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+              "26418a5a-9ccf-4507-b806-24314b659201",
+              "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+              "28320b2b-7dc4-4312-871a-d6cfcdcb533d"
+            ],
+            "edgeIds": [
+              "559604d3-308c-4ffd-882a-6903f318ea44",
+              "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+              "9be8d7c8-951d-441e-9b65-4579ce15e481",
+              "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391"
+            ],
+            "contextIds": [
+              "f753b39a-7a61-4180-afb4-b26bc003df15",
+              "c9eb0492-3788-467a-a819-2516809ba8c4",
+              "b31bd9b7-b061-42b5-9620-61adfcfd5c0c"
+            ]
+          },
+          "84d34b9d-4609-4199-8617-fb2c96aab75b": {
+            "title": "Вторая техническая проба",
+            "definition": "Повторное использование ID и ребра",
+            "nodeIds": [
+              "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+              "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb"
+            ],
+            "edgeIds": [
+              "559604d3-308c-4ffd-882a-6903f318ea44"
+            ],
+            "contextIds": []
+          }
+        }
+      },
+      "historyEncoding": "rfc6902-chain-v1",
+      "history": [
+        {
+          "id": 0,
+          "time": "2026-10-14T08:00:44.891066+00:00",
+          "action": "init",
+          "detail": "{\"message\": \"Создан пустой постоянный граф\", \"legacyBackup\": {\"sourcePath\": \"E:\\\\Projects\\\\concept-field-lab\\\\local-data\\\\canvas-1791964844568\\\\workspace.sqlite3\", \"backupPath\": \"E:\\\\Projects\\\\concept-field-lab\\\\local-data\\\\canvas-1791964844568\\\\backups\\\\workspace-legacy-a299751b-3f05-43e5-9bdf-8be77861401a.sqlite3\", \"createdAt\": \"2026-10-14T08:00:44.884940+00:00\", \"sha256\": \"17a011fa21113f60641f33f05efb884317f300a8132c36d31eb52edc26b08857\", \"logicalSha256\": \"8cb0a4f1913dbfedb4445684943043727b9c78a07c943a91b8a0ad592b155f94\", \"integrity\": \"ok\", \"method\": \"sqlite3.Connection.backup from an open read transaction (including WAL)\"}}",
+          "patch": [
+            {
+              "op": "remove",
+              "path": "/imports"
+            },
+            {
+              "op": "remove",
+              "path": "/matches"
+            },
+            {
+              "op": "remove",
+              "path": "/proposals"
+            },
+            {
+              "op": "remove",
+              "path": "/studies"
+            },
+            {
+              "op": "add",
+              "path": "/contextEdges",
+              "value": []
+            },
+            {
+              "op": "add",
+              "path": "/definitionDrafts",
+              "value": []
+            },
+            {
+              "op": "add",
+              "path": "/definitionPublications",
+              "value": {}
+            },
+            {
+              "op": "add",
+              "path": "/designations",
+              "value": []
+            },
+            {
+              "op": "add",
+              "path": "/edges",
+              "value": []
+            },
+            {
+              "op": "add",
+              "path": "/nodes",
+              "value": []
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "time": "2026-10-14T08:00:46.459507+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0",
+              "value": {
+                "id": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "title": "Гайка: техническая проба",
+                "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                "nodes": [],
+                "edges": [],
+                "contextEdges": [],
+                "routes": []
+              }
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "time": "2026-10-14T08:00:47.381188+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/nodes/0",
+              "value": {
+                "id": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "designation": "деталь",
+                "existing": false,
+                "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                "designations": [
+                  {
+                    "id": "5d461b06-088b-402f-9ba0-cdb27f2a1585",
+                    "text": "деталь"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "time": "2026-10-14T08:00:47.644404+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/nodes/0/designations/1",
+              "value": {
+                "id": "04b74e95-c545-4bac-9f00-69e831feb91a",
+                "text": "гайка",
+                "notes": "",
+                "lexicalSource": {
+                  "name": "Русский Викисловарь",
+                  "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                  "revision": "14297625",
+                  "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                  "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                  "license": "CC BY-SA 4.0",
+                  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                  "attribution": "Участники Викисловаря",
+                  "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                  "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                  "lemma": "гайка",
+                  "senseId": "1",
+                  "entry": "гайка I",
+                  "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "time": "2026-10-14T08:00:48.044696+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/nodes/1",
+              "value": {
+                "id": "26418a5a-9ccf-4507-b806-24314b659201",
+                "designation": "птица",
+                "existing": false,
+                "dictionaryId": "opencorpora:9a76be6b12520cd8c652",
+                "designations": [
+                  {
+                    "id": "33f89f0a-aa7b-4426-9e89-fdff8302bbb1",
+                    "text": "птица"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "time": "2026-10-14T08:00:48.311073+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/nodes/1/designations/1",
+              "value": {
+                "id": "a9741c52-0f91-4841-8791-15300fbb9327",
+                "text": "гайка",
+                "notes": "",
+                "lexicalSource": {
+                  "name": "Русский Викисловарь",
+                  "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                  "revision": "14297625",
+                  "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                  "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                  "license": "CC BY-SA 4.0",
+                  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                  "attribution": "Участники Викисловаря",
+                  "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                  "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                  "lemma": "гайка",
+                  "senseId": "5",
+                  "entry": "гайка II",
+                  "originalText": "орнитол. маленькая птица, один из видов синиц"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 6,
+          "time": "2026-10-14T08:00:48.713653+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/nodes/2",
+              "value": {
+                "id": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "designation": "крепёжный",
+                "existing": false,
+                "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                "designations": [
+                  {
+                    "id": "53980335-504a-44e6-88a6-0b27b6a98e22",
+                    "text": "крепёжный"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 7,
+          "time": "2026-10-14T08:00:49.113820+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/nodes/3",
+              "value": {
+                "id": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                "designation": "резьба",
+                "existing": false,
+                "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+                "designations": [
+                  {
+                    "id": "7772effe-a9d1-4195-840d-e833dddd0cc8",
+                    "text": "резьба"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 8,
+          "time": "2026-10-14T08:00:49.362227+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/nodes/1/x",
+              "value": 245
+            },
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/nodes/1/y",
+              "value": 180
+            }
+          ]
+        },
+        {
+          "id": 9,
+          "time": "2026-10-14T08:00:49.495244+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/edges/0",
+              "value": {
+                "id": "559604d3-308c-4ffd-882a-6903f318ea44",
+                "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "to": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "existing": false
+              }
+            }
+          ]
+        },
+        {
+          "id": 10,
+          "time": "2026-10-14T08:00:49.630604+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/edges/1",
+              "value": {
+                "id": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                "from": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "to": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                "existing": false
+              }
+            }
+          ]
+        },
+        {
+          "id": 11,
+          "time": "2026-10-14T08:00:49.762391+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/edges/2",
+              "value": {
+                "id": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+                "from": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                "to": "26418a5a-9ccf-4507-b806-24314b659201",
+                "existing": false
+              }
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "time": "2026-10-14T08:00:49.896414+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/edges/3",
+              "value": {
+                "id": "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391",
+                "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "to": "26418a5a-9ccf-4507-b806-24314b659201",
+                "existing": false
+              }
+            }
+          ]
+        },
+        {
+          "id": 13,
+          "time": "2026-10-14T08:00:50.162638+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/contextEdges/0",
+              "value": {
+                "id": "f753b39a-7a61-4180-afb4-b26bc003df15",
+                "from": "559604d3-308c-4ffd-882a-6903f318ea44",
+                "to": "d2987d66-f550-41fd-a028-5a92cfa45a2c"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/contextEdges/1",
+              "value": {
+                "id": "c9eb0492-3788-467a-a819-2516809ba8c4",
+                "from": "559604d3-308c-4ffd-882a-6903f318ea44",
+                "to": "9be8d7c8-951d-441e-9b65-4579ce15e481"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/contextEdges/2",
+              "value": {
+                "id": "b31bd9b7-b061-42b5-9620-61adfcfd5c0c",
+                "from": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                "to": "9be8d7c8-951d-441e-9b65-4579ce15e481"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/routes/0",
+              "value": {
+                "id": "8f8ce58d-f578-44d2-a9f0-c5b1a7c1b39c",
+                "edgeIds": [
+                  "559604d3-308c-4ffd-882a-6903f318ea44",
+                  "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                  "9be8d7c8-951d-441e-9b65-4579ce15e481"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 14,
+          "time": "2026-10-14T08:00:50.346729+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/contextEdges/3",
+              "value": {
+                "id": "4372e110-4502-4c81-9912-35a39c1d36fd",
+                "from": "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391",
+                "to": "9be8d7c8-951d-441e-9b65-4579ce15e481"
+              }
+            }
+          ]
+        },
+        {
+          "id": 15,
+          "time": "2026-10-14T08:00:50.449753+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "remove",
+              "path": "/definitionDrafts/0/contextEdges/3"
+            }
+          ]
+        },
+        {
+          "id": 16,
+          "time": "2026-10-14T08:00:50.517495+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "replace",
+              "path": "/definitionDrafts/0/contextEdges/0/from",
+              "value": "d2987d66-f550-41fd-a028-5a92cfa45a2c"
+            },
+            {
+              "op": "replace",
+              "path": "/definitionDrafts/0/contextEdges/0/to",
+              "value": "559604d3-308c-4ffd-882a-6903f318ea44"
+            }
+          ]
+        },
+        {
+          "id": 17,
+          "time": "2026-10-14T08:00:50.930830+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/nodes/4",
+              "value": {
+                "id": "aabe8f9c-6c76-42de-be9d-58b1fde6646e",
+                "designation": "камень",
+                "existing": false,
+                "dictionaryId": "opencorpora:1e1e9e93e51aa3957cca",
+                "designations": [
+                  {
+                    "id": "d308dcf3-0948-4159-a482-7ad0e5cdcf3b",
+                    "text": "камень"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": 18,
+          "time": "2026-10-14T08:00:51.097326+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "remove",
+              "path": "/definitionDrafts/0/nodes/4"
+            }
+          ]
+        },
+        {
+          "id": 19,
+          "time": "2026-10-14T08:00:51.231053+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/edges/4",
+              "value": {
+                "id": "18c0ddec-c651-4057-b30a-770296f75fed",
+                "from": "26418a5a-9ccf-4507-b806-24314b659201",
+                "to": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "existing": false
+              }
+            }
+          ]
+        },
+        {
+          "id": 20,
+          "time": "2026-10-14T08:00:51.413575+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "remove",
+              "path": "/definitionDrafts/0/edges/4"
+            }
+          ]
+        },
+        {
+          "id": 21,
+          "time": "2026-10-14T08:00:51.580931+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/nodes/0/designations/0/lexicalSource",
+              "value": null
+            },
+            {
+              "op": "add",
+              "path": "/definitionDrafts/0/nodes/0/designations/0/notes",
+              "value": ""
+            },
+            {
+              "op": "replace",
+              "path": "/definitionDrafts/0/nodes/0/designations/0/text",
+              "value": "деталь крепежа"
+            }
+          ]
+        },
+        {
+          "id": 22,
+          "time": "2026-10-14T08:00:51.749719+00:00",
+          "action": "definition_publish",
+          "detail": "Подтверждён ручной миниграф; прежние исходники сохранены",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/contextEdges/0",
+              "value": {
+                "id": "f753b39a-7a61-4180-afb4-b26bc003df15",
+                "from": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                "to": "559604d3-308c-4ffd-882a-6903f318ea44",
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/contextEdges/1",
+              "value": {
+                "id": "c9eb0492-3788-467a-a819-2516809ba8c4",
+                "from": "559604d3-308c-4ffd-882a-6903f318ea44",
+                "to": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/contextEdges/2",
+              "value": {
+                "id": "b31bd9b7-b061-42b5-9620-61adfcfd5c0c",
+                "from": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                "to": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/definitionPublications/267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+              "value": {
+                "title": "Гайка: техническая проба",
+                "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                "nodeIds": [
+                  "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                  "26418a5a-9ccf-4507-b806-24314b659201",
+                  "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                  "28320b2b-7dc4-4312-871a-d6cfcdcb533d"
+                ],
+                "edgeIds": [
+                  "559604d3-308c-4ffd-882a-6903f318ea44",
+                  "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                  "9be8d7c8-951d-441e-9b65-4579ce15e481",
+                  "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391"
+                ],
+                "contextIds": [
+                  "f753b39a-7a61-4180-afb4-b26bc003df15",
+                  "c9eb0492-3788-467a-a819-2516809ba8c4",
+                  "b31bd9b7-b061-42b5-9620-61adfcfd5c0c"
+                ]
+              }
+            },
+            {
+              "op": "add",
+              "path": "/designations/0",
+              "value": {
+                "id": "5d461b06-088b-402f-9ba0-cdb27f2a1585",
+                "text": "деталь крепежа",
+                "notes": "",
+                "lexicalSource": null,
+                "target": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "source": "Ручной ввод определения",
+                "origins": [
+                  {
+                    "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                    "snapshot": {
+                      "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                      "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                      "source": null
+                    }
+                  }
+                ],
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/designations/1",
+              "value": {
+                "id": "04b74e95-c545-4bac-9f00-69e831feb91a",
+                "text": "гайка",
+                "notes": "",
+                "lexicalSource": {
+                  "name": "Русский Викисловарь",
+                  "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                  "revision": "14297625",
+                  "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                  "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                  "license": "CC BY-SA 4.0",
+                  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                  "attribution": "Участники Викисловаря",
+                  "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                  "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                  "lemma": "гайка",
+                  "senseId": "1",
+                  "entry": "гайка I",
+                  "originalText": "крепёжная деталь, как правило квадратной или шестиугольной формы, с отверстием в центре и нарезанной в нём резьбой (см. также болт, винт, шайба)"
+                },
+                "target": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "source": "Ручной ввод определения",
+                "origins": [
+                  {
+                    "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                    "snapshot": {
+                      "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                      "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                      "source": null
+                    }
+                  }
+                ],
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/designations/2",
+              "value": {
+                "id": "33f89f0a-aa7b-4426-9e89-fdff8302bbb1",
+                "text": "птица",
+                "target": "26418a5a-9ccf-4507-b806-24314b659201",
+                "notes": "",
+                "source": "Ручной ввод определения",
+                "origins": [
+                  {
+                    "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                    "snapshot": {
+                      "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                      "dictionaryId": "opencorpora:9a76be6b12520cd8c652",
+                      "source": null
+                    }
+                  }
+                ],
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/designations/3",
+              "value": {
+                "id": "a9741c52-0f91-4841-8791-15300fbb9327",
+                "text": "гайка",
+                "notes": "",
+                "lexicalSource": {
+                  "name": "Русский Викисловарь",
+                  "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+                  "revision": "14297625",
+                  "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+                  "retrievedAt": "2026-10-13T11:01:16.592910+00:00",
+                  "license": "CC BY-SA 4.0",
+                  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+                  "attribution": "Участники Викисловаря",
+                  "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+                  "responseSha256": "31e4fc77e40d649a7c7cee5bdb86e531236c8c811871d42e663a261693c16c67",
+                  "lemma": "гайка",
+                  "senseId": "5",
+                  "entry": "гайка II",
+                  "originalText": "орнитол. маленькая птица, один из видов синиц"
+                },
+                "target": "26418a5a-9ccf-4507-b806-24314b659201",
+                "source": "Ручной ввод определения",
+                "origins": [
+                  {
+                    "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                    "snapshot": {
+                      "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                      "dictionaryId": "opencorpora:9a76be6b12520cd8c652",
+                      "source": null
+                    }
+                  }
+                ],
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/designations/4",
+              "value": {
+                "id": "53980335-504a-44e6-88a6-0b27b6a98e22",
+                "text": "крепёжный",
+                "target": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "notes": "",
+                "source": "Ручной ввод определения",
+                "origins": [
+                  {
+                    "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                    "snapshot": {
+                      "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                      "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                      "source": null
+                    }
+                  }
+                ],
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/designations/5",
+              "value": {
+                "id": "7772effe-a9d1-4195-840d-e833dddd0cc8",
+                "text": "резьба",
+                "target": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                "notes": "",
+                "source": "Ручной ввод определения",
+                "origins": [
+                  {
+                    "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                    "snapshot": {
+                      "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                      "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+                      "source": null
+                    }
+                  }
+                ],
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f"
+              }
+            },
+            {
+              "op": "add",
+              "path": "/edges/0",
+              "value": {
+                "id": "559604d3-308c-4ffd-882a-6903f318ea44",
+                "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "to": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "role": "relation",
+                "type": "",
+                "notes": "",
+                "origins": [
+                  {
+                    "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                    "snapshot": {
+                      "id": "559604d3-308c-4ffd-882a-6903f318ea44",
+                      "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                      "to": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                      "existing": false
+                    }
+                  }
+                ],
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "parallelReason": ""
+              }
+            },
+            {
+              "op": "add",
+              "path": "/edges/1",
+              "value": {
+                "id": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                "from": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "to": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                "role": "relation",
+                "type": "",
+                "notes": "",
+                "origins": [
+                  {
+                    "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                    "snapshot": {
+                      "id": "d2987d66-f550-41fd-a028-5a92cfa45a2c",
+                      "from": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                      "to": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                      "existing": false
+                    }
+                  }
+                ],
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "parallelReason": ""
+              }
+            },
+            {
+              "op": "add",
+              "path": "/edges/2",
+              "value": {
+                "id": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+                "from": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                "to": "26418a5a-9ccf-4507-b806-24314b659201",
+                "role": "relation",
+                "type": "",
+                "notes": "",
+                "origins": [
+                  {
+                    "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                    "snapshot": {
+                      "id": "9be8d7c8-951d-441e-9b65-4579ce15e481",
+                      "from": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                      "to": "26418a5a-9ccf-4507-b806-24314b659201",
+                      "existing": false
+                    }
+                  }
+                ],
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "parallelReason": ""
+              }
+            },
+            {
+              "op": "add",
+              "path": "/edges/3",
+              "value": {
+                "id": "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391",
+                "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "to": "26418a5a-9ccf-4507-b806-24314b659201",
+                "role": "relation",
+                "type": "",
+                "notes": "",
+                "origins": [
+                  {
+                    "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                    "snapshot": {
+                      "id": "a0c3b4d8-d227-4a3b-a4d3-a5ed9ef8e391",
+                      "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                      "to": "26418a5a-9ccf-4507-b806-24314b659201",
+                      "existing": false
+                    }
+                  }
+                ],
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "parallelReason": ""
+              }
+            },
+            {
+              "op": "add",
+              "path": "/nodes/0",
+              "value": {
+                "id": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "label": "",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "",
+                "designationOnly": true,
+                "structure": "concept",
+                "origins": [
+                  {
+                    "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                    "snapshot": {
+                      "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                      "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                      "source": null
+                    }
+                  }
+                ],
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "x": 0,
+                "y": 220
+              }
+            },
+            {
+              "op": "add",
+              "path": "/nodes/1",
+              "value": {
+                "id": "26418a5a-9ccf-4507-b806-24314b659201",
+                "label": "",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "",
+                "designationOnly": true,
+                "structure": "concept",
+                "origins": [
+                  {
+                    "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                    "snapshot": {
+                      "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                      "dictionaryId": "opencorpora:9a76be6b12520cd8c652",
+                      "source": null
+                    }
+                  }
+                ],
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "x": 245,
+                "y": 180
+              }
+            },
+            {
+              "op": "add",
+              "path": "/nodes/2",
+              "value": {
+                "id": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "label": "",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "",
+                "designationOnly": true,
+                "structure": "concept",
+                "origins": [
+                  {
+                    "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                    "snapshot": {
+                      "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                      "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                      "source": null
+                    }
+                  }
+                ],
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "x": 520,
+                "y": 220
+              }
+            },
+            {
+              "op": "add",
+              "path": "/nodes/3",
+              "value": {
+                "id": "28320b2b-7dc4-4312-871a-d6cfcdcb533d",
+                "label": "",
+                "kind": "",
+                "notes": "",
+                "alternatives": "",
+                "source": "",
+                "designationOnly": true,
+                "structure": "concept",
+                "origins": [
+                  {
+                    "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                    "snapshot": {
+                      "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                      "dictionaryId": "opencorpora:d6297707b53ed1d5b9f1",
+                      "source": null
+                    }
+                  }
+                ],
+                "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                "x": 780,
+                "y": 220
+              }
+            }
+          ]
+        },
+        {
+          "id": 23,
+          "time": "2026-10-14T08:00:52.820864+00:00",
+          "action": "designation_save",
+          "detail": "Сохранено внешнее обозначение точки входа",
+          "patch": [
+            {
+              "op": "replace",
+              "path": "/designations/0/text",
+              "value": "деталь"
+            }
+          ]
+        },
+        {
+          "id": 24,
+          "time": "2026-10-14T08:00:53.200535+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/1",
+              "value": {
+                "id": "84d34b9d-4609-4199-8617-fb2c96aab75b",
+                "title": "Новое определение",
+                "definition": "",
+                "nodes": [],
+                "edges": [],
+                "contextEdges": [],
+                "routes": []
+              }
+            }
+          ]
+        },
+        {
+          "id": 25,
+          "time": "2026-10-14T08:00:53.264864+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "replace",
+              "path": "/definitionDrafts/1/definition",
+              "value": "Повторное использование ID и ребра"
+            },
+            {
+              "op": "replace",
+              "path": "/definitionDrafts/1/title",
+              "value": "Вторая техническая проба"
+            }
+          ]
+        },
+        {
+          "id": 26,
+          "time": "2026-10-14T08:00:53.432010+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/1/nodes/0",
+              "value": {
+                "id": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "existing": true,
+                "designation": "деталь",
+                "base": {
+                  "id": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                  "label": "",
+                  "kind": "",
+                  "notes": "",
+                  "alternatives": "",
+                  "source": "",
+                  "designationOnly": true,
+                  "structure": "concept",
+                  "origins": [
+                    {
+                      "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                      "snapshot": {
+                        "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                        "dictionaryId": "opencorpora:3487f9e2125bef0714a1",
+                        "source": null
+                      }
+                    }
+                  ],
+                  "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                  "x": 0,
+                  "y": 220
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 27,
+          "time": "2026-10-14T08:00:53.815753+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/1/nodes/1",
+              "value": {
+                "id": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "existing": true,
+                "designation": "крепёжный",
+                "base": {
+                  "id": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                  "label": "",
+                  "kind": "",
+                  "notes": "",
+                  "alternatives": "",
+                  "source": "",
+                  "designationOnly": true,
+                  "structure": "concept",
+                  "origins": [
+                    {
+                      "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                      "snapshot": {
+                        "definition": "Гайка — крепёжная деталь с внутренней резьбой.",
+                        "dictionaryId": "opencorpora:777efdda048053b0d3a7",
+                        "source": null
+                      }
+                    }
+                  ],
+                  "definitionId": "267e571d-1a0c-4c1a-8982-9e496c8fa82f",
+                  "x": 520,
+                  "y": 220
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": 28,
+          "time": "2026-10-14T08:00:54.049774+00:00",
+          "action": "definition_save",
+          "detail": "Сохранён черновик определения",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionDrafts/1/edges/0",
+              "value": {
+                "id": "559604d3-308c-4ffd-882a-6903f318ea44",
+                "from": "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                "to": "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb",
+                "existing": true
+              }
+            }
+          ]
+        },
+        {
+          "id": 29,
+          "time": "2026-10-14T08:00:54.217244+00:00",
+          "action": "definition_publish",
+          "detail": "Подтверждён ручной миниграф; прежние исходники сохранены",
+          "patch": [
+            {
+              "op": "add",
+              "path": "/definitionPublications/84d34b9d-4609-4199-8617-fb2c96aab75b",
+              "value": {
+                "title": "Вторая техническая проба",
+                "definition": "Повторное использование ID и ребра",
+                "nodeIds": [
+                  "05ce9fd3-bebf-478a-9b3d-bc07a293de8f",
+                  "01eae2fe-12f3-470e-bcf6-8d2dbe70cedb"
+                ],
+                "edgeIds": [
+                  "559604d3-308c-4ffd-882a-6903f318ea44"
+                ],
+                "contextIds": []
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

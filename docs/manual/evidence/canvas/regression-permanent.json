@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-14T07:35:10.121Z",
+  "node": "v24.19.0",
+  "scope": "Technical operation test, no proposed semantic decomposition",
+  "scenarios": [
+    "Legacy database opens as one empty permanent graph, no historical records or mandatory study/source actions in UI; verified backup exists",
+    "Search shows lemma, grammar and five meanings with provenance; explicit selection fills draft, no automatic nodes",
+    "Branching mini-graph and explicit forward context confirmed directly into global graph; original node/edge IDs retained without copies",
+    "Shared interface, global ID search and position, neighbourhood and edge/context inspector",
+    "Offline response injected at UI boundary (backend network/cache cases unit-tested): local forms and own saved definition remain usable, no graph writes",
+    "Second dictionary definition reuses exact concept and edge IDs; first draft reopens for manual context correction",
+    "Export with provenance and history, server restart, exact GUI import into clean database and duplicate-free repeat",
+    "Historical SQLite state unchanged; verified backup restores all four historical studies in an explicit legacy recovery copy"
+  ],
+  "errors": [],
+  "dictionary": {
+    "name": "Русский Викисловарь",
+    "url": "https://ru.wiktionary.org/wiki/%D0%B3%D0%B0%D0%B9%D0%BA%D0%B0",
+    "revision": 14297625,
+    "revisionUrl": "https://ru.wiktionary.org/w/index.php?oldid=14297625",
+    "retrievedAt": "2026-10-14T07:35:12.699082+00:00",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "attribution": "Участники Викисловаря",
+    "transformation": "Russian Значение sections, plain text before usage examples; no semantic decomposition",
+    "responseSha256": "6c6e09b61b6cad776d627494f9204862c073394b0c39cedb1f55db74bf4b947d"
+  },
+  "browser": "155.0.8059.40",
+  "backup": {
+    "mode": "permanent",
+    "database": "E:\\Projects\\concept-field-lab\\local-data\\permanent-1791963310121\\workspace.sqlite3",
+    "legacyRowsProtected": 9,
+    "legacyBackup": {
+      "sourcePath": "E:\\Projects\\concept-field-lab\\local-data\\permanent-1791963310121\\workspace.sqlite3",
+      "backupPath": "E:\\Projects\\concept-field-lab\\local-data\\permanent-1791963310121\\backups\\workspace-legacy-1e2e60c6-8bd2-4137-924e-3e85868eb74e.sqlite3",
+      "createdAt": "2026-10-14T07:35:12.822180+00:00",
+      "sha256": "30c7f36f7159fe7ce00029a6b2fcc0541afb94479815bc478d4ba7ab2af0516b",
+      "logicalSha256": "969e7b44b6b7cfaa5ea8ecb06d6e5456866b522869133a87e5bf8118004ceafc",
+      "integrity": "ok",
+      "method": "sqlite3.Connection.backup from an open read transaction (including WAL)"
+    },
+    "importedHistoryArchives": 0
+  },
+  "counts": {
+    "nodes": 5,
+    "ordinaryEdges": 4,
+    "contexts": 3,
+    "publishedDefinitions": 2,
+    "savedDrafts": 3
+  },
+  "ids": {
+    "concepts": [
+      "0cf92d88-ad20-4a6c-a1fa-6e37b826ca14",
+      "4b0a4da5-b657-46a9-9140-3e18cc63bb1b",
+      "40e06716-68e9-4dd7-9d44-68b698dd4eb5",
+      "3cf75e66-8cc8-4269-aabc-658e5fd31900",
+      "50327303-415f-4284-8697-a5f9bfb768a9"
+    ],
+    "edges": [
+      "8b9e21fd-c1c4-4f3d-ba5e-c5e39f1ab84d",
+      "ca89aaa0-562c-4308-a912-2d4e9e3e0f04",
+      "cae44cc5-766c-4484-9031-dceaa727d9ac",
+      "caa08fe3-fa64-49dc-9357-6173260ac911"
+    ]
+  },
+  "ok": true
+}

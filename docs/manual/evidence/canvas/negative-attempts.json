@@ -1,0 +1,14 @@
+{
+  "attempts": [
+    {
+      "run": "canvas-1791962551015",
+      "result": "incomplete",
+      "observation": "The midpoint of an ordinary edge was covered by another node/line; the test opened the node menu instead of the edge menu.",
+      "correction": "Keep manual node movement, add object-by-ID popup for overlapped objects, and select a visible SVG hit segment with elementFromPoint in the browser helper."
+    }
+  ],
+  "finalRun": "canvas-1791964844568",
+  "result": "passed",
+  "structuralLimitation": false,
+  "remainingLimit": "Geometric overlap still requires moving objects or choosing by ID; no universal automatic layout was added."
+}
