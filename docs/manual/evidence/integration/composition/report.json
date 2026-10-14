@@ -1,0 +1,8 @@
+{
+  "result": "passed",
+  "browser": "155.0.8059.40",
+  "node": "v24.19.0",
+  "scenario": "anonymous alpha; directed membership/reuse; whole assertion; beta/alpha navigation and return without writes; shared component without inference; dictionary; preview/confirmed substitution/undo; changed-context and ambiguity blockers; v4 export/idempotent import/fresh import and v2 reviewed changes; full history; v1 preservation and isolation; anonymous comparison; reviewed removal clears traversal; process restart and continued editing; 2000-component bulk import and bounded exploration",
+  "pageErrors": [],
+  "expectedHttpRejections": 1
+}

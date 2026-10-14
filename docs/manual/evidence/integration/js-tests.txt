@@ -1,0 +1,28 @@
+✔ zoom preserves world point under cursor, including scale limits (0.5722ms)
+✔ edge intersects vertical and horizontal node boundaries, and supports loops (0.2859ms)
+✔ fit includes node padding and respects viewport aspect ratio (0.5035ms)
+✔ parallel source relations and loops remain visually distinct (0.1431ms)
+✔ context anchors follow actual quadratic and cubic curves (0.604ms)
+✔ rectilinear context avoids a node between ordinary edge anchors (0.5696ms)
+✔ moving a nonincident blocking node changes the context route (0.1624ms)
+✔ alternating obstacles require more than three segments and exercise bounded A star (0.364ms)
+✔ covered anchors, coincident endpoints and enclosed endpoints give explicit failure (0.5807ms)
+✔ touching and overlapping rectangles retain avoidance with reversed direction (0.1657ms)
+✔ fit contains context detours as well as node rectangles (0.088ms)
+✔ force: detached partial graph, pins, finite deterministic coordinates (22.9104ms)
+✔ hierarchical: detached partial graph, pins, finite deterministic coordinates (5.4441ms)
+✔ radial: detached partial graph, pins, finite deterministic coordinates (0.3314ms)
+✔ clusters: detached partial graph, pins, finite deterministic coordinates (4.9789ms)
+✔ cycles, parallel edges, loops and disconnected nodes are retained (12.4119ms)
+✔ scalable hierarchy covers hidden 2004 nodes / 3001 edges without Dagre dummy explosion (12.7533ms)
+✔ hierarchical ordering reduces crossings on a reproducible bipartite example (3.4745ms)
+✔ unanchored source clusters have disjoint bounding boxes; accepted shared origin is one cluster (11.1303ms)
+✔ large canvas fit has an explicit lower zoom bound without changing editor default (1.1564ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 155.7815

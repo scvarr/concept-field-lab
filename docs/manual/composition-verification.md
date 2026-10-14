@@ -1,5 +1,63 @@
 # Инженерные проверки составов, накопления и геометрии
 
+## Интеграционный аудит M007–M012, 14 октября 2026
+
+Вопрос: готова ли последовательная линия M007–M012 к включению в main без потери функций и исторических данных? Способ — свежий fetch, Git ancestry/blob audit, чтение diff и контрактов хранения/UI, полные существующие тесты и реальные headless Chrome-сценарии на собственных базах. Критерий завершения — проход предметных проверок, exact state/ID/history roundtrip, сохранность legacy и отсутствие нового блокирующего дефекта. Ресурсная граница — один интеграционный проход девяти конечных GUI-сценариев, существующие unit-наборы и до двух исправлений устаревшего дополнительного harness; без новой науки, семантической архитектуры, α или пользовательских данных.
+
+После `git fetch origin`: main и origin/main `0a39561d5574cba399560bfd860a6c05a27ccfd0`, HEAD и origin/codex/context-edge-routing `cc922a99583653fb27a4b15860db65b85645d5ec`. Merge-base равен main; `git merge-base --is-ancestor origin/main HEAD` завершился 0. История линейна: main → M007 `55de392/6a4592e/99550a1` → M008 `ca4da94/3cd2dcd` → M009 `9507686/02a3a1f` → M010 `4473a6f` → M011 `1f31d42/048c8ca` → M012 `cc922a9`. Это достаточное условие fast-forward; `git merge --ff-only` не исполнялся, поскольку merge main запрещён. Незакоммиченный пользовательский `docs/patches/` оставлен без изменения. Отдельные коммиты данного аудита меняют проверочный код, документацию и свидетельства, runtime остаётся проверенным M012.
+
+Результаты статического и интеграционного аудита:
+
+| Область | Проверяемое поведение / доказательство |
+|---|---|
+| Постоянный граф | Прямые канонические UUID; отдельные permanent_revisions/permanent_imports, транзакции и актуальная revision. Legacy revisions не переписываются. Отказ backup/чужой SQLite проверен unit-тестами |
+| Конструктор | Черновик отдельно от включения; pure prepare общий для preview/commit; повторное включение идемпотентно, reuse не создаёт копий; удаление чужих подтверждённых ссылок отвергается атомарно |
+| Обозначения | Many-to-many входы с независимым редактированием/удалением и словарным provenance; повторная публикация не откатывает актуальные обозначения; удаление последнего входа сохраняет концепт/связи |
+| История и обмен | Полная patch-chain история валидируется; restore добавляет версию; импорт архивирует исходную историю, сохраняет exact IDs/state; повторы без дублей, конфликт отвергается. Форматы permanent v1 и legacy v1–v4 различаются явно |
+| UI M010/M011 | Переключение сохраняет текст/камеру; формы/меню/клавиатура сохраняют прежние операции. До 360 px нет document overflow; визуально просмотрены desktop и 360 px снимки |
+| M012 | Пунктирная направленная edge-ID → edge-ID геометрия производная; перемещение постороннего препятствия пересчитывает её. Ручной разворот/удаление/добавление, скрытые/непроложенные пары и доступ по ID проверены |
+| Legacy | M007 GUI, M001 GUI, составы и M006 раскладка в explicit --legacy; backup/recovery на отдельной копии возвращают четыре исторических исследования. Все исторические Git blobs archive/data/experiments/data/fixtures/docs/research сохранены относительно main |
+
+Проверки на Python **3.13.2**, Node **24.19.0**, Chrome **155.0.8059.40** (SQLite версия в verification): **76 Python / 20 JS**, шесть M007–M012 GUI-сценариев, три дополнительных legacy GUI-сценария, реальный Windows cmd.exe entrypoint с собственным --db. M008 заново получил онлайн-толкования/редакцию Викисловаря и проверил cache; M009/M011 воспроизвели атрибутированные старые значения, M012 отключал сеть на UI-границе. Это разные границы проверок, не утверждение сетевой доступности всегда. Compileall, syntax всех корневых static JS и git diff --check прошли.
+
+Новый контекстный сценарий содержит восемь групп и граф 5/4/3; canvas — семь групп, 4/4/3, шесть обозначений, два включения; designation — семь групп, 4/4/2, шесть обозначений; permanent — восемь групп и точное восстановление старых исследований; workspace views — пять групп; M007 legacy — семь групп. Дополнительный M001 повторил GUI import 5 000 узлов / 10 000 рёбер (4,641 с для большого этапа); M006 — 2 004 / 3 001, четыре алгоритма apply/undo, pin, поднабор, cancel worker и restart. Эти измерения относятся только к этим наборам/машине. Свежие `verify_context_display`, `verify_canvas`, `verify_designations` дали **35 / 24 / 18** успешных проверок; `verify_integration` подтвердил 112 условий (77 исторических файлов) и дополнительно проверяет Git ancestry, исторические blobs, неизменность ядра после M009 и свежие exact state/history.
+
+Отрицательные результаты сохранены рядом: `negative-composition-candidate.txt` и `negative-composition-main.txt` воспроизводят одинаковое перекрытие off-canvas узла инспектором; после штатного fit обнаружено старое ожидание v2, хотя main уже экспортирует v3, а M007 — v4 (`negative-composition-version.txt`). Исправлен harness, не приложение: перед указательным кликом fit, актуальный export version/имя файла. Проверки v1 и отдельного v2 changes остаются. Ни force-click, ни обход проверки состояния не введены. Финальный полный сценарий составов повторяет замещение/отмену, ожидаемый HTTP 400 при изменённом контексте, restore, restart, импорт и 2 000 компонентов.
+
+Команды воспроизведения из корня (все серверы запускаются с тестовым --db):
+
+```powershell
+git fetch origin
+git rev-parse HEAD main origin/main origin/codex/context-edge-routing
+git merge-base --is-ancestor origin/main HEAD
+python -m unittest discover -s tests -v
+node --test tests/test_graph_view.cjs tests/test_layout.cjs
+$env:NODE_PATH=(Resolve-Path local-data/browser-tools/node_modules).Path
+node tests/context-browser.cjs
+node tests/canvas-browser.cjs
+node tests/designations-browser.cjs
+node tests/permanent-browser.cjs
+node tests/workspace-views-browser.cjs
+node tests/builder-browser.cjs
+node tests/cmd-launch.cjs
+# M001 browser-scenario использует большой вход предыдущего benchmark:
+python -m scripts.benchmark_workbench
+node tests/browser-scenario.cjs
+node tests/composition-browser.cjs
+node tests/layout-browser.cjs
+python -m scripts.verify_context_display --evidence docs/manual/evidence/integration/context
+python -m scripts.verify_canvas --evidence docs/manual/evidence/integration/canvas
+python -m scripts.verify_designations --evidence docs/manual/evidence/integration/designations
+python -m scripts.verify_integration --base 0a39561d5574cba399560bfd860a6c05a27ccfd0 --candidate cc922a99583653fb27a4b15860db65b85645d5ec
+python -m compileall -q app scripts tests
+Get-ChildItem app/static -Filter *.js | ForEach-Object { node --check $_.FullName }
+git diff --check
+```
+
+В этом проходе M001 использовал уже существующий синтетический large-graph.json; benchmark заново не запускался. Browser-tools остаётся локальной тестовой зависимостью. Свежие отчёты, обменные документы, журналы, несколько просмотренных снимков и SHA-256-манифест сохранены в `evidence/integration/`; исторические свидетельства этапов не перезаписаны. Снимок актуального main для сравнения создан `git archive origin/main` в test-output, без checkout/reset или работы с пользовательской SQLite.
+
+Вывод в проверенной границе: блокирующих дефектов приложения не найдено; линия готова для external review ChatGPT. Риски/ограничения: новый активный граф намеренно пуст при переходе, legacy восстанавливается отдельно; субъективная читаемость реальных определений остаётся операторской проверкой; пересечения линий/перекрытые порты, ограничения 800 видимых пар/40 000 A* вершин и UI caps 1 000 узлов/3 000 рёбер не отменены; длительная работа, произвольная плотность, все браузеры/ОС и аварийное завершение процесса не проверены. Пользовательская SQLite не открывалась/не изменялась, локальные пользовательские файлы не удалялись. Merge и push main не выполнялись. Итоговый checkpoint/его синхронизация — current-state и Git; будущая интеграция допустима только после external review и новой проверки fetch/ancestry.
+
 ## M012: контекстные связи на полотне, 14 октября 2026
 
 Вопрос: показать уже сохранённые направленные edge-ID → edge-ID пары непосредственно в миниграфе и общем графе, не проводя их через поля. Ветка `codex/context-edge-routing` от `048c8ca`; структура данных/сервер не меняются. Проверка конечная: геометрические unit-тесты, настоящий Chrome UI с ручным маршрутом/ветвью, перемещением препятствия, правкой контекста и roundtrip на отдельной SQLite. Критерий — ортогональные сегменты обходят все прямоугольники и соединяют правильные ordinary IDs; ручные операции/история сохраняются. Предел ресурсов — один технический миниграф и два прежних сценария, три размеров окна и отдельная проба существующего максимума черновика; никаких гипотез семантики соединений.

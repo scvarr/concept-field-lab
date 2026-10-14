@@ -1,0 +1,146 @@
+{
+  "result": "passed",
+  "python": "3.13.2",
+  "sqlite": "3.45.3",
+  "sourceCheckpoint": "1f31d428fcae9dcfb6539b5a260519535e4e38b5",
+  "checks": [
+    {
+      "name": "Seven full canvas groups, zero page errors",
+      "passed": true
+    },
+    {
+      "name": "No document overflow in five viewport sizes",
+      "passed": true
+    },
+    {
+      "name": "Exact export/import/reexport state and preserved incoming history",
+      "passed": true
+    },
+    {
+      "name": "Canonical counts and reused original edge IDs",
+      "passed": true
+    },
+    {
+      "name": "Two distinct entry IDs with lexical sources and neighbourhood",
+      "passed": true
+    },
+    {
+      "name": "Distinct sense 1/5 links keep revision 14297625",
+      "passed": true
+    },
+    {
+      "name": "Only confirmed pairs, with the explicit manual reversal",
+      "passed": true
+    },
+    {
+      "name": "Independent correspondence operation at revision 23",
+      "passed": true
+    },
+    {
+      "name": "Actual canonical alias edit in history",
+      "passed": true
+    },
+    {
+      "name": "Regression regression-designations.json",
+      "passed": true
+    },
+    {
+      "name": "Regression regression-permanent.json",
+      "passed": true
+    },
+    {
+      "name": "Regression regression-views.json",
+      "passed": true
+    },
+    {
+      "name": "Regression regression-legacy.json",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object app/builder.py",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object app/permanent.py",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object app/store.py",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object app/designations.py",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object app/dictionary.py",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object app/definitions.py",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object data/dictionary/lemmas.json",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object data/experiments/stone/stone.json",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object data/experiments/transfer/transfer.json",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object data/experiments/nut/nut-revised.json",
+      "passed": true
+    },
+    {
+      "name": "Unchanged Git object docs/manual/evidence/builder/verified-workspace.json",
+      "passed": true
+    }
+  ],
+  "files": [
+    {
+      "name": "canvas-1440.png",
+      "bytes": 50015,
+      "sha256": "ed28dbcbeae653fd7abcef2c30cd0ec26cf74e942bc8e8d995b2c3d2218ac4bc"
+    },
+    {
+      "name": "permanent.json",
+      "bytes": 43765,
+      "sha256": "c3916bb5bdfdfec8d4491329bc6eddfbdbcab5eb06518cbf1890e8425a351fdf"
+    },
+    {
+      "name": "reexport.json",
+      "bytes": 122352,
+      "sha256": "cb4d3f3134d97dfbac55efe3d603a248f83b4fe5d623239992a7b57e17debc3f"
+    },
+    {
+      "name": "regression-designations.json",
+      "bytes": 2812,
+      "sha256": "e32347437f3dc604259f20e47f50da5a37570ba5ae0dd046227200370df65cea"
+    },
+    {
+      "name": "regression-legacy.json",
+      "bytes": 1539,
+      "sha256": "fcbfddb5c819ecfecf3d7436dd7dcac42a76278094b78f226911af6e3ae01418"
+    },
+    {
+      "name": "regression-permanent.json",
+      "bytes": 3404,
+      "sha256": "9d7fb254ee591af63589e6e307203e5fc85c6b2be427db166b13246adc2b53f1"
+    },
+    {
+      "name": "regression-views.json",
+      "bytes": 1475,
+      "sha256": "49f4c71c775f726eb1eb18a9de562a1e2cee8fa4a786f105aa3c5cd9bdd850f9"
+    },
+    {
+      "name": "report.json",
+      "bytes": 2863,
+      "sha256": "588c52990a152f9cae78af1bbd6b8ea851909f140745ddc2dcaa5cd937eb659e"
+    }
+  ]
+}

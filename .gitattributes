@@ -30,3 +30,6 @@ docs/manual/evidence/nut-revision/*.json text eol=lf
 
 /docs/manual/evidence/context-display/*.json text eol=lf
 /docs/manual/evidence/context-display/*.txt text eol=lf
+/docs/manual/evidence/integration/**/*.json text eol=lf
+/docs/manual/evidence/integration/*.json text eol=lf
+/docs/manual/evidence/integration/*.txt text eol=lf
