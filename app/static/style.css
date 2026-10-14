@@ -75,24 +75,35 @@ body.busy :is(.accum-controls,.accum-inspector) button{pointer-events:auto;opaci
 
 /* M008 keeps the existing constructor and renderer in two working areas. */
 body.permanent-workspace {display:block}
-.permanent-workspace .header-actions span {display:inline}
-.permanent-workspace main {width:100%;padding:20px;max-width:none}
-.work-nav {display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.work-columns {display:grid;grid-template-columns:minmax(610px,1.3fr) minmax(410px,.85fr);gap:22px;align-items:start}
-#permanent-panel {position:sticky;top:12px;background:white;border:1px solid var(--line);border-radius:10px;padding:16px;max-height:calc(100vh - 30px);overflow:auto}
-#permanent-panel>h2 {margin-top:0}#permanent-panel input[type=search]{width:100%}
-#permanent-graph {height:410px;min-height:300px;margin:14px 0}
+.permanent-workspace [hidden] {display:none!important}
+.permanent-workspace main {width:100%;padding:12px;max-width:none}
+.workspace-header {position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:12px;align-items:center;min-height:52px;margin:-12px -12px 12px;padding:8px 12px;background:#f4f6f8;border-bottom:1px solid var(--line)}
+.workspace-header h1 {font-size:15px;margin:0;white-space:nowrap}
+.work-nav {display:flex;align-items:center;gap:6px;margin:0}
+.work-nav button[aria-pressed=true] {background:var(--soft);border-color:#93b8ac;color:#205e4f}
+.workspace-header .header-actions {display:flex;flex:0 1 auto;gap:10px;align-items:center;margin-left:auto}
+.permanent-workspace .header-actions span {display:inline;font-size:11px;white-space:nowrap}
+.work-columns {display:block}
+#permanent-panel {position:static;background:white;border:1px solid var(--line);border-radius:10px;padding:14px;overflow:visible}
+.graph-heading {display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:10px}
+.graph-heading h2 {font-size:20px;margin:0}
+#global-count {font-size:12px;color:var(--muted)}
+.graph-controls {display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+#permanent-panel input[type=search] {flex:1;min-width:180px}
+#permanent-graph {height:calc(100dvh - 210px);min-height:380px;margin:12px 0}
 #permanent-graph svg {min-height:300px}
 #graph-results {max-height:180px;overflow:auto}#graph-results button,#graph-inspector>button {display:block;text-align:left;width:100%;margin:4px 0;font-size:12px}
 #graph-results code,#graph-results small,#graph-inspector small {display:block;overflow-wrap:anywhere}
 #graph-depth {width:60px}#graph-caption {font-size:11px;color:var(--muted)}
 #graph-inspector {overflow-wrap:anywhere}#graph-inspector code{font-size:11px}#graph-inspector p{font-size:12px}
-.permanent-workspace #builder .definition-layout {grid-template-columns:minmax(230px,.8fr) minmax(280px,1fr)}
-.permanent-workspace #builder .intro h2{font-size:20px}.permanent-workspace #builder .toolbar{gap:10px;align-items:center}
-.permanent-workspace #def-open{max-width:100%;min-width:0;flex:1}
+.permanent-workspace #builder .definition-layout {grid-template-columns:minmax(300px,400px) minmax(0,1fr);align-items:start}
+.permanent-workspace #builder .definition-layout>.card {margin:0}
+.permanent-workspace #builder .toolbar {gap:10px;align-items:center;margin:0 0 12px}
+.permanent-workspace #def-open {max-width:100%;min-width:0;flex:1}
+.permanent-workspace #def-graph {height:clamp(360px,calc(100dvh - 210px),850px)}
+.permanent-workspace #def-search {width:100%}
 .sense {border-top:1px solid var(--line);padding:12px 0}.sense button {display:block;margin-top:8px}.sense small{font-size:11px}
-#transition-notice {padding:12px;background:#edf7f1;border:1px solid #bed5c8;border-radius:8px;margin-bottom:14px}
-@media(max-width:1200px){.work-columns{grid-template-columns:1fr}#permanent-panel{position:static;max-height:none}}
-@media(max-width:700px){.permanent-workspace main{padding:12px}.permanent-workspace #builder .definition-layout{grid-template-columns:1fr}.work-nav{flex-wrap:wrap}}
+#transition-notice {padding:12px;background:#edf7f1;border:1px solid #bed5c8;border-radius:8px;margin:14px 0}
+@media(max-width:760px){.workspace-header{gap:8px}.workspace-header h1{display:none}.workspace-header .header-actions{margin-left:0}.permanent-workspace #builder .definition-layout{grid-template-columns:1fr}}
 
 .field-aliases{border-top:1px solid var(--line);padding-top:10px;margin-top:5px}.alias-row{padding:8px 0;display:flex;flex-wrap:wrap;gap:6px;align-items:center}.alias-row strong,.alias-row code,.alias-row small{display:block;width:100%;overflow-wrap:anywhere}.alias-row small{color:var(--muted)}

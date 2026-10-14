@@ -22,3 +22,5 @@ docs/manual/evidence/nut-revision/*.json text eol=lf
 /docs/manual/evidence/permanent/*.txt text eol=lf
 /docs/manual/evidence/designations/*.json text eol=lf
 /docs/manual/evidence/designations/*.txt text eol=lf
+
+/docs/manual/evidence/workspace-views/*.json text eol=lf
