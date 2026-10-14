@@ -42,12 +42,14 @@ window.DefinitionBuilder = class {
   edgeName(id) { const e=this.draft?.edges.find(e=>e.id===id);return e?`${this.name(e.from)} → ${this.name(e.to)} · ${id}`:id; }
   capture() {
     if(!this.draft)return;
-    const title=this.host.querySelector('#def-title'),definition=this.host.querySelector('#def-text');
+    const active=!this.ctx.permanent||document.querySelector('#dialog')?.open;
+    const title=active?(this.ctx.permanent?document.querySelector('#modal-form #def-title'):this.host.querySelector('#def-title')):null,definition=active?(this.ctx.permanent?document.querySelector('#modal-form #def-text'):this.host.querySelector('#def-text')):null;
     if(title){this.draft.title=title.value;this.draft.definition=definition.value;if(this.draft.source)this.draft.source.operatorEdited=definition.value!==this.draft.source.originalText;}
   }
   async save(capture=true) { if(capture)this.capture();await this.ctx.mutate('definition_save',{studyId:this.canvas().id,draft:this.draft});this.changed=false; }
   act(fn) { return this.ctx.run(async()=>{this.capture();await fn();}); }
   render() {
+    if(this.ctx.permanent)return this.renderCanvas();
     const s=this.canvas();
     if(!s){this.host.innerHTML=`<div class="intro"><h2>Конструктор определений</h2><p>Откройте существующее накопительное полотно или создайте его во вкладке «Единое полотно».</p>${this.ctx.state().studies.filter(s=>s.accumulation&&!s.archived).map(s=>`<button data-def-canvas="${this.h(s.id)}">${this.h(s.title)}</button>`).join('')}</div>`;this.host.querySelectorAll('[data-def-canvas]').forEach(b=>b.onclick=()=>{this.ctx.activate(b.dataset.defCanvas);});return;}
     if(this.canvasId!==s.id){this.draft=null;this.canvasId=s.id;this.route=[];}
@@ -101,14 +103,14 @@ window.DefinitionBuilder = class {
     const d=this.draft,snapshot=this.graphDraft===d.id?this.graph?.snapshot():null;this.graph?.observer.disconnect();this.graphDraft=d.id;
     if(!d.nodes.length){this.graph=null;host.textContent='Найдите существующий концепт или создайте первое поле.';return;}
     const nodes=d.nodes.map((n,i)=>({id:n.id,label:this.ids?n.id:this.name(n.id),x:n.x??(i%4)*245,y:n.y??Math.floor(i/4)*125,origins:[],badge:n.existing?'Повторно используется':'Новый'}));
-    this.graph=new GraphView(host,{select:id=>this.inspect(id),editNode:id=>this.inspect(id),editEdge:id=>this.ctx.dialog('Обычное ребро',`<p>${this.h(this.edgeName(id))}</p>`),savePosition:this.ctx.run(async(id,p)=>{this.capture();Object.assign(d.nodes.find(n=>n.id===id),p);await this.save();}),canInteract:()=>!this.ctx.busy(),error:e=>this.ctx.toast(e.message,true)});
+    this.graph=new GraphView(host,{select:id=>this.ctx.permanent?this.pickObject('node',id):this.inspect(id),editNode:id=>this.ctx.permanent?this.openNode(id):this.inspect(id),editEdge:id=>this.ctx.permanent?this.pickObject('edge',id):this.ctx.dialog('Обычное ребро',`<p>${this.h(this.edgeName(id))}</p>`),contextMenu:this.ctx.permanent?(kind,id,e)=>this.objectMenu(kind,id,e):undefined,activateNode:this.ctx.permanent?id=>this.interaction?this.pickObject('node',id):this.openNode(id):undefined,savePosition:this.ctx.run(async(id,p)=>{this.capture();Object.assign(d.nodes.find(n=>n.id===id),p);await this.save();}),canInteract:()=>!this.ctx.busy(),error:e=>this.ctx.toast(e.message,true)});
     if(snapshot)this.graph.restore(snapshot);
-    this.graph.update({id:d.id,rootId:nodes[0]?.id,nodes,edges:d.edges},{nodes,edges:d.edges.map(e=>({...e,type:'',displayTitle:this.edgeName(e.id)}))},nodes[0]?.id);if(!snapshot)this.graph.fit();
+    this.graph.update({id:d.id,rootId:nodes[0]?.id,nodes,edges:d.edges},{nodes,edges:d.edges.map(e=>({...e,type:'',highlight:this.route.includes(e.id),displayTitle:this.edgeName(e.id)}))},this.selectedObject?.kind==='node'?this.selectedObject.id:nodes[0]?.id);if(!snapshot)this.graph.fit();
   }
   prune(ids) { this.draft.contextEdges=this.draft.contextEdges.filter(c=>!ids.includes(c.from)&&!ids.includes(c.to));this.draft.routes=this.draft.routes.filter(r=>!r.edgeIds.some(id=>ids.includes(id)));this.route=this.route.filter(id=>!ids.includes(id)); }
-  async addNew(designation,dictionaryId) { this.draft.nodes.push({id:crypto.randomUUID(),designation,existing:false,dictionaryId:dictionaryId||null,...(this.ctx.permanent?{designations:[{id:crypto.randomUUID(),text:designation,...(this.draft.source?.lemma===designation?{lexicalSource:structuredClone(this.draft.source)}:{})}]}:{})});await this.save(); }
+  async addNew(designation,dictionaryId) { this.draft.nodes.push({id:crypto.randomUUID(),designation,existing:false,dictionaryId:dictionaryId||null,...(this.spawnPosition||{}),...(this.ctx.permanent?{designations:[{id:crypto.randomUUID(),text:designation,...(this.draft.source?.lemma===designation?{lexicalSource:structuredClone(this.draft.source)}:{})}]}:{})});this.spawnPosition=null;await this.save();if(this.ctx.permanent)this.ctx.closeDialog(); }
   async loadSenses(lemma,refresh=false) {
-    const sequence=this.senseSequence=(this.senseSequence||0)+1,host=this.host.querySelector('#def-senses');if(!host)return;
+    const sequence=this.senseSequence=(this.senseSequence||0)+1,host=this.searchHost('#def-senses');if(!host)return;
     host.innerHTML='<p>Получение толкований… Можно продолжать ручной ввод.</p>';
     const result=await this.ctx.api('/api/definitions?'+new URLSearchParams({lemma,refresh:refresh?'1':'0'}));if(sequence!==this.senseSequence||!host.isConnected)return;
     host.innerHTML=`<h3>Словарные значения: ${this.h(lemma)}</h3><p>${this.h(result.message)}</p><button id="def-refresh-senses">Обновить толкования</button>${result.senses.map((s,i)=>`<article class="sense"><strong>${this.h(s.entry)} · значение ${this.h(s.id)}</strong><p>${this.h(s.text)}</p><small><a href="${this.h(s.source.revisionUrl)}" target="_blank" rel="noreferrer">${this.h(s.source.name)} · revision ${this.h(s.source.revision)}</a> · ${this.h(s.source.license)}</small><button data-def-sense="${i}">Взять это определение</button></article>`).join('')}<p>Толкование не добавляет концептов или рёбер. Смысловые решения — ваши.</p>`;
@@ -118,19 +120,21 @@ window.DefinitionBuilder = class {
       if(this.draft.definition.trim()||this.draft.nodes.length){await this.save();this.draft={id:crypto.randomUUID(),nodes:[],edges:[],contextEdges:[],routes:[]};}
       Object.assign(this.draft,{title:lemma,definition:sense.text,source:{...sense.source,lemma,senseId:sense.id,entry:sense.entry,originalText:sense.text}});
       await this.ctx.mutate('definition_save',{draft:this.draft});this.changed=false;
+      if(this.ctx.permanent)this.ctx.closeDialog();
     }));
   }
-  async addExisting(id) { if(this.draft.nodes.some(n=>n.id===id))return this.ctx.toast('Этот ID уже выбран.');const n=this.canvas().nodes.find(n=>n.id===id);this.draft.nodes.push({id,existing:true,designation:this.canvas().designations?.find(d=>d.target===id)?.text||n.label||id,base:structuredClone(n)});await this.save(); }
+  async addExisting(id) { if(this.draft.nodes.some(n=>n.id===id))return this.ctx.toast('Этот ID уже выбран.');const n=this.canvas().nodes.find(n=>n.id===id);this.draft.nodes.push({id,existing:true,designation:this.canvas().designations?.find(d=>d.target===id)?.text||n.label||id,base:structuredClone(n),...(this.spawnPosition||{})});this.spawnPosition=null;await this.save();if(this.ctx.permanent)this.ctx.closeDialog(); }
+  searchHost(selector) { return this.ctx.permanent?document.querySelector('#modal-form '+selector):this.host.querySelector(selector); }
   async search() {
-    const seq=++this.sequence,s=this.canvas();if(!s)return;
+    const seq=++this.sequence,s=this.canvas(),host=this.searchHost('#def-results');if(!s||!host)return;
     const result=await this.ctx.api('/api/dictionary?'+new URLSearchParams({q:this.query,study:s.id}));if(seq!==this.sequence||s.id!==this.canvas()?.id)return;
-    const host=this.host.querySelector('#def-results');if(!host)return;this.results=result;
+    if(!host.isConnected)return;this.results=result;
     host.innerHTML=`<p>${this.h(result.source.source)} · ${this.h(result.source.license)}<br>${result.wordCount} словарных вариантов; ${result.conceptCount} представлений концептов.${result.multipleConcepts?' Несколько ID — выберите по окружению.':''}</p><div class="definition-search-results">${result.concepts.map((c,i)=>`<div><strong>${this.h(c.labels.join(' / '))}</strong><span>${c.location==='permanent'?'ID постоянного графа':c.location==='canvas'?'Концепт на накопительном полотне':'Концепт исходного исследования'} · ${this.ctx.permanent?'':this.h(c.studyTitle)}${c.archived?' · архив':''}</span><code>${this.h(c.nodeId)}</code><small>${this.h((c.designations||[]).map(d=>`${d.text}: ${this.sourceSummary(d)}`).join(' · '))}</small><span>${c.edges.length} связей · ${this.h(c.kind)} · ${this.h(c.notes.slice(0,180))}</span><button data-def-result-inspect="${i}">Окружение и происхождение</button>${c.selectable?`<button data-def-use="${this.h(c.nodeId)}">Использовать этот ID</button>`:c.location==='source'?`<button data-def-source="${i}">Добавить исходник после просмотра</button>`:''}</div>`).join('')}${result.words.map((w,i)=>`<div><strong>${this.h(w.lemma)}</strong><span>Словарь ${this.h(w.id)} · ${this.h(w.grammemes.join(', '))}</span><span>${w.hasConcept?'Есть совпадения обозначений — тождество не установлено':'Слово есть в словаре; концепт с этим обозначением не найден'}</span>${this.ctx.permanent?`<button data-def-meanings="${i}">Показать толкования</button>`:''}<button data-def-word="${i}">Создать отдельный концепт</button></div>`).join('')}</div>`;
     host.querySelectorAll('[data-def-use]').forEach(b=>b.onclick=this.act(()=>this.addExisting(b.dataset.defUse)));
     host.querySelectorAll('[data-def-meanings]').forEach(b=>b.onclick=this.ctx.run(()=>this.loadSenses(result.words[Number(b.dataset.defMeanings)].lemma)));
     host.querySelectorAll('[data-def-word]').forEach(b=>b.onclick=this.act(()=>{const w=result.words[Number(b.dataset.defWord)];return this.addNew(w.lemma,w.id);}));
     host.querySelectorAll('[data-def-result-inspect]').forEach(b=>b.onclick=()=>this.showUsage(result.concepts[Number(b.dataset.defResultInspect)]));
-    if(this.ctx.permanent){const word=result.words.find(w=>w.lemma.toLocaleLowerCase('ru').replaceAll('ё','е')===this.query.toLocaleLowerCase('ru').replaceAll('ё','е'));if(word)this.ctx.run(()=>this.loadSenses(word.lemma))();else{this.senseSequence=(this.senseSequence||0)+1;const senses=this.host.querySelector('#def-senses');if(senses)senses.innerHTML='';}}
+    if(this.ctx.permanent){const word=result.words.find(w=>w.lemma.toLocaleLowerCase('ru').replaceAll('ё','е')===this.query.toLocaleLowerCase('ru').replaceAll('ё','е'));if(word)this.ctx.run(()=>this.loadSenses(word.lemma))();else{this.senseSequence=(this.senseSequence||0)+1;const senses=this.searchHost('#def-senses');if(senses)senses.innerHTML='';}}
     host.querySelectorAll('[data-def-source]').forEach(b=>b.onclick=this.act(()=>this.includeSource(result.concepts[Number(b.dataset.defSource)])));
   }
   inspect(id) {
@@ -144,8 +148,8 @@ window.DefinitionBuilder = class {
     const original=this.ctx.state().studies.find(s=>s.id===c.studyId);
     this.ctx.dialog('Добавить исходник на полотно',`<p>Будет добавлен целый снимок «${this.ctx.permanent?'':this.h(c.studyTitle)}»: ${original.nodes.length} узлов / ${original.edges.length} рёбер. Исходное исследование сохранится; совпадения не объединятся.</p><p>Исходный ID ${this.h(c.nodeId)} будет представлен ID копии полотна с происхождением. Прежние копии сохраняют свои ID.</p>`,async()=>{await this.save();await this.ctx.mutate('accumulation_add_source',{studyId:s.id,sourceStudyId:c.studyId});const n=this.canvas().nodes.find(n=>n.origins.some(o=>o.studyId===c.studyId&&o.nodeId===c.nodeId));await this.addExisting(n.id);},'Подтвердить добавление исходника');
   }
-  async connect() {
-    const from=this.host.querySelector('#def-from').value,to=this.host.querySelector('#def-to').value;if(!from||!to)throw Error('Выберите два поля.');
+  async connect(from=this.host.querySelector('#def-from')?.value,to=this.host.querySelector('#def-to')?.value) {
+    if(!from||!to)throw Error('Выберите два поля.');
     const available=this.canvas().edges.filter(e=>e.from===from&&e.to===to&&(!e.role||e.role==='relation'));
     if(this.draft.edges.some(e=>e.from===from&&e.to===to))throw Error('Эти поля уже соединены в черновике.');
     if(available.length){this.ctx.dialog('Выбрать ID обычного ребра',`<p>Эти концепты уже соединены. Выберите существующий ID или обоснуйте новое параллельное ребро.</p><select name="edgeId">${available.map(e=>`<option value="${this.h(e.id)}">${this.h(e.id)} · ${this.h(e.type||'без типа')} · ${this.h(e.notes)}</option>`).join('')}<option value="new">Новое параллельное ребро</option></select><label>Причина нового ребра<input name="reason"></label>`,async f=>{const id=f.get('edgeId');this.draft.edges.push(id==='new'?{id:crypto.randomUUID(),from,to,existing:false,parallelReason:f.get('reason')}:{id,from,to,existing:true});await this.save();},'Выбрать');return;}
