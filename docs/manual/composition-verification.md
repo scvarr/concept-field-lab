@@ -1,5 +1,55 @@
 # Инженерные проверки составов, накопления и геометрии
 
+## M018: единый редактор постоянного графа, 15 октября 2026
+
+Вопрос: можно ли свободно редактировать одни общие ID из постоянного полотна и миниграфа области, преобразуя выбранные использования без ручной повторной публикации каждого определения? Способ: развитие прежних transaction/snapshot/GraphView/DefinitionBuilder, предметные тесты, реальный Chrome GUI на собственных SQLite и отдельный аудит экспортов. Критерий — требования задания, сохранение ID и различий relation/component/context, отсутствие неявных потерь, защита незавершённых/устаревших черновиков, атомарность/history/restart/обмен. Ресурсная граница — одна инженерная итерация, четыре исходных определения, не более шести сохранённых определений/областей и 30 узлов нового сценария; прежние автоматические и релевантные GUI-регрессии. Платные сервисы, пользовательская база и docs/patches не использовались. Содержательная истинность синтетических отношений, активация и автоматическое отождествление не исследуются.
+
+Основа — проверенный HEAD `f8f68fb60c08bce766f242312fa3f602305edd06`, fetch origin, ветка `codex/unified-graph-editor`; плановый checkpoint `b9dd120` отправлен в origin. Изменения описаны в [ADR M018](definition-builder-architecture.md#adr-m018--редактор-общих-объектов-и-области-15-октября-2026), [формате](data-format-permanent.md#m018-транзакционные-правки-и-baseline-области) и [инструкции](user-guide.md#единый-редактор-постоянного-графа-m018). Точный итоговый SHA доступен по HEAD/origin рабочей ветки; merge в main не выполняется.
+
+Наблюдаемый результат: **104 Python / 38 JS** успешно; compileall, syntax затронутых JS и git diff --check прошли. Среда: Python 3.13.2, Node 24.19.0, Playwright 1.58.2, Chrome 155.0.8059.40, Windows; SQLite/платформа и хеши — [verification](evidence/graph-editor/verification.json). Новых runtime-зависимостей нет.
+
+[Новый браузерный отчёт](evidence/graph-editor/report.json) содержит 13 успешных групп и семь ожидаемых отказов, ноль pageerror. Начальные четыре определения создаёт [воспроизводимый fixture](../../scripts/unified_editor_fixture.py) штатными save/publish и импортирует GUI; это явно синтетические операторские данные, не разбор текста моделью. Дальнейшие действия — настоящие формы, мышь, списки ID и две вкладки Chrome:
+
+1. Опубликованные «Винт» и «Гайка» используют один detail ID, свои α-компоненты и обычные рёбра; context-cross/context-metal соединяют ordinary edge IDs разных определений. Исходник — [fixture.json](evidence/graph-editor/fixture.json).
+2. Оператор выбирает ID part в форме области, добавляет существующие mechanism/elementary через поиск, соединяет их и меняет характеристику part. До подтверждения постоянный граф прежний; публикация области добавляет ровно два отношения и меняет общий объект одной транзакцией. Прямая общая правка затем видна в чистом миниграфе.
+3. Одно использование screw-detail.to перенаправлено отдельно: остальные рёбра, компоненты, словарь и контекст неизменны. [Preview](evidence/graph-editor/selective-preview.png) показывает ID/до/после. Затем оператор выбирает остальные ends, прямые включения определений и word-detail, удаляет исходник после проверки зависимостей. [Полный preview](evidence/graph-editor/conversion-preview.png), [состояние сразу после преобразования](evidence/graph-editor/conversion.json) и [граф](evidence/graph-editor/converted-graph.png) сохранены. Все исходные edge IDs, роли, поля происхождения и полные контекстные пары остаются; target обозначения меняется на part с прежним designation ID. Новых концептов при преобразовании нет.
+4. GUI редактирует обычное отношение и его концы с тем же ID; создаёт/удаляет временное отношение; разворачивает/удаляет/создаёт контекст. Последующая замена одной contextual pair выполнена отдельными явными действиями и не выдаётся за сохранение прежнего ID во всём сценарии: точное сохранение пары доказывает промежуточный conversion.json. Временный concept с обозначением, отношением и context удалён одной транзакцией после явного выбора зависимостей; остальные объекты совпали точно.
+5. Через общий граф создаётся безымянная α с существующим part-компонентом, преобразуется в concept и удаляется. Пустая α отвергается. Незавершённая α другого черновика остаётся вне постоянных nodes.
+6. Вторая вкладка меняет part после сохранения незавершённой локальной правки. [Предупреждение](evidence/graph-editor/stale-draft.png) и сам черновик сохраняются, publication отклоняется. Устаревший preview после следующей транзакции второй вкладки также не меняет state/revision. Предметный тест отдельно закрывает случай старого browser baseline после автообновления чистой области.
+7. GUI export → новый процесс сервера → GUI import в чистую SQLite → reexport сохраняет точный state, шесть черновиков и архив полной истории. GUI restore версии 0 записывает новую версию и не удаляет более позднюю историю. Итог до restore: 6 nodes / 7 edges (5 ordinary, 2 component) / 2 context. Файлы [permanent](evidence/graph-editor/permanent.json) и [reexport](evidence/graph-editor/reexport.json); [600 px](evidence/graph-editor/viewport-600.png), [360 px](evidence/graph-editor/viewport-360.png) без горизонтального переполнения.
+
+Отрицательные GUI-пробы: удаление используемого узла без выбора зависимостей, удаление ordinary edge с context, повтор contextual pair, пустая α, публикация dirty stale области, применение stale preview, публикация неполной α. Каждый ожидаемый отказ проверяется по ошибке и, где не выполняется отдельное сохранение черновика, полному равенству state; предметные тесты также проверяют неизменную revision. Циклы, duplicate components, residual designation/definition uses, выборочное redirect, role change с контекстом, parallel reason и чистое повторное открытие области, транзитивные определения/контекст родительских α проверены на уровне transaction.
+
+[Самостоятельный audit](../../scripts/verify_graph_editor.py) прошёл 39 проверок и проверил 31 snapshot истории; читает fixture/conversion/final exports, валидирует каждый snapshot истории и сверяет полные объекты по ID: после преобразования исчез только detail, добавлены ровно два выбранных отношения, старые edges отличаются только перенаправленными endpoints, словарные записи — только target, контекст совпадает полностью. Итоговые временные CRUD не оставили лишних рёбер. Журналы [Python](evidence/graph-editor/python-tests.txt), [JS](evidence/graph-editor/javascript-tests.txt), [исправленные отрицательные попытки](evidence/graph-editor/negative-attempts.json) и hash manifest сохраняются в Git. Скриншоты preview/общего графа/конфликта/узкого окна просмотрены визуально; старые свидетельства не перезаписаны.
+
+Регрессии: [M011 canvas](evidence/graph-editor/regression-canvas.json) — семь групп, включая independent aliases/reuse/history и пять размеров окна; [M013 α](evidence/graph-editor/regression-alpha.json) — создание/вложение/редактирование/refresh/reuse, семь malformed imports без записи, restart/обмен; [M015 overview](evidence/graph-editor/regression-overview.json) — preview/layout/pins/search/undo, 100/1000/2000/3000 nodes, без наложений после layout; [M017 context](evidence/graph-editor/regression-context.json) — square selection/создание/reverse/delete/геометрия, максимум 80/160/800 и restart/обмен. Везде ноль JS ошибок. Это инженерные прогоны, не external review смыслового содержания и не доказательство удобства длительной ежедневной работы.
+
+Ограничения: конфликтное слияние ручное, старые owner drafts не имеют baseline своих объектов; безопасное продолжение — отдельная актуальная область. Baseline сравнивает полные объекты, поэтому даже геометрическое расхождение может потребовать новой области. Нет push-синхронизации вкладок. Restore возвращает всю версию, а не выборочную отмену поверх последующих правок. Сохраняются 20 drafts и 80/160/800 на область; исходная область может не содержать внешние зависимости. Массовые операции сверх проверенных наборов и downgrade старого приложения не заявлены безопасными. При необходимости выборочного автоматического восстановления нужно отдельно определить конфликтный контракт операции; скрытого обхода существующей модели нет.
+
+Воспроизведение из корня PowerShell (Playwright — прежняя локальная проверочная зависимость, не нужен оператору):
+
+```powershell
+$env:PYTHONUTF8='1'
+python -m unittest discover -s tests -v
+node --test tests/test_graph_view.cjs tests/test_layout.cjs tests/test_overview.cjs tests/test_alpha_captions.cjs tests/test_concept_provenance.cjs tests/test_context_markers.cjs
+python -m compileall -q app scripts tests
+node --check app/static/graph-editor.js
+node --check app/static/workspace.js
+node --check app/static/builder.js
+node --check app/static/canvas-builder.js
+$env:NODE_PATH=(Resolve-Path local-data/browser-tools/node_modules).Path
+node tests/graph-editor-browser.cjs
+node tests/canvas-browser.cjs
+node tests/alpha-browser.cjs
+node tests/overview-browser.cjs
+node tests/context-browser.cjs
+python -m scripts.verify_graph_editor
+git diff --check
+```
+
+Браузерные сценарии создают собственные каталоги test-output/local-data и завершают свои процессы. На другой машине NODE_PATH указывает на установленный Playwright. Аудит сохранённых свидетельств не открывает пользовательскую базу. Следующий конечный шаг — external review diff от исходного HEAD, операторского сценария и свидетельств; критерий — конкретные замечания/решение reviewer, граница — M018. Merge в main запрещён и не выполнялся.
+
+
 ## M017: маркеры рёбер и гибкий контекст, 14 октября 2026
 
 Вопрос: позволяет ли фиксированный квадрат ordinary ID и гибкая линия упростить выбор/создание контекста, сохранив привязку и обход видимых concept/α? Способ: переработка только SVG/UI, предметные тесты, реальный Chrome на изолированных SQLite и независимый аудит сохранённых SVG/JSON. Критерий завершения: marker принадлежит половине длины конкретной quadratic/cubic, parallel/opposing/loop ID однозначны; показанные линии не пересекают геометрию узлов; закрытые/совпавшие маркеры не смещаются, отказ диагностируется; выбор/hover/режимы/create/reverse/delete/ID, drag/layout/zoom, v2/restart/import/history и актуальные регрессии проходят. Предел конечного шага: одна инженерная итерация до 90 минут, синтетический миниграф 5/4/3, общий граф двух определений 8/9/3 с вложенными α, отдельные parallel/loop/crossing пробы, максимум 80/160/800 в mini и 100/200/850 в плотном контексте; регрессия M015 до 3000 узлов. Пользовательская SQLite и `docs/patches/` не затрагиваются. Научная истинность тестовых определений и удобство длительной операторской работы не проверяются; активации и LLM-механизма нет.

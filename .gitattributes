@@ -49,3 +49,7 @@ docs/manual/evidence/nut-revision/*.json text eol=lf
 # Preserve M017 marker/curve evidence checksums across Windows/Linux checkouts.
 /docs/manual/evidence/context-markers/*.json text eol=lf
 /docs/manual/evidence/context-markers/*.txt text eol=lf
+
+# Preserve M018 editor evidence hashes.
+/docs/manual/evidence/graph-editor/*.json text eol=lf
+/docs/manual/evidence/graph-editor/*.txt text eol=lf

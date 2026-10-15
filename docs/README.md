@@ -2,7 +2,7 @@
 
 ## M018: единый редактор постоянного графа
 
-Текущая инженерная цель и конечная проверка — [current-state](current-state.md#m018-единый-редактор--работа-начата-15-октября-2026). Ответственности прежние: [конструктор](manual/definition-builder-architecture.md), [формат](manual/data-format-permanent.md), [инструкция](manual/user-guide.md), [проверки](manual/composition-verification.md). Прежнее предложение исследовать активацию отложено новым заданием пользователя.
+Актуальный инженерный checkpoint — [current-state](current-state.md#m018-единый-редактор-готов-для-external-review-15-октября-2026). Принятое решение и границы — [ADR M018 конструктора](manual/definition-builder-architecture.md#adr-m018--редактор-общих-объектов-и-области-15-октября-2026); baseline/операции/история — [формат](manual/data-format-permanent.md#m018-транзакционные-правки-и-baseline-области); рабочий процесс — [инструкция](manual/user-guide.md#единый-редактор-постоянного-графа-m018); результаты/команды/ограничения — [отчёт M018](manual/composition-verification.md#m018-единый-редактор-постоянного-графа-15-октября-2026). Первичные [GUI-report](manual/evidence/graph-editor/report.json), [audit/hash](manual/evidence/graph-editor/verification.json), [преобразование](manual/evidence/graph-editor/conversion.json), exports и регрессии находятся в `manual/evidence/graph-editor/`; старые свидетельства сохранены. Прежнее предложение исследовать активацию отложено инженерным заданием пользователя; семантическая граница прежняя.
 
 ## Восстановление после интеграции M013–M017, 15 октября 2026
 

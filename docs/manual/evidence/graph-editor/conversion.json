@@ -1,0 +1,1067 @@
+{
+  "nodes": [
+    {
+      "id": "metal",
+      "label": "",
+      "kind": "",
+      "notes": "",
+      "alternatives": "",
+      "source": "",
+      "designationOnly": true,
+      "structure": "concept",
+      "origins": [
+        {
+          "definitionId": "definition-detail",
+          "snapshot": {
+            "definition": "Деталь — элементарная составная часть более сложного механизма или сооружения.",
+            "dictionaryId": null,
+            "source": null
+          }
+        }
+      ],
+      "definitionId": "definition-detail",
+      "x": 320,
+      "y": 0
+    },
+    {
+      "id": "part",
+      "label": "",
+      "kind": "",
+      "notes": "Из общего графа",
+      "alternatives": "",
+      "source": "",
+      "designationOnly": true,
+      "structure": "concept",
+      "origins": [
+        {
+          "definitionId": "definition-part",
+          "snapshot": {
+            "definition": "Существующие ID для операторской проверки, без автоматического анализа текста.",
+            "dictionaryId": null,
+            "source": null
+          }
+        }
+      ],
+      "definitionId": "definition-part",
+      "x": 0,
+      "y": 350
+    },
+    {
+      "id": "mechanism",
+      "label": "",
+      "kind": "",
+      "notes": "",
+      "alternatives": "",
+      "source": "",
+      "designationOnly": true,
+      "structure": "concept",
+      "origins": [
+        {
+          "definitionId": "definition-part",
+          "snapshot": {
+            "definition": "Существующие ID для операторской проверки, без автоматического анализа текста.",
+            "dictionaryId": null,
+            "source": null
+          }
+        }
+      ],
+      "definitionId": "definition-part",
+      "x": 320,
+      "y": 250
+    },
+    {
+      "id": "elementary",
+      "label": "",
+      "kind": "",
+      "notes": "",
+      "alternatives": "",
+      "source": "",
+      "designationOnly": true,
+      "structure": "concept",
+      "origins": [
+        {
+          "definitionId": "definition-part",
+          "snapshot": {
+            "definition": "Существующие ID для операторской проверки, без автоматического анализа текста.",
+            "dictionaryId": null,
+            "source": null
+          }
+        }
+      ],
+      "definitionId": "definition-part",
+      "x": 320,
+      "y": 450
+    },
+    {
+      "id": "screw",
+      "label": "",
+      "kind": "",
+      "notes": "",
+      "alternatives": "",
+      "source": "",
+      "designationOnly": true,
+      "structure": "alpha",
+      "origins": [
+        {
+          "definitionId": "definition-screw",
+          "snapshot": {
+            "definition": "Синтетическая структура винта с общим ID детали.",
+            "dictionaryId": null,
+            "source": null
+          }
+        }
+      ],
+      "definitionId": "definition-screw",
+      "x": -320,
+      "y": -180
+    },
+    {
+      "id": "nut",
+      "label": "",
+      "kind": "",
+      "notes": "",
+      "alternatives": "",
+      "source": "",
+      "designationOnly": true,
+      "structure": "alpha",
+      "origins": [
+        {
+          "definitionId": "definition-nut",
+          "snapshot": {
+            "definition": "Синтетическая структура гайки с тем же общим ID детали.",
+            "dictionaryId": null,
+            "source": null
+          }
+        }
+      ],
+      "definitionId": "definition-nut",
+      "x": -320,
+      "y": 180
+    }
+  ],
+  "edges": [
+    {
+      "id": "detail-metal",
+      "from": "part",
+      "to": "metal",
+      "role": "relation",
+      "type": "",
+      "notes": "",
+      "origins": [
+        {
+          "definitionId": "definition-detail",
+          "snapshot": {
+            "id": "detail-metal",
+            "from": "detail",
+            "to": "metal",
+            "role": "relation",
+            "existing": false
+          }
+        }
+      ],
+      "definitionId": "definition-detail",
+      "parallelReason": ""
+    },
+    {
+      "id": "screw-detail-component",
+      "from": "screw",
+      "to": "part",
+      "role": "component",
+      "type": "",
+      "notes": "",
+      "origins": [
+        {
+          "definitionId": "definition-screw",
+          "snapshot": {
+            "id": "screw-detail-component",
+            "from": "screw",
+            "to": "detail",
+            "role": "component",
+            "existing": false
+          }
+        }
+      ],
+      "definitionId": "definition-screw",
+      "parallelReason": ""
+    },
+    {
+      "id": "screw-detail",
+      "from": "screw",
+      "to": "part",
+      "role": "relation",
+      "type": "",
+      "notes": "",
+      "origins": [
+        {
+          "definitionId": "definition-screw",
+          "snapshot": {
+            "id": "screw-detail",
+            "from": "screw",
+            "to": "detail",
+            "role": "relation",
+            "existing": false
+          }
+        }
+      ],
+      "definitionId": "definition-screw",
+      "parallelReason": ""
+    },
+    {
+      "id": "nut-detail-component",
+      "from": "nut",
+      "to": "part",
+      "role": "component",
+      "type": "",
+      "notes": "",
+      "origins": [
+        {
+          "definitionId": "definition-nut",
+          "snapshot": {
+            "id": "nut-detail-component",
+            "from": "nut",
+            "to": "detail",
+            "role": "component",
+            "existing": false
+          }
+        }
+      ],
+      "definitionId": "definition-nut",
+      "parallelReason": ""
+    },
+    {
+      "id": "nut-detail",
+      "from": "nut",
+      "to": "part",
+      "role": "relation",
+      "type": "",
+      "notes": "",
+      "origins": [
+        {
+          "definitionId": "definition-nut",
+          "snapshot": {
+            "id": "nut-detail",
+            "from": "nut",
+            "to": "detail",
+            "role": "relation",
+            "existing": false
+          }
+        }
+      ],
+      "definitionId": "definition-nut",
+      "parallelReason": ""
+    },
+    {
+      "role": "relation",
+      "type": "",
+      "notes": "",
+      "id": "d53f7f43-f2e3-438f-91a9-38c510545050",
+      "from": "part",
+      "to": "mechanism",
+      "definitionId": "5ca7a606-c06e-4956-8584-0e3724c1b82e",
+      "origins": [
+        {
+          "definitionId": "5ca7a606-c06e-4956-8584-0e3724c1b82e",
+          "snapshot": {
+            "definition": "Явное редактирование выбранной области общего графа.",
+            "source": null,
+            "operation": "graph_editor"
+          }
+        }
+      ]
+    },
+    {
+      "role": "relation",
+      "type": "",
+      "notes": "",
+      "id": "8eae5e11-5d2a-402d-92cf-25f3eeff5ea7",
+      "from": "part",
+      "to": "elementary",
+      "definitionId": "5ca7a606-c06e-4956-8584-0e3724c1b82e",
+      "origins": [
+        {
+          "definitionId": "5ca7a606-c06e-4956-8584-0e3724c1b82e",
+          "snapshot": {
+            "definition": "Явное редактирование выбранной области общего графа.",
+            "source": null,
+            "operation": "graph_editor"
+          }
+        }
+      ]
+    }
+  ],
+  "designations": [
+    {
+      "id": "word-detail",
+      "text": "деталь",
+      "target": "part",
+      "notes": "",
+      "source": "Ручной ввод определения",
+      "origins": [
+        {
+          "definitionId": "definition-detail",
+          "snapshot": {
+            "definition": "Деталь — элементарная составная часть более сложного механизма или сооружения.",
+            "dictionaryId": null,
+            "source": null
+          }
+        }
+      ],
+      "definitionId": "definition-detail"
+    },
+    {
+      "id": "word-metal",
+      "text": "металл",
+      "target": "metal",
+      "notes": "",
+      "source": "Ручной ввод определения",
+      "origins": [
+        {
+          "definitionId": "definition-detail",
+          "snapshot": {
+            "definition": "Деталь — элементарная составная часть более сложного механизма или сооружения.",
+            "dictionaryId": null,
+            "source": null
+          }
+        }
+      ],
+      "definitionId": "definition-detail"
+    },
+    {
+      "id": "word-part",
+      "text": "часть",
+      "target": "part",
+      "notes": "",
+      "source": "Ручной ввод определения",
+      "origins": [
+        {
+          "definitionId": "definition-part",
+          "snapshot": {
+            "definition": "Существующие ID для операторской проверки, без автоматического анализа текста.",
+            "dictionaryId": null,
+            "source": null
+          }
+        }
+      ],
+      "definitionId": "definition-part"
+    },
+    {
+      "id": "word-mechanism",
+      "text": "механизм",
+      "target": "mechanism",
+      "notes": "",
+      "source": "Ручной ввод определения",
+      "origins": [
+        {
+          "definitionId": "definition-part",
+          "snapshot": {
+            "definition": "Существующие ID для операторской проверки, без автоматического анализа текста.",
+            "dictionaryId": null,
+            "source": null
+          }
+        }
+      ],
+      "definitionId": "definition-part"
+    },
+    {
+      "id": "word-elementary",
+      "text": "элементарный",
+      "target": "elementary",
+      "notes": "",
+      "source": "Ручной ввод определения",
+      "origins": [
+        {
+          "definitionId": "definition-part",
+          "snapshot": {
+            "definition": "Существующие ID для операторской проверки, без автоматического анализа текста.",
+            "dictionaryId": null,
+            "source": null
+          }
+        }
+      ],
+      "definitionId": "definition-part"
+    },
+    {
+      "id": "word-screw",
+      "text": "винт",
+      "target": "screw",
+      "notes": "",
+      "source": "Ручной ввод определения",
+      "origins": [
+        {
+          "definitionId": "definition-screw",
+          "snapshot": {
+            "definition": "Синтетическая структура винта с общим ID детали.",
+            "dictionaryId": null,
+            "source": null
+          }
+        }
+      ],
+      "definitionId": "definition-screw"
+    },
+    {
+      "id": "word-nut",
+      "text": "гайка",
+      "target": "nut",
+      "notes": "",
+      "source": "Ручной ввод определения",
+      "origins": [
+        {
+          "definitionId": "definition-nut",
+          "snapshot": {
+            "definition": "Синтетическая структура гайки с тем же общим ID детали.",
+            "dictionaryId": null,
+            "source": null
+          }
+        }
+      ],
+      "definitionId": "definition-nut"
+    }
+  ],
+  "contextEdges": [
+    {
+      "id": "context-cross",
+      "from": "screw-detail",
+      "to": "nut-detail",
+      "definitionId": "definition-nut"
+    },
+    {
+      "id": "context-metal",
+      "from": "nut-detail",
+      "to": "detail-metal",
+      "definitionId": "definition-nut"
+    }
+  ],
+  "definitionDrafts": [
+    {
+      "id": "definition-detail",
+      "title": "Деталь",
+      "definition": "Деталь — элементарная составная часть более сложного механизма или сооружения.",
+      "nodes": [
+        {
+          "id": "detail",
+          "existing": false,
+          "designation": "деталь",
+          "designations": [
+            {
+              "id": "word-detail",
+              "text": "деталь"
+            }
+          ],
+          "structure": "concept",
+          "x": 0,
+          "y": 0
+        },
+        {
+          "id": "metal",
+          "existing": false,
+          "designation": "металл",
+          "designations": [
+            {
+              "id": "word-metal",
+              "text": "металл"
+            }
+          ],
+          "structure": "concept",
+          "x": 320,
+          "y": 0
+        }
+      ],
+      "edges": [
+        {
+          "id": "detail-metal",
+          "from": "detail",
+          "to": "metal",
+          "role": "relation",
+          "existing": false
+        }
+      ],
+      "contextEdges": [],
+      "routes": [],
+      "graphStale": "Общий граф изменён. Черновик сохранён; откройте актуальную область отдельно и перенесите нужные правки."
+    },
+    {
+      "id": "definition-part",
+      "title": "Часть",
+      "definition": "Существующие ID для операторской проверки, без автоматического анализа текста.",
+      "nodes": [
+        {
+          "id": "part",
+          "existing": false,
+          "designation": "часть",
+          "designations": [
+            {
+              "id": "word-part",
+              "text": "часть"
+            }
+          ],
+          "structure": "concept",
+          "x": 0,
+          "y": 350
+        },
+        {
+          "id": "mechanism",
+          "existing": false,
+          "designation": "механизм",
+          "designations": [
+            {
+              "id": "word-mechanism",
+              "text": "механизм"
+            }
+          ],
+          "structure": "concept",
+          "x": 320,
+          "y": 250
+        },
+        {
+          "id": "elementary",
+          "existing": false,
+          "designation": "элементарный",
+          "designations": [
+            {
+              "id": "word-elementary",
+              "text": "элементарный"
+            }
+          ],
+          "structure": "concept",
+          "x": 320,
+          "y": 450
+        }
+      ],
+      "edges": [],
+      "contextEdges": [],
+      "routes": [],
+      "graphStale": "Общий граф изменён. Черновик сохранён; откройте актуальную область отдельно и перенесите нужные правки."
+    },
+    {
+      "id": "definition-screw",
+      "title": "Винт",
+      "definition": "Синтетическая структура винта с общим ID детали.",
+      "nodes": [
+        {
+          "id": "screw",
+          "existing": false,
+          "designation": "винт",
+          "designations": [
+            {
+              "id": "word-screw",
+              "text": "винт"
+            }
+          ],
+          "structure": "alpha",
+          "x": -320,
+          "y": -180
+        },
+        {
+          "id": "detail",
+          "existing": true,
+          "base": {
+            "id": "detail",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "definition-detail",
+                "snapshot": {
+                  "definition": "Деталь — элементарная составная часть более сложного механизма или сооружения.",
+                  "dictionaryId": null,
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "definition-detail",
+            "x": 0,
+            "y": 0
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "screw-detail-component",
+          "from": "screw",
+          "to": "detail",
+          "role": "component",
+          "existing": false
+        },
+        {
+          "id": "screw-detail",
+          "from": "screw",
+          "to": "detail",
+          "role": "relation",
+          "existing": false
+        }
+      ],
+      "contextEdges": [],
+      "routes": [],
+      "graphStale": "Общий граф изменён. Черновик сохранён; откройте актуальную область отдельно и перенесите нужные правки."
+    },
+    {
+      "id": "definition-nut",
+      "title": "Гайка",
+      "definition": "Синтетическая структура гайки с тем же общим ID детали.",
+      "nodes": [
+        {
+          "id": "nut",
+          "existing": false,
+          "designation": "гайка",
+          "designations": [
+            {
+              "id": "word-nut",
+              "text": "гайка"
+            }
+          ],
+          "structure": "alpha",
+          "x": -320,
+          "y": 180
+        },
+        {
+          "id": "detail",
+          "existing": true,
+          "base": {
+            "id": "detail",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "definition-detail",
+                "snapshot": {
+                  "definition": "Деталь — элементарная составная часть более сложного механизма или сооружения.",
+                  "dictionaryId": null,
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "definition-detail",
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "id": "screw",
+          "existing": true,
+          "base": {
+            "id": "screw",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "alpha",
+            "origins": [
+              {
+                "definitionId": "definition-screw",
+                "snapshot": {
+                  "definition": "Синтетическая структура винта с общим ID детали.",
+                  "dictionaryId": null,
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "definition-screw",
+            "x": -320,
+            "y": -180
+          }
+        },
+        {
+          "id": "metal",
+          "existing": true,
+          "base": {
+            "id": "metal",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "definition-detail",
+                "snapshot": {
+                  "definition": "Деталь — элементарная составная часть более сложного механизма или сооружения.",
+                  "dictionaryId": null,
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "definition-detail",
+            "x": 320,
+            "y": 0
+          }
+        }
+      ],
+      "edges": [
+        {
+          "id": "nut-detail-component",
+          "from": "nut",
+          "to": "detail",
+          "role": "component",
+          "existing": false
+        },
+        {
+          "id": "nut-detail",
+          "from": "nut",
+          "to": "detail",
+          "role": "relation",
+          "existing": false
+        },
+        {
+          "id": "screw-detail",
+          "from": "screw",
+          "to": "detail",
+          "existing": true
+        },
+        {
+          "id": "detail-metal",
+          "from": "detail",
+          "to": "metal",
+          "existing": true
+        }
+      ],
+      "contextEdges": [
+        {
+          "id": "context-cross",
+          "from": "screw-detail",
+          "to": "nut-detail"
+        },
+        {
+          "id": "context-metal",
+          "from": "nut-detail",
+          "to": "detail-metal"
+        }
+      ],
+      "routes": [],
+      "graphStale": "Общий граф изменён. Черновик сохранён; откройте актуальную область отдельно и перенесите нужные правки."
+    },
+    {
+      "id": "5ca7a606-c06e-4956-8584-0e3724c1b82e",
+      "title": "Область постоянного графа",
+      "definition": "Явное редактирование выбранной области общего графа.",
+      "nodes": [
+        {
+          "id": "part",
+          "label": "",
+          "kind": "",
+          "notes": "Из общего графа",
+          "alternatives": "",
+          "source": "",
+          "designationOnly": true,
+          "structure": "concept",
+          "origins": [
+            {
+              "definitionId": "definition-part",
+              "snapshot": {
+                "definition": "Существующие ID для операторской проверки, без автоматического анализа текста.",
+                "dictionaryId": null,
+                "source": null
+              }
+            }
+          ],
+          "definitionId": "definition-part",
+          "x": 0,
+          "y": 350,
+          "existing": false,
+          "designation": "",
+          "designations": []
+        },
+        {
+          "id": "mechanism",
+          "label": "",
+          "kind": "",
+          "notes": "",
+          "alternatives": "",
+          "source": "",
+          "designationOnly": true,
+          "structure": "concept",
+          "origins": [
+            {
+              "definitionId": "definition-part",
+              "snapshot": {
+                "definition": "Существующие ID для операторской проверки, без автоматического анализа текста.",
+                "dictionaryId": null,
+                "source": null
+              }
+            }
+          ],
+          "definitionId": "definition-part",
+          "x": 320,
+          "y": 250,
+          "existing": false,
+          "designation": "",
+          "designations": []
+        },
+        {
+          "id": "elementary",
+          "label": "",
+          "kind": "",
+          "notes": "",
+          "alternatives": "",
+          "source": "",
+          "designationOnly": true,
+          "structure": "concept",
+          "origins": [
+            {
+              "definitionId": "definition-part",
+              "snapshot": {
+                "definition": "Существующие ID для операторской проверки, без автоматического анализа текста.",
+                "dictionaryId": null,
+                "source": null
+              }
+            }
+          ],
+          "definitionId": "definition-part",
+          "x": 320,
+          "y": 450,
+          "existing": false,
+          "designation": "",
+          "designations": []
+        }
+      ],
+      "edges": [
+        {
+          "role": "relation",
+          "type": "",
+          "notes": "",
+          "id": "d53f7f43-f2e3-438f-91a9-38c510545050",
+          "from": "part",
+          "to": "mechanism",
+          "definitionId": "5ca7a606-c06e-4956-8584-0e3724c1b82e",
+          "origins": [
+            {
+              "definitionId": "5ca7a606-c06e-4956-8584-0e3724c1b82e",
+              "snapshot": {
+                "definition": "Явное редактирование выбранной области общего графа.",
+                "source": null,
+                "operation": "graph_editor"
+              }
+            }
+          ],
+          "existing": false
+        },
+        {
+          "role": "relation",
+          "type": "",
+          "notes": "",
+          "id": "8eae5e11-5d2a-402d-92cf-25f3eeff5ea7",
+          "from": "part",
+          "to": "elementary",
+          "definitionId": "5ca7a606-c06e-4956-8584-0e3724c1b82e",
+          "origins": [
+            {
+              "definitionId": "5ca7a606-c06e-4956-8584-0e3724c1b82e",
+              "snapshot": {
+                "definition": "Явное редактирование выбранной области общего графа.",
+                "source": null,
+                "operation": "graph_editor"
+              }
+            }
+          ],
+          "existing": false
+        }
+      ],
+      "contextEdges": [],
+      "routes": [],
+      "graphBase": {
+        "nodes": [
+          {
+            "id": "part",
+            "label": "",
+            "kind": "",
+            "notes": "Из общего графа",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "definition-part",
+                "snapshot": {
+                  "definition": "Существующие ID для операторской проверки, без автоматического анализа текста.",
+                  "dictionaryId": null,
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "definition-part",
+            "x": 0,
+            "y": 350
+          },
+          {
+            "id": "mechanism",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "definition-part",
+                "snapshot": {
+                  "definition": "Существующие ID для операторской проверки, без автоматического анализа текста.",
+                  "dictionaryId": null,
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "definition-part",
+            "x": 320,
+            "y": 250
+          },
+          {
+            "id": "elementary",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "definition-part",
+                "snapshot": {
+                  "definition": "Существующие ID для операторской проверки, без автоматического анализа текста.",
+                  "dictionaryId": null,
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "definition-part",
+            "x": 320,
+            "y": 450
+          }
+        ],
+        "edges": [
+          {
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "id": "d53f7f43-f2e3-438f-91a9-38c510545050",
+            "from": "part",
+            "to": "mechanism",
+            "definitionId": "5ca7a606-c06e-4956-8584-0e3724c1b82e",
+            "origins": [
+              {
+                "definitionId": "5ca7a606-c06e-4956-8584-0e3724c1b82e",
+                "snapshot": {
+                  "definition": "Явное редактирование выбранной области общего графа.",
+                  "source": null,
+                  "operation": "graph_editor"
+                }
+              }
+            ]
+          },
+          {
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "id": "8eae5e11-5d2a-402d-92cf-25f3eeff5ea7",
+            "from": "part",
+            "to": "elementary",
+            "definitionId": "5ca7a606-c06e-4956-8584-0e3724c1b82e",
+            "origins": [
+              {
+                "definitionId": "5ca7a606-c06e-4956-8584-0e3724c1b82e",
+                "snapshot": {
+                  "definition": "Явное редактирование выбранной области общего графа.",
+                  "source": null,
+                  "operation": "graph_editor"
+                }
+              }
+            ]
+          }
+        ],
+        "contextEdges": []
+      }
+    }
+  ],
+  "definitionPublications": {
+    "definition-detail": {
+      "title": "Деталь",
+      "definition": "Деталь — элементарная составная часть более сложного механизма или сооружения.",
+      "nodeIds": [
+        "part",
+        "metal"
+      ],
+      "edgeIds": [
+        "detail-metal"
+      ],
+      "contextIds": []
+    },
+    "definition-part": {
+      "title": "Часть",
+      "definition": "Существующие ID для операторской проверки, без автоматического анализа текста.",
+      "nodeIds": [
+        "part",
+        "mechanism",
+        "elementary"
+      ],
+      "edgeIds": [],
+      "contextIds": []
+    },
+    "definition-screw": {
+      "title": "Винт",
+      "definition": "Синтетическая структура винта с общим ID детали.",
+      "nodeIds": [
+        "screw",
+        "part"
+      ],
+      "edgeIds": [
+        "screw-detail"
+      ],
+      "componentIds": [
+        "screw-detail-component"
+      ],
+      "contextIds": []
+    },
+    "definition-nut": {
+      "title": "Гайка",
+      "definition": "Синтетическая структура гайки с тем же общим ID детали.",
+      "nodeIds": [
+        "nut",
+        "part",
+        "screw",
+        "metal"
+      ],
+      "edgeIds": [
+        "detail-metal",
+        "screw-detail",
+        "nut-detail"
+      ],
+      "componentIds": [
+        "nut-detail-component"
+      ],
+      "contextIds": [
+        "context-cross",
+        "context-metal"
+      ]
+    },
+    "5ca7a606-c06e-4956-8584-0e3724c1b82e": {
+      "title": "Область постоянного графа",
+      "definition": "Явное редактирование выбранной области общего графа.",
+      "nodeIds": [
+        "part",
+        "mechanism",
+        "elementary"
+      ],
+      "edgeIds": [
+        "d53f7f43-f2e3-438f-91a9-38c510545050",
+        "8eae5e11-5d2a-402d-92cf-25f3eeff5ea7"
+      ],
+      "componentIds": [],
+      "contextIds": []
+    }
+  }
+}

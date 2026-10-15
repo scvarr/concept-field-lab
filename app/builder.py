@@ -17,6 +17,15 @@ def validate_draft(draft):
     clean(draft.get('id'), 'ID черновика', True, 200)
     clean(draft.get('title'), 'название определения', True, 1000)
     clean(draft.get('definition', ''), 'определение')
+    if 'graphStale' in draft:
+        clean(draft['graphStale'], 'причина конфликта черновика', True)
+    if 'graphBase' in draft:
+        base = draft['graphBase']
+        if not isinstance(base, dict) or set(base) != {'nodes', 'edges', 'contextEdges'} or any(not isinstance(base[k], list) or len(base[k]) > LIMITS[k] for k in base):
+            raise Invalid('Неверный исходный снимок области.')
+        for rows in base.values():
+            if any(not isinstance(v, dict) or not isinstance(v.get('id'), str) for v in rows) or len({v['id'] for v in rows}) != len(rows):
+                raise Invalid('Неверные ID исходного снимка области.')
     for key, limit in LIMITS.items():
         if not isinstance(draft.get(key), list) or len(draft[key]) > limit:
             raise Invalid(f'Черновик: предел {key} = {limit}.')
@@ -127,6 +136,12 @@ def prepare(study, draft):
     from app.accumulation import projection
     from app.store import validate
     validate_draft(draft)
+    if 'accumulation' not in study:
+        if draft.get('graphStale'):
+            raise Invalid(draft['graphStale'])
+        if 'graphBase' in draft:
+            from app.graph_editor import prepare_draft
+            return prepare_draft(study, draft)
     if not draft['nodes'] or not draft['definition'].strip():
         raise Invalid('Для включения нужны определение и хотя бы одно поле.')
     result = copy.deepcopy(study)
@@ -233,6 +248,14 @@ def operate(state, action, data):
         validate_draft(draft)
         existing = next((d for d in drafts if d['id'] == draft['id']), None)
         if existing:
+            if not legacy:
+                if existing.get('graphStale'):
+                    draft['graphStale'] = existing['graphStale']
+                if 'graphBase' in existing and draft.get('graphBase') != existing['graphBase']:
+                    # Do not promote an old browser's pending values onto a newer baseline.
+                    draft['graphStale'] = 'Исходная область обновлена в другой вкладке; введённый черновик сохранён отдельно от свежих данных. Откройте актуальную область.'
+                    if 'graphBase' not in draft:
+                        draft['graphBase'] = copy.deepcopy(existing['graphBase'])
             existing.clear()
             existing.update(draft)
         else:
@@ -243,6 +266,15 @@ def operate(state, action, data):
         if data.get('confirmed') is not True:
             raise Invalid('Просмотрите изменения и подтвердите включение.')
         updated, preview = prepare(study, draft)
+        if not legacy:
+            from app.graph_editor import invalidate_drafts, checkout
+            invalidate_drafts(updated, study, draft['id'])
+            if 'graphBase' in draft:
+                ids = [n['id'] for n in draft['nodes']]
+                fresh = checkout(updated, ids, draft['id']) if ids else {**draft, 'graphBase': {'nodes': [], 'edges': [], 'contextEdges': []}}
+                # Keep the operator's text and the selected scope, never absorb exterior edits.
+                fresh.update(title=draft['title'], definition=draft['definition'])
+                updated['definitionDrafts'] = [fresh if d['id'] == draft['id'] else d for d in updated['definitionDrafts']]
         study.clear()
         study.update(updated)
         return preview, 'Подтверждён ручной миниграф; прежние исходники сохранены'

@@ -215,7 +215,28 @@ class PermanentStore(Store):
             state = decode(row['state'])
             result, detail = {}, action
             if action in ('definition_save', 'definition_publish'):
+                if action == 'definition_publish' and 'previewRevision' in data and data['previewRevision'] != row['id']:
+                    raise Invalid('Предпросмотр устарел; просмотрите изменения заново.')
                 result, detail = operate(state, action, data)
+            elif action == 'graph_checkout':
+                from app.graph_editor import checkout, clean_region
+                draft = checkout(state, data.get('nodeIds'))
+                reusable = next((d for d in state['definitionDrafts'] if clean_region(d)
+                                 and {n['id'] for n in d['nodes']} == set(data['nodeIds'])), None)
+                if reusable:
+                    draft['id'] = reusable['id']
+                    draft.update(title=reusable['title'], definition=reusable['definition'])
+                    reusable.clear()
+                    reusable.update(draft)
+                else:
+                    state['definitionDrafts'].append(draft)
+                result, detail = {'draftId': draft['id']}, 'Сохранён отдельный черновик области постоянного графа'
+            elif action == 'graph_apply':
+                if data.get('confirmed') is not True or data.get('previewRevision') != row['id']:
+                    raise Invalid('Просмотрите актуальный результат и подтвердите преобразование.')
+                from app.graph_editor import prepare
+                state, result = prepare(state, data)
+                detail = json.dumps({'message': 'Подтверждена атомарная правка общего графа', 'changes': result}, ensure_ascii=False)
             elif action in ('designation_save', 'designation_remove'):
                 from app.designations import operate as edit_designation
                 result, detail = edit_designation(state, action, data)

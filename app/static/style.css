@@ -176,3 +176,5 @@ body.permanent-workspace {height:100dvh;overflow:hidden}
 .graph [data-relation-marker].selected rect,.graph [data-relation-marker]:hover rect,.graph [data-relation-marker]:focus-visible rect{fill:#d7b6e0;stroke:#4f235c;stroke-width:2.5}
 .graph .context-highlight .edge,.graph .context-highlight .context-edge{stroke:#ae2979;stroke-width:3.5}
 .graph .context-port{display:none}
+
+.graph-change{border:1px solid var(--border,#ccd6df);border-radius:8px;padding:12px;margin:12px 0}.graph-change-columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}.graph-change code{overflow-wrap:anywhere}.graph-change section{min-width:0}@media(max-width:600px){.graph-change-columns{grid-template-columns:1fr}}

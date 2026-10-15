@@ -1,0 +1,20 @@
+{
+  "python": "3.13.2",
+  "sqlite": "3.45.3",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "node": "v24.19.0",
+  "playwright": "1.58.2",
+  "checks": [
+    "compileall app scripts tests: успешно",
+    "node --check workspace/graph-editor/builder/canvas-builder: успешно",
+    "git diff --check: успешно",
+    "104 Python / 38 JS; 13 предметных GUI групп / 7 ожидаемых отказов; nested alpha dependency unit: успешно"
+  ],
+  "baseHead": "f8f68fb60c08bce766f242312fa3f602305edd06",
+  "branch": "codex/unified-graph-editor",
+  "userDatabaseTouched": false,
+  "documentationLinks": {
+    "checked": 40,
+    "errors": []
+  }
+}

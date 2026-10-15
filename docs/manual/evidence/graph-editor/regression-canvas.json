@@ -1,0 +1,101 @@
+{
+  "date": "2026-10-15T06:31:12.587Z",
+  "node": "v24.19.0",
+  "scope": "Finite manual canvas workflow; no semantic decomposition claimed",
+  "checks": [
+    "Background/node/edge right-click and object-by-ID form create fields and aliases with distinct senses; four ordinary IDs, branch and explicit three-edge route create only three forward context pairs",
+    "Context-to-edge selection, deletion and reversal work in popup forms without lower panels",
+    "Confirmed removal of a field and an edge prunes only their draft references; route-selection cleanup leaves other objects intact",
+    "Two canonical IDs for гайка remain selectable; Shift+F10, Escape and visible Actions button provide keyboard access to object forms",
+    "Permanent-graph forms inspect edges/context and edit only aliases; origin editor returns to the same draft and republishing preserves independent designation edits",
+    "Second definition reuses exact concept and ordinary-edge IDs through canvas selection, no copies",
+    "GUI export, process restart, clean import and reexport preserve structure, mappings, drafts and complete incoming history"
+  ],
+  "sizes": [
+    {
+      "width": 2385,
+      "height": 1000,
+      "canvas": {
+        "x": 12,
+        "y": 117,
+        "width": 2361,
+        "height": 833,
+        "bottom": 950
+      },
+      "scrollWidth": 2385,
+      "scrollHeight": 1000
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "canvas": {
+        "x": 12,
+        "y": 117,
+        "width": 1416,
+        "height": 733,
+        "bottom": 850
+      },
+      "scrollWidth": 1440,
+      "scrollHeight": 900
+    },
+    {
+      "width": 900,
+      "height": 1050,
+      "canvas": {
+        "x": 12,
+        "y": 117,
+        "width": 876,
+        "height": 883,
+        "bottom": 1000
+      },
+      "scrollWidth": 900,
+      "scrollHeight": 1050
+    },
+    {
+      "width": 600,
+      "height": 900,
+      "canvas": {
+        "x": 12,
+        "y": 162,
+        "width": 576,
+        "height": 688,
+        "bottom": 850
+      },
+      "scrollWidth": 600,
+      "scrollHeight": 900
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "canvas": {
+        "x": 12,
+        "y": 254,
+        "width": 336,
+        "height": 496,
+        "bottom": 750
+      },
+      "scrollWidth": 360,
+      "scrollHeight": 800
+    }
+  ],
+  "errors": [],
+  "browser": "155.0.8059.40",
+  "ids": {
+    "detail": "15285333-8b1b-428e-abf2-c4e3596de0e4",
+    "bird": "dd905aca-d1dd-4af7-a371-b631a3334331",
+    "ordinaryEdges": [
+      "4ac0a695-ffaa-4907-b92e-b7df7dbb5a7b",
+      "25766de8-1124-456e-b389-e18ba3da62d7",
+      "393d4281-09f0-40e6-9055-23d6e35eeaee",
+      "b967305c-3251-4286-8ae3-8f4ac16f145d"
+    ]
+  },
+  "counts": {
+    "nodes": 4,
+    "edges": 4,
+    "contextEdges": 3,
+    "designations": 6,
+    "publications": 2
+  },
+  "ok": true
+}
