@@ -6,7 +6,7 @@ const canvasMenu=new CanvasMenu();
 let ui={};try{ui=JSON.parse(localStorage.getItem('concept-field-permanent-ui')||'{}');}catch{}
 function saveUI(){try{localStorage.setItem('concept-field-permanent-ui',JSON.stringify(ui));}catch{}}
 let captionState,captionIndex;function captions(){if(captionState!==state){captionState=state;captionIndex=AlphaCaptions.create(state);}return captionIndex;}const name=id=>captions().display(id);
-const edgeName=e=>`${e.role==='component'?'Обязательный компонент: ':''}${name(e.from)} → ${name(e.to)} · ${e.id}`;
+const edgeName=e=>`${e.role==='component'?'Обязательный компонент: ':''}${state.nodes.find(n=>n.id===e.from)?.operatorAlias||name(e.from)} → ${state.nodes.find(n=>n.id===e.to)?.operatorAlias||name(e.to)} · ${e.id}`;
 const run=fn=>async(...args)=>{try{return await fn(...args);}catch(e){toast(e.message,true);}};
 function toast(message,error=false){$('#toast').textContent=message;$('#toast').hidden=false;$('#toast').classList.toggle('error',error);clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,error?12000:4500);}
 async function api(url,body){let response;try{response=await fetch(url,body===undefined?{}:{method:'POST',headers:{'Content-Type':'application/json','X-Workspace-Token':token},body:JSON.stringify(body)});}catch{throw Error('Нет связи с локальным сервером; введённый текст остаётся в этой вкладке.');}const data=await response.json();if(!response.ok)throw Error(data.error||`HTTP ${response.status}`);return data;}
@@ -18,9 +18,11 @@ function dialog(title,content,submit,button='Сохранить'){
   const dlg=$('#dialog');if(!dlg.open)dlg.showModal();dlg.scrollTop=0;$('#modal-cancel').onclick=closeDialog;if($('#modal-close'))$('#modal-close').onclick=closeDialog;$('#modal-form').onsubmit=run(async e=>{e.preventDefault();if(submit&&await submit(new FormData(e.target))!==false)dlg.close();});
 }
 async function download(url,filename){const r=await fetch(url);if(!r.ok)throw Error((await r.json()).error);const a=document.createElement('a');a.href=URL.createObjectURL(await r.blob());a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500);}
-function render(){if(view==='builder')definitionUI.render();else if(view==='scenes')SceneLab.render();else renderGraph();$('#global-count').textContent=`${state.nodes.length} концептов · ${state.edges.filter(e=>e.role==='relation').length} отношений · ${state.edges.filter(e=>e.role==='component').length} компонентов · ${state.contextEdges.length} контекстных`;}
+function render(){if(view==='thoughts')ThoughtLab.render();else if(view==='builder')definitionUI.render();else if(view==='scenes')SceneLab.render();else renderGraph();$('#global-count').textContent=`${state.nodes.length} концептов · ${state.edges.filter(e=>e.role==='relation').length} отношений · ${state.edges.filter(e=>e.role==='component').length} компонентов · ${state.contextEdges.length} контекстных`;}
 function showView(next){
-  if(next!=='graph'&&(layoutUI?.preview||layoutUI?.worker))layoutUI.cancel();definitionUI.capture();canvasMenu.close(false);view=['graph','scenes'].includes(next)?next:'builder';ui.workspaceView=view;saveUI();
+  if(view==='thoughts'&&next!=='thoughts'){ThoughtLab.save().catch(e=>toast(e.message,true));}
+  if(next!=='graph'&&(layoutUI?.preview||layoutUI?.worker))layoutUI.cancel();definitionUI.capture();canvasMenu.close(false);view=['graph','scenes','thoughts'].includes(next)?next:'builder';ui.workspaceView=view;saveUI();
+  $('#thoughts-panel').hidden=view!=='thoughts';$('#go-thoughts').setAttribute('aria-pressed',String(view==='thoughts'));
   $('#scenes-panel').hidden=view!=='scenes';$('#go-scenes').setAttribute('aria-pressed',String(view==='scenes'));$('#builder').hidden=view!=='builder';$('#permanent-panel').hidden=view!=='graph';
   $('#go-builder').setAttribute('aria-pressed',String(view==='builder'));$('#go-graph').setAttribute('aria-pressed',String(view==='graph'));
   render();window.scrollTo(0,0);
@@ -97,8 +99,8 @@ function neighbourhoodIds(){const seen=new Set([selected]),adj=new Map(state.nod
 layoutUI=new PermanentLayout({state:()=>state,revision:()=>revision,selected:()=>selected,neighbourhood:neighbourhoodIds,render:renderGraph,graph:()=>graph,dialog,toast,mutate});
 $('#graph-label-mode').value=ui.graphLabelMode||'auto';$('#graph-label-mode').onchange=()=>{ui.graphLabelMode=$('#graph-label-mode').value;saveUI();graph?.paintLabels();};
 $('#graph-layout').onclick=run(()=>layoutUI.open());$('#graph-layout-apply').onclick=run(()=>layoutUI.apply());$('#graph-layout-cancel').onclick=()=>layoutUI.cancel();$('#graph-layout-undo').onclick=run(()=>layoutUI.undo());
-$('#graph-actions').onclick=e=>globalMenu(selectedContext?'context':selectedEdge?'edge':selected?'node':'canvas',selectedContext||selectedEdge||selected,e);$('#permanent-graph').oncontextmenu=e=>{if(e.target.closest('svg'))return;e.preventDefault();globalMenu('canvas',null,e);};$('#workspace-tools').onclick=run(tools);$('#graph-search').oninput=renderGraph;$('#graph-mode').onchange=renderGraph;$('#graph-depth').onchange=renderGraph;$('#graph-ids').onchange=renderGraph;$('#graph-fit').onclick=()=>graph?.fit();$('#go-scenes').onclick=()=>showView('scenes');$('#go-builder').onclick=()=>showView('builder');$('#go-graph').onclick=()=>showView('graph');
+$('#graph-actions').onclick=e=>globalMenu(selectedContext?'context':selectedEdge?'edge':selected?'node':'canvas',selectedContext||selectedEdge||selected,e);$('#permanent-graph').oncontextmenu=e=>{if(e.target.closest('svg'))return;e.preventDefault();globalMenu('canvas',null,e);};$('#workspace-tools').onclick=run(tools);$('#graph-search').oninput=renderGraph;$('#graph-mode').onchange=renderGraph;$('#graph-depth').onchange=renderGraph;$('#graph-ids').onchange=renderGraph;$('#graph-fit').onclick=()=>graph?.fit();$('#go-thoughts').onclick=()=>showView('thoughts');$('#go-scenes').onclick=()=>showView('scenes');$('#go-builder').onclick=()=>showView('builder');$('#go-graph').onclick=()=>showView('graph');
 window.addEventListener('keydown',e=>{if(e.key==='Escape'&&view==='builder'&&definitionUI.interaction){definitionUI.interaction=null;definitionUI.render();}});
 $('#dialog').addEventListener('cancel',()=>definitionUI.capture());
-window.addEventListener('beforeunload',e=>{if(definitionUI.changed){e.preventDefault();e.returnValue='';}});
-run(async()=>{({state,revision,token,sceneView}=await api('/api/state'));definitionUI.render();showView(ui.workspaceView);$('#save-status').textContent=`Сохранено · версия ${revision}`;})();
+window.addEventListener('beforeunload',e=>{if(definitionUI.changed||ThoughtLab.hasUnsaved()){e.preventDefault();e.returnValue='';}});
+run(async()=>{({state,revision,token,sceneView}=await api('/api/state'));definitionUI.render();showView(ui.workspaceView||'thoughts');$('#save-status').textContent=`Сохранено · версия ${revision}`;})();

@@ -79,7 +79,7 @@ body.permanent-workspace {display:block}
 .permanent-workspace main {width:100%;padding:12px;max-width:none}
 .workspace-header {position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:12px;align-items:center;min-height:52px;margin:-12px -12px 12px;padding:8px 12px;background:#f4f6f8;border-bottom:1px solid var(--line)}
 .workspace-header h1 {font-size:15px;margin:0;white-space:nowrap}
-.work-nav {display:flex;align-items:center;gap:6px;margin:0}
+.work-nav {display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0;min-width:0}
 .work-nav button[aria-pressed=true] {background:var(--soft);border-color:#93b8ac;color:#205e4f}
 .workspace-header .header-actions {display:flex;flex:0 1 auto;gap:10px;align-items:center;margin-left:auto}
 .permanent-workspace .header-actions span {display:inline;font-size:11px;white-space:nowrap}
@@ -191,3 +191,23 @@ body.permanent-workspace {height:100dvh;overflow:hidden}
 .scene-columns fieldset {min-width:0;margin:.7rem 0}
 .scene-working-fact,.scene-bundle {border-top:1px solid #bac8d4;padding:.7rem 0}
 @media(max-width:900px){.scene-columns{grid-template-columns:minmax(0,1fr)}}
+/* Manual phrase workspace reuses GraphView; every local ID is visible. */
+#thoughts-panel{padding:1rem;min-width:0}
+.thought-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);gap:1.2rem;margin:1rem 0}
+.thought-layout article,.thought-layout aside{min-width:0}
+.thought-layout aside{border:1px solid #bac8d4;border-radius:8px;padding:1rem;max-height:1050px;overflow:auto}
+#thoughts-panel label{display:block;margin:.5rem 0}
+#thought-text{width:100%;min-height:90px;font-size:1.15rem;box-sizing:border-box}
+#thoughts-panel select{max-width:100%}
+#thoughts-panel code,#thoughts-panel small{overflow-wrap:anywhere;white-space:normal}
+#thoughts-panel .object-choice{display:block;text-align:left;width:100%;margin:.4rem 0;line-height:1.5}
+#thoughts-panel .object-choice code,#thoughts-panel .object-choice small{display:block;font-size:11px;color:#526579;margin-top:.25rem}
+#thought-search-results .object-choice{display:block;text-align:left;width:100%;margin:.5rem 0;line-height:1.5}
+#thought-search-results .object-choice code,#thought-search-results .object-choice small{display:block;overflow-wrap:anywhere}
+#thoughts-panel .actions{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0}
+#thought-canvas{height:510px;min-height:300px}
+#thought-markers .relation-marker-controls{position:static;margin:.4rem 0;max-width:100%;width:fit-content}
+#thought-canvas .thought-excluded{opacity:.4}
+#thought-canvas .thought-direct rect{stroke:#2866a0;stroke-width:3}
+.thought-template{border:1px solid #bac8d4;border-radius:8px;padding:.8rem;margin:.6rem 0}
+@media(max-width:1000px){.thought-layout{grid-template-columns:minmax(0,1fr)}.thought-layout aside{max-height:none}#thought-canvas{height:420px}}

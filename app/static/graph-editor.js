@@ -2,8 +2,8 @@
 // Forms use the same objects, transaction preview and renderer as the builder.
 const graphEditor={
   options(rows,current,label){return rows.map(v=>`<option value="${h(v.id)}" ${v.id===current?'selected':''}>${h(label(v))} · ${h(v.id)}</option>`).join('');},
-  nodes(current){return this.options(state.nodes,current,n=>name(n.id));},
-  async preview(operations,definitionId){
+  nodes(current){return this.options(state.nodes,current,n=>n.operatorAlias?`${n.operatorAlias} (рабочий alias)`:name(n.id));},
+  async preview(operations,definitionId,afterApply){
     const payload={operations,definitionId},p=await api('/api/graph-preview',payload);
     $('#toast').hidden=true;
     const describe=(key,v)=>{
@@ -17,7 +17,7 @@ const graphEditor={
       return `<p>${h(v.title)}</p><p>Узлы: ${ids(v.nodeIds)}</p><p>Отношения: ${ids(v.edgeIds)}</p><p>Компоненты α: ${ids(v.componentIds)}</p><p>Контекст: ${ids(v.contextIds)}</p>`;
     };
     const rows=(key,title)=>p[key].length?`<h3>${title} (${p[key].length})</h3>${p[key].map(v=>`<article class="graph-change"><p><strong>${v.before?v.after?'Изменение':'Удаление':'Создание'}</strong> · <code>${h(v.id)}</code></p><div class="graph-change-columns"><section><strong>До</strong>${describe(key,v.before)}</section><section><strong>После</strong>${describe(key,v.after)}</section></div><details><summary>Точные данные и происхождение</summary><pre>${h(JSON.stringify({до:v.before,после:v.after},null,2))}</pre></details></article>`).join('')}`:'';
-    dialog('Предварительный результат общего графа',`<p>Версия ${p.revision}. Применение атомарно; полная предыдущая версия остаётся в истории.</p>${rows('nodes','Концепты / α')}${rows('edges','Обычные отношения / обязательные компоненты α')}${rows('contextEdges','Контекстные пары')}${rows('designations','Внешние обозначения')}${rows('definitions','Изменение состава определений')}${rows('drafts','Обновление чистых областей / защита незавершённых черновиков')}<h3>Затронутые определения</h3>${Object.entries(p.affectedDefinitions).map(([id,v])=>`<p>${h(v.title)} · <code>${h(id)}</code></p>`).join('')||'<p>Нет</p>'}<h3>Контекст затронутых рёбер (ID сохраняются)</h3><pre>${h(JSON.stringify(p.affectedContexts,null,2))}</pre><label class="checkbox"><input type="checkbox" name="confirmed" required>Я просмотрел все изменения и подтверждаю их</label>`,async()=>{await mutate('graph_apply',{...payload,confirmed:true,previewRevision:p.revision});toast('Общий граф обновлён. Предыдущая версия доступна в истории.');},'Применить изменения');
+    dialog('Предварительный результат общего графа',`<p>Версия ${p.revision}. Применение атомарно; полная предыдущая версия остаётся в истории.</p>${rows('nodes','Концепты / α')}${rows('edges','Обычные отношения / обязательные компоненты α')}${rows('contextEdges','Контекстные пары')}${rows('designations','Внешние обозначения')}${rows('definitions','Изменение состава определений')}${rows('drafts','Обновление чистых областей / защита незавершённых черновиков')}<h3>Затронутые определения</h3>${Object.entries(p.affectedDefinitions).map(([id,v])=>`<p>${h(v.title)} · <code>${h(id)}</code></p>`).join('')||'<p>Нет</p>'}<h3>Контекст затронутых рёбер (ID сохраняются)</h3><pre>${h(JSON.stringify(p.affectedContexts,null,2))}</pre><label class="checkbox"><input type="checkbox" name="confirmed" required>Я просмотрел все изменения и подтверждаю их</label>`,async()=>{await mutate('graph_apply',{...payload,confirmed:true,previewRevision:p.revision});toast('Общий граф обновлён. Предыдущая версия доступна в истории.');if(afterApply){await afterApply();return false;}},'Применить изменения');
   },
   async origin(){definitionUI.capture();await definitionUI.save();return definitionUI.draft.id;},
   home(){
@@ -27,7 +27,7 @@ const graphEditor={
     $('#edit-node').onclick=run(()=>this.node($('#edit-object').value));$('#edit-uses').onclick=run(()=>this.uses($('#edit-object').value));
     $('#edit-exact').onclick=run(()=>{const id=$('#edit-exact-id').value.trim();if(state.nodes.some(n=>n.id===id))return this.node(id);if(state.edges.some(e=>e.id===id))return this.edge(id);if(state.contextEdges.some(c=>c.id===id))return this.edge(id,true);throw Error('ID не найден.');});
   },
-  async node(id){
+  async node(id,{afterApply}={}){
     const old=state.nodes.find(n=>n.id===id),n=old||{id:crypto.randomUUID(),label:'',designationOnly:true,structure:'concept',kind:'',notes:'',x:0,y:0};
     const did=old?.definitionId||await this.origin(),components=state.edges.filter(e=>e.role==='component'&&e.from===n.id);
     dialog(old?'Общий концепт / α':'Новый общий концепт / α',`<p><code>${h(n.id)}</code></p><label>Структура<select name="structure"><option value="concept" ${n.structure==='concept'?'selected':''}>Концепт</option><option value="alpha" ${n.structure==='alpha'?'selected':''}>α</option></select></label>${old?'':`<label>Первоначальное внешнее обозначение (необязательно)<input name="designation"></label>`}<label>Характеристика<input name="kind" maxlength="1000" value="${h(n.kind)}"></label><label>Примечание<textarea name="notes">${h(n.notes)}</textarea></label><details ${n.structure==='alpha'?'open':''}><summary>Обязательные компоненты α</summary><p>Для α выберите хотя бы один компонент. Переход в концепт требует снять все компоненты.</p>${state.nodes.filter(v=>v.id!==n.id).map(v=>`<label class="checkbox"><input name="component" type="checkbox" value="${h(v.id)}" ${components.some(e=>e.to===v.id)?'checked':''}>${h(name(v.id))} · <code>${h(v.id)}</code></label>`).join('')}</details>${old?'<button type="button" id="edit-delete">Удалить ID…</button><button type="button" id="edit-node-uses">Все использования / преобразование…</button><button type="button" id="edit-aliases">Обозначения…</button>':''}`,async f=>{
@@ -35,7 +35,7 @@ const graphEditor={
       for(const e of components)if(!targets.includes(e.to))operations.push({op:'delete',collection:'edges',id:e.id});
       for(const target of targets)if(!components.some(e=>e.to===target))operations.push({op:'put',collection:'edges',value:{id:crypto.randomUUID(),from:n.id,to:target,role:'component',type:'',notes:''}});
       if(!old&&f.get('designation').trim())operations.push({op:'put',collection:'designations',value:{id:crypto.randomUUID(),target:n.id,text:f.get('designation').trim(),notes:'',source:'Редактор графа'}});
-      await this.preview(operations,did);return false;
+      await this.preview(operations,did,afterApply?()=>afterApply(n.id):null);return false;
     },'Предпросмотр');
     $('#modal-form [name=structure]').onchange=e=>{$('#modal-form details').open=e.target.value==='alpha'||!!$('#modal-form [name=component]:checked');};
     if(old){$('#edit-delete').onclick=run(()=>this.removeNode(id));$('#edit-node-uses').onclick=run(()=>this.uses(id));$('#edit-aliases').onclick=()=>openNode(id);}

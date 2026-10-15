@@ -10,7 +10,7 @@ from pathlib import Path
 from app.store import Store, Invalid, Conflict, clean, lookup, uid, now, encode, decode, fields
 
 FORMAT = 'concept-field-permanent'
-VERSION = 3
+VERSION = 4
 COLLECTIONS = ('nodes', 'edges', 'designations', 'contextEdges')
 
 
@@ -20,7 +20,7 @@ def empty_graph():
 
 def validate_graph(graph):
     from app.builder import validate_extension
-    if not isinstance(graph, dict) or set(graph) - {'sceneLab'} != set(empty_graph()) or any(not isinstance(graph[k], list) for k in COLLECTIONS):
+    if not isinstance(graph, dict) or set(graph) - {'sceneLab', 'thoughtLab'} != set(empty_graph()) or any(not isinstance(graph[k], list) for k in COLLECTIONS):
         raise Invalid('Ожидался один постоянный граф; исторические исследования открываются отдельно.')
     identities = set()
     def identity(item):
@@ -38,6 +38,8 @@ def validate_graph(graph):
             raise Invalid('Новый концепт адресуется по ID и внешним обозначениям, без переноса исторической модели.')
         if not isinstance(n.get('origins'), list):
             raise Invalid('Неверное происхождение концепта.')
+        if 'operatorAlias' in n:
+            clean(n['operatorAlias'], 'рабочий alias', False, 1000)
         if 'layoutPinned' in n and n['layoutPinned'] is not True:
             raise Invalid('Закрепление layoutPinned должно быть true либо отсутствовать.')
         for k in ('x', 'y'):
@@ -60,6 +62,9 @@ def validate_graph(graph):
     if 'sceneLab' in graph:
         from app.scenes import validate_lab
         validate_lab(graph)
+    if 'thoughtLab' in graph:
+        from app.thoughts import validate
+        validate(graph)
 
 
 def logical_digest(db):
@@ -94,12 +99,14 @@ def verified_backup(path):
 
 
 def parse_document(document):
-    if not isinstance(document, dict) or document.get('format') != FORMAT or document.get('version') not in (1, 2, VERSION) or document.get('kind') != 'graph':
-        raise Invalid('Нужен экспорт concept-field-permanent v1/v2/v3. Старые графы открываются в историческом режиме.')
+    if not isinstance(document, dict) or document.get('format') != FORMAT or document.get('version') not in (1, 2, 3, VERSION) or document.get('kind') != 'graph':
+        raise Invalid('Нужен экспорт concept-field-permanent v1/v2/v3/v4. Старые графы открываются в историческом режиме.')
     def validate_state(state):
         validate_graph(state)
         if document['version'] < 3 and 'sceneLab' in state:
             raise Invalid('Сцены и рабочие экземпляры требуют экспорта v3.')
+        if document['version'] < 4 and ('thoughtLab' in state or any('operatorAlias' in n for n in state['nodes'])):
+            raise Invalid('Разборы и операторские alias требуют экспорта v4.')
         if document['version'] == 1:
             bundles = [state, *state['definitionDrafts']]
             if any(any(n.get('structure') == 'alpha' for n in b['nodes']) or any(e.get('role') == 'component' for e in b['edges']) for b in bundles):
@@ -163,19 +170,22 @@ class PermanentStore(Store):
 
     def export(self):
         from app.journal import compact_with_latest
-        has_scenes = False
+        export_version = 2
         with self.lock, self.connect() as db:
             db.execute('BEGIN')
             def snapshots():
-                nonlocal has_scenes
+                nonlocal export_version
                 for raw in db.execute('SELECT * FROM permanent_revisions ORDER BY id'):
                     row = dict(raw)
                     row['state'] = decode(row['state'])
-                    has_scenes = has_scenes or 'sceneLab' in row['state']
+                    if 'sceneLab' in row['state']:
+                        export_version = max(export_version, 3)
+                    if 'thoughtLab' in row['state'] or any('operatorAlias' in n for n in row['state']['nodes']):
+                        export_version = 4
                     yield row
             history, state = compact_with_latest(snapshots())
             archives = [decode(r[0]) for r in db.execute('SELECT document FROM permanent_imports ORDER BY time,fingerprint')]
-        return {'format': FORMAT, 'version': VERSION if has_scenes or any(a['version'] == 3 for a in archives) else 2, 'kind': 'graph', 'exportedAt': now(), 'state': state,
+        return {'format': FORMAT, 'version': max([export_version, *[a['version'] for a in archives]]), 'kind': 'graph', 'exportedAt': now(), 'state': state,
                 'historyEncoding': 'rfc6902-chain-v1', 'history': history, **({'importedHistory': archives} if archives else {})}
 
     def diagnostics(self):
@@ -215,6 +225,9 @@ class PermanentStore(Store):
         if 'sceneLab' in incoming:
             from app.scenes import merge_lab
             result['sceneLab'] = merge_lab(result.get('sceneLab'), incoming['sceneLab'])
+        if 'thoughtLab' in incoming:
+            from app.thoughts import merge
+            result['thoughtLab'] = merge(result.get('thoughtLab'), incoming['thoughtLab'])
         validate_graph(result)
         return result
 
@@ -227,7 +240,10 @@ class PermanentStore(Store):
                 raise Conflict('Граф изменился в другой вкладке. Обновите страницу и повторите действие.')
             state = decode(row['state'])
             result, detail = {}, action
-            if isinstance(action, str) and action.startswith('scene_'):
+            if isinstance(action, str) and action.startswith('thought_'):
+                from app.thoughts import operate as thought_operate
+                result, detail = thought_operate(state, action, data, row['id'])
+            elif isinstance(action, str) and action.startswith('scene_'):
                 from app.scenes import operate as scene_operate
                 result, detail = scene_operate(state, action, data, row['id'])
             elif action in ('definition_save', 'definition_publish'):
