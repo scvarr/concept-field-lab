@@ -47,15 +47,33 @@ def source_facts(scene):
             if f['id'] in active or e['kind'] == 'event']
 
 
-def reachable_scenes(lab, scene):
+def reachable_scenes(lab, scene, blocked=()):
     """An index of references only, never materialize their facts in a workspace."""
     seen, pending = set(), list(scene['links'])
     while pending:
         ident = pending.pop()
-        if ident not in seen:
+        if ident not in seen and ident not in blocked:
             seen.add(ident)
             pending.extend(lookup(lab['scenes'], ident, 'ссылка сцены')['links'])
     return seen
+
+
+def active_context(scene):
+    """The last explicit context input wins; accumulated links are not context."""
+    return next((e['contextSceneId'] for e in reversed(scene['entries']) if e['kind'] == 'context'), None)
+
+
+def context_sources(lab, scene):
+    ident = active_context(scene)
+    if ident is None:
+        return set()
+    # A back-reference must not reopen the dialogue's accumulated source list.
+    return {ident} | reachable_scenes(lab, lookup(lab['scenes'], ident, 'действующий контекст'), blocked={scene['id']})
+
+
+def structure_root(obj):
+    # The template position and the content may address different graph concepts.
+    return obj.get('contentConceptId', obj['conceptId'])
 
 
 def continuations(workspace):
@@ -98,6 +116,8 @@ def observe(graph):
     return {'current': {s['id']: projection(s) for s in lab['scenes']},
             'available': {s['id']: [f['id'] for _, f in source_facts(s)] for s in lab['scenes']},
             'reachable': {s['id']: sorted(reachable_scenes(lab, s)) for s in lab['scenes']},
+            'activeContext': {s['id']: active_context(s) for s in lab['scenes']},
+            'contextSources': {s['id']: sorted(context_sources(lab, s)) for s in lab['scenes']},
             'continuations': {w['id']: continuations(w) for w in lab['workspaces']}}
 
 
@@ -129,6 +149,10 @@ def validate_lab(graph):
             clean(obj.get('label'), 'объект', True, 1000)
             if obj.get('conceptId') not in nodes:
                 raise Invalid('Сцена использует отсутствующий концепт каркаса; удаление запрещено.')
+            if 'contentConceptId' in obj:
+                ident = clean(obj['contentConceptId'], 'содержательный концепт', True, 200)
+                if ident != obj['contentConceptId'] or ident not in nodes:
+                    raise Invalid('Содержательный концепт сцены отсутствует в каркасе; удаление запрещено.')
         fact_ids = set()
         for entry in items(scene.get('entries'), 'Входы'):
             clean(entry.get('text'), 'вход', True)
@@ -152,6 +176,8 @@ def validate_lab(graph):
             if entry['kind'] == 'context':
                 if entry['assertions'] or entry['retracts'] or entry.get('contextSceneId') not in scene['links']:
                     raise Invalid('Контекстный вход требует ссылку сцены без утверждений.')
+                if scene['kind'] != 'dialogue' or lookup(scenes, entry['contextSceneId'], 'контекст')['kind'] != 'knowledge':
+                    raise Invalid('Действующий контекст разговора должен ссылаться на сцену знаний.')
         local_ids = [o['id'] for o in objects] + [e['id'] for e in scene['entries']] + list(fact_ids)
         if len(local_ids) != len(set(local_ids)) or global_ids.intersection(local_ids):
             raise Invalid('ID сцен, объектов, входов и утверждений должны различаться.')
@@ -189,7 +215,7 @@ def validate_lab(graph):
             structural_ids = []
             for obj in bundle['objects']:
                 source_obj = lookup(source['objects'], obj.get('sourceObjectId'), 'объект происхождения')
-                if obj.get('conceptId') != source_obj['conceptId']:
+                if obj.get('conceptId') != source_obj['conceptId'] or obj.get('contentConceptId') != source_obj.get('contentConceptId'):
                     raise Invalid('Неверный концепт рабочего объекта.')
                 structure = obj.get('structure')
                 if not isinstance(structure, dict):
@@ -197,7 +223,7 @@ def validate_lab(graph):
                 ns = items(structure.get('nodes'), 'Копии концептов', LIMIT)
                 es = items(structure.get('edges'), 'Копии компонентов', LIMIT * LIMIT)
                 root = lookup(ns, structure.get('rootId'), 'корень рабочей структуры')
-                if root.get('sourceId') != obj['conceptId'] or any(e.get('role') != 'component' for e in es):
+                if root.get('sourceId') != structure_root(obj) or any(e.get('role') != 'component' for e in es):
                     raise Invalid('Неверный обязательный состав рабочей копии.')
                 from app.alpha import validate_structure
                 validate_structure(ns, es)
@@ -266,6 +292,8 @@ def operate(graph, action, data, revision):
     elif action == 'scene_object':
         scene = lookup(lab['scenes'], data.get('sceneId'), 'сцена')
         obj = {'id': uid(), 'label': clean(data.get('label'), 'объект', True, 1000), 'conceptId': data.get('conceptId')}
+        if 'contentConceptId' in data:
+            obj['contentConceptId'] = clean(data['contentConceptId'], 'содержательный концепт', True, 200)
         scene['objects'].append(obj)
         result = {'objectId': obj['id']}
     elif action == 'scene_link':
@@ -280,10 +308,15 @@ def operate(graph, action, data, revision):
         if scene['kind'] != 'dialogue':
             raise Invalid('Контекст выбирается для разговора.')
         text = clean(data.get('text'), 'контекст', True, 1000)
-        matches = [s for s in lab['scenes'] if s['kind'] == 'knowledge' and s['label'].casefold() == text.casefold()]
-        if len(matches) != 1:
-            raise Invalid('Сцена знаний не найдена или обозначение неоднозначно. Выберите уникальное обозначение существующей сцены.')
-        target = matches[0]
+        if 'contextSceneId' in data:
+            target = lookup(lab['scenes'], clean(data['contextSceneId'], 'ID контекста', True, 200), 'сцена контекста')
+            if target['kind'] != 'knowledge':
+                raise Invalid('Контекст должен быть сценой знаний.')
+        else:
+            matches = [s for s in lab['scenes'] if s['kind'] == 'knowledge' and s['label'].casefold() == text.casefold()]
+            if len(matches) != 1:
+                raise Invalid('Сцена знаний не найдена или обозначение неоднозначно. Выберите уникальное обозначение существующей сцены.')
+            target = matches[0]
         if target['id'] not in scene['links']:
             scene['links'].append(target['id'])
         entry = {'id': uid(), 'text': text, 'kind': 'context', 'assertions': [], 'retracts': [], 'contextSceneId': target['id']}
@@ -329,7 +362,7 @@ def operate(graph, action, data, revision):
         dialogue = lookup(lab['scenes'], workspace['sceneId'], 'разговор')
         source = lookup(lab['scenes'], data.get('sourceSceneId'), 'сцена источник')
         if source['id'] != dialogue['id'] and source['id'] not in reachable_scenes(lab, dialogue):
-            raise Invalid('Исходная сцена не входит в явно связанный контекст разговора.')
+            raise Invalid('Исходная сцена не входит в накопленные доступные ссылки разговора.')
         ids = data.get('assertionIds')
         if not isinstance(ids, list) or not ids or any(not isinstance(i, str) for i in ids) or len(ids) != len(set(ids)):
             raise Invalid('Выберите различные ID текущих утверждений/событий для извлечения.')
@@ -344,7 +377,7 @@ def operate(graph, action, data, revision):
         edge_ids = {f['edgeId'] for _, f in selected}
         bundle = {'id': uid(), 'sourceSceneId': source['id'], 'sourceRevision': revision,
                   'objects': [{**copy.deepcopy(lookup(source['objects'], i, 'объект')), 'id': mapping[i],
-                               'sourceObjectId': i, 'structure': structure_copy(graph, lookup(source['objects'], i, 'объект')['conceptId'])}
+                               'sourceObjectId': i, 'structure': structure_copy(graph, structure_root(lookup(source['objects'], i, 'объект')))}
                               for i in sorted(objects)],
                   'assertions': [{**copy.deepcopy(f), 'id': uid(), 'from': mapping[f['from']], 'to': mapping[f['to']],
                                   'activation': 'inactive', 'origin': {'sceneId': source['id'], 'entryId': e['id'],

@@ -1,9 +1,10 @@
 import copy
+import json
 import tempfile
 import unittest
 from pathlib import Path
 from app.permanent import PermanentStore, parse_document, validate_graph
-from app.scenes import projection, continuations, observe
+from app.scenes import projection, continuations, observe, active_context, context_sources
 from app.store import Invalid, Conflict
 from scripts.scenes_fixture import populate, call
 
@@ -212,6 +213,109 @@ class ScenesTest(unittest.TestCase):
         computed = observe(self.state())
         self.assertEqual(set(computed['reachable'][self.ids['dialogue']]), {self.ids['knowledge'], self.ids['physics']})
         self.assertEqual(len(self.workspace()['bundles']), 2)
+
+    def review_fixture(self):
+        self.path = Path(self.temp.name) / 'review.sqlite3'
+        self.store = PermanentStore(self.path)
+        self.ids = populate(self.store, with_content=True)
+
+    def test_review_shared_content_identity_is_not_local_label_or_template_position(self):
+        self.review_fixture()
+        a, b = self.scene('knowledge'), self.scene('second')
+        obj_a = next(o for o in a['objects'] if o['id'] == self.ids['detailA'])
+        obj_b = next(o for o in b['objects'] if o['id'] == self.ids['detailB'])
+        self.assertNotEqual(obj_a['id'], obj_b['id'])
+        self.assertNotEqual(obj_a['label'], obj_b['label'])
+        self.assertEqual(obj_a['contentConceptId'], obj_b['contentConceptId'])
+        self.assertEqual(obj_a['contentConceptId'], 'meaning-detail')
+        self.assertNotEqual(obj_a['contentConceptId'], obj_a['conceptId'])
+        self.assertEqual(a['links'], [])
+        self.assertEqual(b['links'], [])
+        self.assertEqual({(e['from'], e['to']) for e in self.state()['edges']}, {('item', 'category'), ('item', 'place')})
+        self.assertEqual(len(projection(a)), 1)
+        self.assertEqual(len(projection(b)), 1)
+        self.call('scene_link', sceneId=self.ids['dialogue'], targetId=b['id'])
+        self.call('scene_extract', workspaceId=self.ids['workspace'], sourceSceneId=b['id'], assertionIds=[self.ids['secondFact']])
+        bundles = self.workspace()['bundles']
+        detail_copies = [next(o for o in bundle['objects'] if o.get('contentConceptId') == 'meaning-detail')
+                         for bundle in (bundles[0], bundles[-1])]
+        self.assertNotEqual(detail_copies[0]['id'], detail_copies[1]['id'])
+        self.assertNotEqual(detail_copies[0]['structure']['rootId'], detail_copies[1]['structure']['rootId'])
+        self.assertTrue(all(next(n for n in o['structure']['nodes'] if n['id'] == o['structure']['rootId'])['sourceId'] == 'meaning-detail'
+                            for o in detail_copies))
+
+    def test_review_content_reference_is_explicit_validated_and_protected(self):
+        self.review_fixture()
+        ident = self.call('scene_object', sceneId=self.ids['second'], label='Деталь', conceptId='category')['objectId']
+        obj = next(o for o in self.scene('second')['objects'] if o['id'] == ident)
+        self.assertNotIn('contentConceptId', obj)  # no guess from text or category
+        for content in ('missing', '', None):
+            self.rejected('scene_object', sceneId=self.ids['second'], label='Деталь', conceptId='category', contentConceptId=content)
+        self.rejected('graph_apply', operations=[
+            {'op': 'delete', 'collection': 'designations', 'id': 'word-meaning-detail'},
+            {'op': 'delete', 'collection': 'nodes', 'id': 'meaning-detail'}],
+            confirmed=True, previewRevision=self.store.read()['revision'])
+        state = self.state()
+        # Tampering with the copy's content link must not change its provenance.
+        state['sceneLab']['workspaces'][0]['bundles'][0]['objects'][0]['contentConceptId'] = 'meaning-screw'
+        with self.assertRaises(Invalid):
+            validate_graph(state)
+
+    def test_review_context_switch_keeps_availability_history_and_working_state(self):
+        self.review_fixture()
+        dialogue = self.ids['dialogue']
+        before = self.state()
+        self.assertEqual(active_context(self.scene('dialogue')), self.ids['chemistry'])
+        self.assertEqual(context_sources(before['sceneLab'], self.scene('dialogue')), {self.ids['chemistry']})
+        self.call('scene_context', sceneId=dialogue, text='Обсуждаем физику', contextSceneId=self.ids['physics'])
+        self.assertEqual(active_context(self.scene('dialogue')), self.ids['physics'])
+        self.assertEqual(context_sources(self.state()['sceneLab'], self.scene('dialogue')), {self.ids['physics'], self.ids['knowledge']})
+        self.call('scene_link', sceneId=dialogue, targetId=self.ids['second'])
+        self.assertEqual(active_context(self.scene('dialogue')), self.ids['physics'])
+        self.call('scene_context', sceneId=dialogue, text='Теперь обсуждаем химию', contextSceneId=self.ids['chemistry'])
+        self.assertEqual(active_context(self.scene('dialogue')), self.ids['chemistry'])
+        self.assertTrue({self.ids['physics'], self.ids['chemistry'], self.ids['second']} <= set(self.scene('dialogue')['links']))
+        self.assertEqual([e['text'] for e in self.scene('dialogue')['entries'][-2:]], ['Обсуждаем физику', 'Теперь обсуждаем химию'])
+        self.assertEqual(self.state()['sceneLab']['workspaces'], before['sceneLab']['workspaces'])
+        self.assertEqual(self.state()['nodes'], before['nodes'])
+        self.assertEqual(projection(self.scene('dialogue')), projection(next(s for s in before['sceneLab']['scenes'] if s['id'] == dialogue)))
+        self.call('scene_link', sceneId=self.ids['chemistry'], targetId=dialogue)
+        self.assertEqual(context_sources(self.state()['sceneLab'], self.scene('dialogue')), {self.ids['chemistry']})
+        self.rejected('scene_context', sceneId=dialogue, text='Неверный выбор', contextSceneId=dialogue)
+        self.rejected('scene_context', sceneId=dialogue, text='Теперь обсуждаем физику')  # no NLP
+
+    def test_review_shared_content_does_not_introduce_independent_scene_matching(self):
+        self.review_fixture()
+        self.call('scene_link', sceneId=self.ids['dialogue'], targetId=self.ids['second'])
+        source = self.call('scene_extract', workspaceId=self.ids['workspace'], sourceSceneId=self.ids['second'],
+                           assertionIds=[self.ids['secondFact']])['assertionIds'][0]
+        location = projection(self.scene('dialogue'))[0]['id']
+        target = self.call('scene_extract', workspaceId=self.ids['workspace'], sourceSceneId=self.ids['dialogue'],
+                           assertionIds=[location])['assertionIds'][0]
+        self.call('scene_seed', workspaceId=self.ids['workspace'], assertionId=source)
+        self.assertEqual(continuations(self.workspace()), [])
+        self.rejected('scene_step', workspaceId=self.ids['workspace'], assertionId=target, fromId=source, contextId='classification-location')
+
+    def test_review_round_trip_and_78002f2_export_compatibility(self):
+        self.review_fixture()
+        document = self.store.export()
+        self.assertEqual(PermanentStore(self.path).read(), self.store.read())
+        self.assertEqual(parse_document(document), self.state())
+        target = PermanentStore(Path(self.temp.name) / 'review-import.sqlite3')
+        target.mutate('import', {'document': document, 'confirmed': True}, 0)
+        self.assertEqual(target.read()['state'], self.state())
+        self.assertEqual(observe(target.read()['state'])['activeContext'][self.ids['dialogue']], self.ids['chemistry'])
+        before = self.store.read()
+        self.call('scene_context', sceneId=self.ids['dialogue'], text='Физика')
+        self.call('restore', targetRevision=before['revision'], confirmed=True)
+        self.assertEqual(self.store.read()['state'], before['state'])
+        old = json.loads((Path(__file__).parents[1] / 'docs/manual/evidence/scenes/export.json').read_text(encoding='utf-8'))
+        legacy = PermanentStore(Path(self.temp.name) / 'old-import.sqlite3')
+        legacy.mutate('import', {'document': old, 'confirmed': True}, 0)
+        self.assertEqual(legacy.read()['state'], old['state'])
+        old_dialogue = next(s for s in old['state']['sceneLab']['scenes'] if s['kind'] == 'dialogue')
+        old_context = old_dialogue['entries'][0]['contextSceneId']
+        self.assertEqual(observe(legacy.read()['state'])['activeContext'][old_dialogue['id']], old_context)
 
 
 if __name__ == '__main__':

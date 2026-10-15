@@ -57,3 +57,5 @@ docs/manual/evidence/nut-revision/*.json text eol=lf
 # Preserve scene MVP evidence and export checksums across checkouts.
 /docs/manual/evidence/scenes/*.json text eol=lf
 /docs/manual/evidence/scenes/*.txt text eol=lf
+/docs/manual/evidence/scenes-review/*.json text eol=lf
+/docs/manual/evidence/scenes-review/*.txt text eol=lf
