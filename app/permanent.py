@@ -10,7 +10,7 @@ from pathlib import Path
 from app.store import Store, Invalid, Conflict, clean, lookup, uid, now, encode, decode, fields
 
 FORMAT = 'concept-field-permanent'
-VERSION = 4
+VERSION = 5
 COLLECTIONS = ('nodes', 'edges', 'designations', 'contextEdges')
 
 
@@ -20,8 +20,15 @@ def empty_graph():
 
 def validate_graph(graph):
     from app.builder import validate_extension
-    if not isinstance(graph, dict) or set(graph) - {'sceneLab', 'thoughtLab'} != set(empty_graph()) or any(not isinstance(graph[k], list) for k in COLLECTIONS):
+    if not isinstance(graph, dict) or set(graph) - {'sceneLab', 'thoughtLab', 'operatorVersion'} != set(empty_graph()) or any(not isinstance(graph[k], list) for k in COLLECTIONS):
         raise Invalid('Ожидался один постоянный граф; исторические исследования открываются отдельно.')
+    if 'operatorVersion' in graph and (type(graph['operatorVersion']) is not int or graph['operatorVersion'] != 5):
+        raise Invalid('Неверная версия операторского состояния.')
+    if graph.get('operatorVersion') != 5 and any(
+            'representation' in d or 'objectBindings' in d
+            or any('sceneObjectId' in n or 'bindingRequired' in n for n in d['config']['nodes'])
+            for d in graph.get('thoughtLab', {}).get('drafts', []) + graph.get('thoughtLab', {}).get('templates', [])):
+        raise Invalid('Проверка содержания и идентичность экземпляров требуют операторского состояния v5.')
     identities = set()
     def identity(item):
         if not isinstance(item, dict):
@@ -99,10 +106,12 @@ def verified_backup(path):
 
 
 def parse_document(document):
-    if not isinstance(document, dict) or document.get('format') != FORMAT or document.get('version') not in (1, 2, 3, VERSION) or document.get('kind') != 'graph':
-        raise Invalid('Нужен экспорт concept-field-permanent v1/v2/v3/v4. Старые графы открываются в историческом режиме.')
+    if not isinstance(document, dict) or document.get('format') != FORMAT or document.get('version') not in (1, 2, 3, 4, VERSION) or document.get('kind') != 'graph':
+        raise Invalid('Нужен экспорт concept-field-permanent v1/v2/v3/v4/v5.')
     def validate_state(state):
         validate_graph(state)
+        if document['version'] < 5 and 'operatorVersion' in state:
+            raise Invalid('Новое операторское состояние требует v5.')
         if document['version'] < 3 and 'sceneLab' in state:
             raise Invalid('Сцены и рабочие экземпляры требуют экспорта v3.')
         if document['version'] < 4 and ('thoughtLab' in state or any('operatorAlias' in n for n in state['nodes'])):
@@ -181,7 +190,9 @@ class PermanentStore(Store):
                     if 'sceneLab' in row['state']:
                         export_version = max(export_version, 3)
                     if 'thoughtLab' in row['state'] or any('operatorAlias' in n for n in row['state']['nodes']):
-                        export_version = 4
+                        export_version = max(export_version, 4)
+                    if 'operatorVersion' in row['state']:
+                        export_version = 5
                     yield row
             history, state = compact_with_latest(snapshots())
             archives = [decode(r[0]) for r in db.execute('SELECT document FROM permanent_imports ORDER BY time,fingerprint')]
@@ -209,6 +220,8 @@ class PermanentStore(Store):
     @staticmethod
     def merge_import(existing, incoming):
         result = copy.deepcopy(existing)
+        if 'operatorVersion' in incoming:
+            result['operatorVersion'] = incoming['operatorVersion']
         # Import adds exact IDs; conflicts never silently replace existing operators' work.
         for key in (*COLLECTIONS, 'definitionDrafts'):
             indexed = {v['id']: v for v in result[key]}
@@ -240,7 +253,15 @@ class PermanentStore(Store):
                 raise Conflict('Граф изменился в другой вкладке. Обновите страницу и повторите действие.')
             state = decode(row['state'])
             result, detail = {}, action
-            if isinstance(action, str) and action.startswith('thought_'):
+            if action == 'manage_apply':
+                from app.lifecycle import prepare
+                if data.get('confirmed') is not True or data.get('previewRevision') != row['id']:
+                    raise Invalid('Нужны актуальный preview и явное подтверждение удаления.')
+                state, result = prepare(state, data, row['id'])
+                if result['blocked'] or result['hash'] != data.get('previewHash'):
+                    raise Invalid('Состав удаления изменён или остались зависимости; получите новый preview.')
+                detail = json.dumps(result, ensure_ascii=False)
+            elif isinstance(action, str) and action.startswith('thought_'):
                 from app.thoughts import operate as thought_operate
                 result, detail = thought_operate(state, action, data, row['id'])
             elif isinstance(action, str) and action.startswith('scene_'):

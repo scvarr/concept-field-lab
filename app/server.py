@@ -68,6 +68,10 @@ def make_server(path, port=8765, legacy=False, definition_fetcher=None):
             if not legacy:
                 try:
                     query = parse_qs(urlparse(self.path).query)
+                    if path == '/api/manage-index':
+                        from app.lifecycle import catalog
+                        rows = catalog(store.read()['state'])
+                        return self.send(200, [{**v, 'depends': sorted(v['depends'])} for v in rows.values()])
                     if path == '/api/dictionary':
                         from app.dictionary import search
                         return self.send(200, search(store.read()['state'], query.get('q', [''])[0]))
@@ -157,7 +161,7 @@ def make_server(path, port=8765, legacy=False, definition_fetcher=None):
                     return self.send(400, {"error": str(exc)})
             files = {"/": ("index.html", "text/html"), "/app.js": ("app.js", "text/javascript"), "/workspace.js": ("workspace.js", "text/javascript"), "/builder.js": ("builder.js", "text/javascript"), "/graph-view.js": ("graph-view.js", "text/javascript"), "/accumulation.js": ("accumulation.js", "text/javascript"), "/style.css": ("style.css", "text/css"), "/favicon.svg": ("favicon.svg", "image/svg+xml")}
             if path not in files:
-                if path in ('/scenes.js', '/thoughts.js'):
+                if path in ('/scenes.js', '/thoughts.js', '/management.js'):
                     return self.send(200, (STATIC / path[1:]).read_bytes(), 'text/javascript; charset=utf-8')
                 layout_files = {"/graph-editor.js": "graph-editor.js","/overview-geometry.js": "overview-geometry.js", "/permanent-layout.js": "permanent-layout.js", "/alpha-captions.js": "alpha-captions.js", "/canvas-builder.js": "canvas-builder.js", "/canvas-menu.js": "canvas-menu.js", "/layout-controls.js": "layout-controls.js", "/layout-engine.js": "layout-engine.js", "/layout-worker.js": "layout-worker.js", "/vendor/d3-7.9.0.min.js": "vendor/d3-7.9.0.min.js", "/vendor/dagre-1.1.5.min.js": "vendor/dagre-1.1.5.min.js"}
                 if path in layout_files:
@@ -166,6 +170,13 @@ def make_server(path, port=8765, legacy=False, definition_fetcher=None):
             filename, mime = files[path]
             if filename == 'index.html' and legacy:
                 filename = 'legacy.html'
+            elif filename == 'index.html':
+                html = (STATIC / filename).read_text(encoding='utf-8')
+                if parse_qs(urlparse(self.path).query).get('compat') != ['m018']:
+                    for script in ('builder.js', 'canvas-builder.js'):
+                        html = html.replace(f'<script src="/{script}"></script>', '')
+                    html = html.replace('<section id="builder" aria-label="Конструктор определений"></section>', '')
+                return self.send(200, html.encode('utf-8'), mime + '; charset=utf-8')
             return self.send(200, (STATIC / filename).read_bytes(), mime + "; charset=utf-8")
 
         def do_POST(self):
@@ -182,6 +193,11 @@ def make_server(path, port=8765, legacy=False, definition_fetcher=None):
                 if not isinstance(data, dict):
                     raise Invalid("Ожидался объект запроса.")
                 path = urlparse(self.path).path
+                if not legacy and path == '/api/manage-preview':
+                    from app.lifecycle import prepare
+                    snapshot = store.read()
+                    _, preview = prepare(snapshot['state'], data, snapshot['revision'])
+                    return self.send(200, preview)
                 if not legacy and path == '/api/graph-preview':
                     from app.graph_editor import prepare
                     snapshot = store.read()

@@ -37,6 +37,15 @@ class ThoughtsTest(unittest.TestCase):
     def state(self):
         return self.store.read()['state']
 
+    def complete(self):
+        # Technical fixtures explicitly associate the whole literal input and
+        # confirm it; these values do not claim linguistic correctness.
+        d = self.draft()
+        n = next(n for n in d['config']['nodes'] if n['included'])
+        self.call('thought_save', draftId=d['id'], anchors=[{'id': n['id'], 'start': 0, 'end': len(d['text'])}])
+        self.call('thought_confirm', draftId=d['id'], confirmed=True)
+        return self.call('thought_complete', draftId=d['id'])
+
     def draft(self, ident=None):
         lab = self.state()['thoughtLab']
         return copy.deepcopy(next(d for d in lab['drafts'] if d['id'] == (ident or lab['currentDraftId'])))
@@ -75,7 +84,7 @@ class ThoughtsTest(unittest.TestCase):
         self.assertTrue(all(n['structure'] == 'concept' for n in before['nodes']))
         self.assertEqual(next(n for n in before['nodes'] if n['id'] == 'object')['operatorAlias'], 'Объект')
         self.assertEqual(self.draft()['anchors'][0]['id'], 'local-object')
-        result = self.call('thought_complete', draftId=self.draft()['id'])
+        result = self.complete()
         entry = self.state()['sceneLab']['scenes'][0]['entries'][0]
         self.assertEqual(entry['id'], result['entryId'])
         self.assertTrue(all(f['activation'] == 'direct' for f in entry['assertions']))
@@ -86,7 +95,7 @@ class ThoughtsTest(unittest.TestCase):
         self.new('Винт упал', t)
         self.fill_core()
         self.assertEqual(missing(self.draft()), [])
-        self.call('thought_complete', draftId=self.draft()['id'])
+        self.complete()
         scene = self.state()['sceneLab']['scenes'][0]
         self.assertEqual({o['conceptId'] for o in scene['objects']}, {'object', 'process'})
         self.assertEqual([f['edgeId'] for f in scene['entries'][0]['assertions']], ['op'])
@@ -170,7 +179,7 @@ class ThoughtsTest(unittest.TestCase):
                         'template': signature(next(e for e in self.state()['edges'] if e['id'] == 'hh')),
                         'included': True, 'required': True, 'activation': 'direct'}], 'contexts': []}
         self.save(c)
-        self.call('thought_complete', draftId=self.draft()['id'])
+        self.complete()
         objects = self.state()['sceneLab']['scenes'][0]['objects']
         self.assertEqual(objects[0]['conceptId'], objects[1]['conceptId'])
         self.assertNotEqual(objects[0]['id'], objects[1]['id'])
@@ -226,7 +235,7 @@ class ThoughtsTest(unittest.TestCase):
 
     def test_completed_scene_mapping_cannot_change_values_between_instances(self):
         self.save(self.config())
-        self.call('thought_complete', draftId=self.draft()['id'])
+        self.complete()
         state = self.state()
         objects = state['sceneLab']['scenes'][0]['objects']
         objects[0]['label'], objects[1]['label'] = 'Чужое значение', 'Другое чужое значение'
@@ -236,12 +245,12 @@ class ThoughtsTest(unittest.TestCase):
     def test_revision_export_import_restore_and_conflicts(self):
         t = self.template()
         before = self.store.read()
-        self.call('thought_complete', draftId=self.draft()['id'])
+        self.complete()
         self.new('Незавершённый ввод', t)
         with self.assertRaises(Conflict):
             self.store.mutate('thought_alias', {'nodeId': 'xxx', 'alias': 'устарело'}, before['revision'])
         doc = self.store.export()
-        self.assertEqual(doc['version'], 4)
+        self.assertEqual(doc['version'], 5)
         self.assertEqual(parse_document(doc), self.state())
         target = PermanentStore(Path(self.tmp.name) / 'import.sqlite3')
         target.mutate('import', {'document': doc, 'confirmed': True}, 0)
@@ -256,7 +265,7 @@ class ThoughtsTest(unittest.TestCase):
             target.import_preview(changed)
         self.call('restore', targetRevision=before['revision'], confirmed=True)
         self.assertEqual(self.state(), before['state'])
-        self.assertEqual(self.store.export()['version'], 4)
+        self.assertEqual(self.store.export()['version'], 5)
 
     def test_graph_references_protected_and_corrupt_anchors_rejected(self):
         self.template()

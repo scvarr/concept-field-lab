@@ -25,7 +25,7 @@ async function addExisting(id){await click('#def-search-open');await page.locato
   await start(db);browser=await chromium.launch({channel:'chrome',headless:true});report.browser=browser.version();
   page=await browser.newPage({viewport:{width:1440,height:1000}});page.on('pageerror',e=>report.errors.push(e.message));
   await page.route('**/api/definitions?*',r=>r.fulfill({status:200,contentType:'application/json',body:JSON.stringify({lemma:'',senses:[],status:'unavailable',message:'В технической проверке используется ручной ввод.'})}));
-  await page.goto(url);await helpers().saved();await importFile(fixture);const baseline=await state();assert.equal(Object.keys(baseline.definitionPublications).length,4);
+  await page.goto(url+'/?compat=m018');await helpers().saved();await importFile(fixture);const baseline=await state();assert.equal(Object.keys(baseline.definitionPublications).length,4);
   report.scenarios.push('Через GUI импортированы четыре опубликованных определения: винт и гайка используют общий ID детали, компоненты α и межопределительный контекст рёбер.');
   // Build the replacement structure at the existing part ID in the mini graph.
   await usePart();await page.locator('#graph-depth').fill('0');await click('#graph-editor');await click('#edit-choose-region');for(const box of await page.locator('[name=region-node]').all())await box.setChecked((await box.getAttribute('value'))==='part');await page.locator('#region-search').fill('part');await submit('Открыть область');const regionId=(await page.locator('#def-open').inputValue());

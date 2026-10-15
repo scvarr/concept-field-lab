@@ -1,0 +1,31 @@
+'use strict';
+// One preview and one revision transaction for explicit cross-level removal.
+const Management=(()=>{
+  const titles={node:'Концепт',edge:'Обычное ребро / компонент',context:'Контекстное разрешение',designation:'Обозначение',definition:'Историческое определение',scene:'Сцена',object:'Экземпляр сцены',entry:'Сценический вход',workspace:'Рабочая копия',thought:'Разбор',template:'Операторский шаблон',candidate:'Гипотеза',link:'Связь сцен'};
+  async function remove(selection,mode='delete'){
+    await ThoughtLab.save();
+    const p=await api('/api/manage-preview',{selection,mode});
+    const rows=values=>values.map(v=>`<li>${h(titles[v.kind])}: ${h(v.label)} <code>${h(v.id)}</code></li>`).join('');
+    dialog(mode==='reset'?'Полный сброс экспериментального состояния':'Предпросмотр удаления',`<p>Версия ${p.revision}. ${mode==='reset'?'Все текущие данные будут удалены из рабочего состояния. История и импортные архивы сохраняются.':'Удаляются только явно перечисленные записи.'}</p><p id="manage-counts">${Object.entries(p.counts).map(([k,v])=>`${h(titles[k])}: ${v}`).join(' · ')}</p><button type="button" id="manage-export">Предварительный экспорт ↓</button><details open><summary>Выбрано (${p.selected.length})</summary><ul>${rows(p.selected)}</ul></details>
+    ${p.blocked.length?`<section class="management-blocked"><h3>Зависимости, которые ещё не выбраны (${p.blocked.length})</h3><p>Удаление заблокировано. Выберите зависимые записи явно либо отмените операцию.</p>${p.blocked.map(v=>`<label class="checkbox"><input name="manage-dependent" type="checkbox" value="${h(v.key)}">${h(titles[v.kind])}: ${h(v.label)} · ${h(v.id)}</label>`).join('')}<button type="button" id="manage-all">Выбрать все перечисленные зависимости</button><button type="button" id="manage-recalculate">Пересчитать preview</button></section>`:''}
+    ${p.rewrites.length?`<h3>Сохранение происхождения и прежних применений (${p.rewrites.length})</h3>${p.rewrites.map(v=>`<p><code>${h(v.id)}</code> — ${h(v.change)}</p>`).join('')}`:''}
+    ${p.optional.length?`<section><h3>Неиспользуемые экземпляры удаляемых мыслей</h3><p>По умолчанию остаются в сцене. Можно явно добавить их в удаление; общие экземпляры других мыслей сюда не входят.</p>${p.optional.map(v=>`<label class="checkbox"><input name="manage-optional" type="checkbox" value="${h(v.key)}">${h(v.label)} · ${h(v.id)}</label>`).join('')}<button type="button" id="manage-add-optional">Пересчитать с выбранными экземплярами</button></section>`:''}
+    <details><summary>Точные зависимости между уровнями</summary><pre>${h(JSON.stringify(p.dependencies,null,2))}</pre></details>
+    ${!p.blocked.length?'<label class="checkbox"><input name="confirmed" type="checkbox" required>Я проверил состав удаления и изменения зависимостей</label>':''}`,p.blocked.length?null:async()=>{await mutate('manage_apply',{selection,mode,confirmed:true,previewRevision:p.revision,previewHash:p.hash});ThoughtLab.discard();render();toast('Изменения сохранены. Предыдущее состояние доступно в истории.');},mode==='reset'?'Сбросить состояние':'Удалить выбранное');
+    $('#manage-export').onclick=run(()=>download('/api/export','concept-field-before-delete.json'));
+    if(p.optional.length)$('#manage-add-optional').onclick=run(()=>remove([...selection,...[...document.querySelectorAll('[name=manage-optional]:checked')].map(c=>c.value)],mode));
+    if(p.blocked.length){$('#manage-all').onclick=()=>document.querySelectorAll('[name=manage-dependent]').forEach(c=>c.checked=true);$('#manage-recalculate').onclick=run(()=>remove([...selection,...[...document.querySelectorAll('[name=manage-dependent]:checked')].map(c=>c.value)],mode));}
+  }
+  async function home(graphOnly=false){
+    await ThoughtLab.save();const records=await api('/api/manage-index');
+    const graphKinds=new Set(['node','edge','context','designation']);
+    const visible=records.filter(v=>!graphOnly||graphKinds.has(v.kind));
+    dialog(graphOnly?'Группа постоянных объектов':'Управление сохранёнными данными',`<p>Удаление записи, очистка отображения и полный сброс — разные операции. Перед записью будет показан точный preview; история остаётся.</p><label>Поиск<input type="search" id="manage-search"></label><div class="management-records">${Object.entries(titles).filter(([kind])=>visible.some(v=>v.kind===kind)).map(([kind,title])=>`<details open><summary>${h(title)} (${visible.filter(v=>v.kind===kind).length})</summary>${visible.filter(v=>v.kind===kind).map(v=>`<label class="checkbox" data-manage-search="${h((v.label+' '+v.id).toLocaleLowerCase('ru'))}"><input name="manage-record" type="checkbox" value="${h(v.key)}">${h(v.label)} <code>${h(v.id)}</code></label>`).join('')}</details>`).join('')||'<p>Состояние пусто.</p>'}</div><button type="button" id="manage-delete">Preview удаления выбранных записей</button><button type="button" id="manage-reset">Полный сброс исследования…</button><details><summary>Исторические определения: просмотр</summary>${state.definitionDrafts.map(d=>`<button type="button" data-manage-definition="${h(d.id)}">${h(d.title)} · ${h(d.id)}</button>`).join('')||'<p>Нет исторических определений.</p>'}</details>`);
+    $('#manage-search').oninput=e=>{const q=e.target.value.toLocaleLowerCase('ru');document.querySelectorAll('[data-manage-search]').forEach(r=>r.hidden=!r.dataset.manageSearch.includes(q));};
+    $('#manage-delete').onclick=run(()=>remove([...document.querySelectorAll('[name=manage-record]:checked')].map(c=>c.value)));
+    $('#manage-reset').onclick=run(()=>remove([],'reset'));
+    document.querySelectorAll('[data-manage-definition]').forEach(b=>b.onclick=()=>definition(b.dataset.manageDefinition));
+  }
+  function definition(id){const d=state.definitionDrafts.find(v=>v.id===id);if(!d)throw Error('Историческое определение отсутствует.');dialog('Историческое определение',`<h3>${h(d.title)}</h3><pre>${h(JSON.stringify({draft:d,publication:state.definitionPublications[id]},null,2))}</pre><p>Удаление записи сохранит происхождение оставшихся графовых объектов снимком; сам граф не удаляется.</p><button type="button" id="definition-remove">Удалить определение…</button>`);$('#definition-remove').onclick=run(()=>remove(['definition:'+id]));}
+  return {home,remove,definition};
+})();

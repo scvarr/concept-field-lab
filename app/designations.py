@@ -38,7 +38,9 @@ def operate(state, action, data):
              'notes': clean(data.get('notes', ''), 'примечание'),
              'lexicalSource': copy.deepcopy(data.get('lexicalSource'))}
     if not previous:
-        value.update(definitionId=node['definitionId'], source='Ручное соответствие точки входа', origins=copy.deepcopy(node['origins']))
+        value.update(source='Ручное соответствие точки входа', origins=copy.deepcopy(node['origins']))
+        if 'definitionId' in node:
+            value['definitionId'] = node['definitionId']
     validate_designation(value)
     if previous:
         previous.clear()

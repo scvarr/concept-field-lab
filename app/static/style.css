@@ -211,3 +211,13 @@ body.permanent-workspace {height:100dvh;overflow:hidden}
 #thought-canvas .thought-direct rect{stroke:#2866a0;stroke-width:3}
 .thought-template{border:1px solid #bac8d4;border-radius:8px;padding:.8rem;margin:.6rem 0}
 @media(max-width:1000px){.thought-layout{grid-template-columns:minmax(0,1fr)}.thought-layout aside{max-height:none}#thought-canvas{height:420px}}
+.dynamic-scene{padding:.5rem 1rem;border:1px solid #bdccd6;background:#edf4f6;border-radius:8px;margin-bottom:.7rem}
+.dynamic-scene p{margin:.35rem 0}.hint{color:#536579;font-size:12px}
+.thought-records{display:flex;gap:1rem;flex-wrap:wrap;margin:.7rem 0}.thought-records label{flex:1;min-width:180px}
+.content-review{border:1px solid #d8bc75;background:#fffaf0;padding:.7rem;border-radius:8px;margin:.8rem 0}
+.identity-choice{border-color:#2a8071;background:#eef9f5}
+.management-records{max-height:55vh;overflow:auto;padding:.5rem}.management-records label{display:flex;flex-direction:row;align-items:baseline;gap:.5rem;margin:.5rem 0;font-weight:400}
+.management-records code,.management-blocked code{overflow-wrap:anywhere;font-size:11px}
+.management-blocked{padding:.7rem;border:1px solid #cc9e57;background:#fff8ec;border-radius:8px}
+.management-blocked label{display:flex;flex-direction:row;align-items:baseline;gap:.5rem;font-weight:400;margin:.5rem 0}
+#dialog-body pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:50vh;overflow:auto}

@@ -105,7 +105,9 @@ def validate_extension(study, identity):
         pairs.add(pair)
     for key in data:
         for obj in data[key]:
-            if obj.get('definitionId') not in seen:
+            if obj.get('definitionId') not in seen and not (
+                    'accumulation' not in study and study.get('operatorVersion') == 5
+                    and 'definitionId' not in obj and isinstance(obj.get('origins'), list) and obj['origins']):
                 raise Invalid('Ручной объект требует сохранённого определения происхождения.')
     publications = acc.get('definitionPublications', {})
     if not isinstance(publications, dict) or not set(publications) <= seen:

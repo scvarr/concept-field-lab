@@ -16,19 +16,19 @@ const SceneLab=(()=>{
     const workspaces=model.workspaces.filter(w=>w.sceneId===current?.id);
     if(!workspaces.some(w=>w.id===workspaceId))workspaceId=workspaces.at(-1)?.id;
     const workspace=workspaces.find(w=>w.id===workspaceId);
-    panel.innerHTML=`<h2>Сцены и динамическая рабочая область · эксперимент MVP</h2>
+    panel.innerHTML=`<h2>Знания · накопленные сцены и их связи</h2>
       <p>Каркас задаёт возможные связи. Оператор задаёт объекты, заполнения и изменения. Текст входа сохраняется без автоматического понимания.</p>
-      <div class="scene-toolbar"><button id="scene-new">Создать сцену</button><label>Просмотр сцены<select id="scene-open">${model.scenes.map(s=>opt(s.id,title(s))).join('')}</select></label><button id="scene-refresh">Обновить с сервера</button></div>
+      <div class="scene-toolbar"><button id="scene-new">Создать сцену</button><label>Просмотр сцены<select id="scene-open">${model.scenes.map(s=>opt(s.id,title(s))).join('')}</select></label><button id="scene-refresh">Обновить с сервера</button><button id="knowledge-templates">Конструкции и прежние применения…</button></div>
       <p id="scene-current">Текущий разговор: ${current?h(title(current)):'не выбран'}</p><p id="scene-current-context">Действующий контекст: ${h(contextName(sceneView.activeContext[current?.id]))}</p>
       <div class="scene-columns"><article id="scene-detail">${scene?sceneHTML(scene):'<p>Создайте сцену знаний, затем разговорную сцену.</p>'}</article>
       <article id="scene-workspace"><h3>Рабочая область текущего разговора</h3><p>Извлечение копирует только выбранные заполнения и обязательный состав α. Локальные состояния: inactive / seed / context. Переход разрешён внутри одной группы извлечения. Сопоставление независимых сцен не реализовано. Совпадение содержательных ID не запускает переходы; семантическая применимость не установлена.</p>
       ${current?`<button id="scene-workspace-new">Новая рабочая область</button><label>Область<select id="scene-workspace-open">${workspaces.map(w=>opt(w.id,w.label+' · '+w.id)).join('')}</select></label>`:'<p>Создайте или выберите разговорную сцену.</p>'}
       ${workspace?workspaceHTML(workspace,current):''}</article></div>`;
-    $('#scene-new').onclick=run(newScene);
+    $('#scene-new').onclick=run(newScene);$('#knowledge-templates').onclick=run(()=>ThoughtLab.library());
     $('#scene-refresh').onclick=run(async()=>{({state,revision,sceneView}=await api('/api/state'));render();$('#save-status').textContent=`Сохранено · версия ${revision}`;});
     $('#scene-open').value=sceneId||'';
     $('#scene-open').onchange=e=>{sceneId=e.target.value;render();};
-    if(scene)bindScene(scene);
+    if(scene){bindScene(scene);const b=document.createElement('button');b.id='scene-delete';b.textContent='Удалить эту сцену…';b.onclick=run(()=>Management.remove(['scene:'+scene.id]));$('#scene-detail').prepend(b);const input=document.createElement('button');input.id='knowledge-phrase';input.textContent='Новая мысль в этой сцене…';input.onclick=run(()=>ThoughtLab.newInScene(scene.id));$('#scene-detail').prepend(input);}
     if(current){
       $('#scene-workspace-new').onclick=run(()=>dialog('Новая рабочая область', '<label>Обозначение<input name="label" required value="Рабочая область"></label>',async f=>{workspaceId=(await call('scene_workspace',{sceneId:current.id,label:f.get('label')})).workspaceId;render();}));
       $('#scene-workspace-open').value=workspaceId||'';
@@ -50,9 +50,10 @@ const SceneLab=(()=>{
       <fieldset><legend>Явно снять текущее утверждение</legend>${current.map(f=>`<label class="checkbox"><input name="retract" type="checkbox" value="${h(f.id)}">${h(factText(s,f))} · ${h(f.id)}</label>`).join('')||'<p>Текущих утверждений нет.</p>'}</fieldset></div>
       <button type="submit">Сохранить вход</button></form>
       <h4>Вычисленное текущее состояние (${current.length})</h4><div id="scene-current-facts">${current.map(f=>`<p>${h(factText(s,f))}<br>Слот: ${h(f.slot||'не задан')} · <code>${h(f.id)}</code></p>`).join('')||'<p>Нет текущих утверждений.</p>'}</div>
-      <h4>Последовательность входов (${s.entries.length})</h4><div id="scene-history">${s.entries.map((e,i)=>`<details><summary>${i+1}. [${h(e.kind)}] ${h(e.text)}</summary><code>${h(e.id)}</code>${e.assertions.map(f=>`<p>${h(factText(s,f))}<br><code>${h(f.id)}</code></p>`).join('')}<p>Сняты: ${h(e.retracts.join(', ')||'нет')}</p>${e.contextSceneId?`<p>Контекст: ${h(e.contextSceneId)}</p>`:''}<pre>${h(JSON.stringify(e,null,2))}</pre></details>`).join('')}</div>`;
+      <h4>Последовательность входов (${s.entries.length})</h4><div id="scene-history">${s.entries.map((e,i)=>`<details><summary>${i+1}. [${h(e.kind)}] ${h(e.text)}</summary><code>${h(e.id)}</code>${e.assertions.map(f=>`<p>${h(factText(s,f))}<br><code>${h(f.id)}</code></p>`).join('')}<p>Сняты: ${h(e.retracts.join(', ')||'нет')}</p>${e.contextSceneId?`<p>Контекст: ${h(e.contextSceneId)}</p>`:''}<button data-scene-delete-entry="${h(e.id)}">Удалить этот вход…</button><pre>${h(JSON.stringify(e,null,2))}</pre></details>`).join('')}</div>`;
   }
   function bindScene(s){
+    document.querySelectorAll('[data-scene-delete-entry]').forEach(b=>b.onclick=run(()=>Management.remove(['entry:'+b.dataset.sceneDeleteEntry])));
     if($('#scene-select'))$('#scene-select').onclick=run(()=>call('scene_select',{sceneId:s.id}));
     $('#scene-object-new').onclick=run(()=>dialog('Объект сцены',`<label>Обозначение объекта<input name="label" required></label><label>Концепт позиции шаблона<select name="conceptId">${state.nodes.map(n=>opt(n.id,name(n.id)+' · '+n.id)).join('')}</select></label><label>Содержательный концепт<select name="contentConceptId"><option value="">Не задан</option>${state.nodes.map(n=>opt(n.id,name(n.id)+' · '+n.id)).join('')}</select></label><p>Общий содержательный ID повторно используется между сценами; локальные объекты остаются разными. Привязку задаёт оператор, она не означает наследования или автоматического вывода.</p><p>Для другого конкретного объекта создайте новый ID. Для продолжения сообщения выбирайте прежний объект.</p>`,f=>call('scene_object',{sceneId:s.id,label:f.get('label'),conceptId:f.get('conceptId'),...(f.get('contentConceptId')?{contentConceptId:f.get('contentConceptId')}:{})})));
     $('#scene-link-new').onclick=run(()=>dialog('Ссылка на накопленную или составную сцену',`<label>Сцена<select name="targetId">${lab().scenes.filter(v=>v.id!==s.id).map(v=>opt(v.id,title(v))).join('')}</select></label>`,f=>call('scene_link',{sceneId:s.id,targetId:f.get('targetId')})));

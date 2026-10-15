@@ -188,16 +188,25 @@ def prepare(state, data):
             previous = next((v for v in result[key] if v['id'] == value['id']), None)
             if previous:
                 # Provenance cannot be replaced by an object form.
-                value = {**previous, **value, 'definitionId': previous['definitionId']}
+                value = {**previous, **value}
+                if 'definitionId' in previous:
+                    value['definitionId'] = previous['definitionId']
+                else:
+                    value.pop('definitionId', None)
                 if 'origins' in previous:
                     value['origins'] = copy.deepcopy(previous['origins'])
                 result[key][result[key].index(previous)] = value
             else:
                 did = data.get('definitionId')
-                draft = lookup(result['definitionDrafts'], did, 'черновик происхождения')
-                value.update(definitionId=did)
-                value['origins'] = [{'definitionId': did, 'snapshot': {'definition': draft['definition'],
-                                     'source': copy.deepcopy(draft.get('source')), 'operation': 'graph_editor'}}]
+                if did is not None:
+                    draft = lookup(result['definitionDrafts'], did, 'черновик происхождения')
+                    value.update(definitionId=did)
+                    value['origins'] = [{'definitionId': did, 'snapshot': {'definition': draft['definition'],
+                                         'source': copy.deepcopy(draft.get('source')), 'operation': 'graph_editor'}}]
+                else:
+                    result['operatorVersion'] = 5
+                    value.pop('definitionId', None)
+                    value['origins'] = [{'operation': 'graph_editor', 'source': 'Ручной редактор постоянного графа'}]
                 result[key].append(value)
         else:
             raise Invalid('Неизвестная операция редактора.')

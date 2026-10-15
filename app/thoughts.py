@@ -1,5 +1,7 @@
 """Manual phrase construction. No language model, classifier or inferred semantics."""
 import copy
+import hashlib
+import json
 from app.store import Invalid, clean, lookup, uid
 from app.scenes import empty_lab, signature, compatible_bindings, items
 
@@ -31,6 +33,35 @@ def missing(draft):
         if n['included'] and not n['value'].strip() and n['id'] not in gaps:
             gaps.append(n['id'])
     return gaps
+
+
+def content_digest(draft):
+    config = copy.deepcopy(draft['config'])
+    for n in config['nodes']:
+        for key in ('x', 'y'):
+            n.pop(key, None)
+    return hashlib.sha256(json.dumps([draft['text'], config, draft['anchors']], ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+
+
+def uncovered(draft):
+    active = {v['id'] for k in draft['config'] for v in draft['config'][k] if v['included']}
+    covered = {i for a in draft['anchors'] if a['id'] in active for i in range(a['start'], a['end'])}
+    result = []
+    for i, ch in enumerate(draft['text']):
+        if not ch.isspace() and i not in covered:
+            if result and result[-1]['end'] == i:
+                result[-1]['end'] = i + 1
+                result[-1]['text'] += ch
+            else:
+                result.append({'start': i, 'end': i + 1, 'text': ch})
+    return result
+
+
+def content_gaps(draft):
+    edges = {e['id']: e for e in draft['config']['edges']}
+    return [n['id'] for n in draft['config']['nodes'] if n['included'] and n.get('bindingRequired') and not any(
+        i in edges and edges[i]['included'] and n['id'] in (edges[i]['from'], edges[i]['to'])
+        for i in n.get('contentEdges', []))]
 
 
 def continuations(draft):
@@ -68,6 +99,11 @@ def validate_config(graph, config):
         if n.get('conceptId') not in permanent_nodes:
             raise Invalid('Элемент мысли ссылается на отсутствующий концепт.')
         clean(n.get('value'), 'локальное значение', False, 10000)
+        if 'bindingRequired' in n and type(n['bindingRequired']) is not bool:
+            raise Invalid('Необходимость содержательной привязки задаёт оператор.')
+        if 'contentEdges' in n and (not isinstance(n['contentEdges'], list) or any(
+                i not in edges or n['id'] not in (edges[i]['from'], edges[i]['to']) for i in n['contentEdges'])):
+            raise Invalid('Содержательная привязка должна адресовать обычное локальное ребро этого элемента.')
         for key in ('x', 'y'):
             v = n.get(key, 0)
             if type(v) not in (int, float) or not -100000 <= v <= 100000:
@@ -109,13 +145,19 @@ def validate(graph):
         if type(t.get('version')) is not int or t['version'] < 1:
             raise Invalid('Неверная версия шаблона.')
         validate_config(graph, t['config'])
+        if any(n.get('sceneObjectId') for n in t['config']['nodes']):
+            raise Invalid('Шаблон не должен связывать конкретные экземпляры сцены.')
     for d in drafts:
         clean(d.get('text'), 'исходная фраза', False, 10000)
         if d.get('status') not in ('draft', 'complete'):
             raise Invalid('Неверный статус мысли.')
         validate_config(graph, d['config'])
         if d.get('templateRef'):
-            lookup(templates, d['templateRef']['id'], 'выбранный шаблон')
+            if not any(t['id'] == d['templateRef']['id'] for t in templates):
+                archive = d.get('templateArchive')
+                if not archive or archive['id'] != d['templateRef']['id']:
+                    raise Invalid('Нет выбранного шаблона или его сохранённого снимка.')
+                validate_config(graph, archive['config'])
         if d.get('contract'):
             validate_config(graph, d['contract'])
             for key in ('nodes', 'edges', 'contexts'):
@@ -127,6 +169,18 @@ def validate(graph):
                                   'contexts': ('contextId', 'from', 'to', 'template')}[key]
                         if not actual or not actual['required'] or any(actual[k] != v[k] for k in fields):
                             raise Invalid('Нельзя заменить обязательную структуру выбранной конструкции; сохраните новый шаблон явно.')
+                    if key == 'nodes' and v.get('bindingRequired') and not current.get(v['id'], {}).get('bindingRequired'):
+                        raise Invalid('Необходимую содержательную привязку нельзя снять обычным сохранением.')
+        target_scene = None
+        if d.get('sceneId'):
+            target_scene = lookup(graph.get('sceneLab', empty_lab())['scenes'], d['sceneId'], 'сцена разбора')
+        for n in d['config']['nodes']:
+            if n.get('sceneObjectId'):
+                if target_scene is None:
+                    raise Invalid('Повторное использование объекта требует выбранную сцену.')
+                obj = lookup(target_scene['objects'], n['sceneObjectId'], 'выбранный экземпляр')
+                if obj['conceptId'] != n['conceptId'] or obj['label'] != n['value']:
+                    raise Invalid('Нельзя переносить значение или концепт между сценическими экземплярами.')
         selection = d.get('selection')
         if (not isinstance(selection, list) or len(selection) != 2
                 or any(type(i) is not int for i in selection) or not 0 <= selection[0] <= selection[1] <= len(d['text'])):
@@ -139,14 +193,23 @@ def validate(graph):
                     or not 0 <= a['start'] < a['end'] <= len(d['text'])):
                 raise Invalid('Неверное соответствие текста и локального ID.')
         if d['status'] == 'complete':
+            if 'objectBindings' in d and 'representation' not in d:
+                raise Invalid('Новое сценическое заполнение требует отдельного подтверждения содержания.')
             if missing(d) or not any(n['included'] for n in d['config']['nodes']):
                 raise Invalid('Неполная обязательная структура не является завершённой мыслью.')
             scene = lookup(graph.get('sceneLab', empty_lab())['scenes'], d['sceneId'], 'сцена мысли')
             entry = lookup(scene['entries'], d['entryId'], 'вход мысли')
             if entry['text'] != d['text'] or entry.get('thoughtId') != d['id']:
                 raise Invalid('Неверное происхождение завершённой мысли.')
-            objects = [o for o in scene['objects'] if o.get('thoughtId') == d['id']]
-            by_local = {o.get('localId'): o for o in objects}
+            if 'objectBindings' in d:
+                bindings = d['objectBindings']
+                by_local = {b['localId']: lookup(scene['objects'], b['objectId'], 'экземпляр мысли') for b in bindings}
+                objects = list(by_local.values())
+                if len(bindings) != len(by_local):
+                    raise Invalid('Повтор локального ключа сценического использования.')
+            else:
+                objects = [o for o in scene['objects'] if o.get('thoughtId') == d['id']]
+                by_local = {o.get('localId'): o for o in objects}
             expected_nodes = [n for n in d['config']['nodes'] if n['included']]
             if len(objects) != len(expected_nodes) or set(by_local) != {n['id'] for n in expected_nodes}:
                 raise Invalid('Сценические экземпляры не соответствуют завершённой конструкции.')
@@ -162,6 +225,9 @@ def validate(graph):
                 if (f['edgeId'] != e['edgeId'] or f['activation'] != e['activation']
                         or any(f[end] != by_local[e[end]]['id'] for end in ('from', 'to'))):
                     raise Invalid('Смешаны локальные привязки или активации завершённой мысли.')
+            if 'representation' in d and (not d['representation'].get('confirmed')
+                    or d['representation'].get('digest') != content_digest(d) or content_gaps(d) or uncovered(d)):
+                raise Invalid('Представление содержания не подтверждено или изменилось.')
     for c in candidates:
         for k in ('from', 'to'):
             if lookup(graph['edges'], c.get(k), 'ребро гипотезы')['role'] != 'relation':
@@ -179,9 +245,12 @@ def operate(graph, action, data, revision):
     lab = graph.setdefault('thoughtLab', empty())
     result = {}
     if action == 'thought_new':
+        graph['operatorVersion'] = 5
         d = {'id': uid(), 'text': clean(data.get('text', ''), 'фраза', False, 10000), 'status': 'draft',
              'config': {'nodes': [], 'edges': [], 'contexts': []}, 'selection': [0, 0], 'anchors': [],
-             'templateRef': None, 'contract': None, 'createdRevision': revision, 'trace': []}
+             'templateRef': None, 'contract': None, 'createdRevision': revision, 'trace': [],
+             'sceneId': data.get('sceneId') or graph.get('sceneLab', {}).get('currentSceneId'),
+             'representation': {'confirmed': False}}
         if data.get('templateId'):
             t = lookup(lab['templates'], data['templateId'], 'шаблон')
             d['config'] = copy.deepcopy(t['config'])
@@ -190,6 +259,7 @@ def operate(graph, action, data, revision):
                     item['included'] = item['required']
                     if key == 'nodes':
                         item['value'] = ''
+                        item.pop('sceneObjectId', None)
                     if key == 'edges':
                         item['activation'] = 'direct'
             # Required edges require endpoints even when those are marked optional.
@@ -205,6 +275,23 @@ def operate(graph, action, data, revision):
         result['draftId'] = d['id']
     elif action == 'thought_select':
         lab['currentDraftId'] = lookup(lab['drafts'], data.get('draftId'), 'разбор')['id']
+    elif action == 'thought_close':
+        lab['currentDraftId'] = None
+    elif action == 'thought_revise':
+        original = lookup(lab['drafts'], data.get('draftId'), 'разбор')
+        d = copy.deepcopy(original)
+        d.update(id=uid(), status='draft', revisedFrom=original['id'], representation={'confirmed': False})
+        for key in ('entryId', 'completedRevision', 'objectBindings'):
+            d.pop(key, None)
+        for n in d['config']['nodes']:
+            n.pop('sceneObjectId', None)
+        for e in d['config']['edges']:
+            e['activation'] = 'direct'
+        d['trace'] = [{'revision': revision, 'decision': 'Оператор создал новый разбор на основе прежнего', 'originThoughtId': original['id']}]
+        lab['drafts'].append(d)
+        lab['currentDraftId'] = d['id']
+        graph['operatorVersion'] = 5
+        result['draftId'] = d['id']
     elif action == 'thought_alias':
         node = lookup(graph['nodes'], data.get('nodeId'), 'концепт')
         node['operatorAlias'] = clean(data.get('alias'), 'рабочий alias', False, 1000)
@@ -217,7 +304,7 @@ def operate(graph, action, data, revision):
         if c['status'] != 'pending' or data.get('status') not in ('accepted', 'rejected'):
             raise Invalid('Нужно явное решение по открытой гипотезе.')
         c.update(status=data['status'], decision=clean(data.get('decision'), 'решение', True, 10000), decidedRevision=revision)
-    elif action in ('thought_save', 'thought_template', 'thought_complete', 'thought_step', 'thought_detach'):
+    elif action in ('thought_save', 'thought_template', 'thought_complete', 'thought_step', 'thought_detach', 'thought_confirm'):
         d = lookup(lab['drafts'], data.get('draftId'), 'разбор')
         if d['status'] != 'draft':
             raise Invalid('Завершённый разбор сохранён в истории. Создайте новое применение.')
@@ -227,6 +314,7 @@ def operate(graph, action, data, revision):
                                'templateRef': copy.deepcopy(d['templateRef'])})
             d.update(templateRef=None, contract=None)
         elif action == 'thought_save':
+            before_digest = content_digest(d)
             if 'config' in data and isinstance(data['config'], dict):
                 previous = {e['id']: e for e in d['config']['edges']}
                 for e in data['config'].get('edges', []):
@@ -237,6 +325,18 @@ def operate(graph, action, data, revision):
             for key in ('text', 'config', 'selection', 'anchors'):
                 if key in data:
                     d[key] = copy.deepcopy(data[key])
+            if content_digest(d) != before_digest:
+                d['representation'] = {'confirmed': False}
+            if 'sceneId' in data:
+                if any(n.get('sceneObjectId') for n in d['config']['nodes']) and data['sceneId'] != d.get('sceneId'):
+                    raise Invalid('Сначала снимите привязки к экземплярам прежней сцены.')
+                d['sceneId'] = data['sceneId']
+            graph['operatorVersion'] = 5
+        elif action == 'thought_confirm':
+            if data.get('confirmed') is not True or missing(d) or content_gaps(d) or uncovered(d):
+                raise Invalid('Представление неполно: проверьте обязательные позиции, содержательные связи и несопоставленные фрагменты.')
+            graph['operatorVersion'] = 5
+            d['representation'] = {'confirmed': True, 'digest': content_digest(d), 'revision': revision}
         elif action == 'thought_template':
             validate_config(graph, d['config'])
             config = copy.deepcopy(d['config'])
@@ -253,6 +353,7 @@ def operate(graph, action, data, revision):
                 for item in config[key]:
                     if key == 'nodes':
                         item['value'] = ''
+                        item.pop('sceneObjectId', None)
             if data.get('templateId'):
                 t = lookup(lab['templates'], data['templateId'], 'уточняемый шаблон')
                 t.update(config=config, version=t['version'] + 1, label=clean(data.get('label'), 'название', True, 1000))
@@ -269,21 +370,27 @@ def operate(graph, action, data, revision):
                 raise Invalid('Продолжение недоступно для этих локальных привязок.')
             target = lookup(d['config']['edges'], candidate['to'], 'локальное ребро')
             target.update(included=True, activation='context')
+            d['representation'] = {'confirmed': False}
             d['trace'].append({**candidate, 'revision': revision, 'decision': 'Явная команда оператора'})
         else:
             if not d['text'].strip() or not any(n['included'] for n in d['config']['nodes']) or missing(d):
                 raise Invalid('Неполная мысль: заполните обязательную структуру. Черновик сохранён.')
+            if (not d.get('representation', {}).get('confirmed')
+                    or d['representation'].get('digest') != content_digest(d) or content_gaps(d) or uncovered(d)):
+                raise Invalid('Полнота шаблона не подтверждает содержание. Сопоставьте фрагменты и подтвердите необходимые связи.')
             lab_scene = graph.setdefault('sceneLab', empty_lab())
-            scene_id = data.get('sceneId') or lab_scene['currentSceneId']
+            scene_id = data.get('sceneId') or d.get('sceneId') or lab_scene['currentSceneId']
+            if any(n.get('sceneObjectId') for n in d['config']['nodes']) and scene_id != d.get('sceneId'):
+                raise Invalid('Экземпляр нельзя перенести в другую сцену.')
             if scene_id:
                 scene = lookup(lab_scene['scenes'], scene_id, 'сцена')
             else:
                 scene = {'id': uid(), 'label': 'Ручные мысли', 'kind': 'dialogue', 'objects': [], 'entries': [], 'links': []}
                 lab_scene['scenes'].append(scene)
                 lab_scene['currentSceneId'] = scene['id']
-            mapping = {n['id']: uid() for n in d['config']['nodes'] if n['included']}
+            mapping = {n['id']: n.get('sceneObjectId') or uid() for n in d['config']['nodes'] if n['included']}
             for n in d['config']['nodes']:
-                if n['included']:
+                if n['included'] and not n.get('sceneObjectId'):
                     scene['objects'].append({'id': mapping[n['id']], 'conceptId': n['conceptId'], 'label': n['value'],
                                              'thoughtId': d['id'], 'localId': n['id']})
             entry = {'id': uid(), 'text': d['text'], 'kind': 'event', 'retracts': [], 'assertions': [], 'thoughtId': d['id']}
@@ -293,7 +400,8 @@ def operate(graph, action, data, revision):
                                                'from': mapping[e['from']], 'to': mapping[e['to']], 'slot': '',
                                                'activation': e['activation'], 'localId': e['id'], 'thoughtId': d['id']})
             scene['entries'].append(entry)
-            d.update(status='complete', sceneId=scene['id'], entryId=entry['id'], completedRevision=revision)
+            d.update(status='complete', sceneId=scene['id'], entryId=entry['id'], completedRevision=revision,
+                     objectBindings=[{'localId': k, 'objectId': v} for k, v in mapping.items()])
             result.update(sceneId=scene['id'], entryId=entry['id'])
     else:
         raise Invalid('Неизвестная операция разбора.')

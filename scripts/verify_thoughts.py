@@ -26,7 +26,7 @@ def audit(path):
     aliases = {n.get('operatorAlias'): n['id'] for n in state['nodes'] if n.get('operatorAlias')}
     words = {d['text']: d['target'] for d in state['designations']}
     obj, process, subject = [aliases[k] for k in ('Объект', 'Процесс', 'Субъект')]
-    check(document['version'] == 4, 'Экспорт v4 и полная цепочка истории валидны.')
+    check(document['version'] in (4, 5), 'Экспорт v4/v5 и полная цепочка истории валидны.')
     check(len(state['nodes']) == 11 and len(state['edges']) == 11, '11 постоянных концептов и 11 обычных рёбер создано оператором.')
     check(all(n['structure'] == 'concept' and n['label'] == '' for n in state['nodes']), 'Нет α или постоянного узла для классификации мысли.')
     check(not {obj, process, subject} & set(words.values()), 'Рабочие alias не являются словарными обозначениями.')
@@ -45,6 +45,9 @@ def audit(path):
     check(not any(n['conceptId'] == first_unknown and n['included'] for n in short['config']['nodes'])
           and any(e['edgeId'] in falling_edges and e['included'] for e in short['config']['edges']),
           'Короткая мысль завершена без XXX с сохранённым отношением Процесс → Падение.')
+    if document['version'] == 5:
+        check(any(e['included'] and e['template']['from'] == obj and e['template']['to'] == words['Винт']
+                  for e in short['config']['edges']), 'M020: сохранено предметное отношение Объект → Винт.')
     check(all(d['anchors'] for d in (first, second, third)), 'Сохранились соответствия фрагментов и локальных ID.')
     check(any(e['activation'] == 'context' for e in first['config']['edges']) and bool(first['trace']), 'Контекстное исполнение первого разбора имеет отдельную трассу.')
     check(all(e['activation'] == 'direct' for e in second['config']['edges'] if e['included']), 'Второй разбор имеет собственные непосредственные активации.')
