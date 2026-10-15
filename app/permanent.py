@@ -10,7 +10,7 @@ from pathlib import Path
 from app.store import Store, Invalid, Conflict, clean, lookup, uid, now, encode, decode, fields
 
 FORMAT = 'concept-field-permanent'
-VERSION = 2
+VERSION = 3
 COLLECTIONS = ('nodes', 'edges', 'designations', 'contextEdges')
 
 
@@ -20,7 +20,7 @@ def empty_graph():
 
 def validate_graph(graph):
     from app.builder import validate_extension
-    if not isinstance(graph, dict) or set(graph) != set(empty_graph()) or any(not isinstance(graph[k], list) for k in COLLECTIONS):
+    if not isinstance(graph, dict) or set(graph) - {'sceneLab'} != set(empty_graph()) or any(not isinstance(graph[k], list) for k in COLLECTIONS):
         raise Invalid('Ожидался один постоянный граф; исторические исследования открываются отдельно.')
     identities = set()
     def identity(item):
@@ -57,6 +57,9 @@ def validate_graph(graph):
     from app.alpha import validate_structure
     validate_structure(graph['nodes'], graph['edges'])
     validate_extension(graph, identity)
+    if 'sceneLab' in graph:
+        from app.scenes import validate_lab
+        validate_lab(graph)
 
 
 def logical_digest(db):
@@ -91,10 +94,12 @@ def verified_backup(path):
 
 
 def parse_document(document):
-    if not isinstance(document, dict) or document.get('format') != FORMAT or document.get('version') not in (1, VERSION) or document.get('kind') != 'graph':
-        raise Invalid('Нужен экспорт concept-field-permanent v1/v2. Старые графы не переносятся автоматически: откройте их в историческом режиме.')
+    if not isinstance(document, dict) or document.get('format') != FORMAT or document.get('version') not in (1, 2, VERSION) or document.get('kind') != 'graph':
+        raise Invalid('Нужен экспорт concept-field-permanent v1/v2/v3. Старые графы открываются в историческом режиме.')
     def validate_state(state):
         validate_graph(state)
+        if document['version'] < 3 and 'sceneLab' in state:
+            raise Invalid('Сцены и рабочие экземпляры требуют экспорта v3.')
         if document['version'] == 1:
             bundles = [state, *state['definitionDrafts']]
             if any(any(n.get('structure') == 'alpha' for n in b['nodes']) or any(e.get('role') == 'component' for e in b['edges']) for b in bundles):
@@ -158,16 +163,19 @@ class PermanentStore(Store):
 
     def export(self):
         from app.journal import compact_with_latest
+        has_scenes = False
         with self.lock, self.connect() as db:
             db.execute('BEGIN')
             def snapshots():
+                nonlocal has_scenes
                 for raw in db.execute('SELECT * FROM permanent_revisions ORDER BY id'):
                     row = dict(raw)
                     row['state'] = decode(row['state'])
+                    has_scenes = has_scenes or 'sceneLab' in row['state']
                     yield row
             history, state = compact_with_latest(snapshots())
             archives = [decode(r[0]) for r in db.execute('SELECT document FROM permanent_imports ORDER BY time,fingerprint')]
-        return {'format': FORMAT, 'version': VERSION, 'kind': 'graph', 'exportedAt': now(), 'state': state,
+        return {'format': FORMAT, 'version': VERSION if has_scenes or any(a['version'] == 3 for a in archives) else 2, 'kind': 'graph', 'exportedAt': now(), 'state': state,
                 'historyEncoding': 'rfc6902-chain-v1', 'history': history, **({'importedHistory': archives} if archives else {})}
 
     def diagnostics(self):
@@ -184,7 +192,9 @@ class PermanentStore(Store):
             return {'duplicates': True, 'counts': {k: len(incoming[k]) for k in COLLECTIONS}}
         merged = self.merge_import(existing, incoming)
         return {'duplicates': False, 'additions': {k: len(merged[k]) - len(existing[k]) for k in COLLECTIONS},
-                'definitions': len(merged['definitionDrafts']) - len(existing['definitionDrafts'])}
+                'definitions': len(merged['definitionDrafts']) - len(existing['definitionDrafts']),
+                **({'sceneAdditions': {k: len(merged['sceneLab'][k]) - len(existing.get('sceneLab', {}).get(k, []))
+                                       for k in ('scenes', 'workspaces')}} if 'sceneLab' in merged else {})}
 
     @staticmethod
     def merge_import(existing, incoming):
@@ -202,6 +212,9 @@ class PermanentStore(Store):
             if did in result['definitionPublications'] and result['definitionPublications'][did] != value:
                 raise Invalid('Конфликт подтверждённого определения при импорте.')
             result['definitionPublications'][did] = copy.deepcopy(value)
+        if 'sceneLab' in incoming:
+            from app.scenes import merge_lab
+            result['sceneLab'] = merge_lab(result.get('sceneLab'), incoming['sceneLab'])
         validate_graph(result)
         return result
 
@@ -214,7 +227,10 @@ class PermanentStore(Store):
                 raise Conflict('Граф изменился в другой вкладке. Обновите страницу и повторите действие.')
             state = decode(row['state'])
             result, detail = {}, action
-            if action in ('definition_save', 'definition_publish'):
+            if isinstance(action, str) and action.startswith('scene_'):
+                from app.scenes import operate as scene_operate
+                result, detail = scene_operate(state, action, data, row['id'])
+            elif action in ('definition_save', 'definition_publish'):
                 if action == 'definition_publish' and 'previewRevision' in data and data['previewRevision'] != row['id']:
                     raise Invalid('Предпросмотр устарел; просмотрите изменения заново.')
                 result, detail = operate(state, action, data)

@@ -178,3 +178,16 @@ body.permanent-workspace {height:100dvh;overflow:hidden}
 .graph .context-port{display:none}
 
 .graph-change{border:1px solid var(--border,#ccd6df);border-radius:8px;padding:12px;margin:12px 0}.graph-change-columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}.graph-change code{overflow-wrap:anywhere}.graph-change section{min-width:0}@media(max-width:600px){.graph-change-columns{grid-template-columns:1fr}}
+/* Scene MVP: forms and provenance remain readable without graph layout. */
+#scenes-panel {padding:1rem; min-width:0}
+.scene-columns {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem}
+.scene-columns article {min-width:0;border:1px solid #bac8d4;border-radius:6px;padding:1rem}
+.scene-toolbar {display:flex;flex-wrap:wrap;gap:.5rem;align-items:end}
+.scene-toolbar label {flex:1;min-width:180px}
+.scene-columns label {display:block;margin:.6rem 0}
+.scene-columns select,.scene-columns input:not([type=checkbox]) {max-width:100%;width:100%;box-sizing:border-box}
+.scene-columns pre {max-height:420px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere}
+.scene-columns code,.scene-working-fact p {overflow-wrap:anywhere}
+.scene-columns fieldset {min-width:0;margin:.7rem 0}
+.scene-working-fact,.scene-bundle {border-top:1px solid #bac8d4;padding:.7rem 0}
+@media(max-width:900px){.scene-columns{grid-template-columns:minmax(0,1fr)}}

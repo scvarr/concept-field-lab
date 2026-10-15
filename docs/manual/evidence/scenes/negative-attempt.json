@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-15T09:22:25.800Z",
+  "node": "v24.19.0",
+  "scenarios": [],
+  "negative": [],
+  "errors": [],
+  "scope": "Ручная структура; детерминированные состояния и локальные разрешения. Без NLP/физического вывода.",
+  "browser": "155.0.8059.40",
+  "result": "failed",
+  "failure": "locator.selectOption: Error: strict mode violation: locator('[data-from]') resolved to 4 elements:\n    1) <select data-from=\"\">…</select> aka getByLabel('От объектаГайка · f2bccb36-')\n    2) <g class=\"\" tabindex=\"0\" role=\"button\" data-from=\"item\" data-to=\"category\" data-visual-only=\"false\" data-graph-edge=\"classification\" aria-label=\"Ребро Объект → Категория · classification\">…</g> aka getByLabel('Ребро Объект → Категория ·')\n    3) <g class=\"\" tabindex=\"0\" role=\"button\" data-to=\"place\" data-from=\"item\" data-visual-only=\"false\" data-graph-edge=\"location\" aria-label=\"Ребро Объект → Место · location\">…</g> aka getByLabel('Ребро Объект → Место · location')\n    4) <g class=\"\" tabindex=\"0\" role=\"button\" data-to=\"place\" data-from=\"item\" data-graph-edge=\"fall\" data-visual-only=\"false\" aria-label=\"Ребро Объект → Место · fall\">…</g> aka getByLabel('Ребро Объект → Место · fall')\n\nCall log:\n\u001b[2m  - waiting for locator('[data-from]')\u001b[22m\n\n    at input (E:\\Projects\\concept-field-lab\\tests\\scenes-browser.cjs:16:268)\n    at async main (E:\\Projects\\concept-field-lab\\tests\\scenes-browser.cjs:26:3)"
+}

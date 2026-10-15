@@ -56,7 +56,11 @@ def make_server(path, port=8765, legacy=False, definition_fetcher=None):
                 return self.send(403, {"error": "Используйте адрес 127.0.0.1 и порт приложения."})
             path = urlparse(self.path).path
             if path == "/api/state":
-                return self.send(200, {**store.read(), "token": token})
+                snapshot = store.read()
+                if not legacy:
+                    from app.scenes import observe
+                    snapshot['sceneView'] = observe(snapshot['state'])
+                return self.send(200, {**snapshot, "token": token})
             if path == "/api/history":
                 return self.send(200, store.history())
             if path == "/api/export":
@@ -153,6 +157,8 @@ def make_server(path, port=8765, legacy=False, definition_fetcher=None):
                     return self.send(400, {"error": str(exc)})
             files = {"/": ("index.html", "text/html"), "/app.js": ("app.js", "text/javascript"), "/workspace.js": ("workspace.js", "text/javascript"), "/builder.js": ("builder.js", "text/javascript"), "/graph-view.js": ("graph-view.js", "text/javascript"), "/accumulation.js": ("accumulation.js", "text/javascript"), "/style.css": ("style.css", "text/css"), "/favicon.svg": ("favicon.svg", "image/svg+xml")}
             if path not in files:
+                if path == '/scenes.js':
+                    return self.send(200, (STATIC / 'scenes.js').read_bytes(), 'text/javascript; charset=utf-8')
                 layout_files = {"/graph-editor.js": "graph-editor.js","/overview-geometry.js": "overview-geometry.js", "/permanent-layout.js": "permanent-layout.js", "/alpha-captions.js": "alpha-captions.js", "/canvas-builder.js": "canvas-builder.js", "/canvas-menu.js": "canvas-menu.js", "/layout-controls.js": "layout-controls.js", "/layout-engine.js": "layout-engine.js", "/layout-worker.js": "layout-worker.js", "/vendor/d3-7.9.0.min.js": "vendor/d3-7.9.0.min.js", "/vendor/dagre-1.1.5.min.js": "vendor/dagre-1.1.5.min.js"}
                 if path in layout_files:
                     return self.send(200, (STATIC / layout_files[path]).read_bytes(), "text/javascript; charset=utf-8")
@@ -193,7 +199,11 @@ def make_server(path, port=8765, legacy=False, definition_fetcher=None):
                 payload = data.get("data", {})
                 if not isinstance(payload, dict):
                     raise Invalid("Ожидались поля операции.")
-                return self.send(200, store.mutate(data.get("action"), payload, data.get("revision")))
+                snapshot = store.mutate(data.get("action"), payload, data.get("revision"))
+                if not legacy:
+                    from app.scenes import observe
+                    snapshot['sceneView'] = observe(snapshot['state'])
+                return self.send(200, snapshot)
             except Conflict as exc:
                 self.send(409, {"error": str(exc)})
             except (Invalid, ValueError, TypeError, KeyError, RecursionError) as exc:

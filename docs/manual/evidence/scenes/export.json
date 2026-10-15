@@ -1,0 +1,2450 @@
+{
+  "format": "concept-field-permanent",
+  "version": 3,
+  "kind": "graph",
+  "exportedAt": "2026-10-15T09:28:25.634127+00:00",
+  "state": {
+    "nodes": [
+      {
+        "id": "item",
+        "label": "",
+        "kind": "",
+        "notes": "",
+        "alternatives": "",
+        "source": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "origins": [
+          {
+            "definitionId": "scene-scaffold",
+            "snapshot": {
+              "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+              "dictionaryId": null,
+              "source": null
+            }
+          }
+        ],
+        "definitionId": "scene-scaffold",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "category",
+        "label": "",
+        "kind": "",
+        "notes": "",
+        "alternatives": "",
+        "source": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "origins": [
+          {
+            "definitionId": "scene-scaffold",
+            "snapshot": {
+              "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+              "dictionaryId": null,
+              "source": null
+            }
+          }
+        ],
+        "definitionId": "scene-scaffold",
+        "x": 260,
+        "y": 0
+      },
+      {
+        "id": "place",
+        "label": "",
+        "kind": "",
+        "notes": "",
+        "alternatives": "",
+        "source": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "origins": [
+          {
+            "definitionId": "scene-scaffold",
+            "snapshot": {
+              "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+              "dictionaryId": null,
+              "source": null
+            }
+          }
+        ],
+        "definitionId": "scene-scaffold",
+        "x": 520,
+        "y": 0
+      }
+    ],
+    "edges": [
+      {
+        "id": "classification",
+        "from": "item",
+        "to": "category",
+        "role": "relation",
+        "type": "является",
+        "notes": "",
+        "origins": [
+          {
+            "definitionId": "scene-scaffold",
+            "snapshot": {
+              "id": "classification",
+              "from": "item",
+              "to": "category",
+              "role": "relation",
+              "existing": false,
+              "parallelReason": "Разные операторские отношения: состояние и событие."
+            }
+          }
+        ],
+        "definitionId": "scene-scaffold",
+        "parallelReason": "Разные операторские отношения: состояние и событие."
+      },
+      {
+        "id": "location",
+        "from": "item",
+        "to": "place",
+        "role": "relation",
+        "type": "лежит на",
+        "notes": "",
+        "origins": [
+          {
+            "definitionId": "scene-scaffold",
+            "snapshot": {
+              "id": "location",
+              "from": "item",
+              "to": "place",
+              "role": "relation",
+              "existing": false,
+              "parallelReason": "Разные операторские отношения: состояние и событие."
+            }
+          }
+        ],
+        "definitionId": "scene-scaffold",
+        "parallelReason": "Разные операторские отношения: состояние и событие."
+      },
+      {
+        "id": "fall",
+        "from": "item",
+        "to": "place",
+        "role": "relation",
+        "type": "упал на",
+        "notes": "",
+        "origins": [
+          {
+            "definitionId": "scene-scaffold",
+            "snapshot": {
+              "id": "fall",
+              "from": "item",
+              "to": "place",
+              "role": "relation",
+              "existing": false,
+              "parallelReason": "Разные операторские отношения: состояние и событие."
+            }
+          }
+        ],
+        "definitionId": "scene-scaffold",
+        "parallelReason": "Разные операторские отношения: состояние и событие."
+      }
+    ],
+    "designations": [
+      {
+        "id": "word-item",
+        "text": "Объект",
+        "target": "item",
+        "notes": "",
+        "source": "Ручной ввод определения",
+        "origins": [
+          {
+            "definitionId": "scene-scaffold",
+            "snapshot": {
+              "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+              "dictionaryId": null,
+              "source": null
+            }
+          }
+        ],
+        "definitionId": "scene-scaffold"
+      },
+      {
+        "id": "word-category",
+        "text": "Категория",
+        "target": "category",
+        "notes": "",
+        "source": "Ручной ввод определения",
+        "origins": [
+          {
+            "definitionId": "scene-scaffold",
+            "snapshot": {
+              "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+              "dictionaryId": null,
+              "source": null
+            }
+          }
+        ],
+        "definitionId": "scene-scaffold"
+      },
+      {
+        "id": "word-place",
+        "text": "Место",
+        "target": "place",
+        "notes": "",
+        "source": "Ручной ввод определения",
+        "origins": [
+          {
+            "definitionId": "scene-scaffold",
+            "snapshot": {
+              "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+              "dictionaryId": null,
+              "source": null
+            }
+          }
+        ],
+        "definitionId": "scene-scaffold"
+      }
+    ],
+    "contextEdges": [
+      {
+        "id": "classification-location",
+        "from": "classification",
+        "to": "location",
+        "definitionId": "scene-scaffold"
+      }
+    ],
+    "definitionDrafts": [
+      {
+        "id": "scene-scaffold",
+        "title": "Каркас сцен MVP",
+        "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+        "nodes": [
+          {
+            "id": "item",
+            "existing": false,
+            "designation": "Объект",
+            "designations": [
+              {
+                "id": "word-item",
+                "text": "Объект"
+              }
+            ],
+            "x": 0,
+            "y": 0
+          },
+          {
+            "id": "category",
+            "existing": false,
+            "designation": "Категория",
+            "designations": [
+              {
+                "id": "word-category",
+                "text": "Категория"
+              }
+            ],
+            "x": 260,
+            "y": 0
+          },
+          {
+            "id": "place",
+            "existing": false,
+            "designation": "Место",
+            "designations": [
+              {
+                "id": "word-place",
+                "text": "Место"
+              }
+            ],
+            "x": 520,
+            "y": 0
+          }
+        ],
+        "edges": [
+          {
+            "id": "classification",
+            "from": "item",
+            "to": "category",
+            "role": "relation",
+            "existing": false,
+            "parallelReason": "Разные операторские отношения: состояние и событие."
+          },
+          {
+            "id": "location",
+            "from": "item",
+            "to": "place",
+            "role": "relation",
+            "existing": false,
+            "parallelReason": "Разные операторские отношения: состояние и событие."
+          },
+          {
+            "id": "fall",
+            "from": "item",
+            "to": "place",
+            "role": "relation",
+            "existing": false,
+            "parallelReason": "Разные операторские отношения: состояние и событие."
+          }
+        ],
+        "contextEdges": [
+          {
+            "id": "classification-location",
+            "from": "classification",
+            "to": "location"
+          }
+        ],
+        "routes": [],
+        "graphStale": "Общий граф изменён. Черновик сохранён; откройте актуальную область отдельно и перенесите нужные правки."
+      }
+    ],
+    "definitionPublications": {
+      "scene-scaffold": {
+        "title": "Каркас сцен MVP",
+        "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+        "nodeIds": [
+          "item",
+          "category",
+          "place"
+        ],
+        "edgeIds": [
+          "classification",
+          "location",
+          "fall"
+        ],
+        "contextIds": [
+          "classification-location"
+        ]
+      }
+    },
+    "sceneLab": {
+      "scenes": [
+        {
+          "id": "cc52ca34-abda-4a21-8dd8-5deb299805d9",
+          "label": "Гайка — деталь",
+          "kind": "knowledge",
+          "objects": [
+            {
+              "id": "9b62b73a-ad0a-4eaf-a72e-5f575979f2f2",
+              "label": "Гайка",
+              "conceptId": "item"
+            },
+            {
+              "id": "71b81089-22ef-41fb-9df3-48dca6d88bb7",
+              "label": "Деталь",
+              "conceptId": "category"
+            }
+          ],
+          "entries": [
+            {
+              "id": "fd67d455-408f-4845-bc03-a3b3f6e8e775",
+              "text": "Гайка — деталь",
+              "kind": "state",
+              "assertions": [
+                {
+                  "id": "ee028f05-b685-45b7-9229-07f42dd6016b",
+                  "edgeId": "classification",
+                  "template": {
+                    "id": "classification",
+                    "from": "item",
+                    "to": "category",
+                    "role": "relation",
+                    "type": "является"
+                  },
+                  "from": "9b62b73a-ad0a-4eaf-a72e-5f575979f2f2",
+                  "to": "71b81089-22ef-41fb-9df3-48dca6d88bb7",
+                  "slot": ""
+                }
+              ],
+              "retracts": []
+            }
+          ],
+          "links": []
+        },
+        {
+          "id": "8698988a-864f-405d-99ab-0bf95dd811b9",
+          "label": "Физика",
+          "kind": "knowledge",
+          "objects": [],
+          "entries": [],
+          "links": [
+            "cc52ca34-abda-4a21-8dd8-5deb299805d9"
+          ]
+        },
+        {
+          "id": "c9616452-de9c-4deb-952a-6dc8a1f355db",
+          "label": "Разговор",
+          "kind": "dialogue",
+          "objects": [
+            {
+              "id": "2a2101e3-48e1-43b4-9d78-a9fb931a73e2",
+              "label": "Винт №1",
+              "conceptId": "item"
+            },
+            {
+              "id": "c12600ff-9e24-4b84-aa2b-f510682830b4",
+              "label": "Стол",
+              "conceptId": "place"
+            },
+            {
+              "id": "44d6019b-6fa2-4448-9c47-1d713a30c1e8",
+              "label": "Пол",
+              "conceptId": "place"
+            },
+            {
+              "id": "4c1217f3-0400-4685-ab17-01d143332777",
+              "label": "Деталь",
+              "conceptId": "category"
+            }
+          ],
+          "entries": [
+            {
+              "id": "a84962cc-a4b1-4e9c-9d07-21b05e35051c",
+              "text": "Физика",
+              "kind": "context",
+              "assertions": [],
+              "retracts": [],
+              "contextSceneId": "8698988a-864f-405d-99ab-0bf95dd811b9"
+            },
+            {
+              "id": "b4581ee2-57d8-46ab-b0fb-c789d1db2aad",
+              "text": "Винт лежит на столе",
+              "kind": "state",
+              "assertions": [
+                {
+                  "id": "2c00b595-5839-4860-b473-359779db9e87",
+                  "edgeId": "location",
+                  "template": {
+                    "id": "location",
+                    "from": "item",
+                    "to": "place",
+                    "role": "relation",
+                    "type": "лежит на"
+                  },
+                  "from": "2a2101e3-48e1-43b4-9d78-a9fb931a73e2",
+                  "to": "c12600ff-9e24-4b84-aa2b-f510682830b4",
+                  "slot": "положение"
+                }
+              ],
+              "retracts": []
+            },
+            {
+              "id": "2f47a9fe-c232-41f5-a4d7-2946ce2c55ba",
+              "text": "Винт упал на пол",
+              "kind": "event",
+              "assertions": [
+                {
+                  "id": "a2a530e1-104d-4427-be06-5e3f7a78c6d5",
+                  "edgeId": "fall",
+                  "template": {
+                    "id": "fall",
+                    "from": "item",
+                    "to": "place",
+                    "role": "relation",
+                    "type": "упал на"
+                  },
+                  "from": "2a2101e3-48e1-43b4-9d78-a9fb931a73e2",
+                  "to": "44d6019b-6fa2-4448-9c47-1d713a30c1e8",
+                  "slot": ""
+                }
+              ],
+              "retracts": [
+                "2c00b595-5839-4860-b473-359779db9e87"
+              ]
+            },
+            {
+              "id": "4da617f7-11d1-40b0-9902-00fbd07829bc",
+              "text": "Винт лежит на полу",
+              "kind": "state",
+              "assertions": [
+                {
+                  "id": "3669f6de-ebc5-449b-bd9b-00e135f6e520",
+                  "edgeId": "location",
+                  "template": {
+                    "id": "location",
+                    "from": "item",
+                    "to": "place",
+                    "role": "relation",
+                    "type": "лежит на"
+                  },
+                  "from": "2a2101e3-48e1-43b4-9d78-a9fb931a73e2",
+                  "to": "44d6019b-6fa2-4448-9c47-1d713a30c1e8",
+                  "slot": "положение"
+                }
+              ],
+              "retracts": []
+            },
+            {
+              "id": "022a706f-01db-46ca-a5a3-2efcf025474b",
+              "text": "Винт — деталь",
+              "kind": "state",
+              "assertions": [
+                {
+                  "id": "ae42b779-2d6c-4d3c-9d46-2badac7752a0",
+                  "edgeId": "classification",
+                  "template": {
+                    "id": "classification",
+                    "from": "item",
+                    "to": "category",
+                    "role": "relation",
+                    "type": "является"
+                  },
+                  "from": "2a2101e3-48e1-43b4-9d78-a9fb931a73e2",
+                  "to": "4c1217f3-0400-4685-ab17-01d143332777",
+                  "slot": ""
+                }
+              ],
+              "retracts": []
+            }
+          ],
+          "links": [
+            "8698988a-864f-405d-99ab-0bf95dd811b9"
+          ]
+        }
+      ],
+      "workspaces": [
+        {
+          "id": "88789021-19e4-4aa4-96c4-1905b514071e",
+          "sceneId": "c9616452-de9c-4deb-952a-6dc8a1f355db",
+          "label": "Проверка копий",
+          "createdRevision": 17,
+          "bundles": [
+            {
+              "id": "3d152d81-fd83-4cf5-9149-aa97063f0bca",
+              "sourceSceneId": "cc52ca34-abda-4a21-8dd8-5deb299805d9",
+              "sourceRevision": 18,
+              "objects": [
+                {
+                  "id": "51bca449-fffe-4962-85b4-63f607632e10",
+                  "label": "Деталь",
+                  "conceptId": "category",
+                  "sourceObjectId": "71b81089-22ef-41fb-9df3-48dca6d88bb7",
+                  "structure": {
+                    "rootId": "b59fa255-1b9b-4b1e-84b5-bafc06e971d2",
+                    "nodes": [
+                      {
+                        "id": "b59fa255-1b9b-4b1e-84b5-bafc06e971d2",
+                        "label": "",
+                        "kind": "",
+                        "notes": "",
+                        "alternatives": "",
+                        "source": "",
+                        "designationOnly": true,
+                        "structure": "concept",
+                        "origins": [
+                          {
+                            "definitionId": "scene-scaffold",
+                            "snapshot": {
+                              "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                              "dictionaryId": null,
+                              "source": null
+                            }
+                          }
+                        ],
+                        "definitionId": "scene-scaffold",
+                        "x": 260,
+                        "y": 0,
+                        "sourceId": "category"
+                      }
+                    ],
+                    "edges": []
+                  }
+                },
+                {
+                  "id": "0cb9358c-9263-4fd8-9925-10d6d4d1d7cc",
+                  "label": "Гайка",
+                  "conceptId": "item",
+                  "sourceObjectId": "9b62b73a-ad0a-4eaf-a72e-5f575979f2f2",
+                  "structure": {
+                    "rootId": "98f8d9a2-264a-4f9c-bb7f-19e7fd01f1ec",
+                    "nodes": [
+                      {
+                        "id": "98f8d9a2-264a-4f9c-bb7f-19e7fd01f1ec",
+                        "label": "",
+                        "kind": "",
+                        "notes": "",
+                        "alternatives": "",
+                        "source": "",
+                        "designationOnly": true,
+                        "structure": "concept",
+                        "origins": [
+                          {
+                            "definitionId": "scene-scaffold",
+                            "snapshot": {
+                              "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                              "dictionaryId": null,
+                              "source": null
+                            }
+                          }
+                        ],
+                        "definitionId": "scene-scaffold",
+                        "x": 0,
+                        "y": 0,
+                        "sourceId": "item"
+                      }
+                    ],
+                    "edges": []
+                  }
+                }
+              ],
+              "assertions": [
+                {
+                  "id": "fa9433ae-3225-4594-9834-fa47cdb12a36",
+                  "edgeId": "classification",
+                  "template": {
+                    "id": "classification",
+                    "from": "item",
+                    "to": "category",
+                    "role": "relation",
+                    "type": "является"
+                  },
+                  "from": "0cb9358c-9263-4fd8-9925-10d6d4d1d7cc",
+                  "to": "51bca449-fffe-4962-85b4-63f607632e10",
+                  "slot": "",
+                  "activation": "inactive",
+                  "origin": {
+                    "sceneId": "cc52ca34-abda-4a21-8dd8-5deb299805d9",
+                    "entryId": "fd67d455-408f-4845-bc03-a3b3f6e8e775",
+                    "assertionId": "ee028f05-b685-45b7-9229-07f42dd6016b",
+                    "revision": 18,
+                    "kind": "state"
+                  }
+                }
+              ],
+              "contexts": []
+            },
+            {
+              "id": "cdd63b7f-7f46-47b6-8114-2dfe1f9c438e",
+              "sourceSceneId": "cc52ca34-abda-4a21-8dd8-5deb299805d9",
+              "sourceRevision": 20,
+              "objects": [
+                {
+                  "id": "cdc74ab9-c6ea-47b8-a6d6-d7695cb03984",
+                  "label": "Деталь",
+                  "conceptId": "category",
+                  "sourceObjectId": "71b81089-22ef-41fb-9df3-48dca6d88bb7",
+                  "structure": {
+                    "rootId": "3405704f-48f1-46dd-bdf4-02cffa571889",
+                    "nodes": [
+                      {
+                        "id": "3405704f-48f1-46dd-bdf4-02cffa571889",
+                        "label": "",
+                        "kind": "",
+                        "notes": "",
+                        "alternatives": "",
+                        "source": "",
+                        "designationOnly": true,
+                        "structure": "concept",
+                        "origins": [
+                          {
+                            "definitionId": "scene-scaffold",
+                            "snapshot": {
+                              "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                              "dictionaryId": null,
+                              "source": null
+                            }
+                          }
+                        ],
+                        "definitionId": "scene-scaffold",
+                        "x": 260,
+                        "y": 0,
+                        "sourceId": "category"
+                      }
+                    ],
+                    "edges": []
+                  }
+                },
+                {
+                  "id": "b09d8ea5-1d3e-499f-8876-5eacce3560a7",
+                  "label": "Гайка",
+                  "conceptId": "item",
+                  "sourceObjectId": "9b62b73a-ad0a-4eaf-a72e-5f575979f2f2",
+                  "structure": {
+                    "rootId": "84324083-de16-45ff-ad1a-394883bb3436",
+                    "nodes": [
+                      {
+                        "id": "84324083-de16-45ff-ad1a-394883bb3436",
+                        "label": "",
+                        "kind": "",
+                        "notes": "",
+                        "alternatives": "",
+                        "source": "",
+                        "designationOnly": true,
+                        "structure": "concept",
+                        "origins": [
+                          {
+                            "definitionId": "scene-scaffold",
+                            "snapshot": {
+                              "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                              "dictionaryId": null,
+                              "source": null
+                            }
+                          }
+                        ],
+                        "definitionId": "scene-scaffold",
+                        "x": 0,
+                        "y": 0,
+                        "sourceId": "item"
+                      }
+                    ],
+                    "edges": []
+                  }
+                }
+              ],
+              "assertions": [
+                {
+                  "id": "edd699ad-ef32-4b15-84cd-6a714af46b36",
+                  "edgeId": "classification",
+                  "template": {
+                    "id": "classification",
+                    "from": "item",
+                    "to": "category",
+                    "role": "relation",
+                    "type": "является"
+                  },
+                  "from": "b09d8ea5-1d3e-499f-8876-5eacce3560a7",
+                  "to": "cdc74ab9-c6ea-47b8-a6d6-d7695cb03984",
+                  "slot": "",
+                  "activation": "inactive",
+                  "origin": {
+                    "sceneId": "cc52ca34-abda-4a21-8dd8-5deb299805d9",
+                    "entryId": "fd67d455-408f-4845-bc03-a3b3f6e8e775",
+                    "assertionId": "ee028f05-b685-45b7-9229-07f42dd6016b",
+                    "revision": 20,
+                    "kind": "state"
+                  }
+                }
+              ],
+              "contexts": []
+            },
+            {
+              "id": "84b3b7a9-e6b8-42a4-bb77-7d2b9d73e936",
+              "sourceSceneId": "c9616452-de9c-4deb-952a-6dc8a1f355db",
+              "sourceRevision": 23,
+              "objects": [
+                {
+                  "id": "2f4c6fff-f3f0-4180-b321-164f859f9986",
+                  "label": "Винт №1",
+                  "conceptId": "item",
+                  "sourceObjectId": "2a2101e3-48e1-43b4-9d78-a9fb931a73e2",
+                  "structure": {
+                    "rootId": "83fc1fbb-d8d5-43ba-bd68-1d24251bba5b",
+                    "nodes": [
+                      {
+                        "id": "83fc1fbb-d8d5-43ba-bd68-1d24251bba5b",
+                        "label": "",
+                        "kind": "",
+                        "notes": "",
+                        "alternatives": "",
+                        "source": "",
+                        "designationOnly": true,
+                        "structure": "concept",
+                        "origins": [
+                          {
+                            "definitionId": "scene-scaffold",
+                            "snapshot": {
+                              "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                              "dictionaryId": null,
+                              "source": null
+                            }
+                          }
+                        ],
+                        "definitionId": "scene-scaffold",
+                        "x": 0,
+                        "y": 0,
+                        "sourceId": "item"
+                      }
+                    ],
+                    "edges": []
+                  }
+                },
+                {
+                  "id": "2f48518e-e202-4cc8-b569-be8013221880",
+                  "label": "Пол",
+                  "conceptId": "place",
+                  "sourceObjectId": "44d6019b-6fa2-4448-9c47-1d713a30c1e8",
+                  "structure": {
+                    "rootId": "b60cecb3-7e7e-44ff-8949-35a8481d5a7f",
+                    "nodes": [
+                      {
+                        "id": "b60cecb3-7e7e-44ff-8949-35a8481d5a7f",
+                        "label": "",
+                        "kind": "",
+                        "notes": "",
+                        "alternatives": "",
+                        "source": "",
+                        "designationOnly": true,
+                        "structure": "concept",
+                        "origins": [
+                          {
+                            "definitionId": "scene-scaffold",
+                            "snapshot": {
+                              "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                              "dictionaryId": null,
+                              "source": null
+                            }
+                          }
+                        ],
+                        "definitionId": "scene-scaffold",
+                        "x": 520,
+                        "y": 0,
+                        "sourceId": "place"
+                      }
+                    ],
+                    "edges": []
+                  }
+                },
+                {
+                  "id": "96e3034f-d60d-4160-9a44-269c3775291c",
+                  "label": "Деталь",
+                  "conceptId": "category",
+                  "sourceObjectId": "4c1217f3-0400-4685-ab17-01d143332777",
+                  "structure": {
+                    "rootId": "1c77a8f4-3811-4347-84a8-75e262b55aab",
+                    "nodes": [
+                      {
+                        "id": "1c77a8f4-3811-4347-84a8-75e262b55aab",
+                        "label": "",
+                        "kind": "",
+                        "notes": "",
+                        "alternatives": "",
+                        "source": "",
+                        "designationOnly": true,
+                        "structure": "concept",
+                        "origins": [
+                          {
+                            "definitionId": "scene-scaffold",
+                            "snapshot": {
+                              "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                              "dictionaryId": null,
+                              "source": null
+                            }
+                          }
+                        ],
+                        "definitionId": "scene-scaffold",
+                        "x": 260,
+                        "y": 0,
+                        "sourceId": "category"
+                      }
+                    ],
+                    "edges": []
+                  }
+                }
+              ],
+              "assertions": [
+                {
+                  "id": "ad2636c2-14e8-4ca7-b275-26651a10f9fc",
+                  "edgeId": "location",
+                  "template": {
+                    "id": "location",
+                    "from": "item",
+                    "to": "place",
+                    "role": "relation",
+                    "type": "лежит на"
+                  },
+                  "from": "2f4c6fff-f3f0-4180-b321-164f859f9986",
+                  "to": "2f48518e-e202-4cc8-b569-be8013221880",
+                  "slot": "положение",
+                  "activation": "inactive",
+                  "origin": {
+                    "sceneId": "c9616452-de9c-4deb-952a-6dc8a1f355db",
+                    "entryId": "4da617f7-11d1-40b0-9902-00fbd07829bc",
+                    "assertionId": "3669f6de-ebc5-449b-bd9b-00e135f6e520",
+                    "revision": 23,
+                    "kind": "state"
+                  }
+                },
+                {
+                  "id": "7c958250-770f-449b-bc07-bfa05d227a8a",
+                  "edgeId": "classification",
+                  "template": {
+                    "id": "classification",
+                    "from": "item",
+                    "to": "category",
+                    "role": "relation",
+                    "type": "является"
+                  },
+                  "from": "2f4c6fff-f3f0-4180-b321-164f859f9986",
+                  "to": "96e3034f-d60d-4160-9a44-269c3775291c",
+                  "slot": "",
+                  "activation": "inactive",
+                  "origin": {
+                    "sceneId": "c9616452-de9c-4deb-952a-6dc8a1f355db",
+                    "entryId": "022a706f-01db-46ca-a5a3-2efcf025474b",
+                    "assertionId": "ae42b779-2d6c-4d3c-9d46-2badac7752a0",
+                    "revision": 23,
+                    "kind": "state"
+                  }
+                }
+              ],
+              "contexts": [
+                {
+                  "id": "classification-location",
+                  "from": "classification",
+                  "to": "location",
+                  "definitionId": "scene-scaffold"
+                }
+              ]
+            }
+          ],
+          "trace": [
+            {
+              "op": "extract",
+              "bundleId": "3d152d81-fd83-4cf5-9149-aa97063f0bca",
+              "revision": 18
+            },
+            {
+              "op": "seed",
+              "to": "fa9433ae-3225-4594-9834-fa47cdb12a36",
+              "reason": "Явный выбор оператора",
+              "revision": 19
+            },
+            {
+              "op": "extract",
+              "bundleId": "cdd63b7f-7f46-47b6-8114-2dfe1f9c438e",
+              "revision": 20
+            },
+            {
+              "op": "extract",
+              "bundleId": "84b3b7a9-e6b8-42a4-bb77-7d2b9d73e936",
+              "revision": 23
+            },
+            {
+              "op": "seed",
+              "to": "7c958250-770f-449b-bc07-bfa05d227a8a",
+              "reason": "Явный выбор оператора",
+              "revision": 24
+            },
+            {
+              "op": "step",
+              "from": "7c958250-770f-449b-bc07-bfa05d227a8a",
+              "to": "ad2636c2-14e8-4ca7-b275-26651a10f9fc",
+              "contextId": "classification-location",
+              "revision": 25
+            },
+            {
+              "op": "reset",
+              "revision": 26
+            }
+          ]
+        }
+      ],
+      "currentSceneId": "c9616452-de9c-4deb-952a-6dc8a1f355db"
+    }
+  },
+  "historyEncoding": "rfc6902-chain-v1",
+  "history": [
+    {
+      "id": 0,
+      "time": "2026-10-15T09:28:21.680178+00:00",
+      "action": "init",
+      "detail": "{\"message\": \"Создан пустой постоянный граф\", \"legacyBackup\": null}",
+      "patch": [
+        {
+          "op": "remove",
+          "path": "/imports"
+        },
+        {
+          "op": "remove",
+          "path": "/matches"
+        },
+        {
+          "op": "remove",
+          "path": "/proposals"
+        },
+        {
+          "op": "remove",
+          "path": "/studies"
+        },
+        {
+          "op": "add",
+          "path": "/contextEdges",
+          "value": []
+        },
+        {
+          "op": "add",
+          "path": "/definitionDrafts",
+          "value": []
+        },
+        {
+          "op": "add",
+          "path": "/definitionPublications",
+          "value": {}
+        },
+        {
+          "op": "add",
+          "path": "/designations",
+          "value": []
+        },
+        {
+          "op": "add",
+          "path": "/edges",
+          "value": []
+        },
+        {
+          "op": "add",
+          "path": "/nodes",
+          "value": []
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "time": "2026-10-15T09:28:21.688119+00:00",
+      "action": "definition_save",
+      "detail": "Сохранён черновик определения",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/definitionDrafts/0",
+          "value": {
+            "id": "scene-scaffold",
+            "title": "Каркас сцен MVP",
+            "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+            "nodes": [
+              {
+                "id": "item",
+                "existing": false,
+                "designation": "Объект",
+                "designations": [
+                  {
+                    "id": "word-item",
+                    "text": "Объект"
+                  }
+                ],
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": "category",
+                "existing": false,
+                "designation": "Категория",
+                "designations": [
+                  {
+                    "id": "word-category",
+                    "text": "Категория"
+                  }
+                ],
+                "x": 260,
+                "y": 0
+              },
+              {
+                "id": "place",
+                "existing": false,
+                "designation": "Место",
+                "designations": [
+                  {
+                    "id": "word-place",
+                    "text": "Место"
+                  }
+                ],
+                "x": 520,
+                "y": 0
+              }
+            ],
+            "edges": [
+              {
+                "id": "classification",
+                "from": "item",
+                "to": "category",
+                "role": "relation",
+                "existing": false,
+                "parallelReason": "Разные операторские отношения: состояние и событие."
+              },
+              {
+                "id": "location",
+                "from": "item",
+                "to": "place",
+                "role": "relation",
+                "existing": false,
+                "parallelReason": "Разные операторские отношения: состояние и событие."
+              },
+              {
+                "id": "fall",
+                "from": "item",
+                "to": "place",
+                "role": "relation",
+                "existing": false,
+                "parallelReason": "Разные операторские отношения: состояние и событие."
+              }
+            ],
+            "contextEdges": [
+              {
+                "id": "classification-location",
+                "from": "classification",
+                "to": "location"
+              }
+            ],
+            "routes": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "time": "2026-10-15T09:28:21.697340+00:00",
+      "action": "definition_publish",
+      "detail": "Подтверждён ручной миниграф; прежние исходники сохранены",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/contextEdges/0",
+          "value": {
+            "id": "classification-location",
+            "from": "classification",
+            "to": "location",
+            "definitionId": "scene-scaffold"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/definitionPublications/scene-scaffold",
+          "value": {
+            "title": "Каркас сцен MVP",
+            "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+            "nodeIds": [
+              "item",
+              "category",
+              "place"
+            ],
+            "edgeIds": [
+              "classification",
+              "location",
+              "fall"
+            ],
+            "contextIds": [
+              "classification-location"
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": "/designations/0",
+          "value": {
+            "id": "word-item",
+            "text": "Объект",
+            "target": "item",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "scene-scaffold",
+                "snapshot": {
+                  "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                  "dictionaryId": null,
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "scene-scaffold"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/designations/1",
+          "value": {
+            "id": "word-category",
+            "text": "Категория",
+            "target": "category",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "scene-scaffold",
+                "snapshot": {
+                  "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                  "dictionaryId": null,
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "scene-scaffold"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/designations/2",
+          "value": {
+            "id": "word-place",
+            "text": "Место",
+            "target": "place",
+            "notes": "",
+            "source": "Ручной ввод определения",
+            "origins": [
+              {
+                "definitionId": "scene-scaffold",
+                "snapshot": {
+                  "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                  "dictionaryId": null,
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "scene-scaffold"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/edges/0",
+          "value": {
+            "id": "classification",
+            "from": "item",
+            "to": "category",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "scene-scaffold",
+                "snapshot": {
+                  "id": "classification",
+                  "from": "item",
+                  "to": "category",
+                  "role": "relation",
+                  "existing": false,
+                  "parallelReason": "Разные операторские отношения: состояние и событие."
+                }
+              }
+            ],
+            "definitionId": "scene-scaffold",
+            "parallelReason": "Разные операторские отношения: состояние и событие."
+          }
+        },
+        {
+          "op": "add",
+          "path": "/edges/1",
+          "value": {
+            "id": "location",
+            "from": "item",
+            "to": "place",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "scene-scaffold",
+                "snapshot": {
+                  "id": "location",
+                  "from": "item",
+                  "to": "place",
+                  "role": "relation",
+                  "existing": false,
+                  "parallelReason": "Разные операторские отношения: состояние и событие."
+                }
+              }
+            ],
+            "definitionId": "scene-scaffold",
+            "parallelReason": "Разные операторские отношения: состояние и событие."
+          }
+        },
+        {
+          "op": "add",
+          "path": "/edges/2",
+          "value": {
+            "id": "fall",
+            "from": "item",
+            "to": "place",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "definitionId": "scene-scaffold",
+                "snapshot": {
+                  "id": "fall",
+                  "from": "item",
+                  "to": "place",
+                  "role": "relation",
+                  "existing": false,
+                  "parallelReason": "Разные операторские отношения: состояние и событие."
+                }
+              }
+            ],
+            "definitionId": "scene-scaffold",
+            "parallelReason": "Разные операторские отношения: состояние и событие."
+          }
+        },
+        {
+          "op": "add",
+          "path": "/nodes/0",
+          "value": {
+            "id": "item",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "scene-scaffold",
+                "snapshot": {
+                  "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                  "dictionaryId": null,
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "scene-scaffold",
+            "x": 0,
+            "y": 0
+          }
+        },
+        {
+          "op": "add",
+          "path": "/nodes/1",
+          "value": {
+            "id": "category",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "scene-scaffold",
+                "snapshot": {
+                  "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                  "dictionaryId": null,
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "scene-scaffold",
+            "x": 260,
+            "y": 0
+          }
+        },
+        {
+          "op": "add",
+          "path": "/nodes/2",
+          "value": {
+            "id": "place",
+            "label": "",
+            "kind": "",
+            "notes": "",
+            "alternatives": "",
+            "source": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "origins": [
+              {
+                "definitionId": "scene-scaffold",
+                "snapshot": {
+                  "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                  "dictionaryId": null,
+                  "source": null
+                }
+              }
+            ],
+            "definitionId": "scene-scaffold",
+            "x": 520,
+            "y": 0
+          }
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "time": "2026-10-15T09:28:21.706802+00:00",
+      "action": "graph_apply",
+      "detail": "{\"message\": \"Подтверждена атомарная правка общего графа\", \"changes\": {\"nodes\": [], \"edges\": [{\"id\": \"classification\", \"before\": {\"id\": \"classification\", \"from\": \"item\", \"to\": \"category\", \"role\": \"relation\", \"type\": \"\", \"notes\": \"\", \"origins\": [{\"definitionId\": \"scene-scaffold\", \"snapshot\": {\"id\": \"classification\", \"from\": \"item\", \"to\": \"category\", \"role\": \"relation\", \"existing\": false, \"parallelReason\": \"Разные операторские отношения: состояние и событие.\"}}], \"definitionId\": \"scene-scaffold\", \"parallelReason\": \"Разные операторские отношения: состояние и событие.\"}, \"after\": {\"id\": \"classification\", \"from\": \"item\", \"to\": \"category\", \"role\": \"relation\", \"type\": \"является\", \"notes\": \"\", \"origins\": [{\"definitionId\": \"scene-scaffold\", \"snapshot\": {\"id\": \"classification\", \"from\": \"item\", \"to\": \"category\", \"role\": \"relation\", \"existing\": false, \"parallelReason\": \"Разные операторские отношения: состояние и событие.\"}}], \"definitionId\": \"scene-scaffold\", \"parallelReason\": \"Разные операторские отношения: состояние и событие.\"}}, {\"id\": \"fall\", \"before\": {\"id\": \"fall\", \"from\": \"item\", \"to\": \"place\", \"role\": \"relation\", \"type\": \"\", \"notes\": \"\", \"origins\": [{\"definitionId\": \"scene-scaffold\", \"snapshot\": {\"id\": \"fall\", \"from\": \"item\", \"to\": \"place\", \"role\": \"relation\", \"existing\": false, \"parallelReason\": \"Разные операторские отношения: состояние и событие.\"}}], \"definitionId\": \"scene-scaffold\", \"parallelReason\": \"Разные операторские отношения: состояние и событие.\"}, \"after\": {\"id\": \"fall\", \"from\": \"item\", \"to\": \"place\", \"role\": \"relation\", \"type\": \"упал на\", \"notes\": \"\", \"origins\": [{\"definitionId\": \"scene-scaffold\", \"snapshot\": {\"id\": \"fall\", \"from\": \"item\", \"to\": \"place\", \"role\": \"relation\", \"existing\": false, \"parallelReason\": \"Разные операторские отношения: состояние и событие.\"}}], \"definitionId\": \"scene-scaffold\", \"parallelReason\": \"Разные операторские отношения: состояние и событие.\"}}, {\"id\": \"location\", \"before\": {\"id\": \"location\", \"from\": \"item\", \"to\": \"place\", \"role\": \"relation\", \"type\": \"\", \"notes\": \"\", \"origins\": [{\"definitionId\": \"scene-scaffold\", \"snapshot\": {\"id\": \"location\", \"from\": \"item\", \"to\": \"place\", \"role\": \"relation\", \"existing\": false, \"parallelReason\": \"Разные операторские отношения: состояние и событие.\"}}], \"definitionId\": \"scene-scaffold\", \"parallelReason\": \"Разные операторские отношения: состояние и событие.\"}, \"after\": {\"id\": \"location\", \"from\": \"item\", \"to\": \"place\", \"role\": \"relation\", \"type\": \"лежит на\", \"notes\": \"\", \"origins\": [{\"definitionId\": \"scene-scaffold\", \"snapshot\": {\"id\": \"location\", \"from\": \"item\", \"to\": \"place\", \"role\": \"relation\", \"existing\": false, \"parallelReason\": \"Разные операторские отношения: состояние и событие.\"}}], \"definitionId\": \"scene-scaffold\", \"parallelReason\": \"Разные операторские отношения: состояние и событие.\"}}], \"contextEdges\": [], \"designations\": [], \"definitions\": [], \"affectedContexts\": [{\"id\": \"classification-location\", \"from\": \"classification\", \"to\": \"location\", \"definitionId\": \"scene-scaffold\"}], \"affectedDefinitions\": {\"scene-scaffold\": {\"title\": \"Каркас сцен MVP\", \"definition\": \"Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.\", \"nodeIds\": [\"item\", \"category\", \"place\"], \"edgeIds\": [\"classification\", \"location\", \"fall\"], \"contextIds\": [\"classification-location\"]}}, \"drafts\": [{\"id\": \"scene-scaffold\", \"before\": {\"title\": \"Каркас сцен MVP\", \"graphStale\": null, \"nodeIds\": [\"item\", \"category\", \"place\"], \"mode\": \"черновик определения\"}, \"after\": {\"title\": \"Каркас сцен MVP\", \"graphStale\": \"Общий граф изменён. Черновик сохранён; откройте актуальную область отдельно и перенесите нужные правки.\", \"nodeIds\": [\"item\", \"category\", \"place\"], \"mode\": \"черновик определения\"}}]}}",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/definitionDrafts/0/graphStale",
+          "value": "Общий граф изменён. Черновик сохранён; откройте актуальную область отдельно и перенесите нужные правки."
+        },
+        {
+          "op": "replace",
+          "path": "/edges/0/type",
+          "value": "является"
+        },
+        {
+          "op": "replace",
+          "path": "/edges/1/type",
+          "value": "лежит на"
+        },
+        {
+          "op": "replace",
+          "path": "/edges/2/type",
+          "value": "упал на"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "time": "2026-10-15T09:28:22.790723+00:00",
+      "action": "scene_create",
+      "detail": "Сцены MVP: scene_create",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab",
+          "value": {
+            "scenes": [
+              {
+                "id": "cc52ca34-abda-4a21-8dd8-5deb299805d9",
+                "label": "Гайка — деталь",
+                "kind": "knowledge",
+                "objects": [],
+                "entries": [],
+                "links": []
+              }
+            ],
+            "workspaces": [],
+            "currentSceneId": null
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "time": "2026-10-15T09:28:22.905058+00:00",
+      "action": "scene_object",
+      "detail": "Сцены MVP: scene_object",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/scenes/0/objects/0",
+          "value": {
+            "id": "9b62b73a-ad0a-4eaf-a72e-5f575979f2f2",
+            "label": "Гайка",
+            "conceptId": "item"
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "time": "2026-10-15T09:28:23.005276+00:00",
+      "action": "scene_object",
+      "detail": "Сцены MVP: scene_object",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/scenes/0/objects/1",
+          "value": {
+            "id": "71b81089-22ef-41fb-9df3-48dca6d88bb7",
+            "label": "Деталь",
+            "conceptId": "category"
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "time": "2026-10-15T09:28:23.090513+00:00",
+      "action": "scene_input",
+      "detail": "Сцены MVP: scene_input",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/scenes/0/entries/0",
+          "value": {
+            "id": "fd67d455-408f-4845-bc03-a3b3f6e8e775",
+            "text": "Гайка — деталь",
+            "kind": "state",
+            "assertions": [
+              {
+                "id": "ee028f05-b685-45b7-9229-07f42dd6016b",
+                "edgeId": "classification",
+                "template": {
+                  "id": "classification",
+                  "from": "item",
+                  "to": "category",
+                  "role": "relation",
+                  "type": "является"
+                },
+                "from": "9b62b73a-ad0a-4eaf-a72e-5f575979f2f2",
+                "to": "71b81089-22ef-41fb-9df3-48dca6d88bb7",
+                "slot": ""
+              }
+            ],
+            "retracts": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "time": "2026-10-15T09:28:23.189278+00:00",
+      "action": "scene_create",
+      "detail": "Сцены MVP: scene_create",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/scenes/1",
+          "value": {
+            "id": "8698988a-864f-405d-99ab-0bf95dd811b9",
+            "label": "Физика",
+            "kind": "knowledge",
+            "objects": [],
+            "entries": [],
+            "links": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "time": "2026-10-15T09:28:23.289417+00:00",
+      "action": "scene_link",
+      "detail": "Сцены MVP: scene_link",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/sceneLab/scenes/1/links",
+          "value": [
+            "cc52ca34-abda-4a21-8dd8-5deb299805d9"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "time": "2026-10-15T09:28:23.389421+00:00",
+      "action": "scene_create",
+      "detail": "Сцены MVP: scene_create",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/sceneLab/currentSceneId",
+          "value": "c9616452-de9c-4deb-952a-6dc8a1f355db"
+        },
+        {
+          "op": "add",
+          "path": "/sceneLab/scenes/2",
+          "value": {
+            "id": "c9616452-de9c-4deb-952a-6dc8a1f355db",
+            "label": "Разговор",
+            "kind": "dialogue",
+            "objects": [],
+            "entries": [],
+            "links": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "time": "2026-10-15T09:28:23.472215+00:00",
+      "action": "scene_context",
+      "detail": "Сцены MVP: scene_context",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/scenes/2/entries/0",
+          "value": {
+            "id": "a84962cc-a4b1-4e9c-9d07-21b05e35051c",
+            "text": "Физика",
+            "kind": "context",
+            "assertions": [],
+            "retracts": [],
+            "contextSceneId": "8698988a-864f-405d-99ab-0bf95dd811b9"
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/sceneLab/scenes/2/links",
+          "value": [
+            "8698988a-864f-405d-99ab-0bf95dd811b9"
+          ]
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "time": "2026-10-15T09:28:23.572024+00:00",
+      "action": "scene_object",
+      "detail": "Сцены MVP: scene_object",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/scenes/2/objects/0",
+          "value": {
+            "id": "2a2101e3-48e1-43b4-9d78-a9fb931a73e2",
+            "label": "Винт №1",
+            "conceptId": "item"
+          }
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "time": "2026-10-15T09:28:23.672847+00:00",
+      "action": "scene_object",
+      "detail": "Сцены MVP: scene_object",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/scenes/2/objects/1",
+          "value": {
+            "id": "c12600ff-9e24-4b84-aa2b-f510682830b4",
+            "label": "Стол",
+            "conceptId": "place"
+          }
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "time": "2026-10-15T09:28:23.772533+00:00",
+      "action": "scene_object",
+      "detail": "Сцены MVP: scene_object",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/scenes/2/objects/2",
+          "value": {
+            "id": "44d6019b-6fa2-4448-9c47-1d713a30c1e8",
+            "label": "Пол",
+            "conceptId": "place"
+          }
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "time": "2026-10-15T09:28:23.856752+00:00",
+      "action": "scene_input",
+      "detail": "Сцены MVP: scene_input",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/scenes/2/entries/1",
+          "value": {
+            "id": "b4581ee2-57d8-46ab-b0fb-c789d1db2aad",
+            "text": "Винт лежит на столе",
+            "kind": "state",
+            "assertions": [
+              {
+                "id": "2c00b595-5839-4860-b473-359779db9e87",
+                "edgeId": "location",
+                "template": {
+                  "id": "location",
+                  "from": "item",
+                  "to": "place",
+                  "role": "relation",
+                  "type": "лежит на"
+                },
+                "from": "2a2101e3-48e1-43b4-9d78-a9fb931a73e2",
+                "to": "c12600ff-9e24-4b84-aa2b-f510682830b4",
+                "slot": "положение"
+              }
+            ],
+            "retracts": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "time": "2026-10-15T09:28:23.974873+00:00",
+      "action": "scene_input",
+      "detail": "Сцены MVP: scene_input",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/scenes/2/entries/2",
+          "value": {
+            "id": "2f47a9fe-c232-41f5-a4d7-2946ce2c55ba",
+            "text": "Винт упал на пол",
+            "kind": "event",
+            "assertions": [
+              {
+                "id": "a2a530e1-104d-4427-be06-5e3f7a78c6d5",
+                "edgeId": "fall",
+                "template": {
+                  "id": "fall",
+                  "from": "item",
+                  "to": "place",
+                  "role": "relation",
+                  "type": "упал на"
+                },
+                "from": "2a2101e3-48e1-43b4-9d78-a9fb931a73e2",
+                "to": "44d6019b-6fa2-4448-9c47-1d713a30c1e8",
+                "slot": ""
+              }
+            ],
+            "retracts": [
+              "2c00b595-5839-4860-b473-359779db9e87"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "time": "2026-10-15T09:28:24.056001+00:00",
+      "action": "scene_input",
+      "detail": "Сцены MVP: scene_input",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/scenes/2/entries/3",
+          "value": {
+            "id": "4da617f7-11d1-40b0-9902-00fbd07829bc",
+            "text": "Винт лежит на полу",
+            "kind": "state",
+            "assertions": [
+              {
+                "id": "3669f6de-ebc5-449b-bd9b-00e135f6e520",
+                "edgeId": "location",
+                "template": {
+                  "id": "location",
+                  "from": "item",
+                  "to": "place",
+                  "role": "relation",
+                  "type": "лежит на"
+                },
+                "from": "2a2101e3-48e1-43b4-9d78-a9fb931a73e2",
+                "to": "44d6019b-6fa2-4448-9c47-1d713a30c1e8",
+                "slot": "положение"
+              }
+            ],
+            "retracts": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "time": "2026-10-15T09:28:24.222581+00:00",
+      "action": "scene_workspace",
+      "detail": "Сцены MVP: scene_workspace",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/workspaces/0",
+          "value": {
+            "id": "88789021-19e4-4aa4-96c4-1905b514071e",
+            "sceneId": "c9616452-de9c-4deb-952a-6dc8a1f355db",
+            "label": "Проверка копий",
+            "createdRevision": 17,
+            "bundles": [],
+            "trace": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "time": "2026-10-15T09:28:24.322755+00:00",
+      "action": "scene_extract",
+      "detail": "Сцены MVP: scene_extract",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/workspaces/0/bundles/0",
+          "value": {
+            "id": "3d152d81-fd83-4cf5-9149-aa97063f0bca",
+            "sourceSceneId": "cc52ca34-abda-4a21-8dd8-5deb299805d9",
+            "sourceRevision": 18,
+            "objects": [
+              {
+                "id": "51bca449-fffe-4962-85b4-63f607632e10",
+                "label": "Деталь",
+                "conceptId": "category",
+                "sourceObjectId": "71b81089-22ef-41fb-9df3-48dca6d88bb7",
+                "structure": {
+                  "rootId": "b59fa255-1b9b-4b1e-84b5-bafc06e971d2",
+                  "nodes": [
+                    {
+                      "id": "b59fa255-1b9b-4b1e-84b5-bafc06e971d2",
+                      "label": "",
+                      "kind": "",
+                      "notes": "",
+                      "alternatives": "",
+                      "source": "",
+                      "designationOnly": true,
+                      "structure": "concept",
+                      "origins": [
+                        {
+                          "definitionId": "scene-scaffold",
+                          "snapshot": {
+                            "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                            "dictionaryId": null,
+                            "source": null
+                          }
+                        }
+                      ],
+                      "definitionId": "scene-scaffold",
+                      "x": 260,
+                      "y": 0,
+                      "sourceId": "category"
+                    }
+                  ],
+                  "edges": []
+                }
+              },
+              {
+                "id": "0cb9358c-9263-4fd8-9925-10d6d4d1d7cc",
+                "label": "Гайка",
+                "conceptId": "item",
+                "sourceObjectId": "9b62b73a-ad0a-4eaf-a72e-5f575979f2f2",
+                "structure": {
+                  "rootId": "98f8d9a2-264a-4f9c-bb7f-19e7fd01f1ec",
+                  "nodes": [
+                    {
+                      "id": "98f8d9a2-264a-4f9c-bb7f-19e7fd01f1ec",
+                      "label": "",
+                      "kind": "",
+                      "notes": "",
+                      "alternatives": "",
+                      "source": "",
+                      "designationOnly": true,
+                      "structure": "concept",
+                      "origins": [
+                        {
+                          "definitionId": "scene-scaffold",
+                          "snapshot": {
+                            "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                            "dictionaryId": null,
+                            "source": null
+                          }
+                        }
+                      ],
+                      "definitionId": "scene-scaffold",
+                      "x": 0,
+                      "y": 0,
+                      "sourceId": "item"
+                    }
+                  ],
+                  "edges": []
+                }
+              }
+            ],
+            "assertions": [
+              {
+                "id": "fa9433ae-3225-4594-9834-fa47cdb12a36",
+                "edgeId": "classification",
+                "template": {
+                  "id": "classification",
+                  "from": "item",
+                  "to": "category",
+                  "role": "relation",
+                  "type": "является"
+                },
+                "from": "0cb9358c-9263-4fd8-9925-10d6d4d1d7cc",
+                "to": "51bca449-fffe-4962-85b4-63f607632e10",
+                "slot": "",
+                "activation": "inactive",
+                "origin": {
+                  "sceneId": "cc52ca34-abda-4a21-8dd8-5deb299805d9",
+                  "entryId": "fd67d455-408f-4845-bc03-a3b3f6e8e775",
+                  "assertionId": "ee028f05-b685-45b7-9229-07f42dd6016b",
+                  "revision": 18,
+                  "kind": "state"
+                }
+              }
+            ],
+            "contexts": []
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/sceneLab/workspaces/0/trace",
+          "value": [
+            {
+              "op": "extract",
+              "bundleId": "3d152d81-fd83-4cf5-9149-aa97063f0bca",
+              "revision": 18
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "time": "2026-10-15T09:28:24.389481+00:00",
+      "action": "scene_seed",
+      "detail": "Сцены MVP: scene_seed",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/sceneLab/workspaces/0/bundles/0/assertions/0/activation",
+          "value": "seed"
+        },
+        {
+          "op": "replace",
+          "path": "/sceneLab/workspaces/0/trace",
+          "value": [
+            {
+              "op": "extract",
+              "bundleId": "3d152d81-fd83-4cf5-9149-aa97063f0bca",
+              "revision": 18
+            },
+            {
+              "op": "seed",
+              "to": "fa9433ae-3225-4594-9834-fa47cdb12a36",
+              "reason": "Явный выбор оператора",
+              "revision": 19
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "time": "2026-10-15T09:28:24.489618+00:00",
+      "action": "scene_extract",
+      "detail": "Сцены MVP: scene_extract",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/workspaces/0/bundles/1",
+          "value": {
+            "id": "cdd63b7f-7f46-47b6-8114-2dfe1f9c438e",
+            "sourceSceneId": "cc52ca34-abda-4a21-8dd8-5deb299805d9",
+            "sourceRevision": 20,
+            "objects": [
+              {
+                "id": "cdc74ab9-c6ea-47b8-a6d6-d7695cb03984",
+                "label": "Деталь",
+                "conceptId": "category",
+                "sourceObjectId": "71b81089-22ef-41fb-9df3-48dca6d88bb7",
+                "structure": {
+                  "rootId": "3405704f-48f1-46dd-bdf4-02cffa571889",
+                  "nodes": [
+                    {
+                      "id": "3405704f-48f1-46dd-bdf4-02cffa571889",
+                      "label": "",
+                      "kind": "",
+                      "notes": "",
+                      "alternatives": "",
+                      "source": "",
+                      "designationOnly": true,
+                      "structure": "concept",
+                      "origins": [
+                        {
+                          "definitionId": "scene-scaffold",
+                          "snapshot": {
+                            "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                            "dictionaryId": null,
+                            "source": null
+                          }
+                        }
+                      ],
+                      "definitionId": "scene-scaffold",
+                      "x": 260,
+                      "y": 0,
+                      "sourceId": "category"
+                    }
+                  ],
+                  "edges": []
+                }
+              },
+              {
+                "id": "b09d8ea5-1d3e-499f-8876-5eacce3560a7",
+                "label": "Гайка",
+                "conceptId": "item",
+                "sourceObjectId": "9b62b73a-ad0a-4eaf-a72e-5f575979f2f2",
+                "structure": {
+                  "rootId": "84324083-de16-45ff-ad1a-394883bb3436",
+                  "nodes": [
+                    {
+                      "id": "84324083-de16-45ff-ad1a-394883bb3436",
+                      "label": "",
+                      "kind": "",
+                      "notes": "",
+                      "alternatives": "",
+                      "source": "",
+                      "designationOnly": true,
+                      "structure": "concept",
+                      "origins": [
+                        {
+                          "definitionId": "scene-scaffold",
+                          "snapshot": {
+                            "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                            "dictionaryId": null,
+                            "source": null
+                          }
+                        }
+                      ],
+                      "definitionId": "scene-scaffold",
+                      "x": 0,
+                      "y": 0,
+                      "sourceId": "item"
+                    }
+                  ],
+                  "edges": []
+                }
+              }
+            ],
+            "assertions": [
+              {
+                "id": "edd699ad-ef32-4b15-84cd-6a714af46b36",
+                "edgeId": "classification",
+                "template": {
+                  "id": "classification",
+                  "from": "item",
+                  "to": "category",
+                  "role": "relation",
+                  "type": "является"
+                },
+                "from": "b09d8ea5-1d3e-499f-8876-5eacce3560a7",
+                "to": "cdc74ab9-c6ea-47b8-a6d6-d7695cb03984",
+                "slot": "",
+                "activation": "inactive",
+                "origin": {
+                  "sceneId": "cc52ca34-abda-4a21-8dd8-5deb299805d9",
+                  "entryId": "fd67d455-408f-4845-bc03-a3b3f6e8e775",
+                  "assertionId": "ee028f05-b685-45b7-9229-07f42dd6016b",
+                  "revision": 20,
+                  "kind": "state"
+                }
+              }
+            ],
+            "contexts": []
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/sceneLab/workspaces/0/trace",
+          "value": [
+            {
+              "op": "extract",
+              "bundleId": "3d152d81-fd83-4cf5-9149-aa97063f0bca",
+              "revision": 18
+            },
+            {
+              "op": "seed",
+              "to": "fa9433ae-3225-4594-9834-fa47cdb12a36",
+              "reason": "Явный выбор оператора",
+              "revision": 19
+            },
+            {
+              "op": "extract",
+              "bundleId": "cdd63b7f-7f46-47b6-8114-2dfe1f9c438e",
+              "revision": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "time": "2026-10-15T09:28:24.674768+00:00",
+      "action": "scene_object",
+      "detail": "Сцены MVP: scene_object",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/scenes/2/objects/3",
+          "value": {
+            "id": "4c1217f3-0400-4685-ab17-01d143332777",
+            "label": "Деталь",
+            "conceptId": "category"
+          }
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "time": "2026-10-15T09:28:24.756438+00:00",
+      "action": "scene_input",
+      "detail": "Сцены MVP: scene_input",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/scenes/2/entries/4",
+          "value": {
+            "id": "022a706f-01db-46ca-a5a3-2efcf025474b",
+            "text": "Винт — деталь",
+            "kind": "state",
+            "assertions": [
+              {
+                "id": "ae42b779-2d6c-4d3c-9d46-2badac7752a0",
+                "edgeId": "classification",
+                "template": {
+                  "id": "classification",
+                  "from": "item",
+                  "to": "category",
+                  "role": "relation",
+                  "type": "является"
+                },
+                "from": "2a2101e3-48e1-43b4-9d78-a9fb931a73e2",
+                "to": "4c1217f3-0400-4685-ab17-01d143332777",
+                "slot": ""
+              }
+            ],
+            "retracts": []
+          }
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "time": "2026-10-15T09:28:24.889822+00:00",
+      "action": "scene_extract",
+      "detail": "Сцены MVP: scene_extract",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/sceneLab/workspaces/0/bundles/2",
+          "value": {
+            "id": "84b3b7a9-e6b8-42a4-bb77-7d2b9d73e936",
+            "sourceSceneId": "c9616452-de9c-4deb-952a-6dc8a1f355db",
+            "sourceRevision": 23,
+            "objects": [
+              {
+                "id": "2f4c6fff-f3f0-4180-b321-164f859f9986",
+                "label": "Винт №1",
+                "conceptId": "item",
+                "sourceObjectId": "2a2101e3-48e1-43b4-9d78-a9fb931a73e2",
+                "structure": {
+                  "rootId": "83fc1fbb-d8d5-43ba-bd68-1d24251bba5b",
+                  "nodes": [
+                    {
+                      "id": "83fc1fbb-d8d5-43ba-bd68-1d24251bba5b",
+                      "label": "",
+                      "kind": "",
+                      "notes": "",
+                      "alternatives": "",
+                      "source": "",
+                      "designationOnly": true,
+                      "structure": "concept",
+                      "origins": [
+                        {
+                          "definitionId": "scene-scaffold",
+                          "snapshot": {
+                            "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                            "dictionaryId": null,
+                            "source": null
+                          }
+                        }
+                      ],
+                      "definitionId": "scene-scaffold",
+                      "x": 0,
+                      "y": 0,
+                      "sourceId": "item"
+                    }
+                  ],
+                  "edges": []
+                }
+              },
+              {
+                "id": "2f48518e-e202-4cc8-b569-be8013221880",
+                "label": "Пол",
+                "conceptId": "place",
+                "sourceObjectId": "44d6019b-6fa2-4448-9c47-1d713a30c1e8",
+                "structure": {
+                  "rootId": "b60cecb3-7e7e-44ff-8949-35a8481d5a7f",
+                  "nodes": [
+                    {
+                      "id": "b60cecb3-7e7e-44ff-8949-35a8481d5a7f",
+                      "label": "",
+                      "kind": "",
+                      "notes": "",
+                      "alternatives": "",
+                      "source": "",
+                      "designationOnly": true,
+                      "structure": "concept",
+                      "origins": [
+                        {
+                          "definitionId": "scene-scaffold",
+                          "snapshot": {
+                            "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                            "dictionaryId": null,
+                            "source": null
+                          }
+                        }
+                      ],
+                      "definitionId": "scene-scaffold",
+                      "x": 520,
+                      "y": 0,
+                      "sourceId": "place"
+                    }
+                  ],
+                  "edges": []
+                }
+              },
+              {
+                "id": "96e3034f-d60d-4160-9a44-269c3775291c",
+                "label": "Деталь",
+                "conceptId": "category",
+                "sourceObjectId": "4c1217f3-0400-4685-ab17-01d143332777",
+                "structure": {
+                  "rootId": "1c77a8f4-3811-4347-84a8-75e262b55aab",
+                  "nodes": [
+                    {
+                      "id": "1c77a8f4-3811-4347-84a8-75e262b55aab",
+                      "label": "",
+                      "kind": "",
+                      "notes": "",
+                      "alternatives": "",
+                      "source": "",
+                      "designationOnly": true,
+                      "structure": "concept",
+                      "origins": [
+                        {
+                          "definitionId": "scene-scaffold",
+                          "snapshot": {
+                            "definition": "Операторские шаблоны возможных заполнений, без конкретных объектов и фактов.",
+                            "dictionaryId": null,
+                            "source": null
+                          }
+                        }
+                      ],
+                      "definitionId": "scene-scaffold",
+                      "x": 260,
+                      "y": 0,
+                      "sourceId": "category"
+                    }
+                  ],
+                  "edges": []
+                }
+              }
+            ],
+            "assertions": [
+              {
+                "id": "ad2636c2-14e8-4ca7-b275-26651a10f9fc",
+                "edgeId": "location",
+                "template": {
+                  "id": "location",
+                  "from": "item",
+                  "to": "place",
+                  "role": "relation",
+                  "type": "лежит на"
+                },
+                "from": "2f4c6fff-f3f0-4180-b321-164f859f9986",
+                "to": "2f48518e-e202-4cc8-b569-be8013221880",
+                "slot": "положение",
+                "activation": "inactive",
+                "origin": {
+                  "sceneId": "c9616452-de9c-4deb-952a-6dc8a1f355db",
+                  "entryId": "4da617f7-11d1-40b0-9902-00fbd07829bc",
+                  "assertionId": "3669f6de-ebc5-449b-bd9b-00e135f6e520",
+                  "revision": 23,
+                  "kind": "state"
+                }
+              },
+              {
+                "id": "7c958250-770f-449b-bc07-bfa05d227a8a",
+                "edgeId": "classification",
+                "template": {
+                  "id": "classification",
+                  "from": "item",
+                  "to": "category",
+                  "role": "relation",
+                  "type": "является"
+                },
+                "from": "2f4c6fff-f3f0-4180-b321-164f859f9986",
+                "to": "96e3034f-d60d-4160-9a44-269c3775291c",
+                "slot": "",
+                "activation": "inactive",
+                "origin": {
+                  "sceneId": "c9616452-de9c-4deb-952a-6dc8a1f355db",
+                  "entryId": "022a706f-01db-46ca-a5a3-2efcf025474b",
+                  "assertionId": "ae42b779-2d6c-4d3c-9d46-2badac7752a0",
+                  "revision": 23,
+                  "kind": "state"
+                }
+              }
+            ],
+            "contexts": [
+              {
+                "id": "classification-location",
+                "from": "classification",
+                "to": "location",
+                "definitionId": "scene-scaffold"
+              }
+            ]
+          }
+        },
+        {
+          "op": "replace",
+          "path": "/sceneLab/workspaces/0/trace",
+          "value": [
+            {
+              "op": "extract",
+              "bundleId": "3d152d81-fd83-4cf5-9149-aa97063f0bca",
+              "revision": 18
+            },
+            {
+              "op": "seed",
+              "to": "fa9433ae-3225-4594-9834-fa47cdb12a36",
+              "reason": "Явный выбор оператора",
+              "revision": 19
+            },
+            {
+              "op": "extract",
+              "bundleId": "cdd63b7f-7f46-47b6-8114-2dfe1f9c438e",
+              "revision": 20
+            },
+            {
+              "op": "extract",
+              "bundleId": "84b3b7a9-e6b8-42a4-bb77-7d2b9d73e936",
+              "revision": 23
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "time": "2026-10-15T09:28:24.956949+00:00",
+      "action": "scene_seed",
+      "detail": "Сцены MVP: scene_seed",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/sceneLab/workspaces/0/bundles/2/assertions/1/activation",
+          "value": "seed"
+        },
+        {
+          "op": "replace",
+          "path": "/sceneLab/workspaces/0/trace",
+          "value": [
+            {
+              "op": "extract",
+              "bundleId": "3d152d81-fd83-4cf5-9149-aa97063f0bca",
+              "revision": 18
+            },
+            {
+              "op": "seed",
+              "to": "fa9433ae-3225-4594-9834-fa47cdb12a36",
+              "reason": "Явный выбор оператора",
+              "revision": 19
+            },
+            {
+              "op": "extract",
+              "bundleId": "cdd63b7f-7f46-47b6-8114-2dfe1f9c438e",
+              "revision": 20
+            },
+            {
+              "op": "extract",
+              "bundleId": "84b3b7a9-e6b8-42a4-bb77-7d2b9d73e936",
+              "revision": 23
+            },
+            {
+              "op": "seed",
+              "to": "7c958250-770f-449b-bc07-bfa05d227a8a",
+              "reason": "Явный выбор оператора",
+              "revision": 24
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "time": "2026-10-15T09:28:25.025507+00:00",
+      "action": "scene_step",
+      "detail": "Сцены MVP: scene_step",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/sceneLab/workspaces/0/bundles/2/assertions/0/activation",
+          "value": "context"
+        },
+        {
+          "op": "replace",
+          "path": "/sceneLab/workspaces/0/trace",
+          "value": [
+            {
+              "op": "extract",
+              "bundleId": "3d152d81-fd83-4cf5-9149-aa97063f0bca",
+              "revision": 18
+            },
+            {
+              "op": "seed",
+              "to": "fa9433ae-3225-4594-9834-fa47cdb12a36",
+              "reason": "Явный выбор оператора",
+              "revision": 19
+            },
+            {
+              "op": "extract",
+              "bundleId": "cdd63b7f-7f46-47b6-8114-2dfe1f9c438e",
+              "revision": 20
+            },
+            {
+              "op": "extract",
+              "bundleId": "84b3b7a9-e6b8-42a4-bb77-7d2b9d73e936",
+              "revision": 23
+            },
+            {
+              "op": "seed",
+              "to": "7c958250-770f-449b-bc07-bfa05d227a8a",
+              "reason": "Явный выбор оператора",
+              "revision": 24
+            },
+            {
+              "op": "step",
+              "from": "7c958250-770f-449b-bc07-bfa05d227a8a",
+              "to": "ad2636c2-14e8-4ca7-b275-26651a10f9fc",
+              "contextId": "classification-location",
+              "revision": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "time": "2026-10-15T09:28:25.258433+00:00",
+      "action": "scene_reset",
+      "detail": "Сцены MVP: scene_reset",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/sceneLab/workspaces/0/bundles/0/assertions/0/activation",
+          "value": "inactive"
+        },
+        {
+          "op": "replace",
+          "path": "/sceneLab/workspaces/0/bundles/2/assertions/0/activation",
+          "value": "inactive"
+        },
+        {
+          "op": "replace",
+          "path": "/sceneLab/workspaces/0/bundles/2/assertions/1/activation",
+          "value": "inactive"
+        },
+        {
+          "op": "replace",
+          "path": "/sceneLab/workspaces/0/trace",
+          "value": [
+            {
+              "op": "extract",
+              "bundleId": "3d152d81-fd83-4cf5-9149-aa97063f0bca",
+              "revision": 18
+            },
+            {
+              "op": "seed",
+              "to": "fa9433ae-3225-4594-9834-fa47cdb12a36",
+              "reason": "Явный выбор оператора",
+              "revision": 19
+            },
+            {
+              "op": "extract",
+              "bundleId": "cdd63b7f-7f46-47b6-8114-2dfe1f9c438e",
+              "revision": 20
+            },
+            {
+              "op": "extract",
+              "bundleId": "84b3b7a9-e6b8-42a4-bb77-7d2b9d73e936",
+              "revision": 23
+            },
+            {
+              "op": "seed",
+              "to": "7c958250-770f-449b-bc07-bfa05d227a8a",
+              "reason": "Явный выбор оператора",
+              "revision": 24
+            },
+            {
+              "op": "step",
+              "from": "7c958250-770f-449b-bc07-bfa05d227a8a",
+              "to": "ad2636c2-14e8-4ca7-b275-26651a10f9fc",
+              "contextId": "classification-location",
+              "revision": 25
+            },
+            {
+              "op": "reset",
+              "revision": 26
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
