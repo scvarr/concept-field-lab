@@ -125,7 +125,28 @@
       "truncated": false
     },
     "indexCoverage": "Execution-flow entry/branch budgets cap coverage; absence of a flow is not proof of absence.",
-    "firstAttempt": "Index DB checkpoint in progress; repeated after index-only completed."
+    "firstAttempt": "Index DB checkpoint in progress; repeated after index-only completed.",
+    "lastPreCommit": {
+      "changed": 95,
+      "affected": 20,
+      "files": 30,
+      "risk": "CRITICAL",
+      "partial": false,
+      "truncated": false
+    },
+    "checkpointComparison": {
+      "base": "d208180",
+      "checkpoint": "2076054",
+      "changed": 95,
+      "affected": 20,
+      "files": 30,
+      "risk": "CRITICAL",
+      "partial": false,
+      "truncated": false,
+      "note": "Compare включает рабочее дерево и внешний AGENTS; staged-срез отдельно исключает пользовательские изменения."
+    }
   },
-  "localLinksChecked": 1026
+  "localLinksChecked": 1026,
+  "implementationCheckpoint": "20760547f43d54e35fbdeefa33c78442cb0efa91",
+  "implementationPushed": true
 }
