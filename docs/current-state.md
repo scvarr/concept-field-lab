@@ -33,7 +33,7 @@
 
 В `test-output/` сохранены `m021-import/`, `m021-manual/`, `m021-my-test.sqlite3`, `operator-review-demo/`, `scenes-demo/`, `scenes-review-demo/`, `scenes-review-probe/`, `thoughts-review-demo/`, `ux-correction-20261016/`, `ux-correction-manual/`. Это именные ручные/неоднозначные результаты; две прежние демонстрации на портах 8772 и 54937 используют сохранённые базы, процессы не останавливались. Для актуальной визуальной проверки нужен новый процесс с v7 и новой базой.
 
-Проверены SHA-256 всех 28 сохранённых SQLite/sidecar-файлов и всех сохраняемых локальных настроек/материалов. Незакоммиченный `AGENTS.md`, неотслеживаемые `.claude/` и `CLAUDE.md` не включены в checkpoint. Игнорируемые `local-data/`, `test-output/`, `node_modules/`, `.gitnexus/` сохранены в описанном объёме.
+Проверены SHA-256 всех 24 сохранённых SQLite/sidecar-файлов и всех сохраняемых локальных настроек/материалов. Незакоммиченный `AGENTS.md`, неотслеживаемые `.claude/` и `CLAUDE.md` не включены в checkpoint. Игнорируемые `local-data/`, `test-output/`, `node_modules/`, `.gitnexus/` сохранены в описанном объёме.
 
 ## Финальные проверки
 
