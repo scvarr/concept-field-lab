@@ -22,15 +22,6 @@ def catalog(state):
         add('context', c, f'{c["from"]} ⇒ {c["to"]}', ['edge:' + c[k] for k in ('from', 'to')])
     for d in state['designations']:
         add('designation', d, d['text'], ['node:' + d['target']])
-    for d in state['definitionDrafts']:
-        p = state['definitionPublications'].get(d['id'], {})
-        deps = ['node:' + i for i in p.get('nodeIds', [])]
-        deps += ['edge:' + i for i in p.get('edgeIds', []) + p.get('componentIds', [])]
-        deps += ['context:' + i for i in p.get('contextIds', [])]
-        for k, kind in [('nodes', 'node'), ('edges', 'edge'), ('contextEdges', 'context')]:
-            deps += [kind + ':' + v['id'] for v in d[k] if kind + ':' + v['id'] in rows]
-        add('definition', d, d['title'], deps)
-
     def config_refs(c):
         return (['node:' + n['conceptId'] for n in c.get('nodes', [])]
                 + ['node:' + n['contentConceptId'] for n in c.get('nodes', []) if n.get('contentConceptId')]
@@ -117,19 +108,9 @@ def prepare(state, data, revision):
         result = {**empty_graph(), 'operatorVersion': 5}
     elif not blocked:
         result['operatorVersion'] = 5
-        mapping = {'nodes': 'node', 'edges': 'edge', 'contextEdges': 'context', 'designations': 'designation', 'definitionDrafts': 'definition'}
-        removed_definitions = {d['id']: copy.deepcopy(d) for d in result['definitionDrafts'] if 'definition:' + d['id'] in selected}
+        mapping = {'nodes': 'node', 'edges': 'edge', 'contextEdges': 'context', 'designations': 'designation'}
         for collection, kind in mapping.items():
             result[collection] = [v for v in result[collection] if kind + ':' + v['id'] not in selected]
-        for ident in removed_definitions:
-            result['definitionPublications'].pop(ident, None)
-        for k in ('nodes', 'edges', 'contextEdges', 'designations'):
-            for value in result[k]:
-                if value.get('definitionId') in removed_definitions:
-                    archived = removed_definitions[value.pop('definitionId')]
-                    value.setdefault('origins', []).append({'operation': 'archive_definition', 'definitionId': archived['id'],
-                        'snapshot': {'title': archived['title'], 'definition': archived['definition']}})
-                    rewrites.append({'kind': k, 'id': value['id'], 'change': 'Происхождение определения сохранено снимком'})
         if 'thoughtLab' in result:
             lab = result['thoughtLab']
             removed_templates = {t['id']: t for t in lab['templates'] if 'template:' + t['id'] in selected}

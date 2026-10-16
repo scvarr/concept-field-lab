@@ -1,61 +1,6 @@
-# Preserve the discussion snapshot bytes and its documented SHA-256 on checkout.
-docs/discussion/source-messages.json text eol=lf
-# Keep K001 JSON checksums reproducible across Windows/Linux checkouts.
-data/experiments/stone/*.json text eol=lf
-docs/manual/evidence/stone/*.json text eol=lf
-# Keep the independent K003 records and evidence checksums portable.
-data/experiments/nut/*.json text eol=lf
-docs/manual/evidence/nut/*.json text eol=lf
-docs/manual/evidence/nut-revision/*.json text eol=lf
-# Preserve downloaded distributions and the measured input byte-for-byte.
+* text=auto
+*.py text eol=lf
+*.js text eol=lf
+*.cjs text eol=lf
+*.md text eol=lf
 /app/static/vendor/*.js -text
-/docs/manual/evidence/layout/geometry-input.json text eol=lf
-# Archived branch snapshots retain their original Git bytes across checkouts.
-/archive/observational-composition/** text eol=lf
-# CoNLL-U sentence blocks intentionally end with a blank separator line.
-/archive/observational-composition/results/004/parsed_input.conllu whitespace=-blank-at-eof
-# Keep M007 lexical/evidence checksums stable across checkouts.
-/data/dictionary/*.json text eol=lf
-/docs/manual/evidence/builder/*.json text eol=lf
-/docs/manual/evidence/builder/unit-tests.txt text eol=lf
-/docs/manual/evidence/permanent/*.json text eol=lf
-/docs/manual/evidence/permanent/*.txt text eol=lf
-/docs/manual/evidence/designations/*.json text eol=lf
-/docs/manual/evidence/designations/*.txt text eol=lf
-
-/docs/manual/evidence/workspace-views/*.json text eol=lf
-
-/docs/manual/evidence/canvas/*.json text eol=lf
-/docs/manual/evidence/canvas/*.txt text eol=lf
-
-/docs/manual/evidence/context-display/*.json text eol=lf
-/docs/manual/evidence/context-display/*.txt text eol=lf
-/docs/manual/evidence/integration/**/*.json text eol=lf
-/docs/manual/evidence/integration/*.json text eol=lf
-/docs/manual/evidence/integration/*.txt text eol=lf
-
-# Keep M013 alpha evidence and its checksum manifest portable.
-/docs/manual/evidence/alpha/*.json text eol=lf
-/docs/manual/evidence/alpha/*.txt text eol=lf
-
-# Preserve derived-caption evidence hashes on checkout.
-/docs/manual/evidence/alpha-captions/*.json text eol=lf
-/docs/manual/evidence/alpha-captions/*.txt text eol=lf
-
-# Preserve permanent overview/layout evidence checksums.
-/docs/manual/evidence/overview/*.json text eol=lf
-/docs/manual/evidence/overview/*.txt text eol=lf
-
-# Preserve M017 marker/curve evidence checksums across Windows/Linux checkouts.
-/docs/manual/evidence/context-markers/*.json text eol=lf
-/docs/manual/evidence/context-markers/*.txt text eol=lf
-
-# Preserve M018 editor evidence hashes.
-/docs/manual/evidence/graph-editor/*.json text eol=lf
-/docs/manual/evidence/graph-editor/*.txt text eol=lf
-
-# Preserve scene MVP evidence and export checksums across checkouts.
-/docs/manual/evidence/scenes/*.json text eol=lf
-/docs/manual/evidence/scenes/*.txt text eol=lf
-/docs/manual/evidence/scenes-review/*.json text eol=lf
-/docs/manual/evidence/scenes-review/*.txt text eol=lf

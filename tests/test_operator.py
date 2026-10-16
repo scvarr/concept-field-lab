@@ -71,12 +71,9 @@ class OperatorTest(unittest.TestCase):
 
     def test_new_graph_objects_need_no_definition_or_blank_draft(self):
         state = self.state()
-        self.assertEqual(state['definitionDrafts'], [])
-        self.assertEqual(state['definitionPublications'], {})
         self.assertTrue(all('definitionId' not in v and v['origins'] for k in ('nodes', 'edges') for v in state[k]))
         n = copy.deepcopy(state['nodes'][0]); n['notes'] = 'Правка общего ID'
         self.graph([{'op': 'put', 'collection': 'nodes', 'value': n}])
-        self.assertEqual(self.state()['definitionDrafts'], [])
 
     def test_template_fullness_does_not_establish_content_fullness(self):
         ident = self.new()
@@ -246,26 +243,21 @@ class OperatorTest(unittest.TestCase):
         target.mutate('import', {'document': self.store.export(), 'confirmed': True}, 0)
         self.assertEqual(target.read()['state'], self.state())
 
-    def test_history_definitions_can_be_removed_without_losing_graph_provenance(self):
-        self.call('definition_save', draft={'id': 'old', 'title': 'Старое определение', 'definition': '',
-                  'nodes': [], 'edges': [], 'contextEdges': [], 'routes': []})
-        self.graph([{'op': 'put', 'collection': 'nodes', 'value': {'id': 'owned', 'label': '', 'designationOnly': True,
-                    'structure': 'concept', 'kind': '', 'notes': '', 'x': 0, 'y': 0}}], definitionId='old')
-        preview = self.plan(['definition:old'])
-        self.assertEqual(len(preview['rewrites']), 1)
-        self.delete(['definition:old'])
-        node = next(n for n in self.state()['nodes'] if n['id'] == 'owned')
-        self.assertNotIn('definitionId', node)
-        self.assertEqual(node['origins'][-1]['snapshot']['title'], 'Старое определение')
-
     def test_scene_links_retractions_and_workspaces_participate_in_dependencies(self):
-        from scripts.scenes_fixture import populate
-        own = PermanentStore(Path(self.tmp.name) / 'scenes.sqlite3')
-        ids = populate(own)
-        state = own.read()['state']
+        ident = self.new(); self.save(ident, self.config()); self.complete(ident)
+        knowledge = self.call('thought_include', draftId=ident, label='Знание')['sceneId']
+        source = next(v for v in self.state()['sceneLab']['scenes'] if v['id'] == knowledge)
+        linked = self.call('scene_create', label='Связанное знание', kind='knowledge')['sceneId']
+        self.call('scene_link', sceneId=linked, targetId=knowledge)
+        dialogue = self.draft(ident)['sceneId']
+        self.call('scene_link', sceneId=dialogue, targetId=knowledge)
+        workspace = self.call('scene_workspace', sceneId=dialogue, label='Рабочая копия')['workspaceId']
+        self.call('scene_extract', workspaceId=workspace, sourceSceneId=knowledge,
+                  assertionIds=[v['id'] for v in source['entries'][0]['assertions']])
+        state = self.state()
         rows = catalog(state)
-        target = 'scene:' + ids['knowledge']
-        _, preview = prepare(state, {'selection': [target]}, own.read()['revision'])
+        target = 'scene:' + knowledge
+        _, preview = prepare(state, {'selection': [target]}, self.store.read()['revision'])
         kinds = {v['kind'] for v in preview['blocked']}
         self.assertTrue({'object', 'entry', 'link', 'workspace'} <= kinds)
         self.assertTrue(all(v['depends'] <= rows.keys() for v in rows.values()))

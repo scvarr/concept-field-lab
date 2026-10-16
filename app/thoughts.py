@@ -4,7 +4,7 @@ import hashlib
 import json
 from app.store import Invalid, clean, lookup, uid
 from app.scenes import empty_lab, signature, compatible_bindings, items
-from app.element_bindings import end_concept, validate_binding, assign_numbers, compact_config
+from app.element_bindings import end_concept, validate_binding, assign_numbers
 
 
 def empty():
@@ -147,7 +147,7 @@ def validate(graph):
     drafts = items(lab['drafts'], 'Разборы', 1000)
     candidates = items(lab['candidates'], 'Гипотезы контекста', 1000)
     top_ids = [v['id'] for k in ('drafts', 'templates', 'candidates') for v in lab[k]]
-    graph_ids = {v['id'] for k in ('nodes', 'edges', 'contextEdges', 'designations', 'definitionDrafts') for v in graph[k]}
+    graph_ids = {v['id'] for k in ('nodes', 'edges', 'contextEdges', 'designations') for v in graph[k]}
     if len(top_ids) != len(set(top_ids)) or graph_ids.intersection(top_ids):
         raise Invalid('ID операторских записей должны различаться.')
     if lab['currentDraftId'] is not None:
@@ -330,9 +330,6 @@ def operate(graph, action, data, revision):
                             n['included'] = True
             d['contract'] = copy.deepcopy(t['config'])
             d['templateRef'] = {'id': t['id'], 'version': t['version']}
-            if data.get('compactElements'):
-                d['config'], _ = compact_config(d['config'])
-                d['contract'], _ = compact_config(d['contract'])
         for n in d['config']['nodes']:
             n.pop('displayNumber', None)
         lab['drafts'].append(d)
@@ -393,11 +390,6 @@ def operate(graph, action, data, revision):
             n.pop('sceneObjectId', None)
         for e in d['config']['edges']:
             e['activation'] = 'direct'
-        if data.get('compactElements'):
-            d['config'], remapped = compact_config(d['config'])
-            if d.get('contract'):
-                d['contract'], _ = compact_config(d['contract'])
-            d['anchors'] = [a for a in d['anchors'] if a['id'] not in remapped]
         for n in d['config']['nodes']:
             n.pop('displayNumber', None)
         d['trace'] = [{'revision': revision, 'decision': 'Оператор создал новый разбор на основе прежнего', 'originThoughtId': original['id']}]

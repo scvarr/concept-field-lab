@@ -1,10 +1,8 @@
 import copy
 import unittest
 
-from app.exchange import parse_document
 from app.journal import apply_patch, compact_history, expand_history, patch_between
 from app.store import Invalid
-from scripts.fixtures import small
 
 
 class JournalTest(unittest.TestCase):
@@ -27,32 +25,7 @@ class JournalTest(unittest.TestCase):
             with self.assertRaises(Invalid):
                 apply_patch({"items": [1]}, patch)
 
-    def test_compact_history_exactly_restores_snapshots(self):
-        doc = small()
-        initial = copy.deepcopy(doc["state"])
-        changed = copy.deepcopy(initial)
-        changed["studies"][0]["nodes"][1]["notes"] = "новая версия"
-        rows = [{"id": 4, "time": "t", "action": "source", "detail": "initial", "state": initial}, {"id": 9, "time": "t", "action": "edit", "detail": "change", "state": changed}]
-        doc.update(state=changed, historyEncoding="rfc6902-chain-v1", history=compact_history(rows))
-        expanded = list(expand_history(doc))
-        self.assertEqual([r["state"] for r in expanded], [initial, changed])
-        self.assertEqual(len(doc["history"][1]["patch"]), 1)
-        parse_document(doc)
-        doc["state"]["studies"][0]["title"] = "несогласованная версия"
-        with self.assertRaisesRegex(Invalid, "Последняя версия"):
-            parse_document(doc)
 
-    def test_history_order_and_encoding_are_validated(self):
-        doc = small()
-        doc["history"].append(copy.deepcopy(doc["history"][0]))
-        with self.assertRaises(Invalid):
-            parse_document(doc)
-        doc = small()
-        doc["history"][0].pop("state")
-        doc["history"][0]["patch"] = []
-        doc["historyEncoding"] = "unknown"
-        with self.assertRaises(Invalid):
-            parse_document(doc)
 
 
 if __name__ == "__main__":

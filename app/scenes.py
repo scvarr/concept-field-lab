@@ -133,7 +133,7 @@ def validate_lab(graph):
             raise Invalid('Текущая сцена должна быть разговорной.')
     nodes = {n['id']: n for n in graph['nodes']}
     edges = {e['id']: e for e in graph['edges']}
-    graph_ids = {v['id'] for key in ('nodes', 'edges', 'contextEdges', 'designations', 'definitionDrafts') for v in graph[key]}
+    graph_ids = {v['id'] for key in ('nodes', 'edges', 'contextEdges', 'designations') for v in graph[key]}
     if graph_ids.intersection(scene_ids):
         raise Invalid('ID сцены совпадает с ID каркаса/черновика.')
     global_ids = graph_ids | scene_ids
@@ -291,13 +291,6 @@ def operate(graph, action, data, revision):
         if scene['kind'] != 'dialogue':
             raise Invalid('Выберите разговорную сцену.')
         lab['currentSceneId'] = scene['id']
-    elif action == 'scene_object':
-        scene = lookup(lab['scenes'], data.get('sceneId'), 'сцена')
-        obj = {'id': uid(), 'label': clean(data.get('label'), 'объект', True, 1000), 'conceptId': data.get('conceptId')}
-        if 'contentConceptId' in data:
-            obj['contentConceptId'] = clean(data['contentConceptId'], 'содержательный концепт', True, 200)
-        scene['objects'].append(obj)
-        result = {'objectId': obj['id']}
     elif action == 'scene_link':
         scene = lookup(lab['scenes'], data.get('sceneId'), 'сцена')
         target = lookup(lab['scenes'], data.get('targetId'), 'сцена назначения')
@@ -324,33 +317,6 @@ def operate(graph, action, data, revision):
         entry = {'id': uid(), 'text': text, 'kind': 'context', 'assertions': [], 'retracts': [], 'contextSceneId': target['id']}
         scene['entries'].append(entry)
         result = {'contextSceneId': target['id'], 'entryId': entry['id']}
-    elif action == 'scene_input':
-        scene = lookup(lab['scenes'], data.get('sceneId'), 'сцена')
-        if data.get('kind') not in ('state', 'event'):
-            raise Invalid('Назначение структурированного входа: state / event.')
-        raw = data.get('assertions', [])
-        if not isinstance(raw, list) or len(raw) > LIMIT:
-            raise Invalid('Нужен ограниченный список заполнений.')
-        assertions = []
-        for fact in raw:
-            if not isinstance(fact, dict):
-                raise Invalid('Заполнение должно быть объектом.')
-            edge = lookup(graph['edges'], fact.get('edgeId'), 'отношение каркаса')
-            assertions.append({'id': uid(), 'edgeId': edge['id'], 'template': signature(edge),
-                               'from': fact.get('from'), 'to': fact.get('to'),
-                               'slot': clean(fact.get('slot', ''), 'слот', False, 200)})
-        retracts = data.get('retracts', [])
-        if not isinstance(retracts, list) or any(not isinstance(i, str) for i in retracts):
-            raise Invalid('Снятия: список ID.')
-        active_ids = {f['id'] for f in projection(scene)}
-        if not set(retracts) <= active_ids:
-            raise Invalid('Снимать можно только текущее утверждение этой сцены.')
-        if not assertions and not retracts:
-            raise Invalid('Задайте заполнение или явно снимите текущее утверждение.')
-        entry = {'id': uid(), 'text': clean(data.get('text'), 'текст входа', True), 'kind': data['kind'],
-                 'assertions': assertions, 'retracts': copy.deepcopy(retracts)}
-        scene['entries'].append(entry)
-        result = {'entryId': entry['id'], 'assertionIds': [a['id'] for a in assertions]}
     elif action == 'scene_workspace':
         scene = lookup(lab['scenes'], data.get('sceneId'), 'сцена разговора')
         if scene['kind'] != 'dialogue':

@@ -9,23 +9,18 @@ import sys
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import urlparse
 
-from app.store import Conflict, Invalid, Store
-from app.exchange import conflict, current_value, graph_export, object_index, parse_document, structural_diff
+from app.store import Conflict, Invalid
+from app.permanent import PermanentStore
+from app.scenes import observe
 
 STATIC = Path(__file__).parent / "static"
 MAX_BODY = 64 * 1024 * 1024
 
 
-def make_server(path, port=8765, legacy=False, definition_fetcher=None):
-    if legacy:
-        store = Store(path)
-    else:
-        from app.permanent import PermanentStore
-        store = PermanentStore(path)
-    from app.definitions import Definitions, fetch_json
-    definitions = Definitions(Path(path).resolve().parent / 'definition-cache', definition_fetcher or fetch_json)
+def make_server(path, port=8765):
+    store = PermanentStore(path)
     token = secrets.token_urlsafe(32)
 
     class Handler(BaseHTTPRequestHandler):
@@ -57,127 +52,27 @@ def make_server(path, port=8765, legacy=False, definition_fetcher=None):
             path = urlparse(self.path).path
             if path == "/api/state":
                 snapshot = store.read()
-                if not legacy:
-                    from app.scenes import observe
-                    snapshot['sceneView'] = observe(snapshot['state'])
+                snapshot['sceneView'] = observe(snapshot['state'])
                 return self.send(200, {**snapshot, "token": token})
             if path == "/api/history":
                 return self.send(200, store.history())
             if path == "/api/export":
                 return self.send(200, store.export(), download="concept-field-workspace.json")
-            if not legacy:
-                try:
-                    query = parse_qs(urlparse(self.path).query)
-                    if path == '/api/manage-index':
-                        from app.lifecycle import catalog
-                        rows = catalog(store.read()['state'])
-                        return self.send(200, [{**v, 'depends': sorted(v['depends'])} for v in rows.values()])
-                    if path == '/api/dictionary':
-                        from app.dictionary import search
-                        return self.send(200, search(store.read()['state'], query.get('q', [''])[0]))
-                    if path == '/api/definitions':
-                        return self.send(200, definitions.get(query.get('lemma', [''])[0], query.get('refresh', ['0'])[0] == '1'))
-                    if path == '/api/definition-preview':
-                        from app.builder import prepare
-                        from app.store import lookup
-                        snapshot = store.read()
-                        draft = lookup(snapshot['state']['definitionDrafts'], query.get('draft', [None])[0], 'черновик')
-                        _, preview = prepare(snapshot['state'], draft)
-                        return self.send(200, {'revision': snapshot['revision'], **preview})
-                    if path == '/api/diagnostics':
-                        return self.send(200, store.diagnostics())
-                    if path == '/api/legacy-backup':
-                        info = store.diagnostics()['legacyBackup']
-                        if not info:
-                            raise Invalid('В этой базе нет исторического перехода.')
-                        return self.send(200, Path(info['backupPath']).read_bytes(), 'application/vnd.sqlite3', download='concept-field-legacy-backup.sqlite3')
-                    if path.startswith('/api/'):
-                        return self.send(404, {'error': 'В постоянном графе нет старых разделов и операций исследований.'})
-                except (Invalid, ValueError, TypeError, KeyError) as exc:
-                    return self.send(400, {'error': str(exc)})
-            if path in ('/api/dictionary', '/api/definition-preview'):
-                try:
-                    query = parse_qs(urlparse(self.path).query)
-                    snapshot = store.read()
-                    if path == '/api/dictionary':
-                        from app.dictionary import search
-                        return self.send(200, search(snapshot['state'], query.get('q', [''])[0], query.get('study', [None])[0]))
-                    from app.builder import prepare
-                    from app.store import lookup
-                    study = lookup(snapshot['state']['studies'], query.get('study', [None])[0], 'полотно')
-                    draft = lookup(study.get('accumulation', {}).get('definitionDrafts', []), query.get('draft', [None])[0], 'черновик')
-                    _, preview = prepare(study, draft)
-                    return self.send(200, {'revision': snapshot['revision'], **preview})
-                except (Invalid, ValueError, TypeError, KeyError) as exc:
-                    return self.send(400, {'error': str(exc)})
-            if path in ("/api/graph-export", "/api/diff", "/api/proposals", "/api/substitution-preview", "/api/accumulation-index", "/api/accumulation-neighbourhood"):
-                try:
-                    query = parse_qs(urlparse(self.path).query)
-                    if path in ("/api/accumulation-index", "/api/accumulation-neighbourhood"):
-                        from app.accumulation import lexical_index, neighbourhood
-                        from app.store import lookup
-                        study = lookup(store.read()["state"]["studies"], query.get("study", [None])[0], "накопительное полотно")
-                        if not study.get("accumulation"):
-                            raise Invalid("Выберите накопительное полотно.")
-                        sources = query.get("source")
-                        if path == "/api/accumulation-index":
-                            return self.send(200, lexical_index(study, query.get("basis", ["designation"])[0], sources,
-                                query.get("status", ["all"])[0], query.get("q", [""])[0]))
-                        return self.send(200, neighbourhood(study, query.get("node", [None])[0], int(query.get("depth", ["1"])[0]), sources))
-                    if path == "/api/substitution-preview":
-                        from app.composition import replacement_preview
-                        return self.send(200, replacement_preview(store.read()["state"], query.get("study", [None])[0], query.get("source", [None])[0], query.get("target", [None])[0]))
-                    if path == "/api/graph-export":
-                        depth = query.get("depth", ["all"])[0]
-                        doc = graph_export(store, query.get("study", [None])[0], query.get("node", [None])[0], None if depth == "all" else int(depth))
-                        return self.send(200, doc, download="concept-field-graph.json")
-                    snapshot = store.read()
-                    if path == "/api/proposals":
-                        indexed = object_index(snapshot["state"])
-                        rows = []
-                        for p in snapshot["state"]["proposals"]:
-                            if p["status"] != "pending":
-                                continue
-                            expected = (p["operation"].removeprefix("delete_"), p.get("studyId"), p["value"]["id"])
-                            owner = indexed["__ids__"].get(p["value"]["id"])
-                            collision = {"operation": owner[0], "studyId": owner[1], "object": indexed[owner]} if owner is not None and owner != expected else None
-                            rows.append({**p, "conflict": conflict(snapshot["state"], p, indexed), "current": current_value(snapshot["state"], p, indexed), "idCollision": collision})
-                        return self.send(200, rows)
-                    left_id = query.get("left", [None])[0]
-                    right_id = query.get("right", [None])[0]
-                    from app.store import lookup, decode
-                    if "revision" in query:
-                        with store.connect() as db:
-                            row = db.execute("SELECT state FROM revisions WHERE id = ?", (int(query["revision"][0]),)).fetchone()
-                        if row is None:
-                            raise Invalid("Версия отсутствует.")
-                        left = lookup(decode(row[0])["studies"], left_id, "исследование в выбранной версии")
-                        right = lookup(snapshot["state"]["studies"], left_id, "текущее исследование")
-                    else:
-                        left = lookup(snapshot["state"]["studies"], left_id, "левое исследование")
-                        right = lookup(snapshot["state"]["studies"], right_id, "правое исследование")
-                    return self.send(200, structural_diff(left, right, snapshot["state"]["matches"]), download="concept-field-diff.json")
-                except (Invalid, ValueError, TypeError, KeyError) as exc:
-                    return self.send(400, {"error": str(exc)})
-            files = {"/": ("index.html", "text/html"), "/app.js": ("app.js", "text/javascript"), "/workspace.js": ("workspace.js", "text/javascript"), "/builder.js": ("builder.js", "text/javascript"), "/graph-view.js": ("graph-view.js", "text/javascript"), "/accumulation.js": ("accumulation.js", "text/javascript"), "/style.css": ("style.css", "text/css"), "/favicon.svg": ("favicon.svg", "image/svg+xml")}
+            if path == '/api/manage-index':
+                from app.lifecycle import catalog
+                rows = catalog(store.read()['state'])
+                return self.send(200, [{**v, 'depends': sorted(v['depends'])} for v in rows.values()])
+            files = {'/': ('index.html', 'text/html'), '/style.css': ('style.css', 'text/css'),
+                     '/favicon.svg': ('favicon.svg', 'image/svg+xml')}
+            scripts = ('workspace.js', 'graph-view.js', 'canvas-menu.js', 'alpha-captions.js',
+                       'overview-geometry.js', 'permanent-layout.js', 'scenes.js', 'thoughts.js',
+                       'management.js', 'graph-editor.js', 'layout-engine.js', 'layout-worker.js',
+                       'vendor/d3-7.9.0.min.js', 'vendor/dagre-1.1.5.min.js')
+            files.update({'/' + name: (name, 'text/javascript') for name in scripts})
             if path not in files:
-                if path in ('/scenes.js', '/thoughts.js', '/management.js'):
-                    return self.send(200, (STATIC / path[1:]).read_bytes(), 'text/javascript; charset=utf-8')
-                layout_files = {"/graph-editor.js": "graph-editor.js","/overview-geometry.js": "overview-geometry.js", "/permanent-layout.js": "permanent-layout.js", "/alpha-captions.js": "alpha-captions.js", "/canvas-builder.js": "canvas-builder.js", "/canvas-menu.js": "canvas-menu.js", "/layout-controls.js": "layout-controls.js", "/layout-engine.js": "layout-engine.js", "/layout-worker.js": "layout-worker.js", "/vendor/d3-7.9.0.min.js": "vendor/d3-7.9.0.min.js", "/vendor/dagre-1.1.5.min.js": "vendor/dagre-1.1.5.min.js"}
-                if path in layout_files:
-                    return self.send(200, (STATIC / layout_files[path]).read_bytes(), "text/javascript; charset=utf-8")
-                return self.send(404, {"error": "Страница не найдена."})
+                return self.send(404, {'error': 'Страница не найдена.'})
             filename, mime = files[path]
-            if filename == 'index.html' and legacy:
-                filename = 'legacy.html'
-            elif filename == 'index.html':
-                html = (STATIC / filename).read_text(encoding='utf-8')
-                if parse_qs(urlparse(self.path).query).get('compat') != ['m018']:
-                    for script in ('builder.js', 'canvas-builder.js'):
-                        html = html.replace(f'<script src="/{script}"></script>', '')
-                    html = html.replace('<section id="builder" aria-label="Конструктор определений"></section>', '')
-                return self.send(200, html.encode('utf-8'), mime + '; charset=utf-8')
-            return self.send(200, (STATIC / filename).read_bytes(), mime + "; charset=utf-8")
+            return self.send(200, (STATIC / filename).read_bytes(), mime + '; charset=utf-8')
 
         def do_POST(self):
             if not self.allowed() or self.headers.get("X-Workspace-Token") != token:
@@ -193,32 +88,25 @@ def make_server(path, port=8765, legacy=False, definition_fetcher=None):
                 if not isinstance(data, dict):
                     raise Invalid("Ожидался объект запроса.")
                 path = urlparse(self.path).path
-                if not legacy and path == '/api/manage-preview':
+                if path == '/api/manage-preview':
                     from app.lifecycle import prepare
                     snapshot = store.read()
                     _, preview = prepare(snapshot['state'], data, snapshot['revision'])
                     return self.send(200, preview)
-                if not legacy and path == '/api/graph-preview':
+                if path == '/api/graph-preview':
                     from app.graph_editor import prepare
                     snapshot = store.read()
                     _, preview = prepare(snapshot['state'], data)
                     return self.send(200, {'revision': snapshot['revision'], **preview})
                 if path == "/api/import-preview":
-                    if not legacy:
-                        return self.send(200, store.import_preview(data.get('document')))
-                    changes = parse_document(data.get("document"))
-                    state = store.read()["state"]
-                    indexed = object_index(state)
-                    return self.send(200, {"changes": len(changes), "conflicts": sum(conflict(state, c, indexed) for c in changes), "history": len(data["document"].get("history", []))})
+                    return self.send(200, store.import_preview(data.get('document')))
                 if path != "/api/action":
                     return self.send(404, {"error": "Операция не найдена."})
                 payload = data.get("data", {})
                 if not isinstance(payload, dict):
                     raise Invalid("Ожидались поля операции.")
                 snapshot = store.mutate(data.get("action"), payload, data.get("revision"))
-                if not legacy:
-                    from app.scenes import observe
-                    snapshot['sceneView'] = observe(snapshot['state'])
+                snapshot['sceneView'] = observe(snapshot['state'])
                 return self.send(200, snapshot)
             except Conflict as exc:
                 self.send(409, {"error": str(exc)})
@@ -238,10 +126,9 @@ def main():
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--db", type=Path, default=Path(__file__).resolve().parents[1] / "local-data" / "workspace.sqlite3")
     parser.add_argument("--no-browser", action="store_true")
-    parser.add_argument('--legacy', action='store_true', help='Явно открыть исторический редактор; для восстановления используйте копию резервной базы')
     args = parser.parse_args()
     try:
-        server = make_server(args.db, args.port, legacy=args.legacy)
+        server = make_server(args.db, args.port)
     except (OSError, ValueError, sqlite3.Error) as exc:
         parser.exit(1, f"Не удалось запустить: {exc}. Проверьте порт и путь к базе.\n")
     url = f"http://127.0.0.1:{server.server_port}"

@@ -7,7 +7,6 @@ from app.permanent import PermanentStore, parse_document
 from app.scenes import signature
 from app.store import Invalid
 from app.thoughts import continuations
-from app.element_bindings import compact_config
 from app.lifecycle import prepare
 
 
@@ -54,7 +53,7 @@ class SceneElementsTest(unittest.TestCase):
         self.assertEqual(sum(f.get('binding', False) for f in facts), 2)
         self.assertEqual(PermanentStore(self.path).read(), self.store.read())
         exported = self.store.export()
-        self.assertEqual(exported['version'], 6)
+        self.assertEqual(exported['version'], 7)
         parse_document(exported)
         wrong = copy.deepcopy(exported)
         wrong['version'] = 5
@@ -146,38 +145,6 @@ class SceneElementsTest(unittest.TestCase):
         self.call('restore', targetRevision=before['revision'], confirmed=True)
         self.assertEqual(self.state(), before['state'])
 
-    def test_explicit_legacy_binding_compacts_without_losing_use_ids(self):
-        c = self.config()
-        for n in c['nodes'][:]:
-            content = n.pop('contentConceptId')
-            c['nodes'].append(dict(id='c-' + n['id'], conceptId=content, value='x', required=False, included=True))
-            use = next(e for e in c['edges'] if e['id'] == n['contentEdges'][0])
-            use.pop('binding')
-            use['to'] = 'c-' + n['id']
-        compact, _ = compact_config(c)
-        self.assertEqual(len(compact['nodes']), 2)
-        self.assertEqual([e['id'] for e in compact['edges']], ['os', 'pf', 'op'])
-        self.save(compact)
-
-    def test_new_application_of_legacy_template_uses_compact_contract(self):
-        c = self.config()
-        for n in c['nodes'][:]:
-            content = n.pop('contentConceptId')
-            c['nodes'].append(dict(id='c-' + n['id'], conceptId=content, value='x', required=False, included=True))
-            use = next(e for e in c['edges'] if e['id'] == n['contentEdges'][0])
-            use.pop('binding')
-            use['to'] = 'c-' + n['id']
-        self.save(c)
-        template = self.call('thought_template', draftId=self.draft()['id'], label='Старый явный шаблон')['templateId']
-        self.call('thought_new', text='Винт упал', templateId=template, compactElements=True)
-        self.assertEqual(len(self.draft()['config']['nodes']), 2)
-        self.assertEqual(len(self.draft()['contract']['nodes']), 2)
-        self.assertEqual(len(self.state()['thoughtLab']['templates'][0]['config']['nodes']), 4)
-        config = self.draft()['config']
-        for n in config['nodes']:
-            n['value'] = n['id']
-        self.save(config)
-        self.complete()
 
 
 if __name__ == '__main__':

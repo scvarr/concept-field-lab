@@ -1,16 +1,6 @@
 'use strict';
 // Pure presentation; no derived text is assigned to graph objects or the dictionary.
 (function(root){
-  function view(graph,draft){
-    if(!draft)return graph;
-    const nodes=new Map(graph.nodes.map(n=>[n.id,n])),edges=new Map(graph.edges.map(e=>[e.id,e]));
-    for(const [id,e] of edges)if(e.definitionId===draft.id)edges.delete(id);
-    for(const n of draft.nodes)nodes.set(n.id,n.existing?(nodes.get(n.id)||n.base||n):n);
-    for(const e of draft.edges)edges.set(e.id,e);
-    const designations=[...graph.designations];
-    for(const n of draft.nodes)if(!graph.nodes.some(v=>v.id===n.id))for(const d of n.designations|| (n.designation?[{text:n.designation}]:[]))designations.push({...d,target:n.id});
-    return {nodes:[...nodes.values()],edges:[...edges.values()],designations};
-  }
   function create(graph){
     const nodes=new Map(graph.nodes.map(n=>[n.id,n])),terms=new Map(),children=new Map(),memo=new Map();
     for(const d of graph.designations)if(d.text){const rows=terms.get(d.target)||[];rows.push(d.text);terms.set(d.target,rows);}
@@ -41,5 +31,5 @@
     function rank(id,query){const q=query.trim().toLocaleLowerCase('ru').replaceAll('ё','е'),norm=s=>String(s).toLocaleLowerCase('ru').replaceAll('ё','е'),forms=[id,...terms.get(id)||[],captions.get(id)||''];if(forms.some(s=>norm(s)===q))return 0;if([id,...terms.get(id)||[]].some(s=>norm(s).includes(q))||q.startsWith('#')&&display(id).includes(q))return 1;if(nodes.get(id)?.structure==='alpha'&&!terms.has(id)&&q.startsWith('{')&&norm(display(id)).includes(q))return 1;return matches(id,query)?2:Infinity;}
     return {label:id=>captions.get(id)||label(id),display,token,matches,rank,anonymous:id=>nodes.get(id)?.structure==='alpha'&&!terms.has(id)};
   }
-  const api={create,view};if(typeof module!=='undefined')module.exports=api;else root.AlphaCaptions=api;
+  const api={create};if(typeof module!=='undefined')module.exports=api;else root.AlphaCaptions=api;
 })(typeof window==='undefined'?globalThis:window);

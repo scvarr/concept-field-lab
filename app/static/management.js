@@ -1,7 +1,7 @@
 'use strict';
 // One preview and one revision transaction for explicit cross-level removal.
 const Management=(()=>{
-  const titles={node:'Концепт',edge:'Обычное ребро / компонент',context:'Контекстное разрешение',designation:'Обозначение',definition:'Историческое определение',scene:'Сцена',object:'Экземпляр сцены',entry:'Сценический вход',workspace:'Рабочая копия',thought:'Разбор',template:'Операторский шаблон',candidate:'Гипотеза',link:'Связь сцен'};
+  const titles={node:'Концепт',edge:'Обычное ребро / компонент',context:'Контекстное разрешение',designation:'Обозначение',scene:'Сцена',object:'Экземпляр сцены',entry:'Сценический вход',workspace:'Рабочая копия',thought:'Разбор',template:'Операторский шаблон',candidate:'Гипотеза',link:'Связь сцен'};
   async function remove(selection,mode='delete'){
     await ThoughtLab.save();
     const p=await api('/api/manage-preview',{selection,mode});
@@ -20,12 +20,10 @@ const Management=(()=>{
     await ThoughtLab.save();const records=await api('/api/manage-index');
     const graphKinds=new Set(['node','edge','context','designation']);
     const visible=records.filter(v=>!graphOnly||graphKinds.has(v.kind));
-    dialog(graphOnly?'Группа постоянных объектов':'Управление сохранёнными данными',`<p>Удаление записи, очистка отображения и полный сброс — разные операции. Перед записью будет показан точный preview; история остаётся.</p><label>Поиск<input type="search" id="manage-search"></label><div class="management-records">${Object.entries(titles).filter(([kind])=>visible.some(v=>v.kind===kind)).map(([kind,title])=>`<details open><summary>${h(title)} (${visible.filter(v=>v.kind===kind).length})</summary>${visible.filter(v=>v.kind===kind).map(v=>`<label class="checkbox" data-manage-search="${h((v.label+' '+v.id).toLocaleLowerCase('ru'))}"><input name="manage-record" type="checkbox" value="${h(v.key)}">${h(v.label)} <code>${h(v.id)}</code></label>`).join('')}</details>`).join('')||'<p>Состояние пусто.</p>'}</div><button type="button" id="manage-delete">Preview удаления выбранных записей</button><button type="button" id="manage-reset">Полный сброс исследования…</button><details><summary>Исторические определения: просмотр</summary>${state.definitionDrafts.map(d=>`<button type="button" data-manage-definition="${h(d.id)}">${h(d.title)} · ${h(d.id)}</button>`).join('')||'<p>Нет исторических определений.</p>'}</details>`);
+    dialog(graphOnly?'Группа постоянных объектов':'Управление сохранёнными данными',`<p>Удаление записи, очистка отображения и полный сброс — разные операции. Перед записью будет показан точный preview; история остаётся.</p><label>Поиск<input type="search" id="manage-search"></label><div class="management-records">${Object.entries(titles).filter(([kind])=>visible.some(v=>v.kind===kind)).map(([kind,title])=>`<details open><summary>${h(title)} (${visible.filter(v=>v.kind===kind).length})</summary>${visible.filter(v=>v.kind===kind).map(v=>`<label class="checkbox" data-manage-search="${h((v.label+' '+v.id).toLocaleLowerCase('ru'))}"><input name="manage-record" type="checkbox" value="${h(v.key)}">${h(v.label)} <code>${h(v.id)}</code></label>`).join('')}</details>`).join('')||'<p>Состояние пусто.</p>'}</div><button type="button" id="manage-delete">Preview удаления выбранных записей</button><button type="button" id="manage-reset">Полный сброс исследования…</button>`);
     $('#manage-search').oninput=e=>{const q=e.target.value.toLocaleLowerCase('ru');document.querySelectorAll('[data-manage-search]').forEach(r=>r.hidden=!r.dataset.manageSearch.includes(q));};
     $('#manage-delete').onclick=run(()=>remove([...document.querySelectorAll('[name=manage-record]:checked')].map(c=>c.value)));
     $('#manage-reset').onclick=run(()=>remove([],'reset'));
-    document.querySelectorAll('[data-manage-definition]').forEach(b=>b.onclick=()=>definition(b.dataset.manageDefinition));
   }
-  function definition(id){const d=state.definitionDrafts.find(v=>v.id===id);if(!d)throw Error('Историческое определение отсутствует.');dialog('Историческое определение',`<h3>${h(d.title)}</h3><pre>${h(JSON.stringify({draft:d,publication:state.definitionPublications[id]},null,2))}</pre><p>Удаление записи сохранит происхождение оставшихся графовых объектов снимком; сам граф не удаляется.</p><button type="button" id="definition-remove">Удалить определение…</button>`);$('#definition-remove').onclick=run(()=>remove(['definition:'+id]));}
-  return {home,remove,definition};
+  return {home,remove};
 })();

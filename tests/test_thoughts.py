@@ -13,8 +13,6 @@ class ThoughtsTest(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.path = Path(self.tmp.name) / 'workspace.sqlite3'
         self.store = PermanentStore(self.path)
-        self.call('definition_save', draft={'id': 'origin', 'title': 'Ручной разбор', 'definition': '',
-                  'nodes': [], 'edges': [], 'contextEdges': [], 'routes': []})
         ops = []
         for i in ('object', 'process', 'xxx', 'screw', 'fall', 'floor', 'human', 'strike'):
             ops.append({'op': 'put', 'collection': 'nodes', 'value': {'id': i, 'label': '', 'designationOnly': True,
@@ -23,7 +21,7 @@ class ThoughtsTest(unittest.TestCase):
                         ('px', 'process', 'xxx'), ('xf', 'xxx', 'floor'), ('hh', 'human', 'human')]:
             ops.append({'op': 'put', 'collection': 'edges', 'value': {'id': i, 'from': a, 'to': b, 'role': 'relation', 'type': '', 'notes': ''}})
         ops.append({'op': 'put', 'collection': 'contextEdges', 'value': {'id': 'permission', 'from': 'os', 'to': 'pf'}})
-        self.call('graph_apply', operations=ops, definitionId='origin', confirmed=True, previewRevision=self.store.read()['revision'])
+        self.call('graph_apply', operations=ops, confirmed=True, previewRevision=self.store.read()['revision'])
         self.call('thought_alias', nodeId='object', alias='Объект')
         self.call('thought_alias', nodeId='process', alias='Процесс')
         self.new()
@@ -162,7 +160,7 @@ class ThoughtsTest(unittest.TestCase):
         duplicate = {**c['nodes'][0], 'id': 'other-object', 'value': 'Винт №2'}
         c['nodes'].append(duplicate)
         # Shared object concept binds different local objects: permission op -> os.
-        self.call('graph_apply', definitionId='origin', operations=[{'op': 'put', 'collection': 'contextEdges',
+        self.call('graph_apply', operations=[{'op': 'put', 'collection': 'contextEdges',
                   'value': {'id': 'p2', 'from': 'op', 'to': 'os'}}], confirmed=True, previewRevision=self.store.read()['revision'])
         target = next(e for e in c['edges'] if e['edgeId'] == 'os')
         target.update(included=False, **{'from': 'other-object'})
@@ -213,7 +211,7 @@ class ThoughtsTest(unittest.TestCase):
     def test_accept_candidate_requires_separate_graph_edit_and_reason(self):
         self.call('thought_candidate', **{'from': 'op', 'to': 'xf', 'reason': 'Операторский кандидат'})
         candidate = self.state()['thoughtLab']['candidates'][0]['id']
-        self.call('graph_apply', definitionId='origin', operations=[{'op': 'put', 'collection': 'contextEdges',
+        self.call('graph_apply', operations=[{'op': 'put', 'collection': 'contextEdges',
                   'value': {'id': 'explicit-permission', 'from': 'op', 'to': 'xf'}}], confirmed=True,
                   previewRevision=self.store.read()['revision'])
         before = copy.deepcopy(self.state()['contextEdges'])
@@ -251,7 +249,7 @@ class ThoughtsTest(unittest.TestCase):
         with self.assertRaises(Conflict):
             self.store.mutate('thought_alias', {'nodeId': 'xxx', 'alias': 'устарело'}, before['revision'])
         doc = self.store.export()
-        self.assertEqual(doc['version'], 5)
+        self.assertEqual(doc['version'], 7)
         self.assertEqual(parse_document(doc), self.state())
         target = PermanentStore(Path(self.tmp.name) / 'import.sqlite3')
         target.mutate('import', {'document': doc, 'confirmed': True}, 0)
@@ -266,7 +264,7 @@ class ThoughtsTest(unittest.TestCase):
             target.import_preview(changed)
         self.call('restore', targetRevision=before['revision'], confirmed=True)
         self.assertEqual(self.state(), before['state'])
-        self.assertEqual(self.store.export()['version'], 5)
+        self.assertEqual(self.store.export()['version'], 7)
 
     def test_graph_references_protected_and_corrupt_anchors_rejected(self):
         self.template()

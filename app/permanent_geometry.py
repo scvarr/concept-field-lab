@@ -1,8 +1,18 @@
 """Geometry-only actions in the permanent journal; no additional graph fields."""
 import json
 import math
-from app.geometry import points
 from app.store import Invalid, Conflict, lookup, clean
+
+
+def points(value):
+    if not isinstance(value, dict) or not value or len(value) > 100000:
+        raise Invalid("Нужна непустая карта координат (до 100000 узлов).")
+    for nid, point in value.items():
+        clean(nid, "ID узла", True, 200)
+        if not isinstance(point, dict) or set(point) != {"x", "y"}:
+            raise Invalid("Позиция содержит только x и y.")
+        if any(isinstance(v, bool) or not isinstance(v, (int, float)) or not math.isfinite(v) or abs(v) > 100000 for v in point.values()):
+            raise Invalid("Координаты должны быть конечными числами ±100000.")
 
 
 def radii(state):

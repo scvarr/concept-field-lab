@@ -1,31 +1,5 @@
-"""Storage adapters for one scene element and its explicit ordinary binding use."""
-import copy
+"""Validation and numbering for one scene element and its explicit ordinary binding use."""
 from app.store import Invalid
-
-
-def compact_config(config):
-    """Migrate only explicit, unambiguous operator bindings; never infer roles."""
-    result = copy.deepcopy(config)
-    removed = {}
-    for node in result['nodes']:
-        if node.get('contentConceptId'):
-            continue
-        uses = [e for e in result['edges'] if e['id'] in node.get('contentEdges', []) and e['from'] == node['id']]
-        if not node.get('bindingRequired') or len(uses) != 1:
-            continue
-        use = uses[0]
-        target = next((n for n in result['nodes'] if n['id'] == use['to']), None)
-        if not target or target['id'] == node['id'] or target.get('bindingRequired') or target.get('contentConceptId'):
-            raise Invalid('Историческая привязка неоднозначна; создайте новую конструкцию вручную.')
-        if any(e['id'] != use['id'] and target['id'] in (e['from'], e['to']) for e in result['edges']):
-            raise Invalid('Содержательный экземпляр имеет самостоятельные связи; уточните конструкцию вручную.')
-        node['contentConceptId'] = target['conceptId']
-        removed[target['id']] = node['id']
-        use.update(to=node['id'], binding=True)
-    result['nodes'] = [n for n in result['nodes'] if n['id'] not in removed]
-    if any(not n.get('contentConceptId') for n in result['nodes']):
-        raise Invalid('В исторической конструкции не для всех элементов явно задано содержание. Создайте уточнённую конструкцию вручную; оригинал сохранён.')
-    return result, removed
 
 
 def end_concept(obj, use, end):
@@ -42,13 +16,6 @@ def validate_binding(use, objects):
         if (not obj or use.get('from') != use.get('to') or not obj.get('contentConceptId')
                 or obj['conceptId'] == obj['contentConceptId']):
             raise Invalid('Содержательное ребро связывает структуру и содержание одного элемента.')
-
-
-def requires_v6(state):
-    lab = state.get('thoughtLab', {})
-    return (any('operatorRole' in n for n in state['nodes']) or any(
-        any('contentConceptId' in n for n in d['config']['nodes'])
-        for key in ('drafts', 'templates') for d in lab.get(key, [])))
 
 
 def assign_numbers(graph, draft, previous):

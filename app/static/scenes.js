@@ -40,40 +40,19 @@ const SceneLab=(()=>{
     const current=sceneView.current[s.id]||[];
     return `<h3>${h(s.label)}</h3><code>${h(s.id)}</code><p>${s.kind==='knowledge'?'Накопленная сцена знания':'Изменяемая разговорная сцена'}</p>
       ${s.kind==='dialogue'?'<button id="scene-select">Сделать текущим разговором</button>':''}
-      <button id="scene-object-new">Добавить объект</button><button id="scene-link-new">Связать со сценой</button>
+      <button id="scene-link-new">Связать со сценой</button>
       <details><summary>Объекты (${s.objects.length})</summary>${s.objects.map(o=>`<p>${h(o.label)} · объект <code>${h(o.id)}</code><br>Позиция шаблона: ${h(name(o.conceptId))} · <code>${h(o.conceptId)}</code><br>Содержательный концепт: ${o.contentConceptId?`${h(name(o.contentConceptId))} · <code data-content-concept="${h(o.contentConceptId)}">${h(o.contentConceptId)}</code>`:'не задан (содержательная идентичность не установлена)'}</p>`).join('')}</details>
       <p>Накопленные ссылки (доступность): ${s.links.map(id=>`<button data-scene-link="${h(id)}">${h(lab().scenes.find(s=>s.id===id)?.label||id)}</button>`).join(' ')||'нет'}</p>
-      <form id="scene-input-form"><h4>Структурированный вход</h4><label>Назначение<select id="scene-input-kind"><option value="state">Сведения / текущее состояние</option><option value="event">Событие</option>${s.kind==='dialogue'?'<option value="context">Выбор контекста по обозначению сцены</option>':''}</select></label>
-      <label>Текст входа<input id="scene-input-text" required placeholder="Например: Винт лежит на столе"></label>
-      <div id="scene-input-context" hidden><label>Сцена действующего контекста<select id="scene-context-target"><option value="">Найти по точному обозначению текста</option>${lab().scenes.filter(v=>v.kind==='knowledge').map(v=>opt(v.id,title(v))).join('')}</select></label><p>Для фразы «Теперь обсуждаем химию» вручную выберите сцену «Химия». Текст не разбирается автоматически.</p></div><div id="scene-input-structure"><p>Заполнения связывают конкретные объекты через отношение каркаса. Одинаковый непустой слот заменяет прежнее состояние того же объекта; слот назначает оператор.</p>
-      <div id="scene-input-rows"></div><button type="button" id="scene-row-new">Ещё заполнение</button>
-      <fieldset><legend>Явно снять текущее утверждение</legend>${current.map(f=>`<label class="checkbox"><input name="retract" type="checkbox" value="${h(f.id)}">${h(factText(s,f))} · ${h(f.id)}</label>`).join('')||'<p>Текущих утверждений нет.</p>'}</fieldset></div>
-      <button type="submit">Сохранить вход</button></form>
+
       <h4>Вычисленное текущее состояние (${current.length})</h4><div id="scene-current-facts">${current.map(f=>`<p>${h(factText(s,f))}<br>Слот: ${h(f.slot||'не задан')} · <code>${h(f.id)}</code></p>`).join('')||'<p>Нет текущих утверждений.</p>'}</div>
       <h4>Последовательность входов (${s.entries.length})</h4><div id="scene-history">${s.entries.map((e,i)=>`<details><summary>${i+1}. [${h(e.kind)}] ${h(e.text)}</summary><code>${h(e.id)}</code>${e.assertions.map(f=>`<p>${h(factText(s,f))}<br><code>${h(f.id)}</code></p>`).join('')}<p>Сняты: ${h(e.retracts.join(', ')||'нет')}</p>${e.contextSceneId?`<p>Контекст: ${h(e.contextSceneId)}</p>`:''}<button data-scene-delete-entry="${h(e.id)}">Удалить этот вход…</button><pre>${h(JSON.stringify(e,null,2))}</pre></details>`).join('')}</div>`;
   }
   function bindScene(s){
     document.querySelectorAll('[data-scene-delete-entry]').forEach(b=>b.onclick=run(()=>Management.remove(['entry:'+b.dataset.sceneDeleteEntry])));
     if($('#scene-select'))$('#scene-select').onclick=run(()=>call('scene_select',{sceneId:s.id}));
-    $('#scene-object-new').onclick=run(()=>dialog('Объект сцены',`<label>Обозначение объекта<input name="label" required></label><label>Концепт позиции шаблона<select name="conceptId">${state.nodes.map(n=>opt(n.id,name(n.id)+' · '+n.id)).join('')}</select></label><label>Содержательный концепт<select name="contentConceptId"><option value="">Не задан</option>${state.nodes.map(n=>opt(n.id,name(n.id)+' · '+n.id)).join('')}</select></label><p>Общий содержательный ID повторно используется между сценами; локальные объекты остаются разными. Привязку задаёт оператор, она не означает наследования или автоматического вывода.</p><p>Для другого конкретного объекта создайте новый ID. Для продолжения сообщения выбирайте прежний объект.</p>`,f=>call('scene_object',{sceneId:s.id,label:f.get('label'),conceptId:f.get('conceptId'),...(f.get('contentConceptId')?{contentConceptId:f.get('contentConceptId')}:{})})));
+
     $('#scene-link-new').onclick=run(()=>dialog('Ссылка на накопленную или составную сцену',`<label>Сцена<select name="targetId">${lab().scenes.filter(v=>v.id!==s.id).map(v=>opt(v.id,title(v))).join('')}</select></label>`,f=>call('scene_link',{sceneId:s.id,targetId:f.get('targetId')})));
     document.querySelectorAll('[data-scene-link]').forEach(b=>b.onclick=()=>{sceneId=b.dataset.sceneLink;render();});
-    $('#scene-input-kind').onchange=()=>{const isContext=$('#scene-input-kind').value==='context';$('#scene-input-structure').hidden=isContext;$('#scene-input-context').hidden=!isContext;};
-    $('#scene-row-new').onclick=()=>addRow(s);
-    addRow(s);
-    $('#scene-input-form').onsubmit=run(async e=>{
-      e.preventDefault();const kind=$('#scene-input-kind').value,text=$('#scene-input-text').value;
-      if(kind==='context'){await call('scene_context',{sceneId:s.id,text,...($('#scene-context-target').value?{contextSceneId:$('#scene-context-target').value}:{})});return;}
-      const assertions=[...document.querySelectorAll('.scene-input-row')].filter(row=>row.querySelector('[data-edge]').value).map(row=>({edgeId:row.querySelector('[data-edge]').value,from:row.querySelector('[data-from]').value,to:row.querySelector('[data-to]').value,slot:row.querySelector('[data-slot]').value}));
-      const retracts=[...document.querySelectorAll('[name=retract]:checked')].map(v=>v.value);
-      await call('scene_input',{sceneId:s.id,text,kind,assertions,retracts});
-    });
-  }
-  function addRow(s){
-    const row=document.createElement('fieldset');row.className='scene-input-row';
-    row.innerHTML=`<label>Отношение каркаса<select data-edge><option value="">Без заполнения</option>${state.edges.filter(e=>e.role==='relation').map(e=>opt(e.id,`${e.type||'Отношение'} · ${name(e.from)} → ${name(e.to)} · ${e.id}`)).join('')}</select></label><div class="scene-toolbar"><label>От объекта<select data-from></select></label><label>К объекту<select data-to></select></label><label>Слот замены<input data-slot placeholder="Например: положение"></label><button data-remove type="button">Убрать</button></div>`;
-    const refresh=()=>{const edge=state.edges.find(e=>e.id===row.querySelector('[data-edge]').value);for(const end of ['from','to'])row.querySelector('[data-'+end+']').innerHTML=s.objects.filter(o=>o.conceptId===edge?.[end]).map(o=>opt(o.id,o.label+' · '+o.id)).join('');};
-    row.querySelector('[data-edge]').onchange=refresh;row.querySelector('[data-remove]').onclick=()=>row.remove();$('#scene-input-rows').append(row);refresh();
   }
   function newScene(){
     dialog('Создать сцену','<label>Обозначение<input name="label" required></label><label>Назначение<select name="kind"><option value="knowledge">Накопленное знание</option><option value="dialogue">Разговор</option></select></label>',async f=>{sceneId=(await call('scene_create',{label:f.get('label'),kind:f.get('kind')})).sceneId;render();});
