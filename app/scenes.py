@@ -4,6 +4,7 @@ No language understanding, physics, spreading activation or automatic inference.
 All mutations run inside PermanentStore's revision transaction.
 """
 import copy
+from app.element_bindings import end_concept, validate_binding
 from app.store import Invalid, clean, lookup, uid
 
 LIMIT = 200  # One extraction/working set; no implicit transitive scene loading.
@@ -169,9 +170,10 @@ def validate_lab(graph):
                 edge = edges.get(fact.get('edgeId'))
                 if not edge or edge['role'] != 'relation' or signature(edge) != fact.get('template'):
                     raise Invalid('Сцена использует изменённое/удалённое отношение каркаса. Сначала требуется явная миграция сцен.')
+                validate_binding(fact, object_map)
                 for end in ('from', 'to'):
                     obj = object_map.get(fact.get(end))
-                    if not obj or obj['conceptId'] != edge[end]:
+                    if not obj or end_concept(obj, fact, end) != edge[end]:
                         raise Invalid('Концы заполнения не соответствуют концептам отношения каркаса.')
             if entry['kind'] == 'context':
                 if entry['assertions'] or entry['retracts'] or entry.get('contextSceneId') not in scene['links']:
@@ -202,7 +204,7 @@ def validate_lab(graph):
                 origin = fact.get('origin', {})
                 entry = lookup(source['entries'], origin.get('entryId'), 'вход происхождения')
                 original = lookup(entry['assertions'], origin.get('assertionId'), 'утверждение происхождения')
-                if fact.get('template') != original['template'] or origin.get('sceneId') != source['id']:
+                if fact.get('template') != original['template'] or fact.get('binding', False) != original.get('binding', False) or origin.get('sceneId') != source['id']:
                     raise Invalid('Неверное происхождение рабочего утверждения.')
                 for end in ('from', 'to'):
                     if local_objects[fact[end]].get('sourceObjectId') != original[end]:

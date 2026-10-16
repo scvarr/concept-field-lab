@@ -1,0 +1,263 @@
+{
+  "revision": 18,
+  "state": {
+    "nodes": [
+      {
+        "id": "e8796897-2fea-4e31-8f5e-828b6f928438",
+        "label": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "kind": "",
+        "notes": "",
+        "operatorAlias": "Объект",
+        "operatorRole": true,
+        "x": 100,
+        "y": 100,
+        "origins": [
+          {
+            "operation": "graph_editor",
+            "source": "Ручной редактор постоянного графа"
+          }
+        ]
+      },
+      {
+        "id": "b2930e82-d7ed-4fc6-88fe-6faa01a28d80",
+        "label": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "kind": "",
+        "notes": "",
+        "operatorAlias": "Винт",
+        "x": 340,
+        "y": 100,
+        "origins": [
+          {
+            "operation": "graph_editor",
+            "source": "Ручной редактор постоянного графа"
+          }
+        ]
+      },
+      {
+        "id": "a4a01beb-7181-468f-a99b-13551c8de35e",
+        "label": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "kind": "",
+        "notes": "",
+        "operatorAlias": "Процесс",
+        "operatorRole": true,
+        "x": 580,
+        "y": 100,
+        "origins": [
+          {
+            "operation": "graph_editor",
+            "source": "Ручной редактор постоянного графа"
+          }
+        ]
+      },
+      {
+        "id": "23f5ecd0-6b31-438f-8f23-347f615756da",
+        "label": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "kind": "",
+        "notes": "",
+        "operatorAlias": "Падение",
+        "x": 820,
+        "y": 100,
+        "origins": [
+          {
+            "operation": "graph_editor",
+            "source": "Ручной редактор постоянного графа"
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "f8fd76b4-d19c-4f9e-a998-c1449e6038f4",
+        "from": "e8796897-2fea-4e31-8f5e-828b6f928438",
+        "to": "b2930e82-d7ed-4fc6-88fe-6faa01a28d80",
+        "role": "relation",
+        "type": "",
+        "notes": "",
+        "origins": [
+          {
+            "operation": "graph_editor",
+            "source": "Ручной редактор постоянного графа"
+          }
+        ]
+      },
+      {
+        "id": "126055e6-9776-44a6-8e17-2eaed10c7e28",
+        "from": "a4a01beb-7181-468f-a99b-13551c8de35e",
+        "to": "23f5ecd0-6b31-438f-8f23-347f615756da",
+        "role": "relation",
+        "type": "",
+        "notes": "",
+        "origins": [
+          {
+            "operation": "graph_editor",
+            "source": "Ручной редактор постоянного графа"
+          }
+        ]
+      },
+      {
+        "id": "d22ab4a8-6de7-4366-807e-9154f1ae7956",
+        "from": "e8796897-2fea-4e31-8f5e-828b6f928438",
+        "to": "a4a01beb-7181-468f-a99b-13551c8de35e",
+        "role": "relation",
+        "type": "",
+        "notes": "",
+        "origins": [
+          {
+            "operation": "graph_editor",
+            "source": "Ручной редактор постоянного графа"
+          }
+        ]
+      }
+    ],
+    "designations": [],
+    "contextEdges": [],
+    "definitionDrafts": [],
+    "definitionPublications": {},
+    "thoughtLab": {
+      "drafts": [
+        {
+          "id": "2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+          "text": "Винт упал на пол",
+          "status": "draft",
+          "config": {
+            "nodes": [
+              {
+                "id": "138ed57c-3505-41cb-b076-8e813baedb39",
+                "required": true,
+                "included": true,
+                "x": 130,
+                "y": 90,
+                "conceptId": "e8796897-2fea-4e31-8f5e-828b6f928438",
+                "contentConceptId": "b2930e82-d7ed-4fc6-88fe-6faa01a28d80",
+                "value": "Винт",
+                "bindingRequired": true,
+                "contentEdges": [
+                  "bc7cd270-8793-41fa-8983-f95fa1092837"
+                ],
+                "displayNumber": 1
+              },
+              {
+                "id": "7cda31fc-af01-462a-aef6-03a77b3fcd9e",
+                "required": true,
+                "included": true,
+                "x": 390,
+                "y": 90,
+                "conceptId": "a4a01beb-7181-468f-a99b-13551c8de35e",
+                "contentConceptId": "23f5ecd0-6b31-438f-8f23-347f615756da",
+                "value": "упал",
+                "bindingRequired": true,
+                "contentEdges": [
+                  "b3fcba99-df93-4672-a34b-8394afdb0578"
+                ],
+                "displayNumber": 1
+              }
+            ],
+            "edges": [
+              {
+                "id": "bc7cd270-8793-41fa-8983-f95fa1092837",
+                "edgeId": "f8fd76b4-d19c-4f9e-a998-c1449e6038f4",
+                "from": "138ed57c-3505-41cb-b076-8e813baedb39",
+                "to": "138ed57c-3505-41cb-b076-8e813baedb39",
+                "binding": true,
+                "template": {
+                  "id": "f8fd76b4-d19c-4f9e-a998-c1449e6038f4",
+                  "from": "e8796897-2fea-4e31-8f5e-828b6f928438",
+                  "to": "b2930e82-d7ed-4fc6-88fe-6faa01a28d80",
+                  "role": "relation",
+                  "type": ""
+                },
+                "required": true,
+                "included": true,
+                "activation": "direct"
+              },
+              {
+                "id": "b3fcba99-df93-4672-a34b-8394afdb0578",
+                "edgeId": "126055e6-9776-44a6-8e17-2eaed10c7e28",
+                "from": "7cda31fc-af01-462a-aef6-03a77b3fcd9e",
+                "to": "7cda31fc-af01-462a-aef6-03a77b3fcd9e",
+                "binding": true,
+                "template": {
+                  "id": "126055e6-9776-44a6-8e17-2eaed10c7e28",
+                  "from": "a4a01beb-7181-468f-a99b-13551c8de35e",
+                  "to": "23f5ecd0-6b31-438f-8f23-347f615756da",
+                  "role": "relation",
+                  "type": ""
+                },
+                "required": true,
+                "included": true,
+                "activation": "direct"
+              },
+              {
+                "id": "d94e51de-5c69-450d-96fb-f2a517966c29",
+                "edgeId": "d22ab4a8-6de7-4366-807e-9154f1ae7956",
+                "from": "138ed57c-3505-41cb-b076-8e813baedb39",
+                "to": "7cda31fc-af01-462a-aef6-03a77b3fcd9e",
+                "template": {
+                  "id": "d22ab4a8-6de7-4366-807e-9154f1ae7956",
+                  "from": "e8796897-2fea-4e31-8f5e-828b6f928438",
+                  "to": "a4a01beb-7181-468f-a99b-13551c8de35e",
+                  "role": "relation",
+                  "type": ""
+                },
+                "required": true,
+                "included": true,
+                "activation": "direct"
+              }
+            ],
+            "contexts": []
+          },
+          "selection": [
+            5,
+            9
+          ],
+          "anchors": [
+            {
+              "id": "138ed57c-3505-41cb-b076-8e813baedb39",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "id": "7cda31fc-af01-462a-aef6-03a77b3fcd9e",
+              "start": 5,
+              "end": 9
+            }
+          ],
+          "templateRef": null,
+          "contract": null,
+          "createdRevision": 0,
+          "trace": [],
+          "sceneId": "e87e7899-ede8-44ed-89b9-bfec23053b58",
+          "representation": {
+            "confirmed": false
+          }
+        }
+      ],
+      "templates": [],
+      "candidates": [],
+      "currentDraftId": "2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f"
+    },
+    "operatorVersion": 5,
+    "sceneLab": {
+      "scenes": [
+        {
+          "id": "e87e7899-ede8-44ed-89b9-bfec23053b58",
+          "label": "Текущая динамическая сцена",
+          "kind": "dialogue",
+          "objects": [],
+          "entries": [],
+          "links": []
+        }
+      ],
+      "workspaces": [],
+      "currentSceneId": "e87e7899-ede8-44ed-89b9-bfec23053b58"
+    }
+  }
+}

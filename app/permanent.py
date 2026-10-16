@@ -10,7 +10,7 @@ from pathlib import Path
 from app.store import Store, Invalid, Conflict, clean, lookup, uid, now, encode, decode, fields
 
 FORMAT = 'concept-field-permanent'
-VERSION = 5
+VERSION = 6
 COLLECTIONS = ('nodes', 'edges', 'designations', 'contextEdges')
 
 
@@ -40,6 +40,8 @@ def validate_graph(graph):
     nodes = {n.get('id') for n in graph['nodes'] if isinstance(n, dict)}
     for n in graph['nodes']:
         identity(n)
+        if 'operatorRole' in n and type(n['operatorRole']) is not bool:
+            raise Invalid('Назначение элемента конструкции задаётся оператором явно.')
         fields(n)
         if n.get('structure') not in ('concept', 'alpha') or n.get('designationOnly') is not True or n.get('label') != '':
             raise Invalid('Новый концепт адресуется по ID и внешним обозначениям, без переноса исторической модели.')
@@ -106,10 +108,13 @@ def verified_backup(path):
 
 
 def parse_document(document):
-    if not isinstance(document, dict) or document.get('format') != FORMAT or document.get('version') not in (1, 2, 3, 4, VERSION) or document.get('kind') != 'graph':
-        raise Invalid('Нужен экспорт concept-field-permanent v1/v2/v3/v4/v5.')
+    if not isinstance(document, dict) or document.get('format') != FORMAT or document.get('version') not in (1, 2, 3, 4, 5, VERSION) or document.get('kind') != 'graph':
+        raise Invalid('Нужен экспорт concept-field-permanent v1/v2/v3/v4/v5/v6.')
     def validate_state(state):
         validate_graph(state)
+        from app.element_bindings import requires_v6
+        if document['version'] < 6 and requires_v6(state):
+            raise Invalid('Единые сценические элементы требуют формата v6.')
         if document['version'] < 5 and 'operatorVersion' in state:
             raise Invalid('Новое операторское состояние требует v5.')
         if document['version'] < 3 and 'sceneLab' in state:
@@ -192,7 +197,10 @@ class PermanentStore(Store):
                     if 'thoughtLab' in row['state'] or any('operatorAlias' in n for n in row['state']['nodes']):
                         export_version = max(export_version, 4)
                     if 'operatorVersion' in row['state']:
-                        export_version = 5
+                        export_version = max(export_version, 5)
+                    from app.element_bindings import requires_v6
+                    if requires_v6(row['state']):
+                        export_version = 6
                     yield row
             history, state = compact_with_latest(snapshots())
             archives = [decode(r[0]) for r in db.execute('SELECT document FROM permanent_imports ORDER BY time,fingerprint')]

@@ -228,3 +228,33 @@ body.permanent-workspace {height:100dvh;overflow:hidden}
 .thought-layout{grid-template-columns:minmax(0,1fr) 310px}.thought-layout aside{min-width:0}.thought-layout details{margin:.7rem 0}
 .text-workbench button{margin-right:.5rem}#connect-status:empty{display:none}
 @media(max-width:850px){.thought-layout{grid-template-columns:1fr}#annotated-text{font-size:20px}}
+/* Operator correction: text and the scene share one desktop viewport. */
+#thoughts-panel>h2{font-size:15px;margin:0 0 5px}
+#thoughts-panel .dynamic-scene{display:flex;align-items:center;flex-wrap:wrap;gap:6px 16px;padding:4px 9px;margin:0 0 4px;font-size:12px}
+#thoughts-panel .dynamic-scene p{margin:0}
+#thoughts-panel .dynamic-scene details{margin-left:auto}
+#thoughts-panel>.scene-toolbar{margin:3px 0;display:inline-flex}
+#thoughts-panel>details:has(>.thought-records){display:inline-block;margin:0 0 0 10px;font-size:12px}
+.thought-layout{margin:5px 0;gap:10px;grid-template-columns:minmax(0,1fr) 275px}
+.thought-layout aside{padding:9px;max-height:calc(100vh - 175px);font-size:12px;align-self:start}
+.thought-layout aside h3,.thought-layout aside h4{margin:8px 0 5px}
+.thought-layout aside p{margin:5px 0;overflow-wrap:anywhere}
+.thought-layout aside button{font-size:12px;padding:5px 8px;max-width:100%;white-space:normal}
+.thought-layout aside label{font-size:12px;margin:0 0 5px}
+.thought-layout aside select{padding:5px;max-width:100%}
+.thought-layout details{margin:5px 0;font-size:12px;overflow-wrap:anywhere}
+.text-workbench{padding:6px 10px;margin:0 0 6px;border-radius:6px}
+#annotated-text{min-height:40px;font-size:21px;line-height:1.9;padding:0;overflow-wrap:anywhere}
+#annotated-text mark{padding:2px 3px}
+#annotated-text .fragment-label{font-size:10px;line-height:1.3;margin:0 4px}
+.text-workbench button{font-size:11px;padding:4px 7px}
+#thought-canvas{height:calc(100vh - 300px);min-height:330px}
+#thought-canvas svg{min-height:0}
+#thought-markers:empty{display:none}
+#thought-status{font-size:11px;color:var(--muted)}
+.compact-preview-details{max-width:100%;overflow-wrap:anywhere}
+.compact-preview-details>summary{cursor:pointer}
+@media(max-width:850px){.thought-layout{grid-template-columns:minmax(0,1fr)}.thought-layout aside{max-height:none}#thought-canvas{height:400px}#thoughts-panel .dynamic-scene details{margin-left:0}}
+
+#thoughts-panel{padding:8px}
+#thoughts-panel>h2{display:none}

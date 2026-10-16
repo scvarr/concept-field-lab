@@ -1,0 +1,976 @@
+{
+  "format": "concept-field-permanent",
+  "version": 6,
+  "kind": "graph",
+  "exportedAt": "2026-10-16T07:23:53.229965+00:00",
+  "state": {
+    "nodes": [
+      {
+        "id": "e8796897-2fea-4e31-8f5e-828b6f928438",
+        "label": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "kind": "",
+        "notes": "",
+        "operatorAlias": "Объект",
+        "operatorRole": true,
+        "x": 100,
+        "y": 100,
+        "origins": [
+          {
+            "operation": "graph_editor",
+            "source": "Ручной редактор постоянного графа"
+          }
+        ]
+      },
+      {
+        "id": "b2930e82-d7ed-4fc6-88fe-6faa01a28d80",
+        "label": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "kind": "",
+        "notes": "",
+        "operatorAlias": "Винт",
+        "x": 340,
+        "y": 100,
+        "origins": [
+          {
+            "operation": "graph_editor",
+            "source": "Ручной редактор постоянного графа"
+          }
+        ]
+      },
+      {
+        "id": "a4a01beb-7181-468f-a99b-13551c8de35e",
+        "label": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "kind": "",
+        "notes": "",
+        "operatorAlias": "Процесс",
+        "operatorRole": true,
+        "x": 580,
+        "y": 100,
+        "origins": [
+          {
+            "operation": "graph_editor",
+            "source": "Ручной редактор постоянного графа"
+          }
+        ]
+      },
+      {
+        "id": "23f5ecd0-6b31-438f-8f23-347f615756da",
+        "label": "",
+        "designationOnly": true,
+        "structure": "concept",
+        "kind": "",
+        "notes": "",
+        "operatorAlias": "Падение",
+        "x": 820,
+        "y": 100,
+        "origins": [
+          {
+            "operation": "graph_editor",
+            "source": "Ручной редактор постоянного графа"
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "f8fd76b4-d19c-4f9e-a998-c1449e6038f4",
+        "from": "e8796897-2fea-4e31-8f5e-828b6f928438",
+        "to": "b2930e82-d7ed-4fc6-88fe-6faa01a28d80",
+        "role": "relation",
+        "type": "",
+        "notes": "",
+        "origins": [
+          {
+            "operation": "graph_editor",
+            "source": "Ручной редактор постоянного графа"
+          }
+        ]
+      },
+      {
+        "id": "126055e6-9776-44a6-8e17-2eaed10c7e28",
+        "from": "a4a01beb-7181-468f-a99b-13551c8de35e",
+        "to": "23f5ecd0-6b31-438f-8f23-347f615756da",
+        "role": "relation",
+        "type": "",
+        "notes": "",
+        "origins": [
+          {
+            "operation": "graph_editor",
+            "source": "Ручной редактор постоянного графа"
+          }
+        ]
+      },
+      {
+        "id": "d22ab4a8-6de7-4366-807e-9154f1ae7956",
+        "from": "e8796897-2fea-4e31-8f5e-828b6f928438",
+        "to": "a4a01beb-7181-468f-a99b-13551c8de35e",
+        "role": "relation",
+        "type": "",
+        "notes": "",
+        "origins": [
+          {
+            "operation": "graph_editor",
+            "source": "Ручной редактор постоянного графа"
+          }
+        ]
+      }
+    ],
+    "designations": [],
+    "contextEdges": [],
+    "definitionDrafts": [],
+    "definitionPublications": {},
+    "thoughtLab": {
+      "drafts": [
+        {
+          "id": "2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+          "text": "Винт упал на пол",
+          "status": "draft",
+          "config": {
+            "nodes": [
+              {
+                "id": "138ed57c-3505-41cb-b076-8e813baedb39",
+                "required": true,
+                "included": true,
+                "x": 130,
+                "y": 90,
+                "conceptId": "e8796897-2fea-4e31-8f5e-828b6f928438",
+                "contentConceptId": "b2930e82-d7ed-4fc6-88fe-6faa01a28d80",
+                "value": "Винт",
+                "bindingRequired": true,
+                "contentEdges": [
+                  "bc7cd270-8793-41fa-8983-f95fa1092837"
+                ],
+                "displayNumber": 1
+              },
+              {
+                "id": "7cda31fc-af01-462a-aef6-03a77b3fcd9e",
+                "required": true,
+                "included": true,
+                "x": 390,
+                "y": 90,
+                "conceptId": "a4a01beb-7181-468f-a99b-13551c8de35e",
+                "contentConceptId": "23f5ecd0-6b31-438f-8f23-347f615756da",
+                "value": "упал",
+                "bindingRequired": true,
+                "contentEdges": [
+                  "b3fcba99-df93-4672-a34b-8394afdb0578"
+                ],
+                "displayNumber": 1
+              }
+            ],
+            "edges": [
+              {
+                "id": "bc7cd270-8793-41fa-8983-f95fa1092837",
+                "edgeId": "f8fd76b4-d19c-4f9e-a998-c1449e6038f4",
+                "from": "138ed57c-3505-41cb-b076-8e813baedb39",
+                "to": "138ed57c-3505-41cb-b076-8e813baedb39",
+                "binding": true,
+                "template": {
+                  "id": "f8fd76b4-d19c-4f9e-a998-c1449e6038f4",
+                  "from": "e8796897-2fea-4e31-8f5e-828b6f928438",
+                  "to": "b2930e82-d7ed-4fc6-88fe-6faa01a28d80",
+                  "role": "relation",
+                  "type": ""
+                },
+                "required": true,
+                "included": true,
+                "activation": "direct"
+              },
+              {
+                "id": "b3fcba99-df93-4672-a34b-8394afdb0578",
+                "edgeId": "126055e6-9776-44a6-8e17-2eaed10c7e28",
+                "from": "7cda31fc-af01-462a-aef6-03a77b3fcd9e",
+                "to": "7cda31fc-af01-462a-aef6-03a77b3fcd9e",
+                "binding": true,
+                "template": {
+                  "id": "126055e6-9776-44a6-8e17-2eaed10c7e28",
+                  "from": "a4a01beb-7181-468f-a99b-13551c8de35e",
+                  "to": "23f5ecd0-6b31-438f-8f23-347f615756da",
+                  "role": "relation",
+                  "type": ""
+                },
+                "required": true,
+                "included": true,
+                "activation": "direct"
+              },
+              {
+                "id": "d94e51de-5c69-450d-96fb-f2a517966c29",
+                "edgeId": "d22ab4a8-6de7-4366-807e-9154f1ae7956",
+                "from": "138ed57c-3505-41cb-b076-8e813baedb39",
+                "to": "7cda31fc-af01-462a-aef6-03a77b3fcd9e",
+                "template": {
+                  "id": "d22ab4a8-6de7-4366-807e-9154f1ae7956",
+                  "from": "e8796897-2fea-4e31-8f5e-828b6f928438",
+                  "to": "a4a01beb-7181-468f-a99b-13551c8de35e",
+                  "role": "relation",
+                  "type": ""
+                },
+                "required": true,
+                "included": true,
+                "activation": "direct"
+              }
+            ],
+            "contexts": []
+          },
+          "selection": [
+            5,
+            9
+          ],
+          "anchors": [
+            {
+              "id": "138ed57c-3505-41cb-b076-8e813baedb39",
+              "start": 0,
+              "end": 4
+            },
+            {
+              "id": "7cda31fc-af01-462a-aef6-03a77b3fcd9e",
+              "start": 5,
+              "end": 9
+            }
+          ],
+          "templateRef": null,
+          "contract": null,
+          "createdRevision": 0,
+          "trace": [],
+          "sceneId": "e87e7899-ede8-44ed-89b9-bfec23053b58",
+          "representation": {
+            "confirmed": false
+          }
+        }
+      ],
+      "templates": [],
+      "candidates": [],
+      "currentDraftId": "2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f"
+    },
+    "operatorVersion": 5,
+    "sceneLab": {
+      "scenes": [
+        {
+          "id": "e87e7899-ede8-44ed-89b9-bfec23053b58",
+          "label": "Текущая динамическая сцена",
+          "kind": "dialogue",
+          "objects": [],
+          "entries": [],
+          "links": []
+        }
+      ],
+      "workspaces": [],
+      "currentSceneId": "e87e7899-ede8-44ed-89b9-bfec23053b58"
+    }
+  },
+  "historyEncoding": "rfc6902-chain-v1",
+  "history": [
+    {
+      "id": 0,
+      "time": "2026-10-16T07:11:19.250874+00:00",
+      "action": "init",
+      "detail": "{\"message\": \"Создан пустой постоянный граф\", \"legacyBackup\": null}",
+      "patch": [
+        {
+          "op": "remove",
+          "path": "/imports"
+        },
+        {
+          "op": "remove",
+          "path": "/matches"
+        },
+        {
+          "op": "remove",
+          "path": "/proposals"
+        },
+        {
+          "op": "remove",
+          "path": "/studies"
+        },
+        {
+          "op": "add",
+          "path": "/contextEdges",
+          "value": []
+        },
+        {
+          "op": "add",
+          "path": "/definitionDrafts",
+          "value": []
+        },
+        {
+          "op": "add",
+          "path": "/definitionPublications",
+          "value": {}
+        },
+        {
+          "op": "add",
+          "path": "/designations",
+          "value": []
+        },
+        {
+          "op": "add",
+          "path": "/edges",
+          "value": []
+        },
+        {
+          "op": "add",
+          "path": "/nodes",
+          "value": []
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "time": "2026-10-16T07:11:48.266469+00:00",
+      "action": "thought_new",
+      "detail": "thought_new: операторская запись",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/operatorVersion",
+          "value": 5
+        },
+        {
+          "op": "add",
+          "path": "/sceneLab",
+          "value": {
+            "scenes": [
+              {
+                "id": "e87e7899-ede8-44ed-89b9-bfec23053b58",
+                "label": "Текущая динамическая сцена",
+                "kind": "dialogue",
+                "objects": [],
+                "entries": [],
+                "links": []
+              }
+            ],
+            "workspaces": [],
+            "currentSceneId": "e87e7899-ede8-44ed-89b9-bfec23053b58"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/thoughtLab",
+          "value": {
+            "drafts": [
+              {
+                "id": "2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+                "text": "Винт упал на пол",
+                "status": "draft",
+                "config": {
+                  "nodes": [],
+                  "edges": [],
+                  "contexts": []
+                },
+                "selection": [
+                  0,
+                  0
+                ],
+                "anchors": [],
+                "templateRef": null,
+                "contract": null,
+                "createdRevision": 0,
+                "trace": [],
+                "sceneId": "e87e7899-ede8-44ed-89b9-bfec23053b58",
+                "representation": {
+                  "confirmed": false
+                }
+              }
+            ],
+            "templates": [],
+            "candidates": [],
+            "currentDraftId": "2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f"
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "time": "2026-10-16T07:11:54.076615+00:00",
+      "action": "thought_save",
+      "detail": "thought_save: 2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/thoughtLab/drafts/0/selection",
+          "value": [
+            0,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "time": "2026-10-16T07:12:06.077694+00:00",
+      "action": "graph_apply",
+      "detail": "{\"message\": \"Подтверждена атомарная правка общего графа\", \"changes\": {\"nodes\": [{\"id\": \"b2930e82-d7ed-4fc6-88fe-6faa01a28d80\", \"before\": null, \"after\": {\"id\": \"b2930e82-d7ed-4fc6-88fe-6faa01a28d80\", \"label\": \"\", \"designationOnly\": true, \"structure\": \"concept\", \"kind\": \"\", \"notes\": \"\", \"operatorAlias\": \"Винт\", \"x\": 340, \"y\": 100, \"origins\": [{\"operation\": \"graph_editor\", \"source\": \"Ручной редактор постоянного графа\"}]}}, {\"id\": \"e8796897-2fea-4e31-8f5e-828b6f928438\", \"before\": null, \"after\": {\"id\": \"e8796897-2fea-4e31-8f5e-828b6f928438\", \"label\": \"\", \"designationOnly\": true, \"structure\": \"concept\", \"kind\": \"\", \"notes\": \"\", \"operatorAlias\": \"Объект\", \"operatorRole\": true, \"x\": 100, \"y\": 100, \"origins\": [{\"operation\": \"graph_editor\", \"source\": \"Ручной редактор постоянного графа\"}]}}], \"edges\": [{\"id\": \"f8fd76b4-d19c-4f9e-a998-c1449e6038f4\", \"before\": null, \"after\": {\"id\": \"f8fd76b4-d19c-4f9e-a998-c1449e6038f4\", \"from\": \"e8796897-2fea-4e31-8f5e-828b6f928438\", \"to\": \"b2930e82-d7ed-4fc6-88fe-6faa01a28d80\", \"role\": \"relation\", \"type\": \"\", \"notes\": \"\", \"origins\": [{\"operation\": \"graph_editor\", \"source\": \"Ручной редактор постоянного графа\"}]}}], \"contextEdges\": [], \"designations\": [], \"definitions\": [], \"affectedContexts\": [], \"affectedDefinitions\": {}, \"drafts\": []}}",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/edges/0",
+          "value": {
+            "id": "f8fd76b4-d19c-4f9e-a998-c1449e6038f4",
+            "from": "e8796897-2fea-4e31-8f5e-828b6f928438",
+            "to": "b2930e82-d7ed-4fc6-88fe-6faa01a28d80",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "operation": "graph_editor",
+                "source": "Ручной редактор постоянного графа"
+              }
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": "/nodes/0",
+          "value": {
+            "id": "e8796897-2fea-4e31-8f5e-828b6f928438",
+            "label": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "kind": "",
+            "notes": "",
+            "operatorAlias": "Объект",
+            "operatorRole": true,
+            "x": 100,
+            "y": 100,
+            "origins": [
+              {
+                "operation": "graph_editor",
+                "source": "Ручной редактор постоянного графа"
+              }
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": "/nodes/1",
+          "value": {
+            "id": "b2930e82-d7ed-4fc6-88fe-6faa01a28d80",
+            "label": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "kind": "",
+            "notes": "",
+            "operatorAlias": "Винт",
+            "x": 340,
+            "y": 100,
+            "origins": [
+              {
+                "operation": "graph_editor",
+                "source": "Ручной редактор постоянного графа"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "time": "2026-10-16T07:12:06.091432+00:00",
+      "action": "thought_save",
+      "detail": "thought_save: 2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/thoughtLab/drafts/0/anchors/0",
+          "value": {
+            "id": "a7479790-d01f-4b63-8cb6-2e537393dfe7",
+            "start": 0,
+            "end": 4
+          }
+        },
+        {
+          "op": "add",
+          "path": "/thoughtLab/drafts/0/config/edges/0",
+          "value": {
+            "id": "047a2334-c0fd-4fd9-a93c-b6e3c19e893b",
+            "edgeId": "f8fd76b4-d19c-4f9e-a998-c1449e6038f4",
+            "from": "a7479790-d01f-4b63-8cb6-2e537393dfe7",
+            "to": "a7479790-d01f-4b63-8cb6-2e537393dfe7",
+            "binding": true,
+            "template": {
+              "id": "f8fd76b4-d19c-4f9e-a998-c1449e6038f4",
+              "from": "e8796897-2fea-4e31-8f5e-828b6f928438",
+              "to": "b2930e82-d7ed-4fc6-88fe-6faa01a28d80",
+              "role": "relation",
+              "type": ""
+            },
+            "required": true,
+            "included": true,
+            "activation": "direct"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/thoughtLab/drafts/0/config/nodes/0",
+          "value": {
+            "id": "a7479790-d01f-4b63-8cb6-2e537393dfe7",
+            "required": true,
+            "included": true,
+            "x": 130,
+            "y": 90,
+            "conceptId": "e8796897-2fea-4e31-8f5e-828b6f928438",
+            "contentConceptId": "b2930e82-d7ed-4fc6-88fe-6faa01a28d80",
+            "value": "Винт",
+            "bindingRequired": true,
+            "contentEdges": [
+              "047a2334-c0fd-4fd9-a93c-b6e3c19e893b"
+            ],
+            "displayNumber": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "time": "2026-10-16T07:12:11.820887+00:00",
+      "action": "thought_save",
+      "detail": "thought_save: 2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/thoughtLab/drafts/0/selection",
+          "value": [
+            5,
+            9
+          ]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "time": "2026-10-16T07:12:26.095271+00:00",
+      "action": "graph_apply",
+      "detail": "{\"message\": \"Подтверждена атомарная правка общего графа\", \"changes\": {\"nodes\": [{\"id\": \"23f5ecd0-6b31-438f-8f23-347f615756da\", \"before\": null, \"after\": {\"id\": \"23f5ecd0-6b31-438f-8f23-347f615756da\", \"label\": \"\", \"designationOnly\": true, \"structure\": \"concept\", \"kind\": \"\", \"notes\": \"\", \"operatorAlias\": \"Падение\", \"x\": 820, \"y\": 100, \"origins\": [{\"operation\": \"graph_editor\", \"source\": \"Ручной редактор постоянного графа\"}]}}, {\"id\": \"a4a01beb-7181-468f-a99b-13551c8de35e\", \"before\": null, \"after\": {\"id\": \"a4a01beb-7181-468f-a99b-13551c8de35e\", \"label\": \"\", \"designationOnly\": true, \"structure\": \"concept\", \"kind\": \"\", \"notes\": \"\", \"operatorAlias\": \"Процесс\", \"operatorRole\": true, \"x\": 580, \"y\": 100, \"origins\": [{\"operation\": \"graph_editor\", \"source\": \"Ручной редактор постоянного графа\"}]}}], \"edges\": [{\"id\": \"126055e6-9776-44a6-8e17-2eaed10c7e28\", \"before\": null, \"after\": {\"id\": \"126055e6-9776-44a6-8e17-2eaed10c7e28\", \"from\": \"a4a01beb-7181-468f-a99b-13551c8de35e\", \"to\": \"23f5ecd0-6b31-438f-8f23-347f615756da\", \"role\": \"relation\", \"type\": \"\", \"notes\": \"\", \"origins\": [{\"operation\": \"graph_editor\", \"source\": \"Ручной редактор постоянного графа\"}]}}], \"contextEdges\": [], \"designations\": [], \"definitions\": [], \"affectedContexts\": [], \"affectedDefinitions\": {}, \"drafts\": []}}",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/edges/1",
+          "value": {
+            "id": "126055e6-9776-44a6-8e17-2eaed10c7e28",
+            "from": "a4a01beb-7181-468f-a99b-13551c8de35e",
+            "to": "23f5ecd0-6b31-438f-8f23-347f615756da",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "operation": "graph_editor",
+                "source": "Ручной редактор постоянного графа"
+              }
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": "/nodes/2",
+          "value": {
+            "id": "a4a01beb-7181-468f-a99b-13551c8de35e",
+            "label": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "kind": "",
+            "notes": "",
+            "operatorAlias": "Процесс",
+            "operatorRole": true,
+            "x": 580,
+            "y": 100,
+            "origins": [
+              {
+                "operation": "graph_editor",
+                "source": "Ручной редактор постоянного графа"
+              }
+            ]
+          }
+        },
+        {
+          "op": "add",
+          "path": "/nodes/3",
+          "value": {
+            "id": "23f5ecd0-6b31-438f-8f23-347f615756da",
+            "label": "",
+            "designationOnly": true,
+            "structure": "concept",
+            "kind": "",
+            "notes": "",
+            "operatorAlias": "Падение",
+            "x": 820,
+            "y": 100,
+            "origins": [
+              {
+                "operation": "graph_editor",
+                "source": "Ручной редактор постоянного графа"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "time": "2026-10-16T07:12:26.109748+00:00",
+      "action": "thought_save",
+      "detail": "thought_save: 2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/thoughtLab/drafts/0/anchors/1",
+          "value": {
+            "id": "a08cba1d-51f0-4c06-a2d2-9a8a6892b44d",
+            "start": 5,
+            "end": 9
+          }
+        },
+        {
+          "op": "add",
+          "path": "/thoughtLab/drafts/0/config/edges/1",
+          "value": {
+            "id": "78044d48-87f5-4445-bd5e-601e6152a116",
+            "edgeId": "126055e6-9776-44a6-8e17-2eaed10c7e28",
+            "from": "a08cba1d-51f0-4c06-a2d2-9a8a6892b44d",
+            "to": "a08cba1d-51f0-4c06-a2d2-9a8a6892b44d",
+            "binding": true,
+            "template": {
+              "id": "126055e6-9776-44a6-8e17-2eaed10c7e28",
+              "from": "a4a01beb-7181-468f-a99b-13551c8de35e",
+              "to": "23f5ecd0-6b31-438f-8f23-347f615756da",
+              "role": "relation",
+              "type": ""
+            },
+            "required": true,
+            "included": true,
+            "activation": "direct"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/thoughtLab/drafts/0/config/nodes/1",
+          "value": {
+            "id": "a08cba1d-51f0-4c06-a2d2-9a8a6892b44d",
+            "required": true,
+            "included": true,
+            "x": 390,
+            "y": 90,
+            "conceptId": "a4a01beb-7181-468f-a99b-13551c8de35e",
+            "contentConceptId": "23f5ecd0-6b31-438f-8f23-347f615756da",
+            "value": "упал",
+            "bindingRequired": true,
+            "contentEdges": [
+              "78044d48-87f5-4445-bd5e-601e6152a116"
+            ],
+            "displayNumber": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "time": "2026-10-16T07:14:33.395645+00:00",
+      "action": "graph_apply",
+      "detail": "{\"message\": \"Подтверждена атомарная правка общего графа\", \"changes\": {\"nodes\": [], \"edges\": [{\"id\": \"d22ab4a8-6de7-4366-807e-9154f1ae7956\", \"before\": null, \"after\": {\"id\": \"d22ab4a8-6de7-4366-807e-9154f1ae7956\", \"from\": \"e8796897-2fea-4e31-8f5e-828b6f928438\", \"to\": \"a4a01beb-7181-468f-a99b-13551c8de35e\", \"role\": \"relation\", \"type\": \"\", \"notes\": \"\", \"origins\": [{\"operation\": \"graph_editor\", \"source\": \"Ручной редактор постоянного графа\"}]}}], \"contextEdges\": [], \"designations\": [], \"definitions\": [], \"affectedContexts\": [], \"affectedDefinitions\": {}, \"drafts\": []}}",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/edges/2",
+          "value": {
+            "id": "d22ab4a8-6de7-4366-807e-9154f1ae7956",
+            "from": "e8796897-2fea-4e31-8f5e-828b6f928438",
+            "to": "a4a01beb-7181-468f-a99b-13551c8de35e",
+            "role": "relation",
+            "type": "",
+            "notes": "",
+            "origins": [
+              {
+                "operation": "graph_editor",
+                "source": "Ручной редактор постоянного графа"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "time": "2026-10-16T07:14:33.410554+00:00",
+      "action": "thought_save",
+      "detail": "thought_save: 2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/thoughtLab/drafts/0/config/edges/2",
+          "value": {
+            "id": "bdaabce7-1d2e-4ccd-8026-085a07f6ce7b",
+            "edgeId": "d22ab4a8-6de7-4366-807e-9154f1ae7956",
+            "from": "a7479790-d01f-4b63-8cb6-2e537393dfe7",
+            "to": "a08cba1d-51f0-4c06-a2d2-9a8a6892b44d",
+            "template": {
+              "id": "d22ab4a8-6de7-4366-807e-9154f1ae7956",
+              "from": "e8796897-2fea-4e31-8f5e-828b6f928438",
+              "to": "a4a01beb-7181-468f-a99b-13551c8de35e",
+              "role": "relation",
+              "type": ""
+            },
+            "required": true,
+            "included": true,
+            "activation": "direct"
+          }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "time": "2026-10-16T07:14:34.277159+00:00",
+      "action": "thought_save",
+      "detail": "thought_save: 2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/thoughtLab/drafts/0/selection",
+          "value": [
+            0,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "time": "2026-10-16T07:20:16.064770+00:00",
+      "action": "thought_save",
+      "detail": "thought_save: 2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+      "patch": [
+        {
+          "op": "remove",
+          "path": "/thoughtLab/drafts/0/anchors/0"
+        },
+        {
+          "op": "remove",
+          "path": "/thoughtLab/drafts/0/config/edges/2"
+        },
+        {
+          "op": "remove",
+          "path": "/thoughtLab/drafts/0/config/edges/0"
+        },
+        {
+          "op": "remove",
+          "path": "/thoughtLab/drafts/0/config/nodes/0"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "time": "2026-10-16T07:20:29.146737+00:00",
+      "action": "thought_save",
+      "detail": "thought_save: 2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/thoughtLab/drafts/0/selection",
+          "value": [
+            5,
+            9
+          ]
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "time": "2026-10-16T07:20:29.156624+00:00",
+      "action": "thought_save",
+      "detail": "thought_save: 2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+      "patch": [
+        {
+          "op": "remove",
+          "path": "/thoughtLab/drafts/0/anchors/0"
+        },
+        {
+          "op": "remove",
+          "path": "/thoughtLab/drafts/0/config/edges/0"
+        },
+        {
+          "op": "remove",
+          "path": "/thoughtLab/drafts/0/config/nodes/0"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "time": "2026-10-16T07:20:35.300681+00:00",
+      "action": "thought_save",
+      "detail": "thought_save: 2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/thoughtLab/drafts/0/selection",
+          "value": [
+            0,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "time": "2026-10-16T07:20:41.027730+00:00",
+      "action": "thought_save",
+      "detail": "thought_save: 2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/thoughtLab/drafts/0/anchors/0",
+          "value": {
+            "id": "138ed57c-3505-41cb-b076-8e813baedb39",
+            "start": 0,
+            "end": 4
+          }
+        },
+        {
+          "op": "add",
+          "path": "/thoughtLab/drafts/0/config/edges/0",
+          "value": {
+            "id": "bc7cd270-8793-41fa-8983-f95fa1092837",
+            "edgeId": "f8fd76b4-d19c-4f9e-a998-c1449e6038f4",
+            "from": "138ed57c-3505-41cb-b076-8e813baedb39",
+            "to": "138ed57c-3505-41cb-b076-8e813baedb39",
+            "binding": true,
+            "template": {
+              "id": "f8fd76b4-d19c-4f9e-a998-c1449e6038f4",
+              "from": "e8796897-2fea-4e31-8f5e-828b6f928438",
+              "to": "b2930e82-d7ed-4fc6-88fe-6faa01a28d80",
+              "role": "relation",
+              "type": ""
+            },
+            "required": true,
+            "included": true,
+            "activation": "direct"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/thoughtLab/drafts/0/config/nodes/0",
+          "value": {
+            "id": "138ed57c-3505-41cb-b076-8e813baedb39",
+            "required": true,
+            "included": true,
+            "x": 130,
+            "y": 90,
+            "conceptId": "e8796897-2fea-4e31-8f5e-828b6f928438",
+            "contentConceptId": "b2930e82-d7ed-4fc6-88fe-6faa01a28d80",
+            "value": "Винт",
+            "bindingRequired": true,
+            "contentEdges": [
+              "bc7cd270-8793-41fa-8983-f95fa1092837"
+            ],
+            "displayNumber": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "time": "2026-10-16T07:20:48.993349+00:00",
+      "action": "thought_save",
+      "detail": "thought_save: 2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+      "patch": [
+        {
+          "op": "replace",
+          "path": "/thoughtLab/drafts/0/selection",
+          "value": [
+            5,
+            9
+          ]
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "time": "2026-10-16T07:20:49.294207+00:00",
+      "action": "thought_save",
+      "detail": "thought_save: 2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/thoughtLab/drafts/0/anchors/1",
+          "value": {
+            "id": "7cda31fc-af01-462a-aef6-03a77b3fcd9e",
+            "start": 5,
+            "end": 9
+          }
+        },
+        {
+          "op": "add",
+          "path": "/thoughtLab/drafts/0/config/edges/1",
+          "value": {
+            "id": "b3fcba99-df93-4672-a34b-8394afdb0578",
+            "edgeId": "126055e6-9776-44a6-8e17-2eaed10c7e28",
+            "from": "7cda31fc-af01-462a-aef6-03a77b3fcd9e",
+            "to": "7cda31fc-af01-462a-aef6-03a77b3fcd9e",
+            "binding": true,
+            "template": {
+              "id": "126055e6-9776-44a6-8e17-2eaed10c7e28",
+              "from": "a4a01beb-7181-468f-a99b-13551c8de35e",
+              "to": "23f5ecd0-6b31-438f-8f23-347f615756da",
+              "role": "relation",
+              "type": ""
+            },
+            "required": true,
+            "included": true,
+            "activation": "direct"
+          }
+        },
+        {
+          "op": "add",
+          "path": "/thoughtLab/drafts/0/config/nodes/1",
+          "value": {
+            "id": "7cda31fc-af01-462a-aef6-03a77b3fcd9e",
+            "required": true,
+            "included": true,
+            "x": 390,
+            "y": 90,
+            "conceptId": "a4a01beb-7181-468f-a99b-13551c8de35e",
+            "contentConceptId": "23f5ecd0-6b31-438f-8f23-347f615756da",
+            "value": "упал",
+            "bindingRequired": true,
+            "contentEdges": [
+              "b3fcba99-df93-4672-a34b-8394afdb0578"
+            ],
+            "displayNumber": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "time": "2026-10-16T07:21:02.005690+00:00",
+      "action": "thought_save",
+      "detail": "thought_save: 2c424f0d-7a6d-4e5c-bbb6-fa0a02e94b0f",
+      "patch": [
+        {
+          "op": "add",
+          "path": "/thoughtLab/drafts/0/config/edges/2",
+          "value": {
+            "id": "d94e51de-5c69-450d-96fb-f2a517966c29",
+            "edgeId": "d22ab4a8-6de7-4366-807e-9154f1ae7956",
+            "from": "138ed57c-3505-41cb-b076-8e813baedb39",
+            "to": "7cda31fc-af01-462a-aef6-03a77b3fcd9e",
+            "template": {
+              "id": "d22ab4a8-6de7-4366-807e-9154f1ae7956",
+              "from": "e8796897-2fea-4e31-8f5e-828b6f928438",
+              "to": "a4a01beb-7181-468f-a99b-13551c8de35e",
+              "role": "relation",
+              "type": ""
+            },
+            "required": true,
+            "included": true,
+            "activation": "direct"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{"nodes":80,"edges":160,"captionAndSearchMs":0.5770999999999944}
+{"nodes":1000,"edges":3000,"captionAndSearchMs":9.6785}
+✔ nested captions, naming priority and component search never mutate graph (1.2749ms)
+✔ equal structures retain distinct tokens even with colliding ID prefixes (0.2454ms)
+✔ draft overlay replaces owned membership, keeps canonical data untouched (0.2425ms)
+✔ cycles, deep and broad structures produce finite bounded captions (8.3716ms)
+✔ 80/160 draft and 1000/3000 canvas caption computation is bounded (11.6495ms)
+✔ creation snapshot, publication use and unpublished text remain distinct and read-only (0.8334ms)
+✔ missing origins never replaced with publication or draft text as creation (0.1149ms)
+✔ missing snapshot text/source and long escaped multiline definitions have honest readable fallbacks (1.0119ms)
+✔ half arc-length marker belongs to quadratic and loop, not control point (25.032ms)
+✔ diagonal and smoothed context avoids rectangles and alpha circles in both directions (2.2485ms)
+✔ fixed marker covered by a node fails rather than relocates; coincident markers fail (0.1516ms)
+✔ moving an unrelated obstacle rebuilds the corridor (0.6117ms)
+✔ bounded fallback reports enclosed endpoint without unsafe replacement (0.3218ms)
+✔ zoom preserves world point under cursor, including scale limits (0.5996ms)
+✔ edge intersects vertical and horizontal node boundaries, and supports loops (0.8383ms)
+✔ fit includes node padding and respects viewport aspect ratio (0.1555ms)
+✔ parallel source relations and loops remain visually distinct (0.1334ms)
+✔ context anchors follow actual quadratic and cubic curves (0.6251ms)
+✔ rectilinear context avoids a node between ordinary edge anchors (0.6278ms)
+✔ moving a nonincident blocking node changes the context route (0.1715ms)
+✔ alternating obstacles require more than three segments and exercise bounded A star (1.0583ms)
+✔ covered anchors, coincident endpoints and enclosed endpoints give explicit failure (0.3732ms)
+✔ touching and overlapping rectangles retain avoidance with reversed direction (0.2769ms)
+✔ fit contains context detours as well as node rectangles (0.1568ms)
+✔ force: detached partial graph, pins, finite deterministic coordinates (22.6916ms)
+✔ hierarchical: detached partial graph, pins, finite deterministic coordinates (5.8021ms)
+✔ radial: detached partial graph, pins, finite deterministic coordinates (0.3139ms)
+✔ clusters: detached partial graph, pins, finite deterministic coordinates (5.8282ms)
+✔ cycles, parallel edges, loops and disconnected nodes are retained (14.5802ms)
+✔ scalable hierarchy covers hidden 2004 nodes / 3001 edges without Dagre dummy explosion (14.4607ms)
+✔ hierarchical ordering reduces crossings on a reproducible bipartite example (3.616ms)
+✔ unanchored source clusters have disjoint bounding boxes; accepted shared origin is one cluster (11.5844ms)
+✔ large canvas fit has an explicit lower zoom bound without changing editor default (1.3256ms)
+{"size":100,"algorithm":"hierarchical","ms":11.142299999999999,"overlaps":0}
+{"size":100,"algorithm":"force","ms":48.9919,"overlaps":0}
+{"size":100,"algorithm":"radial","ms":0.3312999999999988,"overlaps":0}
+{"size":1000,"algorithm":"hierarchical","ms":4.112300000000005,"overlaps":0}
+{"size":1000,"algorithm":"force","ms":756.5906,"overlaps":0}
+{"size":1000,"algorithm":"radial","ms":1.5328000000000657,"overlaps":0}
+{"size":3000,"algorithm":"hierarchical","ms":5.337599999999952,"overlaps":0}
+{"size":3000,"algorithm":"force","ms":2654.33,"overlaps":0}
+{"size":3000,"algorithm":"radial","ms":5.002799999999752,"overlaps":0}
+✔ circle boundaries and parallel/loop context anchors use actual radii (0.7572ms)
+✔ degree includes relation/component once for self-loop and radius is bounded (0.2398ms)
+✔ exact designation/ID/caption outranks partial and component matches (0.8733ms)
+✔ circle layouts preserve pins/exterior and resolve overlaps for three modes (12.7037ms)
+✔ 100/1000/3000-node circle layouts run within finite resource budget (3498.5182ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3643.7969

@@ -36,7 +36,7 @@ async function restoreRevision(rev){await click('#workspace-tools');await page.l
 async function main(){
   await fs.mkdir(out,{recursive:true});const db=path.join(out,'workspace.sqlite3');await start(db);
   browser=await chromium.launch({channel:'chrome',headless:true});report.browser=browser.version();page=await browser.newPage({viewport:{width:1560,height:1100}});page.on('pageerror',e=>report.errors.push(e.message));
-  await page.goto(url);await helpers().saved();await click('#go-thoughts');assert.equal((await snap()).state.nodes.length,0);assert.equal(await page.locator('#go-builder').count(),0);assert.equal(await page.locator('#builder').count(),0);assert.equal(await page.locator('script[src="/builder.js"]').count(),0);assert.equal((await snap()).state.definitionDrafts.length,0);
+  await page.goto(url+'/?compat=thoughts');await helpers().saved();await click('#go-thoughts');assert.equal((await snap()).state.nodes.length,0);assert.equal(await page.locator('#go-builder').count(),0);assert.equal(await page.locator('#builder').count(),0);assert.equal(await page.locator('script[src="/builder.js"]').count(),0);assert.equal((await snap()).state.definitionDrafts.length,0);
   const first=await phrase('Винт упал на пол');
   await selectFragment('Винт');const object=await node('', 'Винт','Объект',true),screw=await node('Винт','Винт');
   const os=await edge(object.local,screw.local);await bindContent(object.local,os.local);

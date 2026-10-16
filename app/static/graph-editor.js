@@ -3,7 +3,7 @@
 const graphEditor={
   options(rows,current,label){return rows.map(v=>`<option value="${h(v.id)}" ${v.id===current?'selected':''}>${h(label(v))} · ${h(v.id)}</option>`).join('');},
   nodes(current){return this.options(state.nodes,current,n=>n.operatorAlias?`${n.operatorAlias} (рабочий alias)`:name(n.id));},
-  async preview(operations,definitionId,afterApply){
+  async preview(operations,definitionId,afterApply,{compactLabel}={}){
     const payload={operations,definitionId},p=await api('/api/graph-preview',payload);
     $('#toast').hidden=true;
     const describe=(key,v)=>{
@@ -18,6 +18,14 @@ const graphEditor={
     };
     const rows=(key,title)=>p[key].length?`<h3>${title} (${p[key].length})</h3>${p[key].map(v=>`<article class="graph-change"><p><strong>${v.before?v.after?'Изменение':'Удаление':'Создание'}</strong> · <code>${h(v.id)}</code></p><div class="graph-change-columns"><section><strong>До</strong>${describe(key,v.before)}</section><section><strong>После</strong>${describe(key,v.after)}</section></div><details><summary>Точные данные и происхождение</summary><pre>${h(JSON.stringify({до:v.before,после:v.after},null,2))}</pre></details></article>`).join('')}`:'';
     dialog('Предварительный результат общего графа',`<p>Версия ${p.revision}. Применение атомарно; полная предыдущая версия остаётся в истории.</p>${rows('nodes','Концепты / α')}${rows('edges','Обычные отношения / обязательные компоненты α')}${rows('contextEdges','Контекстные пары')}${rows('designations','Внешние обозначения')}${rows('definitions','Изменение состава определений')}${rows('drafts','Обновление чистых областей / защита незавершённых черновиков')}<h3>Затронутые определения</h3>${Object.entries(p.affectedDefinitions).map(([id,v])=>`<p>${h(v.title)} · <code>${h(id)}</code></p>`).join('')||'<p>Нет</p>'}<h3>Контекст затронутых рёбер (ID сохраняются)</h3><pre>${h(JSON.stringify(p.affectedContexts,null,2))}</pre><label class="checkbox"><input type="checkbox" name="confirmed" required>Я просмотрел все изменения и подтверждаю их</label>`,async()=>{await mutate('graph_apply',{...payload,confirmed:true,previewRevision:p.revision});toast('Общий граф обновлён. Предыдущая версия доступна в истории.');if(afterApply){await afterApply();return false;}},'Применить изменения');
+    const simple=operations.every(o=>o.op==='put')&&!p.affectedContexts.length&&!Object.keys(p.affectedDefinitions).length&&p.nodes.every(v=>v.after?.structure==='concept')&&p.edges.every(v=>v.after?.role==='relation')&&!p.contextEdges.length&&!p.definitions.length&&!p.drafts.length;
+    if(simple&&(compactLabel||[...p.nodes,...p.edges,...p.designations].every(v=>!v.before))){
+      const form=$('#modal-form'),actions=form.querySelector('.dialog-actions'),confirm=form.querySelector('[name=confirmed]');confirm.checked=true;confirm.required=false;confirm.closest('label').hidden=true;
+      const details=document.createElement('details');details.className='compact-preview-details';details.innerHTML='<summary>Подробности</summary>';for(const child of [...form.children])if(child!==actions&&child!==confirm.closest('label'))details.append(child);form.prepend(details);
+      const names=new Map([...state.nodes,...p.nodes.map(v=>v.after)].map(n=>[n.id,n.operatorAlias||name(n.id)])),edge=p.edges[0]?.after;
+      const heading=document.createElement('h3');heading.textContent=compactLabel||(edge?'Создать: '+names.get(edge.from)+' → '+names.get(edge.to):'Создать: '+p.nodes.map(v=>names.get(v.id)).join(', '));form.prepend(heading);
+      const counts=document.createElement('p');counts.textContent=p.nodes.length+' концепта · '+p.edges.length+' обычное ребро';heading.after(counts);actions.querySelector('[type=submit]').textContent='Подтвердить';
+    }
   },
   async origin(){if(!compatEditor)return undefined;definitionUI.capture();await definitionUI.save();return definitionUI.draft.id;},
   home(){

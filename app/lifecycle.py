@@ -33,6 +33,7 @@ def catalog(state):
 
     def config_refs(c):
         return (['node:' + n['conceptId'] for n in c.get('nodes', [])]
+                + ['node:' + n['contentConceptId'] for n in c.get('nodes', []) if n.get('contentConceptId')]
                 + ['edge:' + e['edgeId'] for e in c.get('edges', [])]
                 + ['context:' + p['contextId'] for p in c.get('contexts', [])])
 

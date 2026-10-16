@@ -11,7 +11,7 @@ const helpers=()=>require('./canvas-browser-helpers.cjs')(page);
 async function click(s){await helpers().click(s);}
 async function submit(text){await helpers().submit(text);}
 async function form(text){await page.locator('#modal-form').getByRole('button',{name:text,exact:true}).click();await helpers().saved();}
-async function apply(){await page.locator('#modal-form [name=confirmed]').check();await submit('Применить изменения');}
+async function apply(){await page.locator('#modal-form [name=confirmed]').check();await submit(/^(Применить изменения|Подтвердить)$/);}
 async function exact(id){await click('#graph-editor');await page.locator('#edit-exact-id').fill(id);await click('#edit-exact');}
 async function editNotes(id,text){await exact(id);await page.locator('[name=notes]').fill(text);await form('Предпросмотр');await apply();}
 async function usePart(){await click('#go-graph');await page.locator('#graph-search').fill('part');await click('[data-global-node="part"]');}
