@@ -221,3 +221,10 @@ body.permanent-workspace {height:100dvh;overflow:hidden}
 .management-blocked{padding:.7rem;border:1px solid #cc9e57;background:#fff8ec;border-radius:8px}
 .management-blocked label{display:flex;flex-direction:row;align-items:baseline;gap:.5rem;font-weight:400;margin:.5rem 0}
 #dialog-body pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:50vh;overflow:auto}
+.text-workbench{padding:1rem;background:#f5f9fc;border:1px solid #b9ccdb;border-radius:10px;margin-bottom:1rem}
+#annotated-text{font-size:23px;line-height:2.8;white-space:pre-wrap;user-select:text;min-height:80px}
+#annotated-text mark{background:#dbeefa;border-bottom:2px solid #2872a4;border-radius:4px;cursor:pointer;padding:2px 3px}
+#annotated-text mark:focus{outline:2px solid #16639a}.fragment-label{font-size:11px;color:#215676;vertical-align:super;margin-left:4px;user-select:none;white-space:normal}
+.thought-layout{grid-template-columns:minmax(0,1fr) 310px}.thought-layout aside{min-width:0}.thought-layout details{margin:.7rem 0}
+.text-workbench button{margin-right:.5rem}#connect-status:empty{display:none}
+@media(max-width:850px){.thought-layout{grid-template-columns:1fr}#annotated-text{font-size:20px}}

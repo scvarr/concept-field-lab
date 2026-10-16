@@ -228,6 +228,7 @@ def validate(graph):
             if 'representation' in d and (not d['representation'].get('confirmed')
                     or d['representation'].get('digest') != content_digest(d) or content_gaps(d) or uncovered(d)):
                 raise Invalid('Представление содержания не подтверждено или изменилось.')
+    validate_inclusions(graph, lab)
     for c in candidates:
         for k in ('from', 'to'):
             if lookup(graph['edges'], c.get(k), 'ребро гипотезы')['role'] != 'relation':
@@ -241,11 +242,53 @@ def validate(graph):
             raise Invalid('Принятие требует отдельно созданного оператором контекстного разрешения.')
 
 
+def validate_inclusions(graph, lab):
+    scenes = graph.get('sceneLab', empty_lab())['scenes']
+    for scene in scenes:
+        included = set()
+        for entry in scene['entries']:
+            if 'sourceEntryId' not in entry:
+                continue
+            draft = lookup(lab['drafts'], entry.get('thoughtId'), 'происхождение включения')
+            if (scene['kind'] != 'knowledge' or draft['status'] != 'complete'
+                    or draft['id'] in included or entry.get('sourceSceneId') != draft['sceneId']
+                    or entry['sourceEntryId'] != draft['entryId']):
+                raise Invalid('Неверное или повторное включение разбора в сцену знаний.')
+            included.add(draft['id'])
+            source = lookup(scenes, draft['sceneId'], 'исходная сцена включения')
+            original = lookup(source['entries'], draft['entryId'], 'исходный вход включения')
+            if entry['text'] != original['text'] or entry['kind'] != original['kind'] or entry['retracts']:
+                raise Invalid('Включение должно сохранять исходный текст и характер утверждения.')
+            if type(entry.get('includedRevision')) is not int or entry['includedRevision'] < 0:
+                raise Invalid('Нет версии происхождения включения.')
+            source_objects = {o['id']: o for o in source['objects']}
+            copies = {o['id']: o for o in scene['objects']}
+            facts = {f['localId']: f for f in original['assertions']}
+            if len(entry['assertions']) != len(facts) or {f.get('localId') for f in entry['assertions']} != set(facts):
+                raise Invalid('Включение изменило состав утверждений.')
+            for fact in entry['assertions']:
+                old = facts[fact['localId']]
+                if any(fact.get(k) != old.get(k) for k in ('edgeId', 'template', 'activation', 'thoughtId', 'slot')):
+                    raise Invalid('Включение изменило исходное отношение.')
+                for end in ('from', 'to'):
+                    obj = copies[fact[end]]
+                    origin = source_objects[old[end]]
+                    if obj.get('sourceObjectId') != origin['id'] or any(obj.get(k) != origin.get(k) for k in ('conceptId', 'label')):
+                        raise Invalid('Включение смешало независимые экземпляры.')
+
+
 def operate(graph, action, data, revision):
     lab = graph.setdefault('thoughtLab', empty())
     result = {}
     if action == 'thought_new':
         graph['operatorVersion'] = 5
+        if not data.get('sceneId'):
+            scene_lab = graph.setdefault('sceneLab', empty_lab())
+            scene = next((s for s in scene_lab['scenes'] if s['id'] == scene_lab['currentSceneId'] and s['kind'] == 'dialogue'), None)
+            if scene is None:
+                scene = {'id': uid(), 'label': 'Текущая динамическая сцена', 'kind': 'dialogue', 'objects': [], 'entries': [], 'links': []}
+                scene_lab['scenes'].append(scene)
+                scene_lab['currentSceneId'] = scene['id']
         d = {'id': uid(), 'text': clean(data.get('text', ''), 'фраза', False, 10000), 'status': 'draft',
              'config': {'nodes': [], 'edges': [], 'contexts': []}, 'selection': [0, 0], 'anchors': [],
              'templateRef': None, 'contract': None, 'createdRevision': revision, 'trace': [],
@@ -277,6 +320,43 @@ def operate(graph, action, data, revision):
         lab['currentDraftId'] = lookup(lab['drafts'], data.get('draftId'), 'разбор')['id']
     elif action == 'thought_close':
         lab['currentDraftId'] = None
+    elif action == 'thought_include':
+        d = lookup(lab['drafts'], data.get('draftId'), 'разбор')
+        if d['status'] != 'complete':
+            raise Invalid('В сцену знаний включается завершённый разбор.')
+        scenes = graph['sceneLab']['scenes']
+        source = lookup(scenes, d['sceneId'], 'исходная сцена')
+        original = lookup(source['entries'], d['entryId'], 'исходный вход')
+        if data.get('sceneId'):
+            target = lookup(scenes, data['sceneId'], 'сцена знаний')
+            if target['kind'] != 'knowledge':
+                raise Invalid('Выберите сцену знаний.')
+        else:
+            target = {'id': uid(), 'label': clean(data.get('label'), 'название сцены', True, 1000),
+                      'kind': 'knowledge', 'objects': [], 'entries': [], 'links': []}
+            scenes.append(target)
+        previous = next((e for e in target['entries'] if e.get('thoughtId') == d['id']), None)
+        if previous:
+            result.update(sceneId=target['id'], entryId=previous['id'], alreadyIncluded=True)
+        else:
+            mapping = {}
+            bindings = d.get('objectBindings', [{'localId': o.get('localId'), 'objectId': o['id']}
+                                               for o in source['objects'] if o.get('thoughtId') == d['id']])
+            for binding in bindings:
+                if binding['objectId'] in mapping:
+                    continue
+                obj = copy.deepcopy(lookup(source['objects'], binding['objectId'], 'исходный объект'))
+                old_id = obj['id']
+                obj.update(id=uid(), thoughtId=d['id'], sourceObjectId=old_id)
+                mapping[old_id] = obj['id']
+                target['objects'].append(obj)
+            entry = copy.deepcopy(original)
+            entry.update(id=uid(), sourceSceneId=source['id'], sourceEntryId=original['id'],
+                         includedRevision=revision, retracts=[])
+            for fact in entry['assertions']:
+                fact.update(id=uid(), **{end: mapping[fact[end]] for end in ('from', 'to')})
+            target['entries'].append(entry)
+            result.update(sceneId=target['id'], entryId=entry['id'], alreadyIncluded=False)
     elif action == 'thought_revise':
         original = lookup(lab['drafts'], data.get('draftId'), 'разбор')
         d = copy.deepcopy(original)
@@ -393,7 +473,10 @@ def operate(graph, action, data, revision):
                 if n['included'] and not n.get('sceneObjectId'):
                     scene['objects'].append({'id': mapping[n['id']], 'conceptId': n['conceptId'], 'label': n['value'],
                                              'thoughtId': d['id'], 'localId': n['id']})
-            entry = {'id': uid(), 'text': d['text'], 'kind': 'event', 'retracts': [], 'assertions': [], 'thoughtId': d['id']}
+            entry_kind = data.get('kind', 'state')
+            if entry_kind not in ('state', 'event'):
+                raise Invalid('Выберите утверждение состояния или событие.')
+            entry = {'id': uid(), 'text': d['text'], 'kind': entry_kind, 'retracts': [], 'assertions': [], 'thoughtId': d['id']}
             for e in d['config']['edges']:
                 if e['included']:
                     entry['assertions'].append({'id': uid(), 'edgeId': e['edgeId'], 'template': copy.deepcopy(e['template']),

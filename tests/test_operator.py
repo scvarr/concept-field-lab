@@ -269,3 +269,82 @@ class OperatorTest(unittest.TestCase):
         kinds = {v['kind'] for v in preview['blocked']}
         self.assertTrue({'object', 'entry', 'link', 'workspace'} <= kinds)
         self.assertTrue(all(v['depends'] <= rows.keys() for v in rows.values()))
+
+    def test_m021_include_two_statements_independent_and_idempotent(self):
+        first = self.new('Винт — деталь'); self.save(first, self.config()); self.complete(first)
+        original = self.draft(first)
+        before = copy.deepcopy(self.state()['nodes']), copy.deepcopy(self.state()['edges'])
+        source = next(s for s in self.state()['sceneLab']['scenes'] if s['id'] == original['sceneId'])
+        self.assertEqual(source['entries'][0]['kind'], 'state')
+        target = self.call('thought_include', draftId=first, label='Словарь')['sceneId']
+        included = self.call('thought_include', draftId=first, sceneId=target)
+        self.assertTrue(included['alreadyIncluded'])
+        second = self.new('Головка — часть винта'); self.save(second, self.config()); self.complete(second)
+        self.call('thought_include', draftId=second, sceneId=target)
+        state = self.state()
+        knowledge = next(s for s in state['sceneLab']['scenes'] if s['id'] == target)
+        self.assertEqual(len(knowledge['entries']), 2)
+        self.assertEqual([e['text'] for e in knowledge['entries']], ['Винт — деталь', 'Головка — часть винта'])
+        self.assertTrue(all(e['kind'] == 'state' for e in knowledge['entries']))
+        self.assertEqual(knowledge['entries'][0]['sourceEntryId'], original['entryId'])
+        self.assertFalse({o['id'] for o in knowledge['objects']} & {o['id'] for o in source['objects']})
+        self.assertEqual(before, (state['nodes'], state['edges']))
+        self.assertEqual(state['sceneLab']['currentSceneId'], source['id'])
+        self.assertEqual(state['sceneLab']['workspaces'], [])
+        self.assertEqual(state['sceneLab']['scenes'][0]['links'], [])
+        exported = self.store.export()
+        self.assertEqual(parse_document(exported), state)
+        restarted = PermanentStore(self.path)
+        self.assertEqual(restarted.read()['state'], state)
+        fresh = PermanentStore(Path(self.tmp.name) / 'import.sqlite3')
+        fresh.mutate('import', {'document': exported, 'confirmed': True}, fresh.read()['revision'])
+        self.assertEqual(fresh.read()['state'], state)
+        fresh.mutate('import', {'document': exported, 'confirmed': True}, fresh.read()['revision'])
+        self.assertEqual(fresh.read()['state'], state)
+        rev = self.store.read()['revision']
+        self.delete(['scene:' + target], dependents=True)
+        self.assertNotIn(target, [s['id'] for s in self.state()['sceneLab']['scenes']])
+        self.assertEqual(len(self.state()['thoughtLab']['drafts']), 2)
+        self.call('restore', targetRevision=rev, confirmed=True)
+        self.assertEqual(self.state(), state)
+
+    def test_m021_invalid_inclusion_and_event_choice_are_atomic(self):
+        ident = self.new(); self.save(ident, self.config())
+        before = self.state()
+        with self.assertRaises(Invalid):
+            self.call('thought_include', draftId=ident, label='Нельзя черновик')
+        self.assertEqual(self.state(), before)
+        self.call('thought_confirm', draftId=ident, confirmed=True)
+        with self.assertRaises(Invalid):
+            self.call('thought_complete', draftId=ident, kind='inferred')
+        self.call('thought_complete', draftId=ident, kind='event')
+        self.assertEqual(self.state()['sceneLab']['scenes'][0]['entries'][0]['kind'], 'event')
+        before = self.state()
+        with self.assertRaises(Invalid):
+            self.call('thought_include', draftId=ident, sceneId=before['sceneLab']['currentSceneId'])
+        self.assertEqual(self.state(), before)
+        self.call('scene_create', kind='knowledge', label='Тема')
+        next_id = self.new('Новая фраза')
+        scene = next(s for s in self.state()['sceneLab']['scenes'] if s['id'] == self.draft(next_id)['sceneId'])
+        self.assertEqual(scene['kind'], 'dialogue')
+
+    def test_m021_inclusion_provenance_is_validated(self):
+        from app.permanent import validate_graph
+        ident = self.new(); self.save(ident, self.config()); self.complete(ident)
+        target = self.call('thought_include', draftId=ident, label='Словарь')['sceneId']
+        for field, value in [('sourceSceneId', 'missing'), ('sourceEntryId', 'missing'), ('text', 'Чужой текст'), ('kind', 'event')]:
+            altered = self.state()
+            scene = next(s for s in altered['sceneLab']['scenes'] if s['id'] == target)
+            scene['entries'][0][field] = value
+            with self.assertRaises(Invalid):
+                validate_graph(altered)
+        altered = self.state()
+        scene = next(s for s in altered['sceneLab']['scenes'] if s['id'] == target)
+        scene['objects'][0]['sourceObjectId'] = 'missing'
+        with self.assertRaises(Invalid):
+            validate_graph(altered)
+        altered = self.state()
+        scene = next(s for s in altered['sceneLab']['scenes'] if s['id'] == target)
+        scene['entries'][0]['assertions'][1]['localId'] = scene['entries'][0]['assertions'][0]['localId']
+        with self.assertRaises(Invalid):
+            validate_graph(altered)

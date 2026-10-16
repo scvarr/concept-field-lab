@@ -146,7 +146,8 @@ class ThoughtsTest(unittest.TestCase):
         self.save(c)
         rows = continuations(self.draft())
         self.assertEqual(len(rows), 1)
-        self.assertNotIn('sceneLab', self.state())
+        # M021 opens an empty dynamic session at phrase input, without facts.
+        self.assertTrue(all(not s['entries'] and s['kind'] == 'dialogue' for s in self.state()['sceneLab']['scenes']))
         self.call('thought_step', draftId=first, targetId=rows[0]['to'], contextId=rows[0]['contextId'])
         self.assertEqual(continuations(self.draft()), [])
         self.assertEqual(next(e for e in self.draft()['config']['edges'] if e['edgeId'] == 'pf')['activation'], 'context')
